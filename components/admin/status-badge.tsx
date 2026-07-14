@@ -1,0 +1,3 @@
+const labels: Record<string,string> = { HELD:"Chờ xác nhận", CONFIRMED:"Đã xác nhận", CANCELLED:"Đã hủy", EXPIRED:"Hết hạn", CHECKED_IN:"Đang ở", CHECKED_OUT:"Hoàn tất", NO_SHOW:"Không đến" };
+const colors: Record<string,string> = { HELD:"bg-amber-50 text-amber-700", CONFIRMED:"bg-emerald-50 text-emerald-700", CANCELLED:"bg-red-50 text-red-700", EXPIRED:"bg-slate-100 text-slate-600", CHECKED_IN:"bg-blue-50 text-blue-700", CHECKED_OUT:"bg-lago-mist text-lago-forest", NO_SHOW:"bg-purple-50 text-purple-700" };
+export function StatusBadge({status}:{status:string}) { return <span className={`inline-flex rounded-full px-2.5 py-1 text-[.67rem] font-bold ${colors[status]??colors.EXPIRED}`}>{labels[status]??status}</span>; }
