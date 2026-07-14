@@ -20,8 +20,8 @@ export default {
         }
       },
       fontFamily: {
-        sans: ["var(--font-manrope)", "system-ui", "sans-serif"],
-        display: ["var(--font-cormorant)", "Georgia", "serif"]
+        sans: ["Be Vietnam Pro", "system-ui", "sans-serif"],
+        display: ["Lora", "Georgia", "serif"]
       },
       boxShadow: {
         soft: "0 24px 60px rgba(25, 48, 42, .12)"

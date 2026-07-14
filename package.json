@@ -17,6 +17,8 @@
     "db:seed": "tsx prisma/seed.ts"
   },
   "dependencies": {
+    "@fontsource/be-vietnam-pro": "^5.2.8",
+    "@fontsource/lora": "^5.2.8",
     "@prisma/client": "^6.19.1",
     "bcryptjs": "^3.0.3",
     "date-fns": "^4.1.0",

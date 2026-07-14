@@ -8,7 +8,7 @@ import { Logo } from "@/shared/components/layout/logo";
 
 const navigation = [
   ["/admin/tong-quan", "Tổng quan", LayoutDashboard],
-  ["/admin/lich", "Lịch phòng", CalendarDays],
+  ["/admin/lich", "Lịch căn", CalendarDays],
   ["/admin/booking", "Booking", BedDouble],
   ["/admin/khach-hang", "Khách hàng", Users],
   ["/admin/thu-chi", "Khoản thu", CircleDollarSign],

@@ -3,62 +3,24 @@ import { hash } from "bcryptjs";
 
 const prisma = new PrismaClient();
 
-const stays = [
-  {
-    name: "Nhà Mây",
-    slug: "nha-may",
-    shortName: "Dành cho hai người",
-    description: "Một căn nhỏ bên triền cỏ, nơi buổi sáng bắt đầu bằng ánh nắng và tiếng lá.",
-    maxGuests: 2,
-    baseGuests: 2,
-    bedrooms: 1,
-    beds: 1,
-    bathrooms: 1,
-    area: 38,
-    basePrice: 1450000,
-    heroImage: "/images/stay-cloud.jpg",
-    gallery: ["/images/stay-cloud.jpg", "/images/detail-1.jpg"],
-    amenities: ["Bồn tắm nhìn vườn", "Bữa sáng", "Máy chiếu", "Sân hiên riêng"],
-    featured: true,
-    unitCode: "MAY-01"
-  },
-  {
-    name: "Nhà Rừng",
-    slug: "nha-rung",
-    shortName: "Ấm cúng cho gia đình",
-    description: "Không gian gỗ ấm, khu vườn riêng và những bữa tối quây quần dưới hiên.",
-    maxGuests: 4,
-    baseGuests: 2,
-    bedrooms: 2,
-    beds: 2,
-    bathrooms: 1,
-    area: 62,
-    basePrice: 2250000,
-    heroImage: "/images/stay-forest.jpg",
-    gallery: ["/images/stay-forest.jpg", "/images/detail-2.jpg"],
-    amenities: ["Bếp riêng", "Vườn kín", "Bàn ăn ngoài trời", "Bồn tắm"],
-    featured: true,
-    unitCode: "RUNG-01"
-  },
-  {
-    name: "Lago House",
-    slug: "lago-house",
-    shortName: "Nguyên căn cho nhóm bạn",
-    description: "Ngôi nhà rộng mở hướng mặt hồ, đủ riêng tư cho một kỳ nghỉ dài cùng người thân.",
-    maxGuests: 8,
-    baseGuests: 6,
-    bedrooms: 3,
-    beds: 4,
-    bathrooms: 2,
-    area: 140,
-    basePrice: 4200000,
-    heroImage: "/images/stay-lago.jpg",
-    gallery: ["/images/stay-lago.jpg", "/images/detail-3.jpg"],
-    amenities: ["Bếp đầy đủ", "BBQ", "Phòng khách lớn", "View mặt hồ"],
-    featured: true,
-    unitCode: "LAGO-01"
-  }
-];
+const lagoHouse = {
+  name: "Lago House",
+  slug: "lago-house",
+  shortName: "Nhà nguyên căn · riêng tư trọn vẹn",
+  description: "Một ngôi nhà rộng mở dành trọn cho gia đình và nhóm bạn, nơi mọi người ở gần nhau nhưng vẫn có khoảng riêng để nghỉ ngơi.",
+  maxGuests: 8,
+  baseGuests: 6,
+  bedrooms: 3,
+  beds: 4,
+  bathrooms: 2,
+  area: 140,
+  basePrice: 4200000,
+  heroImage: "/images/stay-lago.jpg",
+  gallery: ["/images/stay-lago.jpg", "/images/detail-1.jpg", "/images/detail-2.jpg"],
+  amenities: ["Toàn bộ nhà riêng", "Bếp đầy đủ", "Sân BBQ", "Phòng khách lớn", "Hiên hướng thiên nhiên", "Wi-Fi"],
+  featured: true,
+  unitCode: "LAGO-01"
+};
 
 async function main() {
   const property = await prisma.property.upsert({
@@ -74,24 +36,29 @@ async function main() {
     }
   });
 
-  for (const stay of stays) {
-    const { unitCode, ...data } = stay;
-    const type = await prisma.accommodationType.upsert({
-      where: { slug: data.slug },
-      update: data,
-      create: { ...data, propertyId: property.id }
-    });
-    await prisma.unit.upsert({
-      where: { code: unitCode },
-      update: { active: true },
-      create: { code: unitCode, name: `${data.name} 01`, accommodationTypeId: type.id }
-    });
-    await prisma.rateRule.deleteMany({ where: { accommodationTypeId: type.id } });
-    await prisma.rateRule.createMany({ data: [
-      { accommodationTypeId: type.id, name: "Giá cuối tuần", type: RuleType.WEEKDAY, priority: 10, amount: 250000, weekdays: [5, 6] },
-      { accommodationTypeId: type.id, name: "Phụ thu khách", type: RuleType.EXTRA_GUEST, priority: 20, amount: 300000, minGuests: data.baseGuests + 1, weekdays: [] }
-    ]});
-  }
+  const { unitCode, ...data } = lagoHouse;
+  const type = await prisma.accommodationType.upsert({
+    where: { slug: data.slug },
+    update: { ...data, active: true },
+    create: { ...data, propertyId: property.id }
+  });
+
+  await prisma.accommodationType.updateMany({
+    where: { propertyId: property.id, id: { not: type.id } },
+    data: { active: false, featured: false }
+  });
+
+  await prisma.unit.upsert({
+    where: { code: unitCode },
+    update: { active: true, name: data.name, accommodationTypeId: type.id },
+    create: { code: unitCode, name: data.name, accommodationTypeId: type.id }
+  });
+
+  await prisma.rateRule.deleteMany({ where: { accommodationTypeId: type.id } });
+  await prisma.rateRule.createMany({ data: [
+    { accommodationTypeId: type.id, name: "Giá cuối tuần", type: RuleType.WEEKDAY, priority: 10, amount: 250000, weekdays: [5, 6] },
+    { accommodationTypeId: type.id, name: "Phụ thu khách", type: RuleType.EXTRA_GUEST, priority: 20, amount: 300000, minGuests: data.baseGuests + 1, weekdays: [] }
+  ] });
 
   await prisma.user.upsert({
     where: { email: "owner@lago.local" },
@@ -106,13 +73,14 @@ async function main() {
   });
 
   const content = [
-    ["home.hero.eyebrow", "Dòng giới thiệu", "Ở chậm giữa thiên nhiên"],
-    ["home.hero.title", "Tiêu đề trang chủ", "Một khoảng xanh để mình thật sự nghỉ ngơi"],
-    ["home.hero.description", "Mô tả trang chủ", "Lago là nơi những ngày dài được đo bằng nắng sớm, bữa cơm ấm và thời gian dành trọn cho nhau."]
+    ["home.hero.eyebrow", "Dòng giới thiệu", "Nhà nguyên căn giữa thiên nhiên"],
+    ["home.hero.title", "Tiêu đề trang chủ", "Một căn nhà, trọn một khoảng riêng."],
+    ["home.hero.description", "Mô tả trang chủ", "Lago House dành trọn cho gia đình và nhóm bạn—đủ gần để kết nối, đủ riêng để mỗi người thật sự được nghỉ ngơi."]
   ];
   for (const [key, label, value] of content) {
     await prisma.contentBlock.upsert({
-      where: { key }, update: { value },
+      where: { key },
+      update: { value },
       create: { propertyId: property.id, key, label, value, type: ContentType.TEXT }
     });
   }
