@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { calculatePrice } from "@/lib/pricing";
+import { calculatePrice } from "@/features/booking/domain/pricing";
 
 describe("calculatePrice", () => {
   it("tính đúng số đêm và giá cơ bản", () => {

@@ -1,0 +1,11 @@
+import { ChevronLeft, ChevronRight, Plus } from "lucide-react";
+import { AdminPageHeading } from "@/features/admin/components/page-heading";
+
+const days = ["14 T3","15 T4","16 T5","17 T6","18 T7","19 CN","20 T2"];
+const rooms = ["Nhà Mây 01","Nhà Rừng 01","Lago House 01"];
+const bookings = [
+  {room:0,start:4,span:2,label:"Minh Anh",color:"bg-amber-100 text-amber-800"},
+  {room:1,start:1,span:3,label:"Gia Hân",color:"bg-emerald-100 text-emerald-800"},
+  {room:2,start:5,span:2,label:"Hoàng Nam",color:"bg-blue-100 text-blue-800"}
+];
+export default function CalendarPage(){return <><AdminPageHeading title="Lịch phòng" description="Theo dõi tồn phòng, booking và các ngày khóa bán." action={<button className="btn-primary"><Plus className="h-4 w-4"/>Khóa lịch</button>}/><div className="card mt-8 overflow-hidden"><div className="flex items-center justify-between border-b p-4"><button className="rounded-lg border p-2"><ChevronLeft/></button><strong>14 – 20 tháng 7, 2026</strong><button className="rounded-lg border p-2"><ChevronRight/></button></div><div className="overflow-x-auto"><div className="min-w-[900px]"><div className="grid grid-cols-[180px_repeat(7,1fr)] bg-lago-cream text-center text-xs font-bold"><div className="p-4 text-left">Không gian</div>{days.map(d=><div className="border-l p-4" key={d}>{d}</div>)}</div>{rooms.map((room,ri)=><div className="relative grid min-h-24 grid-cols-[180px_repeat(7,1fr)] border-t" key={room}><div className="p-4 text-sm font-bold">{room}<p className="mt-1 text-xs font-normal text-lago-ink/45">Sẵn sàng</p></div>{days.map(d=><div className="border-l" key={d}/>)}{bookings.filter(b=>b.room===ri).map(b=><div key={b.label} className={`absolute bottom-5 top-5 flex items-center rounded-xl px-3 text-xs font-bold ${b.color}`} style={{left:`calc(180px + (100% - 180px) / 7 * ${b.start})`,width:`calc((100% - 180px) / 7 * ${b.span} - 8px)`}}>{b.label}</div>)}</div>)}</div></div></div><div className="mt-4 flex flex-wrap gap-5 text-xs"><span className="flex items-center gap-2"><i className="h-3 w-3 rounded-full bg-amber-200"/>Chờ xác nhận</span><span className="flex items-center gap-2"><i className="h-3 w-3 rounded-full bg-emerald-200"/>Đã xác nhận</span><span className="flex items-center gap-2"><i className="h-3 w-3 rounded-full bg-blue-200"/>Đang ở</span></div></>}

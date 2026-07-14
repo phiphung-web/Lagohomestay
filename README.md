@@ -2,6 +2,21 @@
 
 Website đặt phòng tiếng Việt và CRM vận hành cho Lago Homestay. Giao diện hiện dùng dữ liệu và hình ảnh concept để có thể duyệt trải nghiệm trước khi có nội dung thực tế.
 
+## Cấu trúc mã nguồn
+
+Mã ứng dụng nằm hoàn toàn trong `src/` và được chia theo trách nhiệm:
+
+```text
+src/
+├── app/          # Next.js routes, layouts và API entrypoints
+├── features/     # Nghiệp vụ độc lập: admin, booking, stays
+├── server/       # Auth, database, security và storage phía server
+├── shared/       # Component và utility dùng chung, không chứa nghiệp vụ
+└── types/        # Khai báo type mở rộng toàn cục
+```
+
+Schema, migration và seed database đặt trong `prisma/`; kiểm thử domain đặt trong `tests/`; cấu hình build và triển khai giữ ở thư mục gốc. Xem [quy ước kiến trúc](docs/architecture.md) trước khi bổ sung feature mới.
+
 ## Chạy nhanh ở chế độ demo
 
 ```bash

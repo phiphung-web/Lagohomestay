@@ -1,0 +1,4 @@
+import { MapPin, Phone } from "lucide-react";
+import { PageHero } from "@/shared/components/page-hero";
+import { SiteShell } from "@/shared/components/layout/site-shell";
+export default function ContactPage(){return <SiteShell><PageHero eyebrow="Liên hệ" title="Lago luôn sẵn sàng lắng nghe" description="Nếu có câu hỏi về không gian, ngày ở hoặc một yêu cầu đặc biệt, bạn có thể kết nối trực tiếp với chúng mình."/><section className="section-pad"><div className="container-lago grid gap-7 md:grid-cols-3">{[[Phone,"Điện thoại","0900 000 000"],[Phone,"Zalo","0900 000 000"],[MapPin,"Địa chỉ","Sẽ được cập nhật"]].map(([Icon,label,value])=>{const I=Icon as typeof Phone;return <div className="card p-7" key={String(label)}><I className="h-6 w-6"/><p className="eyebrow mt-7 text-lago-ink/40">{String(label)}</p><p className="mt-2 text-lg font-bold">{String(value)}</p></div>})}</div></section></SiteShell>}
