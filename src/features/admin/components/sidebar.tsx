@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { BarChart3, BedDouble, CalendarDays, CircleDollarSign, FileText, LayoutDashboard, LogOut, Settings, Users } from "lucide-react";
+import { BarChart3, BedDouble, CalendarDays, CircleDollarSign, LayoutDashboard, LogOut, Settings, Users } from "lucide-react";
 import { signOut } from "next-auth/react";
 import { Logo } from "@/shared/components/layout/logo";
 
@@ -13,8 +13,7 @@ const navigation = [
   ["/admin/khach-hang", "Khách hàng", Users],
   ["/admin/thu-chi", "Khoản thu", CircleDollarSign],
   ["/admin/bao-cao", "Báo cáo", BarChart3],
-  ["/admin/noi-dung", "Nội dung", FileText],
-  ["/admin/cau-hinh", "Cấu hình", Settings]
+  ["/admin/cau-hinh", "Thiết lập", Settings]
 ] as const;
 
 export function AdminSidebar() {

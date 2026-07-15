@@ -1,4 +1,4 @@
-import { PrismaClient, ContentType, RuleType, UserRole } from "@prisma/client";
+import { PrismaClient, RuleType, UserRole } from "@prisma/client";
 import { hash } from "bcryptjs";
 
 const prisma = new PrismaClient();
@@ -46,14 +46,6 @@ async function main() {
     create: { propertyId: property.id, name: "Chủ Lago", email: "owner@lago.local", passwordHash: await hash("Lago@2026", 12), role: UserRole.OWNER }
   });
 
-  const content = [
-    ["home.hero.eyebrow", "Dòng giới thiệu", "Bộ sưu tập nhà giữa thiên nhiên"],
-    ["home.hero.title", "Tiêu đề trang chủ", "Mỗi căn nhà, một cách để trở về."],
-    ["home.hero.description", "Mô tả trang chủ", "Từ căn nhỏ cho hai người đến ngôi nhà dành cho cả nhóm. Chọn không gian hợp với nhịp nghỉ của riêng bạn."]
-  ];
-  for (const [key, label, value] of content) {
-    await prisma.contentBlock.upsert({ where: { key }, update: { value }, create: { propertyId: property.id, key, label, value, type: ContentType.TEXT } });
-  }
 }
 
 main().finally(() => prisma.$disconnect());

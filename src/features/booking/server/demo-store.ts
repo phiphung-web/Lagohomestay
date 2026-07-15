@@ -38,9 +38,13 @@ export function createDemoBooking(data: Omit<StoredBooking, "code" | "holdExpire
 
 export function clearDemoStoreForTests() { demoBookingStore.clear(); demoIdempotencyStore.clear(); }
 
-export function findDemoBooking(code: string, phone: string) {
-  const booking = demoBookingStore.get(code.toUpperCase());
-  if (!booking || normalizePhone(booking.phone) !== normalizePhone(phone)) return null;
-  if (booking.status === "HELD" && new Date(booking.holdExpiresAt) <= new Date()) booking.status = "EXPIRED";
-  return booking;
+export function findDemoBookings(phone: string) {
+  const normalizedPhone = normalizePhone(phone);
+  return [...demoBookingStore.values()]
+    .filter((booking) => normalizePhone(booking.phone) === normalizedPhone)
+    .map((booking) => {
+      if (booking.status === "HELD" && new Date(booking.holdExpiresAt) <= new Date()) booking.status = "EXPIRED";
+      return booking;
+    })
+    .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
 }

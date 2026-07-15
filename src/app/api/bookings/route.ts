@@ -24,13 +24,13 @@ export async function POST(request: NextRequest) {
     const quote = calculatePrice({ checkIn: new Date(data.checkIn), checkOut: new Date(data.checkOut), guests: data.guests, baseGuests: stay.baseGuests, basePrice: stay.basePrice });
     const booking = createDemoBooking({ ...data, stayName: stay.name, totalAmount: quote.total, phone: normalizePhone(data.phone), email: data.email || undefined }, idempotencyKey);
     if (!booking) return NextResponse.json({ message: "Phòng vừa được khách khác giữ. Vui lòng chọn không gian hoặc ngày khác." }, { status: 409 });
-    return NextResponse.json({ code: booking.code, holdExpiresAt: booking.holdExpiresAt, totalAmount: booking.totalAmount }, { status: 201 });
+    return NextResponse.json({ holdExpiresAt: booking.holdExpiresAt, totalAmount: booking.totalAmount }, { status: 201 });
   }
 
   try {
     if (idempotencyKey) {
       const existing = await prisma.booking.findUnique({ where: { idempotencyKey } });
-      if (existing) return NextResponse.json({ code: existing.code, holdExpiresAt: existing.holdExpiresAt, totalAmount: Number(existing.totalAmount) });
+      if (existing) return NextResponse.json({ holdExpiresAt: existing.holdExpiresAt, totalAmount: Number(existing.totalAmount) });
     }
     const result = await prisma.$transaction(async (tx) => {
       await tx.$executeRaw`SELECT pg_advisory_xact_lock(hashtext(${data.unitId}))`;
@@ -51,7 +51,7 @@ export async function POST(request: NextRequest) {
       await tx.auditLog.create({ data: { action: "BOOKING_CREATED", entityType: "Booking", entityId: booking.id, metadata: { source: "public_web" } } });
       return booking;
     }, { isolationLevel: Prisma.TransactionIsolationLevel.Serializable });
-    return NextResponse.json({ code: result.code, holdExpiresAt: result.holdExpiresAt, totalAmount: Number(result.totalAmount) }, { status: 201 });
+    return NextResponse.json({ holdExpiresAt: result.holdExpiresAt, totalAmount: Number(result.totalAmount) }, { status: 201 });
   } catch (error) {
     const reason = error instanceof Error ? error.message : "";
     if (["NOT_AVAILABLE", "UNIT_NOT_FOUND", "CAPACITY_EXCEEDED"].includes(reason)) return NextResponse.json({ message: reason === "NOT_AVAILABLE" ? "Phòng vừa được khách khác giữ. Vui lòng chọn không gian hoặc ngày khác." : "Không gian này hiện không thể đặt." }, { status: 409 });

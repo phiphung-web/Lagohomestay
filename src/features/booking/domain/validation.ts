@@ -12,4 +12,4 @@ export const createBookingSchema = z.object({
   email: z.string().email().optional().or(z.literal("")), note: z.string().max(500).optional(), consent: z.literal(true)
 }).refine((v) => new Date(v.checkOut) > new Date(v.checkIn), { message: "Ngày trả phòng phải sau ngày nhận phòng" });
 
-export const lookupBookingSchema = z.object({ code: z.string().trim().min(8).max(30), phone: z.string().min(9).max(20) });
+export const lookupBookingSchema = z.object({ phone: z.string().regex(/^[0-9+().\s-]{9,20}$/) });
