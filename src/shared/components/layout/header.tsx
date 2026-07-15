@@ -6,7 +6,7 @@ import { useState } from "react";
 import { Logo } from "./logo";
 
 const links = [
-  ["/luu-tru", "Căn nhà"], ["/trai-nghiem", "Trải nghiệm"], ["/thu-vien", "Thư viện"],
+  ["/luu-tru", "Các căn nhà"], ["/trai-nghiem", "Trải nghiệm"], ["/thu-vien", "Thư viện"],
   ["/ve-lago", "Về Lago"], ["/thong-tin", "Thông tin"]
 ];
 

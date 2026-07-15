@@ -1,36 +1,24 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
-import { ArrowRight, Bath, BedDouble, Check, House, Users } from "lucide-react";
+import { House, Leaf, Sparkles } from "lucide-react";
+import { StayExplorer } from "@/features/stays/components/stay-explorer";
+import { conceptImages, stays } from "@/features/stays/data/demo-data";
 import { SiteShell } from "@/shared/components/layout/site-shell";
-import { stays } from "@/features/stays/data/demo-data";
-import { formatCurrency } from "@/shared/lib/format";
 
 export const metadata: Metadata = {
-  title: "Lago House — Nhà nguyên căn",
-  description: "Khám phá Lago House, căn nhà riêng tư dành trọn cho gia đình và nhóm bạn."
+  title: "Bộ sưu tập căn nhà",
+  description: "Khám phá các căn nhà nghỉ dưỡng riêng tư tại Lago Homestay, từ căn đôi đến nhà nguyên căn cho gia đình và nhóm bạn."
 };
 
 export default function StaysPage() {
-  const stay = stays[0];
   return <SiteShell>
-    <section className="bg-lago-cream pb-16 pt-16 sm:pb-24 sm:pt-24">
-      <div className="container-lago">
-        <div className="grid items-end gap-8 lg:grid-cols-[1.1fr_.7fr]">
-          <div><p className="eyebrow text-lago-clay">Một căn nhà duy nhất</p><h1 className="display mt-4 text-5xl font-semibold leading-[1.05] sm:text-7xl">Lago House.<br /><em className="font-medium text-lago-moss">Cả nhà là của bạn.</em></h1></div>
-          <p className="max-w-xl leading-7 text-lago-ink/65">Lago bắt đầu với một căn nhà nguyên căn. Không gian không bị chia nhỏ thành nhiều phòng bán riêng, để mỗi cuộc gặp gỡ có được sự riêng tư và liền mạch trọn vẹn.</p>
-        </div>
-
-        <div className="mt-12 overflow-hidden rounded-[36px] bg-white shadow-soft">
-          <div className="grid lg:grid-cols-[1.25fr_.75fr]">
-            <div className="image-zoom relative min-h-[430px] overflow-hidden lg:min-h-[650px]"><Image src={stay.image} alt="Lago House - ảnh concept" fill priority sizes="(max-width: 1024px) 100vw, 65vw" className="object-cover" /><span className="absolute left-5 top-5 rounded-full bg-white/90 px-3 py-1 text-[.62rem] font-bold uppercase tracking-wider">Ảnh concept</span></div>
-            <div className="flex flex-col justify-between p-7 sm:p-10">
-              <div><p className="eyebrow text-lago-moss">{stay.subtitle}</p><h2 className="display mt-3 text-4xl font-semibold">{stay.name}</h2><p className="mt-5 text-sm leading-7 text-lago-ink/60">{stay.longDescription}</p><div className="mt-8 grid grid-cols-2 gap-3">{[[Users, `${stay.maxGuests} khách`], [BedDouble, `${stay.bedrooms} phòng ngủ`], [Bath, `${stay.bathrooms} phòng tắm`], [House, `${stay.area} m² nguyên căn`]].map(([Icon, label]) => { const C = Icon as typeof Users; return <span key={String(label)} className="flex items-center gap-2 rounded-xl bg-lago-cream p-3 text-xs font-semibold"><C className="h-4 w-4 text-lago-clay" />{String(label)}</span>; })}</div><div className="mt-8 space-y-3">{stay.amenities.slice(0, 5).map((item) => <span key={item} className="flex items-center gap-3 text-sm"><Check className="h-4 w-4 text-lago-moss" />{item}</span>)}</div></div>
-              <div className="mt-10 border-t border-lago-ink/10 pt-7"><span className="text-xs text-lago-ink/50">Giá tham khảo từ</span><p className="mt-1"><strong className="display text-3xl">{formatCurrency(stay.basePrice)}</strong> <span className="text-sm text-lago-ink/50">/ đêm</span></p><div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-1"><Link href={`/luu-tru/${stay.slug}`} className="btn-light border border-lago-ink/15">Xem toàn bộ căn nhà</Link><Link href={`/dat-phong?stay=${stay.slug}`} className="btn-primary">Kiểm tra lịch <ArrowRight className="h-4 w-4" /></Link></div></div>
-            </div>
-          </div>
-        </div>
-      </div>
+    <section className="relative min-h-[68vh] overflow-hidden bg-lago-ink text-white">
+      <Image src={conceptImages.detail1} alt="Bộ sưu tập nhà Lago - ảnh concept" fill priority sizes="100vw" className="object-cover opacity-55" />
+      <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(12,39,32,.92),rgba(12,39,32,.38))]" />
+      <div className="container-lago relative z-10 flex min-h-[68vh] flex-col justify-center py-20"><p className="eyebrow text-lago-sand">Lago Collection · 04 căn nhà</p><h1 className="display mt-5 max-w-4xl text-5xl font-semibold leading-[1.03] sm:text-7xl lg:text-8xl">Chọn một căn nhà.<br /><em className="font-medium text-lago-sand">Mở ra một nhịp sống khác.</em></h1><p className="mt-7 max-w-2xl text-base leading-8 text-white/70">Mỗi căn có một vị trí, một cá tính và một cách riêng để đưa bạn đến gần thiên nhiên hơn.</p><div className="mt-10 flex flex-wrap gap-3">{[[House, "04 căn riêng biệt"], [Leaf, "Không gian thiên nhiên"], [Sparkles, "Trải nghiệm chọn lọc"]].map(([Icon, text]) => { const C = Icon as typeof House; return <span key={String(text)} className="flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-xs font-semibold backdrop-blur"><C className="h-4 w-4 text-lago-sand" />{String(text)}</span>; })}</div></div>
+      <span className="absolute bottom-5 right-5 rounded-full border border-white/25 bg-black/20 px-3 py-1.5 text-[.58rem] font-semibold uppercase tracking-wider backdrop-blur">Hình ảnh concept</span>
     </section>
+
+    <section className="section-pad bg-lago-cream"><div className="container-lago"><div className="mb-10 grid items-end gap-6 lg:grid-cols-[1fr_.7fr]"><div><p className="eyebrow text-lago-clay">Tìm căn hợp với bạn</p><h2 className="display mt-3 text-4xl font-semibold sm:text-6xl">Bạn muốn kỳ nghỉ này<br />cảm thấy như thế nào?</h2></div><p className="leading-7 text-lago-ink/60">Lọc theo người đồng hành và mục đích chuyến đi. Sau đó đi sâu vào từng căn để xem không gian, tiện nghi và lịch trống.</p></div><StayExplorer stays={stays} /></div></section>
   </SiteShell>;
 }

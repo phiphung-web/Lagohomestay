@@ -10,9 +10,9 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"),
-  title: { default: "Lago Homestay — Nhà nguyên căn giữa thiên nhiên", template: "%s | Lago Homestay" },
-  description: "Một căn nhà nguyên căn riêng tư để gia đình và bạn bè thật sự nghỉ ngơi. Kiểm tra lịch và gửi yêu cầu đặt Lago House trực tiếp.",
-  openGraph: { title: "Lago Homestay", description: "Một căn nhà, trọn một khoảng riêng", type: "website", locale: "vi_VN" }
+  title: { default: "Lago Homestay — Bộ sưu tập nhà giữa thiên nhiên", template: "%s | Lago Homestay" },
+  description: "Những căn nhà nghỉ dưỡng riêng tư cho cặp đôi, gia đình và nhóm bạn. Chọn căn phù hợp, kiểm tra lịch và đặt trực tiếp tại Lago.",
+  openGraph: { title: "Lago Homestay", description: "Mỗi căn nhà, một cách để trở về", type: "website", locale: "vi_VN" }
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
