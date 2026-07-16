@@ -51,3 +51,20 @@ npm run build
 Các API chính: `GET /api/availability`, `POST /api/bookings`, `POST /api/bookings/lookup`, `GET /api/health`. Việc tạo booking trên PostgreSQL chạy trong transaction `Serializable` và dùng advisory lock theo đơn vị phòng để chặn tranh chấp đồng thời.
 
 Production cần gọi `POST /api/tasks/expire-holds` mỗi phút với header `Authorization: Bearer $HOLD_EXPIRY_SECRET`. Docker image tự chạy `prisma migrate deploy` trước khi khởi động ứng dụng.
+
+## Đưa showroom thiết kế lên VPS
+
+Ba mẫu trình bày có URL riêng tại `/mau/tinh-lang`, `/mau/dien-anh` và `/mau/song-dong`. Bản demo public có thể chạy không cần PostgreSQL bằng Docker Compose và Caddy:
+
+```bash
+cp .env.demo.example .env.demo
+# Điền domain đã trỏ A record về VPS và SESSION_SECRET ngẫu nhiên.
+docker compose --env-file .env.demo -f docker-compose.demo.yml up -d --build
+```
+
+Caddy tự xin và gia hạn HTTPS khi domain đã trỏ đúng IP, đồng thời chuyển tiếp request vào Next.js. Kiểm tra sau triển khai:
+
+```bash
+docker compose --env-file .env.demo -f docker-compose.demo.yml ps
+curl -fsS https://your-domain.example/api/health
+```

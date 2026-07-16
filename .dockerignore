@@ -1,11 +1,14 @@
-node_modules
+.git
+.github
 .next
+node_modules
+npm-debug.log*
 .env
-.env.local
 .env.*
 !.env.example
 !.env.demo.example
 coverage
+playwright-report
+test-results
 *.log
 tsconfig.tsbuildinfo
-public/uploads

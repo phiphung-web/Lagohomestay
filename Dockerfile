@@ -20,4 +20,4 @@ COPY --from=builder /app/package.json ./package.json
 COPY --from=builder /app/prisma ./prisma
 USER nextjs
 EXPOSE 3000
-CMD ["sh", "-c", "npx prisma migrate deploy && npm start"]
+CMD ["sh", "-c", "if [ \"$DEMO_MODE\" = \"true\" ]; then npm start; else npx prisma migrate deploy && npm start; fi"]
