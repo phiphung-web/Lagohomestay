@@ -14,7 +14,8 @@ export function HeroShowcase({ stays }: { stays: Stay[] }) {
 
   useEffect(() => {
     if (!playing) return;
-    const timer = window.setInterval(() => setActive((current) => (current + 1) % stays.length), 5500);
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) { setPlaying(false); return; }
+    const timer = window.setInterval(() => { if (!document.hidden) setActive((current) => (current + 1) % stays.length); }, 6000);
     return () => window.clearInterval(timer);
   }, [playing, stays.length]);
 
@@ -35,7 +36,7 @@ export function HeroShowcase({ stays }: { stays: Stay[] }) {
       <div className="absolute inset-x-0 bottom-5 sm:bottom-7">
         <div className="container-lago">
           <div className="mb-4 flex items-center justify-between text-[.65rem] font-bold uppercase tracking-[.18em] text-white/55"><span>Đang khám phá · {String(active + 1).padStart(2, "0")}/{String(stays.length).padStart(2, "0")}</span><button onClick={() => setPlaying((value) => !value)} className="focus-ring grid h-9 w-9 place-items-center rounded-full border border-white/25" aria-label={playing ? "Tạm dừng trình chiếu" : "Tiếp tục trình chiếu"}>{playing ? <Pause className="h-3.5 w-3.5" /> : <Play className="h-3.5 w-3.5" />}</button></div>
-          <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">{stays.map((item, index) => <button key={item.id} onClick={() => setActive(index)} className={`group focus-ring rounded-2xl border px-4 py-3 text-left backdrop-blur-md transition ${active === index ? "border-white/55 bg-white text-lago-ink" : "border-white/15 bg-lago-ink/35 text-white hover:bg-lago-ink/55"}`}><span className={`block h-0.5 origin-left transition-transform duration-500 ${active === index ? "scale-x-100 bg-lago-clay" : "scale-x-0 bg-white group-hover:scale-x-50"}`} /><strong className="mt-2 block text-xs sm:text-sm">{item.name}</strong><span className={`mt-1 hidden text-[.65rem] sm:block ${active === index ? "text-lago-ink/50" : "text-white/45"}`}>{item.location} · {item.maxGuests} khách</span></button>)}</div>
+          <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">{stays.map((item, index) => <button key={item.id} onClick={() => { setActive(index); setPlaying(false); }} aria-pressed={active === index} className={`group focus-ring rounded-2xl border px-4 py-3 text-left backdrop-blur-md transition ${active === index ? "border-white/55 bg-white text-lago-ink" : "border-white/15 bg-lago-ink/35 text-white hover:bg-lago-ink/55"}`}><span className={`block h-0.5 origin-left transition-transform duration-500 ${active === index ? "scale-x-100 bg-lago-clay" : "scale-x-0 bg-white group-hover:scale-x-50"}`} /><strong className="mt-2 block text-xs sm:text-sm">{item.name}</strong><span className={`mt-1 hidden text-[.65rem] sm:block ${active === index ? "text-lago-ink/50" : "text-white/45"}`}>{item.location} · {item.maxGuests} khách</span></button>)}</div>
         </div>
       </div>
     </div>

@@ -21,7 +21,17 @@ export async function POST(request: NextRequest) {
   if (process.env.DEMO_MODE !== "false" || !process.env.DATABASE_URL) {
     const stay = stays.find((item) => item.unitId === data.unitId);
     if (!stay || data.guests > stay.maxGuests) return NextResponse.json({ message: "Không gian này không phù hợp với số khách đã chọn." }, { status: 409 });
-    const quote = calculatePrice({ checkIn: new Date(data.checkIn), checkOut: new Date(data.checkOut), guests: data.guests, baseGuests: stay.baseGuests, basePrice: stay.basePrice });
+    const quote = calculatePrice({
+      checkIn: new Date(data.checkIn),
+      checkOut: new Date(data.checkOut),
+      guests: data.guests,
+      baseGuests: stay.baseGuests,
+      basePrice: stay.basePrice,
+      rules: [
+        { type: "WEEKDAY", amount: 250000, priority: 10, weekdays: [5, 6] },
+        { type: "EXTRA_GUEST", amount: 300000, priority: 20, minGuests: stay.baseGuests + 1 }
+      ]
+    });
     const booking = createDemoBooking({ ...data, stayName: stay.name, totalAmount: quote.total, phone: normalizePhone(data.phone), email: data.email || undefined }, idempotencyKey);
     if (!booking) return NextResponse.json({ message: "Phòng vừa được khách khác giữ. Vui lòng chọn không gian hoặc ngày khác." }, { status: 409 });
     return NextResponse.json({ holdExpiresAt: booking.holdExpiresAt, totalAmount: booking.totalAmount }, { status: 201 });

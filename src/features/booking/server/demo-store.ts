@@ -25,15 +25,21 @@ export function createDemoBooking(data: Omit<StoredBooking, "code" | "holdExpire
     const existing = demoIdempotencyStore.get(idempotencyKey);
     if (existing) return demoBookingStore.get(existing)!;
   }
-  const overlap = [...demoBookingStore.values()].some((item) =>
-    item.unitId === data.unitId && ["HELD", "CONFIRMED", "CHECKED_IN"].includes(item.status) &&
-    new Date(item.holdExpiresAt) > new Date() && item.checkIn < data.checkOut && item.checkOut > data.checkIn
-  );
+  const overlap = !isDemoUnitAvailable(data.unitId, data.checkIn, data.checkOut);
   if (overlap) return null;
   const booking: StoredBooking = { ...data, code: makeBookingCode(), status: "HELD", holdExpiresAt: addHours(new Date(), 2).toISOString(), createdAt: new Date().toISOString() };
   demoBookingStore.set(booking.code, booking);
   if (idempotencyKey) demoIdempotencyStore.set(idempotencyKey, booking.code);
   return booking;
+}
+
+export function isDemoUnitAvailable(unitId: string, checkIn: string, checkOut: string) {
+  const now = new Date();
+  return ![...demoBookingStore.values()].some((item) => {
+    if (item.status === "HELD" && new Date(item.holdExpiresAt) <= now) item.status = "EXPIRED";
+    const blocksInventory = item.status === "HELD" || item.status === "CONFIRMED" || item.status === "CHECKED_IN";
+    return item.unitId === unitId && blocksInventory && item.checkIn < checkOut && item.checkOut > checkIn;
+  });
 }
 
 export function clearDemoStoreForTests() { demoBookingStore.clear(); demoIdempotencyStore.clear(); }
