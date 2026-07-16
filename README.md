@@ -54,17 +54,28 @@ Production cần gọi `POST /api/tasks/expire-holds` mỗi phút với header `
 
 ## Đưa showroom thiết kế lên VPS
 
-Ba mẫu trình bày có URL riêng tại `/mau/tinh-lang`, `/mau/dien-anh` và `/mau/song-dong`. Bản demo public có thể chạy không cần PostgreSQL bằng Docker Compose và Caddy:
+Ba mẫu trình bày có URL riêng tại `/mau/tinh-lang`, `/mau/dien-anh` và `/mau/song-dong`. Bản demo public chạy cô lập, không cần PostgreSQL và chỉ mở cổng loopback `127.0.0.1:3100`. Cấu hình này không chiếm cổng `80/443` của các website khác trên VPS.
 
 ```bash
 cp .env.demo.example .env.demo
-# Điền domain đã trỏ A record về VPS và SESSION_SECRET ngẫu nhiên.
-docker compose --env-file .env.demo -f docker-compose.demo.yml up -d --build
+# Điền domain, cổng loopback còn trống và SESSION_SECRET ngẫu nhiên.
+docker compose -p lago-showcase --env-file .env.demo -f docker-compose.demo.yml up -d --build
 ```
 
-Caddy tự xin và gia hạn HTTPS khi domain đã trỏ đúng IP, đồng thời chuyển tiếp request vào Next.js. Kiểm tra sau triển khai:
+Trước khi chạy phải kiểm tra cổng và dịch vụ hiện có, tuyệt đối không thay cấu hình web server toàn cục:
 
 ```bash
-docker compose --env-file .env.demo -f docker-compose.demo.yml ps
+ss -lntp | grep ':3100' || true
+docker ps --format 'table {{.Names}}\t{{.Ports}}'
+systemctl is-active nginx apache2 httpd 2>/dev/null || true
+```
+
+Sau khi container khỏe, thêm một vhost riêng cho domain Lago vào Nginx/Apache đang có. File `deploy/nginx-lago.conf.example` chỉ là mẫu; không chép đè `nginx.conf` hay vhost khác. Luôn chạy `nginx -t` hoặc lệnh kiểm tra tương ứng trước khi reload.
+
+Kiểm tra sau triển khai:
+
+```bash
+docker compose -p lago-showcase --env-file .env.demo -f docker-compose.demo.yml ps
+curl -fsS http://127.0.0.1:3100/api/health
 curl -fsS https://your-domain.example/api/health
 ```

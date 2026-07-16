@@ -4,37 +4,27 @@ services:
       context: .
       dockerfile: Dockerfile
     restart: unless-stopped
+    init: true
     environment:
       NODE_ENV: production
       DEMO_MODE: "true"
       SESSION_SECRET: ${SESSION_SECRET}
       NEXT_PUBLIC_SITE_URL: https://${LAGO_DOMAIN}
-    expose:
-      - "3000"
+    ports:
+      - "127.0.0.1:${LAGO_PORT:-3100}:3000"
+    mem_limit: 768m
+    cpus: 1.0
+    pids_limit: 200
+    security_opt:
+      - no-new-privileges:true
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
     healthcheck:
       test: ["CMD", "wget", "-q", "--spider", "http://localhost:3000/api/health"]
       interval: 15s
       timeout: 5s
       retries: 5
       start_period: 20s
-
-  caddy:
-    image: caddy:2-alpine
-    restart: unless-stopped
-    depends_on:
-      web:
-        condition: service_healthy
-    environment:
-      LAGO_DOMAIN: ${LAGO_DOMAIN}
-    ports:
-      - "80:80"
-      - "443:443"
-      - "443:443/udp"
-    volumes:
-      - ./deploy/Caddyfile:/etc/caddy/Caddyfile:ro
-      - caddy_data:/data
-      - caddy_config:/config
-
-volumes:
-  caddy_data:
-  caddy_config:
