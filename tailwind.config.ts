@@ -21,6 +21,7 @@ export default {
       },
       fontFamily: {
         sans: ["Be Vietnam Pro", "system-ui", "sans-serif"],
+        serif: ["Lora", "Georgia", "serif"],
         display: ["Lora", "Georgia", "serif"]
       },
       boxShadow: {
