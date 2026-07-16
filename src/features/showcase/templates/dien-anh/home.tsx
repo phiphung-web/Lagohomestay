@@ -1,12 +1,12 @@
 import Image from "next/image";
-import Link from "next/link";
+import { ShowcaseLink as Link } from "@/features/showcase/site/showcase-link";
 import { ArrowRight, CirclePlay, Instagram, MapPin, Pause, Users } from "lucide-react";
 import { AvailabilityBar } from "@/features/booking/components/availability-bar";
 import { ShowcaseSwitcher } from "@/features/showcase/components/showcase-switcher";
 import { experienceMoments, guestStories } from "@/features/showcase/data/showcase-content";
 import { conceptImages, stays } from "@/features/stays/data/demo-data";
 
-export function CinematicTemplate() {
+export function DienAnhHome() {
   return <main className="showcase-root min-h-screen bg-[#07130f] pb-32 text-white">
     <ShowcaseSwitcher current="dien-anh" />
     <section className="grain relative min-h-screen overflow-hidden"><Image src={stays[0].image} alt="Lago House bên hồ - ảnh concept" fill priority sizes="100vw" className="object-cover opacity-70" /><div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(3,12,9,.92)_0%,rgba(3,12,9,.25)_65%,rgba(3,12,9,.5)_100%)]" /><div className="absolute inset-x-0 bottom-0 h-72 bg-gradient-to-t from-[#07130f] to-transparent" />

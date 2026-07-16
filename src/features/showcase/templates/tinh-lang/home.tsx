@@ -1,12 +1,12 @@
 import Image from "next/image";
-import Link from "next/link";
+import { ShowcaseLink as Link } from "@/features/showcase/site/showcase-link";
 import { ArrowDownRight, ArrowRight, BedDouble, Instagram, MapPin, Plus, Users } from "lucide-react";
 import { ShowcaseSwitcher } from "@/features/showcase/components/showcase-switcher";
 import { experienceMoments, guestStories, showcaseFaqs } from "@/features/showcase/data/showcase-content";
 import { conceptImages, stays } from "@/features/stays/data/demo-data";
 import { formatCurrency } from "@/shared/lib/format";
 
-export function EditorialTemplate() {
+export function TinhLangHome() {
   return <main className="showcase-root min-h-screen bg-[#f3eee5] pb-32 text-[#19322c]">
     <ShowcaseSwitcher current="tinh-lang" />
     <header className="mx-auto flex h-24 w-[min(1420px,calc(100%-40px))] items-center justify-between border-b border-[#19322c]/15"><Link href="/mau/tinh-lang" className="font-serif text-3xl font-semibold tracking-[-.055em]">Lago.</Link><nav className="hidden items-center gap-8 text-[.66rem] font-bold uppercase tracking-[.16em] md:flex"><Link href="#collection">Các căn nhà</Link><Link href="/trai-nghiem">Trải nghiệm</Link><Link href="/ve-lago">Câu chuyện</Link></nav><Link href="/dat-phong" className="border-b border-[#19322c] pb-1 text-xs font-bold uppercase tracking-[.12em]">Kiểm tra lịch</Link></header>
