@@ -3,8 +3,6 @@ import Link from "next/link";
 import { Suspense } from "react";
 import {
   ArrowRight,
-  Bath,
-  BedDouble,
   CalendarDays,
   Check,
   Clock3,
@@ -14,9 +12,7 @@ import {
   MapPin,
   Phone,
   Plus,
-  Ruler,
-  Sparkles,
-  Users
+  Sparkles
 } from "lucide-react";
 import { BookingExperience } from "@/features/booking/components/booking-experience";
 import { LookupForm } from "@/features/booking/components/lookup-form";
@@ -25,6 +21,7 @@ import { GalleryLightbox } from "@/features/showcase/components/gallery-lightbox
 import { TemplateExperienceLayer } from "@/features/showcase/components/template-experience-layer";
 import { TemplateMobileMenu } from "@/features/showcase/components/template-mobile-menu";
 import { TemplateNavLink } from "@/features/showcase/components/template-nav-link";
+import { TemplateStayHero, TemplateStaysCollection } from "@/features/showcase/components/template-stay-showcase";
 import { experienceMoments, showcaseFaqs, stayPromises } from "@/features/showcase/data/showcase-content";
 import type { ShowcaseTemplateSlug } from "@/features/showcase/data/templates";
 import { conceptImages, stays } from "@/features/stays/data/demo-data";
@@ -126,21 +123,23 @@ function PageIntro({ eyebrow, title, text, image, config }: { eyebrow: string; t
 }
 
 function StaysPage({ config }: { config: CompleteTemplateConfig }) {
-  const organic = config.mood === "organic";
   return <><PageIntro config={config} eyebrow="Bộ sưu tập căn riêng" title="Bốn căn nhà, bốn nhịp nghỉ riêng." text="Chọn căn theo người đồng hành, số ngày ở và cách bạn muốn thức dậy mỗi sáng." image={conceptImages.detail1} />
-    <section className="mx-auto w-[min(1420px,calc(100%-40px))] py-20 sm:py-28">
-      <div className="grid gap-6 md:grid-cols-2">{stays.map((stay, index) => <Link href={scoped(config.basePath, `luu-tru/${stay.slug}`)} key={stay.id} className={`group overflow-hidden border border-current/10 bg-[var(--template-surface)] ${organic ? "rounded-[34px] p-3" : config.mood === "cinematic" ? "rounded-sm" : "rounded-t-[180px]"}`}>
-        <div className={`relative overflow-hidden ${organic ? "aspect-[4/3] rounded-[26px]" : "aspect-[4/5]"}`}><Image src={stay.image} alt={`${stay.name} - ảnh minh họa`} fill sizes="(max-width:768px) 100vw, 50vw" className="object-cover transition duration-700 group-hover:scale-[1.035]" /><span className="absolute left-4 top-4 rounded-full bg-white/90 px-3 py-1.5 text-[.58rem] font-bold uppercase tracking-wider text-[#17312b]">0{index + 1} · Ảnh minh họa</span></div>
-        <div className="p-6 sm:p-7"><p className="text-[.62rem] font-bold uppercase tracking-[.16em] text-[var(--template-accent)]">{stay.location}</p><div className="mt-2 flex items-start justify-between gap-5"><h2 className={`${organic ? "text-3xl font-extrabold" : "font-serif text-4xl font-medium"}`}>{stay.name}</h2><ArrowRight className="mt-2 h-5 w-5 transition group-hover:translate-x-1" /></div><p className="mt-3 text-sm leading-6 opacity-55">{stay.description}</p><div className="mt-5 flex flex-wrap gap-4 border-t border-current/10 pt-4 text-xs font-bold opacity-65"><span className="flex items-center gap-1.5"><Users className="h-4 w-4" />{stay.maxGuests} khách</span><span className="flex items-center gap-1.5"><BedDouble className="h-4 w-4" />{stay.bedrooms} phòng</span><span className="ml-auto">Từ {formatCurrency(stay.basePrice)}</span></div></div>
-      </Link>)}</div>
-    </section></>;
+    <TemplateStaysCollection mood={config.mood} basePath={config.basePath} /></>;
 }
 
 function StayPage({ config, slug }: { config: CompleteTemplateConfig; slug: string }) {
   const stay = stays.find((item) => item.slug === slug)!;
-  return <><section className={`relative min-h-[72svh] overflow-hidden ${config.mood === "organic" ? "m-3 rounded-[38px] sm:m-5" : ""}`}><Image src={stay.image} alt={`${stay.name} - ảnh minh họa`} fill priority sizes="100vw" className="object-cover transition duration-[1200ms] hover:scale-[1.015]" /><div className="absolute inset-0 bg-gradient-to-t from-black/78 via-black/12 to-black/28" /><div className="relative z-10 mx-auto flex min-h-[72svh] w-[min(1420px,calc(100%-40px))] flex-col justify-end pb-12 text-white sm:pb-16"><Link href={scoped(config.basePath, "luu-tru")} className="mb-7 text-xs font-bold uppercase tracking-wider text-white/65">← Trở lại bộ sưu tập</Link><p className="text-[.65rem] font-bold uppercase tracking-[.2em] text-[#f0ca9b]">{stay.subtitle}</p><h1 className={`mt-4 text-6xl leading-none tracking-[-.05em] sm:text-8xl ${config.mood === "organic" ? "font-extrabold" : "font-serif font-medium"}`}>{stay.name}</h1><div className="mt-7 flex flex-wrap gap-5 text-xs font-bold text-white/75"><span className="flex items-center gap-2"><Users className="h-4 w-4" />{stay.maxGuests} khách</span><span className="flex items-center gap-2"><BedDouble className="h-4 w-4" />{stay.bedrooms} phòng ngủ</span><span className="flex items-center gap-2"><Bath className="h-4 w-4" />{stay.bathrooms} phòng tắm</span><span className="flex items-center gap-2"><Ruler className="h-4 w-4" />{stay.area} m²</span></div></div></section>
-    <section className="mx-auto grid w-[min(1240px,calc(100%-40px))] gap-12 py-20 lg:grid-cols-[1fr_360px] lg:py-28"><div><p className="text-[.65rem] font-bold uppercase tracking-[.18em] text-[var(--template-accent)]">Không gian của căn</p><h2 className="mt-4 max-w-3xl font-serif text-4xl font-medium leading-tight sm:text-5xl">{stay.longDescription}</h2><div className="mt-12 grid gap-4 sm:grid-cols-3">{stay.gallery.map((image, index) => <div key={image} className={`relative overflow-hidden ${index === 0 ? "aspect-[4/5]" : "aspect-[4/3] sm:mt-12"}`}><Image src={image} alt={`${stay.name} - góc không gian ${index + 1}`} fill sizes="33vw" className="object-cover" /></div>)}</div><h3 className="mt-14 font-serif text-3xl font-medium">Tiện nghi nổi bật</h3><div className="mt-6 grid gap-3 sm:grid-cols-2">{stay.amenities.map((item) => <span key={item} className="flex items-center gap-3 border-b border-current/10 py-3 text-sm"><Check className="h-4 w-4 text-[var(--template-accent)]" />{item}</span>)}</div></div>
-      <aside className="h-fit border border-current/12 bg-[var(--template-surface)] p-6 shadow-xl lg:sticky lg:top-28"><p className="text-xs opacity-50">Giá dự kiến từ</p><p className="mt-1 text-2xl font-bold">{formatCurrency(stay.basePrice)} <span className="text-xs font-medium opacity-45">/ đêm</span></p><div className="my-6 border-y border-current/10 py-5 text-sm"><p className="flex items-center gap-2"><House className="h-4 w-4 text-[var(--template-accent)]" />Thuê nguyên căn, không dùng chung</p><p className="mt-3 flex items-center gap-2"><Clock3 className="h-4 w-4 text-[var(--template-accent)]" />Giữ chỗ miễn phí trong 2 giờ</p></div><Link href={scoped(config.basePath, "dat-phong")} className="flex min-h-13 w-full items-center justify-center gap-2 rounded-full bg-[var(--template-ink)] px-5 py-4 text-sm font-bold text-[var(--template-bg)]">Kiểm tra lịch căn này <ArrowRight className="h-4 w-4" /></Link><a href="tel:0900000000" className="mt-3 flex min-h-12 items-center justify-center gap-2 text-sm font-bold"><Phone className="h-4 w-4" />Gọi Lago tư vấn</a></aside>
+  const cinematic = config.mood === "cinematic";
+  const organic = config.mood === "organic";
+  const galleryGrid = cinematic ? "sm:grid-cols-12" : organic ? "sm:grid-cols-12" : "sm:grid-cols-3";
+  const galleryShape = (index: number) => {
+    if (cinematic) return index === 0 ? "aspect-[4/3] sm:col-span-7" : index === 1 ? "aspect-[4/5] sm:col-span-5" : "aspect-[16/7] sm:col-span-12";
+    if (organic) return index === 0 ? "aspect-[4/3] rounded-[70px_26px_70px_26px] sm:col-span-7" : index === 1 ? "aspect-[4/5] rounded-[28px_72px_28px_72px] sm:col-span-5" : "aspect-[16/7] rounded-[44px] sm:col-span-12";
+    return index === 0 ? "aspect-[4/5]" : "aspect-[4/3] sm:mt-12";
+  };
+  return <><TemplateStayHero mood={config.mood} basePath={config.basePath} stay={stay} />
+    <section className={`mx-auto grid gap-12 py-20 lg:grid-cols-[1fr_360px] lg:py-28 ${cinematic ? "w-[min(1420px,calc(100%-40px))] lg:grid-cols-[1fr_390px]" : "w-[min(1240px,calc(100%-40px))]"}`}><div><p className="text-[.65rem] font-bold uppercase tracking-[.18em] text-[var(--template-accent)]">{cinematic ? "Bên trong khung hình" : organic ? "Có gì trong nhà?" : "Không gian của căn"}</p><h2 className={`mt-4 max-w-3xl text-4xl leading-tight sm:text-5xl ${organic ? "font-extrabold tracking-[-.04em]" : "font-serif font-medium"}`}>{stay.longDescription}</h2><div className={`mt-12 grid gap-4 ${galleryGrid}`}>{stay.gallery.map((image, index) => <div key={image} className={`group relative overflow-hidden ${galleryShape(index)}`}><Image src={image} alt={`${stay.name} - góc không gian ${index + 1}`} fill sizes="(max-width:640px) 100vw, 55vw" className={`object-cover transition duration-700 group-hover:scale-[1.025] ${cinematic ? "opacity-78 group-hover:opacity-100" : ""}`} /><span className={`absolute bottom-3 left-3 px-3 py-1.5 text-[.56rem] font-bold uppercase tracking-wider ${cinematic ? "bg-black/55 text-white backdrop-blur" : "bg-white/88 text-[#17312b]"}`}>Góc {String(index + 1).padStart(2, "0")} · minh họa</span></div>)}</div><h3 className={`mt-14 text-3xl ${organic ? "font-extrabold" : "font-serif font-medium"}`}>{organic ? "Đủ tiện nghi để ở thật vui" : cinematic ? "Những chi tiết trong căn" : "Tiện nghi nổi bật"}</h3><div className={`mt-6 grid gap-3 sm:grid-cols-2 ${organic ? "gap-2" : ""}`}>{stay.amenities.map((item, index) => <span key={item} className={`flex items-center gap-3 py-3 text-sm ${organic ? "rounded-full bg-white px-4 font-bold shadow-sm" : "border-b border-current/10"}`}><span className={`${cinematic ? "text-[.6rem] font-bold text-[var(--template-accent)]" : ""}`}>{cinematic ? String(index + 1).padStart(2, "0") : <Check className="h-4 w-4 text-[var(--template-accent)]" />}</span>{item}</span>)}</div></div>
+      <aside className={`h-fit border border-current/12 bg-[var(--template-surface)] p-6 lg:sticky lg:top-28 ${cinematic ? "shadow-[0_30px_90px_rgba(0,0,0,.28)]" : organic ? "rounded-[32px] shadow-[0_24px_70px_rgba(33,72,61,.12)]" : "rounded-t-[120px] px-7 pb-7 pt-20 shadow-xl"}`}><p className="text-xs opacity-50">Giá dự kiến từ</p><p className="mt-1 text-2xl font-bold">{formatCurrency(stay.basePrice)} <span className="text-xs font-medium opacity-45">/ đêm</span></p><div className="my-6 border-y border-current/10 py-5 text-sm"><p className="flex items-center gap-2"><House className="h-4 w-4 text-[var(--template-accent)]" />Thuê nguyên căn, không dùng chung</p><p className="mt-3 flex items-center gap-2"><Clock3 className="h-4 w-4 text-[var(--template-accent)]" />Giữ chỗ miễn phí trong 2 giờ</p></div><Link href={scoped(config.basePath, "dat-phong")} className={`flex min-h-13 w-full items-center justify-center gap-2 rounded-full px-5 py-4 text-sm font-bold ${cinematic ? "bg-[#e5c59c] text-[#07130f]" : organic ? "bg-[#21483d] text-white" : "bg-[#19322c] text-white"}`}>Kiểm tra lịch căn này <ArrowRight className="h-4 w-4" /></Link><a href="tel:0900000000" className="mt-3 flex min-h-12 items-center justify-center gap-2 text-sm font-bold"><Phone className="h-4 w-4" />Gọi Lago tư vấn</a></aside>
     </section></>;
 }
 
@@ -177,8 +176,16 @@ function ContactPage({ config }: { config: CompleteTemplateConfig }) {
     <section className="mx-auto grid w-[min(1240px,calc(100%-40px))] gap-5 py-20 sm:py-28 md:grid-cols-3">{cards.map(([Icon, label, value, href]) => <a href={href} key={label} className="template-panel group border border-current/12 bg-[var(--template-surface)] p-7 transition hover:-translate-y-1"><Icon className="h-6 w-6 text-[var(--template-accent)]" /><p className="mt-10 text-[.62rem] font-bold uppercase tracking-[.16em] opacity-45">{label}</p><p className="mt-2 text-lg font-bold">{value}</p><ArrowRight className="mt-7 h-5 w-5 opacity-35 transition group-hover:translate-x-1 group-hover:opacity-100" /></a>)}</section></>;
 }
 
+function BookingPrelude({ config }: { config: CompleteTemplateConfig }) {
+  if (config.mood === "cinematic") return <div className="relative overflow-hidden border-b border-white/10 bg-[#07130f] px-6 py-16 text-white sm:px-10 sm:py-20"><span aria-hidden="true" className="absolute -right-20 -top-28 h-80 w-80 rounded-full border border-[#e5c59c]/15" /><span aria-hidden="true" className="absolute right-8 top-8 h-28 w-28 rounded-full bg-[#e5c59c]/5 blur-2xl" /><div className="relative mx-auto grid max-w-[1240px] gap-8 lg:grid-cols-[1fr_.45fr] lg:items-end"><div><p className="text-[.62rem] font-bold uppercase tracking-[.24em] text-[#e5c59c]">Chương tiếp theo · lịch trình của bạn</p><p className="mt-5 max-w-4xl font-serif text-5xl font-medium leading-[.92] tracking-[-.05em] sm:text-7xl">Chọn ngày cho<br /><i className="text-[#e5c59c]">thước phim Lago.</i></p></div><p className="max-w-md border-l border-[#e5c59c]/35 pl-5 text-sm leading-7 text-white/52">Kiểm tra lịch thật, xem giá dự kiến và giữ căn trong 2 giờ — không cần thanh toán ngay.</p></div></div>;
+
+  if (config.mood === "organic") return <div className="relative overflow-hidden bg-[#dce9c6] px-5 py-14 text-[#21483d] sm:px-10 sm:py-[4.5rem]"><span aria-hidden="true" className="absolute -right-16 -top-20 h-56 w-56 rounded-full bg-[#f18b68]" /><span aria-hidden="true" className="absolute bottom-6 right-[24%] h-20 w-20 rounded-full bg-[#f7cf58]" /><div className="relative mx-auto max-w-[1240px]"><span className="inline-flex rounded-full bg-white px-4 py-2 text-[.62rem] font-extrabold uppercase tracking-[.13em] shadow-sm">3 bước · chưa cần thanh toán</span><div className="mt-7 grid gap-7 lg:grid-cols-[1fr_.42fr] lg:items-end"><p className="max-w-4xl text-5xl font-extrabold leading-[.98] tracking-[-.045em] sm:text-7xl">Chọn ngày đẹp.<br /><i className="font-serif font-medium text-[#e66e4c]">Lên lịch chuyến vui.</i></p><p className="max-w-md text-sm font-medium leading-7 opacity-58">Tìm căn hợp số người, xem giá rõ ràng rồi để Lago giữ chỗ trong lúc bạn bàn tiếp cùng cả nhóm.</p></div></div></div>;
+
+  return <div className="border-b border-[#19322c]/12 bg-[#eee6da] px-6 py-16 text-[#19322c] sm:px-10 sm:py-20"><div className="mx-auto grid max-w-[1240px] gap-8 lg:grid-cols-[.72fr_1.28fr] lg:items-end"><div><p className="text-[.62rem] font-bold uppercase tracking-[.2em] text-[#a36349]">Lago ký sự · Lịch lưu trú</p><p className="mt-12 max-w-xs text-sm leading-7 opacity-55">Chọn một khoảng thời gian đủ rộng để nghỉ ngơi, rồi để Lago tìm căn phù hợp nhất.</p></div><p className="font-serif text-5xl font-medium leading-[.98] tracking-[-.05em] sm:text-7xl">Giữ lại một khoảng<br /><i>thật riêng cho bạn.</i></p></div></div>;
+}
+
 function BookingPage({ config }: { config: CompleteTemplateConfig }) {
-  return <section className="min-h-screen bg-[var(--template-bg)] px-0 py-0 text-[#17312b] sm:px-4 sm:py-8"><div className={`mx-auto max-w-[1480px] overflow-hidden bg-[#fbfaf6] ${config.mood === "organic" ? "sm:rounded-[38px]" : config.mood === "cinematic" ? "border border-white/10" : "border border-[#19322c]/10"}`}><Suspense fallback={<div className="container-lago py-24">Đang chuẩn bị lịch căn nhà…</div>}><BookingExperience lookupPath={scoped(config.basePath, "tra-cuu")} /></Suspense></div></section>;
+  return <section className="min-h-screen bg-[var(--template-bg)] px-0 py-0 text-[#17312b] sm:px-4 sm:py-8"><div className={`mx-auto max-w-[1480px] overflow-hidden bg-[#fbfaf6] ${config.mood === "organic" ? "sm:rounded-[38px]" : config.mood === "cinematic" ? "border border-white/10" : "border border-[#19322c]/10"}`}><BookingPrelude config={config} /><Suspense fallback={<div className="container-lago py-24">Đang chuẩn bị lịch căn nhà…</div>}><BookingExperience lookupPath={scoped(config.basePath, "tra-cuu")} /></Suspense></div></section>;
 }
 
 function LookupPage({ config }: { config: CompleteTemplateConfig }) {

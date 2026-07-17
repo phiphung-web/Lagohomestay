@@ -23,11 +23,15 @@ Ba hướng trải nghiệm được phân biệt rõ:
 - **Điện ảnh:** khung hình lớn, nền tối sâu, nội dung theo chương và chuyển cảnh giàu cảm xúc.
 - **Sống động:** hình khối hữu cơ, bento nhiều màu, phản hồi vui và thân thiện với gia đình.
 
+Khác biệt này tiếp tục xuyên suốt trang con: **Tĩnh lặng** trình bày bộ sưu tập như catalogue bất đối xứng và mở chi tiết căn bằng bố cục tách đôi; **Điện ảnh** dùng film index toàn chiều ngang, hero phủ khung hình và gallery theo nhịp chương; **Sống động** dùng bento card, hero hữu cơ và tiện nghi dạng thẻ thân thiện. Luồng đặt chỗ giữ chung nghiệp vụ nhưng có phần dẫn nhập, màu sắc và giọng kể riêng của từng mẫu.
+
 Các tương tác dùng chung đã được hoàn thiện cho giai đoạn duyệt mẫu: thanh tiến trình cuộn theo màu nhận diện, ánh sáng nền phản hồi con trỏ trên desktop, lightbox thư viện có vuốt/phím mũi tên và thước phim ảnh riêng của mẫu Điện ảnh. Toàn bộ chuyển động tôn trọng thiết lập `prefers-reduced-motion` và modal giữ focus bàn phím trong vùng tương tác.
 
 Trên điện thoại, mỗi website có menu toàn màn hình mang đúng ngôn ngữ hình ảnh của mẫu, đánh dấu trang đang xem và giữ focus bàn phím trong vùng tương tác. Thanh đổi mẫu thu gọn thành một nút nổi 52px, chỉ mở danh sách ba phương án khi người duyệt chủ động chạm, vì vậy không che nội dung hay cạnh tranh với CTA đặt chỗ. Khi đổi mẫu, showroom giữ nguyên trang hiện tại — ví dụ đang xem chi tiết một căn hoặc luồng đặt chỗ thì mẫu tiếp theo cũng mở đúng trang đó — để người duyệt so sánh công bằng từng trải nghiệm.
 
 Ảnh minh họa dùng loader CDN responsive: trình duyệt nhận `srcset` theo kích thước màn hình và tải trực tiếp từ Unsplash, không đi qua `/_next/image`. Cách này giữ ảnh hoạt động ổn định trên VPS demo đồng thời tránh tải ảnh desktop quá lớn ở mobile.
+
+Các mức trong suốt tinh tế của hệ màu (`8%`, `12%`, `18%`, `52%`, `58%`...) được khai báo trong Tailwind theme để chắc chắn xuất hiện trong CSS production; không phụ thuộc các mức opacity mặc định của framework.
 
 Luồng chuyển đổi cũng được dùng chung ở chất lượng production: tiến trình ba bước, trạng thái tải/rỗng/lỗi rõ ràng, retry không làm đổi lựa chọn của khách, validation từng trường thay cho thông báo mặc định của trình duyệt, giá được khóa khi đang kiểm tra lại và đồng hồ đếm thời gian giữ chỗ sau khi gửi thành công. Ngày mặc định luôn tính theo múi giờ `Asia/Ho_Chi_Minh`, không phụ thuộc múi giờ VPS.
 
