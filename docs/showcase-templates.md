@@ -25,6 +25,8 @@ Ba hướng trải nghiệm được phân biệt rõ:
 
 Khác biệt này tiếp tục xuyên suốt trang con: **Tĩnh lặng** trình bày bộ sưu tập như catalogue bất đối xứng và mở chi tiết căn bằng bố cục tách đôi; **Điện ảnh** dùng film index toàn chiều ngang, hero phủ khung hình và gallery theo nhịp chương; **Sống động** dùng bento card, hero hữu cơ và tiện nghi dạng thẻ thân thiện. Luồng đặt chỗ giữ chung nghiệp vụ nhưng có phần dẫn nhập, màu sắc và giọng kể riêng của từng mẫu.
 
+Trang **Trải nghiệm** cũng có ba cấu trúc độc lập: nhật ký thời gian kiểu tạp chí, chuỗi chapter có ảnh kiểu điện ảnh và bento hoạt động nhiều màu. FAQ, chính sách và tra cứu booking tiếp tục giữ đúng nhịp đó; accordion sử dụng native `details/summary`, có chuyển động chiều cao và vẫn thao tác đầy đủ bằng bàn phím.
+
 Các tương tác dùng chung đã được hoàn thiện cho giai đoạn duyệt mẫu: thanh tiến trình cuộn theo màu nhận diện, ánh sáng nền phản hồi con trỏ trên desktop, lightbox thư viện có vuốt/phím mũi tên và thước phim ảnh riêng của mẫu Điện ảnh. Toàn bộ chuyển động tôn trọng thiết lập `prefers-reduced-motion` và modal giữ focus bàn phím trong vùng tương tác.
 
 Trên điện thoại, mỗi website có menu toàn màn hình mang đúng ngôn ngữ hình ảnh của mẫu, đánh dấu trang đang xem và giữ focus bàn phím trong vùng tương tác. Thanh đổi mẫu thu gọn thành một nút nổi 52px, chỉ mở danh sách ba phương án khi người duyệt chủ động chạm, vì vậy không che nội dung hay cạnh tranh với CTA đặt chỗ. Khi đổi mẫu, showroom giữ nguyên trang hiện tại — ví dụ đang xem chi tiết một căn hoặc luồng đặt chỗ thì mẫu tiếp theo cũng mở đúng trang đó — để người duyệt so sánh công bằng từng trải nghiệm.

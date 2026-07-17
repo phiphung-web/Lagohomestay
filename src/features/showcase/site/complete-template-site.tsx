@@ -11,7 +11,6 @@ import {
   Leaf,
   MapPin,
   Phone,
-  Plus,
   Sparkles
 } from "lucide-react";
 import { BookingExperience } from "@/features/booking/components/booking-experience";
@@ -22,7 +21,8 @@ import { TemplateExperienceLayer } from "@/features/showcase/components/template
 import { TemplateMobileMenu } from "@/features/showcase/components/template-mobile-menu";
 import { TemplateNavLink } from "@/features/showcase/components/template-nav-link";
 import { TemplateStayHero, TemplateStaysCollection } from "@/features/showcase/components/template-stay-showcase";
-import { experienceMoments, showcaseFaqs, stayPromises } from "@/features/showcase/data/showcase-content";
+import { TemplateExperienceStory } from "@/features/showcase/components/template-experience-story";
+import { TemplateFaqSection, TemplatePolicySection } from "@/features/showcase/components/template-info-sections";
 import type { ShowcaseTemplateSlug } from "@/features/showcase/data/templates";
 import { conceptImages, stays } from "@/features/stays/data/demo-data";
 import { formatCurrency } from "@/shared/lib/format";
@@ -55,7 +55,7 @@ const policies = [
   ["Thay đổi và hủy", "Điều kiện đổi ngày, hủy và hoàn cọc sẽ được thông báo rõ ràng trong bước xác nhận. Nội dung chính thức cần được duyệt trước khi mở bán."],
   ["Quyền riêng tư", "Thông tin liên hệ chỉ được dùng để xử lý yêu cầu lưu trú, chăm sóc khách và thực hiện các nghĩa vụ vận hành cần thiết."],
   ["Nội dung minh họa", "Hình ảnh, địa chỉ, giá và một số chính sách trong bản trình bày là dữ liệu minh họa, chưa phải cam kết thương mại."]
-];
+] as const;
 
 function scoped(basePath: string, path = "") {
   return path ? `${basePath}/${path}` : basePath;
@@ -145,8 +145,7 @@ function StayPage({ config, slug }: { config: CompleteTemplateConfig; slug: stri
 
 function ExperiencePage({ config }: { config: CompleteTemplateConfig }) {
   return <><PageIntro config={config} eyebrow="Một ngày tại Lago" title="Một ngày không cần lên kế hoạch quá nhiều." text="Lago chuẩn bị không gian. Phần còn lại, bạn có thể để thiên nhiên và cảm hứng dẫn đường." image={conceptImages.experience} />
-    <section className="mx-auto w-[min(1120px,calc(100%-40px))] py-20 sm:py-28"><div className="border-t border-current/12">{experienceMoments.map(({ icon: Icon, time, title, text }, index) => <article key={time} className="grid gap-5 border-b border-current/12 py-8 sm:grid-cols-[70px_70px_1fr] sm:items-start"><span className="text-xs font-bold text-[var(--template-accent)]">0{index + 1}</span><span className="text-xs font-bold opacity-45">{time}</span><div><Icon className="mb-4 h-6 w-6 text-[var(--template-accent)]" /><h2 className="font-serif text-3xl font-medium">{title}</h2><p className="mt-3 max-w-2xl text-sm leading-7 opacity-58">{text}</p></div></article>)}</div></section>
-    <section className="mx-auto mb-24 grid w-[min(1240px,calc(100%-28px))] gap-6 md:grid-cols-3">{stayPromises.map(({ icon: Icon, title, text }) => <article key={title} className="template-panel bg-[var(--template-surface)] p-7"><Icon className="h-7 w-7 text-[var(--template-accent)]" /><h3 className="mt-7 font-serif text-2xl font-medium">{title}</h3><p className="mt-3 text-sm leading-6 opacity-55">{text}</p></article>)}</section></>;
+    <TemplateExperienceStory mood={config.mood} /></>;
 }
 
 function GalleryPage({ config }: { config: CompleteTemplateConfig }) {
@@ -162,12 +161,12 @@ function AboutPage({ config }: { config: CompleteTemplateConfig }) {
 
 function FaqPage({ config }: { config: CompleteTemplateConfig }) {
   return <><PageIntro config={config} eyebrow="Trước kỳ nghỉ" title="Thông tin rõ ràng để bạn nghỉ thật nhẹ lòng." text="Các câu trả lời ngắn gọn về đặt căn, thời gian giữ chỗ và trải nghiệm tại Lago." />
-    <section className="mx-auto grid w-[min(1120px,calc(100%-40px))] gap-12 py-20 sm:py-28 lg:grid-cols-[.55fr_1fr]"><div><p className="font-serif text-3xl font-medium">Chưa thấy điều bạn cần?</p><p className="mt-4 text-sm leading-7 opacity-55">Gọi hoặc nhắn Zalo, đội ngũ Lago sẽ tư vấn theo nhu cầu của từng đoàn.</p><a href="tel:0900000000" className="mt-6 inline-flex items-center gap-2 font-bold"><Phone className="h-4 w-4" />0900 000 000</a></div><div className="border-t border-current/15">{showcaseFaqs.map(([question, answer]) => <details key={question} className="group border-b border-current/15 py-6"><summary className="flex cursor-pointer list-none items-center justify-between gap-6 font-bold"><span>{question}</span><Plus className="h-5 w-5 shrink-0 transition group-open:rotate-45" /></summary><p className="mt-4 max-w-2xl text-sm leading-7 opacity-58">{answer}</p></details>)}<Link href={scoped(config.basePath, "chinh-sach")} className="mt-8 inline-flex items-center gap-2 font-bold">Đọc chính sách lưu trú <ArrowRight className="h-4 w-4" /></Link></div></section></>;
+    <TemplateFaqSection mood={config.mood} policyHref={scoped(config.basePath, "chinh-sach")} /></>;
 }
 
 function PolicyPage({ config }: { config: CompleteTemplateConfig }) {
   return <><PageIntro config={config} eyebrow="Chính sách lưu trú" title="Rõ ràng trước khi bắt đầu chuyến đi." text="Các nguyên tắc giúp Lago và khách lưu trú cùng có trải nghiệm minh bạch, nhẹ nhàng." />
-    <section className="mx-auto w-[min(900px,calc(100%-40px))] py-20 sm:py-28">{policies.map(([title, text], index) => <article key={title} className="grid gap-4 border-b border-current/12 py-9 sm:grid-cols-[70px_1fr]"><span className="text-xs font-bold text-[var(--template-accent)]">0{index + 1}</span><div><h2 className="font-serif text-3xl font-medium">{title}</h2><p className="mt-4 text-sm leading-7 opacity-58">{text}</p></div></article>)}</section></>;
+    <TemplatePolicySection mood={config.mood} policies={policies} /></>;
 }
 
 function ContactPage({ config }: { config: CompleteTemplateConfig }) {
@@ -189,7 +188,11 @@ function BookingPage({ config }: { config: CompleteTemplateConfig }) {
 }
 
 function LookupPage({ config }: { config: CompleteTemplateConfig }) {
-  return <section className="min-h-[75svh] bg-[var(--template-bg)] px-0 py-0 sm:px-4 sm:py-8"><div className={`mx-auto max-w-[1480px] bg-[#f6f1e8] py-16 text-[#17312b] sm:py-24 ${config.mood === "organic" ? "sm:rounded-[38px]" : config.mood === "cinematic" ? "border border-white/10" : "border border-[#19322c]/10"}`}><div className="container-lago grid gap-12 lg:grid-cols-[1fr_480px]"><div className="pt-5"><p className="eyebrow text-lago-clay">Thông tin chuyến đi</p><h1 className="display mt-4 text-5xl font-semibold sm:text-7xl">Xem lại đặt chỗ của bạn.</h1><p className="mt-6 max-w-xl leading-7 text-lago-ink/60">Chỉ cần nhập số điện thoại đã dùng khi đặt. Lago sẽ hiển thị các yêu cầu gần nhất gắn với số này.</p><div className="mt-8 rounded-2xl border border-lago-ink/10 bg-white/60 p-5 text-sm leading-6 text-lago-ink/58">Không cần nhớ mã đặt chỗ. Nếu cần hỗ trợ ngay, gọi <a href="tel:0900000000" className="font-bold underline underline-offset-4">0900 000 000</a>.</div></div><LookupForm /></div></div></section>;
+  if (config.mood === "cinematic") return <section className="min-h-[75svh] bg-[#07130f] px-0 py-0 sm:px-4 sm:py-8"><div className="mx-auto grid max-w-[1480px] overflow-hidden border border-white/10 lg:grid-cols-[1fr_520px]"><div className="relative flex min-h-[560px] flex-col justify-center overflow-hidden px-7 py-16 text-white sm:px-12 lg:px-16"><span aria-hidden="true" className="absolute -right-32 top-8 font-serif text-[15rem] leading-none text-white/[.025]">#</span><p className="text-[.62rem] font-bold uppercase tracking-[.24em] text-[#e5c59c]">After credit · Thông tin chuyến đi</p><h1 className="mt-6 max-w-3xl font-serif text-5xl font-medium leading-[.94] tracking-[-.05em] sm:text-7xl">Xem lại chương<br /><i className="text-[#e5c59c]">sắp diễn ra.</i></h1><p className="mt-7 max-w-xl text-sm leading-7 text-white/52">Nhập số điện thoại đã dùng khi đặt. Lago sẽ hiển thị những yêu cầu gần nhất gắn với số này.</p><p className="mt-8 max-w-lg border-l border-[#e5c59c]/35 pl-5 text-sm leading-6 text-white/48">Không cần nhớ mã đặt chỗ. Nếu cần hỗ trợ ngay, gọi <a href="tel:0900000000" className="font-bold text-[#e5c59c]">0900 000 000</a>.</p></div><div className="bg-[#f6f1e8] px-5 py-16 text-[#17312b] sm:px-8 lg:flex lg:items-center lg:px-10"><div className="w-full"><LookupForm /></div></div></div></section>;
+
+  if (config.mood === "organic") return <section className="min-h-[75svh] bg-[#edf3df] p-3 sm:p-5"><div className="relative mx-auto grid max-w-[1420px] overflow-hidden rounded-[42px] bg-[#dce9c6] text-[#21483d] shadow-[0_28px_90px_rgba(33,72,61,.1)] lg:grid-cols-[1fr_500px]"><span aria-hidden="true" className="absolute -left-20 -top-20 h-60 w-60 rounded-full bg-[#f7cf58]" /><span aria-hidden="true" className="absolute left-[44%] top-14 h-24 w-24 rounded-full bg-[#f18b68]" /><div className="relative z-10 flex min-h-[520px] flex-col justify-center px-7 py-16 sm:px-12 lg:px-16"><span className="w-fit rounded-full bg-white px-4 py-2 text-[.62rem] font-extrabold uppercase tracking-[.13em] shadow-sm">Chỉ cần số điện thoại</span><h1 className="mt-7 max-w-3xl text-5xl font-extrabold leading-[.98] tracking-[-.045em] sm:text-7xl">Chuyến đi của bạn<br /><i className="font-serif font-medium text-[#e66e4c]">đang ở đâu nhỉ?</i></h1><p className="mt-6 max-w-xl text-sm font-medium leading-7 opacity-58">Lago sẽ tìm những yêu cầu gần nhất bằng đúng số điện thoại hoặc số Zalo bạn đã sử dụng.</p><a href="tel:0900000000" className="mt-8 inline-flex w-fit items-center gap-2 rounded-full border-2 border-[#21483d]/14 px-5 py-3 text-sm font-extrabold"><Phone className="h-4 w-4" />Cần giúp? Gọi Lago</a></div><div className="relative z-10 m-3 rounded-[34px] bg-[#f6f1e8] px-5 py-12 text-[#17312b] sm:px-8 lg:flex lg:items-center"><div className="w-full"><LookupForm /></div></div></div></section>;
+
+  return <section className="min-h-[75svh] border-b border-[#19322c]/12 bg-[#eee6da] py-16 text-[#19322c] sm:py-24"><div className="mx-auto grid w-[min(1240px,calc(100%-40px))] gap-12 lg:grid-cols-[1fr_480px] lg:items-center"><div><p className="text-[.62rem] font-bold uppercase tracking-[.2em] text-[#a36349]">Lago ký sự · Thông tin chuyến đi</p><h1 className="mt-6 max-w-3xl font-serif text-5xl font-medium leading-[.98] tracking-[-.05em] sm:text-7xl">Xem lại khoảng riêng<br /><i>đang chờ bạn.</i></h1><p className="mt-7 max-w-xl text-sm leading-7 opacity-58">Chỉ cần nhập số điện thoại đã dùng khi đặt. Lago sẽ hiển thị các yêu cầu gần nhất gắn với số này.</p><div className="mt-8 max-w-xl border-l border-[#a36349]/45 pl-5 text-sm leading-6 opacity-58">Không cần nhớ mã đặt chỗ. Nếu cần hỗ trợ ngay, gọi <a href="tel:0900000000" className="font-bold underline underline-offset-4">0900 000 000</a>.</div></div><div className="rounded-t-[150px] border border-[#19322c]/12 bg-[#f6f1e8] px-6 pb-8 pt-24 text-[#17312b] shadow-xl sm:px-8"><LookupForm /></div></div></section>;
 }
 
 function TemplateContent({ route, config }: { route: TemplateRoute; config: CompleteTemplateConfig }) {
