@@ -23,6 +23,8 @@ import {
 import { BookingExperience } from "@/features/booking/components/booking-experience";
 import { LookupForm } from "@/features/booking/components/lookup-form";
 import { ShowcaseSwitcher } from "@/features/showcase/components/showcase-switcher";
+import { GalleryLightbox } from "@/features/showcase/components/gallery-lightbox";
+import { TemplateExperienceLayer } from "@/features/showcase/components/template-experience-layer";
 import { experienceMoments, showcaseFaqs, stayPromises } from "@/features/showcase/data/showcase-content";
 import type { ShowcaseTemplateSlug } from "@/features/showcase/data/templates";
 import { conceptImages, stays } from "@/features/stays/data/demo-data";
@@ -156,7 +158,7 @@ function ExperiencePage({ config }: { config: CompleteTemplateConfig }) {
 function GalleryPage({ config }: { config: CompleteTemplateConfig }) {
   const images = [...stays.flatMap((stay) => [stay.image, ...stay.gallery]), conceptImages.hero, conceptImages.experience];
   return <><PageIntro config={config} eyebrow="Nhật ký bằng hình" title="Những lát cắt của một kỳ nghỉ chậm." text="Bộ ảnh minh họa dùng để xác lập cảm xúc hình ảnh. Toàn bộ sẽ được thay hoặc duyệt trước khi Lago mở cửa." />
-    <section className="mx-auto columns-1 gap-4 py-16 sm:w-[min(1420px,calc(100%-32px))] sm:columns-2 lg:columns-3">{images.map((src, index) => <figure key={`${src}-${index}`} className={`relative mb-4 break-inside-avoid overflow-hidden ${index % 4 === 0 ? "aspect-[3/4]" : "aspect-[4/3]"}`}><Image src={src} alt={`Lago Homestay - ảnh minh họa ${index + 1}`} fill sizes="(max-width:768px) 100vw, 33vw" className="object-cover transition duration-700 hover:scale-[1.025]" /><figcaption className="absolute bottom-3 left-3 rounded-full bg-black/52 px-3 py-1.5 text-[.58rem] font-bold uppercase tracking-wider text-white backdrop-blur">Minh họa · {String(index + 1).padStart(2, "0")}</figcaption></figure>)}</section></>;
+    <GalleryLightbox images={images} mood={config.mood} /></>;
 }
 
 function AboutPage({ config }: { config: CompleteTemplateConfig }) {
@@ -213,6 +215,7 @@ export function CompleteTemplateSite({ route, config, home }: { route: TemplateR
     "--template-surface": config.surface
   } as React.CSSProperties;
   return <main style={style} className={`showcase-root min-h-screen bg-[var(--template-bg)] text-[var(--template-ink)] ${config.mood === "organic" ? "template-organic" : config.mood === "cinematic" ? "template-cinematic" : "template-editorial"}`}>
+    <TemplateExperienceLayer mood={config.mood} />
     <ShowcaseSwitcher current={config.slug} />
     <TemplateHeader config={config} />
     <TemplateContent route={route} config={config} />

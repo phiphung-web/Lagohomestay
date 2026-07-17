@@ -2,6 +2,7 @@ import Image from "next/image";
 import { ShowcaseLink as Link } from "@/features/showcase/site/showcase-link";
 import { ArrowRight, Bath, Coffee, Heart, Leaf, Plus, Sparkles, Sun, Users } from "lucide-react";
 import { ShowcaseSwitcher } from "@/features/showcase/components/showcase-switcher";
+import { TemplateExperienceLayer } from "@/features/showcase/components/template-experience-layer";
 import { guestStories, showcaseFaqs } from "@/features/showcase/data/showcase-content";
 import { conceptImages, stays } from "@/features/stays/data/demo-data";
 import { formatCurrency } from "@/shared/lib/format";
@@ -9,6 +10,7 @@ import { TemplateFooter, TemplateHeader, type CompleteTemplateConfig } from "@/f
 
 export function SongDongHome({ config }: { config: CompleteTemplateConfig }) {
   return <main className="showcase-root min-h-screen overflow-hidden bg-[#eef1e5] pb-32 text-[#21483d]">
+    <TemplateExperienceLayer mood="organic" />
     <ShowcaseSwitcher current="song-dong" />
     <TemplateHeader config={config} />
     <div className="relative"><span className="absolute -right-32 -top-32 h-[420px] w-[420px] rounded-full bg-[#f18b68] opacity-90" /><span className="absolute left-[42%] top-28 h-28 w-28 rounded-full bg-[#f7cf58]" />

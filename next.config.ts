@@ -2,14 +2,12 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   images: {
-    // Next 15.5 serializes remotePatterns into the production image manifest
-    // as regular expressions, then compiles them a second time at runtime.
-    // An exact domain allowlist avoids that production-only mismatch.
-    domains: ["images.unsplash.com"],
-    // Demo media is already resized and compressed by Unsplash through the
-    // width/quality parameters in each URL. Bypass the production optimizer,
-    // which rejects otherwise valid external URLs in this Next 15.5 build.
-    unoptimized: true
+    // Generate responsive Unsplash CDN URLs in the browser instead of routing
+    // through /_next/image, which is intentionally avoided on the demo VPS.
+    loader: "custom",
+    loaderFile: "./src/shared/lib/image-loader.ts",
+    deviceSizes: [360, 480, 640, 768, 1024, 1280, 1536, 1920],
+    imageSizes: [32, 64, 96, 128, 256, 384]
   },
   poweredByHeader: false,
   experimental: {

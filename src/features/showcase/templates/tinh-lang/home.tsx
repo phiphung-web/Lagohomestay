@@ -2,6 +2,7 @@ import Image from "next/image";
 import { ShowcaseLink as Link } from "@/features/showcase/site/showcase-link";
 import { ArrowDownRight, ArrowRight, BedDouble, MapPin, Plus, Users } from "lucide-react";
 import { ShowcaseSwitcher } from "@/features/showcase/components/showcase-switcher";
+import { TemplateExperienceLayer } from "@/features/showcase/components/template-experience-layer";
 import { experienceMoments, guestStories, showcaseFaqs } from "@/features/showcase/data/showcase-content";
 import { conceptImages, stays } from "@/features/stays/data/demo-data";
 import { formatCurrency } from "@/shared/lib/format";
@@ -9,6 +10,7 @@ import { TemplateFooter, TemplateHeader, type CompleteTemplateConfig } from "@/f
 
 export function TinhLangHome({ config }: { config: CompleteTemplateConfig }) {
   return <main className="showcase-root min-h-screen bg-[#f3eee5] pb-32 text-[#19322c]">
+    <TemplateExperienceLayer mood="editorial" />
     <ShowcaseSwitcher current="tinh-lang" />
     <TemplateHeader config={config} />
 
