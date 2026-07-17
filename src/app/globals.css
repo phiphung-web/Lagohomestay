@@ -42,6 +42,7 @@ summary::-webkit-details-marker { display: none; }
 .showcase-root { font-family: "Be Vietnam Pro", "Segoe UI", system-ui, sans-serif; }
 .showcase-root .font-serif { font-family: "Lora", Georgia, serif; font-optical-sizing: auto; }
 .showcase-root p { text-wrap: pretty; }
+.showcase-root h1, .showcase-root h2 { text-wrap: balance; }
 .container-lago { width: min(1240px, calc(100% - 40px)); margin-inline: auto; }
 .eyebrow { font-size: .72rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; }
 .section-pad { padding-block: 112px; }
@@ -78,6 +79,9 @@ input[type="checkbox"][aria-invalid="true"] { border-color: #dc2626; box-shadow:
 .booking-step-enter { animation: booking-step-enter .48s both cubic-bezier(.2,.75,.2,1); }
 .template-menu-enter { animation: template-menu-enter .42s both cubic-bezier(.2,.78,.2,1); }
 .switcher-menu-enter { animation: switcher-menu-enter .28s both cubic-bezier(.2,.78,.2,1); }
+.template-preview-card { transform-style: preserve-3d; transition: transform .42s cubic-bezier(.2,.78,.2,1), border-color .35s ease, background-color .35s ease, box-shadow .35s ease; will-change: transform; }
+.template-preview-card:hover { border-color: rgba(255,255,255,.28); background-color: rgba(255,255,255,.085); box-shadow: 0 30px 80px rgba(0,0,0,.22); }
+.template-preview-glow { position: absolute; inset: -1px; z-index: 0; pointer-events: none; border-radius: inherit; opacity: var(--preview-glow, 0); background: radial-gradient(circle at var(--preview-x,50%) var(--preview-y,50%), rgba(229,197,156,.2), transparent 42%); transition: opacity .3s ease; }
 .availability-skeleton { position: relative; overflow: hidden; background: #ece8df; }
 .availability-skeleton::after { position: absolute; inset: 0; content: ""; transform: translateX(-100%); background: linear-gradient(90deg, transparent, rgba(255,255,255,.72), transparent); animation: skeleton-wave 1.3s infinite; }
 .success-pulse { animation: success-pop .7s both cubic-bezier(.2,.9,.2,1); box-shadow: 0 0 0 12px rgba(220,231,224,.45); }
@@ -142,4 +146,5 @@ input[type="checkbox"][aria-invalid="true"] { border-color: #dc2626; box-shadow:
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
   .template-pointer-glow { display: none !important; }
+  .template-preview-card { transform: none !important; }
 }

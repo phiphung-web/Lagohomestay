@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ArrowRight, ArrowUpRight, CheckCircle2, Eye, MousePointer2, Sparkles } from "lucide-react";
 import { conceptImages, stays } from "@/features/stays/data/demo-data";
 import { showcaseTemplates } from "@/features/showcase/data/templates";
+import { TemplatePreviewLink } from "@/features/showcase/components/template-preview-link";
 
 const images = [conceptImages.detail1, stays[0].image, conceptImages.forest];
 
@@ -24,10 +25,10 @@ export function TemplateSelector() {
 
       <section className="grid gap-8 pb-10 pt-12 lg:grid-cols-[1fr_.72fr] lg:items-end lg:pb-14 lg:pt-16"><div><p className="text-[.68rem] font-bold uppercase tracking-[.16em] text-[#e5c59c]">Bước đầu tiên</p><h1 className="mt-5 max-w-5xl font-serif text-[3.3rem] font-medium leading-[1.02] tracking-[-.04em] sm:text-7xl lg:text-[6.2rem]">Bạn muốn Lago<br />được <i className="text-[#e5c59c]">cảm nhận</i> thế nào?</h1></div><div className="lg:pb-2"><p className="max-w-xl text-sm leading-7 text-white/52 sm:text-base">Mỗi lựa chọn là một website đầy đủ: trang chủ, bộ sưu tập căn, chi tiết, trải nghiệm, thư viện, thông tin và luồng đặt chỗ. Ba mẫu dùng chung dữ liệu nhưng có ngôn ngữ thị giác riêng.</p><div className="mt-6 flex items-center gap-3 text-xs font-semibold text-white/38"><Eye className="h-4 w-4" /> Hãy mở menu và xem cả các trang con</div></div></section>
 
-      <section className="grid gap-4 pb-12 lg:grid-cols-3">{showcaseTemplates.map((template, index) => <Link key={template.slug} href={`/mau/${template.slug}`} className="group focus-ring overflow-hidden rounded-[30px] border border-white/12 bg-white/[.055] p-3 transition duration-500 hover:-translate-y-2 hover:border-white/28 hover:bg-white/[.085]">
+      <section className="grid gap-4 pb-12 lg:grid-cols-3">{showcaseTemplates.map((template, index) => <TemplatePreviewLink key={template.slug} href={`/mau/${template.slug}`}>
         <div className="relative aspect-[1.2] overflow-hidden rounded-[22px]"><Preview index={index} /><span className="absolute right-3 top-3 grid h-10 w-10 place-items-center rounded-full bg-white text-lago-ink opacity-0 shadow-xl transition duration-300 group-hover:rotate-6 group-hover:opacity-100"><ArrowUpRight className="h-4 w-4" /></span></div>
         <div className="px-2 pb-3 pt-5"><div className="flex items-center justify-between gap-4"><span className="text-[.62rem] font-bold uppercase tracking-[.18em] text-white/35">Mẫu {template.number} · {template.style}</span><div className="flex gap-1">{template.colors.map((color) => <i key={color} className="h-2.5 w-2.5 rounded-full border border-white/15" style={{ background: color }} />)}</div></div><h2 className="mt-3 font-serif text-4xl font-medium tracking-[-.04em]">{template.name}</h2><p className="mt-3 min-h-12 text-sm leading-6 text-white/48">{template.description}</p><p className="mt-4 text-[.68rem] font-bold uppercase tracking-[.1em] text-[#e5c59c]/75">Phù hợp: {template.audience}</p><div className="mt-5 flex items-center justify-between border-t border-white/10 pt-4"><span className="text-[.65rem] font-semibold text-white/35">Website đầy đủ · 14 tuyến trang</span><span className="text-xs font-bold text-[#e5c59c]">Mở mẫu →</span></div></div>
-      </Link>)}</section>
+      </TemplatePreviewLink>)}</section>
 
       <section className="border-t border-white/12 py-14 sm:py-20">
         <div className="grid gap-8 lg:grid-cols-[.72fr_1.28fr] lg:items-end">

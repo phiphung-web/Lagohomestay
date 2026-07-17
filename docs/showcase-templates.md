@@ -25,7 +25,7 @@ Ba hướng trải nghiệm được phân biệt rõ:
 
 Các tương tác dùng chung đã được hoàn thiện cho giai đoạn duyệt mẫu: thanh tiến trình cuộn theo màu nhận diện, ánh sáng nền phản hồi con trỏ trên desktop, lightbox thư viện có vuốt/phím mũi tên và thước phim ảnh riêng của mẫu Điện ảnh. Toàn bộ chuyển động tôn trọng thiết lập `prefers-reduced-motion` và modal giữ focus bàn phím trong vùng tương tác.
 
-Trên điện thoại, mỗi website có menu toàn màn hình mang đúng ngôn ngữ hình ảnh của mẫu, đánh dấu trang đang xem và giữ focus bàn phím trong vùng tương tác. Thanh đổi mẫu thu gọn thành một nút nổi 52px, chỉ mở danh sách ba phương án khi người duyệt chủ động chạm, vì vậy không che nội dung hay cạnh tranh với CTA đặt chỗ.
+Trên điện thoại, mỗi website có menu toàn màn hình mang đúng ngôn ngữ hình ảnh của mẫu, đánh dấu trang đang xem và giữ focus bàn phím trong vùng tương tác. Thanh đổi mẫu thu gọn thành một nút nổi 52px, chỉ mở danh sách ba phương án khi người duyệt chủ động chạm, vì vậy không che nội dung hay cạnh tranh với CTA đặt chỗ. Khi đổi mẫu, showroom giữ nguyên trang hiện tại — ví dụ đang xem chi tiết một căn hoặc luồng đặt chỗ thì mẫu tiếp theo cũng mở đúng trang đó — để người duyệt so sánh công bằng từng trải nghiệm.
 
 Ảnh minh họa dùng loader CDN responsive: trình duyệt nhận `srcset` theo kích thước màn hình và tải trực tiếp từ Unsplash, không đi qua `/_next/image`. Cách này giữ ảnh hoạt động ổn định trên VPS demo đồng thời tránh tải ảnh desktop quá lớn ở mobile.
 
