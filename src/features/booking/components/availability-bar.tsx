@@ -6,10 +6,11 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { DateRangePicker } from "@/features/booking/components/date-range-picker";
 import { GuestStepper } from "@/features/booking/components/guest-stepper";
+import { getVietnamDateString } from "@/shared/lib/vietnam-date";
 
 export function AvailabilityBar({ compact = false, bookingPath = "/dat-phong" }: { compact?: boolean; bookingPath?: string }) {
   const router = useRouter();
-  const today = new Date();
+  const today = parseISO(getVietnamDateString());
   const [checkIn, setCheckIn] = useState(format(addDays(today, 1), "yyyy-MM-dd"));
   const [checkOut, setCheckOut] = useState(format(addDays(today, 3), "yyyy-MM-dd"));
   const [guests, setGuests] = useState(2);
