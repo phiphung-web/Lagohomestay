@@ -9,7 +9,7 @@ import { formatCurrency } from "@/shared/lib/format";
 import { TemplateFooter, TemplateHeader, type CompleteTemplateConfig } from "@/features/showcase/site/complete-template-site";
 
 export function SongDongHome({ config }: { config: CompleteTemplateConfig }) {
-  return <main className="showcase-root min-h-screen overflow-hidden bg-[#eef1e5] pb-32 text-[#21483d]">
+  return <main className="showcase-root min-h-screen overflow-hidden bg-[#eef1e5] text-[#21483d]">
     <TemplateExperienceLayer mood="organic" />
     <ShowcaseSwitcher current="song-dong" />
     <TemplateHeader config={config} />

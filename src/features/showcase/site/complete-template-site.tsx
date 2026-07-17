@@ -12,19 +12,19 @@ import {
   Instagram,
   Leaf,
   MapPin,
-  Menu,
   Phone,
   Plus,
   Ruler,
   Sparkles,
-  Users,
-  X
+  Users
 } from "lucide-react";
 import { BookingExperience } from "@/features/booking/components/booking-experience";
 import { LookupForm } from "@/features/booking/components/lookup-form";
 import { ShowcaseSwitcher } from "@/features/showcase/components/showcase-switcher";
 import { GalleryLightbox } from "@/features/showcase/components/gallery-lightbox";
 import { TemplateExperienceLayer } from "@/features/showcase/components/template-experience-layer";
+import { TemplateMobileMenu } from "@/features/showcase/components/template-mobile-menu";
+import { TemplateNavLink } from "@/features/showcase/components/template-nav-link";
 import { experienceMoments, showcaseFaqs, stayPromises } from "@/features/showcase/data/showcase-content";
 import type { ShowcaseTemplateSlug } from "@/features/showcase/data/templates";
 import { conceptImages, stays } from "@/features/stays/data/demo-data";
@@ -67,6 +67,7 @@ function scoped(basePath: string, path = "") {
 export function TemplateHeader({ config }: { config: CompleteTemplateConfig }) {
   const organic = config.mood === "organic";
   const cinematic = config.mood === "cinematic";
+  const mobileItems = navItems.map(([label, path]) => ({ label, href: scoped(config.basePath, path), exact: !path }));
   return <header className={`sticky top-0 z-50 backdrop-blur-xl ${organic ? "border-transparent bg-[#edf3df]/88 py-2" : cinematic ? "border-b border-white/10 bg-[#07130f]/92" : "border-b border-[#19322c]/12 bg-[#f3eee5]/92"}`}>
     <div className={`mx-auto flex w-[min(1420px,calc(100%-28px))] items-center justify-between gap-4 ${organic ? "h-16 rounded-full border border-[#21483d]/10 bg-white/90 px-4 shadow-[0_14px_45px_rgba(33,72,61,.1)] sm:px-6" : "h-[76px]"}`}>
       <Link href={config.basePath} className={`focus-ring flex items-center gap-2 ${organic ? "text-xl font-extrabold" : cinematic ? "text-sm font-extrabold uppercase tracking-[.22em]" : "font-serif text-3xl font-semibold tracking-[-.05em]"}`}>
@@ -74,20 +75,14 @@ export function TemplateHeader({ config }: { config: CompleteTemplateConfig }) {
         Lago{organic ? "!" : cinematic ? "" : "."}
       </Link>
       <nav aria-label={`Điều hướng mẫu ${config.name}`} className="hidden items-center gap-6 text-[.68rem] font-bold uppercase tracking-[.12em] lg:flex">
-        {navItems.map(([label, path]) => <Link key={path} href={scoped(config.basePath, path)} className="opacity-62 transition hover:opacity-100">{label}</Link>)}
+        {navItems.map(([label, path]) => <TemplateNavLink key={path} href={scoped(config.basePath, path)} label={label} mood={config.mood} exact={!path} />)}
       </nav>
       <div className="flex items-center gap-2">
         <Link href={scoped(config.basePath, "tra-cuu")} className="hidden min-h-10 items-center px-3 text-xs font-bold opacity-60 transition hover:opacity-100 sm:inline-flex">Tra cứu</Link>
         <Link href={scoped(config.basePath, "dat-phong")} className={`inline-flex min-h-11 items-center gap-2 px-4 text-xs font-bold ${cinematic ? "rounded-full bg-[#e5c59c] text-[#07130f]" : organic ? "rounded-full bg-[#f18b68] text-[#17312b]" : "border-b border-[#19322c] px-1"}`}>
           <CalendarDays className="h-4 w-4" /> <span className="hidden sm:inline">Kiểm tra lịch</span><span className="sm:hidden">Đặt căn</span>
         </Link>
-        <details className="group relative lg:hidden">
-          <summary aria-label="Mở menu" className="focus-ring grid h-11 w-11 cursor-pointer list-none place-items-center rounded-full border border-current/15"><Menu className="h-5 w-5 group-open:hidden" /><X className="hidden h-5 w-5 group-open:block" /></summary>
-          <nav className={`absolute right-0 top-14 w-[min(310px,calc(100vw-28px))] overflow-hidden rounded-3xl border p-3 shadow-2xl ${cinematic ? "border-white/12 bg-[#0b1b16]" : "border-black/10 bg-white"}`}>
-            {navItems.map(([label, path]) => <Link key={path} href={scoped(config.basePath, path)} className="flex min-h-12 items-center justify-between rounded-2xl px-4 text-sm font-bold transition hover:bg-current/5">{label}<ArrowRight className="h-4 w-4 opacity-35" /></Link>)}
-            <Link href={scoped(config.basePath, "lien-he")} className="mt-1 flex min-h-12 items-center justify-between rounded-2xl px-4 text-sm font-bold">Liên hệ<Phone className="h-4 w-4 opacity-40" /></Link>
-          </nav>
-        </details>
+        <TemplateMobileMenu name={config.name} mood={config.mood} items={mobileItems} bookingHref={scoped(config.basePath, "dat-phong")} lookupHref={scoped(config.basePath, "tra-cuu")} contactHref={scoped(config.basePath, "lien-he")} />
       </div>
     </div>
   </header>;

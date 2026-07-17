@@ -25,6 +25,8 @@ Ba hướng trải nghiệm được phân biệt rõ:
 
 Các tương tác dùng chung đã được hoàn thiện cho giai đoạn duyệt mẫu: thanh tiến trình cuộn theo màu nhận diện, ánh sáng nền phản hồi con trỏ trên desktop, lightbox thư viện có vuốt/phím mũi tên và thước phim ảnh riêng của mẫu Điện ảnh. Toàn bộ chuyển động tôn trọng thiết lập `prefers-reduced-motion` và modal giữ focus bàn phím trong vùng tương tác.
 
+Trên điện thoại, mỗi website có menu toàn màn hình mang đúng ngôn ngữ hình ảnh của mẫu, đánh dấu trang đang xem và giữ focus bàn phím trong vùng tương tác. Thanh đổi mẫu thu gọn thành một nút nổi 52px, chỉ mở danh sách ba phương án khi người duyệt chủ động chạm, vì vậy không che nội dung hay cạnh tranh với CTA đặt chỗ.
+
 Ảnh minh họa dùng loader CDN responsive: trình duyệt nhận `srcset` theo kích thước màn hình và tải trực tiếp từ Unsplash, không đi qua `/_next/image`. Cách này giữ ảnh hoạt động ổn định trên VPS demo đồng thời tránh tải ảnh desktop quá lớn ở mobile.
 
 Luồng chuyển đổi cũng được dùng chung ở chất lượng production: tiến trình ba bước, trạng thái tải/rỗng/lỗi rõ ràng, retry không làm đổi lựa chọn của khách, validation từng trường thay cho thông báo mặc định của trình duyệt, giá được khóa khi đang kiểm tra lại và đồng hồ đếm thời gian giữ chỗ sau khi gửi thành công. Ngày mặc định luôn tính theo múi giờ `Asia/Ho_Chi_Minh`, không phụ thuộc múi giờ VPS.

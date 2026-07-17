@@ -17,7 +17,7 @@ const storyFrames = [
 ] as const;
 
 export function DienAnhHome({ config }: { config: CompleteTemplateConfig }) {
-  return <main className="showcase-root min-h-screen bg-[#07130f] pb-32 text-white">
+  return <main className="showcase-root min-h-screen bg-[#07130f] text-white">
     <TemplateExperienceLayer mood="cinematic" />
     <ShowcaseSwitcher current="dien-anh" />
     <TemplateHeader config={config} />

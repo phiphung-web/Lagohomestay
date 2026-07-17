@@ -76,6 +76,8 @@ input[type="checkbox"][aria-invalid="true"] { border-color: #dc2626; box-shadow:
 .result-enter { animation: result-enter .58s both cubic-bezier(.2,.75,.2,1); }
 .finder-result { animation: finder-result .55s both cubic-bezier(.2,.75,.2,1); }
 .booking-step-enter { animation: booking-step-enter .48s both cubic-bezier(.2,.75,.2,1); }
+.template-menu-enter { animation: template-menu-enter .42s both cubic-bezier(.2,.78,.2,1); }
+.switcher-menu-enter { animation: switcher-menu-enter .28s both cubic-bezier(.2,.78,.2,1); }
 .availability-skeleton { position: relative; overflow: hidden; background: #ece8df; }
 .availability-skeleton::after { position: absolute; inset: 0; content: ""; transform: translateX(-100%); background: linear-gradient(90deg, transparent, rgba(255,255,255,.72), transparent); animation: skeleton-wave 1.3s infinite; }
 .success-pulse { animation: success-pop .7s both cubic-bezier(.2,.9,.2,1); box-shadow: 0 0 0 12px rgba(220,231,224,.45); }
@@ -113,6 +115,8 @@ input[type="checkbox"][aria-invalid="true"] { border-color: #dc2626; box-shadow:
 @keyframes result-enter { from { opacity: 0; transform: translateY(18px) scale(.99); } to { opacity: 1; transform: translateY(0) scale(1); } }
 @keyframes finder-result { from { opacity: .55; transform: scale(1.025); } to { opacity: 1; transform: scale(1); } }
 @keyframes booking-step-enter { from { opacity: .35; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes template-menu-enter { from { opacity: .5; transform: translateX(24px); } to { opacity: 1; transform: translateX(0); } }
+@keyframes switcher-menu-enter { from { opacity: 0; transform: translateY(10px) scale(.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
 @keyframes skeleton-wave { to { transform: translateX(100%); } }
 @keyframes success-pop { from { opacity: 0; transform: scale(.72) rotate(-8deg); } to { opacity: 1; transform: scale(1) rotate(0); } }
 @keyframes cinema-marquee { to { transform: translateX(-33.333%); } }
@@ -128,9 +132,7 @@ input[type="checkbox"][aria-invalid="true"] { border-color: #dc2626; box-shadow:
 @media (max-width: 767px) {
   .container-lago { width: min(100% - 28px, 1240px); }
   .section-pad { padding-block: 72px; }
-  body { padding-bottom: 76px; }
   .calendar-sheet { max-height: calc(100svh - 18px); overflow-y: auto; }
-  .showcase-root { min-height: calc(100svh + 76px); margin-bottom: -76px; }
   .template-editorial .template-panel { border-radius: 0 42px 0 0; }
   .template-editorial .template-media { border-radius: 120px 120px 0 0; }
   .template-pointer-glow { display: none; }

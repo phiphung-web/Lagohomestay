@@ -9,7 +9,7 @@ import { formatCurrency } from "@/shared/lib/format";
 import { TemplateFooter, TemplateHeader, type CompleteTemplateConfig } from "@/features/showcase/site/complete-template-site";
 
 export function TinhLangHome({ config }: { config: CompleteTemplateConfig }) {
-  return <main className="showcase-root min-h-screen bg-[#f3eee5] pb-32 text-[#19322c]">
+  return <main className="showcase-root min-h-screen bg-[#f3eee5] text-[#19322c]">
     <TemplateExperienceLayer mood="editorial" />
     <ShowcaseSwitcher current="tinh-lang" />
     <TemplateHeader config={config} />
