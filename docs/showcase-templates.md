@@ -35,6 +35,8 @@ Khi chuyển trang, phần mở đầu cũng đi vào theo ba nhịp riêng: **T
 
 Trên điện thoại, mỗi website có menu toàn màn hình mang đúng ngôn ngữ hình ảnh của mẫu, đánh dấu trang đang xem và giữ focus bàn phím trong vùng tương tác. Thanh đổi mẫu thu gọn thành một nút nổi 52px, chỉ mở danh sách ba phương án khi người duyệt chủ động chạm, vì vậy không che nội dung hay cạnh tranh với CTA đặt chỗ. Khi đổi mẫu, showroom giữ nguyên trang hiện tại — ví dụ đang xem chi tiết một căn hoặc luồng đặt chỗ thì mẫu tiếp theo cũng mở đúng trang đó — để người duyệt so sánh công bằng từng trải nghiệm.
 
+Landmark của mỗi website được tách đúng thành header, nội dung chính và footer. Người dùng bàn phím có liên kết **Bỏ qua điều hướng** xuất hiện ngay khi focus, đi thẳng đến `main` mà không phải lặp lại toàn bộ menu trên mỗi trang.
+
 Ảnh minh họa dùng loader CDN responsive: trình duyệt nhận `srcset` theo kích thước màn hình và tải trực tiếp từ Unsplash, không đi qua `/_next/image`. Cách này giữ ảnh hoạt động ổn định trên VPS demo đồng thời tránh tải ảnh desktop quá lớn ở mobile.
 
 Font được tự host và giới hạn đúng các subset Latin/Vietnamese dạng WOFF2 đang sử dụng. Be Vietnam Pro đảm nhiệm nội dung và thao tác; Lora dành cho tiêu đề giàu cảm xúc. Artifact production giảm từ 120 tệp font khoảng 1,75 MB xuống 24 tệp khoảng 372 KB, không gửi kèm Cyrillic, toán học, symbol hoặc WOFF cũ không cần thiết.

@@ -9,6 +9,7 @@ import { TemplateTimeGreeting } from "@/features/showcase/components/template-ti
 import { experienceMoments, guestStories } from "@/features/showcase/data/showcase-content";
 import { conceptImages, stays } from "@/features/stays/data/demo-data";
 import { TemplateFooter, TemplateHeader, type CompleteTemplateConfig } from "@/features/showcase/site/complete-template-site";
+import { SkipLink } from "@/shared/components/ui/skip-link";
 
 const storyFrames = [
   { image: stays[0].image, eyebrow: "Buổi sớm", title: "Thức dậy bên mặt hồ.", text: "Ánh sáng đi qua rèm cửa, mặt nước còn yên và ngày mới chưa cần bắt đầu vội." },
@@ -18,10 +19,12 @@ const storyFrames = [
 ] as const;
 
 export function DienAnhHome({ config }: { config: CompleteTemplateConfig }) {
-  return <main className="showcase-root min-h-screen bg-[#07130f] text-white">
+  return <div className="showcase-root min-h-screen bg-[#07130f] text-white">
+    <SkipLink />
     <TemplateExperienceLayer mood="cinematic" />
     <ShowcaseSwitcher current="dien-anh" />
     <TemplateHeader config={config} />
+    <main id="noi-dung-chinh" tabIndex={-1}>
     <section className="grain relative min-h-screen overflow-hidden"><Image src={stays[0].image} alt="Căn nhà Lago bên hồ - ảnh minh họa" fill priority sizes="100vw" className="object-cover opacity-70" /><div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(3,12,9,.92)_0%,rgba(3,12,9,.25)_65%,rgba(3,12,9,.5)_100%)]" /><div className="absolute inset-x-0 bottom-0 h-72 bg-gradient-to-t from-[#07130f] to-transparent" />
       <div className="relative z-10 mx-auto flex min-h-[calc(100svh-76px)] w-[min(1500px,calc(100%-40px))] flex-col justify-end pb-10 pt-24 sm:pb-14"><div className="grid items-end gap-8 lg:grid-cols-[1fr_.38fr]"><div><TemplateTimeGreeting mood="cinematic" /><p className="mt-5 text-[.66rem] font-bold uppercase tracking-[.24em] text-[#e5c59c]">Một thước phim thiên nhiên · Bộ sưu tập Lago</p><h1 className="mt-5 max-w-6xl font-serif text-[clamp(3.4rem,17vw,7rem)] font-medium leading-[.84] tracking-[-.06em] lg:text-[9.5rem]">Trở về<br />với <i className="text-[#e5c59c]">chính mình.</i></h1></div><div className="pb-4"><CinematicStoryModal frames={[...storyFrames]} /><p className="mt-7 max-w-sm text-sm leading-7 text-white/55">Không chỉ là nơi để ngủ. Đây là nơi những cuộc trò chuyện dài hơn và buổi sáng bắt đầu chậm hơn.</p></div></div><div className="mt-9 max-w-5xl"><AvailabilityBar compact bookingPath="/mau/dien-anh/dat-phong" /></div></div>
       <span className="absolute right-5 top-6 z-10 hidden items-center gap-2 text-[.58rem] font-bold uppercase tracking-[.18em] text-white/45 sm:flex"><Pause className="h-3 w-3" /> Chuyển động nền</span>
@@ -39,6 +42,7 @@ export function DienAnhHome({ config }: { config: CompleteTemplateConfig }) {
 
     <section className="relative min-h-[78svh] overflow-hidden"><Image src={conceptImages.forest} alt="Một ngày giữa thiên nhiên Lago - ảnh minh họa" fill sizes="100vw" className="object-cover opacity-65" /><div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/15 to-black/45" /><div className="relative z-10 mx-auto flex min-h-[78svh] w-[min(1500px,calc(100%-40px))] items-center"><div className="max-w-4xl"><p className="text-[.64rem] font-bold uppercase tracking-[.22em] text-[#e5c59c]">Chương cuối</p><h2 className="mt-6 font-serif text-6xl font-medium leading-[.88] tracking-[-.055em] sm:text-8xl">Rời xa ồn ào.<br /><i>Giữ lại cảm xúc.</i></h2><Link href={`${config.basePath}/dat-phong`} className="mt-9 inline-flex min-h-14 items-center gap-3 rounded-full bg-[#e5c59c] px-7 text-sm font-bold text-[#07130f]">Bắt đầu chuyến đi <ArrowRight className="h-4 w-4" /></Link></div></div></section>
 
+    </main>
     <TemplateFooter config={config} />
-  </main>;
+  </div>;
 }

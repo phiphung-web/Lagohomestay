@@ -8,12 +8,15 @@ import { experienceMoments, guestStories, showcaseFaqs } from "@/features/showca
 import { conceptImages, stays } from "@/features/stays/data/demo-data";
 import { formatCurrency } from "@/shared/lib/format";
 import { TemplateFooter, TemplateHeader, type CompleteTemplateConfig } from "@/features/showcase/site/complete-template-site";
+import { SkipLink } from "@/shared/components/ui/skip-link";
 
 export function TinhLangHome({ config }: { config: CompleteTemplateConfig }) {
-  return <main className="showcase-root min-h-screen bg-[#f3eee5] text-[#19322c]">
+  return <div className="showcase-root min-h-screen bg-[#f3eee5] text-[#19322c]">
+    <SkipLink />
     <TemplateExperienceLayer mood="editorial" />
     <ShowcaseSwitcher current="tinh-lang" />
     <TemplateHeader config={config} />
+    <main id="noi-dung-chinh" tabIndex={-1}>
 
     <section className="mx-auto grid min-h-[calc(100svh-76px)] w-[min(1420px,calc(100%-40px))] items-center gap-8 py-10 lg:grid-cols-[.82fr_1.18fr] lg:py-14">
       <div className="relative z-10 lg:pr-8"><TemplateTimeGreeting mood="editorial" /><p className="mt-5 text-[.65rem] font-bold uppercase tracking-[.24em] text-[#a36349]">Lago ký sự · Số 01</p><h1 className="mt-8 font-serif text-[clamp(3.4rem,16vw,6.5rem)] font-medium leading-[.82] tracking-[-.065em] lg:text-[8rem]">Nghệ thuật<br /><i className="font-normal">sống thật chậm.</i></h1><p className="mt-10 max-w-md text-sm leading-7 text-[#19322c]/58">Bốn căn nhà giữa thiên nhiên, dành cho những ngày bạn muốn bước chậm lại và ở gần nhau hơn.</p><div className="mt-8 flex items-center gap-6"><Link href={`${config.basePath}/dat-phong`} className="inline-flex min-h-14 items-center gap-4 rounded-full bg-[#19322c] px-6 text-sm font-bold text-white">Tìm căn của bạn <ArrowRight className="h-4 w-4" /></Link><a href="#collection" aria-label="Cuộn đến bộ sưu tập" className="grid h-14 w-14 place-items-center rounded-full border border-[#19322c]/25"><ArrowDownRight className="h-5 w-5" /></a></div></div>
@@ -34,6 +37,7 @@ export function TinhLangHome({ config }: { config: CompleteTemplateConfig }) {
 
     <section className="mx-auto w-[min(1420px,calc(100%-24px))] bg-[#19322c] px-6 py-20 text-center text-white sm:px-12 sm:py-28"><p className="text-[.64rem] font-bold uppercase tracking-[.2em] text-[#dbc6a9]">Khoảng yên đang chờ</p><h2 className="mx-auto mt-6 max-w-4xl font-serif text-5xl font-medium leading-[1.08] tracking-[-.035em] sm:text-7xl">Để Lago giữ lại<br /><i>một khoảng yên cho bạn.</i></h2><Link href={`${config.basePath}/dat-phong`} className="mt-9 inline-flex min-h-14 items-center gap-3 rounded-full bg-white px-7 text-sm font-bold text-[#19322c]">Chọn ngày lưu trú <ArrowRight className="h-4 w-4" /></Link></section>
 
+    </main>
     <TemplateFooter config={config} />
-  </main>;
+  </div>;
 }

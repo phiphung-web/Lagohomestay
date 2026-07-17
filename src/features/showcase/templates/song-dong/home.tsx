@@ -8,12 +8,15 @@ import { guestStories, showcaseFaqs } from "@/features/showcase/data/showcase-co
 import { conceptImages, stays } from "@/features/stays/data/demo-data";
 import { formatCurrency } from "@/shared/lib/format";
 import { TemplateFooter, TemplateHeader, type CompleteTemplateConfig } from "@/features/showcase/site/complete-template-site";
+import { SkipLink } from "@/shared/components/ui/skip-link";
 
 export function SongDongHome({ config }: { config: CompleteTemplateConfig }) {
-  return <main className="showcase-root min-h-screen overflow-hidden bg-[#eef1e5] text-[#21483d]">
+  return <div className="showcase-root min-h-screen overflow-hidden bg-[#eef1e5] text-[#21483d]">
+    <SkipLink />
     <TemplateExperienceLayer mood="organic" />
     <ShowcaseSwitcher current="song-dong" />
     <TemplateHeader config={config} />
+    <main id="noi-dung-chinh" tabIndex={-1}>
     <div className="relative"><span className="absolute -right-32 -top-32 h-[420px] w-[420px] rounded-full bg-[#f18b68] opacity-90" /><span className="absolute left-[42%] top-28 h-28 w-28 rounded-full bg-[#f7cf58]" />
 
       <section className="relative z-[1] mx-auto grid min-h-[calc(100svh-76px)] w-[min(1380px,calc(100%-28px))] items-center gap-10 py-12 lg:grid-cols-[.85fr_1.15fr] lg:py-16"><div><TemplateTimeGreeting mood="organic" /><span className="mt-4 flex w-fit items-center gap-2 rounded-full bg-[#dce9c6] px-4 py-2 text-[.65rem] font-extrabold uppercase tracking-[.12em]"><Sparkles className="h-4 w-4" /> Nơi vui giữa thiên nhiên</span><h1 className="mt-7 text-[clamp(3.45rem,16.5vw,6.5rem)] font-extrabold leading-[.96] tracking-[-.05em] lg:text-[8rem]">Ở xanh.<br />Cười <span className="relative text-[#e66e4c]">thật lâu.<svg className="absolute -bottom-3 left-0 w-full" viewBox="0 0 300 18" fill="none"><path d="M4 12C79 2 210 2 296 10" stroke="#f7cf58" strokeWidth="10" strokeLinecap="round" /></svg></span></h1><p className="mt-9 max-w-lg text-base font-medium leading-7 text-[#21483d]/62">Một bộ sưu tập nhà nguyên căn đủ riêng tư để nghỉ ngơi, đủ vui để mọi người thật sự gần nhau.</p><div className="mt-8 flex flex-wrap gap-3"><Link href={`${config.basePath}/dat-phong`} className="inline-flex min-h-14 items-center gap-3 rounded-full bg-[#21483d] px-7 text-sm font-extrabold text-white">Tìm nhà hợp gu <ArrowRight className="h-4 w-4" /></Link><a href="#happy-houses" className="inline-flex min-h-14 items-center rounded-full border-2 border-[#21483d]/16 px-6 text-sm font-extrabold">Khám phá 4 căn</a></div></div>
@@ -35,6 +38,7 @@ export function SongDongHome({ config }: { config: CompleteTemplateConfig }) {
 
     <section className="relative mx-auto min-h-[560px] w-[min(1380px,calc(100%-24px))] overflow-hidden rounded-[44px] bg-[#21483d] text-white"><Image src={conceptImages.detail2} alt="Không gian chung Lago - ảnh minh họa" fill sizes="100vw" className="object-cover opacity-32" /><div className="relative z-10 flex min-h-[560px] flex-col items-center justify-center px-6 text-center"><span className="grid h-16 w-16 place-items-center rounded-full bg-[#f7cf58] text-[#21483d]"><Sun className="h-7 w-7" /></span><h2 className="mt-7 max-w-4xl text-5xl font-extrabold leading-[1.02] tracking-[-.04em] sm:text-7xl">Lên lịch cho những ngày<br /><i className="font-serif font-medium text-[#f7cf58]">thật vui nhé?</i></h2><Link href={`${config.basePath}/dat-phong`} className="mt-8 inline-flex min-h-14 items-center gap-3 rounded-full bg-white px-7 text-sm font-extrabold text-[#21483d]">Xem căn còn trống <ArrowRight className="h-4 w-4" /></Link></div></section>
 
+    </main>
     <TemplateFooter config={config} />
-  </main>;
+  </div>;
 }

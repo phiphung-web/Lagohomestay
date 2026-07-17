@@ -25,6 +25,7 @@ import { TemplateAboutStory, TemplateContactChannels } from "@/features/showcase
 import type { ShowcaseTemplateSlug } from "@/features/showcase/data/templates";
 import { conceptImages, stays } from "@/features/stays/data/demo-data";
 import { formatCurrency } from "@/shared/lib/format";
+import { SkipLink } from "@/shared/components/ui/skip-link";
 import type { TemplateRoute } from "@/features/showcase/site/template-route";
 
 export type TemplateMood = "editorial" | "cinematic" | "organic";
@@ -218,13 +219,16 @@ export function CompleteTemplateSite({ route, config, home }: { route: TemplateR
     "--template-accent": config.accent,
     "--template-surface": config.surface
   } as React.CSSProperties;
-  return <main style={style} className={`showcase-root min-h-screen bg-[var(--template-bg)] text-[var(--template-ink)] ${config.mood === "organic" ? "template-organic" : config.mood === "cinematic" ? "template-cinematic" : "template-editorial"}`}>
+  return <div style={style} className={`showcase-root min-h-screen bg-[var(--template-bg)] text-[var(--template-ink)] ${config.mood === "organic" ? "template-organic" : config.mood === "cinematic" ? "template-cinematic" : "template-editorial"}`}>
+    <SkipLink />
     <TemplateExperienceLayer mood={config.mood} />
     <ShowcaseSwitcher current={config.slug} />
     <TemplateHeader config={config} />
-    <div key={routeKey} className={`template-page-enter template-page-enter-${config.mood}`}>
-      <TemplateContent route={route} config={config} />
-    </div>
+    <main id="noi-dung-chinh" tabIndex={-1}>
+      <div key={routeKey} className={`template-page-enter template-page-enter-${config.mood}`}>
+        <TemplateContent route={route} config={config} />
+      </div>
+    </main>
     <TemplateFooter config={config} />
-  </main>;
+  </div>;
 }
