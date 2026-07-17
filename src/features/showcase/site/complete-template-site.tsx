@@ -9,9 +9,7 @@ import {
   House,
   Instagram,
   Leaf,
-  MapPin,
-  Phone,
-  Sparkles
+  Phone
 } from "lucide-react";
 import { BookingExperience } from "@/features/booking/components/booking-experience";
 import { LookupForm } from "@/features/booking/components/lookup-form";
@@ -23,6 +21,7 @@ import { TemplateNavLink } from "@/features/showcase/components/template-nav-lin
 import { TemplateStayHero, TemplateStaysCollection } from "@/features/showcase/components/template-stay-showcase";
 import { TemplateExperienceStory } from "@/features/showcase/components/template-experience-story";
 import { TemplateFaqSection, TemplatePolicySection } from "@/features/showcase/components/template-info-sections";
+import { TemplateAboutStory, TemplateContactChannels } from "@/features/showcase/components/template-brand-sections";
 import type { ShowcaseTemplateSlug } from "@/features/showcase/data/templates";
 import { conceptImages, stays } from "@/features/stays/data/demo-data";
 import { formatCurrency } from "@/shared/lib/format";
@@ -156,7 +155,7 @@ function GalleryPage({ config }: { config: CompleteTemplateConfig }) {
 
 function AboutPage({ config }: { config: CompleteTemplateConfig }) {
   return <><PageIntro config={config} eyebrow="Triết lý của Lago" title="Một nơi đủ xa để nghỉ, đủ gần để trở về." text="Lago bắt đầu từ mong muốn tạo ra những căn nhà nơi con người có thể dành trọn sự chú ý cho thiên nhiên và cho nhau." image={conceptImages.forest} />
-    <section className="mx-auto grid w-[min(1240px,calc(100%-40px))] items-center gap-12 py-20 sm:py-28 lg:grid-cols-2"><div className="template-media relative aspect-[4/5] overflow-hidden"><Image src={conceptImages.detail2} alt="Câu chuyện Lago - ảnh minh họa" fill sizes="50vw" className="object-cover" /><span className="absolute bottom-4 left-4 rounded-full bg-white/90 px-3 py-1.5 text-[.58rem] font-bold uppercase text-[#17312b]">Ảnh minh họa</span></div><div className="lg:px-10"><Sparkles className="h-7 w-7 text-[var(--template-accent)]" /><p className="mt-7 font-serif text-4xl font-medium leading-[1.2] sm:text-5xl">“Một kỳ nghỉ tốt không cần quá nhiều thứ để làm. Chỉ cần đúng người, đúng không gian và đủ thời gian.”</p><div className="mt-8 space-y-5 text-sm leading-7 opacity-60"><p>Mỗi căn được hình dung như một ngôi nhà thực sự: có bếp để nấu, hiên để ngồi và những khoảng trống vừa đủ để tâm trí được thảnh thơi.</p><p>Lago ưu tiên sự riêng tư, vật liệu gần gũi và dịch vụ vừa đủ. Đội ngũ xuất hiện khi khách cần, rồi trả lại không gian cho kỳ nghỉ.</p></div></div></section></>;
+    <TemplateAboutStory mood={config.mood} /></>;
 }
 
 function FaqPage({ config }: { config: CompleteTemplateConfig }) {
@@ -170,9 +169,8 @@ function PolicyPage({ config }: { config: CompleteTemplateConfig }) {
 }
 
 function ContactPage({ config }: { config: CompleteTemplateConfig }) {
-  const cards = [[Phone, "Điện thoại", "0900 000 000", "tel:0900000000"], [Phone, "Zalo", "0900 000 000", "https://zalo.me/0900000000"], [MapPin, "Địa chỉ", "Sẽ được cập nhật", "#"]] as const;
   return <><PageIntro config={config} eyebrow="Trò chuyện cùng Lago" title="Chúng mình luôn sẵn sàng lắng nghe." text="Kết nối trực tiếp nếu bạn cần tư vấn chọn căn, ngày ở hoặc một yêu cầu đặc biệt." image={conceptImages.cloud} />
-    <section className="mx-auto grid w-[min(1240px,calc(100%-40px))] gap-5 py-20 sm:py-28 md:grid-cols-3">{cards.map(([Icon, label, value, href]) => <a href={href} key={label} className="template-panel group border border-current/12 bg-[var(--template-surface)] p-7 transition hover:-translate-y-1"><Icon className="h-6 w-6 text-[var(--template-accent)]" /><p className="mt-10 text-[.62rem] font-bold uppercase tracking-[.16em] opacity-45">{label}</p><p className="mt-2 text-lg font-bold">{value}</p><ArrowRight className="mt-7 h-5 w-5 opacity-35 transition group-hover:translate-x-1 group-hover:opacity-100" /></a>)}</section></>;
+    <TemplateContactChannels mood={config.mood} /></>;
 }
 
 function BookingPrelude({ config }: { config: CompleteTemplateConfig }) {

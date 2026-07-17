@@ -27,6 +27,8 @@ Khác biệt này tiếp tục xuyên suốt trang con: **Tĩnh lặng** trình 
 
 Trang **Trải nghiệm** cũng có ba cấu trúc độc lập: nhật ký thời gian kiểu tạp chí, chuỗi chapter có ảnh kiểu điện ảnh và bento hoạt động nhiều màu. FAQ, chính sách và tra cứu booking tiếp tục giữ đúng nhịp đó; accordion sử dụng native `details/summary`, có chuyển động chiều cao và vẫn thao tác đầy đủ bằng bàn phím.
 
+Trang **Về Lago** và **Liên hệ** có composition độc lập theo từng mood; địa chỉ chưa có dữ liệu thật được hiển thị như thông tin, không còn dùng liên kết `#` làm trang nhảy lên đầu. Hero trang chủ có lời chào theo giờ địa phương của người xem với bốn khoảng sáng, ngày, hoàng hôn và đêm. Nội dung ban đầu cố định rồi mới cập nhật phía client để tránh hydration mismatch và layout shift lớn.
+
 Các tương tác dùng chung đã được hoàn thiện cho giai đoạn duyệt mẫu: thanh tiến trình cuộn theo màu nhận diện, ánh sáng nền phản hồi con trỏ trên desktop, lightbox thư viện có vuốt/phím mũi tên và thước phim ảnh riêng của mẫu Điện ảnh. Toàn bộ chuyển động tôn trọng thiết lập `prefers-reduced-motion` và modal giữ focus bàn phím trong vùng tương tác.
 
 Trên điện thoại, mỗi website có menu toàn màn hình mang đúng ngôn ngữ hình ảnh của mẫu, đánh dấu trang đang xem và giữ focus bàn phím trong vùng tương tác. Thanh đổi mẫu thu gọn thành một nút nổi 52px, chỉ mở danh sách ba phương án khi người duyệt chủ động chạm, vì vậy không che nội dung hay cạnh tranh với CTA đặt chỗ. Khi đổi mẫu, showroom giữ nguyên trang hiện tại — ví dụ đang xem chi tiết một căn hoặc luồng đặt chỗ thì mẫu tiếp theo cũng mở đúng trang đó — để người duyệt so sánh công bằng từng trải nghiệm.

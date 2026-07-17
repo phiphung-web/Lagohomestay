@@ -79,6 +79,7 @@ input[type="checkbox"][aria-invalid="true"] { border-color: #dc2626; box-shadow:
 .booking-step-enter { animation: booking-step-enter .48s both cubic-bezier(.2,.75,.2,1); }
 .template-menu-enter { animation: template-menu-enter .42s both cubic-bezier(.2,.78,.2,1); }
 .switcher-menu-enter { animation: switcher-menu-enter .28s both cubic-bezier(.2,.78,.2,1); }
+.time-greeting-enter { animation: time-greeting-enter .6s both cubic-bezier(.2,.78,.2,1); }
 .template-preview-card { transform-style: preserve-3d; transition: transform .42s cubic-bezier(.2,.78,.2,1), border-color .35s ease, background-color .35s ease, box-shadow .35s ease; will-change: transform; }
 .template-preview-card:hover { border-color: rgba(255,255,255,.28); background-color: rgba(255,255,255,.085); box-shadow: 0 30px 80px rgba(0,0,0,.22); }
 .template-preview-glow { position: absolute; inset: -1px; z-index: 0; pointer-events: none; border-radius: inherit; opacity: var(--preview-glow, 0); background: radial-gradient(circle at var(--preview-x,50%) var(--preview-y,50%), rgba(229,197,156,.2), transparent 42%); transition: opacity .3s ease; }
@@ -121,6 +122,7 @@ input[type="checkbox"][aria-invalid="true"] { border-color: #dc2626; box-shadow:
 @keyframes booking-step-enter { from { opacity: .35; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes template-menu-enter { from { opacity: .5; transform: translateX(24px); } to { opacity: 1; transform: translateX(0); } }
 @keyframes switcher-menu-enter { from { opacity: 0; transform: translateY(10px) scale(.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
+@keyframes time-greeting-enter { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes skeleton-wave { to { transform: translateX(100%); } }
 @keyframes success-pop { from { opacity: 0; transform: scale(.72) rotate(-8deg); } to { opacity: 1; transform: scale(1) rotate(0); } }
 @keyframes cinema-marquee { to { transform: translateX(-33.333%); } }
