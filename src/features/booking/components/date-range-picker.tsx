@@ -17,7 +17,7 @@ import {
 } from "date-fns";
 import { vi } from "date-fns/locale";
 import { CalendarDays, ChevronLeft, ChevronRight, Moon, X } from "lucide-react";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 
 type Props = {
@@ -85,13 +85,38 @@ export function DateRangePicker({ checkIn, checkOut, onChange, className = "", t
   const [viewMonth, setViewMonth] = useState(startOfMonth(parseISO(checkIn)));
   const [draftStart, setDraftStart] = useState<Date | null>(parseISO(checkIn));
   const [draftEnd, setDraftEnd] = useState<Date | null>(parseISO(checkOut));
+  const triggerRef = useRef<HTMLButtonElement>(null);
+  const dialogRef = useRef<HTMLElement>(null);
+  const closeRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     if (!open) return;
-    const close = (event: KeyboardEvent) => { if (event.key === "Escape") setOpen(false); };
+    const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
-    window.addEventListener("keydown", close);
-    return () => { document.body.style.overflow = ""; window.removeEventListener("keydown", close); };
+    requestAnimationFrame(() => closeRef.current?.focus());
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setOpen(false);
+      if (event.key !== "Tab") return;
+      const controls = dialogRef.current?.querySelectorAll<HTMLElement>(
+        "button:not([disabled]), [href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex='-1'])"
+      );
+      if (!controls?.length) return;
+      const first = controls[0];
+      const last = controls[controls.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", onKeyDown);
+      triggerRef.current?.focus();
+    };
   }, [open]);
 
   const nights = useMemo(() => {
@@ -120,6 +145,7 @@ export function DateRangePicker({ checkIn, checkOut, onChange, className = "", t
 
   return <div className={className}>
     <button
+      ref={triggerRef}
       type="button"
       onClick={openPicker}
       className={`focus-ring grid w-full grid-cols-[1fr_auto_1fr] items-center gap-3 rounded-2xl border px-4 py-3 text-left transition ${tone === "glass" ? "border-white/20 bg-white/95 text-lago-ink hover:bg-white" : "border-lago-ink/10 bg-white hover:border-lago-forest/35"}`}
@@ -132,10 +158,10 @@ export function DateRangePicker({ checkIn, checkOut, onChange, className = "", t
     </button>
 
     {open && typeof document !== "undefined" && createPortal(<div className="fixed inset-0 z-[100] flex items-end bg-lago-ink/65 p-0 backdrop-blur-sm sm:items-center sm:justify-center sm:p-5" role="presentation" onMouseDown={(event) => { if (event.target === event.currentTarget) setOpen(false); }}>
-      <section role="dialog" aria-modal="true" aria-label="Chọn ngày lưu trú" className="calendar-sheet max-h-[calc(100svh-12px)] w-full max-w-3xl overflow-y-auto overscroll-contain rounded-t-[30px] bg-white p-5 pb-[max(1.25rem,env(safe-area-inset-bottom))] text-lago-ink shadow-2xl sm:max-h-[calc(100svh-40px)] sm:rounded-[30px] sm:p-7">
+      <section ref={dialogRef} role="dialog" aria-modal="true" aria-label="Chọn ngày lưu trú" className="calendar-sheet max-h-[calc(100svh-12px)] w-full max-w-3xl overflow-y-auto overscroll-contain rounded-t-[30px] bg-white p-5 pb-[max(1.25rem,env(safe-area-inset-bottom))] text-lago-ink shadow-2xl sm:max-h-[calc(100svh-40px)] sm:rounded-[30px] sm:p-7">
         <header className="flex items-start justify-between gap-4 border-b border-lago-ink/10 pb-5">
           <div><p className="eyebrow text-lago-clay">Lịch lưu trú</p><h2 className="display mt-1 text-2xl font-semibold">Bạn muốn nghỉ khi nào?</h2><p className="mt-2 text-xs text-lago-ink/50">{draftEnd ? `${nights} đêm đã chọn` : "Chọn ngày về để hoàn tất"}</p></div>
-          <button type="button" onClick={() => setOpen(false)} aria-label="Đóng lịch" className="focus-ring grid h-11 w-11 shrink-0 place-items-center rounded-full bg-lago-cream"><X className="h-5 w-5" /></button>
+          <button ref={closeRef} type="button" onClick={() => setOpen(false)} aria-label="Đóng lịch" className="focus-ring grid h-11 w-11 shrink-0 place-items-center rounded-full bg-lago-cream"><X className="h-5 w-5" /></button>
         </header>
         <div className="my-5 flex items-center justify-between">
           <button type="button" disabled={cannotGoBack} onClick={() => setViewMonth((month) => addMonths(month, -1))} aria-label="Tháng trước" className="focus-ring grid h-10 w-10 place-items-center rounded-full border border-lago-ink/10 disabled:opacity-25"><ChevronLeft className="h-4 w-4" /></button>
