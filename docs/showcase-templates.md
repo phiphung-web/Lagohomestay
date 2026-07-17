@@ -31,6 +31,8 @@ Trang **Về Lago** và **Liên hệ** có composition độc lập theo từng 
 
 Các tương tác dùng chung đã được hoàn thiện cho giai đoạn duyệt mẫu: thanh tiến trình cuộn theo màu nhận diện, ánh sáng nền phản hồi con trỏ trên desktop, lightbox thư viện có vuốt/phím mũi tên và thước phim ảnh riêng của mẫu Điện ảnh. Toàn bộ chuyển động tôn trọng thiết lập `prefers-reduced-motion` và modal giữ focus bàn phím trong vùng tương tác.
 
+Khi chuyển trang, phần mở đầu cũng đi vào theo ba nhịp riêng: **Tĩnh lặng** nâng nhẹ như lật trang, **Điện ảnh** mở khung hình theo màn trập và **Sống động** xuất hiện mềm với độ nảy rất nhẹ. Hiệu ứng chỉ áp dụng cho hero đầu tiên, tránh biến toàn bộ trang dài thành một lớp đồ họa nặng. Không bật `experimental.viewTransition` của Next.js trong production; cấu trúc hiện tại dùng CSS progressive enhancement và tự tắt gần như hoàn toàn khi người dùng chọn reduced motion.
+
 Trên điện thoại, mỗi website có menu toàn màn hình mang đúng ngôn ngữ hình ảnh của mẫu, đánh dấu trang đang xem và giữ focus bàn phím trong vùng tương tác. Thanh đổi mẫu thu gọn thành một nút nổi 52px, chỉ mở danh sách ba phương án khi người duyệt chủ động chạm, vì vậy không che nội dung hay cạnh tranh với CTA đặt chỗ. Khi đổi mẫu, showroom giữ nguyên trang hiện tại — ví dụ đang xem chi tiết một căn hoặc luồng đặt chỗ thì mẫu tiếp theo cũng mở đúng trang đó — để người duyệt so sánh công bằng từng trải nghiệm.
 
 Ảnh minh họa dùng loader CDN responsive: trình duyệt nhận `srcset` theo kích thước màn hình và tải trực tiếp từ Unsplash, không đi qua `/_next/image`. Cách này giữ ảnh hoạt động ổn định trên VPS demo đồng thời tránh tải ảnh desktop quá lớn ở mobile.

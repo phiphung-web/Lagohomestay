@@ -211,6 +211,7 @@ function TemplateContent({ route, config }: { route: TemplateRoute; config: Comp
 
 export function CompleteTemplateSite({ route, config, home }: { route: TemplateRoute; config: CompleteTemplateConfig; home: React.ReactNode }) {
   if (route.kind === "home") return home;
+  const routeKey = route.kind === "stay" ? `${config.slug}-${route.kind}-${route.slug}` : `${config.slug}-${route.kind}`;
   const style = {
     "--template-bg": config.background,
     "--template-ink": config.ink,
@@ -221,7 +222,9 @@ export function CompleteTemplateSite({ route, config, home }: { route: TemplateR
     <TemplateExperienceLayer mood={config.mood} />
     <ShowcaseSwitcher current={config.slug} />
     <TemplateHeader config={config} />
-    <TemplateContent route={route} config={config} />
+    <div key={routeKey} className={`template-page-enter template-page-enter-${config.mood}`}>
+      <TemplateContent route={route} config={config} />
+    </div>
     <TemplateFooter config={config} />
   </main>;
 }
