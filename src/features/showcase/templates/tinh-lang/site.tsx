@@ -15,5 +15,5 @@ export const tinhLangConfig: CompleteTemplateConfig = {
 };
 
 export function TinhLangSite({ route }: { route: TemplateRoute }) {
-  return <CompleteTemplateSite route={route} config={tinhLangConfig} home={<TinhLangHome />} />;
+  return <CompleteTemplateSite route={route} config={tinhLangConfig} home={<TinhLangHome config={tinhLangConfig} />} />;
 }

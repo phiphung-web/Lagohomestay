@@ -78,6 +78,16 @@ summary::-webkit-details-marker { display: none; }
 .cinema-marquee { animation: cinema-marquee 26s linear infinite; }
 .organic-marquee { animation: organic-marquee 24s linear infinite; }
 .organic-hero { border-radius: 46% 54% 34% 66% / 57% 37% 63% 43%; animation: organic-float 8s ease-in-out infinite alternate; box-shadow: 0 35px 90px rgba(33,72,61,.2); }
+.template-panel { transition: transform .35s cubic-bezier(.2,.75,.2,1), box-shadow .35s ease, border-radius .35s ease; }
+.template-editorial .template-panel { border-radius: 0 70px 0 0; }
+.template-editorial .template-media { border-radius: 240px 240px 0 0; }
+.template-cinematic .template-panel { border-radius: 2px; background-image: linear-gradient(135deg, rgba(255,255,255,.035), transparent); }
+.template-cinematic .template-media { border-radius: 2px; }
+.template-organic .template-panel { border-radius: 30px; box-shadow: 0 20px 55px rgba(33,72,61,.08); }
+.template-organic .template-panel:hover { transform: translateY(-6px) rotate(-.35deg); box-shadow: 0 28px 70px rgba(33,72,61,.14); }
+.template-organic .template-media { border-radius: 38% 62% 50% 50% / 56% 42% 58% 44%; }
+.template-cinematic .template-panel:hover { transform: translateY(-3px); box-shadow: 0 28px 80px rgba(0,0,0,.25); }
+.template-editorial .template-panel:hover { transform: translateY(-3px); box-shadow: 0 24px 65px rgba(25,48,42,.1); }
 @keyframes hero-enter { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes scroll-cue { 0%,100% { transform: translateY(0); opacity: .55; } 50% { transform: translateY(7px); opacity: 1; } }
 @keyframes marquee { to { transform: translateX(-50%); } }
@@ -100,6 +110,8 @@ summary::-webkit-details-marker { display: none; }
   body { padding-bottom: 76px; }
   .calendar-sheet { max-height: calc(100svh - 18px); overflow-y: auto; }
   .showcase-root { min-height: calc(100svh + 76px); margin-bottom: -76px; }
+  .template-editorial .template-panel { border-radius: 0 42px 0 0; }
+  .template-editorial .template-media { border-radius: 120px 120px 0 0; }
 }
 
 @media (prefers-reduced-motion: reduce) {

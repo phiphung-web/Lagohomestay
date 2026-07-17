@@ -15,5 +15,5 @@ export const dienAnhConfig: CompleteTemplateConfig = {
 };
 
 export function DienAnhSite({ route }: { route: TemplateRoute }) {
-  return <CompleteTemplateSite route={route} config={dienAnhConfig} home={<DienAnhHome />} />;
+  return <CompleteTemplateSite route={route} config={dienAnhConfig} home={<DienAnhHome config={dienAnhConfig} />} />;
 }

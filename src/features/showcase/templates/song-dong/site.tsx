@@ -15,5 +15,5 @@ export const songDongConfig: CompleteTemplateConfig = {
 };
 
 export function SongDongSite({ route }: { route: TemplateRoute }) {
-  return <CompleteTemplateSite route={route} config={songDongConfig} home={<SongDongHome />} />;
+  return <CompleteTemplateSite route={route} config={songDongConfig} home={<SongDongHome config={songDongConfig} />} />;
 }

@@ -8,6 +8,27 @@ Mỗi mẫu là một website hoàn chỉnh dưới một nhánh URL riêng:
 
 Mỗi nhánh hỗ trợ trang chủ, danh sách căn, chi tiết căn, trải nghiệm, thư viện, câu chuyện, FAQ, chính sách, liên hệ, đặt chỗ và tra cứu. Dữ liệu căn và nghiệp vụ booking nằm trong `src/features/stays` và `src/features/booking` để cả ba mẫu luôn dùng cùng một nguồn dữ liệu.
 
+## Cách gửi khách hàng duyệt mẫu
+
+Gửi đường dẫn gốc của showroom. Màn đầu tiên giải thích đối tượng phù hợp, dấu ấn thị giác, cảm giác tương tác và liên kết vào từng website. Để đánh giá công bằng, nên đề nghị người duyệt thử cùng một hành trình ở cả ba mẫu:
+
+1. Xem hết trang chủ để cảm nhận câu chuyện và nhịp chuyển động.
+2. Mở **Các căn**, chọn một căn và xem trang chi tiết.
+3. Mở **Kiểm tra lịch**, thử chọn ngày, số khách và xem kết quả.
+4. Kiểm tra thêm **Thư viện**, **Cần biết** và **Tra cứu** trên điện thoại.
+
+Ba hướng trải nghiệm được phân biệt rõ:
+
+- **Tĩnh lặng:** bố cục tạp chí bất đối xứng, nhiều khoảng thở, chuyển động chậm và tinh tế.
+- **Điện ảnh:** khung hình lớn, nền tối sâu, nội dung theo chương và chuyển cảnh giàu cảm xúc.
+- **Sống động:** hình khối hữu cơ, bento nhiều màu, phản hồi vui và thân thiện với gia đình.
+
+Thanh chuyển mẫu ở cuối màn hình chỉ phục vụ giai đoạn trình bày. Sau khi chốt, thanh này và trang chọn mẫu có thể được gỡ mà không ảnh hưởng website được chọn.
+
+## Phạm vi đầy đủ của mỗi mẫu
+
+Mỗi mẫu có 14 tuyến trang độc lập: trang chủ, danh sách căn, 4 trang chi tiết căn, trải nghiệm, thư viện, về Lago, thông tin/FAQ, chính sách, liên hệ, đặt chỗ và tra cứu. Header, footer, màu sắc, kiểu chữ, hình khối và hiệu ứng luôn giữ đúng phong cách khi chuyển trang trong cùng một mẫu.
+
 ## Khi chốt một mẫu
 
 1. Giữ thư mục route và thư mục template tương ứng.

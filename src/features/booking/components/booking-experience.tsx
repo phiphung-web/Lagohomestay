@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { DateRangePicker } from "@/features/booking/components/date-range-picker";
+import { GuestStepper } from "@/features/booking/components/guest-stepper";
 import type { AvailabilityOption, AvailabilityResponse } from "@/features/booking/domain/availability";
 import { formatCurrency } from "@/shared/lib/format";
 
@@ -103,7 +104,7 @@ export function BookingExperience({ lookupPath = "/tra-cuu" }: { lookupPath?: st
     <div className="mb-10 flex items-center gap-3 text-[.68rem] font-bold uppercase tracking-wider text-lago-ink/35"><span className={step >= 1 ? "text-lago-ink" : ""}>1. Chọn căn</span><span>—</span><span className={step >= 2 ? "text-lago-ink" : ""}>2. Thông tin</span><span>—</span><span>3. Hoàn tất</span></div>
 
     {step === 1 && <>
-      <div className="grid items-end gap-7 lg:grid-cols-[1fr_520px]"><div><p className="eyebrow text-lago-clay">Lịch trống theo thời gian thực</p><h1 className="display mt-3 max-w-3xl text-5xl font-semibold">Chọn không gian cho chuyến đi của bạn.</h1><p className="mt-4 text-lago-ink/58">Mỗi kết quả bên dưới đã được kiểm tra lịch trống và tính giá theo đúng ngày bạn chọn.</p></div><div className="grid gap-3 rounded-[24px] bg-lago-cream p-3 sm:grid-cols-[1fr_130px]"><DateRangePicker checkIn={checkIn} checkOut={checkOut} onChange={(range) => { setCheckIn(range.checkIn); setCheckOut(range.checkOut); }} /><label className="rounded-2xl border border-lago-ink/10 bg-white px-4 py-3 text-xs font-bold">Số khách<select className="mt-1 w-full bg-transparent text-sm outline-none" value={guests} onChange={(event) => setGuests(Number(event.target.value))}>{Array.from({ length: 12 }, (_, index) => <option key={index + 1} value={index + 1}>{index + 1} khách</option>)}</select></label></div></div>
+      <div className="grid items-end gap-7 lg:grid-cols-[1fr_560px]"><div><p className="eyebrow text-lago-clay">Lịch trống theo thời gian thực</p><h1 className="display mt-3 max-w-3xl text-5xl font-semibold">Chọn không gian cho chuyến đi của bạn.</h1><p className="mt-4 text-lago-ink/58">Mỗi kết quả bên dưới đã được kiểm tra lịch trống và tính giá theo đúng ngày bạn chọn.</p></div><div className="grid gap-3 rounded-[24px] bg-lago-cream p-3 sm:grid-cols-[1fr_200px]"><DateRangePicker checkIn={checkIn} checkOut={checkOut} onChange={(range) => { setCheckIn(range.checkIn); setCheckOut(range.checkOut); }} /><GuestStepper value={guests} onChange={setGuests} /></div></div>
 
       {error && <p role="alert" className="mt-7 rounded-2xl bg-amber-50 p-4 text-sm font-semibold text-amber-800">{error}</p>}
 
