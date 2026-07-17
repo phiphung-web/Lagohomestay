@@ -37,6 +37,8 @@ Trên điện thoại, mỗi website có menu toàn màn hình mang đúng ngôn
 
 Ảnh minh họa dùng loader CDN responsive: trình duyệt nhận `srcset` theo kích thước màn hình và tải trực tiếp từ Unsplash, không đi qua `/_next/image`. Cách này giữ ảnh hoạt động ổn định trên VPS demo đồng thời tránh tải ảnh desktop quá lớn ở mobile.
 
+Font được tự host và giới hạn đúng các subset Latin/Vietnamese dạng WOFF2 đang sử dụng. Be Vietnam Pro đảm nhiệm nội dung và thao tác; Lora dành cho tiêu đề giàu cảm xúc. Artifact production giảm từ 120 tệp font khoảng 1,75 MB xuống 24 tệp khoảng 372 KB, không gửi kèm Cyrillic, toán học, symbol hoặc WOFF cũ không cần thiết.
+
 Các mức trong suốt tinh tế của hệ màu (`8%`, `12%`, `18%`, `52%`, `58%`...) được khai báo trong Tailwind theme để chắc chắn xuất hiện trong CSS production; không phụ thuộc các mức opacity mặc định của framework.
 
 Luồng chuyển đổi cũng được dùng chung ở chất lượng production: tiến trình ba bước, trạng thái tải/rỗng/lỗi rõ ràng, retry không làm đổi lựa chọn của khách, validation từng trường thay cho thông báo mặc định của trình duyệt, giá được khóa khi đang kiểm tra lại và đồng hồ đếm thời gian giữ chỗ sau khi gửi thành công. Ngày mặc định luôn tính theo múi giờ `Asia/Ho_Chi_Minh`, không phụ thuộc múi giờ VPS.
