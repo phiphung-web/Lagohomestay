@@ -51,7 +51,7 @@ export function CinematicStoryModal({ frames }: { frames: StoryFrame[] }) {
   return <>
     <button ref={triggerRef} type="button" onClick={() => { setActive(0); setPlaying(true); setOpen(true); }} className="group flex items-center gap-4 text-left">
       <span className="grid h-16 w-16 place-items-center rounded-full border border-white/30 bg-white/10 backdrop-blur transition duration-500 group-hover:scale-105 group-hover:border-[#e5c59c] group-hover:bg-[#e5c59c] group-hover:text-[#07130f]"><CirclePlay className="h-6 w-6" /></span>
-      <span><strong className="block text-sm">Xem cảm xúc Lago</strong><small className="mt-1 block text-white/42">04 cảnh · Thước phim ảnh</small></span>
+      <span><strong className="block text-sm">Xem cảm xúc Lago</strong><small className="mt-1 block text-white/48">04 cảnh · Thước phim ảnh</small></span>
     </button>
     {open && typeof document !== "undefined" && createPortal(<section ref={dialogRef} role="dialog" aria-modal="true" aria-label="Thước phim ảnh về Lago" onPointerDown={(event) => { dragStartRef.current = event.clientX; }} onPointerUp={(event) => { if (dragStartRef.current === null) return; const distance = event.clientX - dragStartRef.current; if (Math.abs(distance) > 55) change(distance < 0 ? 1 : -1); dragStartRef.current = null; }} className="fixed inset-0 z-[110] touch-pan-y overflow-hidden bg-[#020806] text-white">
       <Image key={frame.image} src={frame.image} alt={`${frame.title} - ảnh minh họa`} fill priority sizes="100vw" className="cinematic-frame object-cover" />
