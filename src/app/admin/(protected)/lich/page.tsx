@@ -2,7 +2,7 @@ import { ChevronLeft, ChevronRight, Plus } from "lucide-react";
 import { AdminPageHeading } from "@/features/admin/components/page-heading";
 
 const days = ["14 T3", "15 T4", "16 T5", "17 T6", "18 T7", "19 CN", "20 T2"];
-const rooms = ["Lago House", "Nhà Mây", "Nhà Rừng", "Nhà Đồi"];
+const rooms = ["LAKA House", "Nhà Mây", "Nhà Rừng", "Nhà Đồi"];
 const bookings = [
   { room: 0, start: 4, span: 2, label: "Minh Anh", color: "bg-amber-100 text-amber-800" },
   { room: 1, start: 1, span: 3, label: "Gia Hân", color: "bg-emerald-100 text-emerald-800" },

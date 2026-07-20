@@ -5,7 +5,7 @@ import { describe, expect, it } from "vitest";
 const css = readFileSync(join(process.cwd(), "src/app/fonts.css"), "utf8");
 
 describe("Vietnamese font bundle", () => {
-  it("keeps only the 24 Latin and Vietnamese WOFF2 faces used by Lago", () => {
+  it("keeps only the 24 Latin and Vietnamese WOFF2 faces used by LAKA", () => {
     expect(css.match(/@font-face/g)).toHaveLength(24);
     expect(css.match(/\.woff2\"/g)).toHaveLength(24);
     expect(css).not.toMatch(/\.woff\"/);

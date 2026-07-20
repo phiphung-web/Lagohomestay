@@ -15,7 +15,7 @@ describe("booking validation", () => {
       fullName: "Vui lòng nhập họ tên đầy đủ.",
       phone: "Số điện thoại chưa đúng. Ví dụ: 090 123 4567.",
       email: "Email chưa đúng định dạng.",
-      consent: "Bạn cần đồng ý để Lago xử lý yêu cầu đặt căn."
+      consent: "Bạn cần đồng ý để LAKA xử lý yêu cầu đặt căn."
     });
     expect(validateLookupPhone("090 123 4567")).toBe("");
   });

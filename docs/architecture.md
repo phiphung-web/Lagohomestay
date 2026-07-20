@@ -1,4 +1,4 @@
-# Kiến trúc Lago Homestay
+# Kiến trúc LAKA Homestay
 
 ## Mục tiêu
 

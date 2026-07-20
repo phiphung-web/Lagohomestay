@@ -7,11 +7,11 @@ export const dienAnhConfig: CompleteTemplateConfig = {
   name: "Điện ảnh",
   mood: "cinematic",
   basePath: "/mau/dien-anh",
-  background: "#07130f",
-  ink: "#f7f3e8",
-  accent: "#e5c59c",
-  surface: "#0d211a",
-  muted: "#48645a"
+  background: "#0b190f",
+  ink: "#faf3ea",
+  accent: "#c7a882",
+  surface: "#17321d",
+  muted: "#52634f"
 };
 
 export function DienAnhSite({ route }: { route: TemplateRoute }) {

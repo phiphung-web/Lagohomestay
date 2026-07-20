@@ -7,11 +7,11 @@ export const tinhLangConfig: CompleteTemplateConfig = {
   name: "Tĩnh lặng",
   mood: "editorial",
   basePath: "/mau/tinh-lang",
-  background: "#f3eee5",
-  ink: "#19322c",
-  accent: "#a36349",
-  surface: "#ebe3d7",
-  muted: "#d8cdbf"
+  background: "#faf3ea",
+  ink: "#17321d",
+  accent: "#c7a882",
+  surface: "#e7ded1",
+  muted: "#d4c7b6"
 };
 
 export function TinhLangSite({ route }: { route: TemplateRoute }) {

@@ -88,7 +88,7 @@ export async function GET(request: NextRequest) {
         bedrooms: type.bedrooms,
         basePrice: Number(type.basePrice),
         highlights,
-        location: concept?.location ?? "Lago Homestay",
+        location: concept?.location ?? "LAKA Homestay",
         badge: concept?.badge,
         quote: calculatePrice({ checkIn: start, checkOut: end, guests, baseGuests: type.baseGuests, basePrice: Number(type.basePrice), rules })
       };
@@ -96,6 +96,6 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ data: results, meta: { checkIn, checkOut, guests } });
   } catch (error) {
     console.error("availability_lookup_failed", { reason: error instanceof Error ? error.message : "unknown" });
-    return NextResponse.json({ message: "Lago chưa thể kiểm tra lịch lúc này. Vui lòng thử lại sau ít phút." }, { status: 500 });
+    return NextResponse.json({ message: "LAKA chưa thể kiểm tra lịch lúc này. Vui lòng thử lại sau ít phút." }, { status: 500 });
   }
 }

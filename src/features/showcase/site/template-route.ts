@@ -42,7 +42,7 @@ const titles: Record<Exclude<TemplateRoute["kind"], "stay">, string> = {
   stays: "Các căn nhà",
   experience: "Trải nghiệm",
   gallery: "Thư viện",
-  about: "Về Lago",
+  about: "Về LAKA",
   faq: "Thông tin cần biết",
   policy: "Chính sách lưu trú",
   contact: "Liên hệ",
@@ -57,7 +57,7 @@ export function getTemplateMetadata(route: TemplateRoute, templateName: string):
   }
   return {
     title: `${titles[route.kind]} · Mẫu ${templateName}`,
-    description: `Khám phá Lago Homestay qua hướng thiết kế ${templateName.toLowerCase()}.`
+    description: `Khám phá LAKA Homestay qua hướng thiết kế ${templateName.toLowerCase()}.`
   };
 }
 

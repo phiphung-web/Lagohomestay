@@ -47,9 +47,9 @@ export function StayFinder({ stays }: { stays: Stay[] }) {
   return <section className="finder-shell overflow-hidden rounded-[34px] bg-lago-ink text-white shadow-soft">
     <div className="grid lg:grid-cols-[.92fr_1.08fr]">
       <div className="p-6 sm:p-9 lg:p-11">
-        <p className="eyebrow flex items-center gap-2 text-lago-sand"><Sparkles className="h-4 w-4" /> Lago Finder</p>
+        <p className="eyebrow flex items-center gap-2 text-lago-sand"><Sparkles className="h-4 w-4" /> LAKA Finder</p>
         <h3 className="display mt-4 text-4xl font-medium leading-tight sm:text-5xl">Tìm căn hợp với nhịp nghỉ của bạn.</h3>
-        <p className="mt-4 max-w-xl text-sm leading-7 text-white/58">Ba lựa chọn ngắn để Lago hiểu chuyến đi và đề xuất không gian phù hợp nhất.</p>
+        <p className="mt-4 max-w-xl text-sm leading-7 text-white/58">Ba lựa chọn ngắn để LAKA hiểu chuyến đi và đề xuất không gian phù hợp nhất.</p>
 
         <div className="mt-8 space-y-7">
           <fieldset><legend className="mb-3 text-xs font-bold uppercase tracking-wider text-white/45">1 · Bạn đi cùng ai?</legend><div className="grid grid-cols-2 gap-2">{journeys.map((item) => <button type="button" key={item.value} onClick={() => { setJourney(item.value); if (item.value === "couple") setGuests(2); if (item.value === "family") setGuests(4); if (item.value === "friends") setGuests(6); }} className={`focus-ring rounded-2xl border p-3 text-left transition ${journey === item.value ? "border-lago-sand bg-white text-lago-ink" : "border-white/12 bg-white/[.05] hover:bg-white/[.1]"}`}><strong className="block text-sm">{item.label}</strong><span className={`mt-1 block text-[.65rem] ${journey === item.value ? "text-lago-ink/48" : "text-white/40"}`}>{item.note}</span></button>)}</div></fieldset>
@@ -59,7 +59,7 @@ export function StayFinder({ stays }: { stays: Stay[] }) {
       </div>
 
       <div key={`${recommended.slug}-${journey}-${vibe}-${guests}`} className="finder-result relative min-h-[580px] overflow-hidden lg:min-h-full">
-        <Image src={recommended.image} alt={`${recommended.name} - gợi ý từ Lago Finder`} fill sizes="(max-width: 1024px) 100vw, 55vw" className="object-cover" />
+        <Image src={recommended.image} alt={`${recommended.name} - gợi ý từ LAKA Finder`} fill sizes="(max-width: 1024px) 100vw, 55vw" className="object-cover" />
         <div className="absolute inset-0 bg-gradient-to-t from-lago-ink via-lago-ink/25 to-transparent" />
         <div className="absolute inset-x-0 bottom-0 p-6 sm:p-9 lg:p-11">
           <span className="inline-flex items-center gap-2 rounded-full bg-white px-3 py-1.5 text-[.62rem] font-bold uppercase tracking-wider text-lago-ink"><Check className="h-3.5 w-3.5" /> Phù hợp nhất</span>

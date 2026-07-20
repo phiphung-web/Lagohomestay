@@ -1,6 +1,6 @@
-# Lago Homestay
+# LAKA Homestay
 
-Website đặt phòng tiếng Việt và CRM vận hành cho Lago Homestay. Giao diện hiện dùng dữ liệu và hình ảnh concept để có thể duyệt trải nghiệm trước khi có nội dung thực tế.
+Website đặt phòng tiếng Việt và CRM vận hành cho LAKA Homestay. Giao diện hiện dùng dữ liệu và hình ảnh concept để có thể duyệt trải nghiệm trước khi có nội dung thực tế.
 
 ## Cấu trúc mã nguồn
 
@@ -29,7 +29,7 @@ npm run dev
 Giữ `DEMO_MODE="true"` để xem toàn bộ giao diện và thử luồng đặt phòng mà không cần PostgreSQL. CRM tại `/admin` dùng tài khoản mẫu:
 
 - Email: `owner@lago.local`
-- Mật khẩu: `Lago@2026`
+- Mật khẩu: `LAKA@2026`
 
 ## Chạy với PostgreSQL
 
@@ -70,7 +70,7 @@ docker ps --format 'table {{.Names}}\t{{.Ports}}'
 systemctl is-active nginx apache2 httpd 2>/dev/null || true
 ```
 
-Sau khi container khỏe, thêm một vhost riêng cho domain Lago vào Nginx/Apache đang có. File `deploy/nginx-lago.conf.example` chỉ là mẫu; không chép đè `nginx.conf` hay vhost khác. Luôn chạy `nginx -t` hoặc lệnh kiểm tra tương ứng trước khi reload.
+Sau khi container khỏe, thêm một vhost riêng cho domain LAKA vào Nginx/Apache đang có. File `deploy/nginx-lago.conf.example` chỉ là mẫu; không chép đè `nginx.conf` hay vhost khác. Luôn chạy `nginx -t` hoặc lệnh kiểm tra tương ứng trước khi reload.
 
 Kiểm tra sau triển khai:
 

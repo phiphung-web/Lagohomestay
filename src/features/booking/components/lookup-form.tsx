@@ -33,7 +33,7 @@ export function LookupForm() {
       else if (!response.ok) setError(data.message);
       else { setResults(data.bookings); setSearched(true); }
     } catch {
-      setError("Chưa thể kiểm tra lúc này. Vui lòng thử lại hoặc gọi Lago.");
+      setError("Chưa thể kiểm tra lúc này. Vui lòng thử lại hoặc gọi LAKA.");
     } finally {
       setLoading(false);
     }
@@ -57,6 +57,6 @@ export function LookupForm() {
         <div className="mt-5 grid gap-4 border-t border-lago-ink/10 pt-5 text-sm sm:grid-cols-3"><div><p className="flex items-center gap-2 text-xs text-lago-ink/45"><CalendarDays className="h-3.5 w-3.5" />Ngày ở</p><p className="mt-1 font-bold">{new Date(result.checkIn).toLocaleDateString("vi-VN")} → {new Date(result.checkOut).toLocaleDateString("vi-VN")}</p></div><div><p className="flex items-center gap-2 text-xs text-lago-ink/45"><Users className="h-3.5 w-3.5" />Số khách</p><p className="mt-1 font-bold">{result.guests} khách</p></div><div><p className="text-xs text-lago-ink/45">Tạm tính</p><p className="mt-1 font-bold">{formatCurrency(result.totalAmount)}</p></div></div>
       </article>)}
     </div>}
-    {searched && results.length === 0 && !error && <div className="result-enter mt-6 rounded-[24px] border border-lago-ink/10 bg-white/72 p-7 text-center" aria-live="polite"><span className="mx-auto grid h-12 w-12 place-items-center rounded-full bg-lago-cream"><Phone className="h-5 w-5 text-lago-clay" /></span><h2 className="display mt-4 text-2xl font-semibold">Chưa thấy yêu cầu đặt chỗ</h2><p className="mt-3 text-sm leading-6 text-lago-ink/55">Kiểm tra lại số điện thoại hoặc gọi Lago nếu bạn đã gửi yêu cầu nhưng chưa thấy thông tin.</p><a href="tel:0900000000" className="soft-link mt-5">Gọi 0900 000 000</a></div>}
+    {searched && results.length === 0 && !error && <div className="result-enter mt-6 rounded-[24px] border border-lago-ink/10 bg-white/72 p-7 text-center" aria-live="polite"><span className="mx-auto grid h-12 w-12 place-items-center rounded-full bg-lago-cream"><Phone className="h-5 w-5 text-lago-clay" /></span><h2 className="display mt-4 text-2xl font-semibold">Chưa thấy yêu cầu đặt chỗ</h2><p className="mt-3 text-sm leading-6 text-lago-ink/55">Kiểm tra lại số điện thoại hoặc gọi LAKA nếu bạn đã gửi yêu cầu nhưng chưa thấy thông tin.</p><a href="tel:0900000000" className="soft-link mt-5">Gọi 0900 000 000</a></div>}
   </div>;
 }

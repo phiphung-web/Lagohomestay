@@ -21,8 +21,8 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         const result = credentialsSchema.safeParse(raw);
         if (!result.success) return null;
         const { email, password } = result.data;
-        if (process.env.DEMO_MODE !== "false" && email === "owner@lago.local" && password === "Lago@2026") {
-          return { id: "demo-owner", name: "Chủ Lago", email, role: "OWNER" as const };
+        if (process.env.DEMO_MODE !== "false" && email === "owner@lago.local" && password === "LAKA@2026") {
+          return { id: "demo-owner", name: "Chủ LAKA", email, role: "OWNER" as const };
         }
         const user = await prisma.user.findUnique({ where: { email: email.toLowerCase() } });
         if (!user?.active || !(await compare(password, user.passwordHash))) return null;

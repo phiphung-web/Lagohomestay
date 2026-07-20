@@ -66,6 +66,6 @@ export async function POST(request: NextRequest) {
     const reason = error instanceof Error ? error.message : "";
     if (["NOT_AVAILABLE", "UNIT_NOT_FOUND", "CAPACITY_EXCEEDED"].includes(reason)) return NextResponse.json({ message: reason === "NOT_AVAILABLE" ? "Phòng vừa được khách khác giữ. Vui lòng chọn không gian hoặc ngày khác." : "Không gian này hiện không thể đặt." }, { status: 409 });
     console.error("booking_create_failed", { reason });
-    return NextResponse.json({ message: "Lago chưa thể ghi nhận yêu cầu. Vui lòng thử lại hoặc gọi trực tiếp cho chúng mình." }, { status: 500 });
+    return NextResponse.json({ message: "LAKA chưa thể ghi nhận yêu cầu. Vui lòng thử lại hoặc gọi trực tiếp cho chúng mình." }, { status: 500 });
   }
 }

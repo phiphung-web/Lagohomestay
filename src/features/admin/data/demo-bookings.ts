@@ -37,7 +37,7 @@ export const demoBookings: DemoBooking[] = [
     code: "LAGO-260710-Q7N1",
     guest: "Lê Hoàng Nam",
     phone: "091 442 8832",
-    stay: "Lago House",
+    stay: "LAKA House",
     checkIn: "25/07",
     checkOut: "27/07",
     total: 8_650_000,

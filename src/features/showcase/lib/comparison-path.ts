@@ -7,7 +7,7 @@ const pageLabels: Record<string, string> = {
   "/luu-tru": "Các căn",
   "/trai-nghiem": "Trải nghiệm",
   "/thu-vien": "Thư viện",
-  "/ve-lago": "Về Lago",
+  "/ve-lago": "Về LAKA",
   "/thong-tin": "Cần biết",
   "/chinh-sach": "Chính sách",
   "/lien-he": "Liên hệ",

@@ -13,7 +13,7 @@ export function generateStaticParams() { return stays.map((stay) => ({ slug: sta
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
   const stay = stays.find((item) => item.slug === slug);
-  return { title: stay?.name ?? "Căn nhà tại Lago", description: stay?.description };
+  return { title: stay?.name ?? "Căn nhà tại LAKA", description: stay?.description };
 }
 
 export default async function StayDetailPage({ params }: { params: Promise<{ slug: string }> }) {

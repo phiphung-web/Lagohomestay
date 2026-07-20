@@ -9,7 +9,7 @@ export function validateBookingContact(input: { fullName: string; phone: string;
   if (input.fullName.trim().length < 2) errors.fullName = "Vui lòng nhập họ tên đầy đủ.";
   if (!PHONE_PATTERN.test(input.phone.trim())) errors.phone = "Số điện thoại chưa đúng. Ví dụ: 090 123 4567.";
   if (input.email.trim() && !EMAIL_PATTERN.test(input.email.trim())) errors.email = "Email chưa đúng định dạng.";
-  if (!input.consent) errors.consent = "Bạn cần đồng ý để Lago xử lý yêu cầu đặt căn.";
+  if (!input.consent) errors.consent = "Bạn cần đồng ý để LAKA xử lý yêu cầu đặt căn.";
   return errors;
 }
 

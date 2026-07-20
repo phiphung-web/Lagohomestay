@@ -7,11 +7,11 @@ export const songDongConfig: CompleteTemplateConfig = {
   name: "Sống động",
   mood: "organic",
   basePath: "/mau/song-dong",
-  background: "#edf3df",
-  ink: "#21483d",
-  accent: "#e66e4c",
-  surface: "#ffffff",
-  muted: "#c9d8b4"
+  background: "#faf3ea",
+  ink: "#17321d",
+  accent: "#c7a882",
+  surface: "#fffdf9",
+  muted: "#d9dfc9"
 };
 
 export function SongDongSite({ route }: { route: TemplateRoute }) {

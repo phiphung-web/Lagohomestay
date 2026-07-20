@@ -3,7 +3,7 @@ import { TemplateSelector } from "@/features/showcase/components/template-select
 
 export const metadata: Metadata = {
   title: "Chọn mẫu giao diện",
-  description: "Ba hướng thiết kế khác biệt dành cho website Lago Homestay."
+  description: "Ba hướng thiết kế khác biệt dành cho website LAKA Homestay."
 };
 
 export default function HomePage() {

@@ -27,7 +27,7 @@ Khác biệt này tiếp tục xuyên suốt trang con: **Tĩnh lặng** trình 
 
 Trang **Trải nghiệm** cũng có ba cấu trúc độc lập: nhật ký thời gian kiểu tạp chí, chuỗi chapter có ảnh kiểu điện ảnh và bento hoạt động nhiều màu. FAQ, chính sách và tra cứu booking tiếp tục giữ đúng nhịp đó; accordion sử dụng native `details/summary`, có chuyển động chiều cao và vẫn thao tác đầy đủ bằng bàn phím.
 
-Trang **Về Lago** và **Liên hệ** có composition độc lập theo từng mood; địa chỉ chưa có dữ liệu thật được hiển thị như thông tin, không còn dùng liên kết `#` làm trang nhảy lên đầu. Hero trang chủ có lời chào theo giờ địa phương của người xem với bốn khoảng sáng, ngày, hoàng hôn và đêm. Nội dung ban đầu cố định rồi mới cập nhật phía client để tránh hydration mismatch và layout shift lớn.
+Trang **Về LAKA** và **Liên hệ** có composition độc lập theo từng mood; địa chỉ chưa có dữ liệu thật được hiển thị như thông tin, không còn dùng liên kết `#` làm trang nhảy lên đầu. Hero trang chủ có lời chào theo giờ địa phương của người xem với bốn khoảng sáng, ngày, hoàng hôn và đêm. Nội dung ban đầu cố định rồi mới cập nhật phía client để tránh hydration mismatch và layout shift lớn.
 
 Các tương tác dùng chung đã được hoàn thiện cho giai đoạn duyệt mẫu: thanh tiến trình cuộn theo màu nhận diện, ánh sáng nền phản hồi con trỏ trên desktop, lightbox thư viện có vuốt/phím mũi tên và thước phim ảnh riêng của mẫu Điện ảnh. Toàn bộ chuyển động tôn trọng thiết lập `prefers-reduced-motion` và modal giữ focus bàn phím trong vùng tương tác.
 
@@ -49,7 +49,7 @@ Thanh chuyển mẫu ở cuối màn hình chỉ phục vụ giai đoạn trình
 
 ## Phạm vi đầy đủ của mỗi mẫu
 
-Mỗi mẫu có 14 tuyến trang độc lập: trang chủ, danh sách căn, 4 trang chi tiết căn, trải nghiệm, thư viện, về Lago, thông tin/FAQ, chính sách, liên hệ, đặt chỗ và tra cứu. Header, footer, màu sắc, kiểu chữ, hình khối và hiệu ứng luôn giữ đúng phong cách khi chuyển trang trong cùng một mẫu.
+Mỗi mẫu có 14 tuyến trang độc lập: trang chủ, danh sách căn, 4 trang chi tiết căn, trải nghiệm, thư viện, về LAKA, thông tin/FAQ, chính sách, liên hệ, đặt chỗ và tra cứu. Header, footer, màu sắc, kiểu chữ, hình khối và hiệu ứng luôn giữ đúng phong cách khi chuyển trang trong cùng một mẫu.
 
 ## Khi chốt một mẫu
 

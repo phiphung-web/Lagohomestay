@@ -4,11 +4,11 @@
 
 :root {
   color-scheme: light;
-  --ink: #17312b;
-  --forest: #234f43;
-  --cream: #f6f1e8;
-  --sand: #e7d8c0;
-  --clay: #b86f52;
+  --ink: #17321d;
+  --forest: #17321d;
+  --cream: #faf3ea;
+  --sand: #e7ded1;
+  --clay: #c7a882;
 }
 
 * { box-sizing: border-box; }
@@ -43,6 +43,7 @@ summary::-webkit-details-marker { display: none; }
 .showcase-root .font-serif { font-family: "Lora", Georgia, serif; font-optical-sizing: auto; }
 .showcase-root p { text-wrap: pretty; }
 .showcase-root h1, .showcase-root h2 { text-wrap: balance; }
+.brand-logo { display: inline-block; background-color: currentColor; mask-position: center; mask-repeat: no-repeat; mask-size: contain; -webkit-mask-position: center; -webkit-mask-repeat: no-repeat; -webkit-mask-size: contain; }
 .container-lago { width: min(1240px, calc(100% - 40px)); margin-inline: auto; }
 .eyebrow { font-size: .72rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; }
 .section-pad { padding-block: 112px; }

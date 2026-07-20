@@ -13,14 +13,14 @@ const greetings: Record<GreetingMood, Record<DayPeriod, string>> = {
   editorial: {
     morning: "Buổi sớm · một ngày thật chậm đang mở ra",
     day: "Ban ngày · để thời gian trôi theo nhịp riêng",
-    evening: "Hoàng hôn · Lago đang dịu ánh đèn",
+    evening: "Hoàng hôn · LAKA đang dịu ánh đèn",
     night: "Đêm yên · một khoảng nghỉ đang chờ"
   },
   cinematic: {
     morning: "Cảnh 01 · ánh sớm vừa chạm mặt hồ",
     day: "Cảnh ngày · thiên nhiên đang lên màu",
     evening: "Golden hour · hoàng hôn đang hạ",
-    night: "After dark · Lago đã lên đèn"
+    night: "After dark · LAKA đã lên đèn"
   },
   organic: {
     morning: "Chào buổi sáng · hôm nay mình đi trốn nhé!",
