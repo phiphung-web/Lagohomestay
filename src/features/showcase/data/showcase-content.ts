@@ -20,7 +20,7 @@ export const guestStories = [
 ];
 
 export const showcaseFaqs = [
-  ["LAKA được chia thành những khu nào?", "Bản demo gồm Hệ Hồ, Hệ Rừng và Hệ Đồi. Trong ba hệ có bốn dòng nhà và sáu căn thực tế, phục vụ từ cặp đôi đến nhóm tối đa 8 khách."],
+  ["LAKA được chia thành những khu nào?", "Bản demo gồm Hệ Hồ, Hệ Rừng và Hệ Đồi. Trong ba hệ có tám dòng nhà và mười lăm căn thực tế, phục vụ từ cặp đôi đến nhóm tối đa 8 khách."],
   ["Đặt căn có cần thanh toán ngay không?", "Chưa cần. Yêu cầu được giữ trong 2 giờ để đội ngũ LAKA liên hệ xác nhận qua điện thoại hoặc Zalo."],
   ["Mỗi căn có phải không gian riêng không?", "Có. Khách sử dụng nguyên căn và không chia sẻ không gian sinh hoạt với đoàn khách khác."],
   ["Giá hiển thị đã chính xác chưa?", "Hệ thống tính giá dự kiến theo ngày và số khách. LAKA xác nhận mức cuối cùng khi liên hệ với bạn."],

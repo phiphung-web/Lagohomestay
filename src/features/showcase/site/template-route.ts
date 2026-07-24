@@ -6,6 +6,7 @@ export type TemplateRoute =
   | { kind: "stays" }
   | { kind: "stay"; slug: string }
   | { kind: "experience" }
+  | { kind: "services" }
   | { kind: "gallery" }
   | { kind: "about" }
   | { kind: "faq" }
@@ -17,6 +18,7 @@ export type TemplateRoute =
 const singlePages = {
   "luu-tru": "stays",
   "trai-nghiem": "experience",
+  "dich-vu": "services",
   "thu-vien": "gallery",
   "ve-lago": "about",
   "thong-tin": "faq",
@@ -41,6 +43,7 @@ const titles: Record<Exclude<TemplateRoute["kind"], "stay">, string> = {
   home: "Trang chủ",
   stays: "Các căn nhà",
   experience: "Trải nghiệm",
+  services: "Dịch vụ",
   gallery: "Thư viện",
   about: "Về LAKA",
   faq: "Thông tin cần biết",

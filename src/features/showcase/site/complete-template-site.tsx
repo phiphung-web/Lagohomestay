@@ -27,12 +27,13 @@ import {
   DemoContentNotice,
   TemplateDiningAndOccasions,
   TemplateExperienceCatalog,
-  TemplateJourneySection
+  TemplateJourneySection,
+  TemplateServicesCatalog
 } from "@/features/showcase/components/template-destination-sections";
 import type { ShowcaseTemplateSlug } from "@/features/showcase/data/templates";
 import type { ShowcaseLocale } from "@/features/showcase/i18n/locale";
 import { localizeStay } from "@/features/showcase/i18n/showcase-copy";
-import { conceptImages, stays } from "@/features/stays/data/demo-data";
+import { conceptImages, getUnitsForStay, stays } from "@/features/stays/data/demo-data";
 import { formatCurrency } from "@/shared/lib/format";
 import { SkipLink } from "@/shared/components/ui/skip-link";
 import { BrandLogo } from "@/shared/components/brand/brand-logo";
@@ -55,6 +56,7 @@ export type CompleteTemplateConfig = {
 const navItems = [
   ["Các căn", "luu-tru"],
   ["Trải nghiệm", "trai-nghiem"],
+  ["Dịch vụ", "dich-vu"],
   ["Thư viện", "thu-vien"],
   ["Về LAKA", "ve-lago"],
   ["Cần biết", "thong-tin"]
@@ -63,6 +65,7 @@ const navItems = [
 const englishNavItems = [
   ["Homes", "luu-tru"],
   ["Experiences", "trai-nghiem"],
+  ["Services", "dich-vu"],
   ["Gallery", "thu-vien"],
   ["About LAKA", "ve-lago"],
   ["Good to know", "thong-tin"]
@@ -166,7 +169,7 @@ export function TemplateFooter({ config, locale = "vi" }: { config: CompleteTemp
   const localizedNavItems = locale === "en" ? englishNavItems : navItems;
   return <footer className={`border-t border-current/12 pb-28 pt-14 sm:pb-32 ${config.mood === "organic" ? "bg-[#e7ded1]" : config.mood === "cinematic" ? "bg-[#0b190f]" : "bg-[#eae1d2]"}`}>
     <div className="mx-auto grid w-[min(1420px,calc(100%-40px))] gap-10 md:grid-cols-[1.1fr_.7fr_.7fr]">
-      <div><Link href={config.basePath} aria-label={locale === "en" ? "LAKA Homestay - Concept home" : "LAKA Homestay - Trang chủ mẫu"} className="inline-flex"><BrandLogo variant={config.mood === "editorial" ? "established" : "homestay"} decorative className={`${config.mood === "editorial" ? "w-[190px]" : "w-[210px]"} ${config.mood === "cinematic" ? "text-[#eae1d2]" : "text-[#16311c]"}`} /></Link><p className="mt-5 max-w-md text-sm leading-7 opacity-80">{locale === "en" ? "Three landscape collections, four home types and six private homes made for slower days together." : "Ba hệ cảnh quan, bốn dòng nhà và sáu căn riêng cho những ngày mọi người muốn sống chậm cùng nhau."}</p><span className="mt-5 inline-flex rounded-full border border-current/15 px-3 py-1.5 text-[.6rem] font-bold uppercase tracking-wider opacity-80">{locale === "en" ? "Presentation · Concept" : "Bản trình bày · Mẫu"} {config.name}</span></div>
+      <div><Link href={config.basePath} aria-label={locale === "en" ? "LAKA Homestay - Concept home" : "LAKA Homestay - Trang chủ mẫu"} className="inline-flex"><BrandLogo variant={config.mood === "editorial" ? "established" : "homestay"} decorative className={`${config.mood === "editorial" ? "w-[190px]" : "w-[210px]"} ${config.mood === "cinematic" ? "text-[#eae1d2]" : "text-[#16311c]"}`} /></Link><p className="mt-5 max-w-md text-sm leading-7 opacity-80">{locale === "en" ? "Three landscape collections, eight home types and fifteen private homes made for slower days together." : "Ba hệ cảnh quan, tám dòng nhà và mười lăm căn riêng cho những ngày mọi người muốn sống chậm cùng nhau."}</p><span className="mt-5 inline-flex rounded-full border border-current/15 px-3 py-1.5 text-[.6rem] font-bold uppercase tracking-wider opacity-80">{locale === "en" ? "Presentation · Concept" : "Bản trình bày · Mẫu"} {config.name}</span></div>
       <div><p className="text-[.65rem] font-bold uppercase tracking-[.16em] opacity-80">{locale === "en" ? "Explore" : "Khám phá"}</p><div className="mt-5 flex flex-col gap-3 text-sm font-bold">{localizedNavItems.slice(0, 4).map(([label, path]) => <Link key={path} href={scoped(config.basePath, path)}>{label}</Link>)}</div></div>
       <div><p className="text-[.65rem] font-bold uppercase tracking-[.16em] opacity-80">{locale === "en" ? "Connect" : "Kết nối"}</p><div className="mt-5 flex flex-col gap-3 text-sm"><a href="tel:0900000000" className="font-bold">0900 000 000</a><a href="https://zalo.me/0900000000">{locale === "en" ? "Book via Zalo" : "Zalo đặt phòng"}</a><Link href={scoped(config.basePath, "chinh-sach")}>{locale === "en" ? "Policies" : "Chính sách"}</Link><span className="flex items-center gap-2 opacity-80"><Instagram className="h-4 w-4" /> @lagohomestay</span></div></div>
     </div>
@@ -213,12 +216,13 @@ function PageIntro({ eyebrow, title, text, image, config, locale = "vi" }: { eye
 }
 
 function StaysPage({ config, locale }: { config: CompleteTemplateConfig; locale: ShowcaseLocale }) {
-  return <><PageIntro config={config} locale={locale} eyebrow={locale === "en" ? "The LAKA product map" : "Bản đồ lưu trú LAKA"} title={locale === "en" ? "Three landscapes. One place to return." : "Ba hệ cảnh quan. Một nơi để trở về."} text={locale === "en" ? "Begin with Lake, Forest or Hill, then choose from four home types and six physical homes." : "Bắt đầu từ Hệ Hồ, Hệ Rừng hoặc Hệ Đồi; sau đó chọn trong bốn dòng nhà và sáu căn thực tế."} image={conceptImages.detail1} />
+  return <><PageIntro config={config} locale={locale} eyebrow={locale === "en" ? "The LAKA product map" : "Bản đồ lưu trú LAKA"} title={locale === "en" ? "Three landscapes. One place to return." : "Ba hệ cảnh quan. Một nơi để trở về."} text={locale === "en" ? "Begin with Lake, Forest or Hill, then choose from eight home types and fifteen physical homes." : "Bắt đầu từ Hệ Hồ, Hệ Rừng hoặc Hệ Đồi; sau đó chọn trong tám dòng nhà và mười lăm căn thực tế."} image={conceptImages.detail1} />
     <TemplateStaysCollection mood={config.mood} basePath={config.basePath} locale={locale} /></>;
 }
 
 function StayPage({ config, slug, locale }: { config: CompleteTemplateConfig; slug: string; locale: ShowcaseLocale }) {
   const stay = localizeStay(stays.find((item) => item.slug === slug)!, locale);
+  const units = getUnitsForStay(stay.id);
   const cinematic = config.mood === "cinematic";
   const organic = config.mood === "organic";
   const galleryGrid = cinematic ? "sm:grid-cols-12" : organic ? "sm:grid-cols-12" : "sm:grid-cols-3";
@@ -229,6 +233,20 @@ function StayPage({ config, slug, locale }: { config: CompleteTemplateConfig; sl
   };
   return <><TemplateStayHero mood={config.mood} basePath={config.basePath} stay={stay} locale={locale} />
     <section className={`mx-auto grid gap-12 py-20 lg:grid-cols-[1fr_360px] lg:py-28 ${cinematic ? "w-[min(1420px,calc(100%-40px))] lg:grid-cols-[1fr_390px]" : "w-[min(1240px,calc(100%-40px))]"}`}><div><p className="text-[.65rem] font-bold uppercase tracking-[.18em] text-[var(--template-accent)]">{locale === "en" ? "Inside the home" : cinematic ? "Bên trong khung hình" : organic ? "Có gì trong nhà?" : "Không gian của căn"}</p><h2 className={`mt-4 max-w-3xl text-4xl leading-tight sm:text-5xl ${organic ? "font-extrabold tracking-[-.04em]" : "font-serif font-medium"}`}>{stay.longDescription}</h2><div className={`mt-12 grid gap-4 ${galleryGrid}`}>{stay.gallery.map((image, index) => <div key={image} className={`group relative overflow-hidden ${galleryShape(index)}`}><Image src={image} alt={`${stay.name} - ${locale === "en" ? `space ${index + 1}` : `góc không gian ${index + 1}`}`} fill sizes="(max-width:640px) 100vw, 55vw" className={`object-cover transition duration-700 group-hover:scale-[1.025] ${cinematic ? "opacity-78 group-hover:opacity-100" : ""}`} /><span className={`absolute bottom-3 left-3 px-3 py-1.5 text-[.56rem] font-bold uppercase tracking-wider ${cinematic ? "bg-black/55 text-white backdrop-blur" : "bg-white/88 text-[#16311c]"}`}>{locale === "en" ? "Frame" : "Góc"} {String(index + 1).padStart(2, "0")} · {locale === "en" ? "concept" : "minh họa"}</span></div>)}</div><h3 className={`mt-14 text-3xl ${organic ? "font-extrabold" : "font-serif font-medium"}`}>{locale === "en" ? "Featured amenities" : organic ? "Đủ tiện nghi để ở thật vui" : cinematic ? "Những chi tiết trong căn" : "Tiện nghi nổi bật"}</h3><div className={`mt-6 grid gap-3 sm:grid-cols-2 ${organic ? "gap-2" : ""}`}>{stay.amenities.map((item, index) => <span key={item} className={`flex items-center gap-3 py-3 text-sm ${organic ? "rounded-full bg-white px-4 font-bold shadow-sm" : "border-b border-current/10"}`}><span className={`${cinematic ? "text-[.6rem] font-bold text-[var(--template-accent)]" : ""}`}>{cinematic ? String(index + 1).padStart(2, "0") : <Check className="h-4 w-4 text-[var(--template-accent)]" />}</span>{item}</span>)}</div>
+      <section className="mt-14 border-t border-current/12 pt-10">
+        <div className="grid gap-5 sm:grid-cols-[1fr_.55fr] sm:items-end">
+          <div><p className="text-[.62rem] font-bold uppercase tracking-[.16em] text-[var(--template-accent)]">{locale === "en" ? "Physical homes in this type" : "Các căn thực tế thuộc dòng này"}</p><h3 className={`mt-4 text-3xl sm:text-4xl ${organic ? "font-extrabold" : "font-serif font-medium"}`}>{locale === "en" ? `${units.length} homes, each with its own position.` : `${units.length} căn, mỗi căn có một vị trí riêng.`}</h3></div>
+          <p className="text-sm leading-7 opacity-60">{locale === "en" ? "Layout and core amenities are equivalent. LAKA assigns or confirms the specific home according to availability and your preference." : "Thiết kế và tiện nghi chính tương đương. LAKA sẽ phân hoặc xác nhận căn cụ thể theo lịch trống và mong muốn của bạn."}</p>
+        </div>
+        <div className={`mt-7 grid gap-3 ${units.length > 1 ? "sm:grid-cols-2" : ""}`}>
+          {units.map((unit, index) => <article key={unit.id} className={`border border-current/12 p-5 ${organic ? "rounded-[24px] bg-white" : "bg-[var(--template-surface)]"}`}>
+            <div className="flex items-center justify-between gap-4"><span className="text-[.58rem] font-bold uppercase tracking-[.14em] text-[var(--template-accent)]">{unit.code}</span><span className="text-[.56rem] font-bold uppercase tracking-[.12em] opacity-45">0{index + 1}</span></div>
+            <h4 className={`mt-6 text-2xl ${organic ? "font-extrabold" : "font-serif font-medium"}`}>{locale === "en" ? unit.nameEn : unit.name}</h4>
+            <p className="mt-2 text-xs font-bold opacity-55">{locale === "en" ? unit.positionEn : unit.position}</p>
+            <p className="mt-4 text-sm leading-6 opacity-70">{locale === "en" ? unit.characterEn : unit.character}</p>
+          </article>)}
+        </div>
+      </section>
       <div className="mt-14 grid border-y border-current/12 sm:grid-cols-3">
         {[
           [locale === "en" ? "Best for" : "Phù hợp nhất", stay.idealFor],
@@ -249,7 +267,13 @@ function ExperiencePage({ config, locale }: { config: CompleteTemplateConfig; lo
   return <><PageIntro config={config} locale={locale} eyebrow={locale === "en" ? "A day at LAKA" : "Một ngày tại LAKA"} title={locale === "en" ? "A day that needs very little planning." : "Một ngày không cần lên kế hoạch quá nhiều."} text={locale === "en" ? "LAKA prepares the space. Let nature and curiosity guide everything else." : "LAKA chuẩn bị không gian. Phần còn lại, bạn có thể để thiên nhiên và cảm hứng dẫn đường."} image={conceptImages.experience} />
     <DemoContentNotice locale={locale} />
     <TemplateExperienceStory mood={config.mood} locale={locale} />
-    <TemplateExperienceCatalog locale={locale} />
+    <TemplateExperienceCatalog locale={locale} /></>;
+}
+
+function ServicesPage({ config, locale }: { config: CompleteTemplateConfig; locale: ShowcaseLocale }) {
+  return <><PageIntro config={config} locale={locale} eyebrow={locale === "en" ? "Services and shared spaces" : "Dịch vụ và tiện ích"} title={locale === "en" ? "Everything useful. Nothing intrusive." : "Đủ đầy khi cần. Riêng tư khi muốn."} text={locale === "en" ? "From breakfast at your home to family essentials, private occasions and shared nature spaces, choose only what makes your stay lighter." : "Từ bữa sáng tại căn, tiện ích gia đình đến dịp riêng và không gian thiên nhiên dùng chung — bạn chỉ cần chọn những gì khiến kỳ nghỉ nhẹ nhàng hơn."} image={conceptImages.detail2} />
+    <DemoContentNotice locale={locale} />
+    <TemplateServicesCatalog locale={locale} />
     <TemplateDiningAndOccasions locale={locale} /></>;
 }
 
@@ -316,6 +340,7 @@ function TemplateContent({ route, config, locale }: { route: TemplateRoute; conf
     case "stays": return <StaysPage config={config} locale={locale} />;
     case "stay": return <StayPage config={config} slug={route.slug} locale={locale} />;
     case "experience": return <ExperiencePage config={config} locale={locale} />;
+    case "services": return <ServicesPage config={config} locale={locale} />;
     case "gallery": return <GalleryPage config={config} locale={locale} />;
     case "about": return <AboutPage config={config} locale={locale} />;
     case "faq": return <FaqPage config={config} locale={locale} />;

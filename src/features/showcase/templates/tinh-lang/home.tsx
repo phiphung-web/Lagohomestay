@@ -17,8 +17,8 @@ import { diningStories, inLocale } from "@/features/showcase/data/laka-demo-cont
 
 const facts = [
   { icon: House, value: "03", vi: "hệ cảnh quan", en: "landscape collections" },
-  { icon: ShieldCheck, value: "04", vi: "dòng nhà riêng", en: "private home types" },
-  { icon: Users, value: "06", vi: "căn thực tế", en: "physical homes" },
+  { icon: ShieldCheck, value: "08", vi: "dòng nhà riêng", en: "private home types" },
+  { icon: Users, value: "15", vi: "căn thực tế", en: "physical homes" },
   { icon: Clock3, value: "02h", vi: "giữ chỗ miễn phí", en: "complimentary hold" },
 ];
 
@@ -59,7 +59,7 @@ export function TinhLangHome({ config, locale = "vi" }: { config: CompleteTempla
           <div className="mb-auto flex items-start justify-between pt-2">
             <TemplateTimeGreeting mood="editorial" locale={locale} />
             <p className="hidden max-w-[210px] text-right text-[.6rem] font-bold uppercase leading-5 tracking-[.2em] text-white/55 sm:block">
-              {en ? "Three landscapes · six private homes · one slower rhythm" : "Ba hệ cảnh quan · sáu căn riêng · một nhịp sống thật chậm"}
+              {en ? "Three landscapes · fifteen private homes · one slower rhythm" : "Ba hệ cảnh quan · mười lăm căn riêng · một nhịp sống thật chậm"}
             </p>
           </div>
 
@@ -173,7 +173,7 @@ export function TinhLangHome({ config, locale = "vi" }: { config: CompleteTempla
         <div className="mx-auto w-[min(1320px,100%)]">
           <div className="grid gap-7 lg:grid-cols-[1fr_.45fr] lg:items-end">
             <div><p className="text-[.62rem] font-bold uppercase tracking-[.22em] text-[#80613f]">{en ? "Food is part of the memory" : "Bữa ăn cũng là một phần ký ức"}</p><h2 className="mt-5 max-w-5xl font-serif text-[clamp(3.4rem,7vw,6.8rem)] font-medium leading-[.92] tracking-[-.055em]">{en ? <>Stay close.<br /><i>Eat at your own table.</i></> : <>Ở thật gần.<br /><i>Ăn tại bàn của riêng mình.</i></>}</h2></div>
-            <div><p className="text-sm leading-7 text-[#16311c]/62">{en ? "A proposed dining concept built around the home: breakfast on the veranda, seasonal shared dishes and private evening tables." : "Concept ẩm thực xoay quanh căn nhà: giỏ sáng bên hiên, món theo mùa để chia sẻ và bàn tối riêng tư."}</p><Link href={`${config.basePath}/trai-nghiem`} className="mt-5 inline-flex items-center gap-2 border-b border-[#16311c] pb-2 text-xs font-bold uppercase tracking-[.12em]">{en ? "Explore food & experiences" : "Xem ẩm thực & trải nghiệm"} <ArrowRight className="h-4 w-4" /></Link></div>
+            <div><p className="text-sm leading-7 text-[#16311c]/62">{en ? "A proposed dining concept built around the home: breakfast on the veranda, seasonal shared dishes and private evening tables." : "Concept ẩm thực xoay quanh căn nhà: giỏ sáng bên hiên, món theo mùa để chia sẻ và bàn tối riêng tư."}</p><Link href={`${config.basePath}/dich-vu`} className="mt-5 inline-flex items-center gap-2 border-b border-[#16311c] pb-2 text-xs font-bold uppercase tracking-[.12em]">{en ? "Explore dining & services" : "Xem ẩm thực & dịch vụ"} <ArrowRight className="h-4 w-4" /></Link></div>
           </div>
           <div className="mt-12 grid border-y border-[#16311c]/15 md:grid-cols-3">
             {diningStories.map((item, index) => { const Icon = item.icon; return <article key={item.title.vi} className="border-b border-[#16311c]/15 px-6 py-8 last:border-b-0 md:border-b-0 md:border-r md:first:pl-0 md:last:border-r-0"><div className="flex items-center justify-between"><span className="text-[.58rem] font-bold text-[#80613f]">0{index + 1}</span><Icon className="h-5 w-5 text-[#80613f]" /></div><p className="mt-12 text-[.58rem] font-bold uppercase tracking-[.16em] text-[#16311c]/45">{inLocale(item.kicker, locale)}</p><h3 className="mt-3 font-serif text-3xl font-medium">{inLocale(item.title, locale)}</h3><p className="mt-4 text-sm leading-7 text-[#16311c]/62">{inLocale(item.text, locale)}</p></article>; })}

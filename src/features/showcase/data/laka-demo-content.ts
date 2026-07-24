@@ -1,8 +1,11 @@
 import {
   Bike,
+  Baby,
   CakeSlice,
+  Car,
   Coffee,
   FlameKindling,
+  Flower2,
   Footprints,
   Heart,
   MapPinned,
@@ -12,7 +15,9 @@ import {
   Sparkles,
   Sunrise,
   TentTree,
-  UtensilsCrossed
+  UtensilsCrossed,
+  WashingMachine,
+  Waves
 } from "lucide-react";
 import { conceptImages } from "@/features/stays/data/demo-data";
 import type { ShowcaseLocale } from "@/features/showcase/i18n/locale";
@@ -95,6 +100,66 @@ export const specialMoments = [
   { icon: CakeSlice, title: { vi: "Sinh nhật thật gần", en: "An intimate birthday" }, text: { vi: "Một bàn tiệc ấm cho gia đình hoặc nhóm bạn, không gian vừa đủ để ai cũng hiện diện.", en: "A warm table for family or friends, intimate enough for everyone to be present." } },
   { icon: Sparkles, title: { vi: "Lời ngỏ giữa thiên nhiên", en: "A proposal in nature" }, text: { vi: "Gợi ý thời điểm, góc cảnh và set-up kín đáo để khoảnh khắc vẫn thuộc về hai người.", en: "Thoughtful timing, setting and discreet preparation so the moment remains yours." } },
   { icon: TentTree, title: { vi: "Kỳ nghỉ nhóm nhỏ", en: "A small-group retreat" }, text: { vi: "Không gian sinh hoạt chung, bữa ăn và nhịp hoạt động linh hoạt cho đội nhóm thân thiết.", en: "Shared spaces, meals and a flexible rhythm for close-knit groups." } }
+] as const;
+
+export const guestServices = [
+  {
+    icon: Coffee,
+    title: { vi: "Giỏ sáng giao tại căn", en: "Breakfast hamper to your home" },
+    text: { vi: "Bánh mới, trái cây, món nóng và đồ uống được giao trong khung giờ bạn chọn.", en: "Fresh bread, fruit, a warm dish and drinks delivered in your chosen time window." },
+    meta: { vi: "Đặt trước 20:00 hôm trước", en: "Order by 8 pm the day before" }
+  },
+  {
+    icon: UtensilsCrossed,
+    title: { vi: "BBQ và bữa tối riêng", en: "Private barbecue and dinner" },
+    text: { vi: "Chuẩn bị nguyên liệu, dụng cụ và set-up tại những căn có hiên phù hợp.", en: "Ingredients, equipment and set-up for homes with a suitable private veranda." },
+    meta: { vi: "Theo căn · đặt trước 24 giờ", en: "Selected homes · 24 hours ahead" }
+  },
+  {
+    icon: Flower2,
+    title: { vi: "Hoa, bánh và set-up", en: "Flowers, cake and occasion set-up" },
+    text: { vi: "Cá nhân hóa một góc nhỏ cho sinh nhật, kỷ niệm hoặc lời ngỏ riêng.", en: "A personalised corner for birthdays, anniversaries or a private proposal." },
+    meta: { vi: "Tư vấn theo yêu cầu", en: "Tailored on request" }
+  },
+  {
+    icon: Baby,
+    title: { vi: "Bộ tiện ích gia đình", en: "Family essentials kit" },
+    text: { vi: "Ghế ăn, nôi, chậu tắm và đồ dùng cơ bản dành cho trẻ theo tình trạng sẵn có.", en: "High chair, cot, baby bath and essential items, subject to availability." },
+    meta: { vi: "Miễn phí · cần giữ trước", en: "Complimentary · reserve ahead" }
+  },
+  {
+    icon: Car,
+    title: { vi: "Xe đưa đón theo chuyến", en: "Private transfer" },
+    text: { vi: "Phương án xe riêng từ nội thành hoặc sân bay, có báo giá trước khi xác nhận.", en: "Private transfers from the city or airport, quoted before confirmation." },
+    meta: { vi: "Dịch vụ đề xuất", en: "Proposed service" }
+  },
+  {
+    icon: WashingMachine,
+    title: { vi: "Chăm sóc kỳ nghỉ dài", en: "Long-stay care" },
+    text: { vi: "Đổi khăn, vệ sinh giữa kỳ và giặt sấy theo lịch cho khách ở từ ba đêm.", en: "Scheduled towel changes, mid-stay cleaning and laundry for stays of three nights or more." },
+    meta: { vi: "Theo gói lưu trú", en: "Based on stay package" }
+  }
+] as const;
+
+export const sharedFacilities = [
+  {
+    icon: Waves,
+    title: { vi: "Bể bơi giữa cây xanh", en: "Pool among the trees" },
+    text: { vi: "Không gian bơi và ghế nghỉ dùng chung, có khung giờ yên tĩnh dành cho khách lưu trú.", en: "A shared pool and loungers with quiet hours reserved for staying guests." },
+    image: conceptImages.experience
+  },
+  {
+    icon: FlameKindling,
+    title: { vi: "Bãi cỏ và vòng lửa", en: "Lawn and fire circle" },
+    text: { vi: "Điểm gặp nhau cho trà chiều, hoạt động nhóm nhỏ và những tối trời đẹp.", en: "A gathering place for afternoon tea, small-group activities and clear evenings." },
+    image: conceptImages.detail2
+  },
+  {
+    icon: Footprints,
+    title: { vi: "Lối dạo nối ba hệ", en: "Trail connecting three collections" },
+    text: { vi: "Tuyến đi bộ nội khu kết nối Hệ Hồ, Hệ Rừng và Hệ Đồi bằng những khoảng nghỉ nhỏ.", en: "An internal walking trail connecting Lake, Forest and Hill with small pauses along the way." },
+    image: conceptImages.forest
+  }
 ] as const;
 
 export const journeySteps = [

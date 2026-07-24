@@ -54,6 +54,58 @@ const englishStays: Record<string, Partial<Stay>> = {
     idealFor: ["Stays of 3–7 nights", "Workations", "Small groups needing quiet zones"],
     included: ["Welcome drinks", "Kitchen and basic cookware", "Workspace and Wi-Fi", "Phone and Zalo support"],
     stayNotes: ["Two bedrooms and three beds", "Separate work area", "Designed for longer stays"]
+  },
+  "nha-ben": {
+    name: "Wharf House",
+    subtitle: "At the water's edge · for small families",
+    description: "A low lakeside home with its own timber jetty and an open living room facing the water.",
+    longDescription: "Wharf House occupies one of LAKA's calmest stretches of water. Two bedrooms open towards a shared veranda, while the connected kitchen, dining area and small timber jetty keep the family close to the lake.",
+    location: "Lake wharf",
+    badge: "Closest to the water",
+    amenities: ["Private timber jetty", "Waterside veranda", "Family kitchen", "Dining table for six", "Air conditioning", "Wi-Fi", "Parking", "Life jackets by request"],
+    highlights: ["Private lake jetty", "Two bedrooms", "Breakfast on the veranda"],
+    idealFor: ["Families of 3–5", "Small groups of friends", "Stays with older children"],
+    included: ["Welcome drinks", "Kitchen and basic cookware", "Towels and basic toiletries", "Phone and Zalo support"],
+    stayNotes: ["Two bedrooms and three beds", "Children require supervision near the lake", "No amplified outdoor activities"]
+  },
+  "nha-say": {
+    name: "Reed House",
+    subtitle: "A veranda beyond the reeds · for two",
+    description: "A private studio behind the reeds, with wide glazing, an indoor bath and a reading corner facing the lake.",
+    longDescription: "Reed House is for two people who want to hear water and wind more than conversation. A compact studio, a bath beside the view and a secluded veranda allow the day to unfold slowly.",
+    location: "Reed bank",
+    badge: "Made for two",
+    amenities: ["Indoor bath", "Private reed-side veranda", "Reading corner", "Kitchenette", "Air conditioning", "Wi-Fi", "Mini fridge"],
+    highlights: ["Private for two", "Lake-view bath", "Open studio"],
+    idealFor: ["Couples", "Private anniversaries", "Solo retreats"],
+    included: ["Welcome drinks", "Tea and coffee", "Towels and basic toiletries", "Phone and Zalo support"],
+    stayNotes: ["One double bed", "No additional bed", "The reed-garden path is softly lit"]
+  },
+  "cabin-thong": {
+    name: "Pine Cabin",
+    subtitle: "A timber cabin in the forest · for two",
+    description: "A compact cabin with a bed beside the glass, a suspended forest veranda and a private outdoor soaking pool.",
+    longDescription: "Pine Cabin keeps everything beautifully simple: one forest-facing bed, an ensuite bathroom, a timber veranda and a private soaking pool. Three cabins share the same design while remaining carefully spaced apart.",
+    location: "Forest slope",
+    badge: "Private soaking pool",
+    amenities: ["Outdoor soaking pool", "Private timber veranda", "Forest-facing bed", "Ensuite bathroom", "Air conditioning", "Mini fridge", "Wi-Fi"],
+    highlights: ["Private soaking pool", "Bed beside the glass", "Three secluded cabins"],
+    idealFor: ["Couples", "Short escapes", "Cabin lovers"],
+    included: ["Welcome drinks", "Tea and coffee", "Towels and robes", "Phone and Zalo support"],
+    stayNotes: ["Three equivalent cabins in different positions", "A short sloped forest path", "Soaking pool use depends on weather"]
+  },
+  "nha-to": {
+    name: "Nest House",
+    subtitle: "Two storeys beneath the trees · for small groups",
+    description: "A two-storey home with a shared lounge, boardgame corner and a private garden for friends or families.",
+    longDescription: "Nest House gives the ground floor to meals, boardgames and long conversations; two quieter bedrooms sit above the canopy line. Its private garden brings everyone close to the forest without losing the comforts of a complete home.",
+    location: "Forest heart",
+    badge: "For small groups",
+    amenities: ["Shared living room", "Boardgames", "Full kitchen", "Private garden", "Outdoor dining", "Air conditioning", "Wi-Fi", "Parking"],
+    highlights: ["Two-storey home", "Boardgame corner", "Private forest garden"],
+    idealFor: ["Groups of 4–6", "Families with older children", "Two small families"],
+    included: ["Welcome drinks", "Kitchen and basic cookware", "Curated boardgames", "Phone and Zalo support"],
+    stayNotes: ["Two bedrooms and four beds", "Internal staircase", "Quiet garden hours after 10 pm"]
   }
 };
 
@@ -98,7 +150,7 @@ export const englishExperienceMoments = [
 ];
 
 export const englishFaqs = [
-  ["How is LAKA organised?", "The concept includes Lake, Forest and Hill collections, containing four home types and six physical homes for couples, families and groups of up to eight."],
+  ["How is LAKA organised?", "The concept includes Lake, Forest and Hill collections, containing eight home types and fifteen physical homes for couples, families and groups of up to eight."],
   ["Do I need to pay immediately?", "No. Your request is held for two hours while the LAKA team confirms it by phone or Zalo."],
   ["Is each home completely private?", "Yes. Your group has the entire home and does not share living areas with other guests."],
   ["Is the displayed price final?", "The system estimates the price using your dates and guest count. LAKA confirms the final amount when contacting you."],

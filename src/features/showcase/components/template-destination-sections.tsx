@@ -3,9 +3,11 @@ import { ArrowRight, Info } from "lucide-react";
 import {
   demoNotice,
   diningStories,
+  guestServices,
   inLocale,
   journeySteps,
   lakaExperiences,
+  sharedFacilities,
   specialMoments
 } from "@/features/showcase/data/laka-demo-content";
 import type { ShowcaseLocale } from "@/features/showcase/i18n/locale";
@@ -56,6 +58,59 @@ export function TemplateDiningAndOccasions({ locale }: { locale: ShowcaseLocale 
           {specialMoments.map((item, index) => { const Icon = item.icon; return <article key={item.title.vi} className={`border-b border-white/15 py-8 md:px-8 ${index % 2 === 0 ? "md:border-r md:pl-0" : ""}`}><div className="flex items-center justify-between"><span className="text-[.58rem] font-bold text-[#dfc6a5]">0{index + 1}</span><Icon className="h-5 w-5 text-[#dfc6a5]" /></div><h3 className="mt-10 font-serif text-3xl font-medium">{inLocale(item.title, locale)}</h3><p className="mt-4 max-w-lg text-sm leading-7 text-white/52">{inLocale(item.text, locale)}</p></article>; })}
         </div>
         <p className="mt-8 max-w-2xl text-xs leading-6 text-white/42">{locale === "en" ? "Occasion packages are concept proposals. Scope and pricing will be confirmed with the operating team." : "Các gói dịp đặc biệt là đề xuất cho bản demo; hạng mục và giá cần được xác nhận cùng đội ngũ vận hành."}</p>
+      </div>
+    </section>
+  </>;
+}
+
+export function TemplateServicesCatalog({ locale }: { locale: ShowcaseLocale }) {
+  return <>
+    <section className="mx-auto w-[min(1320px,calc(100%-40px))] py-20 sm:py-28">
+      <div className="grid gap-8 border-b border-[#16311c]/15 pb-9 lg:grid-cols-[.58fr_1fr] lg:items-end">
+        <div>
+          <p className="text-[.62rem] font-bold uppercase tracking-[.2em] text-[#80613f]">{locale === "en" ? "Care, when you need it" : "Chăm sóc vừa lúc"}</p>
+          <h2 className="mt-5 font-serif text-5xl font-medium leading-[.94] tracking-[-.05em] sm:text-7xl">{locale === "en" ? "A private home, with thoughtful support." : "Một căn nhà riêng, cùng sự hỗ trợ tinh tế."}</h2>
+        </div>
+        <p className="max-w-2xl text-sm leading-7 text-[#16311c]/65">{locale === "en" ? "Services are designed to remove small worries without interrupting the privacy of your stay. Select what is useful and leave the rest." : "Dịch vụ được thiết kế để gỡ bớt những bận tâm nhỏ mà không làm gián đoạn khoảng riêng của kỳ nghỉ. Chọn điều hữu ích, bỏ qua những gì không cần."}</p>
+      </div>
+      <div className="grid border-b border-[#16311c]/15 md:grid-cols-2 lg:grid-cols-3">
+        {guestServices.map((service, index) => {
+          const Icon = service.icon;
+          return <article key={service.title.vi} className={`border-b border-[#16311c]/15 py-8 md:px-7 lg:min-h-[300px] ${index % 3 !== 2 ? "lg:border-r" : ""}`}>
+            <div className="flex items-center justify-between">
+              <span className="text-[.58rem] font-bold text-[#80613f]">{String(index + 1).padStart(2, "0")}</span>
+              <Icon className="h-5 w-5 text-[#80613f]" />
+            </div>
+            <h3 className="mt-12 font-serif text-3xl font-medium">{inLocale(service.title, locale)}</h3>
+            <p className="mt-4 text-sm leading-7 text-[#16311c]/65">{inLocale(service.text, locale)}</p>
+            <p className="mt-6 text-[.58rem] font-bold uppercase tracking-[.14em] text-[#80613f]">{inLocale(service.meta, locale)}</p>
+          </article>;
+        })}
+      </div>
+    </section>
+
+    <section className="border-y border-[#16311c]/12 bg-[#e3d8c9] py-20 sm:py-28">
+      <div className="mx-auto w-[min(1380px,calc(100%-40px))]">
+        <div className="max-w-4xl">
+          <p className="text-[.62rem] font-bold uppercase tracking-[.2em] text-[#80613f]">{locale === "en" ? "Shared spaces" : "Tiện ích dùng chung"}</p>
+          <h2 className="mt-5 font-serif text-5xl font-medium leading-[.94] tracking-[-.05em] sm:text-7xl">{locale === "en" ? "Step outside your home. Stay close to nature." : "Bước ra khỏi căn. Vẫn ở thật gần thiên nhiên."}</h2>
+        </div>
+        <div className="mt-12 grid gap-5 lg:grid-cols-3">
+          {sharedFacilities.map((facility, index) => {
+            const Icon = facility.icon;
+            return <article key={facility.title.vi} className="group overflow-hidden bg-[#eae1d2]">
+              <div className="relative aspect-[4/3] overflow-hidden">
+                <Image src={facility.image} alt={`${inLocale(facility.title, locale)} — ${locale === "en" ? "concept image" : "hình ảnh minh họa"}`} fill sizes="(max-width:1024px) 100vw, 33vw" className="object-cover transition duration-700 group-hover:scale-[1.025]" />
+                <span className="absolute left-3 top-3 bg-[#16311c]/75 px-2.5 py-1 text-[.52rem] font-bold uppercase tracking-wider text-white backdrop-blur">0{index + 1} · {locale === "en" ? "Concept" : "Minh họa"}</span>
+              </div>
+              <div className="p-6">
+                <Icon className="h-5 w-5 text-[#80613f]" />
+                <h3 className="mt-6 font-serif text-3xl font-medium">{inLocale(facility.title, locale)}</h3>
+                <p className="mt-3 text-sm leading-7 text-[#16311c]/65">{inLocale(facility.text, locale)}</p>
+              </div>
+            </article>;
+          })}
+        </div>
       </div>
     </section>
   </>;

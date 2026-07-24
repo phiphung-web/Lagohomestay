@@ -7,6 +7,7 @@ import type { ComponentProps } from "react";
 const scopedRoots = [
   "/luu-tru",
   "/trai-nghiem",
+  "/dich-vu",
   "/thu-vien",
   "/ve-lago",
   "/thong-tin",
