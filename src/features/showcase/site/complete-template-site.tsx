@@ -12,7 +12,6 @@ import {
 } from "lucide-react";
 import { BookingExperience } from "@/features/booking/components/booking-experience";
 import { LookupForm } from "@/features/booking/components/lookup-form";
-import { ShowcaseSwitcher } from "@/features/showcase/components/showcase-switcher";
 import { GalleryLightbox } from "@/features/showcase/components/gallery-lightbox";
 import { TemplateExperienceLayer } from "@/features/showcase/components/template-experience-layer";
 import { TemplateMobileMenu } from "@/features/showcase/components/template-mobile-menu";
@@ -73,14 +72,15 @@ function scoped(basePath: string, path = "") {
   return path ? `${basePath}/${path}` : basePath;
 }
 
-export function TemplateHeader({ config, locale = "vi" }: { config: CompleteTemplateConfig; locale?: ShowcaseLocale }) {
+export function TemplateHeader({ config, locale = "vi", overlay = false }: { config: CompleteTemplateConfig; locale?: ShowcaseLocale; overlay?: boolean }) {
   const organic = config.mood === "organic";
   const cinematic = config.mood === "cinematic";
+  const darkHeader = cinematic || overlay;
   const localizedNavItems = locale === "en" ? englishNavItems : navItems;
   const mobileItems = localizedNavItems.map(([label, path]) => ({ label, href: scoped(config.basePath, path), exact: !path }));
-  return <header className={`sticky top-0 z-50 backdrop-blur-xl ${organic ? "border-transparent bg-[#faf3ea]/88 py-2" : cinematic ? "border-b border-white/10 bg-[#0b190f]/92" : "border-b border-[#17321d]/12 bg-[#faf3ea]/92"}`}>
+  return <header className={`sticky top-0 z-50 backdrop-blur-xl ${overlay ? "-mb-[76px] border-b border-white/15 bg-[#0b190f]/45 text-white" : organic ? "border-transparent bg-[#faf3ea]/88 py-2" : cinematic ? "border-b border-white/10 bg-[#0b190f]/92" : "border-b border-[#17321d]/12 bg-[#faf3ea]/92"}`}>
     <div className={`mx-auto flex w-[min(1420px,calc(100%-28px))] items-center justify-between gap-4 ${organic ? "h-16 rounded-full border border-[#17321d]/10 bg-white/90 px-4 shadow-[0_14px_45px_rgba(23,50,29,.1)] sm:px-6" : "h-[76px]"}`}>
-      <Link href={config.basePath} aria-label={locale === "en" ? "LAKA Homestay — concept home" : "LAKA Homestay — trang chủ mẫu"} className={`focus-ring flex items-center ${cinematic ? "text-[#faf3ea]" : "text-[#17321d]"}`}>
+      <Link href={config.basePath} aria-label={locale === "en" ? "LAKA Homestay — concept home" : "LAKA Homestay — trang chủ mẫu"} className={`focus-ring flex items-center ${darkHeader ? "text-[#faf3ea]" : "text-[#17321d]"}`}>
         <BrandLogo variant="wordmark" decorative className={organic ? "w-[104px]" : cinematic ? "w-[118px]" : "w-[126px]"} />
       </Link>
       <nav aria-label={locale === "en" ? `${config.name} navigation` : `Điều hướng mẫu ${config.name}`} className="hidden items-center gap-6 text-[.68rem] font-bold uppercase tracking-[.12em] lg:flex">
@@ -89,7 +89,7 @@ export function TemplateHeader({ config, locale = "vi" }: { config: CompleteTemp
       <div className="flex items-center gap-2">
         {config.slug === "tinh-lang" && <TemplateLanguageSwitcher locale={locale} />}
         <Link href={scoped(config.basePath, "tra-cuu")} className="hidden min-h-10 items-center px-3 text-xs font-bold opacity-80 transition hover:opacity-100 xl:inline-flex">{locale === "en" ? "Find booking" : "Tra cứu"}</Link>
-        <Link href={scoped(config.basePath, "dat-phong")} className={`inline-flex min-h-11 items-center gap-2 px-4 text-xs font-bold ${cinematic ? "rounded-full bg-[#c7a882] text-[#0b190f]" : organic ? "rounded-full bg-[#c7a882] text-[#17321d]" : "border-b border-[#17321d] px-1"}`}>
+        <Link href={scoped(config.basePath, "dat-phong")} className={`inline-flex min-h-11 items-center gap-2 px-4 text-xs font-bold ${overlay ? "rounded-full border border-white/25 bg-white/12 text-white" : cinematic ? "rounded-full bg-[#c7a882] text-[#0b190f]" : organic ? "rounded-full bg-[#c7a882] text-[#17321d]" : "border-b border-[#17321d] px-1"}`}>
           <CalendarDays className="h-4 w-4" /> <span className="hidden sm:inline">{locale === "en" ? "Check dates" : "Kiểm tra lịch"}</span><span className="sm:hidden">{locale === "en" ? "Book" : "Đặt căn"}</span>
         </Link>
         <TemplateMobileMenu name={config.name} mood={config.mood} items={mobileItems} bookingHref={scoped(config.basePath, "dat-phong")} lookupHref={scoped(config.basePath, "tra-cuu")} contactHref={scoped(config.basePath, "lien-he")} locale={locale} />
@@ -128,10 +128,21 @@ function PageIntro({ eyebrow, title, text, image, config, locale = "vi" }: { eye
     </div>
   </section>;
 
-  return <section className="border-b border-current/10 bg-[#e7ded1]">
-    <div className={`mx-auto grid w-[min(1420px,calc(100%-40px))] items-center gap-12 py-16 sm:py-24 ${image ? "lg:grid-cols-[.9fr_1.1fr]" : ""}`}>
-      <div className="relative z-10"><p className="text-[.65rem] font-bold uppercase tracking-[.2em] text-[var(--template-accent)]">{eyebrow}</p><h1 className="mt-6 max-w-4xl font-serif text-5xl font-medium leading-[1.02] tracking-[-.045em] sm:text-7xl lg:text-8xl">{title}</h1><p className="mt-7 max-w-2xl text-sm leading-7 text-[#17321d]/72 sm:text-base">{text}</p></div>
-      {image && <div className="relative min-h-[380px] overflow-hidden rounded-t-[180px] sm:min-h-[460px] sm:rounded-t-[240px]"><Image src={image} alt={`${title} - ${locale === "en" ? "concept image" : "ảnh minh họa"}`} fill priority sizes="(max-width:1024px) 100vw, 55vw" className="object-cover transition duration-1000 hover:scale-[1.02]" /><span className="absolute bottom-5 left-1/2 -translate-x-1/2 whitespace-nowrap bg-[#faf3ea]/92 px-4 py-2 text-[.58rem] font-bold uppercase tracking-[.14em] text-[#17321d]">{locale === "en" ? "Concept image" : "Hình ảnh minh họa"}</span></div>}
+  if (image) return <section className="relative min-h-[78svh] overflow-hidden border-b border-white/12 bg-[#10251d] text-white">
+    <Image src={image} alt={`${title} — ${locale === "en" ? "concept image" : "ảnh minh họa"}`} fill priority sizes="100vw" className="object-cover transition duration-[1400ms] hover:scale-[1.015]" />
+    <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(5,18,14,.12),rgba(5,18,14,.82))]" />
+    <div className="relative z-10 mx-auto flex min-h-[78svh] w-[min(1480px,calc(100%-40px))] flex-col justify-end pb-12 pt-28 sm:pb-16">
+      <p className="text-[.62rem] font-bold uppercase tracking-[.24em] text-[#dfc6a5]">{eyebrow}</p>
+      <h1 className="mt-5 max-w-6xl font-serif text-[clamp(3.8rem,10vw,9rem)] font-medium leading-[.84] tracking-[-.07em]">{title}</h1>
+      <div className="mt-7 grid gap-6 border-t border-white/22 pt-6 sm:grid-cols-[1fr_auto] sm:items-end"><p className="max-w-2xl text-sm leading-7 text-white/68 sm:text-base">{text}</p><span className="w-fit rounded-full border border-white/25 bg-black/12 px-4 py-2 text-[.56rem] font-bold uppercase tracking-[.14em] text-white/70 backdrop-blur">{locale === "en" ? "Concept image" : "Hình ảnh minh họa"}</span></div>
+    </div>
+  </section>;
+
+  return <section className="flex min-h-[64svh] items-end border-b border-[#17321d]/12 bg-[#e3d8c9]">
+    <div className="mx-auto w-[min(1420px,calc(100%-40px))] py-20 sm:py-28">
+      <p className="text-[.62rem] font-bold uppercase tracking-[.22em] text-[#80613f]">{eyebrow}</p>
+      <h1 className="mt-6 max-w-6xl font-serif text-[clamp(3.8rem,10vw,9rem)] font-medium leading-[.86] tracking-[-.07em]">{title}</h1>
+      <p className="mt-8 max-w-2xl border-t border-[#17321d]/18 pt-6 text-sm leading-7 text-[#17321d]/62 sm:text-base">{text}</p>
     </div>
   </section>;
 }
@@ -243,7 +254,6 @@ export function CompleteTemplateSite({ route, config, home, locale = "vi" }: { r
     <TemplateDocumentLocale locale={locale} />
     <SkipLink />
     <TemplateExperienceLayer mood={config.mood} />
-    <ShowcaseSwitcher current={config.slug} locale={locale} />
     <TemplateHeader config={config} locale={locale} />
     <main id="noi-dung-chinh" tabIndex={-1}>
       <div key={routeKey} className={`template-page-enter template-page-enter-${config.mood}`}>
