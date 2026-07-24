@@ -15,16 +15,33 @@ const pageLabels: Record<string, string> = {
   "/tra-cuu": "Tra cứu"
 };
 
+const englishPageLabels: Record<string, string> = {
+  "": "Home",
+  "/luu-tru": "Homes",
+  "/trai-nghiem": "Experiences",
+  "/thu-vien": "Gallery",
+  "/ve-lago": "About LAKA",
+  "/thong-tin": "Good to know",
+  "/chinh-sach": "Policies",
+  "/lien-he": "Contact",
+  "/dat-phong": "Booking",
+  "/tra-cuu": "Find booking"
+};
+
 export function getShowcaseRouteSuffix(pathname: string) {
-  return templateRootPattern.test(pathname) ? pathname.replace(templateRootPattern, "") : "";
+  const suffix = templateRootPattern.test(pathname) ? pathname.replace(templateRootPattern, "") : "";
+  if (suffix === "/en") return "";
+  return suffix.startsWith("/en/") ? suffix.slice(3) : suffix;
 }
 
-export function getShowcasePageLabel(pathname: string) {
+export function getShowcasePageLabel(pathname: string, locale: "vi" | "en" = "vi") {
   const suffix = getShowcaseRouteSuffix(pathname);
-  if (suffix.startsWith("/luu-tru/")) return "Chi tiết căn";
-  return pageLabels[suffix] ?? "Trang chủ";
+  if (suffix.startsWith("/luu-tru/")) return locale === "en" ? "Home details" : "Chi tiết căn";
+  const labels = locale === "en" ? englishPageLabels : pageLabels;
+  return labels[suffix] ?? (locale === "en" ? "Home" : "Trang chủ");
 }
 
 export function getShowcaseTemplateHref(template: ShowcaseTemplateSlug, pathname: string) {
-  return `/mau/${template}${getShowcaseRouteSuffix(pathname)}`;
+  const keepEnglish = template === "tinh-lang" && /^\/mau\/tinh-lang\/en(?:\/|$)/.test(pathname);
+  return `/mau/${template}${keepEnglish ? "/en" : ""}${getShowcaseRouteSuffix(pathname)}`;
 }

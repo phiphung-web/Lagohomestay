@@ -16,4 +16,13 @@ describe("showroom same-page comparison", () => {
     expect(getShowcasePageLabel("/mau/dien-anh/dat-phong")).toBe("Đặt chỗ");
     expect(getShowcasePageLabel("/mau/song-dong/luu-tru/nha-rung")).toBe("Chi tiết căn");
   });
+
+  it("keeps English routes valid when comparing concepts", () => {
+    expect(getShowcaseRouteSuffix("/mau/tinh-lang/en/luu-tru/nha-may")).toBe("/luu-tru/nha-may");
+    expect(getShowcaseTemplateHref("tinh-lang", "/mau/tinh-lang/en/luu-tru/nha-may"))
+      .toBe("/mau/tinh-lang/en/luu-tru/nha-may");
+    expect(getShowcaseTemplateHref("dien-anh", "/mau/tinh-lang/en/luu-tru/nha-may"))
+      .toBe("/mau/dien-anh/luu-tru/nha-may");
+    expect(getShowcasePageLabel("/mau/tinh-lang/en/luu-tru/nha-may", "en")).toBe("Home details");
+  });
 });

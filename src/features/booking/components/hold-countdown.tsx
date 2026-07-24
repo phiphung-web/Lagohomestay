@@ -2,12 +2,13 @@
 
 import { Clock3 } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
+import type { ShowcaseLocale } from "@/features/showcase/i18n/locale";
 
 function getRemaining(expiresAt: string) {
   return Math.max(0, new Date(expiresAt).getTime() - Date.now());
 }
 
-export function HoldCountdown({ expiresAt }: { expiresAt: string }) {
+export function HoldCountdown({ expiresAt, locale = "vi" }: { expiresAt: string; locale?: ShowcaseLocale }) {
   const [remaining, setRemaining] = useState<number | null>(null);
 
   useEffect(() => {
@@ -25,10 +26,10 @@ export function HoldCountdown({ expiresAt }: { expiresAt: string }) {
     return [hours, minutes, seconds].map((value) => String(value).padStart(2, "0")).join(":");
   }, [remaining]);
 
-  if (remaining === null) return <div className="mt-7 flex items-center justify-center gap-3 rounded-2xl border border-lago-forest/12 bg-lago-mist/55 px-5 py-4 text-sm font-bold text-lago-ink"><span className="grid h-10 w-10 place-items-center rounded-full bg-white shadow-sm"><Clock3 className="h-4 w-4" /></span>Đang tính thời gian giữ chỗ…</div>;
+  if (remaining === null) return <div className="mt-7 flex items-center justify-center gap-3 rounded-2xl border border-lago-forest/12 bg-lago-mist/55 px-5 py-4 text-sm font-bold text-lago-ink"><span className="grid h-10 w-10 place-items-center rounded-full bg-white shadow-sm"><Clock3 className="h-4 w-4" /></span>{locale === "en" ? "Calculating hold time…" : "Đang tính thời gian giữ chỗ…"}</div>;
 
-  return <div role="timer" aria-label={remaining > 0 ? `Thời gian giữ chỗ còn lại ${label}` : "Thời gian giữ chỗ đã kết thúc"} className={`mt-7 flex items-center justify-center gap-3 rounded-2xl border px-5 py-4 text-sm font-bold ${remaining > 0 ? "border-lago-forest/12 bg-lago-mist/55 text-lago-ink" : "border-amber-200 bg-amber-50 text-amber-800"}`}>
+  return <div role="timer" aria-label={remaining > 0 ? (locale === "en" ? `Estimated hold time remaining ${label}` : `Thời gian giữ chỗ còn lại ${label}`) : (locale === "en" ? "The estimated hold time has ended" : "Thời gian giữ chỗ đã kết thúc")} className={`mt-7 flex items-center justify-center gap-3 rounded-2xl border px-5 py-4 text-sm font-bold ${remaining > 0 ? "border-lago-forest/12 bg-lago-mist/55 text-lago-ink" : "border-amber-200 bg-amber-50 text-amber-800"}`}>
     <span className="grid h-10 w-10 place-items-center rounded-full bg-white shadow-sm"><Clock3 className="h-4 w-4" /></span>
-    {remaining > 0 ? <span>Thời gian giữ dự kiến còn <strong className="ml-1 tabular-nums">{label}</strong></span> : <span>Thời gian giữ dự kiến đã kết thúc</span>}
+    {remaining > 0 ? <span>{locale === "en" ? "Estimated hold time remaining" : "Thời gian giữ dự kiến còn"} <strong className="ml-1 tabular-nums">{label}</strong></span> : <span>{locale === "en" ? "The estimated hold time has ended" : "Thời gian giữ dự kiến đã kết thúc"}</span>}
   </div>;
 }

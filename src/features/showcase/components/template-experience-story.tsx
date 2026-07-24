@@ -2,12 +2,22 @@ import Image from "next/image";
 import { ArrowDownRight } from "lucide-react";
 import { experienceMoments, stayPromises } from "@/features/showcase/data/showcase-content";
 import { conceptImages } from "@/features/stays/data/demo-data";
+import type { ShowcaseLocale } from "@/features/showcase/i18n/locale";
+import { englishExperienceMoments } from "@/features/showcase/i18n/showcase-copy";
 
 type Mood = "editorial" | "cinematic" | "organic";
 
 const momentImages = [conceptImages.detail1, conceptImages.experience, conceptImages.detail2, conceptImages.forest];
 
-export function TemplateExperienceStory({ mood }: { mood: Mood }) {
+export function TemplateExperienceStory({ mood, locale = "vi" }: { mood: Mood; locale?: ShowcaseLocale }) {
+  const localizedMoments = locale === "en"
+    ? experienceMoments.map((moment, index) => ({ ...moment, ...englishExperienceMoments[index] }))
+    : experienceMoments;
+  const localizedPromises = locale === "en" ? [
+    { ...stayPromises[0], title: "Nature within reach", text: "Every home opens to greenery, water or its own private view." },
+    { ...stayPromises[1], title: "Warmth of a real home", text: "A kitchen, living room and private terrace where everyone can genuinely live together." },
+    { ...stayPromises[2], title: "Thoughtful, unobtrusive care", text: "The LAKA team helps when needed and leaves space when you want quiet." }
+  ] : stayPromises;
   if (mood === "cinematic") return <>
     <section className="mx-auto w-[min(1500px,calc(100%-40px))] py-20 sm:py-28">
       <div className="mb-8 flex items-end justify-between border-b border-white/12 pb-7"><div><p className="text-[.62rem] font-bold uppercase tracking-[.24em] text-[#c7a882]">Một ngày · Bốn chương</p><p className="mt-3 text-sm text-white/48">Từ lúc ánh sáng chạm rèm cửa đến khi căn nhà lên đèn.</p></div><span className="font-serif text-4xl text-white/18">24H</span></div>
@@ -25,7 +35,7 @@ export function TemplateExperienceStory({ mood }: { mood: Mood }) {
   }
 
   return <>
-    <section className="mx-auto w-[min(1120px,calc(100%-40px))] py-20 sm:py-28"><div className="mb-12 grid gap-6 border-b border-[#17321d]/15 pb-8 sm:grid-cols-[.55fr_1fr] sm:items-end"><p className="text-[.62rem] font-bold uppercase tracking-[.18em] text-[#80613f]">Nhật ký một ngày</p><p className="font-serif text-3xl font-medium leading-tight">Thời gian ở LAKA được đếm bằng ánh sáng, bữa ăn và những cuộc trò chuyện.</p></div><div>{experienceMoments.map(({ icon: Icon, time, title, text }, index) => <article key={time} className="grid gap-5 border-b border-[#17321d]/15 py-9 sm:grid-cols-[70px_90px_1fr] sm:items-start"><span className="text-xs font-bold text-[#80613f]">0{index + 1}</span><span className="text-xs font-bold text-[#17321d]/72">{time}</span><div className="grid gap-5 sm:grid-cols-[1fr_auto]"><div><Icon className="mb-5 h-6 w-6 text-[#80613f]" /><h2 className="font-serif text-3xl font-medium">{title}</h2><p className="mt-3 max-w-2xl text-sm leading-7 text-[#17321d]/72">{text}</p></div><span className="hidden font-serif text-5xl italic text-[#17321d]/18 sm:block">{time.slice(0, 2)}</span></div></article>)}</div></section>
-    <section className="mx-auto mb-24 grid w-[min(1240px,calc(100%-40px))] gap-6 md:grid-cols-3">{stayPromises.map(({ icon: Icon, title, text }, index) => <article key={title} className={`border border-[#17321d]/12 bg-[#e7ded1] p-7 ${index === 0 ? "rounded-t-[120px] pt-20" : index === 2 ? "md:mt-12" : "md:mt-6"}`}><Icon className="h-7 w-7 text-[#80613f]" /><h3 className="mt-7 font-serif text-2xl font-medium">{title}</h3><p className="mt-3 text-sm leading-6 text-[#17321d]/72">{text}</p></article>)}</section>
+    <section className="mx-auto w-[min(1120px,calc(100%-40px))] py-20 sm:py-28"><div className="mb-12 grid gap-6 border-b border-[#17321d]/15 pb-8 sm:grid-cols-[.55fr_1fr] sm:items-end"><p className="text-[.62rem] font-bold uppercase tracking-[.18em] text-[#80613f]">{locale === "en" ? "A day in four moments" : "Nhật ký một ngày"}</p><p className="font-serif text-3xl font-medium leading-tight">{locale === "en" ? "Time at LAKA is measured in light, meals and conversations." : "Thời gian ở LAKA được đếm bằng ánh sáng, bữa ăn và những cuộc trò chuyện."}</p></div><div>{localizedMoments.map(({ icon: Icon, time, title, text }, index) => <article key={time} className="grid gap-5 border-b border-[#17321d]/15 py-9 sm:grid-cols-[70px_90px_1fr] sm:items-start"><span className="text-xs font-bold text-[#80613f]">0{index + 1}</span><span className="text-xs font-bold text-[#17321d]/72">{time}</span><div className="grid gap-5 sm:grid-cols-[1fr_auto]"><div><Icon className="mb-5 h-6 w-6 text-[#80613f]" /><h2 className="font-serif text-3xl font-medium">{title}</h2><p className="mt-3 max-w-2xl text-sm leading-7 text-[#17321d]/72">{text}</p></div><span className="hidden font-serif text-5xl italic text-[#17321d]/18 sm:block">{time.slice(0, 2)}</span></div></article>)}</div></section>
+    <section className="mx-auto mb-24 grid w-[min(1240px,calc(100%-40px))] gap-6 md:grid-cols-3">{localizedPromises.map(({ icon: Icon, title, text }, index) => <article key={title} className={`border border-[#17321d]/12 bg-[#e7ded1] p-7 ${index === 0 ? "rounded-t-[120px] pt-20" : index === 2 ? "md:mt-12" : "md:mt-6"}`}><Icon className="h-7 w-7 text-[#80613f]" /><h3 className="mt-7 font-serif text-2xl font-medium">{title}</h3><p className="mt-3 text-sm leading-6 text-[#17321d]/72">{text}</p></article>)}</section>
   </>;
 }

@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { ArrowRight, Phone, Plus, ShieldCheck } from "lucide-react";
 import { showcaseFaqs } from "@/features/showcase/data/showcase-content";
+import type { ShowcaseLocale } from "@/features/showcase/i18n/locale";
+import { englishFaqs } from "@/features/showcase/i18n/showcase-copy";
 
 type Mood = "editorial" | "cinematic" | "organic";
 type Policy = readonly [string, string];
@@ -9,7 +11,8 @@ function Answer({ text }: { text: string }) {
   return <div className="grid grid-rows-[0fr] transition-[grid-template-rows] duration-500 ease-out group-open:grid-rows-[1fr]"><div className="overflow-hidden"><p className="max-w-2xl pb-1 pt-4 text-sm leading-7 opacity-80">{text}</p></div></div>;
 }
 
-export function TemplateFaqSection({ mood, policyHref }: { mood: Mood; policyHref: string }) {
+export function TemplateFaqSection({ mood, policyHref, locale = "vi" }: { mood: Mood; policyHref: string; locale?: ShowcaseLocale }) {
+  const localizedFaqs = locale === "en" ? englishFaqs : showcaseFaqs;
   if (mood === "cinematic") return <section className="mx-auto grid w-[min(1380px,calc(100%-40px))] gap-12 py-20 sm:py-28 lg:grid-cols-[.38fr_1fr]">
     <aside className="h-fit border-l border-[#c7a882]/35 pl-6 lg:sticky lg:top-28"><p className="text-[.62rem] font-bold uppercase tracking-[.22em] text-[#c7a882]">Hỗ trợ trực tiếp</p><p className="mt-6 max-w-xs font-serif text-3xl font-medium leading-tight">Một cuộc trò chuyện ngắn có thể giúp bạn chọn đúng căn.</p><a href="tel:0900000000" className="mt-7 inline-flex items-center gap-3 text-sm font-bold text-[#c7a882]"><Phone className="h-4 w-4" />0900 000 000</a></aside>
     <div className="border-t border-white/12">{showcaseFaqs.map(([question, answer], index) => <details key={question} className="group border-b border-white/12 py-7"><summary className="flex cursor-pointer list-none items-start gap-5"><span className="pt-1 text-[.62rem] font-bold text-[#c7a882]">0{index + 1}</span><span className="flex-1 font-serif text-2xl font-medium leading-tight sm:text-3xl">{question}</span><span className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-white/15 transition duration-300 group-open:rotate-45 group-open:border-[#c7a882] group-open:text-[#c7a882]"><Plus className="h-4 w-4" /></span></summary><div className="pl-11 text-white/72"><Answer text={answer} /></div></details>)}<Link href={policyHref} className="mt-9 inline-flex items-center gap-3 text-sm font-bold text-[#c7a882]">Đọc toàn bộ chính sách <ArrowRight className="h-4 w-4" /></Link></div>
@@ -21,8 +24,8 @@ export function TemplateFaqSection({ mood, policyHref }: { mood: Mood; policyHre
   </section>;
 
   return <section className="mx-auto grid w-[min(1120px,calc(100%-40px))] gap-12 py-20 sm:py-28 lg:grid-cols-[.55fr_1fr]">
-    <aside className="h-fit lg:sticky lg:top-28"><p className="text-[.62rem] font-bold uppercase tracking-[.18em] text-[#80613f]">Cần thêm thông tin?</p><p className="mt-6 max-w-sm font-serif text-3xl font-medium leading-tight">Chúng mình sẵn sàng lắng nghe trước khi bạn quyết định.</p><p className="mt-4 max-w-sm text-sm leading-7 text-[#17321d]/72">Gọi hoặc nhắn Zalo, đội ngũ LAKA sẽ tư vấn theo nhu cầu của từng đoàn.</p><a href="tel:0900000000" className="mt-7 inline-flex items-center gap-2 border-b border-[#17321d] pb-1 text-sm font-bold"><Phone className="h-4 w-4" />0900 000 000</a></aside>
-    <div className="border-t border-[#17321d]/15">{showcaseFaqs.map(([question, answer], index) => <details key={question} className="group border-b border-[#17321d]/15 py-7"><summary className="flex cursor-pointer list-none items-start gap-5"><span className="pt-1 text-[.6rem] font-bold text-[#80613f]">0{index + 1}</span><span className="flex-1 font-serif text-2xl font-medium leading-tight">{question}</span><Plus className="mt-1 h-5 w-5 shrink-0 transition duration-300 group-open:rotate-45" /></summary><div className="pl-10"><Answer text={answer} /></div></details>)}<Link href={policyHref} className="mt-8 inline-flex items-center gap-2 text-sm font-bold">Đọc chính sách lưu trú <ArrowRight className="h-4 w-4" /></Link></div>
+    <aside className="h-fit lg:sticky lg:top-28"><p className="text-[.62rem] font-bold uppercase tracking-[.18em] text-[#80613f]">{locale === "en" ? "Need more information?" : "Cần thêm thông tin?"}</p><p className="mt-6 max-w-sm font-serif text-3xl font-medium leading-tight">{locale === "en" ? "We are ready to listen before you decide." : "Chúng mình sẵn sàng lắng nghe trước khi bạn quyết định."}</p><p className="mt-4 max-w-sm text-sm leading-7 text-[#17321d]/72">{locale === "en" ? "Call or message us on Zalo and the LAKA team will advise you based on your group." : "Gọi hoặc nhắn Zalo, đội ngũ LAKA sẽ tư vấn theo nhu cầu của từng đoàn."}</p><a href="tel:0900000000" className="mt-7 inline-flex items-center gap-2 border-b border-[#17321d] pb-1 text-sm font-bold"><Phone className="h-4 w-4" />0900 000 000</a></aside>
+    <div className="border-t border-[#17321d]/15">{localizedFaqs.map(([question, answer], index) => <details key={question} className="group border-b border-[#17321d]/15 py-7"><summary className="flex cursor-pointer list-none items-start gap-5"><span className="pt-1 text-[.6rem] font-bold text-[#80613f]">0{index + 1}</span><span className="flex-1 font-serif text-2xl font-medium leading-tight">{question}</span><Plus className="mt-1 h-5 w-5 shrink-0 transition duration-300 group-open:rotate-45" /></summary><div className="pl-10"><Answer text={answer} /></div></details>)}<Link href={policyHref} className="mt-8 inline-flex items-center gap-2 text-sm font-bold">{locale === "en" ? "Read stay policies" : "Đọc chính sách lưu trú"} <ArrowRight className="h-4 w-4" /></Link></div>
   </section>;
 }
 

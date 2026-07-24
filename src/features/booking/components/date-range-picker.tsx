@@ -15,10 +15,11 @@ import {
   startOfMonth,
   startOfWeek
 } from "date-fns";
-import { vi } from "date-fns/locale";
+import { enUS, vi } from "date-fns/locale";
 import { CalendarDays, ChevronLeft, ChevronRight, Moon, X } from "lucide-react";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
+import type { ShowcaseLocale } from "@/features/showcase/i18n/locale";
 
 type Props = {
   checkIn: string;
@@ -26,20 +27,26 @@ type Props = {
   onChange: (range: { checkIn: string; checkOut: string }) => void;
   className?: string;
   tone?: "light" | "glass";
+  locale?: ShowcaseLocale;
 };
 
-const weekDays = ["T2", "T3", "T4", "T5", "T6", "T7", "CN"];
+const weekDays = {
+  vi: ["T2", "T3", "T4", "T5", "T6", "T7", "CN"],
+  en: ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"]
+};
 
 function CalendarMonth({
   month,
   start,
   end,
-  onSelect
+  onSelect,
+  locale
 }: {
   month: Date;
   start: Date | null;
   end: Date | null;
   onSelect: (date: Date) => void;
+  locale: ShowcaseLocale;
 }) {
   const today = startOfDay(new Date());
   const days = eachDayOfInterval({
@@ -48,9 +55,9 @@ function CalendarMonth({
   });
 
   return <div className="min-w-0">
-    <p className="mb-5 text-center text-sm font-bold capitalize">{format(month, "MMMM yyyy", { locale: vi })}</p>
+    <p className="mb-5 text-center text-sm font-bold capitalize">{format(month, "MMMM yyyy", { locale: locale === "en" ? enUS : vi })}</p>
     <div className="grid grid-cols-7 text-center text-[.62rem] font-bold uppercase tracking-wider text-lago-ink/38">
-      {weekDays.map((day) => <span className="pb-2" key={day}>{day}</span>)}
+      {weekDays[locale].map((day) => <span className="pb-2" key={day}>{day}</span>)}
     </div>
     <div className="grid grid-cols-7 gap-y-1">
       {days.map((day) => {
@@ -62,7 +69,7 @@ function CalendarMonth({
           type="button"
           key={day.toISOString()}
           disabled={disabled}
-          aria-label={format(day, "EEEE, dd/MM/yyyy", { locale: vi })}
+          aria-label={format(day, "EEEE, dd/MM/yyyy", { locale: locale === "en" ? enUS : vi })}
           aria-pressed={selectedStart || selectedEnd}
           onClick={() => onSelect(day)}
           className={`focus-ring relative grid aspect-square min-h-10 place-items-center rounded-xl text-xs font-semibold transition sm:min-h-11 ${
@@ -80,7 +87,7 @@ function CalendarMonth({
   </div>;
 }
 
-export function DateRangePicker({ checkIn, checkOut, onChange, className = "", tone = "light" }: Props) {
+export function DateRangePicker({ checkIn, checkOut, onChange, className = "", tone = "light", locale = "vi" }: Props) {
   const [open, setOpen] = useState(false);
   const [viewMonth, setViewMonth] = useState(startOfMonth(parseISO(checkIn)));
   const [draftStart, setDraftStart] = useState<Date | null>(parseISO(checkIn));
@@ -152,29 +159,29 @@ export function DateRangePicker({ checkIn, checkOut, onChange, className = "", t
       aria-haspopup="dialog"
       aria-expanded={open}
     >
-      <span><small className="block text-[.62rem] font-bold uppercase tracking-wider text-lago-ink/45">Ngày đến</small><strong className="mt-1 block text-sm">{format(parseISO(checkIn), "dd/MM/yyyy")}</strong></span>
+      <span><small className="block text-[.62rem] font-bold uppercase tracking-wider text-lago-ink/45">{locale === "en" ? "Check-in" : "Ngày đến"}</small><strong className="mt-1 block text-sm">{format(parseISO(checkIn), "dd/MM/yyyy")}</strong></span>
       <CalendarDays className="h-5 w-5 text-lago-clay" />
-      <span className="text-right"><small className="block text-[.62rem] font-bold uppercase tracking-wider text-lago-ink/45">Ngày về</small><strong className="mt-1 block text-sm">{format(parseISO(checkOut), "dd/MM/yyyy")}</strong></span>
+      <span className="text-right"><small className="block text-[.62rem] font-bold uppercase tracking-wider text-lago-ink/45">{locale === "en" ? "Check-out" : "Ngày về"}</small><strong className="mt-1 block text-sm">{format(parseISO(checkOut), "dd/MM/yyyy")}</strong></span>
     </button>
 
     {open && typeof document !== "undefined" && createPortal(<div className="fixed inset-0 z-[100] flex items-end bg-lago-ink/65 p-0 backdrop-blur-sm sm:items-center sm:justify-center sm:p-5" role="presentation" onMouseDown={(event) => { if (event.target === event.currentTarget) setOpen(false); }}>
-      <section ref={dialogRef} role="dialog" aria-modal="true" aria-label="Chọn ngày lưu trú" className="calendar-sheet max-h-[calc(100svh-12px)] w-full max-w-3xl overflow-y-auto overscroll-contain rounded-t-[30px] bg-white p-5 pb-[max(1.25rem,env(safe-area-inset-bottom))] text-lago-ink shadow-2xl sm:max-h-[calc(100svh-40px)] sm:rounded-[30px] sm:p-7">
+      <section ref={dialogRef} role="dialog" aria-modal="true" aria-label={locale === "en" ? "Choose stay dates" : "Chọn ngày lưu trú"} className="calendar-sheet max-h-[calc(100svh-12px)] w-full max-w-3xl overflow-y-auto overscroll-contain rounded-t-[30px] bg-white p-5 pb-[max(1.25rem,env(safe-area-inset-bottom))] text-lago-ink shadow-2xl sm:max-h-[calc(100svh-40px)] sm:rounded-[30px] sm:p-7">
         <header className="flex items-start justify-between gap-4 border-b border-lago-ink/10 pb-5">
-          <div><p className="eyebrow text-lago-clay">Lịch lưu trú</p><h2 className="display mt-1 text-2xl font-semibold">Bạn muốn nghỉ khi nào?</h2><p className="mt-2 text-xs text-lago-ink/50">{draftEnd ? `${nights} đêm đã chọn` : "Chọn ngày về để hoàn tất"}</p></div>
-          <button ref={closeRef} type="button" onClick={() => setOpen(false)} aria-label="Đóng lịch" className="focus-ring grid h-11 w-11 shrink-0 place-items-center rounded-full bg-lago-cream"><X className="h-5 w-5" /></button>
+          <div><p className="eyebrow text-lago-clay">{locale === "en" ? "Stay dates" : "Lịch lưu trú"}</p><h2 className="display mt-1 text-2xl font-semibold">{locale === "en" ? "When would you like to stay?" : "Bạn muốn nghỉ khi nào?"}</h2><p className="mt-2 text-xs text-lago-ink/50">{draftEnd ? (locale === "en" ? `${nights} ${nights === 1 ? "night" : "nights"} selected` : `${nights} đêm đã chọn`) : (locale === "en" ? "Choose a check-out date to continue" : "Chọn ngày về để hoàn tất")}</p></div>
+          <button ref={closeRef} type="button" onClick={() => setOpen(false)} aria-label={locale === "en" ? "Close calendar" : "Đóng lịch"} className="focus-ring grid h-11 w-11 shrink-0 place-items-center rounded-full bg-lago-cream"><X className="h-5 w-5" /></button>
         </header>
         <div className="my-5 flex items-center justify-between">
-          <button type="button" disabled={cannotGoBack} onClick={() => setViewMonth((month) => addMonths(month, -1))} aria-label="Tháng trước" className="focus-ring grid h-10 w-10 place-items-center rounded-full border border-lago-ink/10 disabled:opacity-25"><ChevronLeft className="h-4 w-4" /></button>
-          <span className="flex items-center gap-2 text-xs font-semibold text-lago-ink/48"><Moon className="h-4 w-4" /> Chọn tối thiểu 1 đêm</span>
-          <button type="button" onClick={() => setViewMonth((month) => addMonths(month, 1))} aria-label="Tháng sau" className="focus-ring grid h-10 w-10 place-items-center rounded-full border border-lago-ink/10"><ChevronRight className="h-4 w-4" /></button>
+          <button type="button" disabled={cannotGoBack} onClick={() => setViewMonth((month) => addMonths(month, -1))} aria-label={locale === "en" ? "Previous month" : "Tháng trước"} className="focus-ring grid h-10 w-10 place-items-center rounded-full border border-lago-ink/10 disabled:opacity-25"><ChevronLeft className="h-4 w-4" /></button>
+          <span className="flex items-center gap-2 text-xs font-semibold text-lago-ink/48"><Moon className="h-4 w-4" /> {locale === "en" ? "Minimum 1 night" : "Chọn tối thiểu 1 đêm"}</span>
+          <button type="button" onClick={() => setViewMonth((month) => addMonths(month, 1))} aria-label={locale === "en" ? "Next month" : "Tháng sau"} className="focus-ring grid h-10 w-10 place-items-center rounded-full border border-lago-ink/10"><ChevronRight className="h-4 w-4" /></button>
         </div>
         <div className="grid gap-8 sm:grid-cols-2">
-          <CalendarMonth month={viewMonth} start={draftStart} end={draftEnd} onSelect={selectDate} />
-          <div className="hidden sm:block"><CalendarMonth month={addMonths(viewMonth, 1)} start={draftStart} end={draftEnd} onSelect={selectDate} /></div>
+          <CalendarMonth month={viewMonth} start={draftStart} end={draftEnd} onSelect={selectDate} locale={locale} />
+          <div className="hidden sm:block"><CalendarMonth month={addMonths(viewMonth, 1)} start={draftStart} end={draftEnd} onSelect={selectDate} locale={locale} /></div>
         </div>
         <footer className="sticky bottom-0 z-10 -mx-1 mt-6 flex items-center justify-between gap-4 border-t border-lago-ink/10 bg-white px-1 pb-1 pt-5">
-          <p className="text-xs text-lago-ink/50"><strong className="text-lago-ink">{draftStart ? format(draftStart, "dd/MM") : "—"}</strong> → <strong className="text-lago-ink">{draftEnd ? format(draftEnd, "dd/MM") : "Chọn ngày về"}</strong></p>
-          <button type="button" disabled={!draftEnd} onClick={() => setOpen(false)} className="btn-primary min-w-32">Xong</button>
+          <p className="text-xs text-lago-ink/50"><strong className="text-lago-ink">{draftStart ? format(draftStart, "dd/MM") : "—"}</strong> → <strong className="text-lago-ink">{draftEnd ? format(draftEnd, "dd/MM") : (locale === "en" ? "Choose check-out" : "Chọn ngày về")}</strong></p>
+          <button type="button" disabled={!draftEnd} onClick={() => setOpen(false)} className="btn-primary min-w-32">{locale === "en" ? "Done" : "Xong"}</button>
         </footer>
       </section>
     </div>, document.body)}
