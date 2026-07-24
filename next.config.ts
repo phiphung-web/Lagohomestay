@@ -1,6 +1,9 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  // Allows CI/QA builds to run alongside a local preview without sharing
+  // Next.js build artifacts. Production keeps the standard `.next` folder.
+  distDir: process.env.NEXT_DIST_DIR || ".next",
   images: {
     // Generate responsive Unsplash CDN URLs in the browser instead of routing
     // through /_next/image, which is intentionally avoided on the demo VPS.

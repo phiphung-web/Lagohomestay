@@ -225,10 +225,10 @@ export function BookingExperience({ lookupPath = "/tra-cuu", locale = "vi" }: { 
             <Image src={stay.image} alt={en ? `${stay.name} — concept image` : `${stay.name} — ảnh minh họa`} fill sizes="(max-width:1024px) 100vw, 310px" className="object-cover transition duration-700 group-hover:scale-[1.035]" />
             <span className="absolute inset-0 bg-gradient-to-t from-[#0a221c]/60 via-transparent to-transparent" />
             {stay.badge && <span className="absolute left-4 top-4 rounded-full bg-white/90 px-3 py-1 text-[.6rem] font-bold uppercase tracking-wider">{stay.badge}</span>}
-            <span className="absolute bottom-4 left-4 flex items-center gap-1.5 text-xs font-semibold text-white"><MapPin className="h-4 w-4 text-lago-sand" />{stay.location}</span>
+            <span className="absolute bottom-4 left-4 flex items-center gap-1.5 text-xs font-semibold text-white"><MapPin className="h-4 w-4 text-lago-sand" />{stay.zoneName} · {stay.location}</span>
           </div>
           <div className="p-6 sm:p-7">
-            <div className="flex items-center gap-2"><span className="h-2 w-2 rounded-full bg-emerald-500" /><p className="text-[.62rem] font-bold uppercase tracking-wider text-emerald-700">{en ? "Available · Checked live" : "Còn trống · Đã kiểm tra"}</p></div>
+            <div className="flex flex-wrap items-center gap-2"><span className="h-2 w-2 rounded-full bg-emerald-500" /><p className="text-[.62rem] font-bold uppercase tracking-wider text-emerald-700">{en ? "Available · Checked live" : "Còn trống · Đã kiểm tra"}</p><span className="rounded-full bg-lago-cream px-2.5 py-1 text-[.56rem] font-bold uppercase tracking-wider text-lago-ink/55">{stay.zoneName} · {stay.availableUnitCount} {en ? "homes available" : "căn còn trống"}</span></div>
             <p className="eyebrow mt-4 text-lago-moss">{stay.subtitle}</p>
             <h2 className="display mt-2 text-3xl font-semibold sm:text-4xl">{stay.name}</h2>
             <p className="mt-3 max-w-xl text-sm leading-6 text-lago-ink/58">{stay.description}</p>
@@ -274,7 +274,7 @@ export function BookingExperience({ lookupPath = "/tra-cuu", locale = "vi" }: { 
         <div className="relative h-48 overflow-hidden"><Image src={selected.image} alt={en ? `${selected.name} — concept image` : `${selected.name} — ảnh minh họa`} fill sizes="(max-width:1024px) 100vw, 390px" className="object-cover" /></div>
         <div className="p-6">
           <div className={`flex items-center gap-2 text-[.62rem] font-bold uppercase tracking-wider ${availabilityState === "ready" ? "text-emerald-700" : availabilityState === "error" ? "text-red-700" : "text-amber-700"}`}><span className={`h-2 w-2 rounded-full ${availabilityState === "ready" ? "bg-emerald-500" : availabilityState === "error" ? "bg-red-500" : "animate-pulse bg-amber-500"}`} /> {availabilityState === "ready" ? (en ? "Availability confirmed" : "Lịch trống đã xác nhận") : availabilityState === "error" ? (en ? "Unable to reconfirm availability" : "Chưa thể xác nhận lại lịch") : (en ? "Refreshing availability and price" : "Đang cập nhật lịch và giá")}</div>
-          <p className="eyebrow mt-4 text-lago-moss">{selected.location}</p>
+          <p className="eyebrow mt-4 text-lago-moss">{selected.zoneName} · {selected.location}</p>
           <h2 className="display mt-1 text-3xl font-semibold">{selected.name}</h2>
           <DateRangePicker className="mt-5" checkIn={checkIn} checkOut={checkOut} locale={locale} onChange={(range) => { setCheckIn(range.checkIn); setCheckOut(range.checkOut); }} />
           {availabilityState === "error" && <button type="button" onClick={() => setRetryKey((value) => value + 1)} className="mt-3 flex min-h-10 items-center gap-2 text-xs font-bold text-red-700"><RefreshCw className="h-3.5 w-3.5" />{en ? "Recheck availability and price" : "Kiểm tra lại lịch và giá"}</button>}

@@ -1,5 +1,29 @@
 export type StayMood = "couple" | "family" | "friends" | "retreat";
 
+export type StayZone = {
+  id: string;
+  slug: string;
+  name: string;
+  nameEn: string;
+  eyebrow: string;
+  eyebrowEn: string;
+  description: string;
+  descriptionEn: string;
+  experience: string;
+  experienceEn: string;
+  image: string;
+  accent: string;
+};
+
+export type StayUnit = {
+  id: string;
+  stayId: string;
+  zoneId: string;
+  code: string;
+  name: string;
+  nameEn: string;
+};
+
 export type Stay = {
   id: string;
   unitId: string;
@@ -19,10 +43,14 @@ export type Stay = {
   basePrice: number;
   amenities: string[];
   highlights: string[];
+  idealFor: string[];
+  included: string[];
+  stayNotes: string[];
   mood: StayMood;
   location: string;
   badge?: string;
   accent: string;
+  zoneId: string;
 };
 
 export const conceptImages = {
@@ -35,6 +63,51 @@ export const conceptImages = {
   cloud: "https://images.unsplash.com/photo-1601918774946-25832a4be0d6?auto=format&fit=crop&w=1800&q=88",
   hill: "https://images.unsplash.com/photo-1523217582562-09d0def993a6?auto=format&fit=crop&w=1800&q=88"
 };
+
+export const stayZones: StayZone[] = [
+  {
+    id: "zone-lake",
+    slug: "he-ho",
+    name: "Hệ Hồ",
+    nameEn: "Lake Collection",
+    eyebrow: "Ven mặt nước · rộng mở",
+    eyebrowEn: "By the water · open horizons",
+    description: "Những căn nhà hướng về mặt hồ, có không gian sinh hoạt lớn và khoảng hiên dành cho các cuộc hội ngộ.",
+    descriptionEn: "Homes facing the water, with generous shared spaces and verandas made for meaningful gatherings.",
+    experience: "Bình minh trên mặt nước · Bữa tối bên hiên · Hội ngộ nhóm",
+    experienceEn: "Lakeside sunrise · Veranda dinners · Group gatherings",
+    image: conceptImages.hero,
+    accent: "#9a7550"
+  },
+  {
+    id: "zone-forest",
+    slug: "he-rung",
+    name: "Hệ Rừng",
+    nameEn: "Forest Collection",
+    eyebrow: "Dưới tán cây · riêng tư",
+    eyebrowEn: "Beneath the canopy · private",
+    description: "Các căn nép dưới tán cây, có vườn riêng và nhịp sống yên tĩnh phù hợp gia đình muốn ở gần thiên nhiên.",
+    descriptionEn: "Homes sheltered beneath the canopy, with private gardens and a gentle rhythm for families close to nature.",
+    experience: "Dạo rừng · Picnic · Khoảng vườn cho trẻ nhỏ",
+    experienceEn: "Forest walks · Picnics · A garden for children",
+    image: conceptImages.forest,
+    accent: "#667b63"
+  },
+  {
+    id: "zone-hill",
+    slug: "he-doi",
+    name: "Hệ Đồi",
+    nameEn: "Hill Collection",
+    eyebrow: "Trên cao · nhiều ánh sáng",
+    eyebrowEn: "Elevated · filled with light",
+    description: "Những căn ở cao hơn, đón mây, thung lũng và hoàng hôn; phù hợp cặp đôi hoặc kỳ nghỉ dài ngày.",
+    descriptionEn: "Elevated homes opening to clouds, valley views and sunset, suited to couples and longer stays.",
+    experience: "Đón mây · Ngắm hoàng hôn · Workation",
+    experienceEn: "Cloud watching · Sunset views · Workations",
+    image: conceptImages.hill,
+    accent: "#a7674d"
+  }
+];
 
 export const stays: Stay[] = [
   {
@@ -56,10 +129,14 @@ export const stays: Stay[] = [
     basePrice: 4200000,
     amenities: ["Bếp đầy đủ", "Sân BBQ", "Phòng khách lớn", "Hiên hướng hồ", "Máy giặt", "Điều hòa", "Wi-Fi tốc độ cao", "Bãi đỗ xe"],
     highlights: ["View mặt hồ", "Sân BBQ riêng", "Không gian kết nối"],
+    idealFor: ["Nhóm bạn 6–8 người", "Gia đình nhiều thế hệ", "Sinh nhật và hội ngộ nhỏ"],
+    included: ["Nước uống chào mừng", "Bếp và dụng cụ nấu cơ bản", "Khăn tắm, đồ dùng cá nhân cơ bản", "Hỗ trợ qua điện thoại/Zalo"],
+    stayNotes: ["Ba phòng ngủ, bốn giường", "Khu BBQ cần đăng ký trước", "Giữ yên tĩnh sau 22:00"],
     mood: "friends",
     location: "Ven hồ",
     badge: "Được yêu thích",
-    accent: "#d6a878"
+    accent: "#d6a878",
+    zoneId: "zone-lake"
   },
   {
     id: "stay-cloud",
@@ -80,10 +157,14 @@ export const stays: Stay[] = [
     basePrice: 1650000,
     amenities: ["Bồn tắm nhìn rừng", "Hiên riêng", "Máy chiếu", "Điều hòa", "Bếp nhỏ", "Wi-Fi", "Bữa sáng tùy chọn"],
     highlights: ["Riêng tư cho hai", "Bồn tắm view rừng", "Đón bình minh"],
+    idealFor: ["Cặp đôi", "Kỷ niệm riêng tư", "Kỳ nghỉ một mình"],
+    included: ["Nước uống chào mừng", "Bếp nhỏ và dụng cụ cơ bản", "Khăn tắm, đồ dùng cá nhân cơ bản", "Hỗ trợ qua điện thoại/Zalo"],
+    stayNotes: ["Một phòng ngủ, một giường", "Không phù hợp nhóm đông", "Bữa sáng là lựa chọn thêm"],
     mood: "couple",
     location: "Lưng đồi",
     badge: "Lãng mạn nhất",
-    accent: "#c4a6a0"
+    accent: "#c4a6a0",
+    zoneId: "zone-hill"
   },
   {
     id: "stay-forest",
@@ -104,10 +185,14 @@ export const stays: Stay[] = [
     basePrice: 2850000,
     amenities: ["Vườn riêng", "Bếp gia đình", "Bàn ăn ngoài trời", "Đồ dùng trẻ em", "Điều hòa", "Wi-Fi", "Bãi đỗ xe"],
     highlights: ["Vườn riêng", "Thân thiện gia đình", "Hai phòng ngủ"],
+    idealFor: ["Gia đình có trẻ nhỏ", "Nhóm 4–5 người", "Kỳ nghỉ nhiều thế hệ"],
+    included: ["Nước uống chào mừng", "Bếp gia đình và dụng cụ cơ bản", "Bộ đồ dùng trẻ em theo yêu cầu", "Hỗ trợ qua điện thoại/Zalo"],
+    stayNotes: ["Hai phòng ngủ, ba giường", "Sân vườn riêng có hàng rào", "Vui lòng báo trước nhu cầu cho trẻ"],
     mood: "family",
     location: "Vườn rừng",
     badge: "Hợp gia đình",
-    accent: "#839878"
+    accent: "#839878",
+    zoneId: "zone-forest"
   },
   {
     id: "stay-hill",
@@ -128,9 +213,30 @@ export const stays: Stay[] = [
     basePrice: 3400000,
     amenities: ["Studio làm việc", "Hiên ngắm hoàng hôn", "Bếp đầy đủ", "Máy giặt", "Điều hòa", "Wi-Fi tốc độ cao", "Bãi đỗ xe"],
     highlights: ["View thung lũng", "Workation", "Hiên hoàng hôn"],
+    idealFor: ["Kỳ nghỉ 3–7 đêm", "Workation", "Nhóm nhỏ cần không gian riêng"],
+    included: ["Nước uống chào mừng", "Bếp và dụng cụ nấu cơ bản", "Bàn làm việc và Wi-Fi", "Hỗ trợ qua điện thoại/Zalo"],
+    stayNotes: ["Hai phòng ngủ, ba giường", "Có khu làm việc tách biệt", "Phù hợp khách lưu trú dài ngày"],
     mood: "retreat",
     location: "Đỉnh đồi",
     badge: "Mới",
-    accent: "#c88d68"
+    accent: "#c88d68",
+    zoneId: "zone-hill"
   }
 ];
+
+export const stayUnits: StayUnit[] = [
+  { id: "unit-lago-01", stayId: "stay-lago", zoneId: "zone-lake", code: "HO-01", name: "LAKA House · Hồ 01", nameEn: "LAKA House · Lake 01" },
+  { id: "unit-forest-01", stayId: "stay-forest", zoneId: "zone-forest", code: "RUNG-01", name: "Nhà Rừng 01", nameEn: "Forest House 01" },
+  { id: "unit-forest-02", stayId: "stay-forest", zoneId: "zone-forest", code: "RUNG-02", name: "Nhà Rừng 02", nameEn: "Forest House 02" },
+  { id: "unit-cloud-01", stayId: "stay-cloud", zoneId: "zone-hill", code: "MAY-01", name: "Nhà Mây 01", nameEn: "Cloud House 01" },
+  { id: "unit-cloud-02", stayId: "stay-cloud", zoneId: "zone-hill", code: "MAY-02", name: "Nhà Mây 02", nameEn: "Cloud House 02" },
+  { id: "unit-hill-01", stayId: "stay-hill", zoneId: "zone-hill", code: "DOI-01", name: "Nhà Đồi 01", nameEn: "Hill House 01" }
+];
+
+export function getUnitsForStay(stayId: string) {
+  return stayUnits.filter((unit) => unit.stayId === stayId);
+}
+
+export function getZoneForStay(stay: Stay) {
+  return stayZones.find((zone) => zone.id === stay.zoneId)!;
+}

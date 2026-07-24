@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { calculatePrice } from "@/features/booking/domain/pricing";
 import { availabilitySchema } from "@/features/booking/domain/validation";
 import { isDemoUnitAvailable } from "@/features/booking/server/demo-store";
-import { stays } from "@/features/stays/data/demo-data";
+import { getUnitsForStay, getZoneForStay, stays } from "@/features/stays/data/demo-data";
 import { prisma } from "@/server/database/prisma";
 
 const demoRules = [
@@ -18,10 +18,13 @@ export async function GET(request: NextRequest) {
 
   if (process.env.DEMO_MODE !== "false" || !process.env.DATABASE_URL) {
     const results = stays
-      .filter((stay) => stay.maxGuests >= guests && isDemoUnitAvailable(stay.unitId, checkIn, checkOut))
-      .map((stay) => ({
+      .filter((stay) => stay.maxGuests >= guests)
+      .map((stay) => {
+        const availableUnits = getUnitsForStay(stay.id).filter((unit) => isDemoUnitAvailable(unit.id, checkIn, checkOut));
+        const zone = getZoneForStay(stay);
+        return {
         id: stay.id,
-        unitId: stay.unitId,
+        unitId: availableUnits[0]?.id ?? "",
         slug: stay.slug,
         name: stay.name,
         subtitle: stay.subtitle,
@@ -32,6 +35,9 @@ export async function GET(request: NextRequest) {
         basePrice: stay.basePrice,
         highlights: stay.highlights,
         location: stay.location,
+        zoneName: zone.name,
+        zoneSlug: zone.slug,
+        availableUnitCount: availableUnits.length,
         badge: stay.badge,
         quote: calculatePrice({
           checkIn: new Date(checkIn),
@@ -41,7 +47,9 @@ export async function GET(request: NextRequest) {
           basePrice: stay.basePrice,
           rules: demoRules.map((rule) => ({ ...rule, minGuests: rule.type === "EXTRA_GUEST" ? stay.baseGuests + 1 : undefined }))
         })
-      }));
+      };
+      })
+      .filter((stay) => stay.availableUnitCount > 0);
     return NextResponse.json({ data: results, meta: { checkIn, checkOut, guests } });
   }
 
@@ -52,14 +60,14 @@ export async function GET(request: NextRequest) {
     const types = await prisma.accommodationType.findMany({
       where: { active: true, maxGuests: { gte: guests } },
       include: {
+        zone: true,
         rateRules: { where: { active: true } },
         units: {
           where: {
             active: true,
             bookings: { none: { checkIn: { lt: end }, checkOut: { gt: start }, status: { in: [BookingStatus.HELD, BookingStatus.CONFIRMED, BookingStatus.CHECKED_IN] } } },
             availabilityBlocks: { none: { startDate: { lt: end }, endDate: { gt: start } } }
-          },
-          take: 1
+          }
         }
       }
     });
@@ -89,6 +97,9 @@ export async function GET(request: NextRequest) {
         basePrice: Number(type.basePrice),
         highlights,
         location: concept?.location ?? "LAKA Homestay",
+        zoneName: type.zone?.name ?? "LAKA Homestay",
+        zoneSlug: type.zone?.slug ?? "laka",
+        availableUnitCount: type.units.length,
         badge: concept?.badge,
         quote: calculatePrice({ checkIn: start, checkOut: end, guests, baseGuests: type.baseGuests, basePrice: Number(type.basePrice), rules })
       };

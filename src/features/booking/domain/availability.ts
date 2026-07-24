@@ -13,6 +13,9 @@ export type AvailabilityOption = {
   basePrice: number;
   highlights: string[];
   location: string;
+  zoneName: string;
+  zoneSlug: string;
+  availableUnitCount: number;
   badge?: string;
   quote: PriceQuote;
 };

@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { getTemplateTimeGreeting, type DayPeriod, type GreetingMood } from "@/features/showcase/lib/time-greeting";
+import { atmosphereToDayPeriod, getAutomaticAtmosphere, getHourInTimeZone, type ActiveAtmosphere } from "@/features/showcase/lib/atmosphere";
 import type { ShowcaseLocale } from "@/features/showcase/i18n/locale";
 
 const fallback: Record<GreetingMood, string> = {
@@ -27,13 +28,24 @@ export function TemplateTimeGreeting({ mood, locale = "vi" }: { mood: GreetingMo
   const [greeting, setGreeting] = useState<{ period: DayPeriod | "loading"; message: string }>({ period: "loading", message: locale === "en" ? englishFallback[mood] : fallback[mood] });
 
   useEffect(() => {
-    const update = () => {
-      const next = getTemplateTimeGreeting(mood, new Date().getHours());
-      setGreeting(locale === "en" ? { ...next, message: englishGreeting[next.period][mood] } : next);
+    const applyAtmosphere = (active: ActiveAtmosphere) => {
+      const period = atmosphereToDayPeriod(active);
+      const representativeHour = { morning: 6, day: 12, evening: 18, night: 23 }[period];
+      const next = getTemplateTimeGreeting(mood, representativeHour);
+      setGreeting(locale === "en" ? { ...next, message: englishGreeting[period][mood] } : next);
     };
-    update();
-    const timer = window.setInterval(update, 60_000);
-    return () => window.clearInterval(timer);
+
+    const updateAutomatic = () => applyAtmosphere(getAutomaticAtmosphere(getHourInTimeZone()));
+    const handleAtmosphere = (event: Event) => {
+      const detail = (event as CustomEvent<{ active: ActiveAtmosphere }>).detail;
+      if (detail?.active) applyAtmosphere(detail.active);
+    };
+
+    updateAutomatic();
+    window.addEventListener("laka-atmosphere-change", handleAtmosphere);
+    return () => {
+      window.removeEventListener("laka-atmosphere-change", handleAtmosphere);
+    };
   }, [locale, mood]);
 
   const theme = mood === "cinematic"

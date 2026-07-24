@@ -1,4 +1,4 @@
-import type { Stay } from "@/features/stays/data/demo-data";
+import { stayZones, type Stay, type StayZone } from "@/features/stays/data/demo-data";
 import type { AvailabilityOption } from "@/features/booking/domain/availability";
 import type { ShowcaseLocale } from "@/features/showcase/i18n/locale";
 
@@ -11,7 +11,10 @@ const englishStays: Record<string, Partial<Stay>> = {
     location: "Lakeside",
     badge: "Guest favourite",
     amenities: ["Full kitchen", "Private BBQ terrace", "Large living room", "Lake-view veranda", "Washing machine", "Air conditioning", "High-speed Wi-Fi", "Parking"],
-    highlights: ["Lake view", "Private BBQ terrace", "Made for connection"]
+    highlights: ["Lake view", "Private BBQ terrace", "Made for connection"],
+    idealFor: ["Groups of 6–8", "Multigenerational families", "Small birthdays and reunions"],
+    included: ["Welcome drinks", "Kitchen and basic cookware", "Towels and basic toiletries", "Phone and Zalo support"],
+    stayNotes: ["Three bedrooms and four beds", "Reserve the barbecue area ahead", "Quiet hours after 10 pm"]
   },
   "nha-may": {
     name: "Cloud House",
@@ -21,7 +24,10 @@ const englishStays: Record<string, Partial<Stay>> = {
     location: "Hillside",
     badge: "Most romantic",
     amenities: ["Forest-view bath", "Private terrace", "Projector", "Air conditioning", "Kitchenette", "Wi-Fi", "Optional breakfast"],
-    highlights: ["Private for two", "Forest-view bath", "Sunrise view"]
+    highlights: ["Private for two", "Forest-view bath", "Sunrise view"],
+    idealFor: ["Couples", "Private anniversaries", "Solo retreats"],
+    included: ["Welcome drinks", "Kitchenette essentials", "Towels and basic toiletries", "Phone and Zalo support"],
+    stayNotes: ["One bedroom and one bed", "Not suitable for larger groups", "Breakfast is optional"]
   },
   "nha-rung": {
     name: "Forest House",
@@ -31,7 +37,10 @@ const englishStays: Record<string, Partial<Stay>> = {
     location: "Forest garden",
     badge: "Family friendly",
     amenities: ["Private garden", "Family kitchen", "Outdoor dining table", "Children’s essentials", "Air conditioning", "Wi-Fi", "Parking"],
-    highlights: ["Private garden", "Family friendly", "Two bedrooms"]
+    highlights: ["Private garden", "Family friendly", "Two bedrooms"],
+    idealFor: ["Families with children", "Groups of 4–5", "Multigenerational stays"],
+    included: ["Welcome drinks", "Family kitchen essentials", "Children’s kit by request", "Phone and Zalo support"],
+    stayNotes: ["Two bedrooms and three beds", "Private enclosed garden", "Request children’s items ahead"]
   },
   "nha-doi": {
     name: "Hill House",
@@ -41,7 +50,10 @@ const englishStays: Record<string, Partial<Stay>> = {
     location: "Hilltop",
     badge: "New",
     amenities: ["Private work studio", "Sunset terrace", "Full kitchen", "Washing machine", "Air conditioning", "High-speed Wi-Fi", "Parking"],
-    highlights: ["Valley view", "Workation ready", "Sunset terrace"]
+    highlights: ["Valley view", "Workation ready", "Sunset terrace"],
+    idealFor: ["Stays of 3–7 nights", "Workations", "Small groups needing quiet zones"],
+    included: ["Welcome drinks", "Kitchen and basic cookware", "Workspace and Wi-Fi", "Phone and Zalo support"],
+    stayNotes: ["Two bedrooms and three beds", "Separate work area", "Designed for longer stays"]
   }
 };
 
@@ -54,14 +66,27 @@ export function localizeAvailabilityOption(option: AvailabilityOption, locale: S
   if (locale === "vi") return option;
   const translation = englishStays[option.slug];
   if (!translation) return option;
+  const zone = stayZones.find((item) => item.slug === option.zoneSlug);
   return {
     ...option,
     name: translation.name ?? option.name,
     subtitle: translation.subtitle ?? option.subtitle,
     description: translation.description ?? option.description,
     location: translation.location ?? option.location,
+    zoneName: zone?.nameEn ?? option.zoneName,
     badge: translation.badge ?? option.badge,
     highlights: translation.highlights ?? option.highlights
+  };
+}
+
+export function localizeStayZone<T extends StayZone>(zone: T, locale: ShowcaseLocale): T {
+  if (locale === "vi") return zone;
+  return {
+    ...zone,
+    name: zone.nameEn,
+    eyebrow: zone.eyebrowEn,
+    description: zone.descriptionEn,
+    experience: zone.experienceEn
   };
 }
 
@@ -73,8 +98,16 @@ export const englishExperienceMoments = [
 ];
 
 export const englishFaqs = [
-  ["Who is LAKA best suited for?", "The collection includes a home for two, family homes for 4–5 guests and a group home for up to 8 guests."],
+  ["How is LAKA organised?", "The concept includes Lake, Forest and Hill collections, containing four home types and six physical homes for couples, families and groups of up to eight."],
   ["Do I need to pay immediately?", "No. Your request is held for two hours while the LAKA team confirms it by phone or Zalo."],
   ["Is each home completely private?", "Yes. Your group has the entire home and does not share living areas with other guests."],
-  ["Is the displayed price final?", "The system estimates the price using your dates and guest count. LAKA confirms the final amount when contacting you."]
+  ["Is the displayed price final?", "The system estimates the price using your dates and guest count. LAKA confirms the final amount when contacting you."],
+  ["What are the arrival and departure times?", "Concept hours are check-in from 2 pm and check-out by 11 am. Final times and directions are shared before arrival."],
+  ["Are breakfast and dining available?", "The concept proposes breakfast hampers, seasonal menus and in-home barbecues. Actual services, menus and prices require operating approval."],
+  ["Can children stay at LAKA?", "Yes. Forest House and LAKA House are positioned for families. Child pricing and equipment will be confirmed when booking."],
+  ["May I bring a pet?", "Pet terms depend on the selected home and current operating conditions. Please let LAKA know in advance."],
+  ["Is parking or a transfer available?", "The concept includes parking guidance for each home. Transfers remain a proposed service and are not yet a confirmed commitment."],
+  ["Can LAKA arrange a birthday or anniversary?", "You may request a small set-up, private dinner, cake or flowers. LAKA confirms availability, price and quiet-hour limits."],
+  ["What if I arrive late?", "Please notify LAKA by phone or Zalo. The team will suggest an arrival arrangement based on actual operating conditions."],
+  ["Which details are still illustrative?", "Images, prices, address, menus, arrival times and selected services currently support the concept presentation and require approval before launch."]
 ] as const;

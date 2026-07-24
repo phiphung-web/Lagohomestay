@@ -48,13 +48,32 @@ model Property {
   createdAt          DateTime            @default(now())
   updatedAt          DateTime            @updatedAt
   accommodationTypes AccommodationType[]
+  zones              Zone[]
   users              User[]
   contentBlocks      ContentBlock[]
+}
+
+model Zone {
+  id          String              @id @default(cuid())
+  propertyId  String
+  name        String
+  slug        String              @unique
+  description String?
+  image       String?
+  sortOrder   Int                 @default(0)
+  active      Boolean             @default(true)
+  createdAt   DateTime            @default(now())
+  updatedAt   DateTime            @updatedAt
+  property    Property            @relation(fields: [propertyId], references: [id], onDelete: Cascade)
+  accommodationTypes AccommodationType[]
+
+  @@index([propertyId, active, sortOrder])
 }
 
 model AccommodationType {
   id            String        @id @default(cuid())
   propertyId    String
+  zoneId        String?
   name          String
   slug          String        @unique
   shortName     String
@@ -75,10 +94,12 @@ model AccommodationType {
   createdAt     DateTime      @default(now())
   updatedAt     DateTime      @updatedAt
   property      Property      @relation(fields: [propertyId], references: [id], onDelete: Cascade)
+  zone          Zone?         @relation(fields: [zoneId], references: [id], onDelete: SetNull)
   units         Unit[]
   rateRules     RateRule[]
 
   @@index([propertyId, active])
+  @@index([zoneId, active])
 }
 
 model Unit {

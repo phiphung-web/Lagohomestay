@@ -14,14 +14,22 @@ export const stayPromises = [
 ];
 
 export const guestStories = [
-  { quote: "Lần đầu tiên sau rất lâu, cả nhà ngồi ăn sáng cùng nhau mà không ai vội nhìn đồng hồ.", name: "Minh Anh", stay: "Cuối tuần tại Nhà Rừng" },
-  { quote: "Chúng mình đến vì căn nhà đẹp, nhưng điều nhớ nhất lại là buổi tối ngồi thật lâu ngoài hiên.", name: "Hà & Nam", stay: "Hai đêm tại Nhà Mây" },
-  { quote: "Không gian đủ riêng nhưng không hề cô lập. Mọi thứ đều vừa vặn cho một nhóm bạn muốn gặp lại nhau.", name: "Tuấn Khang", stay: "Kỳ hội ngộ tại LAKA House" }
+  { quote: "Lần đầu tiên sau rất lâu, cả nhà ngồi ăn sáng cùng nhau mà không ai vội nhìn đồng hồ.", name: "Tình huống minh họa 01", stay: "Một cuối tuần tại Nhà Rừng" },
+  { quote: "Chúng mình đến vì căn nhà đẹp, nhưng điều nhớ nhất lại là buổi tối ngồi thật lâu ngoài hiên.", name: "Tình huống minh họa 02", stay: "Hai đêm tại Nhà Mây" },
+  { quote: "Không gian đủ riêng nhưng không hề cô lập. Mọi thứ đều vừa vặn cho một nhóm bạn muốn gặp lại nhau.", name: "Tình huống minh họa 03", stay: "Một kỳ hội ngộ tại LAKA House" }
 ];
 
 export const showcaseFaqs = [
-  ["LAKA phù hợp với những nhóm khách nào?", "Bộ sưu tập có căn cho hai người, gia đình 4–5 khách và nhóm bạn tối đa 8 khách."],
+  ["LAKA được chia thành những khu nào?", "Bản demo gồm Hệ Hồ, Hệ Rừng và Hệ Đồi. Trong ba hệ có bốn dòng nhà và sáu căn thực tế, phục vụ từ cặp đôi đến nhóm tối đa 8 khách."],
   ["Đặt căn có cần thanh toán ngay không?", "Chưa cần. Yêu cầu được giữ trong 2 giờ để đội ngũ LAKA liên hệ xác nhận qua điện thoại hoặc Zalo."],
   ["Mỗi căn có phải không gian riêng không?", "Có. Khách sử dụng nguyên căn và không chia sẻ không gian sinh hoạt với đoàn khách khác."],
-  ["Giá hiển thị đã chính xác chưa?", "Hệ thống tính giá dự kiến theo ngày và số khách. LAKA xác nhận mức cuối cùng khi liên hệ với bạn."]
+  ["Giá hiển thị đã chính xác chưa?", "Hệ thống tính giá dự kiến theo ngày và số khách. LAKA xác nhận mức cuối cùng khi liên hệ với bạn."],
+  ["Giờ nhận và trả căn thế nào?", "Khung giờ demo là nhận căn từ 14:00 và trả căn trước 11:00. Giờ chính thức cùng hướng dẫn đường đi sẽ được gửi trước chuyến đi."],
+  ["Có bữa sáng và dịch vụ ăn uống không?", "Bản demo đề xuất giỏ sáng, thực đơn theo mùa và BBQ tại căn. Dịch vụ thực tế, thực đơn và giá cần được đội ngũ vận hành xác nhận."],
+  ["Trẻ em có được lưu trú không?", "Có. Nhà Rừng và LAKA House được định hướng phù hợp hơn với gia đình. Tuổi tính phí và tiện ích trẻ em sẽ được xác nhận khi đặt."],
+  ["Có thể mang theo vật nuôi không?", "Chính sách vật nuôi phụ thuộc từng căn và điều kiện vận hành. Hãy báo trước để LAKA tư vấn phương án phù hợp."],
+  ["Có chỗ đỗ xe và dịch vụ đưa đón không?", "Concept có chỗ đỗ xe theo từng căn. Xe đưa đón đang là dịch vụ đề xuất và chưa được xem là cam kết chính thức."],
+  ["Có thể tổ chức sinh nhật hoặc kỷ niệm không?", "Có thể gửi yêu cầu set-up nhỏ, bữa tối riêng hoặc bánh và hoa. LAKA sẽ xác nhận khả năng phục vụ, chi phí và giới hạn tiếng ồn."],
+  ["Nếu đến muộn thì sao?", "Hãy báo trước qua điện thoại hoặc Zalo. Đội ngũ sẽ gửi phương án nhận căn phù hợp theo tình hình vận hành thực tế."],
+  ["Thông tin nào trong website vẫn là minh họa?", "Ảnh, giá, địa chỉ, thực đơn, giờ nhận căn và một số dịch vụ đang phục vụ trình bày concept; tất cả cần được duyệt trước khi mở bán."]
 ];
