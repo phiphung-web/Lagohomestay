@@ -1,33 +1,23 @@
 import { describe, expect, it } from "vitest";
 import {
-  atmosphereToDayPeriod,
-  getAutomaticAtmosphere,
-  getHourInTimeZone,
-  resolveAtmosphere
+  DEFAULT_APPEARANCE,
+  normalizeAppearance,
+  toggleAppearance
 } from "@/features/showcase/lib/atmosphere";
 
-describe("LAKA time-aware atmosphere", () => {
-  it("uses clear visual periods for the LAKA clock", () => {
-    expect(getAutomaticAtmosphere(4)).toBe("night");
-    expect(getAutomaticAtmosphere(5)).toBe("dawn");
-    expect(getAutomaticAtmosphere(8)).toBe("day");
-    expect(getAutomaticAtmosphere(17)).toBe("sunset");
-    expect(getAutomaticAtmosphere(19)).toBe("night");
+describe("LAKA manual appearance", () => {
+  it("defaults to the light appearance", () => {
+    expect(DEFAULT_APPEARANCE).toBe("day");
+    expect(normalizeAppearance(null)).toBe("day");
+    expect(normalizeAppearance("auto")).toBe("day");
   });
 
-  it("lets a visitor override the automatic atmosphere", () => {
-    expect(resolveAtmosphere("auto", 12)).toBe("day");
-    expect(resolveAtmosphere("night", 12)).toBe("night");
-    expect(resolveAtmosphere("dawn", 22)).toBe("dawn");
+  it("restores the visitor's explicit dark choice", () => {
+    expect(normalizeAppearance("night")).toBe("night");
   });
 
-  it("keeps greetings aligned with the chosen light", () => {
-    expect(atmosphereToDayPeriod("dawn")).toBe("morning");
-    expect(atmosphereToDayPeriod("sunset")).toBe("evening");
-  });
-
-  it("reads Vietnam time independently of the visitor timezone", () => {
-    const utcMidnight = new Date("2026-07-24T00:00:00.000Z");
-    expect(getHourInTimeZone(utcMidnight)).toBe(7);
+  it("toggles directly between light and dark", () => {
+    expect(toggleAppearance("day")).toBe("night");
+    expect(toggleAppearance("night")).toBe("day");
   });
 });

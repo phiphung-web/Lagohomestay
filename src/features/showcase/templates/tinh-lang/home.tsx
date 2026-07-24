@@ -1,40 +1,27 @@
 import Image from "next/image";
 import { ShowcaseLink as Link } from "@/features/showcase/site/showcase-link";
-import { ArrowDown, ArrowRight, BedDouble, Clock3, House, Plus, Quote, ShieldCheck, Users } from "lucide-react";
-import { AvailabilityBar } from "@/features/booking/components/availability-bar";
+import { ArrowDown, ArrowRight, BedDouble, Users } from "lucide-react";
 import { TemplateExperienceLayer } from "@/features/showcase/components/template-experience-layer";
-import { TemplateTimeGreeting } from "@/features/showcase/components/template-time-greeting";
 import { TemplateDocumentLocale } from "@/features/showcase/components/template-document-locale";
 import { TemplateAtmosphereController } from "@/features/showcase/components/template-atmosphere-controller";
-import { experienceMoments, guestStories, showcaseFaqs } from "@/features/showcase/data/showcase-content";
-import { conceptImages, getUnitsForStay, getZoneForStay, stays, stayZones } from "@/features/stays/data/demo-data";
+import { HomeGuestStories } from "@/features/showcase/components/home-guest-stories";
+import { HomeLandscapeReveal } from "@/features/showcase/components/home-landscape-reveal";
+import { experienceMoments } from "@/features/showcase/data/showcase-content";
+import { conceptImages, getUnitsForStay, getZoneForStay, stays } from "@/features/stays/data/demo-data";
 import { formatCurrency } from "@/shared/lib/format";
 import { TemplateFooter, TemplateHeader, type CompleteTemplateConfig } from "@/features/showcase/site/complete-template-site";
 import { SkipLink } from "@/shared/components/ui/skip-link";
 import type { ShowcaseLocale } from "@/features/showcase/i18n/locale";
-import { englishExperienceMoments, englishFaqs, localizeStay, localizeStayZone } from "@/features/showcase/i18n/showcase-copy";
+import { englishExperienceMoments, localizeStay, localizeStayZone } from "@/features/showcase/i18n/showcase-copy";
 import { diningStories, inLocale } from "@/features/showcase/data/laka-demo-content";
-
-const facts = [
-  { icon: House, value: "03", vi: "hệ cảnh quan", en: "landscape collections" },
-  { icon: ShieldCheck, value: "08", vi: "dòng nhà riêng", en: "private home types" },
-  { icon: Users, value: "15", vi: "căn thực tế", en: "physical homes" },
-  { icon: Clock3, value: "02h", vi: "giữ chỗ miễn phí", en: "complimentary hold" },
-];
 
 export function TinhLangHome({ config, locale = "vi" }: { config: CompleteTemplateConfig; locale?: ShowcaseLocale }) {
   const en = locale === "en";
   const localizedStays = stays.map((stay) => localizeStay(stay, locale));
-  const localizedZones = stayZones.map((zone) => localizeStayZone(zone, locale));
   const localizedMoments = en
     ? experienceMoments.map((moment, index) => ({ ...moment, ...englishExperienceMoments[index] }))
     : experienceMoments;
-  const localizedFaqs = en ? englishFaqs : showcaseFaqs;
-  const guestStory = en
-    ? { quote: "For the first time in a long while, our whole family sat down for breakfast without anyone watching the clock.", name: "Illustrative scenario 01", stay: "A weekend at Forest House" }
-    : guestStories[0];
-
-  return <div className="showcase-root min-h-screen bg-[#eae1d2] text-[#16311c]">
+  return <div className="showcase-root laka-theme-root min-h-screen bg-[#eae1d2] text-[#16311c]">
     <TemplateDocumentLocale locale={locale} />
     <SkipLink />
     <TemplateExperienceLayer mood="editorial" />
@@ -56,8 +43,7 @@ export function TinhLangHome({ config, locale = "vi" }: { config: CompleteTempla
         <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(5,18,14,.48)_0%,transparent_58%)]" />
 
         <div className="relative z-10 mx-auto flex min-h-[100svh] w-[min(1500px,calc(100%-32px))] flex-col justify-end pb-28 pt-32 sm:w-[min(1500px,calc(100%-56px))] sm:pb-12 lg:pb-14">
-          <div className="mb-auto flex items-start justify-between pt-2">
-            <TemplateTimeGreeting mood="editorial" locale={locale} />
+          <div className="mb-auto flex items-start justify-end pt-2">
             <p className="hidden max-w-[210px] text-right text-[.6rem] font-bold uppercase leading-5 tracking-[.2em] text-white/55 sm:block">
               {en ? "Three landscapes · fifteen private homes · one slower rhythm" : "Ba hệ cảnh quan · mười lăm căn riêng · một nhịp sống thật chậm"}
             </p>
@@ -67,34 +53,17 @@ export function TinhLangHome({ config, locale = "vi" }: { config: CompleteTempla
           <h1 className="mt-5 max-w-[1320px] font-serif text-[clamp(3.75rem,15vw,13rem)] font-medium leading-[.8] tracking-[-.07em] sm:leading-[.76] sm:tracking-[-.075em]">
             {en ? <>Come back<br /><i className="font-normal text-[#dfc6a5]">to what<br className="sm:hidden" /> matters.</i></> : <>Trở về<br /><i className="font-normal text-[#dfc6a5]">với điều<br className="sm:hidden" /> quan trọng.</i></>}
           </h1>
-          <div className="mt-8 grid gap-7 border-t border-white/22 pt-6 sm:grid-cols-[1fr_auto] sm:items-end lg:mt-10">
-            <p className="max-w-xl text-sm leading-7 text-white/70 sm:text-base sm:leading-8">
-              {en
-                ? "Not simply a room for the night, but a home surrounded by nature — where mornings begin gently and time belongs to you again."
-                : "Không chỉ là một căn phòng để ngủ, mà là một ngôi nhà giữa thiên nhiên — nơi buổi sáng bắt đầu thật khẽ và thời gian lại thuộc về bạn."}
-            </p>
-            <div className="flex flex-wrap gap-3">
-              <Link href={`${config.basePath}/dat-phong`} className="inline-flex min-h-14 items-center gap-3 rounded-full bg-[#eae1d2] px-6 text-sm font-bold text-[#16311c] transition hover:-translate-y-0.5">
-                {en ? "Find your home" : "Tìm căn dành cho bạn"} <ArrowRight className="h-4 w-4" />
-              </Link>
-              <a href="#manifesto" className="hidden min-h-14 items-center gap-3 rounded-full border border-white/30 bg-black/10 px-5 text-sm font-bold backdrop-blur sm:inline-flex">
-                {en ? "Enter LAKA" : "Bước vào LAKA"} <ArrowDown className="h-4 w-4" />
-              </a>
-            </div>
+          <div className="mt-8 flex items-end justify-between gap-8 border-t border-white/22 pt-6 lg:mt-10">
+            <p className="max-w-xl text-sm leading-7 text-white/70 sm:text-base sm:leading-8">{en ? "A private retreat where mornings begin gently and time belongs to you again." : "Một chốn nghỉ riêng, nơi buổi sáng bắt đầu thật khẽ và thời gian lại thuộc về bạn."}</p>
+            <a href="#manifesto" aria-label={en ? "Scroll to enter LAKA" : "Cuộn để bước vào LAKA"} className="group hidden items-center gap-3 text-[.6rem] font-bold uppercase tracking-[.18em] text-white/65 sm:flex">
+              {en ? "Enter slowly" : "Bước vào thật chậm"} <span className="grid h-12 w-12 place-items-center rounded-full border border-white/30 transition group-hover:translate-y-1 group-hover:bg-white group-hover:text-[#16311c]"><ArrowDown className="h-4 w-4" /></span>
+            </a>
           </div>
         </div>
         <span className="absolute right-4 top-24 z-10 rounded-full border border-white/25 bg-black/12 px-3 py-1.5 text-[.55rem] font-bold uppercase tracking-widest text-white/72 backdrop-blur">{en ? "Concept image" : "Hình ảnh minh họa"}</span>
       </section>
 
-      <section aria-label={en ? "Find an available home" : "Tìm căn còn trống"} className="relative z-20 mx-auto -mt-px w-full border-b border-[#16311c]/12 bg-[#16311c] px-4 py-5 text-white shadow-[0_30px_90px_rgba(12,34,27,.24)] sm:-mt-8 sm:w-[min(1420px,calc(100%-48px))] sm:px-7 sm:py-7">
-        <div className="mb-4 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
-          <div><p className="text-[.58rem] font-bold uppercase tracking-[.2em] text-[#dfc6a5]">{en ? "Begin with a date" : "Bắt đầu bằng một ngày"}</p><h2 className="mt-1 font-serif text-2xl font-medium sm:text-3xl">{en ? "LAKA will find the right place." : "LAKA sẽ tìm đúng căn dành cho bạn."}</h2></div>
-          <p className="text-xs text-white/45">{en ? "Live availability · Transparent estimated prices" : "Lịch trống trực tiếp · Giá dự kiến rõ ràng"}</p>
-        </div>
-        <AvailabilityBar compact bookingPath={`${config.basePath}/dat-phong`} locale={locale} />
-      </section>
-
-      <section id="manifesto" className="relative overflow-hidden px-5 py-24 sm:px-8 sm:py-36 lg:py-44">
+      <section id="manifesto" className="laka-theme-body relative overflow-hidden px-5 py-24 sm:px-8 sm:py-36 lg:py-44">
         <div className="mx-auto grid w-[min(1380px,100%)] gap-14 lg:grid-cols-[.26fr_1fr]">
           <aside className="lg:pt-4">
             <p className="text-[.62rem] font-bold uppercase tracking-[.22em] text-[#80613f]">{en ? "The reason LAKA exists" : "Vì sao LAKA hiện diện"}</p>
@@ -112,32 +81,13 @@ export function TinhLangHome({ config, locale = "vi" }: { config: CompleteTempla
         </div>
       </section>
 
-      <section className="border-y border-[#16311c]/12 bg-[#e3d8c9]">
-        <div className="mx-auto grid w-[min(1420px,100%)] grid-cols-2 lg:grid-cols-4">
-          {facts.map(({ icon: Icon, value, vi, en: english }, index) => <article key={vi} className={`min-h-44 border-[#16311c]/12 px-5 py-7 sm:min-h-52 sm:px-7 sm:py-9 ${index % 2 === 0 ? "border-r" : ""} ${index < 2 ? "border-b lg:border-b-0" : ""} lg:border-r lg:last:border-r-0`}>
-            <div className="flex items-start justify-between"><span className="font-serif text-4xl font-medium sm:text-5xl">{value}</span><Icon className="h-5 w-5 text-[#80613f]" /></div>
-            <p className="mt-12 text-[.62rem] font-bold uppercase leading-5 tracking-[.14em] text-[#16311c]/52">{en ? english : vi}</p>
-          </article>)}
-        </div>
-      </section>
+      <HomeLandscapeReveal basePath={config.basePath} locale={locale} />
 
-      <section id="collection" className="px-4 py-24 sm:px-7 sm:py-36">
+      <section id="collection" className="laka-theme-body px-4 py-24 sm:px-7 sm:py-36">
         <div className="mx-auto w-[min(1420px,100%)]">
           <div className="mb-14 grid gap-8 lg:grid-cols-[1fr_.42fr] lg:items-end">
             <div><p className="text-[.62rem] font-bold uppercase tracking-[.22em] text-[#80613f]">{en ? "The LAKA product map" : "Bản đồ sản phẩm LAKA"}</p><h2 className="mt-5 max-w-5xl font-serif text-[clamp(3.6rem,9vw,8rem)] font-medium leading-[.88] tracking-[-.065em]">{en ? <>Choose a landscape.<br /><i>Then choose your home.</i></> : <>Chọn một hệ cảnh quan.<br /><i>Rồi chọn căn thuộc về bạn.</i></>}</h2></div>
             <div><p className="text-sm leading-7 text-[#16311c]/58">{en ? "LAKA is organised into three distinct settings. Each setting contains one or more home types and real bookable units." : "LAKA được chia thành ba hệ cảnh quan. Trong mỗi hệ có một hoặc nhiều dòng nhà và các căn thực tế có thể đặt."}</p><Link href={`${config.basePath}/luu-tru`} className="mt-5 inline-flex items-center gap-2 border-b border-[#16311c] pb-2 text-xs font-bold uppercase tracking-[.12em]">{en ? "Explore the full product map" : "Xem toàn bộ bản đồ căn"} <ArrowRight className="h-4 w-4" /></Link></div>
-          </div>
-
-          <div className="mb-16 grid gap-4 md:grid-cols-3">
-            {localizedZones.map((zone, index) => {
-              const zoneStays = stays.filter((stay) => stay.zoneId === zone.id);
-              const unitCount = zoneStays.reduce((sum, stay) => sum + getUnitsForStay(stay.id).length, 0);
-              return <Link href={`${config.basePath}/luu-tru#${zone.slug}`} key={zone.id} className="group relative min-h-[300px] overflow-hidden rounded-[28px] bg-[#10251d] text-white">
-                <Image src={zone.image} alt={`${zone.name} — ${en ? "concept image" : "hình ảnh minh họa"}`} fill sizes="(max-width:768px) 100vw, 33vw" className="object-cover opacity-58 transition duration-700 group-hover:scale-[1.035] group-hover:opacity-75" />
-                <span className="absolute inset-0 bg-gradient-to-t from-[#071b14]/92 via-transparent to-black/20" />
-                <span className="relative flex min-h-[300px] flex-col justify-between p-6"><span className="flex items-center justify-between text-[.58rem] font-bold uppercase tracking-[.18em] text-white/62"><span>0{index + 1} · {zone.eyebrow}</span><ArrowRight className="h-4 w-4 -rotate-45 transition group-hover:rotate-0" /></span><span><strong className="font-serif text-4xl font-medium">{zone.name}</strong><span className="mt-3 block text-xs text-white/58">{zoneStays.length} {en ? "home types" : "dòng nhà"} · {unitCount} {en ? "physical homes" : "căn thực tế"}</span></span></span>
-              </Link>;
-            })}
           </div>
 
           <div className="space-y-8 sm:space-y-12">
@@ -169,7 +119,7 @@ export function TinhLangHome({ config, locale = "vi" }: { config: CompleteTempla
         </div>
       </section>
 
-      <section className="border-y border-[#16311c]/12 bg-[#e3d8c9] px-5 py-20 sm:px-8 sm:py-28">
+      <section className="laka-theme-body laka-theme-muted border-y border-[#16311c]/12 bg-[#e3d8c9] px-5 py-20 sm:px-8 sm:py-28">
         <div className="mx-auto w-[min(1320px,100%)]">
           <div className="grid gap-7 lg:grid-cols-[1fr_.45fr] lg:items-end">
             <div><p className="text-[.62rem] font-bold uppercase tracking-[.22em] text-[#80613f]">{en ? "Food is part of the memory" : "Bữa ăn cũng là một phần ký ức"}</p><h2 className="mt-5 max-w-5xl font-serif text-[clamp(3.4rem,7vw,6.8rem)] font-medium leading-[.92] tracking-[-.055em]">{en ? <>Stay close.<br /><i>Eat at your own table.</i></> : <>Ở thật gần.<br /><i>Ăn tại bàn của riêng mình.</i></>}</h2></div>
@@ -202,24 +152,11 @@ export function TinhLangHome({ config, locale = "vi" }: { config: CompleteTempla
         </div>
       </section>
 
-      <section className="relative min-h-[80svh] overflow-hidden text-white">
-        <Image src={conceptImages.detail2} alt={en ? "A shared breakfast at LAKA — concept image" : "Bữa sáng bên nhau tại LAKA — hình ảnh minh họa"} fill sizes="100vw" className="object-cover" />
-        <div className="absolute inset-0 bg-[#10251d]/68" />
-        <div className="relative z-10 mx-auto flex min-h-[80svh] w-[min(1180px,calc(100%-40px))] flex-col justify-center py-24 text-center">
-          <Quote className="mx-auto h-8 w-8 text-[#dfc6a5]" />
-          <blockquote className="mt-8 font-serif text-[clamp(2.5rem,6vw,5.8rem)] font-medium leading-[1.08] tracking-[-.045em]">“{guestStory.quote}”</blockquote>
-          <p className="mt-8 text-[.62rem] font-bold uppercase tracking-[.2em] text-white/58">{guestStory.name} · {guestStory.stay}</p>
-        </div>
-      </section>
+      <HomeGuestStories locale={locale} />
 
-      <section className="mx-auto grid w-[min(1280px,calc(100%-32px))] gap-12 py-24 sm:w-[min(1280px,calc(100%-48px))] sm:py-36 lg:grid-cols-[.52fr_1fr]">
-        <div><p className="text-[.62rem] font-bold uppercase tracking-[.22em] text-[#80613f]">{en ? "Before your stay" : "Trước kỳ nghỉ"}</p><h2 className="mt-5 font-serif text-5xl font-medium leading-[.95] tracking-[-.05em] sm:text-7xl">{en ? <>Clear answers.<br /><i>A lighter mind.</i></> : <>Rõ ràng trước.<br /><i>Nhẹ lòng sau.</i></>}</h2><Link href={`${config.basePath}/thong-tin`} className="mt-7 inline-flex items-center gap-2 border-b border-[#16311c] pb-2 text-xs font-bold uppercase tracking-[.12em]">{en ? "All information" : "Xem tất cả thông tin"} <ArrowRight className="h-4 w-4" /></Link></div>
-        <div className="border-t border-[#16311c]/18">
-          {localizedFaqs.map(([question, answer], index) => <details key={question} className="group border-b border-[#16311c]/18 py-6 sm:py-7">
-            <summary className="flex min-h-10 cursor-pointer list-none items-center gap-5 font-bold"><span className="text-[.58rem] text-[#80613f]">0{index + 1}</span><span className="flex-1">{question}</span><Plus className="h-5 w-5 shrink-0 transition group-open:rotate-45" /></summary>
-            <p className="ml-10 mt-4 max-w-3xl text-sm leading-7 text-[#16311c]/58">{answer}</p>
-          </details>)}
-        </div>
+      <section className="laka-theme-body mx-auto grid w-[min(1280px,calc(100%-32px))] gap-8 py-20 sm:w-[min(1280px,calc(100%-48px))] sm:py-28 lg:grid-cols-[1fr_auto] lg:items-end">
+        <div><p className="text-[.62rem] font-bold uppercase tracking-[.22em] text-[#80613f]">{en ? "Continue exploring" : "Tiếp tục khám phá"}</p><h2 className="mt-5 max-w-5xl font-serif text-5xl font-medium leading-[.95] tracking-[-.05em] sm:text-7xl">{en ? <>Know the place.<br /><i>Then plan the journey.</i></> : <>Hiểu về nơi chốn.<br /><i>Rồi mới tính chuyến đi.</i></>}</h2></div>
+        <div className="flex flex-wrap gap-3"><Link href={`${config.basePath}/ve-lago`} className="inline-flex min-h-13 items-center gap-2 rounded-full border border-current/20 px-6 text-sm font-bold">{en ? "The LAKA story" : "Câu chuyện LAKA"} <ArrowRight className="h-4 w-4" /></Link><Link href={`${config.basePath}/thong-tin`} className="inline-flex min-h-13 items-center gap-2 rounded-full bg-[#16311c] px-6 text-sm font-bold text-[#eae1d2]">{en ? "Good to know" : "Thông tin cần biết"} <ArrowRight className="h-4 w-4" /></Link></div>
       </section>
 
       <section className="relative mx-auto min-h-[78svh] w-full overflow-hidden bg-[#10251d] text-white sm:w-[min(1500px,calc(100%-40px))]">

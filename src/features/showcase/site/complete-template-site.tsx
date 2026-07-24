@@ -361,7 +361,7 @@ export function CompleteTemplateSite({ route, config, home, locale = "vi" }: { r
     "--template-accent": config.accent,
     "--template-surface": config.surface
   } as React.CSSProperties;
-  return <div style={style} className={`showcase-root min-h-screen bg-[var(--template-bg)] text-[var(--template-ink)] ${config.mood === "organic" ? "template-organic" : config.mood === "cinematic" ? "template-cinematic" : "template-editorial"}`}>
+  return <div style={style} className={`showcase-root laka-theme-root min-h-screen bg-[var(--template-bg)] text-[var(--template-ink)] ${config.mood === "organic" ? "template-organic" : config.mood === "cinematic" ? "template-cinematic" : "template-editorial"}`}>
     <TemplateDocumentLocale locale={locale} />
     <SkipLink />
     <TemplateExperienceLayer mood={config.mood} />
