@@ -31,7 +31,7 @@ export function TinhLangHome({ config, locale = "vi" }: { config: CompleteTempla
     ? { quote: "For the first time in a long while, our whole family sat down for breakfast without anyone watching the clock.", name: "Minh Anh", stay: "A weekend at Forest House" }
     : guestStories[0];
 
-  return <div className="showcase-root min-h-screen bg-[#f4efe7] text-[#17321d]">
+  return <div className="showcase-root min-h-screen bg-[#eae1d2] text-[#16311c]">
     <TemplateDocumentLocale locale={locale} />
     <SkipLink />
     <TemplateExperienceLayer mood="editorial" />
@@ -69,7 +69,7 @@ export function TinhLangHome({ config, locale = "vi" }: { config: CompleteTempla
                 : "Không chỉ là một căn phòng để ngủ, mà là một ngôi nhà giữa thiên nhiên — nơi buổi sáng bắt đầu thật khẽ và thời gian lại thuộc về bạn."}
             </p>
             <div className="flex flex-wrap gap-3">
-              <Link href={`${config.basePath}/dat-phong`} className="inline-flex min-h-14 items-center gap-3 rounded-full bg-[#f4efe7] px-6 text-sm font-bold text-[#17321d] transition hover:-translate-y-0.5">
+              <Link href={`${config.basePath}/dat-phong`} className="inline-flex min-h-14 items-center gap-3 rounded-full bg-[#eae1d2] px-6 text-sm font-bold text-[#16311c] transition hover:-translate-y-0.5">
                 {en ? "Find your home" : "Tìm căn dành cho bạn"} <ArrowRight className="h-4 w-4" />
               </Link>
               <a href="#manifesto" className="inline-flex min-h-14 items-center gap-3 rounded-full border border-white/30 bg-black/10 px-5 text-sm font-bold backdrop-blur">
@@ -81,7 +81,7 @@ export function TinhLangHome({ config, locale = "vi" }: { config: CompleteTempla
         <span className="absolute right-4 top-24 z-10 rounded-full border border-white/25 bg-black/12 px-3 py-1.5 text-[.55rem] font-bold uppercase tracking-widest text-white/72 backdrop-blur">{en ? "Concept image" : "Hình ảnh minh họa"}</span>
       </section>
 
-      <section aria-label={en ? "Find an available home" : "Tìm căn còn trống"} className="relative z-20 mx-auto -mt-px w-full border-b border-[#17321d]/12 bg-[#17321d] px-4 py-5 text-white shadow-[0_30px_90px_rgba(12,34,27,.24)] sm:-mt-8 sm:w-[min(1420px,calc(100%-48px))] sm:px-7 sm:py-7">
+      <section aria-label={en ? "Find an available home" : "Tìm căn còn trống"} className="relative z-20 mx-auto -mt-px w-full border-b border-[#16311c]/12 bg-[#16311c] px-4 py-5 text-white shadow-[0_30px_90px_rgba(12,34,27,.24)] sm:-mt-8 sm:w-[min(1420px,calc(100%-48px))] sm:px-7 sm:py-7">
         <div className="mb-4 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
           <div><p className="text-[.58rem] font-bold uppercase tracking-[.2em] text-[#dfc6a5]">{en ? "Begin with a date" : "Bắt đầu bằng một ngày"}</p><h2 className="mt-1 font-serif text-2xl font-medium sm:text-3xl">{en ? "LAKA will find the right place." : "LAKA sẽ tìm đúng căn dành cho bạn."}</h2></div>
           <p className="text-xs text-white/45">{en ? "Live availability · Transparent estimated prices" : "Lịch trống trực tiếp · Giá dự kiến rõ ràng"}</p>
@@ -93,25 +93,25 @@ export function TinhLangHome({ config, locale = "vi" }: { config: CompleteTempla
         <div className="mx-auto grid w-[min(1380px,100%)] gap-14 lg:grid-cols-[.26fr_1fr]">
           <aside className="lg:pt-4">
             <p className="text-[.62rem] font-bold uppercase tracking-[.22em] text-[#80613f]">{en ? "The reason LAKA exists" : "Vì sao LAKA hiện diện"}</p>
-            <p className="mt-5 max-w-[230px] text-sm leading-7 text-[#17321d]/55">{en ? "A place can be beautiful. A meaningful stay must make you feel more present." : "Một nơi có thể đẹp. Một kỳ nghỉ đáng nhớ phải khiến ta thực sự hiện diện."}</p>
+            <p className="mt-5 max-w-[230px] text-sm leading-7 text-[#16311c]/55">{en ? "A place can be beautiful. A meaningful stay must make you feel more present." : "Một nơi có thể đẹp. Một kỳ nghỉ đáng nhớ phải khiến ta thực sự hiện diện."}</p>
           </aside>
           <div>
             <h2 className="max-w-6xl font-serif text-[clamp(3.5rem,8.7vw,8.4rem)] font-medium leading-[.93] tracking-[-.065em]">
               {en ? <>We did not begin<br />with a room.<br /><i className="text-[#9a7550]">We began with a feeling.</i></> : <>Không bắt đầu<br />từ một căn phòng.<br /><i className="text-[#9a7550]">Bắt đầu từ một cảm giác.</i></>}
             </h2>
-            <div className="mt-12 grid gap-8 border-t border-[#17321d]/18 pt-8 sm:grid-cols-2 lg:mt-16">
-              <p className="max-w-lg text-base leading-8 text-[#17321d]/68">{en ? "The feeling of opening a door and hearing the trees before your notifications. Of breakfast without an end time." : "Cảm giác khi mở cửa và nghe tiếng cây trước tiếng thông báo. Khi bữa sáng không có giờ kết thúc."}</p>
-              <p className="max-w-lg text-base leading-8 text-[#17321d]/68">{en ? "A home beautiful enough to remember, yet quiet enough for everyone to notice one another." : "Một căn nhà đủ đẹp để nhớ, nhưng đủ yên để mọi người thực sự chú ý đến nhau."}</p>
+            <div className="mt-12 grid gap-8 border-t border-[#16311c]/18 pt-8 sm:grid-cols-2 lg:mt-16">
+              <p className="max-w-lg text-base leading-8 text-[#16311c]/68">{en ? "The feeling of opening a door and hearing the trees before your notifications. Of breakfast without an end time." : "Cảm giác khi mở cửa và nghe tiếng cây trước tiếng thông báo. Khi bữa sáng không có giờ kết thúc."}</p>
+              <p className="max-w-lg text-base leading-8 text-[#16311c]/68">{en ? "A home beautiful enough to remember, yet quiet enough for everyone to notice one another." : "Một căn nhà đủ đẹp để nhớ, nhưng đủ yên để mọi người thực sự chú ý đến nhau."}</p>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="border-y border-[#17321d]/12 bg-[#e3d8c9]">
+      <section className="border-y border-[#16311c]/12 bg-[#e3d8c9]">
         <div className="mx-auto grid w-[min(1420px,100%)] grid-cols-2 lg:grid-cols-4">
-          {facts.map(({ icon: Icon, value, vi, en: english }, index) => <article key={vi} className={`min-h-44 border-[#17321d]/12 px-5 py-7 sm:min-h-52 sm:px-7 sm:py-9 ${index % 2 === 0 ? "border-r" : ""} ${index < 2 ? "border-b lg:border-b-0" : ""} lg:border-r lg:last:border-r-0`}>
+          {facts.map(({ icon: Icon, value, vi, en: english }, index) => <article key={vi} className={`min-h-44 border-[#16311c]/12 px-5 py-7 sm:min-h-52 sm:px-7 sm:py-9 ${index % 2 === 0 ? "border-r" : ""} ${index < 2 ? "border-b lg:border-b-0" : ""} lg:border-r lg:last:border-r-0`}>
             <div className="flex items-start justify-between"><span className="font-serif text-4xl font-medium sm:text-5xl">{value}</span><Icon className="h-5 w-5 text-[#80613f]" /></div>
-            <p className="mt-12 text-[.62rem] font-bold uppercase leading-5 tracking-[.14em] text-[#17321d]/52">{en ? english : vi}</p>
+            <p className="mt-12 text-[.62rem] font-bold uppercase leading-5 tracking-[.14em] text-[#16311c]/52">{en ? english : vi}</p>
           </article>)}
         </div>
       </section>
@@ -120,7 +120,7 @@ export function TinhLangHome({ config, locale = "vi" }: { config: CompleteTempla
         <div className="mx-auto w-[min(1420px,100%)]">
           <div className="mb-14 grid gap-8 lg:grid-cols-[1fr_.42fr] lg:items-end">
             <div><p className="text-[.62rem] font-bold uppercase tracking-[.22em] text-[#80613f]">{en ? "The private home collection · 01—04" : "Bộ sưu tập căn riêng · 01—04"}</p><h2 className="mt-5 max-w-5xl font-serif text-[clamp(3.6rem,9vw,8rem)] font-medium leading-[.88] tracking-[-.065em]">{en ? <>Four homes.<br /><i>Four ways to disappear.</i></> : <>Bốn căn nhà.<br /><i>Bốn cách để đi trốn.</i></>}</h2></div>
-            <div><p className="text-sm leading-7 text-[#17321d]/58">{en ? "Scroll through the collection, then choose by who you travel with and the view you want to wake up to." : "Lướt qua bộ sưu tập, rồi chọn theo người đồng hành và khung cảnh bạn muốn thấy khi thức dậy."}</p><Link href={`${config.basePath}/luu-tru`} className="mt-5 inline-flex items-center gap-2 border-b border-[#17321d] pb-2 text-xs font-bold uppercase tracking-[.12em]">{en ? "Compare all homes" : "So sánh tất cả căn"} <ArrowRight className="h-4 w-4" /></Link></div>
+            <div><p className="text-sm leading-7 text-[#16311c]/58">{en ? "Scroll through the collection, then choose by who you travel with and the view you want to wake up to." : "Lướt qua bộ sưu tập, rồi chọn theo người đồng hành và khung cảnh bạn muốn thấy khi thức dậy."}</p><Link href={`${config.basePath}/luu-tru`} className="mt-5 inline-flex items-center gap-2 border-b border-[#16311c] pb-2 text-xs font-bold uppercase tracking-[.12em]">{en ? "Compare all homes" : "So sánh tất cả căn"} <ArrowRight className="h-4 w-4" /></Link></div>
           </div>
 
           <div className="space-y-8 sm:space-y-12">
@@ -137,7 +137,7 @@ export function TinhLangHome({ config, locale = "vi" }: { config: CompleteTempla
                     <p className="max-w-xl text-sm leading-7 text-white/66">{stay.subtitle}</p>
                     <div className="mt-4 flex items-end justify-between gap-6 border-b border-white/25 pb-6">
                       <h3 className="font-serif text-[clamp(3.6rem,10vw,9rem)] font-medium leading-[.84] tracking-[-.07em]">{stay.name}</h3>
-                      <span className="mb-2 grid h-13 w-13 shrink-0 place-items-center rounded-full bg-[#f4efe7] text-[#17321d] transition group-hover:rotate-[-18deg] sm:h-16 sm:w-16"><ArrowRight className="h-5 w-5" /></span>
+                      <span className="mb-2 grid h-13 w-13 shrink-0 place-items-center rounded-full bg-[#eae1d2] text-[#16311c] transition group-hover:rotate-[-18deg] sm:h-16 sm:w-16"><ArrowRight className="h-5 w-5" /></span>
                     </div>
                     <div className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-3 text-xs font-semibold text-white/68">
                       <span className="flex items-center gap-2"><Users className="h-4 w-4" />{en ? `Up to ${stay.maxGuests} guests` : `Tối đa ${stay.maxGuests} khách`}</span>
@@ -159,7 +159,7 @@ export function TinhLangHome({ config, locale = "vi" }: { config: CompleteTempla
             <h2 className="mt-6 font-serif text-[clamp(3.5rem,7vw,6.8rem)] font-medium leading-[.9] tracking-[-.06em]">{en ? <>Nothing planned.<br /><i>Everything felt.</i></> : <>Không cần kế hoạch.<br /><i>Chỉ cần cảm nhận.</i></>}</h2>
             <div className="relative mt-10 aspect-[4/5] overflow-hidden rounded-t-[180px] sm:rounded-t-[260px]">
               <Image src={conceptImages.experience} alt={en ? "A slow day at LAKA — concept image" : "Một ngày chậm tại LAKA — hình ảnh minh họa"} fill sizes="(max-width:1024px) 100vw, 44vw" className="object-cover" />
-              <span className="absolute bottom-4 left-1/2 -translate-x-1/2 whitespace-nowrap bg-[#f4efe7] px-4 py-2 text-[.56rem] font-bold uppercase tracking-wider text-[#17321d]">{en ? "Concept image" : "Hình ảnh minh họa"}</span>
+              <span className="absolute bottom-4 left-1/2 -translate-x-1/2 whitespace-nowrap bg-[#eae1d2] px-4 py-2 text-[.56rem] font-bold uppercase tracking-wider text-[#16311c]">{en ? "Concept image" : "Hình ảnh minh họa"}</span>
             </div>
           </div>
           <div className="border-t border-white/18">
@@ -183,11 +183,11 @@ export function TinhLangHome({ config, locale = "vi" }: { config: CompleteTempla
       </section>
 
       <section className="mx-auto grid w-[min(1280px,calc(100%-32px))] gap-12 py-24 sm:w-[min(1280px,calc(100%-48px))] sm:py-36 lg:grid-cols-[.52fr_1fr]">
-        <div><p className="text-[.62rem] font-bold uppercase tracking-[.22em] text-[#80613f]">{en ? "Before your stay" : "Trước kỳ nghỉ"}</p><h2 className="mt-5 font-serif text-5xl font-medium leading-[.95] tracking-[-.05em] sm:text-7xl">{en ? <>Clear answers.<br /><i>A lighter mind.</i></> : <>Rõ ràng trước.<br /><i>Nhẹ lòng sau.</i></>}</h2><Link href={`${config.basePath}/thong-tin`} className="mt-7 inline-flex items-center gap-2 border-b border-[#17321d] pb-2 text-xs font-bold uppercase tracking-[.12em]">{en ? "All information" : "Xem tất cả thông tin"} <ArrowRight className="h-4 w-4" /></Link></div>
-        <div className="border-t border-[#17321d]/18">
-          {localizedFaqs.map(([question, answer], index) => <details key={question} className="group border-b border-[#17321d]/18 py-6 sm:py-7">
+        <div><p className="text-[.62rem] font-bold uppercase tracking-[.22em] text-[#80613f]">{en ? "Before your stay" : "Trước kỳ nghỉ"}</p><h2 className="mt-5 font-serif text-5xl font-medium leading-[.95] tracking-[-.05em] sm:text-7xl">{en ? <>Clear answers.<br /><i>A lighter mind.</i></> : <>Rõ ràng trước.<br /><i>Nhẹ lòng sau.</i></>}</h2><Link href={`${config.basePath}/thong-tin`} className="mt-7 inline-flex items-center gap-2 border-b border-[#16311c] pb-2 text-xs font-bold uppercase tracking-[.12em]">{en ? "All information" : "Xem tất cả thông tin"} <ArrowRight className="h-4 w-4" /></Link></div>
+        <div className="border-t border-[#16311c]/18">
+          {localizedFaqs.map(([question, answer], index) => <details key={question} className="group border-b border-[#16311c]/18 py-6 sm:py-7">
             <summary className="flex min-h-10 cursor-pointer list-none items-center gap-5 font-bold"><span className="text-[.58rem] text-[#80613f]">0{index + 1}</span><span className="flex-1">{question}</span><Plus className="h-5 w-5 shrink-0 transition group-open:rotate-45" /></summary>
-            <p className="ml-10 mt-4 max-w-3xl text-sm leading-7 text-[#17321d]/58">{answer}</p>
+            <p className="ml-10 mt-4 max-w-3xl text-sm leading-7 text-[#16311c]/58">{answer}</p>
           </details>)}
         </div>
       </section>
@@ -199,7 +199,7 @@ export function TinhLangHome({ config, locale = "vi" }: { config: CompleteTempla
           <p className="text-[.62rem] font-bold uppercase tracking-[.24em] text-[#dfc6a5]">{en ? "Your quiet place is waiting" : "Khoảng yên đang chờ"}</p>
           <h2 className="mt-6 font-serif text-[clamp(3.8rem,9vw,8.5rem)] font-medium leading-[.88] tracking-[-.065em]">{en ? <>Choose a date.<br /><i>Keep the feeling.</i></> : <>Chọn một ngày.<br /><i>Giữ lại cảm giác.</i></>}</h2>
           <p className="mt-7 max-w-xl text-sm leading-7 text-white/62 sm:text-base">{en ? "Check live availability and estimated prices. No account and no immediate payment required." : "Xem lịch trống và giá dự kiến trực tiếp. Không cần tài khoản, chưa cần thanh toán ngay."}</p>
-          <div className="mt-9 flex flex-wrap gap-3"><Link href={`${config.basePath}/dat-phong`} className="inline-flex min-h-14 items-center gap-3 rounded-full bg-[#f4efe7] px-7 text-sm font-bold text-[#17321d]">{en ? "Choose your dates" : "Chọn ngày lưu trú"} <ArrowRight className="h-4 w-4" /></Link><Link href={`${config.basePath}/lien-he`} className="inline-flex min-h-14 items-center rounded-full border border-white/28 px-6 text-sm font-bold">{en ? "Ask LAKA" : "Nhờ LAKA tư vấn"}</Link></div>
+          <div className="mt-9 flex flex-wrap gap-3"><Link href={`${config.basePath}/dat-phong`} className="inline-flex min-h-14 items-center gap-3 rounded-full bg-[#eae1d2] px-7 text-sm font-bold text-[#16311c]">{en ? "Choose your dates" : "Chọn ngày lưu trú"} <ArrowRight className="h-4 w-4" /></Link><Link href={`${config.basePath}/lien-he`} className="inline-flex min-h-14 items-center rounded-full border border-white/28 px-6 text-sm font-bold">{en ? "Ask LAKA" : "Nhờ LAKA tư vấn"}</Link></div>
         </div>
       </section>
     </main>

@@ -7,8 +7,8 @@ export const songDongConfig: CompleteTemplateConfig = {
   name: "Sống động",
   mood: "organic",
   basePath: "/mau/song-dong",
-  background: "#faf3ea",
-  ink: "#17321d",
+  background: "#eae1d2",
+  ink: "#16311c",
   accent: "#c7a882",
   surface: "#fffdf9",
   muted: "#d9dfc9"

@@ -8,7 +8,7 @@ export const showcaseTemplates = [
     audience: "Cặp đôi · khách hàng cao cấp",
     signature: "Bố cục bất đối xứng · chữ thanh lịch · khoảng thở rộng",
     interaction: "Chuyển động chậm, ảnh mở nhẹ và nhịp cuộn như một cuốn tạp chí",
-    colors: ["#faf3ea", "#17321d", "#c7a882"]
+    colors: ["#eae1d2", "#16311c", "#c7a882"]
   },
   {
     slug: "dien-anh",
@@ -19,7 +19,7 @@ export const showcaseTemplates = [
     audience: "Nhóm bạn · người yêu trải nghiệm",
     signature: "Khung hình lớn · nền tối sâu · nội dung chia theo chương",
     interaction: "Chuyển cảnh có chiều sâu, dải chữ chuyển động và phản hồi giàu cảm xúc",
-    colors: ["#17321d", "#c7a882", "#faf3ea"]
+    colors: ["#16311c", "#c7a882", "#eae1d2"]
   },
   {
     slug: "song-dong",
@@ -30,7 +30,7 @@ export const showcaseTemplates = [
     audience: "Gia đình · nhóm trẻ",
     signature: "Hình khối hữu cơ · bento nhiều màu · thông tin thân thiện",
     interaction: "Thẻ nổi, chi tiết vui và phản hồi rõ ràng trên cả cảm ứng lẫn chuột",
-    colors: ["#faf3ea", "#c7a882", "#17321d"]
+    colors: ["#eae1d2", "#c7a882", "#16311c"]
   }
 ] as const;
 

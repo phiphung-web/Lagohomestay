@@ -8,9 +8,9 @@ export const dienAnhConfig: CompleteTemplateConfig = {
   mood: "cinematic",
   basePath: "/mau/dien-anh",
   background: "#0b190f",
-  ink: "#faf3ea",
+  ink: "#eae1d2",
   accent: "#c7a882",
-  surface: "#17321d",
+  surface: "#16311c",
   muted: "#52634f"
 };
 

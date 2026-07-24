@@ -8,8 +8,8 @@ export const tinhLangConfig: CompleteTemplateConfig = {
   name: "Tĩnh lặng",
   mood: "editorial",
   basePath: "/mau/tinh-lang",
-  background: "#faf3ea",
-  ink: "#17321d",
+  background: "#eae1d2",
+  ink: "#16311c",
   accent: "#c7a882",
   surface: "#e7ded1",
   muted: "#d4c7b6"

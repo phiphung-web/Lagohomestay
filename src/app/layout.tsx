@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   openGraph: { title: "LAKA Homestay", description: "Mỗi căn nhà, một cách để trở về", type: "website", locale: "vi_VN" }
 };
 
-export const viewport: Viewport = { themeColor: "#17321d", colorScheme: "light", width: "device-width", initialScale: 1 };
+export const viewport: Viewport = { themeColor: "#16311c", colorScheme: "light", width: "device-width", initialScale: 1 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return <html lang="vi"><body>{children}</body></html>;

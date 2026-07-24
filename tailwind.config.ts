@@ -10,11 +10,11 @@ export default {
     extend: {
       colors: {
         lago: {
-          ink: "#17321d",
-          forest: "#17321d",
+          ink: "#16311c",
+          forest: "#16311c",
           moss: "#6f8065",
           sand: "#e7ded1",
-          cream: "#faf3ea",
+          cream: "#eae1d2",
           clay: "#c7a882",
           mist: "#dce7e0"
         }

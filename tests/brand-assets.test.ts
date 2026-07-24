@@ -23,8 +23,8 @@ describe("LAKA brand system", () => {
 
   it("anchors all three concepts in the official brand palette", () => {
     for (const template of showcaseTemplates) {
-      expect(template.colors).toContain("#17321d");
-      expect(template.colors).toContain("#c7a882");
+      expect(template.colors).toContain("#16311c");
+      expect(template.colors).toContain("#eae1d2");
     }
   });
 
