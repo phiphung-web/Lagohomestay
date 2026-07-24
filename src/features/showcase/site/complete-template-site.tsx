@@ -194,6 +194,7 @@ function PageIntro({ eyebrow, title, text, image, config, locale = "vi" }: { eye
 
   if (image) return <section className="relative min-h-[78svh] overflow-hidden border-b border-white/12 bg-[#10251d] text-white">
     <Image src={image} alt={`${title} — ${locale === "en" ? "concept image" : "ảnh minh họa"}`} fill priority sizes="100vw" className="showcase-atmosphere-media object-cover transition duration-[1400ms] hover:scale-[1.015]" />
+    <span aria-hidden="true" className="showcase-natural-light absolute inset-0" />
     <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(5,18,14,.12),rgba(5,18,14,.82))]" />
     <div className="relative z-10 mx-auto flex min-h-[78svh] w-[min(1480px,calc(100%-40px))] flex-col justify-end pb-12 pt-28 sm:pb-16">
       <p className="text-[.62rem] font-bold uppercase tracking-[.24em] text-[#dfc6a5]">{eyebrow}</p>

@@ -82,12 +82,6 @@ export function TemplateAtmosphereController({ locale = "vi" }: { locale?: Showc
   const ActiveIcon = options.find((option) => option.mode === active)?.icon ?? Sun;
 
   return <>
-    <div aria-hidden="true" data-active-atmosphere={active} className="laka-atmosphere-canvas">
-      <span className="laka-atmosphere-wash" />
-      <span className="laka-atmosphere-glow" />
-      <span className="laka-atmosphere-vignette" />
-    </div>
-
     <aside className="fixed bottom-[max(1rem,env(safe-area-inset-bottom))] right-3 z-[65] w-[min(350px,calc(100%-24px))] text-[#eae1d2] sm:right-5" aria-label={locale === "en" ? "LAKA atmosphere" : "Bầu không khí LAKA"}>
       <div className={`overflow-hidden rounded-[26px] border border-white/16 bg-[#10251d]/88 shadow-[0_24px_80px_rgba(3,18,13,.32)] backdrop-blur-2xl transition-[max-height,opacity,transform] duration-500 ease-out ${open ? "mb-2 max-h-[440px] translate-y-0 opacity-100" : "pointer-events-none mb-0 max-h-0 translate-y-3 opacity-0"}`}>
         <div className="p-4 sm:p-5">

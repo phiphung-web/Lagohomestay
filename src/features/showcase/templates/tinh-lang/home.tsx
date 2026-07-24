@@ -51,6 +51,7 @@ export function TinhLangHome({ config, locale = "vi" }: { config: CompleteTempla
           sizes="100vw"
           className="showcase-atmosphere-media object-cover object-[58%_center] scale-[1.01]"
         />
+        <span aria-hidden="true" className="showcase-natural-light absolute inset-0" />
         <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(5,18,14,.28)_0%,rgba(5,18,14,.08)_32%,rgba(5,18,14,.78)_100%)]" />
         <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(5,18,14,.48)_0%,transparent_58%)]" />
 

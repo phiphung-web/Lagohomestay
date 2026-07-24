@@ -92,7 +92,8 @@ export function TemplateStayHero({ mood, basePath, stay, locale = "vi" }: { mood
     : `${basePath}/dat-phong`;
 
   if (mood === "editorial") return <section className="relative min-h-[88svh] overflow-hidden bg-[#10251d] text-white">
-    <Image src={stay.image} alt={`${stay.name} — ${locale === "en" ? "concept image" : "ảnh minh họa"}`} fill priority sizes="100vw" className="object-cover transition duration-[1400ms] hover:scale-[1.015]" />
+    <Image src={stay.image} alt={`${stay.name} — ${locale === "en" ? "concept image" : "ảnh minh họa"}`} fill priority sizes="100vw" className="showcase-atmosphere-media object-cover transition duration-[1400ms] hover:scale-[1.015]" />
+    <span aria-hidden="true" className="showcase-natural-light absolute inset-0" />
     <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(5,18,14,.22),rgba(5,18,14,.82))]" />
     <div className="relative z-10 mx-auto flex min-h-[88svh] w-[min(1480px,calc(100%-40px))] flex-col justify-between pb-12 pt-10 sm:pb-16">
       <Link href={backHref} className="mt-4 w-fit rounded-full border border-white/25 bg-black/12 px-4 py-2 text-[.6rem] font-bold uppercase tracking-[.16em] backdrop-blur">← {locale === "en" ? "The collection" : "Bộ sưu tập căn"}</Link>
