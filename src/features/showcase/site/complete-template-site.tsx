@@ -86,12 +86,17 @@ function scoped(basePath: string, path = "") {
   return path ? `${basePath}/${path}` : basePath;
 }
 
-export function TemplateHeader({ config, locale = "vi", overlay = false }: { config: CompleteTemplateConfig; locale?: ShowcaseLocale; overlay?: boolean }) {
+export function TemplateHeader({ config, locale = "vi", overlay = false, storyMode = false }: { config: CompleteTemplateConfig; locale?: ShowcaseLocale; overlay?: boolean; storyMode?: boolean }) {
   const organic = config.mood === "organic";
   const cinematic = config.mood === "cinematic";
   const darkHeader = cinematic || overlay;
   const localizedNavItems = locale === "en" ? englishNavItems : navItems;
-  const mobileItems = localizedNavItems.map(([label, path]) => ({ label, href: scoped(config.basePath, path), exact: !path }));
+  const storyItems = locale === "en"
+    ? [["Story", "#cau-chuyen"], ["Space", "#khong-gian"], ["Rhythm", "#nhip-song"], ["What remains", "#du-am"]] as const
+    : [["Câu chuyện", "#cau-chuyen"], ["Không gian", "#khong-gian"], ["Nhịp sống", "#nhip-song"], ["Dư âm", "#du-am"]] as const;
+  const mobileItems = storyMode
+    ? storyItems.map(([label, hash]) => ({ label, href: `${config.basePath}${hash}`, exact: true }))
+    : localizedNavItems.map(([label, path]) => ({ label, href: scoped(config.basePath, path), exact: !path }));
 
   if (config.slug === "tinh-lang") {
     const headerTone = overlay
@@ -102,7 +107,7 @@ export function TemplateHeader({ config, locale = "vi", overlay = false }: { con
       <div className="mx-auto grid h-[92px] w-[min(1500px,calc(100%-24px))] grid-cols-[1fr_auto_1fr] items-center gap-3 sm:w-[min(1500px,calc(100%-48px))]">
         <div className="flex min-w-0 items-center justify-start">
           <nav aria-label={locale === "en" ? "Primary navigation" : "Điều hướng chính"} className="hidden items-center gap-5 text-[.62rem] font-bold uppercase tracking-[.12em] xl:flex 2xl:gap-7">
-            {localizedNavItems.slice(0, 3).map(([label, path]) => <TemplateNavLink key={path} href={scoped(config.basePath, path)} label={label} mood={config.mood} exact={!path} />)}
+            {(storyMode ? storyItems.slice(0, 2) : localizedNavItems.slice(0, 3)).map(([label, path]) => <TemplateNavLink key={path} href={storyMode ? `${config.basePath}${path}` : scoped(config.basePath, path)} label={label} mood={config.mood} exact={!path} />)}
           </nav>
           <div className="xl:hidden">
             <TemplateLanguageSwitcher locale={locale} compact alwaysVisible />
@@ -119,18 +124,18 @@ export function TemplateHeader({ config, locale = "vi", overlay = false }: { con
 
         <div className="flex min-w-0 items-center justify-end gap-2">
           <nav aria-label={locale === "en" ? "Secondary navigation" : "Điều hướng bổ sung"} className="hidden items-center gap-5 text-[.62rem] font-bold uppercase tracking-[.12em] xl:flex 2xl:gap-7">
-            {localizedNavItems.slice(3).map(([label, path]) => <TemplateNavLink key={path} href={scoped(config.basePath, path)} label={label} mood={config.mood} exact={!path} />)}
+            {(storyMode ? storyItems.slice(2) : localizedNavItems.slice(3)).map(([label, path]) => <TemplateNavLink key={path} href={storyMode ? `${config.basePath}${path}` : scoped(config.basePath, path)} label={label} mood={config.mood} exact={!path} />)}
           </nav>
           <div className="hidden xl:block">
             <TemplateLanguageSwitcher locale={locale} compact alwaysVisible />
           </div>
-          <Link
+          {!storyMode && <Link
             href={scoped(config.basePath, "dat-phong")}
             className={`hidden min-h-11 items-center gap-2 rounded-full px-4 text-xs font-bold sm:inline-flex ${overlay ? "border border-[#eae1d2]/30 bg-[#eae1d2]/10 text-[#eae1d2]" : "bg-[#16311c] text-[#eae1d2]"}`}
           >
             <CalendarDays className="h-4 w-4" />
             <span className="hidden lg:inline">{locale === "en" ? "Check dates" : "Kiểm tra lịch"}</span>
-          </Link>
+          </Link>}
           <TemplateMobileMenu
             name={config.name}
             mood={config.mood}
@@ -140,6 +145,7 @@ export function TemplateHeader({ config, locale = "vi", overlay = false }: { con
             contactHref={scoped(config.basePath, "lien-he")}
             locale={locale}
             wideHeader
+            immersive={storyMode}
           />
         </div>
       </div>
@@ -165,8 +171,28 @@ export function TemplateHeader({ config, locale = "vi", overlay = false }: { con
   </header>;
 }
 
-export function TemplateFooter({ config, locale = "vi" }: { config: CompleteTemplateConfig; locale?: ShowcaseLocale }) {
+export function TemplateFooter({ config, locale = "vi", storyMode = false }: { config: CompleteTemplateConfig; locale?: ShowcaseLocale; storyMode?: boolean }) {
   const localizedNavItems = locale === "en" ? englishNavItems : navItems;
+  if (storyMode) return <footer className="border-t border-[#16311c]/12 bg-[#eae1d2] pb-28 pt-14 text-[#16311c] sm:pb-32">
+    <div className="mx-auto grid w-[min(1420px,calc(100%-40px))] gap-12 md:grid-cols-[1.25fr_.75fr]">
+      <div>
+        <Link href={config.basePath} aria-label={locale === "en" ? "LAKA Homestay — home" : "LAKA Homestay — trang chủ"} className="inline-flex">
+          <BrandLogo variant="established" decorative className="w-[190px]" />
+        </Link>
+        <p className="mt-6 max-w-lg font-serif text-2xl leading-9">
+          {locale === "en" ? "A place to return. First, to yourself." : "Một nơi để trở về. Trước hết, với chính mình."}
+        </p>
+      </div>
+      <div className="md:text-right">
+        <p className="text-[.62rem] font-bold uppercase tracking-[.18em] text-[#80613f]">{locale === "en" ? "Keep exploring" : "Tiếp tục khám phá"}</p>
+        <div className="mt-5 flex flex-col gap-3 text-sm md:items-end">
+          <Link href={scoped(config.basePath, "ve-lago")} className="font-bold">{locale === "en" ? "The LAKA story" : "Câu chuyện LAKA"}</Link>
+          <Link href={scoped(config.basePath, "trai-nghiem")}>{locale === "en" ? "The LAKA rhythm" : "Nhịp sống LAKA"}</Link>
+          <span className="flex items-center gap-2 opacity-70"><Instagram className="h-4 w-4" /> @lagohomestay</span>
+        </div>
+      </div>
+    </div>
+  </footer>;
   return <footer className={`border-t border-current/12 pb-28 pt-14 sm:pb-32 ${config.mood === "organic" ? "bg-[#e7ded1]" : config.mood === "cinematic" ? "bg-[#0b190f]" : "bg-[#eae1d2]"}`}>
     <div className="mx-auto grid w-[min(1420px,calc(100%-40px))] gap-10 md:grid-cols-[1.1fr_.7fr_.7fr]">
       <div><Link href={config.basePath} aria-label={locale === "en" ? "LAKA Homestay - Concept home" : "LAKA Homestay - Trang chủ mẫu"} className="inline-flex"><BrandLogo variant={config.mood === "editorial" ? "established" : "homestay"} decorative className={`${config.mood === "editorial" ? "w-[190px]" : "w-[210px]"} ${config.mood === "cinematic" ? "text-[#eae1d2]" : "text-[#16311c]"}`} /></Link><p className="mt-5 max-w-md text-sm leading-7 opacity-80">{locale === "en" ? "Three landscape collections, eight home types and fifteen private homes made for slower days together." : "Ba hệ cảnh quan, tám dòng nhà và mười lăm căn riêng cho những ngày mọi người muốn sống chậm cùng nhau."}</p><span className="mt-5 inline-flex rounded-full border border-current/15 px-3 py-1.5 text-[.6rem] font-bold uppercase tracking-wider opacity-80">{locale === "en" ? "Presentation · Concept" : "Bản trình bày · Mẫu"} {config.name}</span></div>
