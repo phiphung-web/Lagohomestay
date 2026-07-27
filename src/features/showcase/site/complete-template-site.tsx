@@ -86,7 +86,7 @@ function scoped(basePath: string, path = "") {
   return path ? `${basePath}/${path}` : basePath;
 }
 
-export function TemplateHeader({ config, locale = "vi", overlay = false, storyMode = false }: { config: CompleteTemplateConfig; locale?: ShowcaseLocale; overlay?: boolean; storyMode?: boolean }) {
+export function TemplateHeader({ config, locale = "vi", overlay = false, storyMode = false, suppressBooking = false }: { config: CompleteTemplateConfig; locale?: ShowcaseLocale; overlay?: boolean; storyMode?: boolean; suppressBooking?: boolean }) {
   const organic = config.mood === "organic";
   const cinematic = config.mood === "cinematic";
   const darkHeader = cinematic || overlay;
@@ -129,7 +129,7 @@ export function TemplateHeader({ config, locale = "vi", overlay = false, storyMo
           <div className="hidden xl:block">
             <TemplateLanguageSwitcher locale={locale} compact alwaysVisible />
           </div>
-          {!storyMode && <Link
+          {!storyMode && !suppressBooking && <Link
             href={scoped(config.basePath, "dat-phong")}
             className={`hidden min-h-11 items-center gap-2 rounded-full px-4 text-xs font-bold sm:inline-flex ${overlay ? "border border-[#eae1d2]/30 bg-[#eae1d2]/10 text-[#eae1d2]" : "bg-[#16311c] text-[#eae1d2]"}`}
           >
@@ -145,7 +145,7 @@ export function TemplateHeader({ config, locale = "vi", overlay = false, storyMo
             contactHref={scoped(config.basePath, "lien-he")}
             locale={locale}
             wideHeader
-            immersive={storyMode}
+            immersive={storyMode || suppressBooking}
           />
         </div>
       </div>
@@ -171,8 +171,35 @@ export function TemplateHeader({ config, locale = "vi", overlay = false, storyMo
   </header>;
 }
 
-export function TemplateFooter({ config, locale = "vi", storyMode = false }: { config: CompleteTemplateConfig; locale?: ShowcaseLocale; storyMode?: boolean }) {
+export function TemplateFooter({ config, locale = "vi", storyMode = false, homeMode = false }: { config: CompleteTemplateConfig; locale?: ShowcaseLocale; storyMode?: boolean; homeMode?: boolean }) {
   const localizedNavItems = locale === "en" ? englishNavItems : navItems;
+  if (homeMode) return <footer className="border-t border-[#16311c]/12 bg-[#eae1d2] pb-28 pt-14 text-[#16311c] sm:pb-32">
+    <div className="mx-auto grid w-[min(1420px,calc(100%-40px))] gap-10 md:grid-cols-[1.1fr_.7fr_.7fr]">
+      <div>
+        <Link href={config.basePath} aria-label={locale === "en" ? "LAKA Homestay — home" : "LAKA Homestay — trang chủ"} className="inline-flex">
+          <BrandLogo variant="established" decorative className="w-[190px]" />
+        </Link>
+        <p className="mt-5 max-w-md text-sm leading-7 opacity-80">
+          {locale === "en" ? "A place close to nature, created for slower days and more meaningful time together." : "Một nơi gần thiên nhiên, dành cho những ngày sống chậm và khoảng thời gian thật sự có ý nghĩa bên nhau."}
+        </p>
+      </div>
+      <div>
+        <p className="text-[.65rem] font-bold uppercase tracking-[.16em] opacity-80">{locale === "en" ? "Explore" : "Khám phá"}</p>
+        <div className="mt-5 grid grid-cols-2 gap-x-5 gap-y-3 text-sm font-bold md:grid-cols-1">
+          {localizedNavItems.map(([label, path]) => <Link key={path} href={scoped(config.basePath, path)}>{label}</Link>)}
+        </div>
+      </div>
+      <div>
+        <p className="text-[.65rem] font-bold uppercase tracking-[.16em] opacity-80">{locale === "en" ? "Connect" : "Kết nối"}</p>
+        <div className="mt-5 flex flex-col gap-3 text-sm">
+          <a href="tel:0900000000" className="font-bold">0900 000 000</a>
+          <a href="https://zalo.me/0900000000">{locale === "en" ? "Chat on Zalo" : "Trò chuyện qua Zalo"}</a>
+          <Link href={scoped(config.basePath, "lien-he")}>{locale === "en" ? "Contact LAKA" : "Liên hệ LAKA"}</Link>
+          <span className="flex items-center gap-2 opacity-80"><Instagram className="h-4 w-4" /> @lagohomestay</span>
+        </div>
+      </div>
+    </div>
+  </footer>;
   if (storyMode) return <footer className="border-t border-[#16311c]/12 bg-[#eae1d2] pb-28 pt-14 text-[#16311c] sm:pb-32">
     <div className="mx-auto grid w-[min(1420px,calc(100%-40px))] gap-12 md:grid-cols-[1.25fr_.75fr]">
       <div>
