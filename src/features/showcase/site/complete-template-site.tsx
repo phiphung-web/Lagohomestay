@@ -16,6 +16,7 @@ import { TemplateExperienceLayer } from "@/features/showcase/components/template
 import { TemplateMobileMenu } from "@/features/showcase/components/template-mobile-menu";
 import { TemplateNavLink } from "@/features/showcase/components/template-nav-link";
 import { TemplateStayHero, TemplateStaysCollection } from "@/features/showcase/components/template-stay-showcase";
+import { StayProductExplorer } from "@/features/showcase/components/stay-product-explorer";
 import { TemplateExperienceStory } from "@/features/showcase/components/template-experience-story";
 import { TemplateFaqSection, TemplatePolicySection } from "@/features/showcase/components/template-info-sections";
 import { TemplateAboutStory, TemplateContactChannels } from "@/features/showcase/components/template-brand-sections";
@@ -209,7 +210,9 @@ function PageIntro({ eyebrow, title, text, image, config, locale = "vi" }: { eye
 
 function StaysPage({ config, locale }: { config: CompleteTemplateConfig; locale: ShowcaseLocale }) {
   return <><PageIntro config={config} locale={locale} eyebrow={locale === "en" ? "The LAKA product map" : "Bản đồ lưu trú LAKA"} title={locale === "en" ? "Three landscapes. One place to return." : "Ba hệ cảnh quan. Một nơi để trở về."} text={locale === "en" ? "Begin with Lake, Forest or Hill, then choose from eight home types and fifteen physical homes." : "Bắt đầu từ Hệ Hồ, Hệ Rừng hoặc Hệ Đồi; sau đó chọn trong tám dòng nhà và mười lăm căn thực tế."} image={conceptImages.detail1} />
-    <TemplateStaysCollection mood={config.mood} basePath={config.basePath} locale={locale} /></>;
+    {config.slug === "tinh-lang"
+      ? <Suspense fallback={<div className="min-h-[60svh] bg-[#eae1d2]" />}><StayProductExplorer basePath={config.basePath} locale={locale} /></Suspense>
+      : <TemplateStaysCollection mood={config.mood} basePath={config.basePath} locale={locale} />}</>;
 }
 
 function StayPage({ config, slug, locale }: { config: CompleteTemplateConfig; slug: string; locale: ShowcaseLocale }) {
