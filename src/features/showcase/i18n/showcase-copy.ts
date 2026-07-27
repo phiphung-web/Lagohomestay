@@ -151,15 +151,15 @@ export const englishExperienceMoments = [
 
 export const englishFaqs = [
   ["How is LAKA organised?", "The concept includes Lake, Forest and Hill collections, containing eight home types and fifteen physical homes for couples, families and groups of up to eight."],
-  ["Do I need to pay immediately?", "No. Your request is held for two hours while the LAKA team confirms it by phone or Zalo."],
+  ["What stage is LAKA currently at?", "LAKA is currently being completed. The website shares the brand story, introduces the spatial concept and lets people follow the journey before opening."],
   ["Is each home completely private?", "Yes. Your group has the entire home and does not share living areas with other guests."],
-  ["Is the displayed price final?", "The system estimates the price using your dates and guest count. LAKA confirms the final amount when contacting you."],
+  ["Are the website images already photographs of the finished spaces?", "Some images are concept illustrations used to express the design direction. Construction and completed-space photography will be added in stages."],
   ["What are the arrival and departure times?", "Concept hours are check-in from 2 pm and check-out by 11 am. Final times and directions are shared before arrival."],
   ["Are breakfast and dining available?", "The concept proposes breakfast hampers, seasonal menus and in-home barbecues. Actual services, menus and prices require operating approval."],
-  ["Can children stay at LAKA?", "Yes. Forest House and LAKA House are positioned for families. Child pricing and equipment will be confirmed when booking."],
+  ["Is LAKA suitable for children?", "Yes. Forest House and LAKA House are being shaped for families; child amenities and safety guidance will be published before opening."],
   ["May I bring a pet?", "Pet terms depend on the selected home and current operating conditions. Please let LAKA know in advance."],
   ["Is parking or a transfer available?", "The concept includes parking guidance for each home. Transfers remain a proposed service and are not yet a confirmed commitment."],
   ["Can LAKA arrange a birthday or anniversary?", "You may request a small set-up, private dinner, cake or flowers. LAKA confirms availability, price and quiet-hour limits."],
   ["What if I arrive late?", "Please notify LAKA by phone or Zalo. The team will suggest an arrival arrangement based on actual operating conditions."],
-  ["Which details are still illustrative?", "Images, prices, address, menus, arrival times and selected services currently support the concept presentation and require approval before launch."]
+  ["Which details are still illustrative?", "Images, address, menus, arrival times and selected services currently support the concept presentation. Everything will be reviewed and confirmed before LAKA welcomes guests."]
 ] as const;

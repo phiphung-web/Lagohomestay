@@ -12,32 +12,29 @@ import {
   Check,
   ChevronLeft,
   ChevronRight,
-  Clock3,
   House,
   MapPin,
-  Phone,
   Users,
   X
 } from "lucide-react";
 import { getUnitsForStay, stays, stayZones } from "@/features/stays/data/demo-data";
 import { localizeStay, localizeStayZone } from "@/features/showcase/i18n/showcase-copy";
 import type { ShowcaseLocale } from "@/features/showcase/i18n/locale";
-import { formatCurrency } from "@/shared/lib/format";
 
 type DetailSection = "overview" | "amenities" | "policies";
 
 const sharedPolicies = {
   vi: [
     ["Nhận và trả căn", "Nhận căn dự kiến từ 14:00, trả căn trước 11:00. Hướng dẫn cụ thể được gửi trước ngày đến."],
-    ["Số khách", "Số khách không vượt quá sức chứa công bố. Phụ thu và nhu cầu cho trẻ em được xác nhận khi đặt."],
+    ["Số khách", "Số khách không vượt quá sức chứa công bố. Thông tin dành cho trẻ em sẽ được hoàn thiện trước khi LAKA đón khách."],
     ["Không gian yên tĩnh", "Giữ âm lượng vừa phải sau 22:00 và trao đổi trước với LAKA nếu có hoạt động nhóm."],
-    ["Thay đổi và hủy", "Điều kiện đổi ngày, hủy và hoàn cọc được thông báo rõ ràng trong bước xác nhận."]
+    ["Thông tin vận hành", "Các điều kiện lưu trú chính thức sẽ được công bố rõ ràng trước khi LAKA mở cửa."]
   ],
   en: [
     ["Arrival and departure", "Concept hours are check-in from 2 pm and check-out by 11 am. Detailed guidance is shared before arrival."],
-    ["Guest numbers", "Guest numbers may not exceed the stated capacity. Extra guest and child arrangements are confirmed when booking."],
+    ["Guest numbers", "Guest numbers may not exceed the stated capacity. Child information will be completed before LAKA welcomes guests."],
     ["A quiet setting", "Please keep noise considerate after 10 pm and discuss group activities with LAKA in advance."],
-    ["Changes and cancellation", "Date changes, cancellations and deposit refunds are explained clearly during confirmation."]
+    ["Operating information", "Final stay terms will be published clearly before LAKA opens."]
   ]
 } as const;
 
@@ -329,17 +326,14 @@ export function StayProductExplorer({
             </div>
 
             <div className="sticky bottom-0 z-[3] mt-auto border-t border-[#16311c]/12 bg-[#f4efe7]/96 px-5 py-4 backdrop-blur sm:px-9 lg:px-11">
-              <div className="flex items-center justify-between gap-4">
+              <div className="flex items-center justify-between gap-5">
                 <div>
-                  <p className="text-[.55rem] font-bold uppercase tracking-[.13em] text-[#16311c]/48">{locale === "en" ? "Estimated from" : "Giá dự kiến từ"}</p>
-                  <p className="mt-1 text-base font-bold">{formatCurrency(activeStay.basePrice)} <span className="text-[.65rem] font-medium opacity-55">/ {locale === "en" ? "night" : "đêm"}</span></p>
+                  <p className="text-[.55rem] font-bold uppercase tracking-[.13em] text-[#80613f]">{locale === "en" ? "Continue the story" : "Tiếp tục câu chuyện"}</p>
+                  <p className="mt-1 text-xs text-[#16311c]/55">{locale === "en" ? "See how a full day unfolds at LAKA." : "Cảm nhận cách một ngày trọn vẹn diễn ra tại LAKA."}</p>
                 </div>
-                <div className="flex items-center gap-2">
-                  <a href="tel:0900000000" aria-label={locale === "en" ? "Call LAKA" : "Gọi LAKA"} className="grid h-12 w-12 place-items-center rounded-full border border-[#16311c]/15"><Phone className="h-4 w-4" /></a>
-                  <Link href={`${basePath}/dat-phong?stay=${activeStay.slug}`} className="inline-flex min-h-12 items-center gap-2 rounded-full bg-[#16311c] px-5 text-xs font-bold text-white sm:px-6">
-                    {locale === "en" ? "Check dates" : "Kiểm tra lịch"} <ArrowRight className="h-4 w-4" />
-                  </Link>
-                </div>
+                <Link href={`${basePath}/trai-nghiem`} className="inline-flex min-h-12 shrink-0 items-center gap-2 rounded-full border border-[#16311c]/16 px-5 text-xs font-bold sm:px-6">
+                  {locale === "en" ? "A day at LAKA" : "Một ngày tại LAKA"} <ArrowRight className="h-4 w-4" />
+                </Link>
               </div>
             </div>
           </section>
@@ -448,8 +442,8 @@ export function StayProductExplorer({
             </div>
           </div>
           <div className="mt-8 flex flex-wrap items-center justify-between gap-5 border-t border-[#16311c]/12 pt-6">
-            <p className="flex items-center gap-2 text-xs text-[#16311c]/55"><Clock3 className="h-4 w-4 text-[#80613f]" />{locale === "en" ? "Requests are held for two hours while LAKA confirms them." : "Yêu cầu được giữ trong 2 giờ để LAKA liên hệ xác nhận."}</p>
-            <Link href={`${basePath}/chinh-sach`} className="inline-flex items-center gap-2 text-xs font-bold">{locale === "en" ? "All policies" : "Toàn bộ chính sách"} <ArrowRight className="h-4 w-4" /></Link>
+            <p className="max-w-2xl font-serif text-xl leading-8 text-[#16311c]/72">{locale === "en" ? "Each home offers a different way to live closer to nature—and closer to one another." : "Mỗi căn là một cách khác để sống gần thiên nhiên và gần nhau hơn."}</p>
+            <Link href={`${basePath}/ve-lago`} className="inline-flex items-center gap-2 text-xs font-bold">{locale === "en" ? "The LAKA story" : "Câu chuyện LAKA"} <ArrowRight className="h-4 w-4" /></Link>
           </div>
         </section>
       </div>

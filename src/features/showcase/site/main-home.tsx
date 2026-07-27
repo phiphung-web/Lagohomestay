@@ -3,7 +3,6 @@ import Link from "next/link";
 import { ArrowDown, ArrowRight } from "lucide-react";
 import { TemplateExperienceLayer } from "@/features/showcase/components/template-experience-layer";
 import { TemplateDocumentLocale } from "@/features/showcase/components/template-document-locale";
-import { TemplateAtmosphereController } from "@/features/showcase/components/template-atmosphere-controller";
 import { conceptImages } from "@/features/stays/data/demo-data";
 import { TemplateFooter, TemplateHeader, type CompleteTemplateConfig } from "@/features/showcase/site/complete-template-site";
 import { SkipLink } from "@/shared/components/ui/skip-link";
@@ -45,12 +44,11 @@ const homePaths = [
 export function MainHome({ config, locale = "vi" }: { config: CompleteTemplateConfig; locale?: ShowcaseLocale }) {
   const en = locale === "en";
 
-  return <div className="showcase-root laka-theme-root min-h-screen bg-[#eae1d2] text-[#16311c]">
+  return <div className="showcase-root min-h-screen bg-[#eae1d2] text-[#16311c]">
     <TemplateDocumentLocale locale={locale} />
     <SkipLink />
     <TemplateExperienceLayer mood="editorial" />
-    <TemplateAtmosphereController locale={locale} />
-    <TemplateHeader config={config} locale={locale} overlay suppressBooking />
+    <TemplateHeader config={config} locale={locale} overlay />
 
     <main id="noi-dung-chinh" tabIndex={-1}>
       <section className="relative min-h-[88svh] overflow-hidden bg-[#10251d] text-white">
@@ -60,9 +58,8 @@ export function MainHome({ config, locale = "vi" }: { config: CompleteTemplateCo
           fill
           priority
           sizes="100vw"
-          className="showcase-atmosphere-media object-cover object-[58%_center]"
+          className="showcase-visual-media object-cover object-[58%_center]"
         />
-        <span aria-hidden="true" className="showcase-natural-light absolute inset-0" />
         <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(5,18,14,.24),rgba(5,18,14,.08)_38%,rgba(5,18,14,.8))]" />
         <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(5,18,14,.5),transparent_64%)]" />
 
@@ -85,7 +82,7 @@ export function MainHome({ config, locale = "vi" }: { config: CompleteTemplateCo
         </div>
       </section>
 
-      <section id="gioi-thieu" className="laka-theme-body scroll-mt-20 px-5 py-24 sm:px-8 sm:py-32">
+      <section id="gioi-thieu" className="scroll-mt-20 px-5 py-24 sm:px-8 sm:py-32">
         <div className="mx-auto grid w-[min(1320px,100%)] gap-12 lg:grid-cols-[.34fr_1fr]">
           <div>
             <p className="text-[.62rem] font-bold uppercase tracking-[.22em] text-[#80613f]">{en ? "The LAKA spirit" : "Tinh thần LAKA"}</p>
@@ -109,7 +106,7 @@ export function MainHome({ config, locale = "vi" }: { config: CompleteTemplateCo
         </div>
       </section>
 
-      <section className="laka-theme-body laka-theme-muted border-y border-[#16311c]/12 bg-[#e3d8c9] px-5 py-20 sm:px-8 sm:py-28">
+      <section className="border-y border-[#16311c]/12 bg-[#e3d8c9] px-5 py-20 sm:px-8 sm:py-28">
         <div className="mx-auto grid w-[min(1380px,100%)] gap-5 lg:grid-cols-[1.15fr_.85fr]">
           <div className="relative min-h-[64svh] overflow-hidden rounded-t-[180px] sm:rounded-t-[280px]">
             <Image src={conceptImages.detail1} alt={en ? "Natural light inside a LAKA space — concept image" : "Ánh sáng tự nhiên trong không gian LAKA — hình ảnh minh họa"} fill sizes="(max-width:1024px) 100vw, 58vw" className="object-cover" />
@@ -133,7 +130,7 @@ export function MainHome({ config, locale = "vi" }: { config: CompleteTemplateCo
         </div>
       </section>
 
-      <section className="laka-theme-body px-5 py-24 sm:px-8 sm:py-32">
+      <section className="px-5 py-24 sm:px-8 sm:py-32">
         <div className="mx-auto w-[min(1380px,100%)]">
           <div className="grid gap-8 lg:grid-cols-[1fr_.4fr] lg:items-end">
             <div>

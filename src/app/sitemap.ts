@@ -3,9 +3,21 @@ import { stays } from "@/features/stays/data/demo-data";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
-  const pages = ["", "/luu-tru", "/trai-nghiem", "/dich-vu", "/am-thuc", "/ve-lago", "/thong-tin", "/chinh-sach", "/lien-he", "/dat-phong", "/tra-cuu"];
+  const pages = [
+    { path: "", priority: 1 },
+    { path: "/luu-tru", priority: .8 },
+    { path: "/trai-nghiem", priority: .78 },
+    { path: "/dich-vu", priority: .72 },
+    { path: "/am-thuc", priority: .76 },
+    { path: "/ve-lago", priority: .78 },
+    { path: "/thong-tin", priority: .62 },
+    { path: "/chinh-sach", priority: .5 },
+    { path: "/lien-he", priority: .58 },
+    { path: "/dat-phong", priority: .35 },
+    { path: "/tra-cuu", priority: .3 }
+  ];
   const vietnamese = [
-    ...pages.map((path) => ({ path, priority: path === "" ? 1 : .72 })),
+    ...pages,
     ...stays.map((stay) => ({ path: `/luu-tru/${stay.slug}`, priority: .82 }))
   ];
 

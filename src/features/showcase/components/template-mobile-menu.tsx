@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowRight, CalendarDays, Menu, Phone, Search, X } from "lucide-react";
+import { ArrowRight, Menu, X } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { createPortal } from "react-dom";
 import { useEffect, useRef, useState } from "react";
@@ -11,7 +11,7 @@ import { languageHref, type ShowcaseLocale } from "@/features/showcase/i18n/loca
 
 type MenuItem = { label: string; href: string; exact?: boolean };
 
-export function TemplateMobileMenu({ name, mood, items, bookingHref, lookupHref, contactHref, locale = "vi", wideHeader = false, immersive = false }: { name: string; mood: TemplateMood; items: MenuItem[]; bookingHref: string; lookupHref: string; contactHref: string; locale?: ShowcaseLocale; wideHeader?: boolean; immersive?: boolean }) {
+export function TemplateMobileMenu({ name, mood, items, locale = "vi", wideHeader = false }: { name: string; mood: TemplateMood; items: MenuItem[]; locale?: ShowcaseLocale; wideHeader?: boolean }) {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
   const triggerRef = useRef<HTMLButtonElement>(null);
@@ -49,7 +49,6 @@ export function TemplateMobileMenu({ name, mood, items, bookingHref, lookupHref,
         <header className="flex items-center justify-between border-b border-current/12 pb-5"><div><BrandLogo variant="wordmark" className="w-[112px]" /><p className={`mt-3 ${organic ? "text-lg font-extrabold" : cinematic ? "text-xs font-extrabold uppercase tracking-[.18em]" : "font-serif text-xl font-semibold"}`}>{name}</p></div><button ref={closeRef} type="button" onClick={close} aria-label={locale === "en" ? "Close menu" : "Đóng menu"} className={`focus-ring grid h-12 w-12 place-items-center rounded-full ${cinematic ? "border border-white/15" : "bg-white shadow-sm"}`}><X className="h-5 w-5" /></button></header>
         {mood === "editorial" && <div className="mt-5 flex items-center justify-between rounded-full border border-current/12 p-1 pl-4 text-xs font-bold"><span className="opacity-55">{locale === "en" ? "Language" : "Ngôn ngữ"}</span><div className="flex gap-1">{(["vi", "en"] as const).map((item) => <Link key={item} href={languageHref(pathname, item)} onClick={close} hrefLang={item} className={`grid h-10 min-w-12 place-items-center rounded-full uppercase ${locale === item ? "bg-[#16311c] text-white" : "opacity-55"}`}>{item}</Link>)}</div></div>}
         <nav aria-label={locale === "en" ? "Mobile navigation" : "Điều hướng mobile"} className="mt-6">{items.map((item, index) => { const active = pathname === item.href || (!item.exact && pathname.startsWith(`${item.href}/`)); return <Link key={item.href} href={item.href} onClick={close} aria-current={active ? "page" : undefined} className={`group flex min-h-16 items-center gap-4 border-b border-current/10 px-1 transition ${active ? "opacity-100" : "opacity-80 hover:opacity-100"}`}><span className={`grid h-9 w-9 place-items-center rounded-full text-[.62rem] font-bold ${active ? cinematic ? "bg-[#c7a882] text-[#0b190f]" : organic ? "bg-[#f18b68] text-[#16311c]" : "bg-[#16311c] text-white" : "border border-current/15"}`}>0{index + 1}</span><span className={`flex-1 ${organic ? "text-lg font-extrabold" : "font-serif text-xl font-medium"}`}>{item.label}</span><ArrowRight aria-hidden="true" className="h-4 w-4 opacity-35 transition group-hover:translate-x-1" /></Link>; })}</nav>
-        {!immersive && <div className="mt-7 grid gap-3"><Link href={bookingHref} onClick={close} className={`flex min-h-14 items-center justify-center gap-2 rounded-full px-5 text-sm font-bold ${cinematic ? "bg-[#c7a882] text-[#0b190f]" : organic ? "bg-[#f18b68]" : "bg-[#16311c] text-white"}`}><CalendarDays className="h-4 w-4" />{locale === "en" ? "Check availability" : "Kiểm tra lịch trống"}</Link><div className="grid grid-cols-2 gap-3"><Link href={lookupHref} onClick={close} className="flex min-h-12 items-center justify-center gap-2 rounded-full border border-current/15 text-xs font-bold"><Search className="h-4 w-4" />{locale === "en" ? "Find booking" : "Tra cứu"}</Link><Link href={contactHref} onClick={close} className="flex min-h-12 items-center justify-center gap-2 rounded-full border border-current/15 text-xs font-bold"><Phone className="h-4 w-4" />{locale === "en" ? "Contact" : "Liên hệ"}</Link></div></div>}
       </section>
     </div>, document.body)}
   </>;
