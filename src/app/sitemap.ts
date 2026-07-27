@@ -3,7 +3,7 @@ import { stays } from "@/features/stays/data/demo-data";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
-  const pages = ["", "/luu-tru", "/trai-nghiem", "/am-thuc", "/ve-lago", "/thong-tin", "/chinh-sach", "/lien-he", "/dat-phong", "/tra-cuu"];
+  const pages = ["", "/luu-tru", "/trai-nghiem", "/dich-vu", "/am-thuc", "/ve-lago", "/thong-tin", "/chinh-sach", "/lien-he", "/dat-phong", "/tra-cuu"];
   const vietnamese = [
     ...pages.map((path) => ({ path, priority: path === "" ? 1 : .72 })),
     ...stays.map((stay) => ({ path: `/luu-tru/${stay.slug}`, priority: .82 }))

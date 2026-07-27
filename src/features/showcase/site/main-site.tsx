@@ -4,7 +4,7 @@ import type { TemplateRoute } from "@/features/showcase/site/template-route";
 import { localizedTemplateBasePath, type ShowcaseLocale } from "@/features/showcase/i18n/locale";
 
 export const mainSiteConfig: CompleteTemplateConfig = {
-  slug: "tinh-lang",
+  slug: "main",
   name: "LAKA Homestay",
   mood: "editorial",
   basePath: "",

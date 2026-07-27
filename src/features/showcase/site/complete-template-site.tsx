@@ -41,7 +41,7 @@ import type { TemplateRoute } from "@/features/showcase/site/template-route";
 export type TemplateMood = "editorial" | "cinematic" | "organic";
 
 export type CompleteTemplateConfig = {
-  slug: "tinh-lang";
+  slug: "main";
   name: string;
   mood: TemplateMood;
   basePath: string;
@@ -97,7 +97,7 @@ export function TemplateHeader({ config, locale = "vi", overlay = false, storyMo
     ? storyItems.map(([label, hash]) => ({ label, href: `${config.basePath}${hash}`, exact: true }))
     : localizedNavItems.map(([label, path]) => ({ label, href: scoped(config.basePath, path), exact: !path }));
 
-  if (config.slug === "tinh-lang") {
+  if (config.slug === "main") {
     const headerTone = overlay
       ? "-mb-[92px] border-b border-[#eae1d2]/20 bg-[#16311c]/48 text-[#eae1d2]"
       : "border-b border-[#16311c]/12 bg-[#eae1d2]/92 text-[#16311c]";
@@ -415,7 +415,7 @@ export function CompleteTemplateSite({ route, config, home, locale = "vi" }: { r
     <TemplateDocumentLocale locale={locale} />
     <SkipLink />
     <TemplateExperienceLayer mood={config.mood} />
-    {config.slug === "tinh-lang" && <TemplateAtmosphereController locale={locale} />}
+    {config.slug === "main" && <TemplateAtmosphereController locale={locale} />}
     <TemplateHeader config={config} locale={locale} overlay />
     <main id="noi-dung-chinh" tabIndex={-1}>
       <div key={routeKey} className={`template-page-enter template-page-enter-${config.mood}`}>
