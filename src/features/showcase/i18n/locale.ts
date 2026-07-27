@@ -12,15 +12,12 @@ export function resolveLocalizedTemplatePath(path: string[] | undefined) {
 }
 
 export function languageHref(pathname: string, locale: ShowcaseLocale) {
-  const root = "/mau/tinh-lang";
-  if (!pathname.startsWith(root)) return locale === "en" ? `${root}/en` : root;
-  const suffix = pathname.slice(root.length);
-
   if (locale === "en") {
-    return suffix === "/en" || suffix.startsWith("/en/") ? pathname : `${root}/en${suffix}`;
+    if (pathname === "/en" || pathname.startsWith("/en/")) return pathname;
+    return pathname === "/" ? "/en" : `/en${pathname}`;
   }
 
-  if (suffix === "/en") return root;
-  if (suffix.startsWith("/en/")) return `${root}${suffix.slice(3)}`;
+  if (pathname === "/en") return "/";
+  if (pathname.startsWith("/en/")) return pathname.slice(3);
   return pathname;
 }

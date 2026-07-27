@@ -3,8 +3,13 @@ import { notFound } from "next/navigation";
 import { stays } from "@/features/stays/data/demo-data";
 import { localizeStay } from "@/features/showcase/i18n/showcase-copy";
 import { languageHref, resolveLocalizedTemplatePath } from "@/features/showcase/i18n/locale";
-import { TinhLangSite } from "@/features/showcase/templates/tinh-lang/site";
-import { getTemplateMetadata, resolveTemplateRoute, templateStaticPaths, type TemplateRoute } from "@/features/showcase/site/template-route";
+import { MainSite } from "@/features/showcase/site/main-site";
+import {
+  getTemplateMetadata,
+  resolveTemplateRoute,
+  templateStaticPaths,
+  type TemplateRoute
+} from "@/features/showcase/site/template-route";
 
 type Props = { params: Promise<{ path?: string[] }> };
 
@@ -22,6 +27,8 @@ const englishTitles: Record<Exclude<TemplateRoute["kind"], "stay">, string> = {
   lookup: "Find your booking"
 };
 
+export const dynamicParams = false;
+
 export function generateStaticParams() {
   const vietnamesePaths = templateStaticPaths();
   const englishPaths = vietnamesePaths.map(({ path }) => ({ path: ["en", ...path] }));
@@ -29,7 +36,7 @@ export function generateStaticParams() {
 }
 
 function routePath(path: string[] | undefined) {
-  return `/mau/tinh-lang${path?.length ? `/${path.join("/")}` : ""}`;
+  return path?.length ? `/${path.join("/")}` : "/";
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -49,7 +56,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   if (localized.locale === "vi") {
     return {
-      ...getTemplateMetadata(route, "Tĩnh lặng"),
+      ...getTemplateMetadata(route),
       alternates,
       openGraph: { locale: "vi_VN", alternateLocale: ["en_US"] }
     };
@@ -60,11 +67,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     : englishTitles[route.kind];
 
   return {
-    title: `${title} · Quiet Living`,
-    description: "Discover LAKA Homestay through the Quiet Living editorial concept.",
+    title,
+    description: "Discover LAKA Homestay, a collection of private homes surrounded by nature.",
     alternates,
     openGraph: {
-      title: `${title} · Quiet Living · LAKA Homestay`,
+      title: `${title} · LAKA Homestay`,
       description: "Eight home types and fifteen private homes surrounded by nature, designed for slower days and meaningful time together.",
       locale: "en_US",
       alternateLocale: ["vi_VN"],
@@ -73,9 +80,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default async function Page({ params }: Props) {
+export default async function PublicPage({ params }: Props) {
   const localized = resolveLocalizedTemplatePath((await params).path);
   const route = resolveTemplateRoute(localized.routePath);
   if (!route) notFound();
-  return <TinhLangSite route={route} locale={localized.locale} />;
+  return <MainSite route={route} locale={localized.locale} />;
 }

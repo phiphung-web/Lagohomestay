@@ -1,7 +1,6 @@
 import { existsSync, readFileSync, statSync } from "node:fs";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
-import { showcaseTemplates } from "../src/features/showcase/data/templates";
 
 const root = process.cwd();
 const brandAssets = [
@@ -21,11 +20,10 @@ describe("LAKA brand system", () => {
     }
   });
 
-  it("anchors all three concepts in the official brand palette", () => {
-    for (const template of showcaseTemplates) {
-      expect(template.colors).toContain("#16311c");
-      expect(template.colors).toContain("#eae1d2");
-    }
+  it("anchors the production website in the official brand palette", () => {
+    const site = readFileSync(join(root, "src/features/showcase/site/main-site.tsx"), "utf8");
+    expect(site).toContain("#16311c");
+    expect(site).toContain("#eae1d2");
   });
 
   it("uses the official name in global metadata", () => {

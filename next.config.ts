@@ -13,6 +13,20 @@ const nextConfig: NextConfig = {
     imageSizes: [32, 64, 96, 128, 256, 384]
   },
   poweredByHeader: false,
+  async redirects() {
+    return [
+      {
+        source: "/mau/:template(tinh-lang|dien-anh|song-dong)",
+        destination: "/",
+        permanent: true
+      },
+      {
+        source: "/mau/:template(tinh-lang|dien-anh|song-dong)/:path*",
+        destination: "/:path*",
+        permanent: true
+      }
+    ];
+  },
   experimental: {
     serverActions: { bodySizeLimit: "2mb" }
   }

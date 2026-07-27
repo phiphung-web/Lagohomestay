@@ -53,14 +53,14 @@ const titles: Record<Exclude<TemplateRoute["kind"], "stay">, string> = {
   lookup: "Xem thông tin đặt chỗ"
 };
 
-export function getTemplateMetadata(route: TemplateRoute, templateName: string): Metadata {
+export function getTemplateMetadata(route: TemplateRoute): Metadata {
   if (route.kind === "stay") {
     const stay = stays.find((item) => item.slug === route.slug)!;
-    return { title: `${stay.name} · Mẫu ${templateName}`, description: stay.description };
+    return { title: stay.name, description: stay.description };
   }
   return {
-    title: `${titles[route.kind]} · Mẫu ${templateName}`,
-    description: `Khám phá LAKA Homestay qua hướng thiết kế ${templateName.toLowerCase()}.`
+    title: titles[route.kind],
+    description: "Khám phá các căn nhà, trải nghiệm và dịch vụ nghỉ dưỡng giữa thiên nhiên tại LAKA Homestay."
   };
 }
 

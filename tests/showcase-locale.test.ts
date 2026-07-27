@@ -5,19 +5,19 @@ import { stays } from "@/features/stays/data/demo-data";
 
 describe("Quiet Living locale routing", () => {
   it("switches language without losing the current page", () => {
-    expect(languageHref("/mau/tinh-lang/luu-tru/nha-may", "en"))
-      .toBe("/mau/tinh-lang/en/luu-tru/nha-may");
-    expect(languageHref("/mau/tinh-lang/en/luu-tru/nha-may", "vi"))
-      .toBe("/mau/tinh-lang/luu-tru/nha-may");
+    expect(languageHref("/luu-tru/nha-may", "en"))
+      .toBe("/en/luu-tru/nha-may");
+    expect(languageHref("/en/luu-tru/nha-may", "vi"))
+      .toBe("/luu-tru/nha-may");
   });
 
   it("resolves the English prefix before route matching", () => {
     expect(resolveLocalizedTemplatePath(["en", "dat-phong"]))
       .toEqual({ locale: "en", routePath: ["dat-phong"] });
-    expect(localizedTemplateBasePath("/mau/tinh-lang", "en"))
-      .toBe("/mau/tinh-lang/en");
-    expect(languageHref("/mau/tinh-lang/am-thuc", "en"))
-      .toBe("/mau/tinh-lang/en/am-thuc");
+    expect(localizedTemplateBasePath("", "en"))
+      .toBe("/en");
+    expect(languageHref("/am-thuc", "en"))
+      .toBe("/en/am-thuc");
   });
 
   it("localizes accommodation content while preserving its identity", () => {

@@ -15,7 +15,7 @@ import { LookupForm } from "@/features/booking/components/lookup-form";
 import { TemplateExperienceLayer } from "@/features/showcase/components/template-experience-layer";
 import { TemplateMobileMenu } from "@/features/showcase/components/template-mobile-menu";
 import { TemplateNavLink } from "@/features/showcase/components/template-nav-link";
-import { TemplateStayHero, TemplateStaysCollection } from "@/features/showcase/components/template-stay-showcase";
+import { TemplateStayHero } from "@/features/showcase/components/template-stay-showcase";
 import { StayProductExplorer } from "@/features/showcase/components/stay-product-explorer";
 import { TemplateExperienceStory } from "@/features/showcase/components/template-experience-story";
 import { TemplateFaqSection, TemplatePolicySection } from "@/features/showcase/components/template-info-sections";
@@ -30,7 +30,6 @@ import {
   TemplateJourneySection,
   TemplateServicesCatalog
 } from "@/features/showcase/components/template-destination-sections";
-import type { ShowcaseTemplateSlug } from "@/features/showcase/data/templates";
 import type { ShowcaseLocale } from "@/features/showcase/i18n/locale";
 import { localizeStay } from "@/features/showcase/i18n/showcase-copy";
 import { conceptImages, getUnitsForStay, stays } from "@/features/stays/data/demo-data";
@@ -42,7 +41,7 @@ import type { TemplateRoute } from "@/features/showcase/site/template-route";
 export type TemplateMood = "editorial" | "cinematic" | "organic";
 
 export type CompleteTemplateConfig = {
-  slug: ShowcaseTemplateSlug;
+  slug: "tinh-lang";
   name: string;
   mood: TemplateMood;
   basePath: string;
@@ -83,7 +82,7 @@ const policies = [
 ] as const;
 
 function scoped(basePath: string, path = "") {
-  return path ? `${basePath}/${path}` : basePath;
+  return path ? `${basePath}/${path}` : basePath || "/";
 }
 
 export function TemplateHeader({ config, locale = "vi", overlay = false, storyMode = false, suppressBooking = false }: { config: CompleteTemplateConfig; locale?: ShowcaseLocale; overlay?: boolean; storyMode?: boolean; suppressBooking?: boolean }) {
@@ -154,10 +153,10 @@ export function TemplateHeader({ config, locale = "vi", overlay = false, storyMo
 
   return <header className={`sticky top-0 z-50 backdrop-blur-xl ${overlay ? "-mb-[76px] border-b border-white/15 bg-[#0b190f]/45 text-white" : organic ? "border-transparent bg-[#eae1d2]/88 py-2" : cinematic ? "border-b border-white/10 bg-[#0b190f]/92" : "border-b border-[#16311c]/12 bg-[#eae1d2]/92"}`}>
     <div className={`mx-auto flex w-[min(1420px,calc(100%-28px))] items-center justify-between gap-4 ${organic ? "h-16 rounded-full border border-[#16311c]/10 bg-white/90 px-4 shadow-[0_14px_45px_rgba(22,49,28,.1)] sm:px-6" : "h-[76px]"}`}>
-      <Link href={config.basePath} aria-label={locale === "en" ? "LAKA Homestay — concept home" : "LAKA Homestay — trang chủ mẫu"} className={`focus-ring flex items-center ${darkHeader ? "text-[#eae1d2]" : "text-[#16311c]"}`}>
+      <Link href={config.basePath || "/"} aria-label={locale === "en" ? "LAKA Homestay — home" : "LAKA Homestay — trang chủ"} className={`focus-ring flex items-center ${darkHeader ? "text-[#eae1d2]" : "text-[#16311c]"}`}>
         <BrandLogo variant="wordmark" decorative className={organic ? "w-[104px]" : cinematic ? "w-[118px]" : "w-[126px]"} />
       </Link>
-      <nav aria-label={locale === "en" ? `${config.name} navigation` : `Điều hướng mẫu ${config.name}`} className="hidden items-center gap-6 text-[.68rem] font-bold uppercase tracking-[.12em] lg:flex">
+      <nav aria-label={locale === "en" ? `${config.name} navigation` : `Điều hướng ${config.name}`} className="hidden items-center gap-6 text-[.68rem] font-bold uppercase tracking-[.12em] lg:flex">
         {localizedNavItems.map(([label, path]) => <TemplateNavLink key={path} href={scoped(config.basePath, path)} label={label} mood={config.mood} exact={!path} />)}
       </nav>
       <div className="flex items-center gap-2">
@@ -222,7 +221,7 @@ export function TemplateFooter({ config, locale = "vi", storyMode = false, homeM
   </footer>;
   return <footer className={`border-t border-current/12 pb-28 pt-14 sm:pb-32 ${config.mood === "organic" ? "bg-[#e7ded1]" : config.mood === "cinematic" ? "bg-[#0b190f]" : "bg-[#eae1d2]"}`}>
     <div className="mx-auto grid w-[min(1420px,calc(100%-40px))] gap-10 md:grid-cols-[1.1fr_.7fr_.7fr]">
-      <div><Link href={config.basePath} aria-label={locale === "en" ? "LAKA Homestay - Concept home" : "LAKA Homestay - Trang chủ mẫu"} className="inline-flex"><BrandLogo variant={config.mood === "editorial" ? "established" : "homestay"} decorative className={`${config.mood === "editorial" ? "w-[190px]" : "w-[210px]"} ${config.mood === "cinematic" ? "text-[#eae1d2]" : "text-[#16311c]"}`} /></Link><p className="mt-5 max-w-md text-sm leading-7 opacity-80">{locale === "en" ? "Three landscape collections, eight home types and fifteen private homes made for slower days together." : "Ba hệ cảnh quan, tám dòng nhà và mười lăm căn riêng cho những ngày mọi người muốn sống chậm cùng nhau."}</p><span className="mt-5 inline-flex rounded-full border border-current/15 px-3 py-1.5 text-[.6rem] font-bold uppercase tracking-wider opacity-80">{locale === "en" ? "Presentation · Concept" : "Bản trình bày · Mẫu"} {config.name}</span></div>
+      <div><Link href={config.basePath || "/"} aria-label={locale === "en" ? "LAKA Homestay - Home" : "LAKA Homestay - Trang chủ"} className="inline-flex"><BrandLogo variant={config.mood === "editorial" ? "established" : "homestay"} decorative className={`${config.mood === "editorial" ? "w-[190px]" : "w-[210px]"} ${config.mood === "cinematic" ? "text-[#eae1d2]" : "text-[#16311c]"}`} /></Link><p className="mt-5 max-w-md text-sm leading-7 opacity-80">{locale === "en" ? "Three landscape collections, eight home types and fifteen private homes made for slower days together." : "Ba hệ cảnh quan, tám dòng nhà và mười lăm căn riêng cho những ngày mọi người muốn sống chậm cùng nhau."}</p><span className="mt-5 inline-flex rounded-full border border-current/15 px-3 py-1.5 text-[.6rem] font-bold uppercase tracking-wider opacity-80">{locale === "en" ? "Coming soon · In development" : "Sắp ra mắt · Đang hoàn thiện"}</span></div>
       <div><p className="text-[.65rem] font-bold uppercase tracking-[.16em] opacity-80">{locale === "en" ? "Explore" : "Khám phá"}</p><div className="mt-5 flex flex-col gap-3 text-sm font-bold">{localizedNavItems.slice(0, 4).map(([label, path]) => <Link key={path} href={scoped(config.basePath, path)}>{label}</Link>)}</div></div>
       <div><p className="text-[.65rem] font-bold uppercase tracking-[.16em] opacity-80">{locale === "en" ? "Connect" : "Kết nối"}</p><div className="mt-5 flex flex-col gap-3 text-sm"><a href="tel:0900000000" className="font-bold">0900 000 000</a><a href="https://zalo.me/0900000000">{locale === "en" ? "Book via Zalo" : "Zalo đặt phòng"}</a><Link href={scoped(config.basePath, "chinh-sach")}>{locale === "en" ? "Policies" : "Chính sách"}</Link><span className="flex items-center gap-2 opacity-80"><Instagram className="h-4 w-4" /> @lagohomestay</span></div></div>
     </div>
@@ -263,9 +262,7 @@ function PageIntro({ eyebrow, title, text, image, config, locale = "vi" }: { eye
 
 function StaysPage({ config, locale }: { config: CompleteTemplateConfig; locale: ShowcaseLocale }) {
   return <><PageIntro config={config} locale={locale} eyebrow={locale === "en" ? "The LAKA product map" : "Bản đồ lưu trú LAKA"} title={locale === "en" ? "Three landscapes. One place to return." : "Ba hệ cảnh quan. Một nơi để trở về."} text={locale === "en" ? "Begin with Lake, Forest or Hill, then choose from eight home types and fifteen physical homes." : "Bắt đầu từ Hệ Hồ, Hệ Rừng hoặc Hệ Đồi; sau đó chọn trong tám dòng nhà và mười lăm căn thực tế."} image={conceptImages.detail1} />
-    {config.slug === "tinh-lang"
-      ? <Suspense fallback={<div className="min-h-[60svh] bg-[#eae1d2]" />}><StayProductExplorer basePath={config.basePath} locale={locale} /></Suspense>
-      : <TemplateStaysCollection mood={config.mood} basePath={config.basePath} locale={locale} />}</>;
+    <Suspense fallback={<div className="min-h-[60svh] bg-[#eae1d2]" />}><StayProductExplorer basePath={config.basePath} locale={locale} /></Suspense></>;
 }
 
 function StayPage({ config, slug, locale }: { config: CompleteTemplateConfig; slug: string; locale: ShowcaseLocale }) {

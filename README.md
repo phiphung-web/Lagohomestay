@@ -52,9 +52,9 @@ Các API chính: `GET /api/availability`, `POST /api/bookings`, `POST /api/booki
 
 Production cần gọi `POST /api/tasks/expire-holds` mỗi phút với header `Authorization: Bearer $HOLD_EXPIRY_SECRET`. Docker image tự chạy `prisma migrate deploy` trước khi khởi động ứng dụng.
 
-## Đưa showroom thiết kế lên VPS
+## Đưa website lên VPS
 
-Ba mẫu trình bày có URL riêng tại `/mau/tinh-lang`, `/mau/dien-anh` và `/mau/song-dong`. Bản demo public chạy cô lập, không cần PostgreSQL và chỉ mở cổng loopback `127.0.0.1:3100`. Cấu hình này không chiếm cổng `80/443` của các website khác trên VPS.
+Website chính chạy tại URL gốc, với các tuyến sạch như `/luu-tru`, `/trai-nghiem`, `/am-thuc` và bản tiếng Anh dưới `/en`. Bản demo public chạy cô lập, không cần PostgreSQL và chỉ mở cổng loopback `127.0.0.1:3100`. Cấu hình này không chiếm cổng `80/443` của các website khác trên VPS.
 
 ```bash
 cp .env.demo.example .env.demo

@@ -1,6 +1,6 @@
 import Image from "next/image";
+import Link from "next/link";
 import { ArrowDown, ArrowRight } from "lucide-react";
-import { ShowcaseLink as Link } from "@/features/showcase/site/showcase-link";
 import { TemplateExperienceLayer } from "@/features/showcase/components/template-experience-layer";
 import { TemplateDocumentLocale } from "@/features/showcase/components/template-document-locale";
 import { TemplateAtmosphereController } from "@/features/showcase/components/template-atmosphere-controller";
@@ -42,7 +42,7 @@ const homePaths = [
   }
 ] as const;
 
-export function TinhLangHome({ config, locale = "vi" }: { config: CompleteTemplateConfig; locale?: ShowcaseLocale }) {
+export function MainHome({ config, locale = "vi" }: { config: CompleteTemplateConfig; locale?: ShowcaseLocale }) {
   const en = locale === "en";
 
   return <div className="showcase-root laka-theme-root min-h-screen bg-[#eae1d2] text-[#16311c]">

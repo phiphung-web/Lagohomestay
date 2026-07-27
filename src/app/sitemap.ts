@@ -3,7 +3,6 @@ import { stays } from "@/features/stays/data/demo-data";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
-  const root = "/mau/tinh-lang";
   const pages = ["", "/luu-tru", "/trai-nghiem", "/am-thuc", "/ve-lago", "/thong-tin", "/chinh-sach", "/lien-he", "/dat-phong", "/tra-cuu"];
   const vietnamese = [
     ...pages.map((path) => ({ path, priority: path === "" ? 1 : .72 })),
@@ -12,13 +11,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return [
     ...vietnamese.map(({ path, priority }) => ({
-      url: `${base}${root}${path}`,
+      url: `${base}${path}`,
       lastModified: new Date(),
       changeFrequency: path === "" ? "weekly" as const : "monthly" as const,
       priority
     })),
     ...vietnamese.map(({ path, priority }) => ({
-      url: `${base}${root}/en${path}`,
+      url: `${base}/en${path}`,
       lastModified: new Date(),
       changeFrequency: path === "" ? "weekly" as const : "monthly" as const,
       priority: Math.max(.5, priority - .08)

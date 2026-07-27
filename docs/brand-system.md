@@ -17,10 +17,8 @@ Logo được hiển thị qua `BrandLogo` dưới dạng mask alpha. Cách này
 - Be LAKA: `#C7A882`.
 - Kem phụ lấy từ tài sản icon: `#E7DED1`.
 
-## Cách áp dụng vào ba mẫu
+## Cách áp dụng trên website chính
 
-- **Tĩnh lặng:** nền kem, chữ xanh, be dùng cho đường nét và nhịp biên tập.
-- **Điện ảnh:** nền xanh được hạ tối để tạo chiều sâu; logo kem, be là ánh sáng và CTA; bề mặt chính vẫn dùng xanh LAKA.
-- **Sống động:** xanh, kem và be là trục nhận diện; vàng, san hô và xanh non chỉ là màu phụ giúp giữ năng lượng trẻ trung.
+Website dùng nền kem, chữ xanh LAKA và màu be cho đường nét, CTA phụ cùng nhịp biên tập. Ảnh thiên nhiên giữ màu nguyên bản; lớp màu chỉ được dùng nhẹ để bảo đảm chữ dễ đọc mà không làm cảnh quan bị ám màu.
 
 Tên hiển thị cho khách là **LAKA Homestay**. Các định danh kỹ thuật cũ như domain, route `/ve-lago`, package, container và project Docker tiếp tục được giữ để tương thích triển khai.
