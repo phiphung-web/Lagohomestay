@@ -13,7 +13,7 @@ const englishTitles: Record<Exclude<TemplateRoute["kind"], "stay">, string> = {
   stays: "Private homes",
   experience: "Experiences",
   services: "Services",
-  gallery: "Gallery",
+  dining: "Dining",
   about: "About LAKA",
   faq: "Good to know",
   policy: "Stay policies",

@@ -8,7 +8,7 @@ const scopedRoots = [
   "/luu-tru",
   "/trai-nghiem",
   "/dich-vu",
-  "/thu-vien",
+  "/am-thuc",
   "/ve-lago",
   "/thong-tin",
   "/chinh-sach",

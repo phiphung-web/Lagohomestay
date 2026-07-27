@@ -15,6 +15,7 @@ describe("showroom same-page comparison", () => {
   it("returns a clear Vietnamese page label", () => {
     expect(getShowcasePageLabel("/mau/dien-anh/dat-phong")).toBe("Đặt chỗ");
     expect(getShowcasePageLabel("/mau/song-dong/luu-tru/nha-rung")).toBe("Chi tiết căn");
+    expect(getShowcasePageLabel("/mau/tinh-lang/am-thuc")).toBe("Ẩm thực");
   });
 
   it("keeps English routes valid when comparing concepts", () => {
@@ -24,5 +25,6 @@ describe("showroom same-page comparison", () => {
     expect(getShowcaseTemplateHref("dien-anh", "/mau/tinh-lang/en/luu-tru/nha-may"))
       .toBe("/mau/dien-anh/luu-tru/nha-may");
     expect(getShowcasePageLabel("/mau/tinh-lang/en/luu-tru/nha-may", "en")).toBe("Home details");
+    expect(getShowcasePageLabel("/mau/tinh-lang/en/am-thuc", "en")).toBe("Dining");
   });
 });

@@ -79,19 +79,22 @@ export const diningStories = [
     icon: Coffee,
     kicker: { vi: "Buổi sáng", en: "Morning" },
     title: { vi: "Giỏ sáng bên hiên", en: "Breakfast on the veranda" },
-    text: { vi: "Bánh mới, trái cây theo mùa, món nóng và cà phê được chuẩn bị để bạn dùng ngay tại căn.", en: "Fresh bread, seasonal fruit, a warm dish and coffee, prepared to enjoy at your home." }
+    text: { vi: "Bánh mới, trái cây theo mùa, món nóng và cà phê được chuẩn bị để bạn dùng ngay tại căn.", en: "Fresh bread, seasonal fruit, a warm dish and coffee, prepared to enjoy at your home." },
+    image: conceptImages.breakfast
   },
   {
     icon: Soup,
     kicker: { vi: "Bữa nhà", en: "Home table" },
     title: { vi: "Bếp Nhà LAKA", en: "The LAKA home kitchen" },
-    text: { vi: "Thực đơn gợi ý theo mùa, ưu tiên nguyên liệu địa phương và những món dễ chia sẻ giữa bàn.", en: "A seasonal suggested menu centred on local ingredients and dishes made for sharing." }
+    text: { vi: "Thực đơn gợi ý theo mùa, ưu tiên nguyên liệu địa phương và những món dễ chia sẻ giữa bàn.", en: "A seasonal suggested menu centred on local ingredients and dishes made for sharing." },
+    image: conceptImages.table
   },
   {
     icon: UtensilsCrossed,
     kicker: { vi: "Buổi tối", en: "Evening" },
     title: { vi: "Bàn ăn riêng theo yêu cầu", en: "A private table, by request" },
-    text: { vi: "Set-up tại hiên hoặc trong căn cho sinh nhật, kỷ niệm và những cuộc gặp không cần quá đông.", en: "A veranda or indoor set-up for birthdays, anniversaries and small, meaningful gatherings." }
+    text: { vi: "Set-up tại hiên hoặc trong căn cho sinh nhật, kỷ niệm và những cuộc gặp không cần quá đông.", en: "A veranda or indoor set-up for birthdays, anniversaries and small, meaningful gatherings." },
+    image: conceptImages.dining
   }
 ] as const;
 

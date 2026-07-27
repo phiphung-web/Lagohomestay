@@ -16,6 +16,8 @@ describe("Quiet Living locale routing", () => {
       .toEqual({ locale: "en", routePath: ["dat-phong"] });
     expect(localizedTemplateBasePath("/mau/tinh-lang", "en"))
       .toBe("/mau/tinh-lang/en");
+    expect(languageHref("/mau/tinh-lang/am-thuc", "en"))
+      .toBe("/mau/tinh-lang/en/am-thuc");
   });
 
   it("localizes accommodation content while preserving its identity", () => {

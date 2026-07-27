@@ -12,7 +12,6 @@ import {
 } from "lucide-react";
 import { BookingExperience } from "@/features/booking/components/booking-experience";
 import { LookupForm } from "@/features/booking/components/lookup-form";
-import { GalleryLightbox } from "@/features/showcase/components/gallery-lightbox";
 import { TemplateExperienceLayer } from "@/features/showcase/components/template-experience-layer";
 import { TemplateMobileMenu } from "@/features/showcase/components/template-mobile-menu";
 import { TemplateNavLink } from "@/features/showcase/components/template-nav-link";
@@ -57,7 +56,7 @@ const navItems = [
   ["Các căn", "luu-tru"],
   ["Trải nghiệm", "trai-nghiem"],
   ["Dịch vụ", "dich-vu"],
-  ["Thư viện", "thu-vien"],
+  ["Ẩm thực", "am-thuc"],
   ["Về LAKA", "ve-lago"],
   ["Cần biết", "thong-tin"]
 ] as const;
@@ -66,7 +65,7 @@ const englishNavItems = [
   ["Homes", "luu-tru"],
   ["Experiences", "trai-nghiem"],
   ["Services", "dich-vu"],
-  ["Gallery", "thu-vien"],
+  ["Dining", "am-thuc"],
   ["About LAKA", "ve-lago"],
   ["Good to know", "thong-tin"]
 ] as const;
@@ -179,38 +178,31 @@ export function TemplateFooter({ config, locale = "vi" }: { config: CompleteTemp
 function PageIntro({ eyebrow, title, text, image, config, locale = "vi" }: { eyebrow: string; title: string; text: string; image?: string; config: CompleteTemplateConfig; locale?: ShowcaseLocale }) {
   const cinematic = config.mood === "cinematic";
   const organic = config.mood === "organic";
-  if (cinematic) return <section className={`grain relative overflow-hidden border-b border-white/10 ${image ? "min-h-[560px]" : "bg-[#0a1914]"}`}>
-    {image && <><Image src={image} alt={`${title} - ảnh minh họa`} fill priority sizes="100vw" className="showcase-atmosphere-media object-cover opacity-55 transition duration-[1400ms] hover:scale-[1.015]" /><div className="absolute inset-0 bg-gradient-to-r from-[#0b190f] via-[#0b190f]/68 to-[#0b190f]/18" /></>}
-    <div className={`relative z-10 mx-auto flex w-[min(1420px,calc(100%-40px))] flex-col justify-center py-24 ${image ? "min-h-[560px]" : "sm:py-32"}`}>
+  const heroImage = image ?? conceptImages.hero;
+  if (cinematic) return <section className="grain relative min-h-[100svh] overflow-hidden border-b border-white/10">
+    <Image src={heroImage} alt={`${title} - ảnh minh họa`} fill priority sizes="100vw" className="showcase-atmosphere-media object-cover opacity-55 transition duration-[1400ms] hover:scale-[1.015]" /><div className="absolute inset-0 bg-gradient-to-r from-[#0b190f] via-[#0b190f]/68 to-[#0b190f]/18" />
+    <div className="relative z-10 mx-auto flex min-h-[100svh] w-[min(1420px,calc(100%-40px))] flex-col justify-center py-24">
       <p className="text-[.65rem] font-bold uppercase tracking-[.24em] text-[var(--template-accent)]">{eyebrow}</p>
       <h1 className="mt-6 max-w-5xl font-serif text-5xl font-medium leading-[.92] tracking-[-.05em] sm:text-7xl lg:text-8xl">{title}</h1>
       <p className="mt-7 max-w-2xl border-l border-[#c7a882]/45 pl-5 text-sm leading-7 text-white/58 sm:text-base">{text}</p>
     </div>
   </section>;
 
-  if (organic) return <section className="relative overflow-hidden px-3 py-5 sm:px-5 sm:py-8">
-    <div className={`relative mx-auto grid w-[min(1420px,100%)] overflow-hidden rounded-[38px] border border-[#16311c]/8 bg-[var(--template-surface)] shadow-[0_28px_80px_rgba(33,72,61,.08)] ${image ? "min-h-[540px] lg:grid-cols-[.78fr_1.22fr]" : "min-h-[400px]"}`}>
+  if (organic) return <section className="relative min-h-[100svh] overflow-hidden px-3 py-5 sm:px-5 sm:py-8">
+    <div className="relative mx-auto grid min-h-[calc(100svh-40px)] w-[min(1420px,100%)] overflow-hidden rounded-[38px] border border-[#16311c]/8 bg-[var(--template-surface)] shadow-[0_28px_80px_rgba(33,72,61,.08)] lg:grid-cols-[.78fr_1.22fr]">
       <div className="relative z-10 flex flex-col justify-center px-7 py-16 sm:px-12 lg:px-16"><span className="w-fit rounded-full bg-[#f7cf58] px-4 py-2 text-[.62rem] font-extrabold uppercase tracking-[.14em]">{eyebrow}</span><h1 className="mt-7 max-w-4xl text-5xl font-extrabold leading-[.98] tracking-[-.045em] sm:text-7xl">{title}</h1><p className="mt-6 max-w-2xl text-sm font-medium leading-7 text-[#16311c]/78 sm:text-base">{text}</p></div>
-      {image && <div className="relative m-3 min-h-[360px] overflow-hidden rounded-[32px] lg:min-h-0"><Image src={image} alt={`${title} - ảnh minh họa`} fill priority sizes="(max-width:1024px) 100vw, 58vw" className="showcase-atmosphere-media object-cover transition duration-700 hover:scale-[1.025]" /><span className="absolute bottom-5 right-5 grid h-20 w-20 place-items-center rounded-full bg-[#f18b68] text-center text-[.58rem] font-extrabold uppercase tracking-wider text-[#16311c]">Ảnh<br />minh họa</span></div>}
+      <div className="relative m-3 min-h-[48svh] overflow-hidden rounded-[32px] lg:min-h-0"><Image src={heroImage} alt={`${title} - ảnh minh họa`} fill priority sizes="(max-width:1024px) 100vw, 58vw" className="showcase-atmosphere-media object-cover transition duration-700 hover:scale-[1.025]" /><span className="absolute bottom-5 right-5 grid h-20 w-20 place-items-center rounded-full bg-[#f18b68] text-center text-[.58rem] font-extrabold uppercase tracking-wider text-[#16311c]">Ảnh<br />minh họa</span></div>
     </div>
   </section>;
 
-  if (image) return <section className="relative min-h-[78svh] overflow-hidden border-b border-white/12 bg-[#10251d] text-white">
-    <Image src={image} alt={`${title} — ${locale === "en" ? "concept image" : "ảnh minh họa"}`} fill priority sizes="100vw" className="showcase-atmosphere-media object-cover transition duration-[1400ms] hover:scale-[1.015]" />
+  return <section className="relative min-h-[100svh] overflow-hidden border-b border-white/12 bg-[#10251d] text-white">
+    <Image src={heroImage} alt={`${title} — ${locale === "en" ? "concept image" : "ảnh minh họa"}`} fill priority sizes="100vw" className="showcase-atmosphere-media object-cover transition duration-[1400ms] hover:scale-[1.015]" />
     <span aria-hidden="true" className="showcase-natural-light absolute inset-0" />
     <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(5,18,14,.12),rgba(5,18,14,.82))]" />
-    <div className="relative z-10 mx-auto flex min-h-[78svh] w-[min(1480px,calc(100%-40px))] flex-col justify-end pb-12 pt-28 sm:pb-16">
+    <div className="relative z-10 mx-auto flex min-h-[100svh] w-[min(1480px,calc(100%-40px))] flex-col justify-end pb-12 pt-32 sm:pb-16">
       <p className="text-[.62rem] font-bold uppercase tracking-[.24em] text-[#dfc6a5]">{eyebrow}</p>
       <h1 className="mt-5 max-w-6xl font-serif text-[clamp(3.8rem,10vw,9rem)] font-medium leading-[.84] tracking-[-.07em]">{title}</h1>
       <div className="mt-7 grid gap-6 border-t border-white/22 pt-6 sm:grid-cols-[1fr_auto] sm:items-end"><p className="max-w-2xl text-sm leading-7 text-white/68 sm:text-base">{text}</p><span className="w-fit rounded-full border border-white/25 bg-black/12 px-4 py-2 text-[.56rem] font-bold uppercase tracking-[.14em] text-white/70 backdrop-blur">{locale === "en" ? "Concept image" : "Hình ảnh minh họa"}</span></div>
-    </div>
-  </section>;
-
-  return <section className="flex min-h-[64svh] items-end border-b border-[#16311c]/12 bg-[#e3d8c9]">
-    <div className="mx-auto w-[min(1420px,calc(100%-40px))] py-20 sm:py-28">
-      <p className="text-[.62rem] font-bold uppercase tracking-[.22em] text-[#80613f]">{eyebrow}</p>
-      <h1 className="mt-6 max-w-6xl font-serif text-[clamp(3.8rem,10vw,9rem)] font-medium leading-[.86] tracking-[-.07em]">{title}</h1>
-      <p className="mt-8 max-w-2xl border-t border-[#16311c]/18 pt-6 text-sm leading-7 text-[#16311c]/62 sm:text-base">{text}</p>
     </div>
   </section>;
 }
@@ -271,16 +263,15 @@ function ExperiencePage({ config, locale }: { config: CompleteTemplateConfig; lo
 }
 
 function ServicesPage({ config, locale }: { config: CompleteTemplateConfig; locale: ShowcaseLocale }) {
-  return <><PageIntro config={config} locale={locale} eyebrow={locale === "en" ? "Services and shared spaces" : "Dịch vụ và tiện ích"} title={locale === "en" ? "Everything useful. Nothing intrusive." : "Đủ đầy khi cần. Riêng tư khi muốn."} text={locale === "en" ? "From breakfast at your home to family essentials, private occasions and shared nature spaces, choose only what makes your stay lighter." : "Từ bữa sáng tại căn, tiện ích gia đình đến dịp riêng và không gian thiên nhiên dùng chung — bạn chỉ cần chọn những gì khiến kỳ nghỉ nhẹ nhàng hơn."} image={conceptImages.detail2} />
+  return <><PageIntro config={config} locale={locale} eyebrow={locale === "en" ? "Services and shared spaces" : "Dịch vụ và tiện ích"} title={locale === "en" ? "Everything useful. Nothing intrusive." : "Đủ đầy khi cần. Riêng tư khi muốn."} text={locale === "en" ? "From family essentials to private transfers and shared nature spaces, choose only what makes your stay lighter." : "Từ tiện ích gia đình, xe đưa đón đến không gian thiên nhiên dùng chung — bạn chỉ cần chọn những gì khiến kỳ nghỉ nhẹ nhàng hơn."} image={conceptImages.detail2} />
     <DemoContentNotice locale={locale} />
-    <TemplateServicesCatalog locale={locale} />
-    <TemplateDiningAndOccasions locale={locale} /></>;
+    <TemplateServicesCatalog locale={locale} /></>;
 }
 
-function GalleryPage({ config, locale }: { config: CompleteTemplateConfig; locale: ShowcaseLocale }) {
-  const images = [...stays.flatMap((stay) => [stay.image, ...stay.gallery]), conceptImages.hero, conceptImages.experience];
-  return <><PageIntro config={config} locale={locale} eyebrow={locale === "en" ? "A visual journal" : "Nhật ký bằng hình"} title={locale === "en" ? "Fragments of a slower stay." : "Những lát cắt của một kỳ nghỉ chậm."} text={locale === "en" ? "These concept images establish the visual mood. Every image will be replaced or approved before LAKA opens." : "Bộ ảnh minh họa dùng để xác lập cảm xúc hình ảnh. Toàn bộ sẽ được thay hoặc duyệt trước khi LAKA mở cửa."} />
-    <GalleryLightbox images={images} mood={config.mood} locale={locale} /></>;
+function DiningPage({ config, locale }: { config: CompleteTemplateConfig; locale: ShowcaseLocale }) {
+  return <><PageIntro config={config} locale={locale} eyebrow={locale === "en" ? "Dining at LAKA" : "Ẩm thực tại LAKA"} title={locale === "en" ? "A table that belongs to the stay." : "Một bàn ăn thuộc về kỳ nghỉ."} text={locale === "en" ? "Breakfast on the veranda, seasonal dishes to share and private evening tables — all designed to keep you close to your home and one another." : "Giỏ sáng bên hiên, món theo mùa để sẻ chia và bàn tối riêng tư — tất cả giữ bạn ở thật gần căn nhà và những người đồng hành."} image={conceptImages.dining} />
+    <DemoContentNotice locale={locale} />
+    <TemplateDiningAndOccasions locale={locale} /></>;
 }
 
 function AboutPage({ config, locale }: { config: CompleteTemplateConfig; locale: ShowcaseLocale }) {
@@ -289,7 +280,7 @@ function AboutPage({ config, locale }: { config: CompleteTemplateConfig; locale:
 }
 
 function FaqPage({ config, locale }: { config: CompleteTemplateConfig; locale: ShowcaseLocale }) {
-  return <><PageIntro config={config} locale={locale} eyebrow={locale === "en" ? "Before your stay" : "Trước kỳ nghỉ"} title={locale === "en" ? "Clear information, so you can truly unwind." : "Thông tin rõ ràng để bạn nghỉ thật nhẹ lòng."} text={locale === "en" ? "Concise answers about reservations, complimentary holds and the LAKA experience." : "Các câu trả lời ngắn gọn về đặt căn, thời gian giữ chỗ và trải nghiệm tại LAKA."} />
+  return <><PageIntro config={config} locale={locale} eyebrow={locale === "en" ? "Before your stay" : "Trước kỳ nghỉ"} title={locale === "en" ? "Clear information, so you can truly unwind." : "Thông tin rõ ràng để bạn nghỉ thật nhẹ lòng."} text={locale === "en" ? "Concise answers about reservations, complimentary holds and the LAKA experience." : "Các câu trả lời ngắn gọn về đặt căn, thời gian giữ chỗ và trải nghiệm tại LAKA."} image={conceptImages.hill} />
     <DemoContentNotice locale={locale} />
     <TemplateJourneySection locale={locale} contactHref={scoped(config.basePath, "lien-he")} />
     <TemplateFaqSection mood={config.mood} policyHref={scoped(config.basePath, "chinh-sach")} locale={locale} /></>;
@@ -306,7 +297,7 @@ function PolicyPage({ config, locale }: { config: CompleteTemplateConfig; locale
     ["Your privacy", "Contact information is used only to process your stay, support your experience and meet essential operating obligations."],
     ["Concept content", "Images, addresses, prices and selected policies in this presentation are illustrative and do not constitute a commercial commitment."]
   ] as const : policies;
-  return <><PageIntro config={config} locale={locale} eyebrow={locale === "en" ? "Stay policies" : "Chính sách lưu trú"} title={locale === "en" ? "Clarity before the journey begins." : "Rõ ràng trước khi bắt đầu chuyến đi."} text={locale === "en" ? "Simple principles that create a transparent and considerate experience for guests and the LAKA team." : "Các nguyên tắc giúp LAKA và khách lưu trú cùng có trải nghiệm minh bạch, nhẹ nhàng."} />
+  return <><PageIntro config={config} locale={locale} eyebrow={locale === "en" ? "Stay policies" : "Chính sách lưu trú"} title={locale === "en" ? "Clarity before the journey begins." : "Rõ ràng trước khi bắt đầu chuyến đi."} text={locale === "en" ? "Simple principles that create a transparent and considerate experience for guests and the LAKA team." : "Các nguyên tắc giúp LAKA và khách lưu trú cùng có trải nghiệm minh bạch, nhẹ nhàng."} image={conceptImages.detail3} />
     <TemplatePolicySection mood={config.mood} policies={localizedPolicies} /></>;
 }
 
@@ -324,15 +315,21 @@ function BookingPrelude({ config, locale }: { config: CompleteTemplateConfig; lo
 }
 
 function BookingPage({ config, locale }: { config: CompleteTemplateConfig; locale: ShowcaseLocale }) {
-  return <section className="min-h-screen bg-[var(--template-bg)] px-0 py-0 text-[#16311c] sm:px-4 sm:py-8"><div className={`mx-auto max-w-[1480px] overflow-hidden bg-[#fbfaf6] ${config.mood === "organic" ? "sm:rounded-[38px]" : config.mood === "cinematic" ? "border border-white/10" : "border border-[#16311c]/10"}`}><BookingPrelude config={config} locale={locale} /><Suspense fallback={<div className="container-lago py-24">{locale === "en" ? "Preparing availability…" : "Đang chuẩn bị lịch căn nhà…"}</div>}><BookingExperience lookupPath={scoped(config.basePath, "tra-cuu")} locale={locale} /></Suspense></div></section>;
+  return <><PageIntro config={config} locale={locale} eyebrow={locale === "en" ? "Plan your LAKA stay" : "Lên lịch kỳ nghỉ LAKA"} title={locale === "en" ? "Choose the days worth slowing down for." : "Chọn những ngày đáng để sống chậm."} text={locale === "en" ? "Take in the landscape first. Availability, estimated prices and a complimentary two-hour hold are waiting just below." : "Hãy cảm nhận khung cảnh trước. Lịch trống, giá dự kiến và bước giữ chỗ miễn phí trong hai giờ nằm ngay bên dưới."} image={conceptImages.cloud} />
+    <section className="min-h-screen bg-[var(--template-bg)] px-0 py-0 text-[#16311c] sm:px-4 sm:py-8"><div className={`mx-auto max-w-[1480px] overflow-hidden bg-[#fbfaf6] ${config.mood === "organic" ? "sm:rounded-[38px]" : config.mood === "cinematic" ? "border border-white/10" : "border border-[#16311c]/10"}`}><BookingPrelude config={config} locale={locale} /><Suspense fallback={<div className="container-lago py-24">{locale === "en" ? "Preparing availability…" : "Đang chuẩn bị lịch căn nhà…"}</div>}><BookingExperience lookupPath={scoped(config.basePath, "tra-cuu")} locale={locale} /></Suspense></div></section></>;
 }
 
-function LookupPage({ config, locale }: { config: CompleteTemplateConfig; locale: ShowcaseLocale }) {
+function LookupContent({ config, locale }: { config: CompleteTemplateConfig; locale: ShowcaseLocale }) {
   if (config.mood === "cinematic") return <section className="min-h-[75svh] bg-[#0b190f] px-0 py-0 sm:px-4 sm:py-8"><div className="mx-auto grid max-w-[1480px] overflow-hidden border border-white/10 lg:grid-cols-[1fr_520px]"><div className="relative flex min-h-[560px] flex-col justify-center overflow-hidden px-7 py-16 text-white sm:px-12 lg:px-16"><span aria-hidden="true" className="absolute -right-32 top-8 font-serif text-[15rem] leading-none text-white/[.025]">#</span><p className="text-[.62rem] font-bold uppercase tracking-[.24em] text-[#c7a882]">After credit · Thông tin chuyến đi</p><h1 className="mt-6 max-w-3xl font-serif text-5xl font-medium leading-[.94] tracking-[-.05em] sm:text-7xl">Xem lại chương<br /><i className="text-[#c7a882]">sắp diễn ra.</i></h1><p className="mt-7 max-w-xl text-sm leading-7 text-white/52">Nhập số điện thoại đã dùng khi đặt. LAKA sẽ hiển thị những yêu cầu gần nhất gắn với số này.</p><p className="mt-8 max-w-lg border-l border-[#c7a882]/35 pl-5 text-sm leading-6 text-white/48">Không cần nhớ mã đặt chỗ. Nếu cần hỗ trợ ngay, gọi <a href="tel:0900000000" className="font-bold text-[#c7a882]">0900 000 000</a>.</p></div><div className="bg-[#eae1d2] px-5 py-16 text-[#16311c] sm:px-8 lg:flex lg:items-center lg:px-10"><div className="w-full"><LookupForm /></div></div></div></section>;
 
   if (config.mood === "organic") return <section className="min-h-[75svh] bg-[#edf3df] p-3 sm:p-5"><div className="relative mx-auto grid max-w-[1420px] overflow-hidden rounded-[42px] bg-[#dce9c6] text-[#16311c] shadow-[0_28px_90px_rgba(33,72,61,.1)] lg:grid-cols-[1fr_500px]"><span aria-hidden="true" className="absolute -left-20 -top-20 h-60 w-60 rounded-full bg-[#f7cf58]" /><span aria-hidden="true" className="absolute left-[44%] top-14 h-24 w-24 rounded-full bg-[#f18b68]" /><div className="relative z-10 flex min-h-[520px] flex-col justify-center px-7 py-16 sm:px-12 lg:px-16"><span className="w-fit rounded-full bg-white px-4 py-2 text-[.62rem] font-extrabold uppercase tracking-[.13em] shadow-sm">Chỉ cần số điện thoại</span><h1 className="mt-7 max-w-3xl text-5xl font-extrabold leading-[.98] tracking-[-.045em] sm:text-7xl">Chuyến đi của bạn<br /><i className="font-serif font-medium text-[#e66e4c]">đang ở đâu nhỉ?</i></h1><p className="mt-6 max-w-xl text-sm font-medium leading-7 text-[#16311c]/78">LAKA sẽ tìm những yêu cầu gần nhất bằng đúng số điện thoại hoặc số Zalo bạn đã sử dụng.</p><a href="tel:0900000000" className="mt-8 inline-flex w-fit items-center gap-2 rounded-full border-2 border-[#16311c]/14 px-5 py-3 text-sm font-extrabold"><Phone className="h-4 w-4" />Cần giúp? Gọi LAKA</a></div><div className="relative z-10 m-3 rounded-[34px] bg-[#eae1d2] px-5 py-12 text-[#16311c] sm:px-8 lg:flex lg:items-center"><div className="w-full"><LookupForm /></div></div></div></section>;
 
   return <section className="min-h-[75svh] border-b border-[#16311c]/12 bg-[#e7ded1] py-16 text-[#16311c] sm:py-24"><div className="mx-auto grid w-[min(1240px,calc(100%-40px))] gap-12 lg:grid-cols-[1fr_480px] lg:items-center"><div><p className="text-[.62rem] font-bold uppercase tracking-[.2em] text-[#80613f]">{locale === "en" ? "LAKA journal · Your stay" : "LAKA ký sự · Thông tin chuyến đi"}</p><h1 className="mt-6 max-w-3xl font-serif text-5xl font-medium leading-[.98] tracking-[-.05em] sm:text-7xl">{locale === "en" ? <>Find the place<br /><i>waiting for you.</i></> : <>Xem lại khoảng riêng<br /><i>đang chờ bạn.</i></>}</h1><p className="mt-7 max-w-xl text-sm leading-7 text-[#16311c]/72">{locale === "en" ? "Enter the phone number used for your request. LAKA will show the most recent bookings linked to it." : "Chỉ cần nhập số điện thoại đã dùng khi đặt. LAKA sẽ hiển thị các yêu cầu gần nhất gắn với số này."}</p><div className="mt-8 max-w-xl border-l border-[#80613f]/45 pl-5 text-sm leading-6 text-[#16311c]/72">{locale === "en" ? "No booking code required. For immediate assistance, call " : "Không cần nhớ mã đặt chỗ. Nếu cần hỗ trợ ngay, gọi "}<a href="tel:0900000000" className="font-bold underline underline-offset-4">0900 000 000</a>.</div></div><div className="rounded-t-[150px] border border-[#16311c]/12 bg-[#eae1d2] px-6 pb-8 pt-24 text-[#16311c] shadow-xl sm:px-8"><LookupForm locale={locale} /></div></div></section>;
+}
+
+function LookupPage({ config, locale }: { config: CompleteTemplateConfig; locale: ShowcaseLocale }) {
+  return <><PageIntro config={config} locale={locale} eyebrow={locale === "en" ? "Your upcoming stay" : "Chuyến đi sắp tới"} title={locale === "en" ? "Return to the place waiting for you." : "Trở lại khoảng riêng đang chờ bạn."} text={locale === "en" ? "Your booking information is kept simple and private. Continue below with the phone number used for your request." : "Thông tin chuyến đi được giữ thật đơn giản và riêng tư. Tiếp tục bên dưới bằng số điện thoại đã dùng khi đặt."} image={conceptImages.forest} />
+    <LookupContent config={config} locale={locale} /></>;
 }
 
 function TemplateContent({ route, config, locale }: { route: TemplateRoute; config: CompleteTemplateConfig; locale: ShowcaseLocale }) {
@@ -341,7 +338,7 @@ function TemplateContent({ route, config, locale }: { route: TemplateRoute; conf
     case "stay": return <StayPage config={config} slug={route.slug} locale={locale} />;
     case "experience": return <ExperiencePage config={config} locale={locale} />;
     case "services": return <ServicesPage config={config} locale={locale} />;
-    case "gallery": return <GalleryPage config={config} locale={locale} />;
+    case "dining": return <DiningPage config={config} locale={locale} />;
     case "about": return <AboutPage config={config} locale={locale} />;
     case "faq": return <FaqPage config={config} locale={locale} />;
     case "policy": return <PolicyPage config={config} locale={locale} />;
@@ -366,7 +363,7 @@ export function CompleteTemplateSite({ route, config, home, locale = "vi" }: { r
     <SkipLink />
     <TemplateExperienceLayer mood={config.mood} />
     {config.slug === "tinh-lang" && <TemplateAtmosphereController locale={locale} />}
-    <TemplateHeader config={config} locale={locale} />
+    <TemplateHeader config={config} locale={locale} overlay />
     <main id="noi-dung-chinh" tabIndex={-1}>
       <div key={routeKey} className={`template-page-enter template-page-enter-${config.mood}`}>
         <TemplateContent route={route} config={config} locale={locale} />

@@ -91,11 +91,11 @@ export function TemplateStayHero({ mood, basePath, stay, locale = "vi" }: { mood
     ? `${basePath}/dat-phong?stay=${stay.slug}`
     : `${basePath}/dat-phong`;
 
-  if (mood === "editorial") return <section className="relative min-h-[88svh] overflow-hidden bg-[#10251d] text-white">
+  if (mood === "editorial") return <section className="relative min-h-[100svh] overflow-hidden bg-[#10251d] text-white">
     <Image src={stay.image} alt={`${stay.name} — ${locale === "en" ? "concept image" : "ảnh minh họa"}`} fill priority sizes="100vw" className="showcase-atmosphere-media object-cover transition duration-[1400ms] hover:scale-[1.015]" />
     <span aria-hidden="true" className="showcase-natural-light absolute inset-0" />
     <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(5,18,14,.22),rgba(5,18,14,.82))]" />
-    <div className="relative z-10 mx-auto flex min-h-[88svh] w-[min(1480px,calc(100%-40px))] flex-col justify-between pb-12 pt-10 sm:pb-16">
+    <div className="relative z-10 mx-auto flex min-h-[100svh] w-[min(1480px,calc(100%-40px))] flex-col justify-between pb-12 pt-28 sm:pb-16">
       <Link href={backHref} className="mt-4 w-fit rounded-full border border-white/25 bg-black/12 px-4 py-2 text-[.6rem] font-bold uppercase tracking-[.16em] backdrop-blur">← {locale === "en" ? "The collection" : "Bộ sưu tập căn"}</Link>
       <div><p className="text-[.62rem] font-bold uppercase tracking-[.22em] text-[#dfc6a5]">{zone.name} · {stay.subtitle}</p><h1 className="mt-5 font-serif text-[clamp(4.2rem,14vw,12rem)] font-medium leading-[.76] tracking-[-.075em]">{stay.name}</h1><div className="mt-7 grid gap-7 border-t border-white/24 pt-6 lg:grid-cols-[1fr_auto] lg:items-end"><div><p className="max-w-xl text-sm leading-7 text-white/66">{stay.description}</p><div className="mt-5 flex flex-wrap items-center gap-4"><StayFacts stay={stay} locale={locale} /><span className="text-xs font-bold text-[#dfc6a5]">{units.length} {locale === "en" ? "physical homes" : "căn thực tế"} · {units.map((unit) => unit.code).join(" / ")}</span></div></div><div className="flex flex-wrap items-center gap-3"><Link href={bookingHref} className="inline-flex min-h-14 items-center gap-3 rounded-full bg-[#eae1d2] px-6 text-sm font-bold text-[#16311c]">{locale === "en" ? "Check this home type" : "Kiểm tra dòng nhà này"} <ArrowRight className="h-4 w-4" /></Link><span className="rounded-full border border-white/25 px-4 py-3 text-xs font-bold">{locale === "en" ? "From" : "Từ"} {formatCurrency(stay.basePrice)} / {locale === "en" ? "night" : "đêm"}</span></div></div></div>
     </div>
