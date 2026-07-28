@@ -106,7 +106,7 @@ export function TemplateHeader({ config, locale = "vi", overlay = false, storyMo
       </div>
 
       <Link
-        href={config.basePath}
+        href={scoped(config.basePath)}
         aria-label={locale === "en" ? "LAKA Homestay — home" : "LAKA Homestay — trang chủ"}
         className="focus-ring flex items-center justify-self-center rounded-md"
       >
