@@ -51,7 +51,7 @@ export function MainHome({ config, locale = "vi" }: { config: CompleteTemplateCo
     <TemplateHeader config={config} locale={locale} overlay />
 
     <main id="noi-dung-chinh" tabIndex={-1}>
-      <section className="relative min-h-[88svh] overflow-hidden bg-[#10251d] text-white">
+      <section className="relative min-h-[100svh] overflow-hidden bg-[#10251d] text-white">
         <Image
           src={conceptImages.hero}
           alt={en ? "A quiet home surrounded by nature — concept image" : "Một ngôi nhà tĩnh lặng giữa thiên nhiên — hình ảnh minh họa"}
@@ -63,7 +63,7 @@ export function MainHome({ config, locale = "vi" }: { config: CompleteTemplateCo
         <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(5,18,14,.24),rgba(5,18,14,.08)_38%,rgba(5,18,14,.8))]" />
         <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(5,18,14,.5),transparent_64%)]" />
 
-        <div className="relative z-10 mx-auto flex min-h-[88svh] w-[min(1500px,calc(100%-32px))] flex-col justify-end pb-16 pt-36 sm:w-[min(1500px,calc(100%-56px))] sm:pb-20">
+        <div className="relative z-10 mx-auto flex min-h-[100svh] w-[min(1500px,calc(100%-32px))] flex-col justify-end pb-16 pt-36 sm:w-[min(1500px,calc(100%-56px))] sm:pb-20">
           <p className="text-[.62rem] font-bold uppercase tracking-[.24em] text-[#dfc6a5]">
             {en ? "LAKA · Close to nature, close to one another" : "LAKA · Gần thiên nhiên, gần nhau hơn"}
           </p>
