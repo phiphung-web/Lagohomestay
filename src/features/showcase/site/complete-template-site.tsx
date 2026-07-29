@@ -21,7 +21,6 @@ import { TemplateAboutStory, TemplateContactChannels } from "@/features/showcase
 import { TemplateLanguageSwitcher } from "@/features/showcase/components/template-language-switcher";
 import { TemplateDocumentLocale } from "@/features/showcase/components/template-document-locale";
 import {
-  DemoContentNotice,
   TemplateDiningAndOccasions,
   TemplateExperienceCatalog,
   TemplateJourneySection,
@@ -49,21 +48,21 @@ export type CompleteTemplateConfig = {
 };
 
 const navItems = [
-  ["Các căn", "luu-tru"],
+  ["Lưu trú", "luu-tru"],
+  ["Ẩm thực", "am-thuc"],
   ["Trải nghiệm", "trai-nghiem"],
   ["Dịch vụ", "dich-vu"],
-  ["Ẩm thực", "am-thuc"],
   ["Về LAKA", "ve-lago"],
-  ["Cần biết", "thong-tin"]
+  ["Thông tin", "thong-tin"]
 ] as const;
 
 const englishNavItems = [
-  ["Homes", "luu-tru"],
+  ["Stays", "luu-tru"],
+  ["Dining", "am-thuc"],
   ["Experiences", "trai-nghiem"],
   ["Services", "dich-vu"],
-  ["Dining", "am-thuc"],
   ["About LAKA", "ve-lago"],
-  ["Good to know", "thong-tin"]
+  ["Information", "thong-tin"]
 ] as const;
 
 const policies = [
@@ -275,20 +274,17 @@ function StayPage({ config, slug, locale }: { config: CompleteTemplateConfig; sl
 
 function ExperiencePage({ config, locale }: { config: CompleteTemplateConfig; locale: ShowcaseLocale }) {
   return <><PageIntro config={config} locale={locale} eyebrow={locale === "en" ? "A day at LAKA" : "Một ngày tại LAKA"} title={locale === "en" ? "A day that needs very little planning." : "Một ngày không cần lên kế hoạch quá nhiều."} text={locale === "en" ? "LAKA prepares the space. Let nature and curiosity guide everything else." : "LAKA chuẩn bị không gian. Phần còn lại, bạn có thể để thiên nhiên và cảm hứng dẫn đường."} image={conceptImages.experience} />
-    <DemoContentNotice locale={locale} />
     <TemplateExperienceStory mood={config.mood} locale={locale} />
     <TemplateExperienceCatalog locale={locale} /></>;
 }
 
 function ServicesPage({ config, locale }: { config: CompleteTemplateConfig; locale: ShowcaseLocale }) {
   return <><PageIntro config={config} locale={locale} eyebrow={locale === "en" ? "Services and shared spaces" : "Dịch vụ và tiện ích"} title={locale === "en" ? "Everything useful. Nothing intrusive." : "Đủ đầy khi cần. Riêng tư khi muốn."} text={locale === "en" ? "From family essentials to private transfers and shared nature spaces, choose only what makes your stay lighter." : "Từ tiện ích gia đình, xe đưa đón đến không gian thiên nhiên dùng chung — bạn chỉ cần chọn những gì khiến kỳ nghỉ nhẹ nhàng hơn."} image={conceptImages.detail2} />
-    <DemoContentNotice locale={locale} />
     <TemplateServicesCatalog locale={locale} /></>;
 }
 
 function DiningPage({ config, locale }: { config: CompleteTemplateConfig; locale: ShowcaseLocale }) {
   return <><PageIntro config={config} locale={locale} eyebrow={locale === "en" ? "Dining at LAKA" : "Ẩm thực tại LAKA"} title={locale === "en" ? "A table that belongs to the stay." : "Một bàn ăn thuộc về kỳ nghỉ."} text={locale === "en" ? "Breakfast on the veranda, seasonal dishes to share and private evening tables — all designed to keep you close to your home and one another." : "Giỏ sáng bên hiên, món theo mùa để sẻ chia và bàn tối riêng tư — tất cả giữ bạn ở thật gần căn nhà và những người đồng hành."} image={conceptImages.dining} />
-    <DemoContentNotice locale={locale} />
     <TemplateDiningAndOccasions locale={locale} /></>;
 }
 
@@ -299,7 +295,6 @@ function AboutPage({ config, locale }: { config: CompleteTemplateConfig; locale:
 
 function FaqPage({ config, locale }: { config: CompleteTemplateConfig; locale: ShowcaseLocale }) {
   return <><PageIntro config={config} locale={locale} eyebrow={locale === "en" ? "Understanding LAKA" : "Hiểu thêm về LAKA"} title={locale === "en" ? "Clear information, with space left for discovery." : "Thông tin rõ ràng, vẫn đủ khoảng trống để khám phá."} text={locale === "en" ? "A concise guide to the landscape, homes, experiences and the concept currently taking shape." : "Những câu trả lời ngắn gọn về cảnh quan, các căn nhà, trải nghiệm và concept đang dần thành hình."} image={conceptImages.hill} />
-    <DemoContentNotice locale={locale} />
     <TemplateJourneySection locale={locale} contactHref={scoped(config.basePath, "lien-he")} />
     <TemplateFaqSection mood={config.mood} policyHref={scoped(config.basePath, "chinh-sach")} locale={locale} /></>;
 }

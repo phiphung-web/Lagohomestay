@@ -1,7 +1,6 @@
 import Image from "next/image";
-import { ArrowRight, Info } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import {
-  demoNotice,
   diningStories,
   guestServices,
   inLocale,
@@ -11,15 +10,6 @@ import {
   specialMoments
 } from "@/features/showcase/data/laka-demo-content";
 import type { ShowcaseLocale } from "@/features/showcase/i18n/locale";
-
-export function DemoContentNotice({ locale }: { locale: ShowcaseLocale }) {
-  return <div className="mx-auto w-[min(1240px,calc(100%-40px))] pt-12">
-    <div className="flex items-start gap-3 border border-[#80613f]/25 bg-[#e3d8c9] px-5 py-4 text-xs leading-6 text-[#16311c]/72">
-      <Info className="mt-0.5 h-4 w-4 shrink-0 text-[#80613f]" />
-      <p><strong className="text-[#16311c]">{locale === "en" ? "Presentation note." : "Lưu ý bản demo."}</strong> {inLocale(demoNotice, locale)}</p>
-    </div>
-  </div>;
-}
 
 export function TemplateExperienceCatalog({ locale }: { locale: ShowcaseLocale }) {
   return <section className="border-y border-[#16311c]/12 bg-[#e3d8c9] py-20 sm:py-28">
