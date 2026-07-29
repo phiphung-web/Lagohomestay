@@ -2,11 +2,14 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowDown, ArrowRight } from "lucide-react";
 import { GalleryLightbox } from "@/features/showcase/components/gallery-lightbox";
+import { HomeBrandStory } from "@/features/showcase/components/home-brand-story";
 import { HomeDayJourney } from "@/features/showcase/components/home-day-journey";
+import { HomeDiningPreview } from "@/features/showcase/components/home-dining-preview";
+import { HomeGuestStories } from "@/features/showcase/components/home-guest-stories";
 import { HomeLandscapeCollections } from "@/features/showcase/components/home-landscape-collections";
+import { HomeStaySpotlight } from "@/features/showcase/components/home-stay-spotlight";
 import { TemplateExperienceLayer } from "@/features/showcase/components/template-experience-layer";
 import { TemplateDocumentLocale } from "@/features/showcase/components/template-document-locale";
-import { specialMoments } from "@/features/showcase/data/laka-demo-content";
 import { conceptImages } from "@/features/stays/data/demo-data";
 import { TemplateFooter, TemplateHeader, type CompleteTemplateConfig } from "@/features/showcase/site/complete-template-site";
 import { SkipLink } from "@/shared/components/ui/skip-link";
@@ -26,7 +29,7 @@ export function MainHome({ config, locale = "vi" }: { config: CompleteTemplateCo
 
   return <div className="showcase-root min-h-screen bg-[#eae1d2] text-[#16311c]">
     <TemplateDocumentLocale locale={locale} />
-    <SkipLink />
+    <SkipLink label={en ? "Skip navigation" : "Bỏ qua điều hướng"} />
     <TemplateExperienceLayer mood="editorial" />
     <TemplateHeader config={config} locale={locale} overlay />
 
@@ -54,7 +57,7 @@ export function MainHome({ config, locale = "vi" }: { config: CompleteTemplateCo
             <p className="max-w-xl text-sm leading-7 text-white/72 sm:text-base sm:leading-8">
               {en ? "A place where mornings begin gently, conversations last longer and time feels like your own again." : "Một nơi buổi sáng bắt đầu thật khẽ, những cuộc trò chuyện dài hơn và thời gian lại thuộc về mình."}
             </p>
-            <a href="#gioi-thieu" className="group hidden items-center gap-3 text-[.6rem] font-bold uppercase tracking-[.18em] text-white/65 sm:flex">
+            <a href="#gioi-thieu" className="focus-ring group hidden items-center gap-3 text-[.6rem] font-bold uppercase tracking-[.18em] text-white/65 sm:flex">
               {en ? "Discover LAKA" : "Khám phá LAKA"}
               <span className="grid h-11 w-11 place-items-center rounded-full border border-white/30 transition group-hover:translate-y-1 group-hover:bg-white group-hover:text-[#16311c]"><ArrowDown className="h-4 w-4" /></span>
             </a>
@@ -62,78 +65,13 @@ export function MainHome({ config, locale = "vi" }: { config: CompleteTemplateCo
         </div>
       </section>
 
-      <section id="gioi-thieu" className="scroll-mt-20 px-5 py-24 sm:px-8 sm:py-32">
-        <div className="mx-auto grid w-[min(1320px,100%)] gap-12 lg:grid-cols-[.34fr_1fr]">
-          <div>
-            <p className="text-[.62rem] font-bold uppercase tracking-[.22em] text-[#80613f]">{en ? "The LAKA spirit" : "Tinh thần LAKA"}</p>
-            <p className="mt-5 max-w-xs text-sm leading-7 text-[#16311c]/58">
-              {en ? "More than a beautiful place, LAKA is a way of being present." : "Không chỉ là một nơi đẹp, LAKA là một cách để ta thực sự hiện diện."}
-            </p>
-          </div>
-          <div>
-            <h2 className="max-w-5xl font-serif text-[clamp(3.2rem,7vw,6.8rem)] font-medium leading-[.94] tracking-[-.055em]">
-              {en ? <>We create space<br />for people to <i className="text-[#9a7550]">notice one another.</i></> : <>Chúng mình tạo khoảng trống<br />để mọi người <i className="text-[#9a7550]">nhìn thấy nhau.</i></>}
-            </h2>
-            <div className="mt-10 grid gap-7 border-t border-[#16311c]/16 pt-7 sm:grid-cols-2">
-              <p className="text-base leading-8 text-[#16311c]/68">
-                {en ? "To hear the trees before the notifications. To let breakfast end whenever the conversation does." : "Để nghe tiếng cây trước tiếng thông báo. Để bữa sáng chỉ kết thúc khi câu chuyện đã vơi."}
-              </p>
-              <p className="text-base leading-8 text-[#16311c]/68">
-                {en ? "To have a place beautiful enough to remember, yet quiet enough for the people inside it to matter most." : "Để có một nơi đủ đẹp mà nhớ, nhưng đủ yên để những người ở bên trong mới là điều đáng nhớ nhất."}
-              </p>
-            </div>
-            <Link href={`${config.basePath}/ve-lago`} className="focus-ring group mt-9 inline-flex min-h-12 items-center gap-3 border-b border-[#16311c]/35 text-xs font-bold uppercase tracking-[.12em]">
-              {en ? "Read the LAKA story" : "Đọc câu chuyện của LAKA"}
-              <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      <HomeDayJourney locale={locale} />
+      <HomeBrandStory basePath={config.basePath} locale={locale} />
       <HomeLandscapeCollections basePath={config.basePath} locale={locale} />
+      <HomeStaySpotlight basePath={config.basePath} locale={locale} />
+      <HomeDiningPreview basePath={config.basePath} locale={locale} />
+      <HomeDayJourney basePath={config.basePath} locale={locale} />
 
-      <section id="dau-moc" className="border-b border-[#16311c]/12 bg-[#eae1d2] px-5 py-24 sm:px-8 sm:py-32">
-        <div className="mx-auto grid w-[min(1380px,100%)] gap-14 lg:grid-cols-[.9fr_1.1fr] lg:gap-20">
-          <div>
-            <div className="lg:sticky lg:top-32">
-              <p className="text-[.62rem] font-bold uppercase tracking-[.22em] text-[#80613f]">{en ? "Moments worth marking" : "Những dịp đáng ghi nhớ"}</p>
-              <h2 className="mt-5 max-w-xl font-serif text-[clamp(3.2rem,6vw,6rem)] font-medium leading-[.92] tracking-[-.055em]">
-                {en ? <>The place is quiet.<br /><i>The memory does not have to be.</i></> : <>Không gian thật yên.<br /><i>Kỷ niệm thì không cần nhỏ.</i></>}
-              </h2>
-              <div className="relative mt-10 min-h-[48svh] overflow-hidden rounded-t-[160px] sm:rounded-t-[220px]">
-                <Image src={conceptImages.dining} alt={en ? "A private celebration at LAKA — concept image" : "Một dịp riêng tư tại LAKA — hình ảnh minh họa"} fill sizes="(max-width:1024px) 100vw, 44vw" className="object-cover transition duration-700 hover:scale-[1.02]" />
-              </div>
-            </div>
-          </div>
-
-          <div className="border-t border-[#16311c]/14">
-            {specialMoments.map((moment, index) => {
-              const Icon = moment.icon;
-              return (
-                <article key={moment.title.vi} className="grid gap-5 border-b border-[#16311c]/14 py-8 sm:grid-cols-[56px_1fr] sm:py-10">
-                  <span className="grid h-12 w-12 place-items-center rounded-full border border-[#16311c]/16 text-[#80613f]">
-                    <Icon className="h-5 w-5" />
-                  </span>
-                  <div>
-                    <div className="flex items-baseline justify-between gap-6">
-                      <h3 className="font-serif text-3xl font-medium sm:text-4xl">{en ? moment.title.en : moment.title.vi}</h3>
-                      <span className="text-[.58rem] font-bold tracking-[.14em] text-[#80613f]">{String(index + 1).padStart(2, "0")}</span>
-                    </div>
-                    <p className="mt-4 max-w-xl text-sm leading-7 text-[#16311c]/58">{en ? moment.text.en : moment.text.vi}</p>
-                  </div>
-                </article>
-              );
-            })}
-            <Link href={`${config.basePath}/dich-vu`} className="focus-ring group mt-9 inline-flex min-h-12 items-center gap-3 border-b border-[#16311c]/35 text-xs font-bold uppercase tracking-[.12em]">
-              {en ? "Discover thoughtful services" : "Khám phá dịch vụ được chuẩn bị riêng"}
-              <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      <section id="ky-uc" className="bg-[#f2ece2] px-5 pt-24 sm:px-8 sm:pt-32">
+      <section id="ky-uc" className="scroll-mt-20 bg-[#f2ece2] px-5 pt-24 sm:px-8 sm:pt-32">
         <div className="mx-auto grid w-[min(1380px,100%)] gap-8 lg:grid-cols-[1fr_.45fr] lg:items-end">
           <div>
             <p className="text-[.62rem] font-bold uppercase tracking-[.22em] text-[#80613f]">{en ? "A short memory gallery" : "Một thư viện ký ức vừa đủ"}</p>
@@ -147,6 +85,8 @@ export function MainHome({ config, locale = "vi" }: { config: CompleteTemplateCo
         </div>
         <GalleryLightbox images={memoryImages} mood="editorial" locale={locale} />
       </section>
+
+      <HomeGuestStories basePath={config.basePath} locale={locale} />
 
       <section className="relative min-h-[68svh] overflow-hidden bg-[#10251d] text-white">
         <Image src={conceptImages.cloud} alt={en ? "A quiet place beneath the clouds — concept image" : "Một nơi tĩnh lặng dưới tầng mây — hình ảnh minh họa"} fill sizes="100vw" className="object-cover opacity-58" />

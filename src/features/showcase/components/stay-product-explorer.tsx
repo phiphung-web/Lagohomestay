@@ -158,10 +158,10 @@ export function StayProductExplorer({
   }, [activeStay, closeStay]);
 
   const tabs = [
-    { slug: null, label: locale === "en" ? "All homes" : "Tất cả các căn", count: localizedStays.length },
+    { slug: null, label: locale === "en" ? "All" : "Tất cả", count: localizedStays.length },
     ...localizedZones.map((zone) => ({
       slug: zone.slug,
-      label: zone.name,
+      label: locale === "en" ? zone.name.replace(" Collection", "") : zone.name.replace(/^Hệ\s+/, ""),
       count: localizedStays.filter((stay) => stay.zoneId === zone.id).length
     }))
   ];
@@ -356,7 +356,7 @@ export function StayProductExplorer({
         </div>
 
         <nav aria-label={locale === "en" ? "Filter homes by landscape" : "Lọc căn theo hệ cảnh quan"} className="sticky top-[92px] z-20 -mx-3 mt-6 overflow-x-auto border-y border-[#16311c]/10 bg-[#eae1d2]/94 px-3 backdrop-blur">
-          <div className="flex min-w-max">
+          <div className="grid w-full grid-cols-4">
             {tabs.map((tab) => {
               const selected = activeZoneSlug === tab.slug;
               return <button
@@ -364,10 +364,10 @@ export function StayProductExplorer({
                 type="button"
                 aria-pressed={selected}
                 onClick={() => setQuery({ khu: tab.slug, can: null }, "replace")}
-                className={`relative min-h-16 px-5 text-xs font-bold transition first:pl-1 sm:px-7 ${selected ? "text-[#16311c]" : "text-[#16311c]/42 hover:text-[#16311c]"}`}
+                className={`relative min-h-16 px-1 text-[11px] font-bold transition sm:px-4 sm:text-xs ${selected ? "text-[#16311c]" : "text-[#16311c]/48 hover:text-[#16311c]"}`}
               >
                 {tab.label} <sup className="ml-1 text-[.55rem] opacity-55">{String(tab.count).padStart(2, "0")}</sup>
-                {selected && <span className="absolute inset-x-5 bottom-0 h-0.5 bg-[#80613f] first:left-1" />}
+                {selected && <span className="absolute inset-x-2 bottom-0 h-0.5 bg-[#80613f] sm:inset-x-5" />}
               </button>;
             })}
           </div>

@@ -20,8 +20,12 @@ const englishTitles: Record<Exclude<TemplateRoute["kind"], "stay">, string> = {
   services: "Services",
   dining: "Dining",
   about: "About LAKA",
+  info: "Good to know",
   faq: "Good to know",
   policy: "Stay policies",
+  directions: "Getting here",
+  terms: "Terms and conditions",
+  privacy: "Privacy policy",
   contact: "Contact",
   booking: "Find a home",
   lookup: "Find your booking"

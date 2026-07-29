@@ -9,8 +9,12 @@ export type TemplateRoute =
   | { kind: "services" }
   | { kind: "dining" }
   | { kind: "about" }
+  | { kind: "info" }
   | { kind: "faq" }
   | { kind: "policy" }
+  | { kind: "directions" }
+  | { kind: "terms" }
+  | { kind: "privacy" }
   | { kind: "contact" }
   | { kind: "booking" }
   | { kind: "lookup" };
@@ -21,8 +25,14 @@ const singlePages = {
   "dich-vu": "services",
   "am-thuc": "dining",
   "ve-lago": "about",
-  "thong-tin": "faq",
+  "ve-laka": "about",
+  "thong-tin": "info",
+  "faq": "faq",
+  "di-chuyen": "directions",
   "chinh-sach": "policy",
+  "chinh-sach-luu-tru": "policy",
+  "dieu-khoan": "terms",
+  "bao-mat": "privacy",
   "lien-he": "contact",
   "dat-phong": "booking",
   "tra-cuu": "lookup"
@@ -46,8 +56,12 @@ const titles: Record<Exclude<TemplateRoute["kind"], "stay">, string> = {
   services: "Dịch vụ",
   dining: "Ẩm thực",
   about: "Về LAKA",
+  info: "Thông tin cần biết",
   faq: "Thông tin cần biết",
   policy: "Chính sách lưu trú",
+  directions: "Hướng dẫn di chuyển",
+  terms: "Điều khoản và điều kiện",
+  privacy: "Chính sách bảo mật",
   contact: "Liên hệ",
   booking: "Chọn căn và đặt chỗ",
   lookup: "Xem thông tin đặt chỗ"
