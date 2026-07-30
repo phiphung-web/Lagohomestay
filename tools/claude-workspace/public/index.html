@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Claude Workspace · LAKA</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <span class="brand-mark">C</span>
+        <div>
+          <strong>Claude Workspace</strong>
+          <span>LAKA · Heavy agent</span>
+        </div>
+      </div>
+
+      <button id="new-session" class="button button-primary button-full" type="button">
+        <span>＋</span> Phiên nghiên cứu mới
+      </button>
+
+      <div class="sidebar-label">Các phiên gần đây</div>
+      <nav id="session-list" class="session-list" aria-label="Danh sách phiên Claude"></nav>
+
+      <div class="sidebar-status">
+        <div><span id="key-dot" class="status-dot"></span><span id="key-status">Đang kiểm tra key…</span></div>
+        <div><span id="browser-dot" class="status-dot"></span><span id="browser-status">Đang kiểm tra browser…</span></div>
+        <p id="workspace-path"></p>
+      </div>
+    </aside>
+
+    <main class="workspace">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Phiên đang làm việc</p>
+          <h1 id="session-title">Chọn hoặc tạo một phiên</h1>
+        </div>
+        <div class="topbar-actions">
+          <button id="handoff-button" class="button button-secondary" type="button" disabled>Bàn giao Codex</button>
+          <button id="stop-button" class="button button-danger hidden" type="button">Dừng Claude</button>
+        </div>
+      </header>
+
+      <section id="welcome" class="welcome">
+        <div class="welcome-copy">
+          <p class="eyebrow">Claude Opus · tự động tối đa</p>
+          <h2>Để Claude gánh phần nghiên cứu và triển khai nặng.</h2>
+          <p>
+            Claude có thể duyệt website online, kiểm tra LAKA ở nhiều viewport, đọc và sửa code,
+            chạy test/build rồi tạo gói bàn giao để Codex tiếp tục.
+          </p>
+        </div>
+        <div class="preset-grid">
+          <button class="preset-card" data-prompt="Hãy nghiên cứu sâu website tham chiếu ở các URL tôi cung cấp. Dùng web search và browser ở 360, 768, 1440; phân tích cấu trúc page, thứ tự section, hierarchy, interaction, mobile, điểm mạnh/yếu và đề xuất LAKA làm tốt hơn. Tạo bằng chứng screenshot và gói bàn giao Codex.">
+            <span>01</span><strong>Nghiên cứu benchmark</strong><small>Web search · desktop · mobile · ảnh QA</small>
+          </button>
+          <button class="preset-card" data-prompt="Hãy audit toàn bộ giao diện LAKA hiện tại bằng browser ở 360, 768 và 1440. Đọc code liên quan, phát hiện lỗi layout, overflow, tương tác, accessibility, performance và sự liền mạch câu chuyện. Nếu được phép sửa, hãy triển khai, kiểm tra và tạo bàn giao Codex.">
+            <span>02</span><strong>Audit LAKA toàn diện</strong><small>Browser · code · accessibility · performance</small>
+          </button>
+          <button class="preset-card" data-prompt="Hãy nhận nhiệm vụ dưới đây như một senior frontend agent. Rà soát repo trước, lập kế hoạch ngắn, triển khai thay đổi tối thiểu nhưng hoàn chỉnh, chạy TypeScript/test/build phù hợp và tạo gói bàn giao Codex khi xong.\n\nNhiệm vụ: ">
+            <span>03</span><strong>Triển khai tính năng</strong><small>Đọc · sửa code · kiểm thử · bàn giao</small>
+          </button>
+        </div>
+      </section>
+
+      <section id="conversation" class="conversation hidden" aria-live="polite"></section>
+      <section id="evidence" class="evidence hidden" aria-label="Ảnh bằng chứng từ Claude">
+        <div class="evidence-heading">
+          <p class="eyebrow">Browser evidence</p>
+          <h2>Ảnh Claude đã kiểm tra</h2>
+        </div>
+        <div id="evidence-grid" class="evidence-grid"></div>
+      </section>
+
+      <section id="job-panel" class="job-panel hidden">
+        <div class="job-heading">
+          <span class="thinking-orb"></span>
+          <div>
+            <strong id="job-title">Claude đang làm việc</strong>
+            <span id="job-elapsed">00:00</span>
+          </div>
+        </div>
+        <div id="job-events" class="job-events"></div>
+      </section>
+
+      <footer class="composer">
+        <div class="composer-settings">
+          <label>
+            <span>Model</span>
+            <input id="model-input" value="nghi/claude-opus-5-thinking" spellcheck="false">
+          </label>
+          <label class="switch-label">
+            <input id="unlimited-input" type="checkbox" checked>
+            <span class="switch"></span>
+            Tự động tối đa
+          </label>
+          <label class="switch-label write-switch">
+            <input id="writes-input" type="checkbox">
+            <span class="switch"></span>
+            Cho phép sửa code
+          </label>
+          <details class="advanced">
+            <summary>Nâng cao</summary>
+            <div class="advanced-panel">
+              <label>Output/vòng <input id="max-tokens-input" type="number" min="1024" max="32000" step="1024" value="24000"></label>
+              <label>Ngân sách phiên <input id="token-budget-input" type="number" min="100000" max="9500000" step="100000" value="8500000"></label>
+              <label>Vòng thường <input id="max-rounds-input" type="number" min="1" max="30" value="16"></label>
+            </div>
+          </details>
+        </div>
+        <div class="composer-box">
+          <textarea id="message-input" rows="3" placeholder="Giao nhiệm vụ cho Claude… Có thể dán URL, tên page hoặc phạm vi file." disabled></textarea>
+          <button id="send-button" class="send-button" type="button" disabled aria-label="Gửi cho Claude">↑</button>
+        </div>
+        <div class="composer-note">
+          <span>Enter để gửi · Shift+Enter xuống dòng</span>
+          <span>Key chỉ nằm trong biến môi trường của server local</span>
+        </div>
+      </footer>
+    </main>
+  </div>
+
+  <dialog id="new-session-dialog">
+    <form method="dialog" id="new-session-form">
+      <p class="eyebrow">Phiên Claude mới</p>
+      <h2>Đặt tên theo mục tiêu</h2>
+      <input id="new-session-title" required maxlength="120" placeholder="Ví dụ: Audit U Lesa và nâng cấp trang chủ">
+      <div class="dialog-actions">
+        <button id="cancel-new-session" class="button button-ghost" type="button">Hủy</button>
+        <button class="button button-primary" value="default">Tạo phiên</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="/app.js" defer></script>
+</body>
+</html>
