@@ -15,51 +15,67 @@ const contactChannels = [
 
 const quote = "Một kỳ nghỉ tốt không cần quá nhiều thứ để làm. Chỉ cần đúng người, đúng không gian và đủ thời gian.";
 
+const brandValues = {
+  vi: [
+    ["Tôn trọng Tự nhiên", "Trân trọng vẻ nguyên sơ của thung lũng, LAKA chọn cách hiện diện thật nhẹ nhàng giữa thiên nhiên. Từ thiết kế, vật liệu đến từng hoạt động, mọi lựa chọn đều được cân nhắc để giảm tác động lên môi trường và gìn giữ cảnh quan nơi đây bền vững theo thời gian."],
+    ["Chữa lành Nguyên bản", "Một chốn an trú giữa thiên nhiên, nơi từng mảng xanh và mỗi khung kính đều mở ra khoảng lặng vừa đủ để những ngổn ngang dần lắng xuống, tâm trí được thảnh thơi và trở về với vẻ tinh khôi vốn có."],
+    ["Kết nối Chân thật", "Kiến tạo những trải nghiệm đa dạng giữa thiên nhiên để thung lũng trở thành nơi kết nối mọi người, gọi về tiếng cười và lưu giữ những kỷ niệm đáng nhớ."],
+    ["Chăm sóc Tận tâm", "Mỗi hành trình đều bắt đầu từ một mong muốn khác nhau. LAKA luôn lắng nghe để chuẩn bị những tiện ích, chương trình và cách đón tiếp vừa vặn, giúp mỗi người đều cảm thấy được thấu hiểu và chăm sóc."]
+  ],
+  en: [
+    ["Respect for Nature", "LAKA values the valley's untouched beauty and chooses to exist gently within nature. Every decision, from design and materials to activities, is considered to reduce environmental impact and preserve the landscape over time."],
+    ["Restoration to Self", "A refuge in nature where every patch of green and framed view creates enough stillness for a busy mind to settle, breathe and return to its clearest state."],
+    ["Genuine Connection", "Experiences in nature are created to bring people closer, call laughter back and hold space for memories worth keeping."],
+    ["Attentive Care", "Every journey begins with a different wish. LAKA listens, then prepares the right amenities, programme and welcome so each guest feels understood and cared for."]
+  ]
+} as const;
+
 export function TemplateAboutStory({ mood, locale = "vi" }: { mood: Mood; locale?: ShowcaseLocale }) {
   if (mood === "cinematic") return <section className="reveal-section mx-auto w-[min(1500px,calc(100%-40px))] py-20 sm:py-28"><div className="grid gap-0 border-y border-white/12 lg:grid-cols-[1.08fr_.92fr]"><div className="relative min-h-[620px] overflow-hidden"><Image src={conceptImages.detail2} alt="Câu chuyện LAKA - ảnh minh họa" fill sizes="(max-width:1024px) 100vw, 58vw" className="object-cover opacity-72 transition duration-1000 hover:scale-[1.02] hover:opacity-100" /><div className="absolute inset-0 bg-gradient-to-t from-black/65 via-transparent to-black/20" /><span className="absolute bottom-5 left-5 bg-black/55 px-3 py-1.5 text-[.58rem] font-bold uppercase tracking-wider text-white backdrop-blur">Frame 01 · minh họa</span></div><div className="flex flex-col justify-center border-t border-white/12 px-7 py-14 lg:border-l lg:border-t-0 lg:px-12"><p className="text-[.62rem] font-bold uppercase tracking-[.24em] text-[#c7a882]">Manifesto · LAKA</p><blockquote className="mt-8 font-serif text-4xl font-medium leading-[1.14] tracking-[-.035em] sm:text-5xl">“{quote}”</blockquote><div className="mt-10 space-y-5 border-t border-white/12 pt-8 text-sm leading-7 text-white/52"><p>Mỗi căn được hình dung như một ngôi nhà thực sự: có bếp để nấu, hiên để ngồi và những khoảng trống vừa đủ để tâm trí được thảnh thơi.</p><p>LAKA ưu tiên sự riêng tư, vật liệu gần gũi và dịch vụ vừa đủ. Đội ngũ xuất hiện khi khách cần, rồi trả lại không gian cho kỳ nghỉ.</p></div></div></div><div className="grid border-b border-white/12 sm:grid-cols-3">{["Nhà nguyên căn", "Thiên nhiên thật gần", "Chăm sóc vừa đủ"].map((item, index) => <div key={item} className="border-b border-white/12 px-6 py-7 last:border-b-0 sm:border-b-0 sm:border-r sm:last:border-r-0"><span className="text-[.58rem] font-bold text-[#c7a882]">0{index + 1}</span><p className="mt-6 font-serif text-xl">{item}</p></div>)}</div></section>;
 
   if (mood === "organic") return <section className="reveal-section mx-auto w-[min(1380px,calc(100%-28px))] py-20 sm:py-28"><div className="grid gap-4 lg:grid-cols-12"><div className="relative min-h-[600px] overflow-hidden rounded-[44px] lg:col-span-7"><Image src={conceptImages.detail2} alt="Câu chuyện LAKA - ảnh minh họa" fill sizes="(max-width:1024px) 100vw, 58vw" className="object-cover transition duration-1000 hover:scale-[1.025]" /><span className="absolute left-5 top-5 rounded-full bg-white px-4 py-2 text-[.6rem] font-extrabold uppercase tracking-wider">Câu chuyện bằng hình · minh họa</span></div><div className="flex min-h-[360px] flex-col justify-between rounded-[44px] bg-[#f7cf58] p-8 lg:col-span-5"><Sparkles className="h-8 w-8" /><blockquote className="mt-16 text-3xl font-extrabold leading-[1.16] tracking-[-.035em] sm:text-4xl">“{quote}”</blockquote></div><article className="rounded-[38px] bg-white p-8 shadow-[0_18px_55px_rgba(33,72,61,.07)] lg:col-span-5"><p className="text-[.6rem] font-extrabold uppercase tracking-[.14em] text-[#e66e4c]">Một ngôi nhà thực sự</p><p className="mt-6 text-sm font-medium leading-7 text-[#16311c]/78">Có bếp để nấu, hiên để ngồi và những khoảng trống vừa đủ để mọi người sống cùng nhau mà không thấy chật.</p></article><article className="rounded-[38px] bg-[#16311c] p-8 text-white lg:col-span-7"><p className="text-[.6rem] font-extrabold uppercase tracking-[.14em] text-[#f7cf58]">Dịch vụ vừa đủ tinh tế</p><p className="mt-6 max-w-2xl text-sm font-medium leading-7 text-white/58">Đội ngũ LAKA xuất hiện khi khách cần, rồi trả lại không gian cho cây, gió và những người đang ở cạnh nhau.</p></article></div></section>;
 
-  const localizedQuote = locale === "en" ? "A good stay does not need a long list of things to do. It needs the right people, the right space and enough time." : quote;
+  const localizedQuote = locale === "en" ? "Choose a cabin. Hold the whole valley." : "“Chọn” Cabin, “Trọn” Thung Lũng";
   const chapters = locale === "en" ? [
     {
-      kicker: "01 · The beginning",
-      title: "A wish to make time feel like your own again.",
-      text: ["LAKA began with the belief that rest is not another item on an itinerary. It is the freedom to notice light, weather and the people beside you.", "The project is still being completed. This website shares the direction early, then will replace every concept image and operational detail as the place takes shape."],
+      kicker: "01 · The LAKA mark",
+      title: "A symbol drawn from what appears beyond the window.",
+      text: ["The LAKA logo is inspired by mountains, pine forest, cabins and a window frame.", "It is not an abstract symbol. It reflects the landscape guests will meet when they wake, draw the curtain and open the door: mountain ridges in cloud, pine trees moving in the wind and simple cabins reflected on the lake."],
       image: conceptImages.detail2
     },
     {
-      kicker: "02 · Homes within a landscape",
-      title: "Architecture starts by listening to the land.",
-      text: ["The Lake, Forest and Hill collections are not merely categories. Each responds to a different relationship with water, canopy, light and distance.", "Every home is imagined as somewhere people can genuinely live together: a kitchen to cook in, a veranda to linger on and enough private space to breathe."],
+      kicker: "02 · The colours of the valley",
+      title: "A palette gathered directly from nature.",
+      text: ["LAKA's colours come from pine forest, tree-covered mountains and the natural lake.", "They carry a promise of sustainable, nature-aligned tourism and a lasting connection between people and the landscape."],
       image: conceptImages.forest
     },
     {
-      kicker: "03 · Thoughtful restraint",
-      title: "Care should be felt, not constantly seen.",
-      text: ["LAKA values privacy, honest materials and support that arrives at the right moment. The team helps when needed, then gives the stay back to you.", "The result is not a long list of activities, but a setting where breakfast, a walk or a quiet evening can become the memory itself."],
+      kicker: "03 · Mission",
+      title: "Preserve untouched beauty through every frame.",
+      text: ["LAKA seeks to become a place where the truest connections can begin.", "Choose an open space. Hold every moment of connection."],
       image: conceptImages.table
     }
   ] : [
     {
-      kicker: "01 · Khởi đầu",
-      title: "Một mong muốn để thời gian lại thuộc về mình.",
-      text: ["LAKA bắt đầu từ niềm tin rằng nghỉ ngơi không phải một mục khác trong lịch trình. Đó là sự tự do để nhận ra ánh sáng, thời tiết và những người đang ở cạnh mình.", "Dự án vẫn đang hoàn thiện. Website kể sớm về hướng đi, rồi sẽ thay từng hình concept và thông tin vận hành bằng dữ liệu thật khi nơi này dần thành hình."],
+      kicker: "01 · Dấu ấn LAKA",
+      title: "Một biểu tượng được nhìn thấy qua khung cửa.",
+      text: ["Logo của LAKA được lấy cảm hứng từ ngọn núi, rừng thông, cabin và khung cửa.", "Đó không chỉ là một biểu tượng được vẽ ra. Đó là khung cảnh bạn sẽ nhìn thấy khi thức dậy và mở cánh cửa: xa xa là những triền núi nối nhau trong mây, trước mắt là hàng thông xanh reo trong gió, bên dưới là những cabin mộc mạc phản chiếu trên mặt hồ."],
       image: conceptImages.detail2
     },
     {
-      kicker: "02 · Nhà trong cảnh quan",
-      title: "Kiến trúc bắt đầu bằng việc lắng nghe vùng đất.",
-      text: ["Hệ Hồ, Hệ Rừng và Hệ Đồi không chỉ là cách phân loại. Mỗi hệ là một mối quan hệ khác nhau với mặt nước, tán cây, ánh sáng và khoảng cách.", "Mỗi căn được hình dung như một ngôi nhà thực sự: có bếp để nấu, hiên để ngồi và đủ khoảng riêng để mọi người sống cùng nhau mà vẫn được thở."],
+      kicker: "02 · Màu của thung lũng",
+      title: "Gam màu được gom nhặt từ chính thiên nhiên.",
+      text: ["Là màu của rừng thông, của những dãy núi phủ kín cây và của hồ nước tự nhiên — món quà của tạo hóa.", "Hơn hết, đó là lời hứa về sự phát triển du lịch bền vững, thuận tự nhiên; về sự gắn kết bền chặt của con người và thiên nhiên."],
       image: conceptImages.forest
     },
     {
-      kicker: "03 · Chăm sóc vừa đủ",
-      title: "Sự chu đáo nên được cảm nhận, không cần luôn xuất hiện.",
-      text: ["LAKA ưu tiên riêng tư, vật liệu gần gũi và sự hỗ trợ đến đúng lúc. Đội ngũ có mặt khi khách cần, rồi trả lại không gian cho kỳ nghỉ.", "Điều còn lại không phải một danh sách dài hoạt động, mà là nơi bữa sáng, một cuộc dạo bộ hay buổi tối yên có thể tự trở thành ký ức."],
+      kicker: "03 · Sứ mệnh",
+      title: "Lưu giữ vẻ đẹp nguyên sơ qua từng khung kính.",
+      text: ["Nơi khởi nguồn cho những kết nối chân thật nhất.", "LAKA — Chọn một không gian mở, Trọn phút giây gắn kết."],
       image: conceptImages.table
     }
   ];
+  const localizedValues = brandValues[locale];
 
   const journalImages = [conceptImages.hero, conceptImages.hill, conceptImages.breakfast, conceptImages.cloud] as const;
 
@@ -67,7 +83,7 @@ export function TemplateAboutStory({ mood, locale = "vi" }: { mood: Mood; locale
     <section className="reveal-section py-20 sm:py-28">
       <div className="mx-auto grid w-[min(1260px,calc(100%-40px))] gap-12 border-b border-[#16311c]/15 pb-20 lg:grid-cols-[.4fr_1fr] lg:items-end">
         <p className="text-[.62rem] font-bold uppercase tracking-[.2em] text-[#80613f]">{locale === "en" ? "Preface" : "Lời tựa"}</p>
-        <blockquote className="font-serif text-4xl font-medium leading-[1.12] tracking-[-.04em] sm:text-6xl">“{localizedQuote}”</blockquote>
+        <blockquote className="font-serif text-4xl font-medium leading-[1.12] tracking-[-.04em] sm:text-6xl">{localizedQuote}</blockquote>
       </div>
 
       <div className="mx-auto w-[min(1380px,calc(100%-40px))]">
@@ -86,6 +102,22 @@ export function TemplateAboutStory({ mood, locale = "vi" }: { mood: Mood; locale
             </div>
           </article>
         ))}
+      </div>
+
+      <div className="mx-auto mt-24 w-[min(1260px,calc(100%-40px))] border-y border-[#16311c]/15 py-16 sm:py-20">
+        <div className="grid gap-8 lg:grid-cols-[.42fr_1fr] lg:items-end">
+          <p className="text-[.62rem] font-bold uppercase tracking-[.2em] text-[#80613f]">{locale === "en" ? "04 · Core values" : "04 · Giá trị cốt lõi"}</p>
+          <h2 className="font-serif text-4xl font-medium leading-[1.05] tracking-[-.04em] sm:text-6xl">{locale === "en" ? "Four promises that shape how LAKA grows." : "Bốn lời hứa định hình cách LAKA lớn lên."}</h2>
+        </div>
+        <div className="mt-14 grid border-t border-[#16311c]/15 md:grid-cols-2">
+          {localizedValues.map(([title, text], index) => (
+            <article key={title} className="border-b border-[#16311c]/15 py-9 md:px-8 md:[&:nth-child(odd)]:border-r lg:px-10">
+              <span className="text-[.6rem] font-bold text-[#80613f]">0{index + 1}</span>
+              <h3 className="mt-6 font-serif text-3xl font-medium tracking-[-.025em]">{title}</h3>
+              <p className="mt-5 max-w-xl text-sm leading-7 text-[#16311c]/68">{text}</p>
+            </article>
+          ))}
+        </div>
       </div>
 
       <div className="mx-auto mt-16 grid w-[min(1420px,calc(100%-40px))] grid-cols-2 gap-3 sm:gap-5 lg:grid-cols-4">
