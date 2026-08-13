@@ -18,21 +18,21 @@ export function HomeBrandStory({ basePath, locale = "vi" }: { basePath: string; 
       <div className="mx-auto grid w-[min(1380px,100%)] gap-14 lg:grid-cols-[.78fr_1.22fr] lg:items-start lg:gap-20">
         <div className="lg:sticky lg:top-32">
           <p className="text-[.62rem] font-bold uppercase tracking-[.22em] text-[#80613f]">
-            {en ? "The LAKA story" : "Câu chuyện LAKA"}
+            {en ? "The LAKA mark" : "Dấu ấn LAKA"}
           </p>
           <h2 className="mt-6 max-w-2xl font-serif text-[clamp(3.2rem,6.5vw,6.5rem)] font-medium leading-[.92] tracking-[-.055em]">
-            {en ? <>A place for people<br /><i className="text-[#9a7550]">to notice one another.</i></> : <>Một nơi để mọi người<br /><i className="text-[#9a7550]">nhìn thấy nhau.</i></>}
+            {en ? <>Choose a cabin.<br /><i className="text-[#9a7550]">Hold the whole valley.</i></> : <>“Chọn” Cabin.<br /><i className="text-[#9a7550]">“Trọn” Thung Lũng.</i></>}
           </h2>
           <div className="mt-9 grid gap-6 border-t border-[#16311c]/16 pt-7 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
             <p className="text-base leading-8 text-[#16311c]/68">
               {en
-                ? "LAKA begins with a simple wish: hear the trees before notifications and let breakfast end only when the conversation does."
-                : "LAKA bắt đầu từ một mong muốn giản dị: nghe tiếng cây trước tiếng thông báo và để bữa sáng chỉ kết thúc khi câu chuyện đã vơi."}
+                ? "The LAKA logo is inspired by mountains, pine forest, cabins and the window frame through which the landscape first appears."
+                : "Logo LAKA được lấy cảm hứng từ ngọn núi, rừng thông, cabin và khung cửa — những hình ảnh thật hiện ra trong thung lũng."}
             </p>
             <p className="text-base leading-8 text-[#16311c]/68">
               {en
-                ? "Beautiful enough to remember, yet quiet enough for the people inside it to matter most."
-                : "Đủ đẹp để nhớ, nhưng cũng đủ yên để những người ở bên trong mới là điều đáng nhớ nhất."}
+                ? "Its mission is to preserve untouched beauty through every frame, creating a place where the truest connections can begin."
+                : "Sứ mệnh của LAKA là lưu giữ vẻ đẹp nguyên sơ qua từng khung kính, nơi khởi nguồn cho những kết nối chân thật nhất."}
             </p>
           </div>
           <Link href={`${basePath}/ve-laka`} className="focus-ring group mt-9 inline-flex min-h-12 items-center gap-3 border-b border-[#16311c]/35 text-xs font-bold uppercase tracking-[.12em]">
