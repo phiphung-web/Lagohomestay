@@ -8,7 +8,6 @@ import {
   Instagram,
   Phone
 } from "lucide-react";
-import { BookingExperience } from "@/features/booking/components/booking-experience";
 import { LookupForm } from "@/features/booking/components/lookup-form";
 import { TemplateExperienceLayer } from "@/features/showcase/components/template-experience-layer";
 import { TemplateMobileMenu } from "@/features/showcase/components/template-mobile-menu";
@@ -69,12 +68,12 @@ const englishNavItems = [
 const policies = [
   ["Đặt chỗ và xác nhận", "Yêu cầu từ website được giữ trong 2 giờ. Đặt chỗ chỉ được xác nhận sau khi đội ngũ LAKA liên hệ qua điện thoại hoặc Zalo."],
   ["Thay đổi và hủy", "Điều kiện đổi ngày, hủy và hoàn cọc sẽ được thông báo rõ ràng trong bước xác nhận. Nội dung chính thức cần được duyệt trước khi mở bán."],
-  ["Nhận và trả căn", "Khung giờ minh họa: nhận căn từ 14:00 và trả căn trước 11:00. Hướng dẫn nhận căn chi tiết được gửi qua Zalo trước ngày đến."],
+  ["Nhận và trả căn", "Khung giờ chính thức chưa được công bố. LAKA xác nhận cùng thông tin căn, lịch trống và hướng dẫn đến nơi trước chuyến đi."],
   ["Số khách và trẻ em", "Số khách không vượt quá sức chứa công bố của từng căn. Chính sách phụ thu, trẻ em và giường bổ sung cần được xác nhận khi đặt."],
   ["Không gian và tiếng ồn", "LAKA hướng đến kỳ nghỉ yên tĩnh. Khách vui lòng giữ âm lượng vừa phải sau 22:00 và trao đổi trước nếu tổ chức hoạt động nhóm."],
   ["Vật nuôi", "Khả năng đón vật nuôi phụ thuộc từng căn và điều kiện vận hành tại thời điểm lưu trú. Vui lòng hỏi LAKA trước khi đặt."],
   ["Quyền riêng tư", "Thông tin liên hệ chỉ được dùng để xử lý yêu cầu lưu trú, chăm sóc khách và thực hiện các nghĩa vụ vận hành cần thiết."],
-  ["Nội dung minh họa", "Hình ảnh, địa chỉ, giá và một số chính sách trong bản trình bày là dữ liệu minh họa, chưa phải cam kết thương mại."]
+  ["Nội dung minh họa", "Hình ảnh concept, giá và một số chính sách chưa phải cam kết thương mại. Địa chỉ và cấu trúc 20 căn đã được cập nhật từ tài liệu LAKA."]
 ] as const;
 
 function scoped(basePath: string, path = "") {
@@ -123,7 +122,7 @@ export function TemplateHeader({ config, locale = "vi", overlay = false, storyMo
           <TemplateLanguageSwitcher locale={locale} compact alwaysVisible />
         </div>
         <Link href={bookingHref} className="focus-ring hidden min-h-10 items-center rounded-full border border-current/25 px-4 text-[.6rem] font-bold uppercase tracking-[.12em] transition hover:opacity-70 xl:inline-flex">
-          {locale === "en" ? "Check availability" : "Xem lịch trống"}
+          {locale === "en" ? "Plan your stay" : "Tư vấn chọn căn"}
         </Link>
         <TemplateMobileMenu name={config.name} mood={config.mood} items={mobileItems} bookingHref={bookingHref} lookupHref={lookupHref} locale={locale} wideHeader />
       </div>
@@ -157,7 +156,7 @@ export function TemplateFooter({ config, locale = "vi", storyMode = false, homeM
           <Link href={scoped(config.basePath, "chinh-sach-luu-tru")}>{locale === "en" ? "Stay policies" : "Chính sách lưu trú"}</Link>
           <Link href={scoped(config.basePath, "dieu-khoan")}>{locale === "en" ? "Terms" : "Điều khoản"}</Link>
           <Link href={scoped(config.basePath, "bao-mat")}>{locale === "en" ? "Privacy" : "Bảo mật"}</Link>
-          <Link href={scoped(config.basePath, "dat-phong")} className="font-bold">{locale === "en" ? "Check availability" : "Xem lịch trống"}</Link>
+          <Link href={scoped(config.basePath, "dat-phong")} className="font-bold">{locale === "en" ? "Plan your stay" : "Tư vấn chọn căn"}</Link>
           <Link href={scoped(config.basePath, "tra-cuu")}>{locale === "en" ? "Find a booking" : "Tra cứu đặt chỗ"}</Link>
         </div>
       </div>
@@ -189,7 +188,7 @@ export function TemplateFooter({ config, locale = "vi", storyMode = false, homeM
         <div className="mt-5 flex flex-col gap-3 text-sm md:items-end">
           <Link href={scoped(config.basePath, "ve-laka")} className="font-bold">{locale === "en" ? "The LAKA story" : "Câu chuyện LAKA"}</Link>
           <Link href={scoped(config.basePath, "trai-nghiem")}>{locale === "en" ? "The LAKA rhythm" : "Nhịp sống LAKA"}</Link>
-          <Link href={scoped(config.basePath, "dat-phong")} className="font-bold">{locale === "en" ? "Check availability" : "Xem lịch trống"}</Link>
+          <Link href={scoped(config.basePath, "dat-phong")} className="font-bold">{locale === "en" ? "Plan your stay" : "Tư vấn chọn căn"}</Link>
           <Link href={scoped(config.basePath, "tra-cuu")}>{locale === "en" ? "Find a booking" : "Tra cứu đặt chỗ"}</Link>
           <a href={publicContact.phoneHref}>{publicContact.phoneDisplay}</a>
           <a href={publicContact.emailHref}>{publicContact.email}</a>
@@ -200,9 +199,9 @@ export function TemplateFooter({ config, locale = "vi", storyMode = false, homeM
   </footer>;
   return <footer className={`border-t border-current/12 pb-28 pt-14 sm:pb-32 ${config.mood === "organic" ? "bg-[#e7ded1]" : config.mood === "cinematic" ? "bg-[#0b190f]" : "bg-[#eae1d2]"}`}>
     <div className="mx-auto grid w-[min(1420px,calc(100%-40px))] gap-10 md:grid-cols-2 xl:grid-cols-[1.1fr_.65fr_.75fr_.65fr]">
-      <div><Link href={config.basePath || "/"} aria-label={locale === "en" ? "LAKA Homestay - Home" : "LAKA Homestay - Trang chủ"} className="inline-flex"><BrandLogo variant={config.mood === "editorial" ? "established" : "homestay"} decorative className={`${config.mood === "editorial" ? "w-[190px]" : "w-[210px]"} ${config.mood === "cinematic" ? "text-[#eae1d2]" : "text-[#16311c]"}`} /></Link><p className="mt-5 max-w-md text-sm leading-7 opacity-80">{locale === "en" ? "Three landscape collections, eight home types and fifteen private homes made for slower days together." : "Ba hệ cảnh quan, tám dòng nhà và mười lăm căn riêng cho những ngày mọi người muốn sống chậm cùng nhau."}</p><span className="mt-5 inline-flex rounded-full border border-current/15 px-3 py-1.5 text-[.6rem] font-bold uppercase tracking-wider opacity-80">{locale === "en" ? "Coming soon · In development" : "Sắp ra mắt · Đang hoàn thiện"}</span></div>
+      <div><Link href={config.basePath || "/"} aria-label={locale === "en" ? "LAKA Homestay - Home" : "LAKA Homestay - Trang chủ"} className="inline-flex"><BrandLogo variant={config.mood === "editorial" ? "established" : "homestay"} decorative className={`${config.mood === "editorial" ? "w-[190px]" : "w-[210px]"} ${config.mood === "cinematic" ? "text-[#eae1d2]" : "text-[#16311c]"}`} /></Link><p className="mt-5 max-w-md text-sm leading-7 opacity-80">{locale === "en" ? "Eight accommodation types and twenty units between lake, valley and pine-covered hill, made for slower days together." : "Tám dòng lưu trú, hai mươi căn giữa hồ, thung lũng và đồi thông cho những ngày mọi người muốn sống chậm cùng nhau."}</p><span className="mt-5 inline-flex rounded-full border border-current/15 px-3 py-1.5 text-[.6rem] font-bold uppercase tracking-wider opacity-80">{locale === "en" ? "Information site · Details being completed" : "Website thông tin · Đang hoàn thiện dữ liệu"}</span></div>
       <div><p className="text-[.65rem] font-bold uppercase tracking-[.16em] opacity-80">{locale === "en" ? "Explore" : "Khám phá"}</p><div className="mt-5 flex flex-col gap-3 text-sm font-bold">{localizedNavItems.slice(0, 4).map(([label, path]) => <Link key={path} href={scoped(config.basePath, path)}>{label}</Link>)}</div></div>
-      <div><p className="text-[.65rem] font-bold uppercase tracking-[.16em] opacity-80">{locale === "en" ? "Information" : "Thông tin"}</p><div className="mt-5 flex flex-col gap-3 text-sm"><Link href={scoped(config.basePath, "di-chuyen")}>{locale === "en" ? "Getting here" : "Hướng dẫn di chuyển"}</Link><Link href={scoped(config.basePath, "faq")}>FAQ</Link><Link href={scoped(config.basePath, "chinh-sach-luu-tru")}>{locale === "en" ? "Stay policies" : "Chính sách lưu trú"}</Link><Link href={scoped(config.basePath, "dieu-khoan")}>{locale === "en" ? "Terms" : "Điều khoản"}</Link><Link href={scoped(config.basePath, "bao-mat")}>{locale === "en" ? "Privacy" : "Bảo mật"}</Link><Link href={scoped(config.basePath, "dat-phong")} className="font-bold">{locale === "en" ? "Check availability" : "Xem lịch trống"}</Link><Link href={scoped(config.basePath, "tra-cuu")}>{locale === "en" ? "Find a booking" : "Tra cứu đặt chỗ"}</Link></div></div>
+      <div><p className="text-[.65rem] font-bold uppercase tracking-[.16em] opacity-80">{locale === "en" ? "Information" : "Thông tin"}</p><div className="mt-5 flex flex-col gap-3 text-sm"><Link href={scoped(config.basePath, "di-chuyen")}>{locale === "en" ? "Getting here" : "Hướng dẫn di chuyển"}</Link><Link href={scoped(config.basePath, "faq")}>FAQ</Link><Link href={scoped(config.basePath, "chinh-sach-luu-tru")}>{locale === "en" ? "Stay policies" : "Chính sách lưu trú"}</Link><Link href={scoped(config.basePath, "dieu-khoan")}>{locale === "en" ? "Terms" : "Điều khoản"}</Link><Link href={scoped(config.basePath, "bao-mat")}>{locale === "en" ? "Privacy" : "Bảo mật"}</Link><Link href={scoped(config.basePath, "dat-phong")} className="font-bold">{locale === "en" ? "Plan your stay" : "Tư vấn chọn căn"}</Link><Link href={scoped(config.basePath, "tra-cuu")}>{locale === "en" ? "Find a booking" : "Tra cứu đặt chỗ"}</Link></div></div>
       <div><p className="text-[.65rem] font-bold uppercase tracking-[.16em] opacity-80">{locale === "en" ? "Connect" : "Kết nối"}</p><div className="mt-5 flex flex-col gap-3 text-sm"><a href={publicContact.phoneHref} className="font-bold">{publicContact.phoneDisplay}</a><a href={publicContact.zaloHref}>{locale === "en" ? "Chat on Zalo" : "Trò chuyện qua Zalo"}</a><a href={publicContact.emailHref}>{publicContact.email}</a><span className="leading-6 opacity-80">{publicContact.address}</span><Link href={scoped(config.basePath, "lien-he")}>{locale === "en" ? "Contact LAKA" : "Liên hệ LAKA"}</Link><span className="flex items-center gap-2 opacity-80"><Instagram className="h-4 w-4" /> @lagohomestay</span></div></div>
     </div>
   </footer>;
@@ -240,7 +239,7 @@ function PageIntro({ eyebrow, title, text, image, config, locale = "vi" }: { eye
 }
 
 function StaysPage({ config, locale }: { config: CompleteTemplateConfig; locale: ShowcaseLocale }) {
-  return <><PageIntro config={config} locale={locale} eyebrow={locale === "en" ? "The LAKA product map" : "Bản đồ lưu trú LAKA"} title={locale === "en" ? "Three landscapes. One place to return." : "Ba hệ cảnh quan. Một nơi để trở về."} text={locale === "en" ? "Begin with Lake, Forest or Hill, then choose from eight home types and fifteen physical homes." : "Bắt đầu từ Hệ Hồ, Hệ Rừng hoặc Hệ Đồi; sau đó chọn trong tám dòng nhà và mười lăm căn thực tế."} image={conceptImages.detail1} />
+  return <><PageIntro config={config} locale={locale} eyebrow={locale === "en" ? "The LAKA product map" : "Bản đồ lưu trú LAKA"} title={locale === "en" ? "From lake to pine-covered hill." : "Từ ven hồ đến đồi thông."} text={locale === "en" ? "Explore eight accommodation types and twenty units, from intimate lake suites to group cabins and a secluded hilltop villa." : "Khám phá tám dòng lưu trú và hai mươi căn, từ suite bên hồ cho hai người đến cabin nhóm và villa biệt lập trên đỉnh đồi."} image={conceptImages.detail1} />
     <Suspense fallback={<div className="min-h-[60svh] bg-[#eae1d2]" />}><StayProductExplorer basePath={config.basePath} locale={locale} /></Suspense></>;
 }
 
@@ -260,7 +259,7 @@ function StayPage({ config, slug, locale }: { config: CompleteTemplateConfig; sl
       <section className="mt-14 border-t border-current/12 pt-10">
         <div className="grid gap-5 sm:grid-cols-[1fr_.55fr] sm:items-end">
           <div><p className="text-[.62rem] font-bold uppercase tracking-[.16em] text-[var(--template-accent)]">{locale === "en" ? "Physical homes in this type" : "Các căn thực tế thuộc dòng này"}</p><h3 className={`mt-4 text-3xl sm:text-4xl ${organic ? "font-extrabold" : "font-serif font-medium"}`}>{locale === "en" ? `${units.length} homes, each with its own position.` : `${units.length} căn, mỗi căn có một vị trí riêng.`}</h3></div>
-          <p className="text-sm leading-7 opacity-60">{locale === "en" ? "Layout and core amenities are equivalent. LAKA assigns or confirms the specific home according to availability and your preference." : "Thiết kế và tiện nghi chính tương đương. LAKA sẽ phân hoặc xác nhận căn cụ thể theo lịch trống và mong muốn của bạn."}</p>
+          <p className="text-sm leading-7 opacity-60">{locale === "en" ? "Units in the same type share an architectural direction. LAKA confirms the specific unit according to availability and your preference." : "Các căn cùng dòng chia sẻ một định hướng kiến trúc. LAKA sẽ xác nhận căn cụ thể theo lịch trống và mong muốn của bạn."}</p>
         </div>
         <div className={`mt-7 grid gap-3 ${units.length > 1 ? "sm:grid-cols-2" : ""}`}>
           {units.map((unit, index) => <article key={unit.id} className={`border border-current/12 p-5 ${organic ? "rounded-[24px] bg-white" : "bg-[var(--template-surface)]"}`}>
@@ -288,7 +287,7 @@ function StayPage({ config, slug, locale }: { config: CompleteTemplateConfig; sl
         <h2 className={`mt-4 text-3xl leading-tight ${organic ? "font-extrabold" : "font-serif font-medium"}`}>{locale === "en" ? "A whole home, with room for your own rhythm." : "Một căn nhà trọn vẹn cho nhịp sống của riêng bạn."}</h2>
         <p className="mt-5 text-sm leading-7 opacity-65">{locale === "en" ? "Private living spaces, a distinct position in the landscape and the freedom to spend the day without a schedule." : "Không gian sinh hoạt riêng, một vị trí riêng trong cảnh quan và sự tự do để ngày trôi qua không cần lịch trình."}</p>
         <div className="my-7 border-y border-current/10 py-5 text-sm">
-          <p className="flex items-center gap-2"><House className="h-4 w-4 text-[var(--template-accent)]" />{locale === "en" ? "An entire private home" : "Nguyên căn, không dùng chung"}</p>
+          <p className="flex items-center gap-2"><House className="h-4 w-4 text-[var(--template-accent)]" />{locale === "en" ? "A distinct LAKA accommodation type" : "Một dòng lưu trú riêng tại LAKA"}</p>
           <p className="mt-3 text-xs leading-6 opacity-55">{units.length} {locale === "en" ? "physical homes share this architectural language." : "căn thực tế cùng chung một ngôn ngữ kiến trúc."}</p>
         </div>
         <Link href={scoped(config.basePath, "trai-nghiem")} className="flex min-h-13 w-full items-center justify-center gap-2 rounded-full bg-[#16311c] px-5 py-4 text-sm font-bold text-white">{locale === "en" ? "Experience a day at LAKA" : "Cảm nhận một ngày tại LAKA"} <ArrowRight className="h-4 w-4" /></Link>
@@ -339,12 +338,12 @@ function PolicyPage({ config, locale }: { config: CompleteTemplateConfig; locale
   const localizedPolicies = locale === "en" ? [
     ["Reservation and confirmation", "Requests made on the website are held for two hours. A reservation is confirmed only after the LAKA team contacts you by phone or Zalo."],
     ["Changes and cancellation", "Date changes, cancellations and deposit refunds are explained clearly during confirmation. Final terms must be approved before bookings open."],
-    ["Arrival and departure", "Concept hours are check-in from 2 pm and check-out by 11 am. Detailed arrival instructions are shared via Zalo before the stay."],
+    ["Arrival and departure", "Official times are not yet published. LAKA confirms them with unit, availability and arrival guidance before the stay."],
     ["Guests and children", "Guest numbers may not exceed each home's stated capacity. Extra guest, child and additional bed terms are confirmed when booking."],
     ["Shared quiet", "LAKA is designed for restful stays. Please keep noise considerate after 10 pm and discuss group activities with the team in advance."],
     ["Pets", "Pet stays depend on the selected home and current operating conditions. Please check with LAKA before booking."],
     ["Your privacy", "Contact information is used only to process your stay, support your experience and meet essential operating obligations."],
-    ["Concept content", "Images, addresses, prices and selected policies in this presentation are illustrative and do not constitute a commercial commitment."]
+    ["Concept content", "Concept images, prices and selected policies do not yet constitute a commercial commitment. The address and twenty-unit structure are sourced from LAKA's project material."]
   ] as const : policies;
   return <><PageIntro config={config} locale={locale} eyebrow={locale === "en" ? "Stay policies" : "Chính sách lưu trú"} title={locale === "en" ? "Clarity before the journey begins." : "Rõ ràng trước khi bắt đầu chuyến đi."} text={locale === "en" ? "Simple principles that create a transparent and considerate experience for guests and the LAKA team." : "Các nguyên tắc giúp LAKA và khách lưu trú cùng có trải nghiệm minh bạch, nhẹ nhàng."} image={conceptImages.detail3} />
     <TemplatePolicySection mood={config.mood} policies={localizedPolicies} intro={locale === "en" ? "Small details that help everyone enjoy a calmer stay." : undefined} /></>;
@@ -392,11 +391,12 @@ function ContactPage({ config, locale }: { config: CompleteTemplateConfig; local
 }
 
 function BookingPage({ config, locale }: { config: CompleteTemplateConfig; locale: ShowcaseLocale }) {
-  return <><PageIntro config={config} locale={locale} eyebrow={locale === "en" ? "Plan your LAKA stay" : "Lên lịch kỳ nghỉ LAKA"} title={locale === "en" ? "Choose the days worth slowing down for." : "Chọn những ngày đáng để sống chậm."} text={locale === "en" ? "When you are ready, check the available homes and send LAKA a private stay request." : "Khi đã sẵn sàng, bạn có thể xem những căn còn trống và gửi LAKA một yêu cầu lưu trú riêng tư."} image={conceptImages.cloud} />
-    <section className="min-h-screen border-t border-[#16311c]/12 bg-[#fbfaf6] text-[#16311c]">
-      <Suspense fallback={<div className="container-lago py-24">{locale === "en" ? "Preparing availability…" : "Đang chuẩn bị lịch căn nhà…"}</div>}>
-        <BookingExperience lookupPath={scoped(config.basePath, "tra-cuu")} locale={locale} />
-      </Suspense>
+  return <><PageIntro config={config} locale={locale} eyebrow={locale === "en" ? "Plan your LAKA stay" : "Lên lịch kỳ nghỉ LAKA"} title={locale === "en" ? "Start with the people you are bringing." : "Bắt đầu từ những người bạn muốn đi cùng."} text={locale === "en" ? "Prices and live availability are being completed. Tell LAKA your group size and preferred dates for a direct recommendation and confirmation." : "Giá và lịch trống trực tuyến đang được hoàn thiện. Hãy cho LAKA biết số người và ngày dự kiến để được tư vấn căn phù hợp, báo giá và xác nhận trực tiếp."} image={conceptImages.cloud} />
+    <section className="border-t border-[#16311c]/12 bg-[#fbfaf6] py-20 text-[#16311c] sm:py-28">
+      <div className="mx-auto grid w-[min(1120px,calc(100%-40px))] gap-8 lg:grid-cols-[1fr_.7fr] lg:items-center">
+        <div><p className="text-[.62rem] font-bold uppercase tracking-[.2em] text-[#80613f]">{locale === "en" ? "Direct advice" : "Tư vấn trực tiếp"}</p><h2 className="mt-5 max-w-3xl font-serif text-5xl font-medium leading-[.98] tracking-[-.05em] sm:text-7xl">{locale === "en" ? "The right home starts with the right conversation." : "Chọn đúng căn bắt đầu từ một cuộc trò chuyện đúng."}</h2><p className="mt-6 max-w-2xl text-sm leading-7 text-[#16311c]/68">{locale === "en" ? "Share your dates, group size and the kind of time you want. LAKA will recommend a unit among the twenty homes, then confirm price, availability and deposit terms." : "Chia sẻ ngày đi, số người và điều bạn mong muốn ở chuyến nghỉ. LAKA sẽ chọn trong 20 căn để gợi ý phương án phù hợp, sau đó xác nhận giá, lịch trống và điều kiện đặt cọc."}</p></div>
+        <div className="border border-[#16311c]/12 bg-[#eae1d2] p-7 sm:p-9"><p className="font-serif text-3xl font-medium">{locale === "en" ? "Contact LAKA" : "Liên hệ LAKA"}</p><div className="mt-7 grid gap-3"><a href={publicContact.zaloHref} className="flex min-h-14 items-center justify-center rounded-full bg-[#16311c] px-6 text-sm font-bold text-white">{locale === "en" ? "Message on Zalo" : "Nhắn Zalo tư vấn căn"}</a><a href={publicContact.phoneHref} className="flex min-h-14 items-center justify-center rounded-full border border-[#16311c]/20 px-6 text-sm font-bold">{locale === "en" ? `Call ${publicContact.phoneDisplay}` : `Gọi ${publicContact.phoneDisplay}`}</a><a href={publicContact.emailHref} className="break-all pt-3 text-center text-xs font-bold text-[#80613f]">{publicContact.email}</a></div></div>
+      </div>
     </section></>;
 }
 

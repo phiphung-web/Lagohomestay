@@ -27,7 +27,7 @@ const englishTitles: Record<Exclude<TemplateRoute["kind"], "stay">, string> = {
   terms: "Terms and conditions",
   privacy: "Privacy policy",
   contact: "Contact",
-  booking: "Find a home",
+  booking: "Plan your stay",
   lookup: "Find your booking"
 };
 
@@ -76,7 +76,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     alternates,
     openGraph: {
       title: `${title} · LAKA Homestay`,
-      description: "Eight home types and fifteen private homes surrounded by nature, designed for slower days and meaningful time together.",
+      description: "Eight accommodation types and twenty units between lake, valley and pine-covered hills, designed for slower days and meaningful time together.",
       locale: "en_US",
       alternateLocale: ["vi_VN"],
       type: "website"

@@ -1,22 +1,16 @@
 import {
   Bike,
-  Baby,
-  CakeSlice,
-  Car,
   Coffee,
   FlameKindling,
-  Flower2,
   Footprints,
   Heart,
   MapPinned,
   MoonStar,
   ParkingCircle,
-  Soup,
   Sparkles,
   Sunrise,
   TentTree,
   UtensilsCrossed,
-  WashingMachine,
   Waves
 } from "lucide-react";
 import { conceptImages } from "@/features/stays/data/demo-data";
@@ -25,151 +19,126 @@ import type { ShowcaseLocale } from "@/features/showcase/i18n/locale";
 type LocalizedText = { vi: string; en: string };
 
 export const demoNotice: LocalizedText = {
-  vi: "Nội dung và hình ảnh đang dùng cho mục đích trình bày concept. Dịch vụ, giá và địa điểm cần được xác nhận trước khi mở bán.",
-  en: "Content and imagery are presented as a concept. Services, prices and location must be confirmed before launch."
+  vi: "Thông tin tên căn, mã căn, sức chứa đã nêu, địa chỉ và hệ tiện ích được cập nhật từ tài liệu LAKA. Hình ảnh, giá, thực đơn, giờ vận hành và chính sách chi tiết vẫn chờ xác nhận.",
+  en: "Accommodation names, unit codes, stated capacities, address and facility plan come from LAKA's material. Images, prices, menus, operating hours and detailed policies still await confirmation."
 };
 
 export const lakaExperiences = [
   {
     icon: Sunrise,
-    title: { vi: "Đón sáng bên hồ", en: "Lakeside sunrise" },
-    text: { vi: "Một bình trà ấm, chiếc ghế ngoài hiên và khoảng sáng đầu ngày dành riêng cho bạn.", en: "Warm tea, a veranda chair and the first light of day, entirely yours." },
-    meta: { vi: "Tự do · mỗi sáng", en: "Self-guided · every morning" },
+    title: { vi: "Săn mây trong thung lũng", en: "Cloud watching in the valley" },
+    text: { vi: "Đón mây, núi và rừng thông trong cùng một khung cảnh tại Thung Lũng Săn Mây.", en: "Meet clouds, mountains and pine forest in one view at LAKA's cloud-watching valley." },
+    meta: { vi: "Tự do · theo thời tiết", en: "Self-guided · weather dependent" },
+    image: conceptImages.cloud
+  },
+  {
+    icon: Waves,
+    title: { vi: "Chèo kayak & đạp nước", en: "Kayaking and pedal boats" },
+    text: { vi: "Những hoạt động trên mặt hồ giúp cặp đôi, gia đình và nhóm bạn cùng chuyển động trong một nhịp.", en: "Activities on the lake help couples, families and friends move together at one pace." },
+    meta: { vi: "Kế hoạch tiện ích · chờ xác nhận vận hành", en: "Facility plan · operation pending" },
     image: conceptImages.hero
   },
   {
-    icon: Footprints,
-    title: { vi: "Dạo rừng thật chậm", en: "A slow forest walk" },
-    text: { vi: "Tuyến đi bộ ngắn quanh khu nghỉ, có gợi ý điểm dừng để nghe cây, nhìn nắng và thở sâu.", en: "A short suggested trail with pauses for trees, shifting light and deeper breaths." },
-    meta: { vi: "30–60 phút · mọi độ tuổi", en: "30–60 min · all ages" },
-    image: conceptImages.forest
-  },
-  {
     icon: Bike,
-    title: { vi: "Một vòng bằng xe đạp", en: "A ride beyond the gate" },
-    text: { vi: "Khám phá đường làng và những khoảng xanh gần LAKA theo bản đồ hành trình gợi ý.", en: "Explore quiet lanes and nearby greenery with a suggested LAKA route map." },
-    meta: { vi: "Theo thời tiết · cần đặt trước", en: "Weather permitting · reserve ahead" },
+    title: { vi: "Pickleball Đón Nắng", en: "Sunlit pickleball" },
+    text: { vi: "Một khoảng vận động để thi đấu vui, kết nối nhóm và tạo thêm nhịp sống cho kỳ nghỉ.", en: "A social court for friendly games, group connection and a more active stay." },
+    meta: { vi: "Sân dùng chung · chờ lịch vận hành", en: "Shared court · schedule pending" },
     image: conceptImages.hill
   },
   {
-    icon: TentTree,
-    title: { vi: "Picnic dưới tán cây", en: "Picnic beneath the trees" },
-    text: { vi: "Giỏ đồ nhẹ, tấm trải và một góc riêng để cả nhóm có bữa trưa không cần nhìn đồng hồ.", en: "A light hamper, picnic mat and a quiet spot for lunch without watching the clock." },
-    meta: { vi: "Gói tùy chọn · 2–6 khách", en: "Optional set · 2–6 guests" },
+    icon: Waves,
+    title: { vi: "Bể Bơi Bốn Mùa", en: "Four-season pool" },
+    text: { vi: "Không gian bơi chung nằm trong hệ tiện ích của LAKA, dành cho những giờ nghỉ giữa ngày.", en: "A shared pool in LAKA's facility plan, made for an easy pause in the middle of the day." },
+    meta: { vi: "Chờ xác nhận giờ mở cửa và quy định", en: "Hours and rules pending" },
     image: conceptImages.experience
   },
   {
-    icon: FlameKindling,
-    title: { vi: "Bữa tối bên lửa", en: "Dinner by the fire" },
-    text: { vi: "BBQ tại hiên riêng, ánh đèn ấm và playlist chậm cho một buổi tối kéo dài vừa đủ.", en: "A private-veranda barbecue, warm light and a slow playlist for a lingering evening." },
-    meta: { vi: "Gọi trước 24 giờ", en: "Request 24 hours ahead" },
-    image: conceptImages.detail2
+    icon: UtensilsCrossed,
+    title: { vi: "Ăn uống bên hồ", en: "Dining by the lake" },
+    text: { vi: "Nhà Hàng Ven Hồ, Tiệm Cà Phê Tầng Mây và Quầy Bar Hiên Gió tạo thành ba nhịp ăn uống khác nhau trong ngày.", en: "The Lakeside Restaurant, Tang May Coffee Shop and Hien Gio Bar create three different dining rhythms through the day." },
+    meta: { vi: "Thực đơn và giờ mở cửa đang hoàn thiện", en: "Menu and hours being finalised" },
+    image: conceptImages.dining
   },
   {
     icon: MoonStar,
-    title: { vi: "Ngắm trời đêm", en: "Under the night sky" },
-    text: { vi: "Tắt bớt ánh sáng, trải ghế ngoài hiên và để đêm yên trở thành hoạt động cuối ngày.", en: "Dim the lights, settle onto the veranda and let the quiet sky close the day." },
-    meta: { vi: "Tự do · tùy thời tiết", en: "Self-guided · weather permitting" },
-    image: conceptImages.cloud
+    title: { vi: "Hát & hoạt động nhóm", en: "Singing and group activities" },
+    text: { vi: "LAKA định hướng phục vụ nhóm bạn và công ty với không gian kết nối, hát và team building theo phương án được duyệt.", en: "LAKA plans group-friendly spaces for singing and team building, subject to an approved programme." },
+    meta: { vi: "Cần trao đổi trước với LAKA", en: "Discuss with LAKA in advance" },
+    image: conceptImages.table
   }
 ] as const;
 
 export const diningStories = [
   {
+    icon: UtensilsCrossed,
+    kicker: { vi: "Bên mặt nước", en: "By the water" },
+    title: { vi: "Nhà Hàng Ven Hồ", en: "Lakeside Restaurant" },
+    text: { vi: "Nhà hàng nhìn ra hồ và núi, là điểm ăn uống chính trong bản đồ tiện ích LAKA. Thực đơn và giá đang được hoàn thiện.", en: "The main dining venue in LAKA's facility map, overlooking lake and mountains. Menu and prices are being finalised." },
+    image: conceptImages.dining
+  },
+  {
     icon: Coffee,
-    kicker: { vi: "Buổi sáng", en: "Morning" },
-    title: { vi: "Giỏ sáng bên hiên", en: "Breakfast on the veranda" },
-    text: { vi: "Bánh mới, trái cây theo mùa, món nóng và cà phê được chuẩn bị để bạn dùng ngay tại căn.", en: "Fresh bread, seasonal fruit, a warm dish and coffee, prepared to enjoy at your home." },
+    kicker: { vi: "Núi, mây & thông", en: "Mountain, cloud and pine" },
+    title: { vi: "Tiệm Cà Phê Tầng Mây", en: "Tang May Coffee Shop" },
+    text: { vi: "Tiệm cà phê nhiều tầng đối diện hồ, mở tầm nhìn về núi, mây và rừng thông.", en: "A terraced coffee shop facing the lake, with views of mountains, clouds and pine forest." },
     image: conceptImages.breakfast
   },
   {
-    icon: Soup,
-    kicker: { vi: "Bữa nhà", en: "Home table" },
-    title: { vi: "Bếp Nhà LAKA", en: "The LAKA home kitchen" },
-    text: { vi: "Thực đơn gợi ý theo mùa, ưu tiên nguyên liệu địa phương và những món dễ chia sẻ giữa bàn.", en: "A seasonal suggested menu centred on local ingredients and dishes made for sharing." },
-    image: conceptImages.table
-  },
-  {
-    icon: UtensilsCrossed,
-    kicker: { vi: "Buổi tối", en: "Evening" },
-    title: { vi: "Bàn ăn riêng theo yêu cầu", en: "A private table, by request" },
-    text: { vi: "Set-up tại hiên hoặc trong căn cho sinh nhật, kỷ niệm và những cuộc gặp không cần quá đông.", en: "A veranda or indoor set-up for birthdays, anniversaries and small, meaningful gatherings." },
-    image: conceptImages.dining
+    icon: Sparkles,
+    kicker: { vi: "Điểm gặp nhau", en: "A meeting point" },
+    title: { vi: "Quầy Bar Hiên Gió", en: "Hien Gio Bar" },
+    text: { vi: "Quầy bar tròn mở bốn phía, có chỗ ngồi bao quanh cho một cuộc gặp thoáng và tự nhiên.", en: "A circular open-sided bar with seating all around for an easy, open-air meeting." },
+    image: conceptImages.detail2
   }
 ] as const;
 
 export const specialMoments = [
-  { icon: Heart, title: { vi: "Kỷ niệm của hai người", en: "An anniversary for two" }, text: { vi: "Hoa, bánh nhỏ, bữa tối và góc riêng được sắp đặt theo câu chuyện của bạn.", en: "Flowers, a small cake, dinner and a private setting shaped around your story." } },
-  { icon: CakeSlice, title: { vi: "Sinh nhật thật gần", en: "An intimate birthday" }, text: { vi: "Một bàn tiệc ấm cho gia đình hoặc nhóm bạn, không gian vừa đủ để ai cũng hiện diện.", en: "A warm table for family or friends, intimate enough for everyone to be present." } },
-  { icon: Sparkles, title: { vi: "Lời ngỏ giữa thiên nhiên", en: "A proposal in nature" }, text: { vi: "Gợi ý thời điểm, góc cảnh và set-up kín đáo để khoảnh khắc vẫn thuộc về hai người.", en: "Thoughtful timing, setting and discreet preparation so the moment remains yours." } },
-  { icon: TentTree, title: { vi: "Kỳ nghỉ nhóm nhỏ", en: "A small-group retreat" }, text: { vi: "Không gian sinh hoạt chung, bữa ăn và nhịp hoạt động linh hoạt cho đội nhóm thân thiết.", en: "Shared spaces, meals and a flexible rhythm for close-knit groups." } }
+  { icon: Heart, title: { vi: "Khoảng riêng cho hai người", en: "A private stay for two" }, text: { vi: "Cabin An Trú, Khoảng Trời và Vô Cực tạo ba cách khác nhau để cặp đôi nhìn ngắm hồ, rừng và mây.", en: "An Tru, Khoang Troi and Vo Cuc offer three distinct ways for couples to see lake, forest and clouds." } },
+  { icon: TentTree, title: { vi: "Gia đình & nhóm bạn", en: "Families and friends" }, text: { vi: "Bungalow Bên Hồ, Nhà Bên Hồ và Cabin Sum Vầy phục vụ các quy mô từ 6 đến 20 khách theo sức chứa đã nêu.", en: "Lakeside Bungalows, Guest House and Sum Vay Cabins cover stated group sizes from 6 to 20 guests." } },
+  { icon: FlameKindling, title: { vi: "Đoàn công ty & team building", en: "Company groups and team building" }, text: { vi: "Nhà Trên Đồi, Cabin Sum Vầy và hệ hoạt động chung tạo nền cho chuyến đi đoàn; chương trình cần được LAKA xác nhận trước.", en: "Top Hill Villa, Sum Vay Cabins and shared activities support group retreats; programmes require advance confirmation." } }
 ] as const;
 
 export const guestServices = [
   {
-    icon: Coffee,
-    title: { vi: "Giỏ sáng giao tại căn", en: "Breakfast hamper to your home" },
-    text: { vi: "Bánh mới, trái cây, món nóng và đồ uống được giao trong khung giờ bạn chọn.", en: "Fresh bread, fruit, a warm dish and drinks delivered in your chosen time window." },
-    meta: { vi: "Đặt trước 20:00 hôm trước", en: "Order by 8 pm the day before" }
+    icon: Waves,
+    title: { vi: "Hoạt động mặt hồ", en: "Lake activities" },
+    text: { vi: "Thuyền đạp nước và kayak nằm trong kế hoạch trải nghiệm; lịch, hướng dẫn an toàn và phí nếu có đang chờ xác nhận.", en: "Pedal boats and kayaks are in the experience plan; schedule, safety guidance and any fees await confirmation." },
+    meta: { vi: "Kế hoạch đã nêu · vận hành chờ duyệt", en: "Planned · operation pending" }
   },
   {
-    icon: UtensilsCrossed,
-    title: { vi: "BBQ và bữa tối riêng", en: "Private barbecue and dinner" },
-    text: { vi: "Chuẩn bị nguyên liệu, dụng cụ và set-up tại những căn có hiên phù hợp.", en: "Ingredients, equipment and set-up for homes with a suitable private veranda." },
-    meta: { vi: "Theo căn · đặt trước 24 giờ", en: "Selected homes · 24 hours ahead" }
+    icon: Sunrise,
+    title: { vi: "Bơi & pickleball", en: "Pool and pickleball" },
+    text: { vi: "Bể Bơi Bốn Mùa và Sân Pickleball Đón Nắng là hai tiện ích vận động dùng chung của dự án.", en: "The Four-season Pool and Sunlit Pickleball Court are LAKA's two shared active facilities." },
+    meta: { vi: "Giờ vận hành đang hoàn thiện", en: "Operating hours being finalised" }
   },
   {
-    icon: Flower2,
-    title: { vi: "Hoa, bánh và set-up", en: "Flowers, cake and occasion set-up" },
-    text: { vi: "Cá nhân hóa một góc nhỏ cho sinh nhật, kỷ niệm hoặc lời ngỏ riêng.", en: "A personalised corner for birthdays, anniversaries or a private proposal." },
-    meta: { vi: "Tư vấn theo yêu cầu", en: "Tailored on request" }
+    icon: Sparkles,
+    title: { vi: "Tư vấn theo quy mô đoàn", en: "Advice for each group size" },
+    text: { vi: "Đội ngũ LAKA tiếp nhận ngày đi, số khách và mong muốn để gợi ý đúng dòng căn trước khi báo giá.", en: "LAKA uses dates, guest count and priorities to recommend the right accommodation type before quoting." },
+    meta: { vi: "Qua điện thoại hoặc Zalo", en: "By phone or Zalo" }
   },
   {
-    icon: Baby,
-    title: { vi: "Bộ tiện ích gia đình", en: "Family essentials kit" },
-    text: { vi: "Ghế ăn, nôi, chậu tắm và đồ dùng cơ bản dành cho trẻ theo tình trạng sẵn có.", en: "High chair, cot, baby bath and essential items, subject to availability." },
-    meta: { vi: "Miễn phí · cần giữ trước", en: "Complimentary · reserve ahead" }
-  },
-  {
-    icon: Car,
-    title: { vi: "Xe đưa đón theo chuyến", en: "Private transfer" },
-    text: { vi: "Phương án xe riêng từ nội thành hoặc sân bay, có báo giá trước khi xác nhận.", en: "Private transfers from the city or airport, quoted before confirmation." },
-    meta: { vi: "Dịch vụ đề xuất", en: "Proposed service" }
-  },
-  {
-    icon: WashingMachine,
-    title: { vi: "Chăm sóc kỳ nghỉ dài", en: "Long-stay care" },
-    text: { vi: "Đổi khăn, vệ sinh giữa kỳ và giặt sấy theo lịch cho khách ở từ ba đêm.", en: "Scheduled towel changes, mid-stay cleaning and laundry for stays of three nights or more." },
-    meta: { vi: "Theo gói lưu trú", en: "Based on stay package" }
+    icon: Footprints,
+    title: { vi: "Chương trình đoàn", en: "Group programmes" },
+    text: { vi: "Hát và team building được định hướng cho nhóm bạn, công ty; quy mô, âm thanh và lịch trình cần thống nhất trước.", en: "Singing and team building are planned for friends and company groups; scale, sound and schedule require agreement." },
+    meta: { vi: "Thiết kế theo yêu cầu · chờ xác nhận", en: "Tailored · confirmation required" }
   }
 ] as const;
 
 export const sharedFacilities = [
-  {
-    icon: Waves,
-    title: { vi: "Bể bơi giữa cây xanh", en: "Pool among the trees" },
-    text: { vi: "Không gian bơi và ghế nghỉ dùng chung, có khung giờ yên tĩnh dành cho khách lưu trú.", en: "A shared pool and loungers with quiet hours reserved for staying guests." },
-    image: conceptImages.experience
-  },
-  {
-    icon: FlameKindling,
-    title: { vi: "Bãi cỏ và vòng lửa", en: "Lawn and fire circle" },
-    text: { vi: "Điểm gặp nhau cho trà chiều, hoạt động nhóm nhỏ và những tối trời đẹp.", en: "A gathering place for afternoon tea, small-group activities and clear evenings." },
-    image: conceptImages.detail2
-  },
-  {
-    icon: Footprints,
-    title: { vi: "Lối dạo nối ba hệ", en: "Trail connecting three collections" },
-    text: { vi: "Tuyến đi bộ nội khu kết nối Hệ Hồ, Hệ Rừng và Hệ Đồi bằng những khoảng nghỉ nhỏ.", en: "An internal walking trail connecting Lake, Forest and Hill with small pauses along the way." },
-    image: conceptImages.forest
-  }
+  { icon: UtensilsCrossed, title: { vi: "Nhà Hàng Ven Hồ", en: "Lakeside Restaurant" }, text: { vi: "Không gian nhà hàng bên hồ, nhìn ra mặt nước và dãy núi.", en: "A restaurant by the lake with water and mountain views." }, image: conceptImages.dining },
+  { icon: Coffee, title: { vi: "Tiệm Cà Phê Tầng Mây", en: "Tang May Coffee Shop" }, text: { vi: "Tiệm cà phê nhiều tầng đối diện hồ, mở tầm nhìn về núi, mây và rừng thông.", en: "A terraced coffee shop facing the lake, mountains, clouds and pine forest." }, image: conceptImages.breakfast },
+  { icon: Sparkles, title: { vi: "Quầy Bar Hiên Gió", en: "Hien Gio Bar" }, text: { vi: "Quầy bar tròn, mở bốn phía với chỗ ngồi bao quanh.", en: "A circular open-sided bar with seating all around." }, image: conceptImages.detail2 },
+  { icon: Sunrise, title: { vi: "Sân Pickleball Đón Nắng", en: "Sunlit Pickleball Court" }, text: { vi: "Không gian vận động và kết nối dành cho cặp đấu, nhóm bạn và hoạt động đoàn.", en: "An active social space for pairs, friends and group programmes." }, image: conceptImages.hill },
+  { icon: Waves, title: { vi: "Bể Bơi Bốn Mùa", en: "Four-season Pool" }, text: { vi: "Bể bơi chung trong hệ tiện ích LAKA; giờ và quy định sử dụng đang chờ xác nhận.", en: "A shared pool in LAKA's facility plan; hours and guest rules await confirmation." }, image: conceptImages.experience },
+  { icon: TentTree, title: { vi: "Thung Lũng Săn Mây", en: "Cloud-watching Valley" }, text: { vi: "Khoảng check-in nhìn về thung lũng, nơi mây, núi và rừng thông tạo nên phông cảnh đặc trưng.", en: "A valley viewpoint where clouds, mountains and pines form LAKA's defining landscape." }, image: conceptImages.cloud }
 ] as const;
 
 export const journeySteps = [
-  { icon: MapPinned, title: { vi: "Vị trí", en: "Location" }, text: { vi: "Khu vực ngoại thành Hà Nội · địa chỉ chính thức sẽ hiển thị sau khi được xác nhận.", en: "Greater Hanoi area · the confirmed address will be shown once approved." } },
-  { icon: ParkingCircle, title: { vi: "Di chuyển", en: "Getting here" }, text: { vi: "Có hướng dẫn đường đi và điểm đỗ xe riêng. Dịch vụ xe đưa đón đang ở mức đề xuất.", en: "Driving directions and private parking guidance are provided. Transfers remain a proposed service." } },
-  { icon: Sunrise, title: { vi: "Nhận & trả căn", en: "Arrival & departure" }, text: { vi: "Khung giờ demo: nhận căn từ 14:00, trả căn trước 11:00. LAKA xác nhận lại trước chuyến đi.", en: "Concept hours: check-in from 2 pm and check-out by 11 am, reconfirmed before arrival." } },
-  { icon: MoonStar, title: { vi: "Trước khi đến", en: "Before arrival" }, text: { vi: "Bạn nhận hướng dẫn đường, người hỗ trợ, thực đơn tùy chọn và checklist ngắn qua Zalo.", en: "Directions, a host contact, optional menus and a short checklist are shared via Zalo." } }
+  { icon: MapPinned, title: { vi: "Địa chỉ LAKA", en: "LAKA address" }, text: { vi: "Dốc Dây Diều, Xóm 1, Thanh Hà, Trung Giã, Hà Nội.", en: "Doc Day Dieu, Hamlet 1, Thanh Ha, Trung Gia, Hanoi." } },
+  { icon: ParkingCircle, title: { vi: "Trước khi khởi hành", en: "Before departure" }, text: { vi: "Liên hệ LAKA qua điện thoại hoặc Zalo để nhận tuyến đường và hướng dẫn đến nơi phù hợp nhất.", en: "Contact LAKA by phone or Zalo for the most suitable route and arrival guidance." } },
+  { icon: Sunrise, title: { vi: "Nhận & trả căn", en: "Arrival & departure" }, text: { vi: "Khung giờ chính thức chưa được công bố. LAKA sẽ xác nhận cùng thông tin căn và lịch trống trước chuyến đi.", en: "Official times are not yet published. LAKA confirms them with unit and availability details before the stay." } },
+  { icon: MoonStar, title: { vi: "Xác nhận trực tiếp", en: "Direct confirmation" }, text: { vi: "Căn, giá, đặt cọc và các yêu cầu của đoàn chỉ được chốt sau khi đội ngũ LAKA liên hệ trực tiếp.", en: "The unit, price, deposit and group requests are final only after direct confirmation from LAKA." } }
 ] as const;
 
 export function inLocale(value: LocalizedText, locale: ShowcaseLocale) {

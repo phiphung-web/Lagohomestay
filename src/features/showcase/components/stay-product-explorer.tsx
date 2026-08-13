@@ -25,13 +25,13 @@ type DetailSection = "overview" | "amenities" | "policies";
 
 const sharedPolicies = {
   vi: [
-    ["Nhận và trả căn", "Nhận căn dự kiến từ 14:00, trả căn trước 11:00. Hướng dẫn cụ thể được gửi trước ngày đến."],
+    ["Nhận và trả căn", "Khung giờ chính thức chưa được công bố. LAKA xác nhận cùng thông tin căn và lịch trống trước chuyến đi."],
     ["Số khách", "Số khách không vượt quá sức chứa công bố. Thông tin dành cho trẻ em sẽ được hoàn thiện trước khi LAKA đón khách."],
     ["Không gian yên tĩnh", "Giữ âm lượng vừa phải sau 22:00 và trao đổi trước với LAKA nếu có hoạt động nhóm."],
     ["Thông tin vận hành", "Các điều kiện lưu trú chính thức sẽ được công bố rõ ràng trước khi LAKA mở cửa."]
   ],
   en: [
-    ["Arrival and departure", "Concept hours are check-in from 2 pm and check-out by 11 am. Detailed guidance is shared before arrival."],
+    ["Arrival and departure", "Official times are not yet published. LAKA confirms them with the unit and availability details before the stay."],
     ["Guest numbers", "Guest numbers may not exceed the stated capacity. Child information will be completed before LAKA welcomes guests."],
     ["A quiet setting", "Please keep noise considerate after 10 pm and discuss group activities with LAKA in advance."],
     ["Operating information", "Final stay terms will be published clearly before LAKA opens."]
@@ -251,10 +251,10 @@ export function StayProductExplorer({
               </h2>
               <p className="mt-5 max-w-2xl text-sm leading-7 text-[#16311c]/68">{activeStay.subtitle}</p>
               <div className="mt-7 flex flex-wrap gap-x-5 gap-y-3 border-y border-[#16311c]/12 py-5 text-xs font-bold">
-                <span className="flex items-center gap-2"><Users className="h-4 w-4 text-[#80613f]" />{activeStay.maxGuests} {locale === "en" ? "guests" : "khách"}</span>
-                <span className="flex items-center gap-2"><BedDouble className="h-4 w-4 text-[#80613f]" />{activeStay.bedrooms} {locale === "en" ? "bedrooms" : "phòng ngủ"}</span>
-                <span className="flex items-center gap-2"><Bath className="h-4 w-4 text-[#80613f]" />{activeStay.bathrooms} {locale === "en" ? "bathrooms" : "phòng tắm"}</span>
-                <span className="flex items-center gap-2"><House className="h-4 w-4 text-[#80613f]" />{activeStay.area} m²</span>
+                <span className="flex items-center gap-2"><Users className="h-4 w-4 text-[#80613f]" />{activeStay.maxGuests > 0 ? `${activeStay.maxGuests} ${locale === "en" ? "guests" : "khách"}` : (locale === "en" ? "Capacity pending" : "Đang xác nhận sức chứa")}</span>
+                {activeStay.bedrooms > 0 && <span className="flex items-center gap-2"><BedDouble className="h-4 w-4 text-[#80613f]" />{activeStay.bedrooms} {locale === "en" ? "bedrooms" : "phòng ngủ"}</span>}
+                {activeStay.bathrooms > 0 && <span className="flex items-center gap-2"><Bath className="h-4 w-4 text-[#80613f]" />{activeStay.bathrooms} {locale === "en" ? "bathrooms" : "phòng tắm"}</span>}
+                {activeStay.area > 0 && <span className="flex items-center gap-2"><House className="h-4 w-4 text-[#80613f]" />{activeStay.area} m²</span>}
               </div>
             </div>
 
@@ -381,10 +381,10 @@ export function StayProductExplorer({
         <div className="mt-9 flex min-h-[72px] items-start justify-between gap-7">
           <div>
             <p className="text-[.58rem] font-bold uppercase tracking-[.18em] text-[#80613f]">
-              {activeZone ? activeZone.eyebrow : locale === "en" ? "Eight home types · fifteen physical homes" : "Tám dòng nhà · mười lăm căn thực tế"}
+              {activeZone ? activeZone.eyebrow : locale === "en" ? "Eight accommodation types · twenty units" : "Tám dòng lưu trú · hai mươi căn thực tế"}
             </p>
             <p className="mt-3 max-w-2xl text-sm leading-6 text-[#16311c]/58">
-              {activeZone ? activeZone.description : locale === "en" ? "Explore every LAKA home, or narrow the view by Lake, Forest and Hill." : "Xem toàn bộ hệ sản phẩm LAKA, hoặc chọn riêng Hệ Hồ, Hệ Rừng và Hệ Đồi."}
+              {activeZone ? activeZone.description : locale === "en" ? "Explore every LAKA stay, or narrow the view by lake, valley and pine-covered hill." : "Xem toàn bộ hệ sản phẩm LAKA, hoặc chọn riêng khu ven hồ, trong thung lũng và đồi thông."}
             </p>
           </div>
           <span aria-live="polite" className="hidden shrink-0 text-[.58rem] font-bold uppercase tracking-[.15em] text-[#16311c]/42 sm:block">

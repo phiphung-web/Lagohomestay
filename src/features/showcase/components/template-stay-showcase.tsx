@@ -10,9 +10,9 @@ type Stay = typeof stays[number];
 
 function StayFacts({ stay, compact = false, locale = "vi" }: { stay: Stay; compact?: boolean; locale?: ShowcaseLocale }) {
   return <div className={`flex flex-wrap items-center gap-x-4 gap-y-2 text-xs font-bold ${compact ? "opacity-55" : "opacity-72"}`}>
-    <span className="flex items-center gap-1.5"><Users className="h-4 w-4" />{stay.maxGuests} {locale === "en" ? "guests" : "khách"}</span>
-    <span className="flex items-center gap-1.5"><BedDouble className="h-4 w-4" />{stay.bedrooms} {locale === "en" ? "bedrooms" : "phòng"}</span>
-    {!compact && <span className="flex items-center gap-1.5"><Bath className="h-4 w-4" />{stay.bathrooms} {locale === "en" ? "bathrooms" : "phòng tắm"}</span>}
+    <span className="flex items-center gap-1.5"><Users className="h-4 w-4" />{stay.maxGuests > 0 ? `${stay.maxGuests} ${locale === "en" ? "guests" : "khách"}` : (locale === "en" ? "Capacity pending" : "Đang xác nhận sức chứa")}</span>
+    {stay.bedrooms > 0 && <span className="flex items-center gap-1.5"><BedDouble className="h-4 w-4" />{stay.bedrooms} {locale === "en" ? "bedrooms" : "phòng"}</span>}
+    {!compact && stay.bathrooms > 0 && <span className="flex items-center gap-1.5"><Bath className="h-4 w-4" />{stay.bathrooms} {locale === "en" ? "bathrooms" : "phòng tắm"}</span>}
   </div>;
 }
 
@@ -34,7 +34,7 @@ export function TemplateStayHero({ mood, basePath, stay, locale = "vi" }: { mood
     <div className="relative mx-auto grid min-h-[calc(78svh-76px)] w-[min(1420px,100%)] overflow-hidden rounded-[42px] border border-[#16311c]/8 bg-white shadow-[0_28px_90px_rgba(33,72,61,.1)] lg:grid-cols-[.78fr_1.22fr]">
       <span className="absolute -left-20 -top-20 h-52 w-52 rounded-full bg-[#f7cf58]/75" />
       <div className="relative z-10 flex flex-col justify-center px-7 py-16 sm:px-12 lg:px-16"><Link href={backHref} className="text-[.62rem] font-extrabold uppercase tracking-[.14em] opacity-48">← Xem tất cả căn</Link><span className="mt-14 w-fit rounded-full bg-[#dce9c6] px-4 py-2 text-[.62rem] font-extrabold uppercase tracking-[.13em]">{stay.badge} · {stay.location}</span><h1 className="mt-6 text-[clamp(3.5rem,10vw,7rem)] font-extrabold leading-[.92] tracking-[-.055em]">{stay.name}</h1><p className="mt-6 max-w-xl text-sm font-medium leading-7 opacity-58">{stay.description}</p><div className="mt-7"><StayFacts stay={stay} /></div><div className="mt-9"><a href="#khong-gian" className="inline-flex min-h-13 items-center gap-3 rounded-full bg-[#16311c] px-6 text-sm font-extrabold text-white">Đi vào không gian <ArrowRight className="h-4 w-4" /></a></div></div>
-      <div className="relative m-3 min-h-[500px] overflow-hidden rounded-[34px]"><Image src={stay.image} alt={`${stay.name} - ảnh minh họa`} fill priority sizes="(max-width:1024px) 100vw, 60vw" className="object-cover transition duration-1000 hover:scale-[1.02]" /><span className="absolute right-5 top-5 grid h-20 w-20 place-items-center rounded-full bg-[#f18b68] text-center text-[.58rem] font-extrabold uppercase tracking-wider">Nhà<br />nguyên căn</span></div>
+      <div className="relative m-3 min-h-[500px] overflow-hidden rounded-[34px]"><Image src={stay.image} alt={`${stay.name} - ảnh minh họa`} fill priority sizes="(max-width:1024px) 100vw, 60vw" className="object-cover transition duration-1000 hover:scale-[1.02]" /><span className="absolute right-5 top-5 grid h-20 w-20 place-items-center rounded-full bg-[#f18b68] text-center text-[.58rem] font-extrabold uppercase tracking-wider">Ảnh<br />concept</span></div>
     </div>
   </section>;
 

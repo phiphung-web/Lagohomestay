@@ -6,10 +6,10 @@ import { stays } from "@/features/stays/data/demo-data";
 
 describe("Quiet Living locale routing", () => {
   it("switches language without losing the current page", () => {
-    expect(languageHref("/luu-tru/nha-may", "en"))
-      .toBe("/en/luu-tru/nha-may");
-    expect(languageHref("/en/luu-tru/nha-may", "vi"))
-      .toBe("/luu-tru/nha-may");
+    expect(languageHref("/luu-tru/cabin-vo-cuc", "en"))
+      .toBe("/en/luu-tru/cabin-vo-cuc");
+    expect(languageHref("/en/luu-tru/cabin-vo-cuc", "vi"))
+      .toBe("/luu-tru/cabin-vo-cuc");
   });
 
   it("resolves the English prefix before route matching", () => {
@@ -29,8 +29,8 @@ describe("Quiet Living locale routing", () => {
   });
 
   it("localizes accommodation content while preserving its identity", () => {
-    const cloudHouse = localizeStay(stays.find((stay) => stay.slug === "nha-may")!, "en");
-    expect(cloudHouse.name).toBe("Cloud House");
-    expect(cloudHouse.slug).toBe("nha-may");
+    const infinityCabin = localizeStay(stays.find((stay) => stay.slug === "cabin-vo-cuc")!, "en");
+    expect(infinityCabin.name).toBe("Vo Cuc Cabin");
+    expect(infinityCabin.slug).toBe("cabin-vo-cuc");
   });
 });

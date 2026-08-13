@@ -2,110 +2,72 @@ import { stayZones, type Stay, type StayZone } from "@/features/stays/data/demo-
 import type { AvailabilityOption } from "@/features/booking/domain/availability";
 import type { ShowcaseLocale } from "@/features/showcase/i18n/locale";
 
+const commonIncluded = ["Guidance choosing the right home for your group", "Direct support by phone and Zalo"];
+
 const englishStays: Record<string, Partial<Stay>> = {
-  "lago-house": {
-    name: "LAKA House",
-    subtitle: "Lakeside home · for groups",
-    description: "An open lakeside home made for joyful reunions, shared cooking and dinners that last a little longer.",
-    longDescription: "LAKA House was created for coming together. A generous living room flows into the kitchen, the private BBQ terrace hosts long dinners, and three quiet bedrooms give everyone a place to truly rest.",
-    location: "Lakeside",
-    badge: "Guest favourite",
-    amenities: ["Full kitchen", "Private BBQ terrace", "Large living room", "Lake-view veranda", "Washing machine", "Air conditioning", "High-speed Wi-Fi", "Parking"],
-    highlights: ["Lake view", "Private BBQ terrace", "Made for connection"],
-    idealFor: ["Groups of 6–8", "Multigenerational families", "Small birthdays and reunions"],
-    included: ["Welcome drinks", "Kitchen and basic cookware", "Towels and basic toiletries", "Phone and Zalo support"],
-    stayNotes: ["Three bedrooms and four beds", "Reserve the barbecue area ahead", "Quiet hours after 10 pm"]
+  "nha-ben-ho": {
+    name: "Lakeside Guest House", subtitle: "Guest House 001 · 15–20 guests", location: "Lakeside", badge: "For groups of 15–20",
+    description: "A large lakeside home for families, groups of friends or company retreats that want to stay together with a full view of the water.",
+    longDescription: "Guest House 001 is a large home with a full lake view, designed for 15–20 guests. It gives larger groups a generous shared space where everyone can genuinely spend time together.",
+    amenities: ["Full lake view", "Shared space for a large group", "Lakeside position"], highlights: ["15–20 guests", "Full lake view", "Made for groups"],
+    idealFor: ["Multigenerational families", "Large groups of friends", "Company retreats"], included: commonIncluded,
+    stayNotes: ["Unit 001", "Room plan, amenities and price await LAKA's confirmation"]
   },
-  "nha-may": {
-    name: "Cloud House",
-    subtitle: "A small home above the trees · for two",
-    description: "A quiet home where clouds drift past the window and mornings begin with soft light.",
-    longDescription: "Cloud House is for two people who want to disappear from the everyday. Full-height windows open to the canopy, the bath sits beside the view, and a private terrace holds just enough room for two cups of tea at sunset.",
-    location: "Hillside",
-    badge: "Most romantic",
-    amenities: ["Forest-view bath", "Private terrace", "Projector", "Air conditioning", "Kitchenette", "Wi-Fi", "Optional breakfast"],
-    highlights: ["Private for two", "Forest-view bath", "Sunrise view"],
-    idealFor: ["Couples", "Private anniversaries", "Solo retreats"],
-    included: ["Welcome drinks", "Kitchenette essentials", "Towels and basic toiletries", "Phone and Zalo support"],
-    stayNotes: ["One bedroom and one bed", "Not suitable for larger groups", "Breakfast is optional"]
+  "bungalow-ben-ho": {
+    name: "Lakeside Bungalow", subtitle: "Bungalows 002–003 · 6–7 guests each", location: "Lakeside", badge: "Loft bungalow",
+    description: "Two large bungalows with lofts and two generous glass windows that bring the lake and landscape inside.",
+    longDescription: "Bungalows 002 and 003 are large loft bungalows for 6–7 guests each. Two generous glass windows open broad views, making them suitable for families or small groups close to the lake.",
+    amenities: ["Loft", "Two large glass windows", "Generous bungalow layout"], highlights: ["6–7 guests each", "Loft", "Two picture windows"],
+    idealFor: ["Families", "Groups of 6–7", "Weekend escapes"], included: commonIncluded,
+    stayNotes: ["Two units: 002 and 003", "Detailed amenities and price await LAKA's confirmation"]
   },
-  "nha-rung": {
-    name: "Forest House",
-    subtitle: "Beneath the canopy · for families",
-    description: "Warm timber interiors embrace a private garden, bringing the whole family close to nature without giving up comfort.",
-    longDescription: "Forest House rests under mature trees, with a full family kitchen, an enclosed garden and two warm bedrooms. Children have room to explore while adults can linger on the veranda.",
-    location: "Forest garden",
-    badge: "Family friendly",
-    amenities: ["Private garden", "Family kitchen", "Outdoor dining table", "Children’s essentials", "Air conditioning", "Wi-Fi", "Parking"],
-    highlights: ["Private garden", "Family friendly", "Two bedrooms"],
-    idealFor: ["Families with children", "Groups of 4–5", "Multigenerational stays"],
-    included: ["Welcome drinks", "Family kitchen essentials", "Children’s kit by request", "Phone and Zalo support"],
-    stayNotes: ["Two bedrooms and three beds", "Private enclosed garden", "Request children’s items ahead"]
+  "cabin-an-tru": {
+    name: "An Tru Cabin", subtitle: "Lake Suites 004–005 · quiet and private", location: "Facing the lake", badge: "A quiet frame",
+    description: "Two cabins that hold the lake in a single picture window, created for quiet and private time.",
+    longDescription: "An Tru Cabin includes Lake Suites 004 and 005. Each uses one picture window to frame the landscape, prioritising privacy, calm and a genuine sense of refuge.",
+    amenities: ["One picture window", "Quiet setting", "Private position"], highlights: ["Two Lake Suites", "One landscape frame", "Quiet and private"],
+    idealFor: ["Couples", "Private escapes", "Guests seeking a slower stay"], included: commonIncluded,
+    stayNotes: ["Two units: 004 and 005", "Capacity, amenities and price await LAKA's confirmation"]
   },
-  "nha-doi": {
-    name: "Hill House",
-    subtitle: "Open valley views · for longer stays",
-    description: "A light-filled home with a private studio, a generous terrace and an open view across the valley.",
-    longDescription: "Hill House is made for staying longer than a weekend. A valley-facing workspace, airy kitchen and generous terrace let you change your pace while keeping your focus when needed.",
-    location: "Hilltop",
-    badge: "New",
-    amenities: ["Private work studio", "Sunset terrace", "Full kitchen", "Washing machine", "Air conditioning", "High-speed Wi-Fi", "Parking"],
-    highlights: ["Valley view", "Workation ready", "Sunset terrace"],
-    idealFor: ["Stays of 3–7 nights", "Workations", "Small groups needing quiet zones"],
-    included: ["Welcome drinks", "Kitchen and basic cookware", "Workspace and Wi-Fi", "Phone and Zalo support"],
-    stayNotes: ["Two bedrooms and three beds", "Separate work area", "Designed for longer stays"]
+  "cabin-khoang-troi": {
+    name: "Khoang Troi Cabin", subtitle: "Forest Lake Suites 006–011 · six cabins", location: "In the valley", badge: "A sky of your own",
+    description: "A full glass wall opens each cabin to forest, lake and what feels like a private piece of sky.",
+    longDescription: "Khoang Troi Cabin includes six Forest Lake Suites, numbered 006 to 011. A full glass wall creates a bright, open feeling and keeps the sky fully in view.",
+    amenities: ["One full glass wall", "Forest and lake view", "Bright, open atmosphere"], highlights: ["Six Forest Lake Suites", "Full glass wall", "A private piece of sky"],
+    idealFor: ["Couples", "Cabin architecture lovers", "View-led escapes"], included: commonIncluded,
+    stayNotes: ["Six units: 006–011", "Capacity, amenities and price await LAKA's confirmation"]
   },
-  "nha-ben": {
-    name: "Wharf House",
-    subtitle: "At the water's edge · for small families",
-    description: "A low lakeside home with its own timber jetty and an open living room facing the water.",
-    longDescription: "Wharf House occupies one of LAKA's calmest stretches of water. Two bedrooms open towards a shared veranda, while the connected kitchen, dining area and small timber jetty keep the family close to the lake.",
-    location: "Lake wharf",
-    badge: "Closest to the water",
-    amenities: ["Private timber jetty", "Waterside veranda", "Family kitchen", "Dining table for six", "Air conditioning", "Wi-Fi", "Parking", "Life jackets by request"],
-    highlights: ["Private lake jetty", "Two bedrooms", "Breakfast on the veranda"],
-    idealFor: ["Families of 3–5", "Small groups of friends", "Stays with older children"],
-    included: ["Welcome drinks", "Kitchen and basic cookware", "Towels and basic toiletries", "Phone and Zalo support"],
-    stayNotes: ["Two bedrooms and three beds", "Children require supervision near the lake", "No amplified outdoor activities"]
+  "cabin-sum-vay": {
+    name: "Sum Vay Cabin", subtitle: "Group Cabins 012–013 · 14 guests each", location: "In the valley", badge: "For groups of 14",
+    description: "Two bunk-bed cabins for larger groups, with four picture windows keeping the gathering connected to nature.",
+    longDescription: "Sum Vay Cabin includes Group Cabins 012 and 013, for 14 guests each. Bunk beds support larger groups while four windows keep the shared space open to the landscape.",
+    amenities: ["Bunk-bed layout", "Four windows", "Shared space for large groups"], highlights: ["14 guests each", "Two group cabins", "Four picture windows"],
+    idealFor: ["Large groups of friends", "Company retreats", "Team building"], included: commonIncluded,
+    stayNotes: ["Two units: 012 and 013", "Bed count, amenities and price await LAKA's confirmation"]
   },
-  "nha-say": {
-    name: "Reed House",
-    subtitle: "A veranda beyond the reeds · for two",
-    description: "A private studio behind the reeds, with wide glazing, an indoor bath and a reading corner facing the lake.",
-    longDescription: "Reed House is for two people who want to hear water and wind more than conversation. A compact studio, a bath beside the view and a secluded veranda allow the day to unfold slowly.",
-    location: "Reed bank",
-    badge: "Made for two",
-    amenities: ["Indoor bath", "Private reed-side veranda", "Reading corner", "Kitchenette", "Air conditioning", "Wi-Fi", "Mini fridge"],
-    highlights: ["Private for two", "Lake-view bath", "Open studio"],
-    idealFor: ["Couples", "Private anniversaries", "Solo retreats"],
-    included: ["Welcome drinks", "Tea and coffee", "Towels and basic toiletries", "Phone and Zalo support"],
-    stayNotes: ["One double bed", "No additional bed", "The reed-garden path is softly lit"]
+  "cabin-vo-cuc": {
+    name: "Vo Cuc Cabin", subtitle: "Forest Lake Bathtub Suites 014–017 · four cabins", location: "Forest and lake", badge: "180-degree view",
+    description: "Two full glass walls open a 180-degree view across forest and lake, making the space feel almost infinite.",
+    longDescription: "Vo Cuc Cabin includes four Forest Lake Bathtub Suites, numbered 014 to 017. Two full glass walls create a 180-degree view and an open, almost infinite feeling; LAKA's source material also identifies these as bathtub suites.",
+    amenities: ["Two full glass walls", "180-degree view", "Bathtub-suite category"], highlights: ["Four bathtub suites", "180-degree view", "Two glass walls"],
+    idealFor: ["Couples", "Anniversary stays", "View-first travellers"], included: commonIncluded,
+    stayNotes: ["Four units: 014–017", "Capacity, bathtub specification and price await LAKA's confirmation"]
   },
-  "cabin-thong": {
-    name: "Pine Cabin",
-    subtitle: "A timber cabin in the forest · for two",
-    description: "A compact cabin with a bed beside the glass, a suspended forest veranda and a private outdoor soaking pool.",
-    longDescription: "Pine Cabin keeps everything beautifully simple: one forest-facing bed, an ensuite bathroom, a timber veranda and a private soaking pool. Three cabins share the same design while remaining carefully spaced apart.",
-    location: "Forest slope",
-    badge: "Private soaking pool",
-    amenities: ["Outdoor soaking pool", "Private timber veranda", "Forest-facing bed", "Ensuite bathroom", "Air conditioning", "Mini fridge", "Wi-Fi"],
-    highlights: ["Private soaking pool", "Bed beside the glass", "Three secluded cabins"],
-    idealFor: ["Couples", "Short escapes", "Cabin lovers"],
-    included: ["Welcome drinks", "Tea and coffee", "Towels and robes", "Phone and Zalo support"],
-    stayNotes: ["Three equivalent cabins in different positions", "A short sloped forest path", "Soaking pool use depends on weather"]
+  "nha-thong-reo": {
+    name: "Thong Reo Eco Camp", subtitle: "Eco Camps 018–019 · 1–2 guests each", location: "Pine forest", badge: "Closest to the pines",
+    description: "Two low timber bungalows tucked in front of the pine forest, compact and elemental for one or two guests.",
+    longDescription: "Thong Reo includes Eco Camps 018 and 019. These low timber bungalows are made for 1–2 guests and do not use large glass walls; the pine forest rises directly behind them for a more elemental nature stay.",
+    amenities: ["Low timber bungalow", "Pine forest directly behind", "No oversized glass walls"], highlights: ["1–2 guests each", "Two Eco Camps", "Beneath the pines"],
+    idealFor: ["Solo travellers", "Couples", "Guests who prefer a rustic stay"], included: commonIncluded,
+    stayNotes: ["Two units: 018 and 019", "Amenities, bathroom arrangement and price await LAKA's confirmation"]
   },
-  "nha-to": {
-    name: "Nest House",
-    subtitle: "Two storeys beneath the trees · for small groups",
-    description: "A two-storey home with a shared lounge, boardgame corner and a private garden for friends or families.",
-    longDescription: "Nest House gives the ground floor to meals, boardgames and long conversations; two quieter bedrooms sit above the canopy line. Its private garden brings everyone close to the forest without losing the comforts of a complete home.",
-    location: "Forest heart",
-    badge: "For small groups",
-    amenities: ["Shared living room", "Boardgames", "Full kitchen", "Private garden", "Outdoor dining", "Air conditioning", "Wi-Fi", "Parking"],
-    highlights: ["Two-storey home", "Boardgame corner", "Private forest garden"],
-    idealFor: ["Groups of 4–6", "Families with older children", "Two small families"],
-    included: ["Welcome drinks", "Kitchen and basic cookware", "Curated boardgames", "Phone and Zalo support"],
-    stayNotes: ["Two bedrooms and four beds", "Internal staircase", "Quiet garden hours after 10 pm"]
+  "nha-tren-doi": {
+    name: "Top Hill Villa", subtitle: "Villa 020 · 15–20 guests", location: "Hilltop", badge: "LAKA panorama",
+    description: "A secluded hilltop home overlooking the full valley, lake and mountains for a group that wants space of its own.",
+    longDescription: "Top Hill Villa 020 is a secluded hilltop home for 15–20 guests. It looks across the entire valley, lake and mountains—a group stay that still feels separate and private.",
+    amenities: ["Secluded hilltop position", "Valley, lake and mountain panorama", "Shared space for a large group"], highlights: ["15–20 guests", "Top Hill Villa", "Full valley view"],
+    idealFor: ["Company retreats", "Large families", "Large groups of friends"], included: commonIncluded,
+    stayNotes: ["One unit: 020", "Room plan, amenities and price await LAKA's confirmation"]
   }
 };
 
@@ -133,33 +95,23 @@ export function localizeAvailabilityOption(option: AvailabilityOption, locale: S
 
 export function localizeStayZone<T extends StayZone>(zone: T, locale: ShowcaseLocale): T {
   if (locale === "vi") return zone;
-  return {
-    ...zone,
-    name: zone.nameEn,
-    eyebrow: zone.eyebrowEn,
-    description: zone.descriptionEn,
-    experience: zone.experienceEn
-  };
+  return { ...zone, name: zone.nameEn, eyebrow: zone.eyebrowEn, description: zone.descriptionEn, experience: zone.experienceEn };
 }
 
 export const englishExperienceMoments = [
-  { time: "06:30", title: "Wake with the light", text: "Open the door, make tea and let the morning begin at your own pace." },
-  { time: "09:00", title: "An unhurried pause", text: "Read a few pages, wander beneath the trees or simply do nothing at all." },
-  { time: "18:30", title: "A dinner that lingers", text: "Every home has its own kitchen and dining table for stories that deserve more time." },
-  { time: "21:00", title: "A quiet night by the water", text: "Warm light, moving leaves and darkness deep enough for genuine rest." }
+  { time: "06:30", title: "Wake with the lake", text: "Open the door, make tea and let the first light arrive across the water." },
+  { time: "09:00", title: "Choose your own rhythm", text: "Paddle a kayak, walk beneath the pines or simply stay beside the view." },
+  { time: "17:30", title: "Meet again outdoors", text: "Share a pickleball game, a swim or a slow coffee as the valley changes colour." },
+  { time: "19:00", title: "A table for connection", text: "Dinner, laughter and the kind of conversation that needs no schedule." }
 ];
 
 export const englishFaqs = [
-  ["How is LAKA organised?", "The concept includes Lake, Forest and Hill collections, containing eight home types and fifteen physical homes for couples, families and groups of up to eight."],
-  ["What stage is LAKA currently at?", "LAKA is currently being completed. The website shares the brand story, introduces the spatial concept and lets people follow the journey before opening."],
-  ["Is each home completely private?", "Yes. Your group has the entire home and does not share living areas with other guests."],
-  ["Are the website images already photographs of the finished spaces?", "Some images are concept illustrations used to express the design direction. Construction and completed-space photography will be added in stages."],
-  ["What are the arrival and departure times?", "Concept hours are check-in from 2 pm and check-out by 11 am. Final times and directions are shared before arrival."],
-  ["Are breakfast and dining available?", "The concept proposes breakfast hampers, seasonal menus and in-home barbecues. Actual services, menus and prices require operating approval."],
-  ["Is LAKA suitable for children?", "Yes. Forest House and LAKA House are being shaped for families; child amenities and safety guidance will be published before opening."],
-  ["May I bring a pet?", "Pet terms depend on the selected home and current operating conditions. Please let LAKA know in advance."],
-  ["Is parking or a transfer available?", "The concept includes parking guidance for each home. Transfers remain a proposed service and are not yet a confirmed commitment."],
-  ["Can LAKA arrange a birthday or anniversary?", "You may request a small set-up, private dinner, cake or flowers. LAKA confirms availability, price and quiet-hour limits."],
-  ["What if I arrive late?", "Please notify LAKA by phone or Zalo. The team will suggest an arrival arrangement based on actual operating conditions."],
-  ["Which details are still illustrative?", "Images, address, menus, arrival times and selected services currently support the concept presentation. Everything will be reviewed and confirmed before LAKA welcomes guests."]
+  ["How is LAKA organised?", "LAKA has eight accommodation types and twenty physical units: lakeside guest houses and bungalows, four named cabin collections, two pine eco camps and one secluded hilltop villa."],
+  ["Where is LAKA?", "LAKA is at Doc Day Dieu, Hamlet 1, Thanh Ha, Trung Gia, Hanoi. Contact the team before departure for the most suitable route."],
+  ["Which homes have confirmed capacity?", "Guest House 001 and Top Hill Villa 020 are for 15–20 guests; Bungalows 002–003 are for 6–7 guests each; Group Cabins 012–013 are for 14 guests each; Eco Camps 018–019 are for 1–2 guests each. Other capacities await final confirmation."],
+  ["Are the website images photographs of LAKA?", "The current images are clearly labelled concept references. LAKA's own construction and completed-space photographs will replace them in stages."],
+  ["What can guests do at LAKA?", "The source plan includes pedal boats, kayaks, a four-season pool, pickleball, singing, cloud watching and team-building activities. Operating hours and any fees still require confirmation."],
+  ["Is food available?", "LAKA's plan includes the Lakeside Restaurant, Tang May Coffee Shop and Hien Gio Bar. Menus, prices and opening hours are still being finalised."],
+  ["Can I book online now?", "The website currently records an enquiry. LAKA confirms the suitable unit, availability, price and deposit terms directly by phone or Zalo before a booking is formed."],
+  ["Which details still need confirmation?", "Prices, exact room layouts, detailed in-room amenities, check-in and check-out times, pet terms, cancellation rules and selected service fees are not yet published as confirmed facts."]
 ] as const;

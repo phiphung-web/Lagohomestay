@@ -1,35 +1,31 @@
 import { Coffee, FlameKindling, Leaf, MoonStar, Sunrise, UtensilsCrossed } from "lucide-react";
 
 export const experienceMoments = [
-  { icon: Sunrise, time: "06:30", title: "Thức dậy cùng nắng", text: "Mở cửa, pha trà và để buổi sáng bắt đầu theo nhịp của riêng bạn." },
-  { icon: Coffee, time: "09:00", title: "Một khoảng không vội", text: "Đọc vài trang sách, đi bộ dưới tán cây hoặc đơn giản là không làm gì cả." },
-  { icon: UtensilsCrossed, time: "18:30", title: "Bữa tối thật dài", text: "Mỗi căn đều có bếp và bàn ăn riêng cho những câu chuyện kéo dài hơn." },
-  { icon: MoonStar, time: "21:00", title: "Đêm yên bên hồ", text: "Ánh đèn ấm, tiếng cây và một khoảng tối đủ sâu để nghỉ thật sự." }
+  { icon: Sunrise, time: "06:30", title: "Thức dậy cùng mặt hồ", text: "Mở cửa, pha trà và nhìn ánh sáng đầu ngày đi qua thung lũng." },
+  { icon: Coffee, time: "09:00", title: "Chọn nhịp của riêng mình", text: "Chèo kayak, đi dưới rừng thông hoặc ở yên bên khung cảnh trước căn." },
+  { icon: FlameKindling, time: "17:30", title: "Gặp lại nhau ngoài trời", text: "Một trận pickleball, một vòng bơi hay ly cà phê khi thung lũng đổi màu." },
+  { icon: MoonStar, time: "19:00", title: "Bữa tối để kết nối", text: "Đồ ăn, tiếng cười và những cuộc trò chuyện không cần nhìn đồng hồ." }
 ];
 
 export const stayPromises = [
-  { icon: Leaf, title: "Thiên nhiên ở thật gần", text: "Mỗi căn mở ra một khoảng xanh, mặt nước hoặc tầm nhìn riêng." },
-  { icon: FlameKindling, title: "Ấm áp như một ngôi nhà", text: "Bếp, phòng khách và hiên riêng để mọi người thực sự sống cùng nhau." },
-  { icon: Coffee, title: "Dịch vụ vừa đủ tinh tế", text: "Đội ngũ LAKA hỗ trợ khi bạn cần và để lại không gian khi bạn muốn yên." }
+  { icon: Leaf, title: "Tôn trọng tự nhiên", text: "Kiến trúc mở ra hồ, núi, rừng thông và mây thay vì tách con người khỏi cảnh quan." },
+  { icon: FlameKindling, title: "Kết nối chân thật", text: "Từ cabin cho hai người đến nhà đoàn 20 khách, mỗi không gian đều hướng về thời gian ở bên nhau." },
+  { icon: Coffee, title: "Chăm sóc tận tâm", text: "LAKA lắng nghe nhu cầu của từng đoàn và tư vấn căn phù hợp trước khi xác nhận chuyến đi." }
 ];
 
 export const guestStories = [
-  { quote: "Lần đầu tiên sau rất lâu, cả nhà ngồi ăn sáng cùng nhau mà không ai vội nhìn đồng hồ.", name: "Tình huống minh họa 01", stay: "Một cuối tuần tại Nhà Rừng" },
-  { quote: "Chúng mình đến vì căn nhà đẹp, nhưng điều nhớ nhất lại là buổi tối ngồi thật lâu ngoài hiên.", name: "Tình huống minh họa 02", stay: "Hai đêm tại Nhà Mây" },
-  { quote: "Không gian đủ riêng nhưng không hề cô lập. Mọi thứ đều vừa vặn cho một nhóm bạn muốn gặp lại nhau.", name: "Tình huống minh họa 03", stay: "Một kỳ hội ngộ tại LAKA House" }
+  { quote: "Một khung kính giữ trọn mặt hồ, vừa đủ để hai người chậm lại và nhìn về cùng một phía.", name: "Tình huống minh họa 01", stay: "Một kỳ nghỉ tại Cabin An Trú" },
+  { quote: "Bốn khung cửa mở ra thiên nhiên, còn bên trong là một căn phòng đủ rộng để cả nhóm thực sự sum vầy.", name: "Tình huống minh họa 02", stay: "Một chuyến đi tại Cabin Sum Vầy" },
+  { quote: "Từ đỉnh đồi nhìn xuống, hồ, núi và thung lũng cùng nằm trong một khung cảnh—riêng mà không tách biệt.", name: "Tình huống minh họa 03", stay: "Một kỳ hội ngộ tại Nhà Trên Đồi" }
 ];
 
 export const showcaseFaqs = [
-  ["LAKA được chia thành những khu nào?", "Bản demo gồm Hệ Hồ, Hệ Rừng và Hệ Đồi. Trong ba hệ có tám dòng nhà và mười lăm căn thực tế, phục vụ từ cặp đôi đến nhóm tối đa 8 khách."],
-  ["LAKA đang ở giai đoạn nào?", "LAKA đang trong quá trình hoàn thiện. Website hiện kể câu chuyện thương hiệu, giới thiệu concept không gian và giúp mọi người theo dõi hành trình trước ngày mở cửa."],
-  ["Mỗi căn có phải không gian riêng không?", "Có. Khách sử dụng nguyên căn và không chia sẻ không gian sinh hoạt với đoàn khách khác."],
-  ["Hình ảnh trên website đã là không gian thực tế chưa?", "Một phần hình ảnh đang là concept minh họa để truyền tải tinh thần thiết kế. Ảnh thi công và ảnh hoàn thiện sẽ được cập nhật theo từng giai đoạn."],
-  ["Giờ nhận và trả căn thế nào?", "Khung giờ demo là nhận căn từ 14:00 và trả căn trước 11:00. Giờ chính thức cùng hướng dẫn đường đi sẽ được gửi trước chuyến đi."],
-  ["Có bữa sáng và dịch vụ ăn uống không?", "Bản demo đề xuất giỏ sáng, thực đơn theo mùa và BBQ tại căn. Dịch vụ thực tế, thực đơn và giá cần được đội ngũ vận hành xác nhận."],
-  ["Trẻ em có phù hợp với LAKA không?", "Có. Nhà Rừng và LAKA House được định hướng cho gia đình; tiện ích và hướng dẫn an toàn dành cho trẻ sẽ được công bố trước ngày mở cửa."],
-  ["Có thể mang theo vật nuôi không?", "Chính sách vật nuôi phụ thuộc từng căn và điều kiện vận hành. Hãy báo trước để LAKA tư vấn phương án phù hợp."],
-  ["Có chỗ đỗ xe và dịch vụ đưa đón không?", "Concept có chỗ đỗ xe theo từng căn. Xe đưa đón đang là dịch vụ đề xuất và chưa được xem là cam kết chính thức."],
-  ["Có thể tổ chức sinh nhật hoặc kỷ niệm không?", "Có thể gửi yêu cầu set-up nhỏ, bữa tối riêng hoặc bánh và hoa. LAKA sẽ xác nhận khả năng phục vụ, chi phí và giới hạn tiếng ồn."],
-  ["Nếu đến muộn thì sao?", "Hãy báo trước qua điện thoại hoặc Zalo. Đội ngũ sẽ gửi phương án nhận căn phù hợp theo tình hình vận hành thực tế."],
-  ["Thông tin nào trong website vẫn là minh họa?", "Ảnh, địa chỉ, thực đơn, giờ nhận căn và một số dịch vụ đang phục vụ trình bày concept; tất cả sẽ được rà soát và công bố chính thức trước khi LAKA đón khách."]
+  ["LAKA có những loại hình lưu trú nào?", "LAKA có 8 dòng lưu trú và 20 căn thực tế: Nhà Bên Hồ, Bungalow Bên Hồ, Cabin An Trú, Cabin Khoảng Trời, Cabin Sum Vầy, Cabin Vô Cực, Nhà Thông Reo và Nhà Trên Đồi."],
+  ["LAKA ở đâu?", "LAKA nằm tại Dốc Dây Diều, Xóm 1, Thanh Hà, Trung Giã, Hà Nội. Trước khi đi, hãy liên hệ đội ngũ để nhận tuyến đường phù hợp nhất."],
+  ["Những căn nào đã có sức chứa được xác nhận?", "Guest House 001 và Villa Top Hill 020 dành cho 15–20 khách; Bungalow 002–003 dành cho 6–7 khách/căn; Cabin Group 012–013 dành cho 14 khách/căn; Eco Camp 018–019 dành cho 1–2 khách/căn. Sức chứa các suite còn lại đang chờ xác nhận."],
+  ["Hình ảnh trên website đã là ảnh thực tế LAKA chưa?", "Hình ảnh hiện tại được gắn nhãn minh họa concept. Ảnh thi công và ảnh không gian hoàn thiện của chính LAKA sẽ thay thế theo từng giai đoạn."],
+  ["Tại LAKA có thể trải nghiệm gì?", "Kế hoạch của LAKA có thuyền đạp nước, kayak, bể bơi bốn mùa, sân pickleball, hát, săn mây và hoạt động team building. Khung giờ vận hành cùng chi phí nếu có vẫn cần được xác nhận."],
+  ["LAKA có dịch vụ ăn uống không?", "Mặt bằng tiện ích có Nhà Hàng Ven Hồ, Tiệm Cà Phê Tầng Mây và Quầy Bar Hiên Gió. Thực đơn, giá và giờ mở cửa đang được đội ngũ vận hành hoàn thiện."],
+  ["Có thể đặt phòng trực tiếp trên website chưa?", "Website hiện tiếp nhận yêu cầu tư vấn. LAKA sẽ xác nhận căn phù hợp, lịch trống, giá và điều kiện đặt cọc trực tiếp qua điện thoại hoặc Zalo trước khi hình thành booking."],
+  ["Thông tin nào vẫn cần LAKA xác nhận?", "Giá, sơ đồ phòng chi tiết, tiện nghi trong từng căn, giờ nhận/trả căn, chính sách vật nuôi, đổi hủy và phí của một số dịch vụ chưa được công bố như dữ kiện chính thức."]
 ];

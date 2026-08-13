@@ -6,41 +6,41 @@ const stayScenarios = {
   vi: [
     {
       label: "Một gia đình",
-      title: "Một cuối tuần không cần nhìn đồng hồ",
-      text: "Buổi sáng bắt đầu bên bàn ăn, trẻ nhỏ có khoảng vườn để khám phá và người lớn có một hiên nhà đủ yên để ngồi lại lâu hơn.",
-      href: "nha-rung"
+      title: "Một cuối tuần nhìn hồ thay vì nhìn đồng hồ",
+      text: "Bungalow có gác xép cho cả nhà ở cùng nhau, còn hai khung kính lớn giữ cảnh quan luôn ở trước mắt.",
+      href: "bungalow-ben-ho"
     },
     {
       label: "Hai người",
       title: "Hai ngày chỉ để nghe nhau rõ hơn",
-      text: "Một căn nhà vừa đủ riêng, một bồn tắm nhìn ra tán cây và buổi tối không có lịch trình nào ngoài việc cùng nhau ở đó.",
-      href: "nha-may"
+      text: "Một căn cabin yên và riêng, một khung kính giữ cảnh hồ như bức tranh và buổi tối không cần thêm lịch trình.",
+      href: "cabin-an-tru"
     },
     {
       label: "Một nhóm bạn",
-      title: "Gặp lại nhau trong một ngôi nhà trọn vẹn",
-      text: "Cùng nấu một bữa tối, chia sẻ khoảng hiên rộng và để những câu chuyện cũ tự nhiên nối dài đến khi trời tối.",
-      href: "lago-house"
+      title: "Gặp lại nhau trong một cabin sum vầy",
+      text: "Mười bốn chỗ ở cùng bốn khung kính tạo nên một khoảng chung đủ rộng cho cả nhóm mà vẫn gần thiên nhiên.",
+      href: "cabin-sum-vay"
     }
   ],
   en: [
     {
       label: "A family",
       title: "A weekend without watching the clock",
-      text: "Morning begins around the table, children have a garden to explore, and the veranda gives everyone permission to stay a little longer.",
-      href: "nha-rung"
+      text: "A loft bungalow keeps the family together while two generous windows hold the landscape in view.",
+      href: "bungalow-ben-ho"
     },
     {
       label: "Two people",
       title: "Two days to hear each other more clearly",
-      text: "A home with just enough privacy, a bath facing the canopy, and no evening plan beyond being there together.",
-      href: "nha-may"
+      text: "A quiet private cabin, one picture window holding the lake, and no evening plan beyond being there together.",
+      href: "cabin-an-tru"
     },
     {
       label: "A group of friends",
-      title: "Meeting again inside a home of your own",
-      text: "Cook one dinner together, share the wide veranda and let familiar stories keep unfolding after the light fades.",
-      href: "lago-house"
+      title: "Meeting again inside Sum Vay Cabin",
+      text: "Fourteen places to stay and four picture windows make room for the whole group without losing touch with nature.",
+      href: "cabin-sum-vay"
     }
   ]
 } as const;

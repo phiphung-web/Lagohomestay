@@ -13,7 +13,7 @@ export function HomeStaySpotlight({
   locale?: ShowcaseLocale;
 }) {
   const en = locale === "en";
-  const featured = ["lago-house", "nha-rung", "nha-may"]
+  const featured = ["cabin-an-tru", "cabin-sum-vay", "nha-tren-doi"]
     .map((slug) => stays.find((stay) => stay.slug === slug))
     .filter((stay): stay is (typeof stays)[number] => Boolean(stay))
     .map((stay) => localizeStay(stay, locale));
@@ -60,8 +60,8 @@ export function HomeStaySpotlight({
             </h2>
             <p className="mt-7 max-w-xl text-sm leading-7 text-white/72 sm:text-base sm:leading-8">
               {en
-                ? "Eight home types are arranged across Lake, Forest and Hill—each shaped around a different way of being close to nature and to one another."
-                : "Tám dòng nhà trải trên Hệ Hồ, Hệ Rừng và Hệ Đồi — mỗi căn mở ra một cách khác để sống gần thiên nhiên và gần nhau hơn."}
+                ? "Eight accommodation types and twenty units extend from the lake through the valley to the pine-covered hill—each offering a different way to be close to nature and one another."
+                : "Tám dòng lưu trú với hai mươi căn trải từ ven hồ, qua thung lũng đến đồi thông — mỗi nơi mở ra một cách khác để gần thiên nhiên và gần nhau hơn."}
             </p>
           </div>
 
@@ -81,7 +81,7 @@ export function HomeStaySpotlight({
                     <span className="mt-1 flex flex-wrap items-center gap-x-2 text-[11px] font-bold uppercase tracking-[.12em] text-white/62">
                       <Users className="h-3.5 w-3.5" />
                       <span className="min-w-0 break-words">
-                        {stay.maxGuests} {en ? "guests" : "khách"}
+                        {stay.maxGuests > 0 ? `${stay.maxGuests} ${en ? "guests" : "khách"}` : (en ? "Capacity being confirmed" : "Đang xác nhận sức chứa")}
                         {stay.highlights[0] ? ` · ${stay.highlights[0]}` : ""}
                       </span>
                     </span>

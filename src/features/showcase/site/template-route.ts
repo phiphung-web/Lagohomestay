@@ -63,7 +63,7 @@ const titles: Record<Exclude<TemplateRoute["kind"], "stay">, string> = {
   terms: "Điều khoản và điều kiện",
   privacy: "Chính sách bảo mật",
   contact: "Liên hệ",
-  booking: "Chọn căn và đặt chỗ",
+  booking: "Tư vấn chọn căn",
   lookup: "Xem thông tin đặt chỗ"
 };
 
