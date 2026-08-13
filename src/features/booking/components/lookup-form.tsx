@@ -8,6 +8,7 @@ import { formatCurrency } from "@/shared/lib/format";
 import type { ShowcaseLocale } from "@/features/showcase/i18n/locale";
 import { localizeStay } from "@/features/showcase/i18n/showcase-copy";
 import { stays } from "@/features/stays/data/demo-data";
+import { publicContact } from "@/shared/lib/public-contact";
 
 type Result = { status: string; stayName: string; checkIn: string; checkOut: string; guests: number; totalAmount: number; holdExpiresAt?: string | null };
 
@@ -64,6 +65,6 @@ export function LookupForm({ locale = "vi" }: { locale?: ShowcaseLocale }) {
         <div className="mt-5 grid gap-4 border-t border-lago-ink/10 pt-5 text-sm sm:grid-cols-3"><div><p className="flex items-center gap-2 text-xs text-lago-ink/45"><CalendarDays className="h-3.5 w-3.5" />{locale === "en" ? "Stay dates" : "Ngày ở"}</p><p className="mt-1 font-bold">{new Date(result.checkIn).toLocaleDateString(locale === "en" ? "en-GB" : "vi-VN")} → {new Date(result.checkOut).toLocaleDateString(locale === "en" ? "en-GB" : "vi-VN")}</p></div><div><p className="flex items-center gap-2 text-xs text-lago-ink/45"><Users className="h-3.5 w-3.5" />{locale === "en" ? "Guests" : "Số khách"}</p><p className="mt-1 font-bold">{result.guests} {locale === "en" ? "guests" : "khách"}</p></div><div><p className="text-xs text-lago-ink/45">{locale === "en" ? "Estimated total" : "Tạm tính"}</p><p className="mt-1 font-bold">{formatCurrency(result.totalAmount)}</p></div></div>
       </article>)}
     </div>}
-    {searched && results.length === 0 && !error && <div className="result-enter mt-6 rounded-[24px] border border-lago-ink/10 bg-white/72 p-7 text-center" aria-live="polite"><span className="mx-auto grid h-12 w-12 place-items-center rounded-full bg-lago-cream"><Phone className="h-5 w-5 text-lago-clay" /></span><h2 className="display mt-4 text-2xl font-semibold">{locale === "en" ? "No booking request found" : "Chưa thấy yêu cầu đặt chỗ"}</h2><p className="mt-3 text-sm leading-6 text-lago-ink/55">{locale === "en" ? "Check the phone number or call LAKA if you have already submitted a request." : "Kiểm tra lại số điện thoại hoặc gọi LAKA nếu bạn đã gửi yêu cầu nhưng chưa thấy thông tin."}</p><a href="tel:0900000000" className="soft-link mt-5">{locale === "en" ? "Call" : "Gọi"} 0900 000 000</a></div>}
+    {searched && results.length === 0 && !error && <div className="result-enter mt-6 rounded-[24px] border border-lago-ink/10 bg-white/72 p-7 text-center" aria-live="polite"><span className="mx-auto grid h-12 w-12 place-items-center rounded-full bg-lago-cream"><Phone className="h-5 w-5 text-lago-clay" /></span><h2 className="display mt-4 text-2xl font-semibold">{locale === "en" ? "No booking request found" : "Chưa thấy yêu cầu đặt chỗ"}</h2><p className="mt-3 text-sm leading-6 text-lago-ink/55">{locale === "en" ? "Check the phone number or call LAKA if you have already submitted a request." : "Kiểm tra lại số điện thoại hoặc gọi LAKA nếu bạn đã gửi yêu cầu nhưng chưa thấy thông tin."}</p><a href={publicContact.phoneHref} className="soft-link mt-5">{locale === "en" ? "Call" : "Gọi"} {publicContact.phoneDisplay}</a></div>}
   </div>;
 }

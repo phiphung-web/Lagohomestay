@@ -9,7 +9,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/trai-nghiem", priority: .78 },
     { path: "/dich-vu", priority: .72 },
     { path: "/am-thuc", priority: .76 },
-    { path: "/ve-lago", priority: .78 },
+    { path: "/ve-laka", priority: .78 },
     { path: "/thong-tin", priority: .62 },
     { path: "/faq", priority: .58 },
     { path: "/di-chuyen", priority: .64 },

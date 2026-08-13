@@ -15,6 +15,7 @@ import { localizeAvailabilityOption } from "@/features/showcase/i18n/showcase-co
 import type { ShowcaseLocale } from "@/features/showcase/i18n/locale";
 import { formatCurrency } from "@/shared/lib/format";
 import { getVietnamDateString } from "@/shared/lib/vietnam-date";
+import { publicContact } from "@/shared/lib/public-contact";
 
 type BookingResult = { holdExpiresAt: string; totalAmount: number };
 
@@ -186,8 +187,8 @@ export function BookingExperience({ lookupPath = "/tra-cuu", locale = "vi" }: { 
         </div>
         <p className="mt-5 text-sm text-lago-ink/55">{en ? "You can review this request at any time using the phone number you provided." : "Bạn có thể xem lại yêu cầu bất cứ lúc nào bằng số điện thoại đã đặt."}</p>
         <div className="mt-7 flex flex-col justify-center gap-3 sm:flex-row">
-          <a className="btn-primary" href="tel:0900000000"><Phone className="h-4 w-4" /> {en ? "Call LAKA" : "Gọi LAKA"}</a>
-          <a className="btn-light border border-lago-ink/15" href="https://zalo.me/0900000000">{en ? "Contact on Zalo" : "Liên hệ Zalo"}</a>
+          <a className="btn-primary" href={publicContact.phoneHref}><Phone className="h-4 w-4" /> {en ? "Call LAKA" : "Gọi LAKA"}</a>
+          <a className="btn-light border border-lago-ink/15" href={publicContact.zaloHref}>{en ? "Contact on Zalo" : "Liên hệ Zalo"}</a>
         </div>
         <Link href={lookupPath} className="soft-link mt-7">{en ? "Review booking" : "Xem lại đặt chỗ"} <ArrowRight className="h-4 w-4" /></Link>
       </div>
@@ -249,7 +250,7 @@ export function BookingExperience({ lookupPath = "/tra-cuu", locale = "vi" }: { 
         <Users className="mx-auto h-8 w-8 text-lago-clay" />
         <h2 className="display mt-4 text-3xl font-semibold">{en ? "No home matches this search yet" : "Chưa có căn trống cho lựa chọn này"}</h2>
         <p className="mt-3 text-sm text-lago-ink/58">{en ? "Try different dates, reduce the guest count or contact LAKA for a multi-home stay." : "Hãy thử đổi ngày, giảm số khách hoặc liên hệ LAKA để được tư vấn đặt nhiều căn."}</p>
-        <a href="tel:0900000000" className="btn-primary mt-6">{en ? "Call LAKA" : "Gọi LAKA tư vấn"}</a>
+        <a href={publicContact.phoneHref} className="btn-primary mt-6">{en ? "Call LAKA" : "Gọi LAKA tư vấn"}</a>
       </div>}
     </div>}
 

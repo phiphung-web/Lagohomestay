@@ -7,7 +7,7 @@ import { Logo } from "./logo";
 
 const links = [
   ["/luu-tru", "Các căn nhà"], ["/trai-nghiem", "Trải nghiệm"], ["/am-thuc", "Ẩm thực"],
-  ["/ve-lago", "Về LAKA"], ["/thong-tin", "Thông tin"]
+  ["/ve-laka", "Về LAKA"], ["/thong-tin", "Thông tin"]
 ];
 
 export function Header() {

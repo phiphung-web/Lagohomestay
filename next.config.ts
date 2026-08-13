@@ -16,6 +16,16 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
+        source: "/ve-lago",
+        destination: "/ve-laka",
+        permanent: true
+      },
+      {
+        source: "/en/ve-lago",
+        destination: "/en/ve-laka",
+        permanent: true
+      },
+      {
         source: "/mau/:template(tinh-lang|dien-anh|song-dong)",
         destination: "/",
         permanent: true

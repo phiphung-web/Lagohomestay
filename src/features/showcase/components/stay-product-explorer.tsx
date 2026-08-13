@@ -326,14 +326,19 @@ export function StayProductExplorer({
             </div>
 
             <div className="sticky bottom-0 z-[3] mt-auto border-t border-[#16311c]/12 bg-[#f4efe7]/96 px-5 py-4 backdrop-blur sm:px-9 lg:px-11">
-              <div className="flex items-center justify-between gap-5">
+              <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                 <div>
                   <p className="text-[.55rem] font-bold uppercase tracking-[.13em] text-[#80613f]">{locale === "en" ? "Continue the story" : "Tiếp tục câu chuyện"}</p>
                   <p className="mt-1 text-xs text-[#16311c]/55">{locale === "en" ? "See how a full day unfolds at LAKA." : "Cảm nhận cách một ngày trọn vẹn diễn ra tại LAKA."}</p>
                 </div>
-                <Link href={`${basePath}/trai-nghiem`} className="inline-flex min-h-12 shrink-0 items-center gap-2 rounded-full border border-[#16311c]/16 px-5 text-xs font-bold sm:px-6">
-                  {locale === "en" ? "A day at LAKA" : "Một ngày tại LAKA"} <ArrowRight className="h-4 w-4" />
-                </Link>
+                <div className="flex flex-wrap gap-2">
+                  <Link href={`${basePath}/trai-nghiem`} className="inline-flex min-h-12 shrink-0 items-center gap-2 rounded-full border border-[#16311c]/16 px-5 text-xs font-bold sm:px-6">
+                    {locale === "en" ? "A day at LAKA" : "Một ngày tại LAKA"} <ArrowRight className="h-4 w-4" />
+                  </Link>
+                  <Link href={`${basePath}/dat-phong?stay=${activeStay.slug}`} className="inline-flex min-h-12 shrink-0 items-center gap-2 rounded-full bg-[#16311c] px-5 text-xs font-bold text-white sm:px-6">
+                    {locale === "en" ? "Check this stay" : "Xem lịch căn này"} <ArrowRight className="h-4 w-4" />
+                  </Link>
+                </div>
               </div>
             </div>
           </section>
@@ -443,7 +448,7 @@ export function StayProductExplorer({
           </div>
           <div className="mt-8 flex flex-wrap items-center justify-between gap-5 border-t border-[#16311c]/12 pt-6">
             <p className="max-w-2xl font-serif text-xl leading-8 text-[#16311c]/72">{locale === "en" ? "Each home offers a different way to live closer to nature—and closer to one another." : "Mỗi căn là một cách khác để sống gần thiên nhiên và gần nhau hơn."}</p>
-            <Link href={`${basePath}/ve-lago`} className="inline-flex items-center gap-2 text-xs font-bold">{locale === "en" ? "The LAKA story" : "Câu chuyện LAKA"} <ArrowRight className="h-4 w-4" /></Link>
+            <Link href={`${basePath}/ve-laka`} className="inline-flex items-center gap-2 text-xs font-bold">{locale === "en" ? "The LAKA story" : "Câu chuyện LAKA"} <ArrowRight className="h-4 w-4" /></Link>
           </div>
         </section>
       </div>

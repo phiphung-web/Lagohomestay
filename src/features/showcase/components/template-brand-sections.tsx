@@ -1,14 +1,16 @@
 import Image from "next/image";
-import { ArrowRight, Instagram, MapPin, Phone, Sparkles } from "lucide-react";
+import { ArrowRight, Instagram, Mail, MapPin, Phone, Sparkles } from "lucide-react";
 import { conceptImages } from "@/features/stays/data/demo-data";
 import type { ShowcaseLocale } from "@/features/showcase/i18n/locale";
+import { publicContact } from "@/shared/lib/public-contact";
 
 type Mood = "editorial" | "cinematic" | "organic";
 
 const contactChannels = [
-  { icon: Phone, label: "Điện thoại", value: "0900 000 000", href: "tel:0900000000" },
-  { icon: Phone, label: "Zalo", value: "0900 000 000", href: "https://zalo.me/0900000000" },
-  { icon: MapPin, label: "Địa chỉ", value: "Sẽ được cập nhật", href: null }
+  { icon: Phone, label: { vi: "Điện thoại", en: "Phone" }, value: publicContact.phoneDisplay, href: publicContact.phoneHref },
+  { icon: Phone, label: { vi: "Zalo", en: "Zalo" }, value: publicContact.phoneDisplay, href: publicContact.zaloHref },
+  { icon: Mail, label: { vi: "Email", en: "Email" }, value: publicContact.email, href: publicContact.emailHref },
+  { icon: MapPin, label: { vi: "Địa chỉ", en: "Address" }, value: publicContact.address, href: null }
 ] as const;
 
 const quote = "Một kỳ nghỉ tốt không cần quá nhiều thứ để làm. Chỉ cần đúng người, đúng không gian và đủ thời gian.";
@@ -102,13 +104,13 @@ function ChannelContent({ icon: Icon, label, value }: { icon: typeof Phone; labe
 }
 
 export function TemplateContactChannels({ mood, locale = "vi" }: { mood: Mood; locale?: ShowcaseLocale }) {
-  if (mood === "cinematic") return <section className="reveal-section mx-auto w-[min(1380px,calc(100%-40px))] py-20 sm:py-28"><div className="border-t border-white/12">{contactChannels.map(({ icon, label, value, href }, index) => { const content = <div className="group grid items-center gap-5 border-b border-white/12 py-7 transition hover:bg-white/[.025] sm:grid-cols-[70px_1fr_auto]"><span className="text-[.6rem] font-bold text-[#c7a882]">0{index + 1}</span><div className="flex items-center gap-5">{(() => { const Icon = icon; return <Icon className="h-6 w-6 text-[#c7a882]" />; })()}<div><p className="text-[.58rem] font-bold uppercase tracking-[.2em] text-white/48">{label}</p><p className="mt-2 font-serif text-3xl font-medium sm:text-4xl">{value}</p></div></div><ArrowRight className="h-5 w-5 text-[#c7a882] transition group-hover:translate-x-1" /></div>; return href ? <a href={href} key={label}>{content}</a> : <div key={label}>{content}</div>; })}</div><div className="mt-10 flex items-center gap-3 text-xs text-white/48"><Instagram className="h-4 w-4 text-[#c7a882]" />Theo dõi nhật ký hình ảnh tại @lagohomestay</div></section>;
+  const localizedChannels = contactChannels.map((channel) => ({ ...channel, label: channel.label[locale] }));
+  if (mood === "cinematic") return <section className="reveal-section mx-auto w-[min(1380px,calc(100%-40px))] py-20 sm:py-28"><div className="border-t border-white/12">{localizedChannels.map(({ icon, label, value, href }, index) => { const content = <div className="group grid items-center gap-5 border-b border-white/12 py-7 transition hover:bg-white/[.025] sm:grid-cols-[70px_1fr_auto]"><span className="text-[.6rem] font-bold text-[#c7a882]">0{index + 1}</span><div className="flex items-center gap-5">{(() => { const Icon = icon; return <Icon className="h-6 w-6 text-[#c7a882]" />; })()}<div><p className="text-[.58rem] font-bold uppercase tracking-[.2em] text-white/48">{label}</p><p className="mt-2 font-serif text-3xl font-medium sm:text-4xl">{value}</p></div></div><ArrowRight className="h-5 w-5 text-[#c7a882] transition group-hover:translate-x-1" /></div>; return href ? <a href={href} key={label}>{content}</a> : <div key={label}>{content}</div>; })}</div><div className="mt-10 flex items-center gap-3 text-xs text-white/48"><Instagram className="h-4 w-4 text-[#c7a882]" />{locale === "en" ? "Follow the visual journal at @lagohomestay" : "Theo dõi nhật ký hình ảnh tại @lagohomestay"}</div></section>;
 
   if (mood === "organic") {
-    const colors = ["bg-white", "bg-[#f7cf58]", "bg-[#f18b68]"];
-    return <section className="reveal-section mx-auto w-[min(1280px,calc(100%-28px))] py-20 sm:py-28"><div className="grid gap-4 md:grid-cols-3">{contactChannels.map(({ icon, label, value, href }, index) => { const Icon = icon; const content = <div className={`group min-h-[300px] rounded-[38px] p-7 shadow-[0_18px_55px_rgba(33,72,61,.08)] transition duration-500 hover:-translate-y-2 ${colors[index]} ${index === 1 ? "text-[#16311c]" : "text-[#16311c]"}`}><span className="grid h-12 w-12 place-items-center rounded-full bg-[#16311c] text-white"><Icon className="h-5 w-5" /></span><p className="mt-14 text-[.6rem] font-extrabold uppercase tracking-[.14em] opacity-80">{label}</p><p className="mt-3 text-2xl font-extrabold">{value}</p><ArrowRight className="mt-8 h-5 w-5 transition group-hover:translate-x-1" /></div>; return href ? <a href={href} key={label}>{content}</a> : <div key={label}>{content}</div>; })}</div></section>;
+    const colors = ["bg-white", "bg-[#f7cf58]", "bg-[#f18b68]", "bg-[#d9e5cf]"];
+    return <section className="reveal-section mx-auto w-[min(1280px,calc(100%-28px))] py-20 sm:py-28"><div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">{localizedChannels.map(({ icon, label, value, href }, index) => { const Icon = icon; const content = <div className={`group min-h-[300px] rounded-[38px] p-7 shadow-[0_18px_55px_rgba(33,72,61,.08)] transition duration-500 hover:-translate-y-2 ${colors[index]} text-[#16311c]`}><span className="grid h-12 w-12 place-items-center rounded-full bg-[#16311c] text-white"><Icon className="h-5 w-5" /></span><p className="mt-14 text-[.6rem] font-extrabold uppercase tracking-[.14em] opacity-80">{label}</p><p className="mt-3 break-words text-xl font-extrabold">{value}</p><ArrowRight className="mt-8 h-5 w-5 transition group-hover:translate-x-1" /></div>; return href ? <a href={href} key={label}>{content}</a> : <div key={label}>{content}</div>; })}</div></section>;
   }
 
-  const localizedChannels = locale === "en" ? contactChannels.map((channel, index) => ({ ...channel, label: ["Phone", "Zalo", "Address"][index], value: index === 2 ? "To be updated" : channel.value })) : contactChannels;
-  return <section className="reveal-section mx-auto w-[min(1180px,calc(100%-40px))] py-20 sm:py-28"><div className="grid border-y border-[#16311c]/15 md:grid-cols-3">{localizedChannels.map(({ icon, label, value, href }, index) => { const content = <div className={`group min-h-[300px] border-b border-[#16311c]/15 p-7 last:border-b-0 md:border-b-0 md:border-r md:last:border-r-0 ${index === 0 ? "rounded-t-[120px] pt-20" : "pt-12"}`}><ChannelContent icon={icon} label={label} value={value} /></div>; return href ? <a href={href} key={label}>{content}</a> : <div key={label}>{content}</div>; })}</div></section>;
+  return <section className="reveal-section mx-auto w-[min(1280px,calc(100%-40px))] py-20 sm:py-28"><div className="grid border-y border-[#16311c]/15 md:grid-cols-2 lg:grid-cols-4">{localizedChannels.map(({ icon, label, value, href }, index) => { const content = <div className={`group min-h-[300px] border-b border-[#16311c]/15 p-7 last:border-b-0 md:border-r md:[&:nth-child(2n)]:border-r-0 lg:border-b-0 lg:border-r lg:[&:nth-child(2n)]:border-r lg:last:border-r-0 ${index === 0 ? "rounded-t-[120px] pt-20" : "pt-12"}`}><ChannelContent icon={icon} label={label} value={value} /></div>; return href ? <a href={href} key={label}>{content}</a> : <div key={label}>{content}</div>; })}</div></section>;
 }

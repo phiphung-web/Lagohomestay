@@ -32,6 +32,7 @@ import { conceptImages, getUnitsForStay, stays } from "@/features/stays/data/dem
 import { SkipLink } from "@/shared/components/ui/skip-link";
 import { BrandLogo } from "@/shared/components/brand/brand-logo";
 import type { TemplateRoute } from "@/features/showcase/site/template-route";
+import { publicContact } from "@/shared/lib/public-contact";
 
 export type TemplateMood = "editorial" | "cinematic" | "organic";
 
@@ -52,7 +53,7 @@ const navItems = [
   ["Ẩm thực", "am-thuc"],
   ["Trải nghiệm", "trai-nghiem"],
   ["Dịch vụ", "dich-vu"],
-  ["Về LAKA", "ve-lago"],
+  ["Về LAKA", "ve-laka"],
   ["Thông tin", "thong-tin"]
 ] as const;
 
@@ -61,7 +62,7 @@ const englishNavItems = [
   ["Dining", "am-thuc"],
   ["Experiences", "trai-nghiem"],
   ["Services", "dich-vu"],
-  ["About LAKA", "ve-lago"],
+  ["About LAKA", "ve-laka"],
   ["Information", "thong-tin"]
 ] as const;
 
@@ -88,6 +89,8 @@ export function TemplateHeader({ config, locale = "vi", overlay = false, storyMo
   const mobileItems = storyMode
     ? storyItems.map(([label, hash]) => ({ label, href: `${config.basePath}${hash}`, exact: true }))
     : localizedNavItems.map(([label, path]) => ({ label, href: scoped(config.basePath, path), exact: !path }));
+  const bookingHref = scoped(config.basePath, "dat-phong");
+  const lookupHref = scoped(config.basePath, "tra-cuu");
 
   const headerTone = overlay
     ? "-mb-[92px] border-b border-[#eae1d2]/20 bg-[#16311c]/48 text-[#eae1d2]"
@@ -119,7 +122,10 @@ export function TemplateHeader({ config, locale = "vi", overlay = false, storyMo
         <div className="hidden xl:block">
           <TemplateLanguageSwitcher locale={locale} compact alwaysVisible />
         </div>
-        <TemplateMobileMenu name={config.name} mood={config.mood} items={mobileItems} locale={locale} wideHeader />
+        <Link href={bookingHref} className="focus-ring hidden min-h-10 items-center rounded-full border border-current/25 px-4 text-[.6rem] font-bold uppercase tracking-[.12em] transition hover:opacity-70 xl:inline-flex">
+          {locale === "en" ? "Check availability" : "Xem lịch trống"}
+        </Link>
+        <TemplateMobileMenu name={config.name} mood={config.mood} items={mobileItems} bookingHref={bookingHref} lookupHref={lookupHref} locale={locale} wideHeader />
       </div>
     </div>
   </header>;
@@ -151,13 +157,17 @@ export function TemplateFooter({ config, locale = "vi", storyMode = false, homeM
           <Link href={scoped(config.basePath, "chinh-sach-luu-tru")}>{locale === "en" ? "Stay policies" : "Chính sách lưu trú"}</Link>
           <Link href={scoped(config.basePath, "dieu-khoan")}>{locale === "en" ? "Terms" : "Điều khoản"}</Link>
           <Link href={scoped(config.basePath, "bao-mat")}>{locale === "en" ? "Privacy" : "Bảo mật"}</Link>
+          <Link href={scoped(config.basePath, "dat-phong")} className="font-bold">{locale === "en" ? "Check availability" : "Xem lịch trống"}</Link>
+          <Link href={scoped(config.basePath, "tra-cuu")}>{locale === "en" ? "Find a booking" : "Tra cứu đặt chỗ"}</Link>
         </div>
       </div>
       <div>
         <p className="text-[.65rem] font-bold uppercase tracking-[.16em] opacity-80">{locale === "en" ? "Connect" : "Kết nối"}</p>
         <div className="mt-5 flex flex-col gap-3 text-sm">
-          <a href="tel:0900000000" className="font-bold">0900 000 000</a>
-          <a href="https://zalo.me/0900000000">{locale === "en" ? "Chat on Zalo" : "Trò chuyện qua Zalo"}</a>
+          <a href={publicContact.phoneHref} className="font-bold">{publicContact.phoneDisplay}</a>
+          <a href={publicContact.zaloHref}>{locale === "en" ? "Chat on Zalo" : "Trò chuyện qua Zalo"}</a>
+          <a href={publicContact.emailHref}>{publicContact.email}</a>
+          <span className="leading-6 opacity-80">{publicContact.address}</span>
           <Link href={scoped(config.basePath, "lien-he")}>{locale === "en" ? "Contact LAKA" : "Liên hệ LAKA"}</Link>
           <span className="flex items-center gap-2 opacity-80"><Instagram className="h-4 w-4" /> @lagohomestay</span>
         </div>
@@ -177,8 +187,12 @@ export function TemplateFooter({ config, locale = "vi", storyMode = false, homeM
       <div className="md:text-right">
         <p className="text-[.62rem] font-bold uppercase tracking-[.18em] text-[#80613f]">{locale === "en" ? "Keep exploring" : "Tiếp tục khám phá"}</p>
         <div className="mt-5 flex flex-col gap-3 text-sm md:items-end">
-          <Link href={scoped(config.basePath, "ve-lago")} className="font-bold">{locale === "en" ? "The LAKA story" : "Câu chuyện LAKA"}</Link>
+          <Link href={scoped(config.basePath, "ve-laka")} className="font-bold">{locale === "en" ? "The LAKA story" : "Câu chuyện LAKA"}</Link>
           <Link href={scoped(config.basePath, "trai-nghiem")}>{locale === "en" ? "The LAKA rhythm" : "Nhịp sống LAKA"}</Link>
+          <Link href={scoped(config.basePath, "dat-phong")} className="font-bold">{locale === "en" ? "Check availability" : "Xem lịch trống"}</Link>
+          <Link href={scoped(config.basePath, "tra-cuu")}>{locale === "en" ? "Find a booking" : "Tra cứu đặt chỗ"}</Link>
+          <a href={publicContact.phoneHref}>{publicContact.phoneDisplay}</a>
+          <a href={publicContact.emailHref}>{publicContact.email}</a>
           <span className="flex items-center gap-2 opacity-70"><Instagram className="h-4 w-4" /> @lagohomestay</span>
         </div>
       </div>
@@ -188,8 +202,8 @@ export function TemplateFooter({ config, locale = "vi", storyMode = false, homeM
     <div className="mx-auto grid w-[min(1420px,calc(100%-40px))] gap-10 md:grid-cols-2 xl:grid-cols-[1.1fr_.65fr_.75fr_.65fr]">
       <div><Link href={config.basePath || "/"} aria-label={locale === "en" ? "LAKA Homestay - Home" : "LAKA Homestay - Trang chủ"} className="inline-flex"><BrandLogo variant={config.mood === "editorial" ? "established" : "homestay"} decorative className={`${config.mood === "editorial" ? "w-[190px]" : "w-[210px]"} ${config.mood === "cinematic" ? "text-[#eae1d2]" : "text-[#16311c]"}`} /></Link><p className="mt-5 max-w-md text-sm leading-7 opacity-80">{locale === "en" ? "Three landscape collections, eight home types and fifteen private homes made for slower days together." : "Ba hệ cảnh quan, tám dòng nhà và mười lăm căn riêng cho những ngày mọi người muốn sống chậm cùng nhau."}</p><span className="mt-5 inline-flex rounded-full border border-current/15 px-3 py-1.5 text-[.6rem] font-bold uppercase tracking-wider opacity-80">{locale === "en" ? "Coming soon · In development" : "Sắp ra mắt · Đang hoàn thiện"}</span></div>
       <div><p className="text-[.65rem] font-bold uppercase tracking-[.16em] opacity-80">{locale === "en" ? "Explore" : "Khám phá"}</p><div className="mt-5 flex flex-col gap-3 text-sm font-bold">{localizedNavItems.slice(0, 4).map(([label, path]) => <Link key={path} href={scoped(config.basePath, path)}>{label}</Link>)}</div></div>
-      <div><p className="text-[.65rem] font-bold uppercase tracking-[.16em] opacity-80">{locale === "en" ? "Information" : "Thông tin"}</p><div className="mt-5 flex flex-col gap-3 text-sm"><Link href={scoped(config.basePath, "di-chuyen")}>{locale === "en" ? "Getting here" : "Hướng dẫn di chuyển"}</Link><Link href={scoped(config.basePath, "faq")}>FAQ</Link><Link href={scoped(config.basePath, "chinh-sach-luu-tru")}>{locale === "en" ? "Stay policies" : "Chính sách lưu trú"}</Link><Link href={scoped(config.basePath, "dieu-khoan")}>{locale === "en" ? "Terms" : "Điều khoản"}</Link><Link href={scoped(config.basePath, "bao-mat")}>{locale === "en" ? "Privacy" : "Bảo mật"}</Link></div></div>
-      <div><p className="text-[.65rem] font-bold uppercase tracking-[.16em] opacity-80">{locale === "en" ? "Connect" : "Kết nối"}</p><div className="mt-5 flex flex-col gap-3 text-sm"><a href="tel:0900000000" className="font-bold">0900 000 000</a><a href="https://zalo.me/0900000000">{locale === "en" ? "Chat on Zalo" : "Trò chuyện qua Zalo"}</a><Link href={scoped(config.basePath, "lien-he")}>{locale === "en" ? "Contact LAKA" : "Liên hệ LAKA"}</Link><span className="flex items-center gap-2 opacity-80"><Instagram className="h-4 w-4" /> @lagohomestay</span></div></div>
+      <div><p className="text-[.65rem] font-bold uppercase tracking-[.16em] opacity-80">{locale === "en" ? "Information" : "Thông tin"}</p><div className="mt-5 flex flex-col gap-3 text-sm"><Link href={scoped(config.basePath, "di-chuyen")}>{locale === "en" ? "Getting here" : "Hướng dẫn di chuyển"}</Link><Link href={scoped(config.basePath, "faq")}>FAQ</Link><Link href={scoped(config.basePath, "chinh-sach-luu-tru")}>{locale === "en" ? "Stay policies" : "Chính sách lưu trú"}</Link><Link href={scoped(config.basePath, "dieu-khoan")}>{locale === "en" ? "Terms" : "Điều khoản"}</Link><Link href={scoped(config.basePath, "bao-mat")}>{locale === "en" ? "Privacy" : "Bảo mật"}</Link><Link href={scoped(config.basePath, "dat-phong")} className="font-bold">{locale === "en" ? "Check availability" : "Xem lịch trống"}</Link><Link href={scoped(config.basePath, "tra-cuu")}>{locale === "en" ? "Find a booking" : "Tra cứu đặt chỗ"}</Link></div></div>
+      <div><p className="text-[.65rem] font-bold uppercase tracking-[.16em] opacity-80">{locale === "en" ? "Connect" : "Kết nối"}</p><div className="mt-5 flex flex-col gap-3 text-sm"><a href={publicContact.phoneHref} className="font-bold">{publicContact.phoneDisplay}</a><a href={publicContact.zaloHref}>{locale === "en" ? "Chat on Zalo" : "Trò chuyện qua Zalo"}</a><a href={publicContact.emailHref}>{publicContact.email}</a><span className="leading-6 opacity-80">{publicContact.address}</span><Link href={scoped(config.basePath, "lien-he")}>{locale === "en" ? "Contact LAKA" : "Liên hệ LAKA"}</Link><span className="flex items-center gap-2 opacity-80"><Instagram className="h-4 w-4" /> @lagohomestay</span></div></div>
     </div>
   </footer>;
 }
@@ -394,7 +408,7 @@ function LookupPage({ config, locale }: { config: CompleteTemplateConfig; locale
           <p className="text-[.62rem] font-bold uppercase tracking-[.2em] text-[#80613f]">{locale === "en" ? "Private and simple" : "Riêng tư và đơn giản"}</p>
           <h2 className="mt-6 max-w-3xl font-serif text-5xl font-medium leading-[.98] tracking-[-.05em] sm:text-7xl">{locale === "en" ? <>Only your phone<br /><i>number is needed.</i></> : <>Chỉ cần số điện thoại<br /><i>đã dùng khi gửi yêu cầu.</i></>}</h2>
           <p className="mt-7 max-w-xl text-sm leading-7 text-[#16311c]/65">{locale === "en" ? "LAKA will show the most recent requests linked to that number. No booking code is required." : "LAKA sẽ hiển thị những yêu cầu gần nhất gắn với số này. Bạn không cần ghi nhớ mã đặt chỗ."}</p>
-          <a href="tel:0900000000" className="mt-7 inline-flex items-center gap-2 text-sm font-bold"><Phone className="h-4 w-4" />{locale === "en" ? "Need help? Call LAKA" : "Cần hỗ trợ? Gọi LAKA"}</a>
+          <a href={publicContact.phoneHref} className="mt-7 inline-flex items-center gap-2 text-sm font-bold"><Phone className="h-4 w-4" />{locale === "en" ? "Need help? Call LAKA" : "Cần hỗ trợ? Gọi LAKA"}</a>
         </div>
         <div className="rounded-t-[150px] border border-[#16311c]/12 bg-[#eae1d2] px-6 pb-8 pt-24 text-[#16311c] shadow-xl sm:px-8"><LookupForm locale={locale} /></div>
       </div>
