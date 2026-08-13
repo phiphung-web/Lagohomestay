@@ -48,14 +48,14 @@ export function MainHome({ config, locale = "vi" }: { config: CompleteTemplateCo
 
         <div className="relative z-10 mx-auto flex min-h-[100svh] w-[min(1500px,calc(100%-32px))] flex-col justify-end pb-16 pt-36 sm:w-[min(1500px,calc(100%-56px))] sm:pb-20">
           <p className="text-[.62rem] font-bold uppercase tracking-[.24em] text-[#dfc6a5]">
-            {en ? "LAKA · Close to nature, close to one another" : "LAKA · Gần thiên nhiên, gần nhau hơn"}
+            {en ? "LAKA · A home in the green" : "LAKA · Nhà giữa khoảng xanh"}
           </p>
           <h1 className="mt-5 max-w-6xl font-serif text-[clamp(3.6rem,11vw,9rem)] font-medium leading-[.85] tracking-[-.065em]">
-            {en ? <>Come back<br /><i className="font-normal text-[#dfc6a5]">to what matters.</i></> : <>Trở về với<br /><i className="font-normal text-[#dfc6a5]">điều quan trọng.</i></>}
+            {en ? <>Choose a cabin.<br /><i className="font-normal text-[#dfc6a5]">Hold the whole valley.</i></> : <>“Chọn” Cabin.<br /><i className="font-normal text-[#dfc6a5]">“Trọn” Thung Lũng.</i></>}
           </h1>
           <div className="mt-8 flex items-end justify-between gap-8 border-t border-white/22 pt-6">
             <p className="max-w-xl text-sm leading-7 text-white/72 sm:text-base sm:leading-8">
-              {en ? "A place where mornings begin gently, conversations last longer and time feels like your own again." : "Một nơi buổi sáng bắt đầu thật khẽ, những cuộc trò chuyện dài hơn và thời gian lại thuộc về mình."}
+              {en ? "Untouched beauty held in every window frame, where the truest connections can begin." : "Lưu giữ vẻ đẹp nguyên sơ qua từng khung kính, nơi khởi nguồn cho những kết nối chân thật nhất."}
             </p>
             <a href="#gioi-thieu" className="focus-ring group hidden items-center gap-3 text-[.6rem] font-bold uppercase tracking-[.18em] text-white/65 sm:flex">
               {en ? "Discover LAKA" : "Khám phá LAKA"}

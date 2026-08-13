@@ -308,7 +308,7 @@ function ServicesPage({ config, locale }: { config: CompleteTemplateConfig; loca
 }
 
 function DiningPage({ config, locale }: { config: CompleteTemplateConfig; locale: ShowcaseLocale }) {
-  return <><PageIntro config={config} locale={locale} eyebrow={locale === "en" ? "Dining at LAKA" : "Ẩm thực tại LAKA"} title={locale === "en" ? "A table that belongs to the stay." : "Một bàn ăn thuộc về kỳ nghỉ."} text={locale === "en" ? "Breakfast on the veranda, seasonal dishes to share and private evening tables — all designed to keep you close to your home and one another." : "Giỏ sáng bên hiên, món theo mùa để sẻ chia và bàn tối riêng tư — tất cả giữ bạn ở thật gần căn nhà và những người đồng hành."} image={conceptImages.dining} />
+  return <><PageIntro config={config} locale={locale} eyebrow={locale === "en" ? "Dining at LAKA" : "Ẩm thực tại LAKA"} title={locale === "en" ? "A table that belongs to the stay." : "Một bàn ăn thuộc về kỳ nghỉ."} text={locale === "en" ? "From grilled dishes and shared hot pots by the lake to coffee, fruit tea and a light afternoon snack — the menu is being shaped around time spent together." : "Từ món nướng, lẩu và bữa cơm quây quần bên hồ đến cà phê, trà trái cây và một món ăn nhẹ giữa chiều — danh mục món được xây dựng quanh thời gian ở bên nhau."} image={conceptImages.dining} />
     <TemplateDiningAndOccasions locale={locale} /></>;
 }
 

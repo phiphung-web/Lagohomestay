@@ -118,7 +118,12 @@ export const stayZones: StayZone[] = [
   }
 ];
 
-const sharedIncluded = ["Tư vấn chọn căn theo quy mô đoàn", "Hỗ trợ trực tiếp qua điện thoại và Zalo"];
+const sharedIncluded = [
+  "Bể bơi Bốn Mùa theo điều kiện vận hành",
+  "Trà, cà phê và nước uống theo tiêu chuẩn tại phòng",
+  "Internet và truyền hình cáp",
+  "Hỗ trợ trực tiếp qua điện thoại và Zalo"
+];
 
 export const stays: Stay[] = [
   {
@@ -126,18 +131,18 @@ export const stays: Stay[] = [
     unitId: "unit-001",
     slug: "nha-ben-ho",
     name: "Nhà Bên Hồ",
-    subtitle: "Guest House 001 · 15–20 khách",
-    description: "Căn nhà lớn bên hồ dành cho gia đình, nhóm bạn hoặc đoàn muốn ở cùng nhau và nhìn trọn mặt nước.",
-    longDescription: "Guest House 001 là căn nhà lớn có toàn cảnh hồ, được định hướng cho đoàn 15–20 khách. Đây là lựa chọn cho những chuyến đi cần một không gian chung đủ rộng để mọi người thực sự ở cạnh nhau.",
+    subtitle: "Guest House 001 · tối đa 10 khách",
+    description: "Căn nhà tập thể bên hồ với năm giường cỡ vừa, dành cho gia đình hoặc nhóm bạn muốn ở cùng nhau và nhìn trọn mặt nước.",
+    longDescription: "Guest House 001 nằm ngay bên hồ lớn, nơi mỗi sớm mai mở mắt là thấy đồi núi và rừng thông trải dài trước mặt. Không gian 35 m² với năm giường cỡ vừa vừa cho tối đa 10 người cùng quây quần.",
     image: conceptImages.hero,
     gallery: [conceptImages.detail3, conceptImages.detail1, conceptImages.table],
-    maxGuests: 20, baseGuests: 15, bedrooms: 0, beds: 0, bathrooms: 0, area: 0, basePrice: 0,
-    amenities: ["Toàn cảnh hồ", "Không gian dành cho đoàn đông", "Vị trí bên hồ"],
-    highlights: ["15–20 khách", "Full view hồ", "Dành cho đoàn"],
+    maxGuests: 10, baseGuests: 10, bedrooms: 0, beds: 5, bathrooms: 1, area: 35, basePrice: 0,
+    amenities: ["Năm giường cỡ vừa", "Nhà vệ sinh khép kín", "Điều hòa, quạt và ấm siêu tốc", "Máy sấy tóc", "Tủ quần áo"],
+    highlights: ["Tối đa 10 khách", "Đối diện hồ lớn", "Năm giường cỡ vừa"],
     idealFor: ["Gia đình nhiều thế hệ", "Nhóm bạn đông", "Đoàn công ty"],
     included: sharedIncluded,
-    stayNotes: ["Mã căn 001", "Sơ đồ phòng, tiện nghi và giá đang chờ LAKA xác nhận"],
-    mood: "friends", location: "Bên hồ", badge: "Cho đoàn 15–20 khách", accent: "#9a7550", zoneId: "zone-lake"
+    stayNotes: ["Mã căn 001", "Tình trạng phục vụ được LAKA xác nhận trực tiếp"],
+    mood: "friends", location: "Bên hồ", badge: "Cho nhóm tối đa 10 khách", accent: "#9a7550", zoneId: "zone-lake"
   },
   {
     id: "stay-bungalow",
@@ -145,16 +150,16 @@ export const stays: Stay[] = [
     slug: "bungalow-ben-ho",
     name: "Bungalow Bên Hồ",
     subtitle: "Bungalow 002–003 · 6–7 khách/căn",
-    description: "Hai bungalow lớn có gác xép và hai khung cửa kính rộng, đưa hồ và cảnh quan vào trong căn.",
-    longDescription: "Bungalow 002 và 003 là hai căn bungalow lớn có gác xép, sức chứa 6–7 khách mỗi căn. Hai cửa kính lớn tạo nên những khung nhìn rộng, phù hợp gia đình hoặc nhóm bạn nhỏ muốn ở gần hồ.",
+    description: "Hai bungalow gỗ sáng màu có gác xép, nằm đối diện hồ lớn và vừa vặn cho nhóm 5–7 người.",
+    longDescription: "Bungalow 002 và 003 là hai căn hai tầng với một gác xép, nằm ngay đối diện hồ lớn. Mỗi căn rộng 15 m², có hai giường cỡ lớn và đủ gần thiên nhiên cho một nhóm 5–7 người cùng tận hưởng những ngày thong thả.",
     image: conceptImages.detail1,
     gallery: [conceptImages.detail1, conceptImages.detail2, conceptImages.hero],
-    maxGuests: 7, baseGuests: 6, bedrooms: 0, beds: 0, bathrooms: 0, area: 0, basePrice: 0,
-    amenities: ["Gác xép", "Hai cửa kính lớn", "Không gian bungalow rộng"],
-    highlights: ["6–7 khách/căn", "Có gác xép", "Hai khung kính lớn"],
+    maxGuests: 7, baseGuests: 5, bedrooms: 0, beds: 2, bathrooms: 1, area: 15, basePrice: 0,
+    amenities: ["Một gác xép", "Hai giường cỡ lớn", "Nhà vệ sinh khép kín", "Điều hòa, quạt và ấm siêu tốc", "Máy sấy tóc"],
+    highlights: ["5–7 khách/căn", "Có gác xép", "Đối diện hồ lớn"],
     idealFor: ["Gia đình", "Nhóm bạn 6–7 người", "Chuyến đi cuối tuần"],
     included: sharedIncluded,
-    stayNotes: ["Hai căn: 002 và 003", "Tiện nghi chi tiết và giá đang chờ LAKA xác nhận"],
+    stayNotes: ["Hai căn: 002 và 003", "Tình trạng phục vụ được LAKA xác nhận trực tiếp"],
     mood: "family", location: "Bên hồ", badge: "Bungalow có gác xép", accent: "#b1845b", zoneId: "zone-lake"
   },
   {
@@ -167,12 +172,12 @@ export const stays: Stay[] = [
     longDescription: "Cabin An Trú gồm Lake Suite 004 và 005. Mỗi căn có một khung cửa kính như một bức tranh hướng về cảnh quan, ưu tiên cảm giác an trú, yên tĩnh và riêng tư.",
     image: conceptImages.detail2,
     gallery: [conceptImages.detail2, conceptImages.detail3, conceptImages.hero],
-    maxGuests: 0, baseGuests: 0, bedrooms: 0, beds: 0, bathrooms: 0, area: 0, basePrice: 0,
-    amenities: ["Một khung kính ngắm cảnh", "Không gian yên tĩnh", "Vị trí riêng tư"],
+    maxGuests: 0, baseGuests: 0, bedrooms: 0, beds: 1, bathrooms: 1, area: 25, basePrice: 0,
+    amenities: ["Một khung kính ngắm cảnh", "Giường ngủ lớn", "Nhà vệ sinh khép kín", "Điều hòa, quạt và ấm siêu tốc", "Bàn ghế ngoài trời"],
     highlights: ["Hai Lake Suite", "Một khung kính", "Yên tĩnh, riêng tư"],
     idealFor: ["Cặp đôi", "Kỳ nghỉ riêng tư", "Người muốn chậm lại"],
     included: sharedIncluded,
-    stayNotes: ["Hai căn: 004 và 005", "Sức chứa, tiện nghi và giá đang chờ LAKA xác nhận"],
+    stayNotes: ["Hai căn: 004 và 005", "Sức chứa đang được LAKA xác nhận trực tiếp"],
     mood: "couple", location: "Hướng hồ", badge: "Khung cảnh an trú", accent: "#8b7563", zoneId: "zone-lake"
   },
   {
@@ -185,12 +190,12 @@ export const stays: Stay[] = [
     longDescription: "Cabin Khoảng Trời gồm sáu Forest Lake Suite, từ 006 đến 011. Mỗi căn có một mặt kính toàn phần để tạo cảm giác rộng, thoáng và giữ trọn khoảng trời trước mắt.",
     image: conceptImages.cloud,
     gallery: [conceptImages.cloud, conceptImages.forest, conceptImages.hero],
-    maxGuests: 0, baseGuests: 0, bedrooms: 0, beds: 0, bathrooms: 0, area: 0, basePrice: 0,
-    amenities: ["Một mặt kính toàn phần", "Tầm nhìn rừng và hồ", "Cảm giác rộng và thoáng"],
+    maxGuests: 0, baseGuests: 0, bedrooms: 0, beds: 1, bathrooms: 1, area: 25, basePrice: 0,
+    amenities: ["Một mặt kính toàn phần", "Giường ngủ lớn", "Nhà vệ sinh khép kín", "Điều hòa, quạt và ấm siêu tốc", "Bàn ghế ngoài trời"],
     highlights: ["Sáu Forest Lake Suite", "Một tường kính", "Khoảng trời riêng"],
     idealFor: ["Cặp đôi", "Người yêu kiến trúc cabin", "Kỳ nghỉ ngắm cảnh"],
     included: sharedIncluded,
-    stayNotes: ["Sáu căn: 006–011", "Sức chứa, tiện nghi và giá đang chờ LAKA xác nhận"],
+    stayNotes: ["Sáu căn: 006–011", "Sức chứa đang được LAKA xác nhận trực tiếp"],
     mood: "couple", location: "Trong thung lũng", badge: "Một khoảng trời riêng", accent: "#73806b", zoneId: "zone-valley"
   },
   {
@@ -203,12 +208,12 @@ export const stays: Stay[] = [
     longDescription: "Cabin Sum Vầy gồm Cabin Group 012 và 013, sức chứa 14 khách mỗi căn. Hệ giường tầng phục vụ đoàn đông, còn bốn cửa kính giữ căn phòng kết nối với cảnh quan bên ngoài.",
     image: conceptImages.table,
     gallery: [conceptImages.table, conceptImages.detail1, conceptImages.forest],
-    maxGuests: 14, baseGuests: 14, bedrooms: 0, beds: 0, bathrooms: 0, area: 0, basePrice: 0,
-    amenities: ["Hệ giường tầng", "Bốn cửa kính", "Không gian cho nhóm đông"],
+    maxGuests: 14, baseGuests: 14, bedrooms: 0, beds: 7, bathrooms: 1, area: 30, basePrice: 0,
+    amenities: ["Bảy giường tầng", "Nhà vệ sinh khép kín", "Điều hòa, quạt và ấm siêu tốc", "Không gian cho nhóm đông"],
     highlights: ["14 khách/căn", "Hai Cabin Group", "Bốn khung kính"],
     idealFor: ["Nhóm bạn đông", "Đoàn công ty", "Team building"],
     included: sharedIncluded,
-    stayNotes: ["Hai căn: 012 và 013", "Số giường, tiện nghi và giá đang chờ LAKA xác nhận"],
+    stayNotes: ["Hai căn: 012 và 013", "Tình trạng phục vụ được LAKA xác nhận trực tiếp"],
     mood: "friends", location: "Trong thung lũng", badge: "Cho nhóm 14 khách", accent: "#9b6f50", zoneId: "zone-valley"
   },
   {
@@ -221,12 +226,12 @@ export const stays: Stay[] = [
     longDescription: "Cabin Vô Cực gồm bốn Forest Lake Bathtub Suite, từ 014 đến 017. Hai mặt kính toàn phần tạo góc nhìn 180° và cảm giác mở vô cực; đây cũng là dòng suite được định danh có bồn tắm trong tài liệu LAKA.",
     image: conceptImages.hill,
     gallery: [conceptImages.hill, conceptImages.detail2, conceptImages.cloud],
-    maxGuests: 0, baseGuests: 0, bedrooms: 0, beds: 0, bathrooms: 0, area: 0, basePrice: 0,
-    amenities: ["Hai mặt kính toàn phần", "Góc nhìn 180°", "Dòng suite có bồn tắm"],
+    maxGuests: 0, baseGuests: 0, bedrooms: 0, beds: 1, bathrooms: 1, area: 25, basePrice: 0,
+    amenities: ["Hai mặt kính toàn phần", "Góc nhìn 180°", "Bồn tắm ngâm riêng tư", "Nhà vệ sinh khép kín", "Bàn ghế ngoài trời"],
     highlights: ["Bốn Bathtub Suite", "View 180°", "Hai tường kính"],
     idealFor: ["Cặp đôi", "Kỳ nghỉ kỷ niệm", "Người ưu tiên tầm nhìn"],
     included: sharedIncluded,
-    stayNotes: ["Bốn căn: 014–017", "Sức chứa, loại bồn tắm và giá đang chờ LAKA xác nhận"],
+    stayNotes: ["Bốn căn: 014–017", "Sức chứa đang được LAKA xác nhận trực tiếp"],
     mood: "couple", location: "Rừng & hồ", badge: "Góc nhìn 180°", accent: "#7d8874", zoneId: "zone-valley"
   },
   {
@@ -244,7 +249,7 @@ export const stays: Stay[] = [
     highlights: ["1–2 khách/căn", "Hai Eco Camp", "Nép dưới rừng thông"],
     idealFor: ["Một người", "Cặp đôi", "Người thích trải nghiệm mộc"],
     included: sharedIncluded,
-    stayNotes: ["Hai căn: 018 và 019", "Tiện nghi, khu vệ sinh và giá đang chờ LAKA xác nhận"],
+    stayNotes: ["Hai căn: 018 và 019", "Tiện nghi chi tiết đang được LAKA xác nhận trực tiếp"],
     mood: "retreat", location: "Rừng thông", badge: "Ở gần rừng nhất", accent: "#667b63", zoneId: "zone-hill"
   },
   {
@@ -258,11 +263,11 @@ export const stays: Stay[] = [
     image: conceptImages.hill,
     gallery: [conceptImages.hill, conceptImages.cloud, conceptImages.hero],
     maxGuests: 20, baseGuests: 15, bedrooms: 0, beds: 0, bathrooms: 0, area: 0, basePrice: 0,
-    amenities: ["Vị trí biệt lập trên đỉnh đồi", "Toàn cảnh thung lũng, hồ và núi", "Không gian cho đoàn đông"],
+    amenities: ["Một phòng ngủ và một phòng khách", "Năm giường cỡ vừa", "Nhà vệ sinh khép kín", "Tivi và sofa", "Sân lớn ngoài trời"],
     highlights: ["15–20 khách", "Villa Top Hill", "View toàn thung lũng"],
     idealFor: ["Đoàn công ty", "Gia đình lớn", "Nhóm bạn đông"],
     included: sharedIncluded,
-    stayNotes: ["Một căn: 020", "Sơ đồ phòng, tiện nghi và giá đang chờ LAKA xác nhận"],
+    stayNotes: ["Một căn: 020", "Sức chứa và tình trạng phục vụ được LAKA xác nhận trực tiếp"],
     mood: "friends", location: "Đỉnh đồi", badge: "Toàn cảnh LAKA", accent: "#a7674d", zoneId: "zone-hill"
   }
 ];

@@ -19,8 +19,8 @@ import type { ShowcaseLocale } from "@/features/showcase/i18n/locale";
 type LocalizedText = { vi: string; en: string };
 
 export const demoNotice: LocalizedText = {
-  vi: "Thông tin tên căn, mã căn, sức chứa đã nêu, địa chỉ và hệ tiện ích được cập nhật từ tài liệu LAKA. Hình ảnh, giá, thực đơn, giờ vận hành và chính sách chi tiết vẫn chờ xác nhận.",
-  en: "Accommodation names, unit codes, stated capacities, address and facility plan come from LAKA's material. Images, prices, menus, operating hours and detailed policies still await confirmation."
+  vi: "Thông tin tên căn, mã căn, sức chứa đã nêu, địa chỉ, hệ tiện ích và nhóm món được cập nhật từ tài liệu LAKA. Hình ảnh và một số thông tin vận hành vẫn đang được hoàn thiện.",
+  en: "Accommodation names, unit codes, stated capacities, address, facilities and menu categories come from LAKA's material. Imagery and selected operating details are still being completed."
 };
 
 export const lakaExperiences = [
@@ -73,14 +73,14 @@ export const diningStories = [
     icon: UtensilsCrossed,
     kicker: { vi: "Bên mặt nước", en: "By the water" },
     title: { vi: "Nhà Hàng Ven Hồ", en: "Lakeside Restaurant" },
-    text: { vi: "Nhà hàng nhìn ra hồ và núi, là điểm ăn uống chính trong bản đồ tiện ích LAKA. Thực đơn và giá đang được hoàn thiện.", en: "The main dining venue in LAKA's facility map, overlooking lake and mountains. Menu and prices are being finalised." },
+    text: { vi: "Nhà hàng nhìn ra hồ và núi, với các nhóm món khai vị, đồ nướng, lẩu và món nhà để cả bàn cùng sẻ chia.", en: "The main dining venue overlooks the lake and mountains, with starters, grilled dishes, hot pots and familiar plates made for sharing." },
     image: conceptImages.dining
   },
   {
     icon: Coffee,
     kicker: { vi: "Núi, mây & thông", en: "Mountain, cloud and pine" },
-    title: { vi: "Tiệm Cà Phê Tầng Mây", en: "Tang May Coffee Shop" },
-    text: { vi: "Tiệm cà phê nhiều tầng đối diện hồ, mở tầm nhìn về núi, mây và rừng thông.", en: "A terraced coffee shop facing the lake, with views of mountains, clouds and pine forest." },
+    title: { vi: "Café LAKA", en: "LAKA Café" },
+    text: { vi: "Một khoảng nghỉ với cà phê, cold brew, trà trái cây, matcha và món ăn nhẹ giữa cảnh hồ, núi và rừng thông.", en: "A pause for coffee, cold brew, fruit tea, matcha and light snacks among views of lake, mountains and pine forest." },
     image: conceptImages.breakfast
   },
   {

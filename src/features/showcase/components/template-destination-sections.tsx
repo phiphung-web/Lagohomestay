@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { ArrowRight, Plus } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import {
   diningStories,
   guestServices,
@@ -9,6 +9,7 @@ import {
   sharedFacilities,
   specialMoments
 } from "@/features/showcase/data/laka-demo-content";
+import { diningMenuVenues } from "@/features/showcase/data/dining-menu";
 import { conceptImages } from "@/features/stays/data/demo-data";
 import type { ShowcaseLocale } from "@/features/showcase/i18n/locale";
 
@@ -33,18 +34,6 @@ export function TemplateExperienceCatalog({ locale }: { locale: ShowcaseLocale }
 }
 
 export function TemplateDiningAndOccasions({ locale }: { locale: ShowcaseLocale }) {
-  const menus = locale === "en"
-    ? [
-      ["Fresh bread and preserves", "Seasonal fruit", "Warm dish of the day", "Coffee or tea"],
-      ["Seasonal starter", "Shared local main dishes", "Rice and vegetables", "Light dessert"],
-      ["Private table styling", "Menu agreed in advance", "Cake or flowers on request", "Quiet-hours guidance"]
-    ]
-    : [
-      ["Bánh mới và mứt", "Trái cây theo mùa", "Món nóng trong ngày", "Cà phê hoặc trà"],
-      ["Món mở đầu theo mùa", "Món địa phương để sẻ chia", "Cơm và rau", "Tráng miệng nhẹ"],
-      ["Sắp đặt bàn riêng", "Thực đơn thống nhất trước", "Bánh hoặc hoa theo yêu cầu", "Lưu ý về giờ yên tĩnh"]
-    ];
-
   return (
     <>
       <section className="mx-auto w-[min(1380px,calc(100%-40px))] py-20 sm:py-28">
@@ -73,22 +62,50 @@ export function TemplateDiningAndOccasions({ locale }: { locale: ShowcaseLocale 
                   </div>
                   <h3 className="mt-6 font-serif text-5xl font-medium leading-[.98] tracking-[-.045em] sm:text-6xl">{inLocale(item.title, locale)}</h3>
                   <p className="mt-7 max-w-lg text-base leading-8 text-[#16311c]/65">{inLocale(item.text, locale)}</p>
-                  <details className="group/menu mt-9 border-y border-[#16311c]/15">
-                    <summary className="focus-ring flex min-h-16 cursor-pointer list-none items-center justify-between text-xs font-bold uppercase tracking-[.12em]">
-                      {locale === "en" ? "See an illustrative menu" : "Xem gợi ý thực đơn"}
-                      <span className="grid h-10 w-10 place-items-center rounded-full border border-[#16311c]/16 transition group-open/menu:rotate-45"><Plus className="h-4 w-4" /></span>
-                    </summary>
-                    <ul className="grid gap-3 border-t border-[#16311c]/12 py-6 text-sm text-[#16311c]/65 sm:grid-cols-2">
-                      {menus[index].map((menu) => <li key={menu} className="border-l border-[#80613f]/45 pl-3">{menu}</li>)}
-                    </ul>
-                  </details>
+                  <p className="mt-9 border-y border-[#16311c]/15 py-5 text-xs font-bold uppercase tracking-[.12em] text-[#80613f]">
+                    {index < 2
+                      ? (locale === "en" ? "Explore the menu preview below" : "Xem trước danh mục món bên dưới")
+                      : (locale === "en" ? "Details are being completed" : "Thông tin đang được hoàn thiện")}
+                  </p>
                 </div>
               </article>
             );
           })}
         </div>
 
-        <p className="mt-8 max-w-2xl text-[13px] leading-6 text-[#16311c]/72">{locale === "en" ? "Menus and services are illustrative while LAKA is being completed. Final ingredients, prices and operating hours will be confirmed before opening." : "Thực đơn và dịch vụ đang là nội dung minh họa trong giai đoạn LAKA hoàn thiện. Nguyên liệu, giá và khung giờ chính thức sẽ được xác nhận trước khi mở cửa."}</p>
+        <section className="mt-20 border-t border-[#16311c]/15 pt-14 sm:mt-28 sm:pt-20">
+          <div className="grid gap-7 lg:grid-cols-[.42fr_1fr] lg:items-end">
+            <div>
+              <p className="text-[.62rem] font-bold uppercase tracking-[.2em] text-[#80613f]">{locale === "en" ? "Menu preview" : "Danh mục món dự kiến"}</p>
+              <p className="mt-5 max-w-sm text-sm leading-7 text-[#16311c]/62">{locale === "en" ? "A content preview for exploring the dining experience. Availability and final details are confirmed directly by LAKA." : "Bản xem trước nội dung để hình dung trải nghiệm ẩm thực. Tình trạng phục vụ và thông tin chính thức được LAKA xác nhận trực tiếp."}</p>
+            </div>
+            <h2 className="max-w-5xl font-serif text-5xl font-medium leading-[.94] tracking-[-.05em] sm:text-7xl">{locale === "en" ? <>From the lakeside kitchen<br /><i>to an afternoon coffee.</i></> : <>Từ bếp bên hồ<br /><i>đến một buổi cà phê.</i></>}</h2>
+          </div>
+
+          <div className="mt-14 space-y-16 sm:mt-20 sm:space-y-24">
+            {diningMenuVenues.map((venue, venueIndex) => <article key={venue.id} className="grid gap-9 border-t border-[#16311c]/15 pt-8 lg:grid-cols-[.36fr_1fr] lg:gap-14">
+              <header className="lg:sticky lg:top-28 lg:self-start">
+                <span className="text-[.58rem] font-bold tracking-[.16em] text-[#80613f]">0{venueIndex + 1}</span>
+                <p className="mt-5 text-[.58rem] font-bold uppercase tracking-[.18em] text-[#80613f]">{inLocale(venue.eyebrow, locale)}</p>
+                <h3 className="mt-4 font-serif text-4xl font-medium leading-tight sm:text-5xl">{inLocale(venue.title, locale)}</h3>
+                <p className="mt-5 max-w-md text-sm leading-7 text-[#16311c]/62">{inLocale(venue.introduction, locale)}</p>
+              </header>
+              <div className="grid gap-x-7 gap-y-9 sm:grid-cols-2">
+                {venue.groups.map((group) => <section key={group.title.vi} className="border-t border-[#16311c]/15 pt-5">
+                  <h4 className="text-[.62rem] font-bold uppercase tracking-[.16em] text-[#80613f]">{inLocale(group.title, locale)}</h4>
+                  <ul className="mt-5 divide-y divide-[#16311c]/10">
+                    {group.items.map((menuItem) => <li key={menuItem.vi} className="flex min-h-12 items-center justify-between gap-4 py-3 text-sm leading-6 text-[#16311c]/76">
+                      <span>{inLocale(menuItem, locale)}</span>
+                      <span aria-hidden="true" className="h-1 w-1 shrink-0 rounded-full bg-[#80613f]/50" />
+                    </li>)}
+                  </ul>
+                </section>)}
+              </div>
+            </article>)}
+          </div>
+
+          <p className="mt-14 max-w-2xl border-l border-[#80613f]/45 pl-4 text-[13px] leading-6 text-[#16311c]/62">{locale === "en" ? "This preview intentionally excludes prices and internal operating notes. LAKA will confirm the available selection directly." : "Bản xem trước chủ động không hiển thị giá và ghi chú vận hành nội bộ. LAKA sẽ xác nhận danh mục đang phục vụ qua kênh liên hệ trực tiếp."}</p>
+        </section>
       </section>
     </>
   );

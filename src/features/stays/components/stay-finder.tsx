@@ -5,7 +5,6 @@ import Link from "next/link";
 import { ArrowRight, Check, Heart, Leaf, Mountain, Sparkles, Users, Waves } from "lucide-react";
 import { useMemo, useState } from "react";
 import type { Stay, StayMood } from "@/features/stays/data/demo-data";
-import { formatCurrency } from "@/shared/lib/format";
 
 type Vibe = "water" | "private" | "forest" | "view";
 
@@ -24,10 +23,10 @@ const vibes: Array<{ value: Vibe; label: string; icon: typeof Waves }> = [
 ];
 
 const vibeStay: Record<Vibe, string[]> = {
-  water: ["lago-house"],
-  private: ["nha-may", "nha-rung"],
-  forest: ["nha-rung", "nha-may"],
-  view: ["nha-doi", "lago-house"]
+  water: ["nha-ben-ho", "cabin-an-tru"],
+  private: ["cabin-an-tru", "nha-thong-reo"],
+  forest: ["nha-thong-reo", "cabin-khoang-troi"],
+  view: ["nha-tren-doi", "cabin-vo-cuc"]
 };
 
 export function StayFinder({ stays }: { stays: Stay[] }) {
@@ -64,7 +63,7 @@ export function StayFinder({ stays }: { stays: Stay[] }) {
         <div className="absolute inset-x-0 bottom-0 p-6 sm:p-9 lg:p-11">
           <span className="inline-flex items-center gap-2 rounded-full bg-white px-3 py-1.5 text-[.62rem] font-bold uppercase tracking-wider text-lago-ink"><Check className="h-3.5 w-3.5" /> Phù hợp nhất</span>
           <p className="mt-5 text-xs font-semibold text-lago-sand">Cho {journeyLabel} · {recommended.location}</p>
-          <div className="mt-2 flex flex-wrap items-end justify-between gap-4"><h4 className="display text-5xl font-semibold sm:text-6xl">{recommended.name}</h4><p className="text-sm text-white/65">Từ <strong className="text-lg text-white">{formatCurrency(recommended.basePrice)}</strong></p></div>
+          <div className="mt-2 flex flex-wrap items-end justify-between gap-4"><h4 className="display text-5xl font-semibold sm:text-6xl">{recommended.name}</h4><p className="text-sm font-bold text-lago-sand">Liên hệ LAKA để được tư vấn</p></div>
           <p className="mt-4 max-w-xl text-sm leading-6 text-white/68">{recommended.description}</p>
           <div className="mt-6 flex flex-col gap-3 sm:flex-row"><Link href={`/luu-tru/${recommended.slug}`} className="btn-light">Khám phá căn này <ArrowRight className="h-4 w-4" /></Link><Link href={`/dat-phong?stay=${recommended.slug}&guests=${guests}`} className="focus-ring inline-flex min-h-12 items-center justify-center rounded-full border border-white/25 px-5 text-sm font-bold backdrop-blur transition hover:bg-white/10"><Users className="mr-2 h-4 w-4" /> Xem lịch cho {guests} khách</Link></div>
         </div>

@@ -26,13 +26,13 @@ export function HomeBrandStory({ basePath, locale = "vi" }: { basePath: string; 
           <div className="mt-9 grid gap-6 border-t border-[#16311c]/16 pt-7 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
             <p className="text-base leading-8 text-[#16311c]/68">
               {en
-                ? "The LAKA logo is inspired by mountains, pine forest, cabins and the window frame through which the landscape first appears."
-                : "Logo LAKA được lấy cảm hứng từ ngọn núi, rừng thông, cabin và khung cửa — những hình ảnh thật hiện ra trong thung lũng."}
+                ? "At LAKA, the valley's untouched beauty is held in every window frame, letting each cabin bring you closer to nature."
+                : "Tại LAKA, vẻ đẹp nguyên sơ của thung lũng được lưu giữ qua từng khung kính — mỗi cabin là một góc nhìn để bạn chạm gần hơn vào thiên nhiên."}
             </p>
             <p className="text-base leading-8 text-[#16311c]/68">
               {en
-                ? "Its mission is to preserve untouched beauty through every frame, creating a place where the truest connections can begin."
-                : "Sứ mệnh của LAKA là lưu giữ vẻ đẹp nguyên sơ qua từng khung kính, nơi khởi nguồn cho những kết nối chân thật nhất."}
+                ? "The fullest moments happen together: a paddle on the lake, a lively game, a quiet pause by the pool or a story that carries on beside the barbecue."
+                : "Sự trọn vẹn còn nằm trong những khoảnh khắc cùng nhau: một nhịp chèo trên hồ, một trận pickleball đầy tiếng cười, phút thảnh thơi bên hồ bơi hay câu chuyện kéo dài bên bếp BBQ."}
             </p>
           </div>
           <Link href={`${basePath}/ve-laka`} className="focus-ring group mt-9 inline-flex min-h-12 items-center gap-3 border-b border-[#16311c]/35 text-xs font-bold uppercase tracking-[.12em]">

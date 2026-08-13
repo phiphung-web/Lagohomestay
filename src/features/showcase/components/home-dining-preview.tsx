@@ -15,7 +15,7 @@ export function HomeDiningPreview({ basePath, locale = "vi" }: { basePath: strin
           <div>
             <p className="text-[.62rem] font-bold uppercase tracking-[.22em] text-[#80613f]">{en ? "Dining at LAKA" : "Ẩm thực tại LAKA"}</p>
             <p className="mt-5 max-w-sm text-sm leading-7 text-[#16311c]/58">
-              {en ? "Not a formal restaurant ritual, but warm food placed in the middle for everyone to share." : "Không phải một nghi thức nhà hàng cầu kỳ, mà là món ăn ấm được đặt giữa bàn để mọi người cùng sẻ chia."}
+              {en ? "The lakeside kitchen, LAKA Café and a menu made for sharing turn food and drink into another way to spend time together." : "Bếp bên hồ, Café LAKA và những nhóm món để sẻ chia biến chuyện ăn uống thành một cách khác để mọi người ở bên nhau."}
             </p>
           </div>
           <h2 className="max-w-5xl font-serif text-[clamp(3.2rem,7vw,6.8rem)] font-medium leading-[.92] tracking-[-.055em]">
@@ -44,7 +44,7 @@ export function HomeDiningPreview({ basePath, locale = "vi" }: { basePath: strin
         </div>
 
         <Link href={`${basePath}/am-thuc`} className="focus-ring group mt-10 inline-flex min-h-12 items-center gap-3 border-b border-[#16311c]/35 text-xs font-bold uppercase tracking-[.12em]">
-          {en ? "Explore the dining story" : "Khám phá câu chuyện ẩm thực"}
+          {en ? "Explore the spaces and menu" : "Khám phá không gian và danh mục món"}
           <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
         </Link>
       </div>

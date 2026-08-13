@@ -5,7 +5,6 @@ import Link from "next/link";
 import { ArrowUpRight, BedDouble, MapPin, SlidersHorizontal, Users } from "lucide-react";
 import { useMemo, useState } from "react";
 import type { Stay, StayMood } from "@/features/stays/data/demo-data";
-import { formatCurrency } from "@/shared/lib/format";
 
 const filters: Array<{ value: "all" | StayMood; label: string }> = [
   { value: "all", label: "Tất cả căn" },
@@ -35,9 +34,9 @@ export function StayExplorer({ stays, compact = false }: { stays: Stay[]; compac
             <div className="absolute bottom-5 left-5 flex items-center gap-2 text-xs font-semibold text-white"><MapPin className="h-4 w-4 text-lago-sand" />{stay.location}</div>
           </div>
           <div className="p-6 sm:p-7">
-            <p className="eyebrow text-lago-moss">{stay.subtitle}</p><div className="mt-2 flex items-start justify-between gap-5"><h3 className="display text-3xl font-semibold sm:text-4xl">{stay.name}</h3><p className="shrink-0 text-right text-xs text-lago-ink/45">Từ<br /><strong className="text-base text-lago-ink">{formatCurrency(stay.basePrice)}</strong></p></div>
+            <p className="eyebrow text-lago-moss">{stay.subtitle}</p><div className="mt-2 flex items-start justify-between gap-5"><h3 className="display text-3xl font-semibold sm:text-4xl">{stay.name}</h3><p className="shrink-0 text-right text-xs font-bold text-lago-clay">Tư vấn<br />trực tiếp</p></div>
             <p className="mt-4 line-clamp-2 text-sm leading-6 text-lago-ink/58">{stay.description}</p>
-            <div className="mt-5 flex flex-wrap gap-x-5 gap-y-2 border-t border-lago-ink/10 pt-5 text-xs font-semibold text-lago-ink/58"><span className="flex items-center gap-1.5"><Users className="h-4 w-4" />{stay.maxGuests} khách</span><span className="flex items-center gap-1.5"><BedDouble className="h-4 w-4" />{stay.bedrooms} phòng ngủ</span>{stay.highlights.slice(0, 1).map((item) => <span key={item} className="text-lago-clay">· {item}</span>)}</div>
+            <div className="mt-5 flex flex-wrap gap-x-5 gap-y-2 border-t border-lago-ink/10 pt-5 text-xs font-semibold text-lago-ink/58">{stay.maxGuests > 0 && <span className="flex items-center gap-1.5"><Users className="h-4 w-4" />{stay.maxGuests} khách</span>}{stay.bedrooms > 0 && <span className="flex items-center gap-1.5"><BedDouble className="h-4 w-4" />{stay.bedrooms} phòng ngủ</span>}{stay.highlights.slice(0, 1).map((item) => <span key={item} className="text-lago-clay">· {item}</span>)}</div>
           </div>
         </Link>
       </article>)}

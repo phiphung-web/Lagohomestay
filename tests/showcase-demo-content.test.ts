@@ -8,6 +8,7 @@ import {
   specialMoments
 } from "@/features/showcase/data/laka-demo-content";
 import { showcaseFaqs } from "@/features/showcase/data/showcase-content";
+import { diningMenuVenues } from "@/features/showcase/data/dining-menu";
 import { englishFaqs } from "@/features/showcase/i18n/showcase-copy";
 import { getUnitsForStay, stays, stayUnits, stayZones } from "@/features/stays/data/demo-data";
 
@@ -44,6 +45,25 @@ describe("LAKA presentation content", () => {
     expect(stays.every((stay) => stayZones.some((zone) => zone.id === stay.zoneId))).toBe(true);
     expect(stayUnits.every((unit) => stays.some((stay) => stay.id === unit.stayId))).toBe(true);
     expect(stayUnits.every((unit) => unit.position.length > 0 && unit.character.length > 0)).toBe(true);
+  });
+
+  it("uses the latest verified accommodation details without publishing rates", () => {
+    const guestHouse = stays.find((stay) => stay.slug === "nha-ben-ho")!;
+    const bungalow = stays.find((stay) => stay.slug === "bungalow-ben-ho")!;
+
+    expect(guestHouse).toMatchObject({ maxGuests: 10, beds: 5, bathrooms: 1, area: 35, basePrice: 0 });
+    expect(bungalow).toMatchObject({ maxGuests: 7, beds: 2, bathrooms: 1, area: 15, basePrice: 0 });
+    expect(stays.flatMap((stay) => stay.stayNotes).join(" ").toLowerCase()).not.toContain("giá");
+  });
+
+  it("builds restaurant and cafe menu layouts without prices or internal notes", () => {
+    expect(diningMenuVenues.map((venue) => venue.id)).toEqual(["restaurant", "cafe"]);
+    expect(diningMenuVenues.every((venue) => venue.groups.length >= 4)).toBe(true);
+
+    const publicMenuText = JSON.stringify(diningMenuVenues).toLowerCase();
+    expect(publicMenuText).not.toMatch(/giá bán|price|người phụ trách|tham khảo|đang tuyển|số điện thoại/);
+    expect(publicMenuText).toContain("gà đồi nướng");
+    expect(publicMenuText).toContain("cold brew");
   });
 
   it("does not present illustrative stories as verified guest reviews", () => {

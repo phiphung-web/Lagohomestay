@@ -25,7 +25,7 @@ export const showcaseFaqs = [
   ["Những căn nào đã có sức chứa được xác nhận?", "Guest House 001 và Villa Top Hill 020 dành cho 15–20 khách; Bungalow 002–003 dành cho 6–7 khách/căn; Cabin Group 012–013 dành cho 14 khách/căn; Eco Camp 018–019 dành cho 1–2 khách/căn. Sức chứa các suite còn lại đang chờ xác nhận."],
   ["Hình ảnh trên website đã là ảnh thực tế LAKA chưa?", "Hình ảnh hiện tại được gắn nhãn minh họa concept. Ảnh thi công và ảnh không gian hoàn thiện của chính LAKA sẽ thay thế theo từng giai đoạn."],
   ["Tại LAKA có thể trải nghiệm gì?", "Kế hoạch của LAKA có thuyền đạp nước, kayak, bể bơi bốn mùa, sân pickleball, hát, săn mây và hoạt động team building. Khung giờ vận hành cùng chi phí nếu có vẫn cần được xác nhận."],
-  ["LAKA có dịch vụ ăn uống không?", "Mặt bằng tiện ích có Nhà Hàng Ven Hồ, Tiệm Cà Phê Tầng Mây và Quầy Bar Hiên Gió. Thực đơn, giá và giờ mở cửa đang được đội ngũ vận hành hoàn thiện."],
+  ["LAKA có dịch vụ ăn uống không?", "LAKA có Nhà Hàng Ven Hồ, Café LAKA và Quầy Bar Hiên Gió. Website đang giới thiệu trước các nhóm món dự kiến; tình trạng phục vụ và thông tin chính thức được xác nhận trực tiếp."],
   ["Có thể đặt phòng trực tiếp trên website chưa?", "Website hiện tiếp nhận yêu cầu tư vấn. LAKA sẽ xác nhận căn phù hợp, lịch trống, giá và điều kiện đặt cọc trực tiếp qua điện thoại hoặc Zalo trước khi hình thành booking."],
-  ["Thông tin nào vẫn cần LAKA xác nhận?", "Giá, sơ đồ phòng chi tiết, tiện nghi trong từng căn, giờ nhận/trả căn, chính sách vật nuôi, đổi hủy và phí của một số dịch vụ chưa được công bố như dữ kiện chính thức."]
+  ["Thông tin nào vẫn cần LAKA xác nhận?", "Sơ đồ phòng chi tiết, một số tiện nghi trong từng căn, giờ nhận/trả căn, chính sách vật nuôi, đổi hủy và tình trạng phục vụ vẫn được xác nhận trực tiếp trước chuyến đi."]
 ];
