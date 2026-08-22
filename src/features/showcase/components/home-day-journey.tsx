@@ -22,13 +22,13 @@ export function HomeDayJourney({
             <p className="text-[.62rem] font-bold uppercase tracking-[.22em] text-[#dfc6a5]">
               {en ? "A day at LaKa" : "Một ngày ở LaKa"}
             </p>
-            <p className="mt-5 max-w-sm text-sm leading-7 text-white/52">
+            <p className="mt-5 max-w-sm text-[15px] leading-7 text-white/64 sm:text-base sm:leading-8">
               {en
                 ? "A day at LaKa moves from lively fun to unhurried moments in nature. Explore together, give it everything and take home memories worth keeping."
                 : "Một ngày ở LaKa là hành trình nối dài từ những cuộc vui rộn ràng đến phút thảnh thơi giữa thiên nhiên. Cùng nhau khám phá, cùng nhau hết mình và gom về những kỷ niệm thật đáng nhớ!"}
             </p>
           </div>
-          <h2 className="max-w-5xl font-serif text-[clamp(3.4rem,7.5vw,7.2rem)] font-medium leading-[.9] tracking-[-.06em]">
+          <h2 className="max-w-5xl font-serif text-[clamp(2.6rem,5.5vw,5.2rem)] font-medium leading-[.95] tracking-[-.045em]">
             {en ? (
               <>Today is<br /><i className="text-[#dfc6a5]">just for fun!</i></>
             ) : (
@@ -69,10 +69,10 @@ export function HomeDayJourney({
                     <p className="mt-5 text-[.58rem] font-bold uppercase tracking-[.16em] text-[#dfc6a5]">
                       {en ? experience.meta.en : experience.meta.vi}
                     </p>
-                    <h3 className="mt-3 font-serif text-3xl font-medium sm:text-4xl">
+                    <h3 className="mt-3 font-serif text-2xl font-medium leading-tight sm:text-3xl">
                       {en ? experience.title.en : experience.title.vi}
                     </h3>
-                    <p className="mt-4 text-sm leading-7 text-white/64">
+                    <p className="mt-4 text-[15px] leading-7 text-white/68 sm:text-base sm:leading-8">
                       {en ? experience.text.en : experience.text.vi}
                     </p>
                   </div>

@@ -48,11 +48,11 @@ export function MainHome({ config, locale = "vi" }: { config: CompleteTemplateCo
           <p className="text-[.62rem] font-bold uppercase tracking-[.24em] text-[#dfc6a5]">
             {en ? "Choose a cabin - Hold the whole valley" : '"Chọn" Cabin - "Trọn" Thung Lũng'}
           </p>
-          <h1 className="mt-5 max-w-6xl font-serif text-[clamp(3.6rem,11vw,9rem)] font-medium leading-[.85] tracking-[-.065em]">
+          <h1 className="mt-5 max-w-6xl font-serif text-[clamp(3.25rem,8.5vw,7.5rem)] font-medium leading-[.9] tracking-[-.055em]">
             {en ? <>LaKa - A home<br /><i className="font-normal text-[#dfc6a5]">in the green</i></> : <>LaKa - Nhà giữa<br /><i className="font-normal text-[#dfc6a5]">khoảng xanh</i></>}
           </h1>
           <div className="mt-8 flex items-end justify-between gap-8 border-t border-white/22 pt-6">
-            <p className="max-w-xl text-sm leading-7 text-white/72 sm:text-base sm:leading-8">
+            <p className="max-w-xl text-[15px] leading-7 text-white/72 sm:text-base sm:leading-8">
               {en ? "Untouched beauty held in every window frame, where the truest connections can begin." : "Lưu giữ vẻ đẹp nguyên sơ qua từng khung kính, nơi khởi nguồn cho những kết nối chân thật nhất."}
             </p>
             <a href="#gioi-thieu" className="focus-ring group hidden items-center gap-3 text-[.6rem] font-bold uppercase tracking-[.18em] text-white/65 sm:flex">
@@ -72,11 +72,11 @@ export function MainHome({ config, locale = "vi" }: { config: CompleteTemplateCo
         <div className="mx-auto grid w-[min(1380px,100%)] gap-8 lg:grid-cols-[1fr_.45fr] lg:items-end">
           <div>
             <p className="text-[.62rem] font-bold uppercase tracking-[.22em] text-[#80613f]">{en ? "Memory gallery" : "Thư viện ký ức"}</p>
-            <h2 className="mt-5 max-w-5xl font-serif text-[clamp(3.2rem,7vw,6.6rem)] font-medium leading-[.92] tracking-[-.055em]">
+            <h2 className="mt-5 max-w-5xl font-serif text-[clamp(2.6rem,5.5vw,5.2rem)] font-medium leading-[.95] tracking-[-.045em]">
               {en ? <>Frames to keep<br /><i>the days worth remembering.</i></> : <>Những khung hình lưu lại<br /><i>một ngày thật đáng nhớ.</i></>}
             </h2>
           </div>
-          <p className="max-w-sm text-sm leading-7 text-[#16311c]/58">
+          <p className="max-w-sm text-[15px] leading-7 text-[#16311c]/64 sm:text-base sm:leading-8">
             {en ? "A flexible image grid ready for LAKA's newest memories." : "Khung lưới linh hoạt để LaKa liên tục cập nhật những khoảnh khắc mới nhất."}
           </p>
         </div>

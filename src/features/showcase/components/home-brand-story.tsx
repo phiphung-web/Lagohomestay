@@ -21,12 +21,12 @@ export function HomeBrandStory({ basePath, locale = "vi" }: { basePath: string; 
           <p className="text-[.62rem] font-bold uppercase tracking-[.22em] text-[#80613f]">
             {en ? "Our mission" : "Sứ mệnh"}
           </p>
-          <h2 className="mt-6 max-w-5xl font-serif text-[clamp(2.8rem,5vw,5.4rem)] font-medium leading-[.95] tracking-[-.05em]">
+          <h2 className="mt-6 max-w-5xl font-serif text-[clamp(2.15rem,4vw,4rem)] font-medium leading-[1] tracking-[-.035em]">
             {en ? "Preserving untouched beauty through every window, where the truest connections begin." : "Lưu giữ vẻ đẹp nguyên sơ qua từng khung kính, nơi khởi nguồn cho những kết nối chân thật nhất."}
           </h2>
           </div>
           <div>
-          <p className="mt-9 border-t border-[#16311c]/16 pt-7 text-base leading-8 text-[#16311c]/68">
+          <p className="mt-8 border-t border-[#16311c]/16 pt-7 text-[15px] leading-7 text-[#16311c]/72 sm:text-base sm:leading-8">
             {en
               ? "At LaKa, the valley's untouched beauty is preserved through every window — each cabin offers a view that brings you closer to nature. Yet LaKa is more than a place to look out from. Fulfilment lives in shared moments too: paddling together on the lake, a pickleball game filled with laughter, an unhurried pause beside the infinity pool or stories that linger by the BBQ. Amid untouched beauty, every moment brings us closer."
               : "Tại LaKa, vẻ đẹp nguyên sơ của thung lũng được lưu giữ qua từng khung kính — mỗi cabin là một góc nhìn để bạn chạm gần hơn vào thiên nhiên. Nhưng LaKa không chỉ là nơi để ngắm nhìn. Sự trọn vẹn còn nằm trong những khoảnh khắc cùng nhau: một nhịp chèo trên hồ, một trận pickleball đầy tiếng cười, phút thảnh thơi bên hồ vô cực hay câu chuyện kéo dài bên bếp BBQ. Giữa vẻ đẹp nguyên sơ, từng khoảnh khắc đưa ta gần nhau hơn."}
