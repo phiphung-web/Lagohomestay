@@ -180,7 +180,7 @@ export function TemplateFooter({ config, locale = "vi", storyMode = false, homeM
           <BrandLogo variant="established" decorative className="w-[190px]" />
         </Link>
         <p className="mt-6 max-w-lg font-serif text-2xl leading-9">
-          {locale === "en" ? "A place to return. First, to yourself." : "Một nơi để trở về. Trước hết, với chính mình."}
+          {locale === "en" ? "LaKa - A home in the green." : "LaKa - Nhà giữa khoảng xanh."}
         </p>
       </div>
       <div className="md:text-right">

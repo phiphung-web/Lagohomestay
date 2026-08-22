@@ -26,45 +26,31 @@ export const demoNotice: LocalizedText = {
 export const lakaExperiences = [
   {
     icon: Sunrise,
-    title: { vi: "Săn mây trong thung lũng", en: "Cloud watching in the valley" },
-    text: { vi: "Đón mây, núi và rừng thông trong cùng một khung cảnh tại Thung Lũng Săn Mây.", en: "Meet clouds, mountains and pine forest in one view at LAKA's cloud-watching valley." },
-    meta: { vi: "Tự do · theo thời tiết", en: "Self-guided · weather dependent" },
-    image: conceptImages.cloud
-  },
-  {
-    icon: Waves,
-    title: { vi: "Chèo kayak & đạp nước", en: "Kayaking and pedal boats" },
-    text: { vi: "Những hoạt động trên mặt hồ giúp cặp đôi, gia đình và nhóm bạn cùng chuyển động trong một nhịp.", en: "Activities on the lake help couples, families and friends move together at one pace." },
-    meta: { vi: "Kế hoạch tiện ích · chờ xác nhận vận hành", en: "Facility plan · operation pending" },
-    image: conceptImages.hero
-  },
-  {
-    icon: Bike,
-    title: { vi: "Pickleball Đón Nắng", en: "Sunlit pickleball" },
-    text: { vi: "Một khoảng vận động để thi đấu vui, kết nối nhóm và tạo thêm nhịp sống cho kỳ nghỉ.", en: "A social court for friendly games, group connection and a more active stay." },
-    meta: { vi: "Sân dùng chung · chờ lịch vận hành", en: "Shared court · schedule pending" },
+    title: { vi: "Pickleball Bật Mood", en: "Pickleball Mood On" },
+    text: { vi: "Bắt đầu cuộc vui bằng một trận đấu đầy năng lượng, tiếng cười và những pha bóng kết nối cả nhóm.", en: "Start the fun with an energetic match, plenty of laughter and rallies that bring everyone together." },
+    meta: { vi: "Vận động · kết nối", en: "Active · social" },
     image: conceptImages.hill
   },
   {
     icon: Waves,
-    title: { vi: "Bể Bơi Bốn Mùa", en: "Four-season pool" },
-    text: { vi: "Không gian bơi chung nằm trong hệ tiện ích của LAKA, dành cho những giờ nghỉ giữa ngày.", en: "A shared pool in LAKA's facility plan, made for an easy pause in the middle of the day." },
-    meta: { vi: "Chờ xác nhận giờ mở cửa và quy định", en: "Hours and rules pending" },
+    title: { vi: "Lướt Hồ Cùng Kayak", en: "Kayak Across the Lake" },
+    text: { vi: "Cùng nhau rẽ mặt nước, ngắm thung lũng từ một góc thật khác và để nhịp chèo đưa cả nhóm gần nhau hơn.", en: "Cut across the water together, see the valley from a new angle and let every paddle stroke bring the group closer." },
+    meta: { vi: "Mặt hồ · khám phá", en: "On the lake · explore" },
+    image: conceptImages.hero
+  },
+  {
+    icon: Waves,
+    title: { vi: "Thư giãn Cùng Hồ Xanh", en: "Unwind by the Blue Pool" },
+    text: { vi: "Thả lỏng giữa làn nước xanh, chậm lại dưới khoảng trời rộng và tận hưởng một phút nghỉ thật nhẹ tênh.", en: "Float in blue water, slow down beneath the open sky and enjoy a pause that feels completely effortless." },
+    meta: { vi: "Thảnh thơi · hồ xanh", en: "Unhurried · poolside" },
     image: conceptImages.experience
   },
   {
-    icon: UtensilsCrossed,
-    title: { vi: "Ăn uống bên hồ", en: "Dining by the lake" },
-    text: { vi: "Nhà Hàng Ven Hồ, Tiệm Cà Phê Tầng Mây và Quầy Bar Hiên Gió tạo thành ba nhịp ăn uống khác nhau trong ngày.", en: "The Lakeside Restaurant, Tang May Coffee Shop and Hien Gio Bar create three different dining rhythms through the day." },
-    meta: { vi: "Thực đơn và giờ mở cửa đang hoàn thiện", en: "Menu and hours being finalised" },
-    image: conceptImages.dining
-  },
-  {
-    icon: MoonStar,
-    title: { vi: "Hát & hoạt động nhóm", en: "Singing and group activities" },
-    text: { vi: "LAKA định hướng phục vụ nhóm bạn và công ty với không gian kết nối, hát và team building theo phương án được duyệt.", en: "LAKA plans group-friendly spaces for singing and team building, subject to an approved programme." },
-    meta: { vi: "Cần trao đổi trước với LAKA", en: "Discuss with LAKA in advance" },
-    image: conceptImages.table
+    icon: Bike,
+    title: { vi: "Đạp Xe Rong Ruổi", en: "Roam by Bicycle" },
+    text: { vi: "Đạp xe qua những khoảng xanh, thong thả tìm một góc cảnh mới và để hành trình tự dẫn lối.", en: "Ride through green spaces, take your time finding a new view and let the journey choose the way." },
+    meta: { vi: "Tự do · rong ruổi", en: "Free · unhurried" },
+    image: conceptImages.forest
   }
 ] as const;
 
@@ -73,22 +59,15 @@ export const diningStories = [
     icon: UtensilsCrossed,
     kicker: { vi: "Bên mặt nước", en: "By the water" },
     title: { vi: "Nhà Hàng Ven Hồ", en: "Lakeside Restaurant" },
-    text: { vi: "Nhà hàng nhìn ra hồ và núi, với các nhóm món khai vị, đồ nướng, lẩu và món nhà để cả bàn cùng sẻ chia.", en: "The main dining venue overlooks the lake and mountains, with starters, grilled dishes, hot pots and familiar plates made for sharing." },
+    text: { vi: "Nép mình bên mặt hồ, mở ra khoảng trời ôm trọn núi đồi và mặt nước. Một nơi để thưởng thức món ngon, nhâm nhi chút chill và để những cuộc chuyện trò cứ thế dài thêm theo chiều hoàng hôn.", en: "Tucked beside the lake, the restaurant opens to a sky embracing mountains and water. A place for good food, an easy drink and conversations that linger into sunset." },
     image: conceptImages.dining
   },
   {
     icon: Coffee,
     kicker: { vi: "Núi, mây & thông", en: "Mountain, cloud and pine" },
-    title: { vi: "Café LAKA", en: "LAKA Café" },
-    text: { vi: "Một khoảng nghỉ với cà phê, cold brew, trà trái cây, matcha và món ăn nhẹ giữa cảnh hồ, núi và rừng thông.", en: "A pause for coffee, cold brew, fruit tea, matcha and light snacks among views of lake, mountains and pine forest." },
+    title: { vi: "Tiệm Cà Phê Tầng Mây", en: "Tang May Coffee Shop" },
+    text: { vi: "Nằm đối diện mặt hồ, mở ra từng tầng view ôm trọn mây núi và rừng thông. Một nơi để nhâm nhi cà phê, ngồi thật lâu và thả mình theo những tầng cảnh sắc.", en: "Facing the lake, the coffee shop opens through layered views of clouds, mountains and pine forest. A place to sip coffee, stay awhile and drift into the changing scenery." },
     image: conceptImages.breakfast
-  },
-  {
-    icon: Sparkles,
-    kicker: { vi: "Điểm gặp nhau", en: "A meeting point" },
-    title: { vi: "Quầy Bar Hiên Gió", en: "Hien Gio Bar" },
-    text: { vi: "Quầy bar tròn mở bốn phía, có chỗ ngồi bao quanh cho một cuộc gặp thoáng và tự nhiên.", en: "A circular open-sided bar with seating all around for an easy, open-air meeting." },
-    image: conceptImages.detail2
   }
 ] as const;
 

@@ -13,13 +13,13 @@ export function HomeDiningPreview({ basePath, locale = "vi" }: { basePath: strin
       <div className="mx-auto w-[min(1380px,100%)]">
         <div className="grid gap-8 lg:grid-cols-[.42fr_1fr] lg:items-end">
           <div>
-            <p className="text-[.62rem] font-bold uppercase tracking-[.22em] text-[#80613f]">{en ? "Dining at LAKA" : "Ẩm thực tại LAKA"}</p>
+            <p className="text-[.62rem] font-bold uppercase tracking-[.22em] text-[#80613f]">{en ? "Dining at LaKa" : "Ẩm thực tại LaKa"}</p>
             <p className="mt-5 max-w-sm text-sm leading-7 text-[#16311c]/58">
-              {en ? "The lakeside kitchen, LAKA Café and a menu made for sharing turn food and drink into another way to spend time together." : "Bếp bên hồ, Café LAKA và những nhóm món để sẻ chia biến chuyện ăn uống thành một cách khác để mọi người ở bên nhau."}
+              {en ? "Every flavour at LaKa is a pause to enjoy and reconnect. In the open valley, stay at the table a little longer." : "Mỗi hương vị tại LaKa đều là một khoảng nghỉ để tận hưởng và kết nối. Giữa thung lũng rộng mở, cứ ngồi lại lâu hơn một chút."}
             </p>
           </div>
           <h2 className="max-w-5xl font-serif text-[clamp(3.2rem,7vw,6.8rem)] font-medium leading-[.92] tracking-[-.055em]">
-            {en ? <>A meal becomes part<br /><i className="text-[#9a7550]">of the memory.</i></> : <>Một bữa ăn cũng trở thành<br /><i className="text-[#9a7550]">một phần ký ức.</i></>}
+            {en ? <>Flavours that keep<br /><i className="text-[#9a7550]">the good times going.</i></> : <>Những hương vị<br /><i className="text-[#9a7550]">nối dài cuộc vui.</i></>}
           </h2>
         </div>
 

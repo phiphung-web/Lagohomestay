@@ -14,8 +14,16 @@ import { getUnitsForStay, stays, stayUnits, stayZones } from "@/features/stays/d
 
 describe("LAKA presentation content", () => {
   it("covers the complete guest journey in both languages", () => {
-    expect(lakaExperiences).toHaveLength(6);
-    expect(diningStories).toHaveLength(3);
+    expect(lakaExperiences.map((item) => item.title.vi)).toEqual([
+      "Pickleball Bật Mood",
+      "Lướt Hồ Cùng Kayak",
+      "Thư giãn Cùng Hồ Xanh",
+      "Đạp Xe Rong Ruổi"
+    ]);
+    expect(diningStories.map((item) => item.title.vi)).toEqual([
+      "Nhà Hàng Ven Hồ",
+      "Tiệm Cà Phê Tầng Mây"
+    ]);
     expect(specialMoments).toHaveLength(3);
     expect(guestServices).toHaveLength(4);
     expect(sharedFacilities).toHaveLength(6);

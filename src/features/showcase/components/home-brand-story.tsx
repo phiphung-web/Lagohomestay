@@ -15,33 +15,30 @@ export function HomeBrandStory({ basePath, locale = "vi" }: { basePath: string; 
 
   return (
     <section id="gioi-thieu" className="scroll-mt-20 bg-[#eae1d2] px-5 py-24 sm:px-8 sm:py-32">
-      <div className="mx-auto grid w-[min(1380px,100%)] gap-14 lg:grid-cols-[.78fr_1.22fr] lg:items-start lg:gap-20">
-        <div className="lg:sticky lg:top-32">
+      <div className="mx-auto w-[min(1380px,100%)]">
+        <div className="grid gap-10 lg:grid-cols-[1.15fr_.85fr] lg:items-end lg:gap-16">
+          <div>
           <p className="text-[.62rem] font-bold uppercase tracking-[.22em] text-[#80613f]">
-            {en ? "The LAKA mark" : "Dấu ấn LAKA"}
+            {en ? "Our mission" : "Sứ mệnh"}
           </p>
-          <h2 className="mt-6 max-w-2xl font-serif text-[clamp(3.2rem,6.5vw,6.5rem)] font-medium leading-[.92] tracking-[-.055em]">
-            {en ? <>Choose a cabin.<br /><i className="text-[#9a7550]">Hold the whole valley.</i></> : <>“Chọn” Cabin.<br /><i className="text-[#9a7550]">“Trọn” Thung Lũng.</i></>}
+          <h2 className="mt-6 max-w-5xl font-serif text-[clamp(2.8rem,5vw,5.4rem)] font-medium leading-[.95] tracking-[-.05em]">
+            {en ? "Preserving untouched beauty through every window, where the truest connections begin." : "Lưu giữ vẻ đẹp nguyên sơ qua từng khung kính, nơi khởi nguồn cho những kết nối chân thật nhất."}
           </h2>
-          <div className="mt-9 grid gap-6 border-t border-[#16311c]/16 pt-7 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
-            <p className="text-base leading-8 text-[#16311c]/68">
-              {en
-                ? "At LAKA, the valley's untouched beauty is held in every window frame, letting each cabin bring you closer to nature."
-                : "Tại LAKA, vẻ đẹp nguyên sơ của thung lũng được lưu giữ qua từng khung kính — mỗi cabin là một góc nhìn để bạn chạm gần hơn vào thiên nhiên."}
-            </p>
-            <p className="text-base leading-8 text-[#16311c]/68">
-              {en
-                ? "The fullest moments happen together: a paddle on the lake, a lively game, a quiet pause by the pool or a story that carries on beside the barbecue."
-                : "Sự trọn vẹn còn nằm trong những khoảnh khắc cùng nhau: một nhịp chèo trên hồ, một trận pickleball đầy tiếng cười, phút thảnh thơi bên hồ bơi hay câu chuyện kéo dài bên bếp BBQ."}
-            </p>
           </div>
+          <div>
+          <p className="mt-9 border-t border-[#16311c]/16 pt-7 text-base leading-8 text-[#16311c]/68">
+            {en
+              ? "At LaKa, the valley's untouched beauty is preserved through every window — each cabin offers a view that brings you closer to nature. Yet LaKa is more than a place to look out from. Fulfilment lives in shared moments too: paddling together on the lake, a pickleball game filled with laughter, an unhurried pause beside the infinity pool or stories that linger by the BBQ. Amid untouched beauty, every moment brings us closer."
+              : "Tại LaKa, vẻ đẹp nguyên sơ của thung lũng được lưu giữ qua từng khung kính — mỗi cabin là một góc nhìn để bạn chạm gần hơn vào thiên nhiên. Nhưng LaKa không chỉ là nơi để ngắm nhìn. Sự trọn vẹn còn nằm trong những khoảnh khắc cùng nhau: một nhịp chèo trên hồ, một trận pickleball đầy tiếng cười, phút thảnh thơi bên hồ vô cực hay câu chuyện kéo dài bên bếp BBQ. Giữa vẻ đẹp nguyên sơ, từng khoảnh khắc đưa ta gần nhau hơn."}
+          </p>
           <Link href={`${basePath}/ve-laka`} className="focus-ring group mt-9 inline-flex min-h-12 items-center gap-3 border-b border-[#16311c]/35 text-xs font-bold uppercase tracking-[.12em]">
             {en ? "Read the full story" : "Đọc trọn câu chuyện"}
             <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
           </Link>
+          </div>
         </div>
 
-        <div className="grid grid-cols-2 gap-3 sm:gap-5">
+        <div className="mt-14 grid grid-cols-2 gap-3 sm:mt-20 sm:gap-5">
           {storyImages.map((image, index) => (
             <figure key={image.src} className={`group relative overflow-hidden bg-[#d8cdbd] ${image.className}`}>
               <Image
