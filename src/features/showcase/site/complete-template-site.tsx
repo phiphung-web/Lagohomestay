@@ -99,11 +99,10 @@ export function TemplateHeader({ config, locale = "vi", overlay = false, storyMo
 
   return <ScrollAwareHeader className={`sticky top-0 z-50 backdrop-blur-xl ${headerTone}`}>
     <div className="mx-auto grid h-[92px] w-[min(1500px,calc(100%-24px))] grid-cols-[1fr_auto_1fr] items-center gap-3 sm:w-[min(1500px,calc(100%-48px))] xl:gap-7 2xl:gap-10">
-      <div className="hidden min-w-0 items-center justify-start gap-3 xl:flex 2xl:gap-5">
+      <div className="hidden min-w-0 items-center justify-start xl:flex">
         <nav aria-label={locale === "en" ? "Primary navigation" : "Điều hướng chính"} className="flex min-w-0 items-center gap-5 text-[.6rem] font-bold uppercase tracking-[.1em] 2xl:gap-7 2xl:text-[.62rem] 2xl:tracking-[.12em]">
           {(storyMode ? storyItems.slice(0, 2) : localizedNavItems.slice(0, 3)).map(([label, path]) => <TemplateNavLink key={path} href={storyMode ? `${config.basePath}${path}` : scoped(config.basePath, path)} label={label} mood={config.mood} exact={!path} />)}
         </nav>
-        <TemplateLanguageSwitcher locale={locale} compact alwaysVisible />
       </div>
 
       <Link
@@ -119,6 +118,9 @@ export function TemplateHeader({ config, locale = "vi", overlay = false, storyMo
           {(storyMode ? storyItems.slice(2) : localizedNavItems.slice(3)).map(([label, path]) => <TemplateNavLink key={path} href={storyMode ? `${config.basePath}${path}` : scoped(config.basePath, path)} label={label} mood={config.mood} exact={!path} />)}
           <TemplateNavLink href={contactHref} label={locale === "en" ? "Contact" : "Liên hệ"} mood={config.mood} exact />
         </nav>
+        <div className="hidden xl:block">
+          <TemplateLanguageSwitcher locale={locale} compact alwaysVisible />
+        </div>
         <TemplateMobileMenu name={config.name} mood={config.mood} items={mobileItems} contactHref={contactHref} lookupHref={lookupHref} locale={locale} wideHeader />
       </div>
     </div>
