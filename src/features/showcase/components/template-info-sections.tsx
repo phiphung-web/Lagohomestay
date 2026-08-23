@@ -40,7 +40,7 @@ export function TemplateFaqIndex({ locale = "vi" }: { locale?: ShowcaseLocale })
             <p className="text-[.62rem] font-bold uppercase tracking-[.2em] text-[#80613f]">{locale === "en" ? "Find an answer quickly" : "Tìm câu trả lời nhanh"}</p>
             <p className="mt-4 max-w-sm text-sm leading-7 text-[#16311c]/62">{locale === "en" ? "Choose a topic to jump to the relevant part, then open only the answer you need." : "Chọn một chủ đề để đi đúng phần, sau đó chỉ mở câu trả lời bạn thực sự cần."}</p>
           </div>
-          <h2 className="font-serif text-5xl font-medium leading-[.95] tracking-[-.05em] sm:text-7xl">{locale === "en" ? "Everything useful, grouped clearly." : "Mọi điều cần biết, được nhóm thật rõ."}</h2>
+          <h2 className="laka-heading-section">{locale === "en" ? "Everything useful, grouped clearly." : "Mọi điều cần biết, được nhóm thật rõ."}</h2>
         </div>
         <div className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {faqCategories[locale].map(([label, target], index) => (

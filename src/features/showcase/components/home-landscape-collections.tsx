@@ -105,18 +105,18 @@ export function HomeLandscapeCollections({ basePath, locale = "vi" }: { basePath
   const en = locale === "en";
 
   return (
-    <section id="luu-tru" className="scroll-mt-20 border-y border-[#16311c]/12 bg-[#e3d8c9] px-5 py-24 sm:px-8 sm:py-32">
+    <section id="luu-tru" className="laka-section-normal scroll-mt-20 border-y border-[#16311c]/12 bg-[#e3d8c9] px-5 sm:px-8">
       <div className="mx-auto w-[min(1480px,100%)]">
         <header className="grid gap-8 border-b border-[#16311c]/15 pb-12 lg:grid-cols-[.35fr_1fr] lg:items-end">
           <div>
-            <p className="text-[.62rem] font-bold uppercase tracking-[.22em] text-[#80613f]">
+            <p className="laka-eyebrow text-[#80613f]">
               {en ? "Stay at LaKa" : "Lưu trú tại LaKa"}
             </p>
-            <p className="mt-5 max-w-sm text-[15px] leading-7 text-[#16311c]/64 sm:text-base sm:leading-8">
+            <p className="laka-body-muted mt-5 max-w-sm">
               {en ? "Seven ways to stay, gathered in one place for a clear comparison." : "Bảy lựa chọn lưu trú được gom trong một không gian để bạn dễ dàng tìm đúng nhịp nghỉ."}
             </p>
           </div>
-          <h2 className="max-w-5xl font-serif text-[clamp(2.6rem,5.5vw,5.2rem)] font-medium leading-[.95] tracking-[-.045em]">
+          <h2 className="laka-heading-section max-w-5xl">
             {en ? <>One green retreat,<br /><i>one rhythm of your own.</i></> : <>Một khoảng xanh,<br /><i>một nhịp riêng.</i></>}
           </h2>
         </header>
@@ -131,7 +131,7 @@ export function HomeLandscapeCollections({ basePath, locale = "vi" }: { basePath
                     0{groupIndex + 1}
                   </span>
                 </div>
-                <h3 className="mt-6 font-serif text-[1.75rem] font-medium leading-tight sm:text-[2.25rem]">{group.title[locale]}</h3>
+                <h3 className="laka-heading-card mt-6">{group.title[locale]}</h3>
               </div>
 
               <div className="divide-y divide-[#16311c]/15 border-y border-[#16311c]/15">
@@ -140,7 +140,7 @@ export function HomeLandscapeCollections({ basePath, locale = "vi" }: { basePath
                     <span className="text-[.62rem] font-bold tracking-[.16em] text-[#80613f]">{String(stayIndex + 1).padStart(2, "0")}</span>
                     <div>
                       <h4 className="font-serif text-xl font-medium leading-tight sm:text-2xl">{stay.title[locale]}</h4>
-                      <p className="mt-3 max-w-3xl text-[15px] leading-7 text-[#16311c]/68 sm:text-base sm:leading-8">{stay.details[locale]}</p>
+                      <p className="laka-body-muted mt-3 max-w-3xl">{stay.details[locale]}</p>
                       {"breakfast" in stay && stay.breakfast ? (
                         <p className="mt-3 text-xs font-bold uppercase tracking-[.1em] text-[#80613f]">{en ? "Includes 1 breakfast" : "Gồm 1 bữa sáng"}</p>
                       ) : null}
@@ -163,7 +163,7 @@ export function HomeLandscapeCollections({ basePath, locale = "vi" }: { basePath
               <section key={benefit.title.vi} className="border border-white/16 p-6">
                 <Check className="h-5 w-5 text-[#dfc6a5]" />
                 <h4 className="mt-5 text-sm font-bold uppercase tracking-[.12em]">{benefit.title[locale]}</h4>
-                <p className="mt-4 text-[15px] leading-7 text-white/68 sm:text-base sm:leading-8">{benefit.text[locale]}</p>
+                <p className="laka-body mt-4 text-white/68">{benefit.text[locale]}</p>
               </section>
             ))}
           </div>

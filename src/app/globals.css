@@ -54,6 +54,16 @@ summary::-webkit-details-marker { display: none; }
 .showcase-root .font-serif { font-family: "Lora", Georgia, serif; font-optical-sizing: auto; }
 .showcase-root p { text-wrap: pretty; }
 .showcase-root h1, .showcase-root h2 { text-wrap: balance; }
+.laka-display-hero { font-family: "Lora", Georgia, serif; font-size: clamp(3.25rem, 8.5vw, 7.5rem); font-weight: 500; line-height: .9; letter-spacing: -.055em; }
+.laka-display-page { font-family: "Lora", Georgia, serif; font-size: clamp(3rem, 7vw, 6.5rem); font-weight: 500; line-height: .92; letter-spacing: -.05em; }
+.laka-heading-section { font-family: "Lora", Georgia, serif; font-size: clamp(2.15rem, 4vw, 4rem); font-weight: 500; line-height: 1; letter-spacing: -.035em; }
+.laka-heading-card { font-family: "Lora", Georgia, serif; font-size: clamp(1.5rem, 2.5vw, 2.25rem); font-weight: 500; line-height: 1.15; letter-spacing: -.025em; }
+.laka-body { font-size: .9375rem; line-height: 1.75rem; }
+.laka-body-muted { color: rgb(22 49 28 / 68%); font-size: .9375rem; line-height: 1.75rem; }
+.laka-eyebrow { font-size: .62rem; font-weight: 700; letter-spacing: .22em; text-transform: uppercase; }
+@media (min-width: 640px) {
+  .laka-body, .laka-body-muted { font-size: 1rem; line-height: 2rem; }
+}
 .brand-logo { display: inline-block; background-color: currentColor; mask-position: center; mask-repeat: no-repeat; mask-size: contain; -webkit-mask-position: center; -webkit-mask-repeat: no-repeat; -webkit-mask-size: contain; }
 .container-lago { width: min(1240px, calc(100% - 40px)); margin-inline: auto; }
 .eyebrow { font-size: .72rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; }
@@ -127,6 +137,7 @@ input[type="checkbox"][aria-invalid="true"] { border-color: #dc2626; box-shadow:
 .laka-section-tight { padding-block: var(--laka-space-tight); }
 .laka-section-normal { padding-block: var(--laka-space-normal); }
 .laka-section-breathe { padding-block: var(--laka-space-breathe); }
+.laka-section-top-normal { padding-top: var(--laka-space-normal); }
 .laka-below-fold { content-visibility: auto; contain-intrinsic-size: auto 900px; }
 .cinematic-frame { animation: cinematic-frame-enter 1.1s both cubic-bezier(.2,.75,.2,1); }
 .gallery-grid-editorial button:nth-child(3n+1) { border-radius: 140px 140px 0 0; }

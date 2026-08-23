@@ -17,8 +17,8 @@ export function TemplateExperienceCatalog({ locale }: { locale: ShowcaseLocale }
   return <section className="border-y border-[#16311c]/12 bg-[#e3d8c9] py-20 sm:py-28">
     <div className="mx-auto w-[min(1380px,calc(100%-40px))]">
       <div className="grid gap-7 border-b border-[#16311c]/15 pb-9 lg:grid-cols-[1fr_.48fr] lg:items-end">
-        <div><p className="text-[.62rem] font-bold uppercase tracking-[.2em] text-[#80613f]">{locale === "en" ? "Choose your own rhythm" : "Chọn nhịp của riêng bạn"}</p><h2 className="mt-5 max-w-4xl font-serif text-5xl font-medium leading-[.94] tracking-[-.05em] sm:text-7xl">{locale === "en" ? "Small experiences, deeply felt." : "Những trải nghiệm nhỏ, cảm nhận thật sâu."}</h2></div>
-        <p className="max-w-xl text-sm leading-7 text-[#16311c]/65">{locale === "en" ? "Nothing is compulsory. Pick one activity, or leave the entire day open — LAKA is designed for both." : "Không có lịch trình bắt buộc. Bạn có thể chọn một hoạt động, hoặc để trống cả ngày — LAKA phù hợp với cả hai."}</p>
+        <div><p className="laka-eyebrow text-[#80613f]">{locale === "en" ? "Choose your own rhythm" : "Chọn nhịp của riêng bạn"}</p><h2 className="laka-heading-section mt-5 max-w-4xl">{locale === "en" ? "Small experiences, deeply felt." : "Những trải nghiệm nhỏ, cảm nhận thật sâu."}</h2></div>
+        <p className="laka-body-muted max-w-xl">{locale === "en" ? "Nothing is compulsory. Pick one activity, or leave the entire day open — LAKA is designed for both." : "Không có lịch trình bắt buộc. Bạn có thể chọn một hoạt động, hoặc để trống cả ngày — LAKA phù hợp với cả hai."}</p>
       </div>
       <div className="mt-8 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
         {lakaExperiences.map((item, index) => {
@@ -42,7 +42,7 @@ export function TemplateDiningAndOccasions({ locale }: { locale: ShowcaseLocale 
             <p className="text-[.62rem] font-bold uppercase tracking-[.2em] text-[#80613f]">{locale === "en" ? "Three ways to gather" : "Ba cách ngồi lại bên nhau"}</p>
             <p className="mt-5 max-w-sm text-sm leading-7 text-[#16311c]/65">{locale === "en" ? "Each dining moment has its own rhythm, but every one returns the focus to the people around the table." : "Mỗi bữa ăn có một nhịp riêng, nhưng đều đưa sự chú ý trở về những người đang ngồi quanh bàn."}</p>
           </div>
-          <h2 className="font-serif text-5xl font-medium leading-[.94] tracking-[-.05em] sm:text-7xl">{locale === "en" ? <>Breakfast, a shared meal<br /><i>or a table made just for you.</i></> : <>Bữa sáng, bữa nhà<br /><i>hay một bàn ăn dành riêng.</i></>}</h2>
+          <h2 className="laka-heading-section">{locale === "en" ? <>Breakfast, a shared meal<br /><i>or a table made just for you.</i></> : <>Bữa sáng, bữa nhà<br /><i>hay một bàn ăn dành riêng.</i></>}</h2>
         </header>
 
         <div>
@@ -79,7 +79,7 @@ export function TemplateDiningAndOccasions({ locale }: { locale: ShowcaseLocale 
               <p className="text-[.62rem] font-bold uppercase tracking-[.2em] text-[#80613f]">{locale === "en" ? "Menu preview" : "Danh mục món dự kiến"}</p>
               <p className="mt-5 max-w-sm text-sm leading-7 text-[#16311c]/62">{locale === "en" ? "A content preview for exploring the dining experience. Availability and final details are confirmed directly by LAKA." : "Bản xem trước nội dung để hình dung trải nghiệm ẩm thực. Tình trạng phục vụ và thông tin chính thức được LAKA xác nhận trực tiếp."}</p>
             </div>
-            <h2 className="max-w-5xl font-serif text-5xl font-medium leading-[.94] tracking-[-.05em] sm:text-7xl">{locale === "en" ? <>From the lakeside kitchen<br /><i>to an afternoon coffee.</i></> : <>Từ bếp bên hồ<br /><i>đến một buổi cà phê.</i></>}</h2>
+            <h2 className="laka-heading-section max-w-5xl">{locale === "en" ? <>From the lakeside kitchen<br /><i>to an afternoon coffee.</i></> : <>Từ bếp bên hồ<br /><i>đến một buổi cà phê.</i></>}</h2>
           </div>
 
           <div className="mt-14 space-y-16 sm:mt-20 sm:space-y-24">
@@ -120,7 +120,7 @@ export function TemplateServicesCatalog({ locale }: { locale: ShowcaseLocale }) 
             <p className="text-[.62rem] font-bold uppercase tracking-[.2em] text-[#dfc6a5]">{locale === "en" ? "Meaningful occasions" : "Những dịp nhiều ý nghĩa"}</p>
             <p className="mt-5 max-w-sm text-sm leading-7 text-white/52">{locale === "en" ? "The setting supports the moment, then quietly steps back." : "Không gian nâng đỡ khoảnh khắc, rồi lặng lẽ lùi lại để câu chuyện vẫn là của bạn."}</p>
           </div>
-          <h2 className="font-serif text-5xl font-medium leading-[.94] tracking-[-.05em] sm:text-7xl">{locale === "en" ? <>A celebration<br /><i>that still feels personal.</i></> : <>Một dịp đặc biệt<br /><i>vẫn thật sự riêng tư.</i></>}</h2>
+          <h2 className="laka-heading-section">{locale === "en" ? <>A celebration<br /><i>that still feels personal.</i></> : <>Một dịp đặc biệt<br /><i>vẫn thật sự riêng tư.</i></>}</h2>
         </div>
         <div className="mt-12 grid gap-5 lg:grid-cols-3">
           {specialMoments.slice(0, 3).map((item, index) => {
@@ -147,7 +147,7 @@ export function TemplateServicesCatalog({ locale }: { locale: ShowcaseLocale }) 
       <div className="grid gap-8 border-b border-[#16311c]/15 pb-9 lg:grid-cols-[.58fr_1fr] lg:items-end">
         <div>
           <p className="text-[.62rem] font-bold uppercase tracking-[.2em] text-[#80613f]">{locale === "en" ? "Care, when you need it" : "Chăm sóc vừa lúc"}</p>
-          <h2 className="mt-5 font-serif text-5xl font-medium leading-[.94] tracking-[-.05em] sm:text-7xl">{locale === "en" ? "A private home, with thoughtful support." : "Một căn nhà riêng, cùng sự hỗ trợ tinh tế."}</h2>
+          <h2 className="laka-heading-section mt-5">{locale === "en" ? "A private home, with thoughtful support." : "Một căn nhà riêng, cùng sự hỗ trợ tinh tế."}</h2>
         </div>
         <p className="max-w-2xl text-sm leading-7 text-[#16311c]/65">{locale === "en" ? "Services are designed to remove small worries without interrupting the privacy of your stay. Select what is useful and leave the rest." : "Dịch vụ được thiết kế để gỡ bớt những bận tâm nhỏ mà không làm gián đoạn khoảng riêng của kỳ nghỉ. Chọn điều hữu ích, bỏ qua những gì không cần."}</p>
       </div>
@@ -176,7 +176,7 @@ export function TemplateServicesCatalog({ locale }: { locale: ShowcaseLocale }) 
       <div className="mx-auto w-[min(1380px,calc(100%-40px))]">
         <div className="max-w-4xl">
           <p className="text-[.62rem] font-bold uppercase tracking-[.2em] text-[#80613f]">{locale === "en" ? "Shared spaces" : "Tiện ích dùng chung"}</p>
-          <h2 className="mt-5 font-serif text-5xl font-medium leading-[.94] tracking-[-.05em] sm:text-7xl">{locale === "en" ? "Step outside your home. Stay close to nature." : "Bước ra khỏi căn. Vẫn ở thật gần thiên nhiên."}</h2>
+          <h2 className="laka-heading-section mt-5">{locale === "en" ? "Step outside your home. Stay close to nature." : "Bước ra khỏi căn. Vẫn ở thật gần thiên nhiên."}</h2>
         </div>
         <div className="mt-12 grid gap-5 lg:grid-cols-3">
           {sharedFacilities.map((facility, index) => {
@@ -202,7 +202,7 @@ export function TemplateServicesCatalog({ locale }: { locale: ShowcaseLocale }) 
 export function TemplateJourneySection({ locale, contactHref }: { locale: ShowcaseLocale; contactHref: string }) {
   return <section className="border-t border-[#16311c]/12 bg-[#e3d8c9] py-20 sm:py-28">
     <div className="mx-auto w-[min(1180px,calc(100%-40px))]">
-      <div className="grid gap-8 lg:grid-cols-[.55fr_1fr] lg:items-end"><div><p className="text-[.62rem] font-bold uppercase tracking-[.2em] text-[#80613f]">{locale === "en" ? "Imagine the journey" : "Hình dung hành trình"}</p><h2 className="mt-5 font-serif text-5xl font-medium leading-[.95] tracking-[-.05em] sm:text-6xl">{locale === "en" ? "Know the place before you arrive." : "Hiểu về nơi này trước khi đến."}</h2></div><p className="max-w-2xl text-sm leading-7 text-[#16311c]/65">{locale === "en" ? "A few practical details help you picture a complete day at LAKA without interrupting the feeling of discovery." : "Một vài thông tin thực tế giúp bạn hình dung trọn vẹn một ngày tại LAKA mà không làm mất đi cảm giác khám phá."}</p></div>
+      <div className="grid gap-8 lg:grid-cols-[.55fr_1fr] lg:items-end"><div><p className="laka-eyebrow text-[#80613f]">{locale === "en" ? "Imagine the journey" : "Hình dung hành trình"}</p><h2 className="laka-heading-section mt-5">{locale === "en" ? "Know the place before you arrive." : "Hiểu về nơi này trước khi đến."}</h2></div><p className="laka-body-muted max-w-2xl">{locale === "en" ? "A few practical details help you picture a complete day at LAKA without interrupting the feeling of discovery." : "Một vài thông tin thực tế giúp bạn hình dung trọn vẹn một ngày tại LAKA mà không làm mất đi cảm giác khám phá."}</p></div>
       <div className="mt-12 grid border-y border-[#16311c]/15 md:grid-cols-2">
         {journeySteps.map((item, index) => { const Icon = item.icon; return <article key={item.title.vi} className={`border-b border-[#16311c]/15 py-7 md:px-7 ${index % 2 === 0 ? "md:border-r md:pl-0" : ""} ${index > 1 ? "md:border-b-0" : ""}`}><div className="flex items-center gap-3"><span className="text-[.58rem] font-bold text-[#80613f]">0{index + 1}</span><Icon className="h-5 w-5 text-[#80613f]" /></div><h3 className="mt-6 font-serif text-3xl font-medium">{inLocale(item.title, locale)}</h3><p className="mt-3 text-sm leading-7 text-[#16311c]/65">{inLocale(item.text, locale)}</p></article>; })}
       </div>

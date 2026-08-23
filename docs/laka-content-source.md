@@ -1,42 +1,50 @@
 # Nguồn nội dung website LAKA
 
-Cập nhật: 13/08/2026.
+Cập nhật: 23/08/2026.
 
 ## Nguồn chính
 
-- [Laka HomeStay - Sóc Sơn](https://docs.google.com/spreadsheets/d/1h3mTkwpuzuHB0Eb3g4jLEaTa40iMAmNVJ4MgMntIKvs/edit?gid=1665370073#gid=1665370073): nội dung thương hiệu, mô hình căn, tiện ích, liên hệ, nghiên cứu thị trường và từ khóa.
-- [Bảng đánh giá U Lesa và LAKA](https://docs.google.com/spreadsheets/d/1Pi17n156ODCvM1iJnBUfrcQadSRvzzKTI53THHIbR3k/edit?gid=811688556#gid=811688556): tham chiếu về kiến trúc thông tin, độ tin cậy, mobile, nội dung và tài nguyên cần bổ sung.
+- [Laka HomeStay - Sóc Sơn](https://docs.google.com/spreadsheets/d/1h3mTkwpuzuHB0Eb3g4jLEaTa40iMAmNVJ4MgMntIKvs/edit?gid=1665370073#gid=1665370073): nội dung thương hiệu, mô hình căn, tiện ích và liên hệ.
+- [Bảng đánh giá U Lesa và LAKA](https://docs.google.com/spreadsheets/d/1Pi17n156ODCvM1iJnBUfrcQadSRvzzKTI53THHIbR3k/edit?gid=811688556#gid=811688556): tham chiếu kiến trúc thông tin và danh mục tài nguyên.
+- Nội dung chủ dự án cung cấp trực tiếp ngày 22/08/2026: slogan, sứ mệnh, lưu trú, tiện ích chung, ẩm thực, trải nghiệm, gallery và phân nhóm feedback. Đây là nguồn ưu tiên khi khác bản nháp cũ.
 
-## Dữ kiện đã đưa lên website
+## Dữ liệu đã được chủ dự án duyệt
 
-- Tên hiển thị: LAKA Homestay / LaKa Homestay Sóc Sơn - Cabin Bên Hồ.
-- Slogan: “Chọn” Cabin, “Trọn” Thung Lũng.
-- Sứ mệnh: lưu giữ vẻ đẹp nguyên sơ qua từng khung kính, nơi khởi nguồn cho những kết nối chân thật nhất.
-- Liên hệ: 0522 3766 88, lakahomestay.vn@gmail.com.
+- Slogan: “Chọn” Cabin - “Trọn” Thung Lũng.
+- Tiêu đề chính: LaKa - Nhà giữa khoảng xanh.
+- Liên hệ: 0522 3766 88, lakahomestay.com@gmail.com.
 - Địa chỉ: Dốc Dây Diều, Xóm 1, Thanh Hà, Trung Giã, Hà Nội.
-- 8 dòng lưu trú, 20 căn thực tế:
-  - Nhà Bên Hồ: Guest House 001, 15–20 khách.
-  - Bungalow Bên Hồ: 002–003, có gác xép, 6–7 khách/căn, hai cửa kính lớn.
-  - Cabin An Trú: Lake Suite 004–005, một khung kính, yên tĩnh và riêng tư.
-  - Cabin Khoảng Trời: Forest Lake Suite 006–011, một mặt kính toàn phần.
-  - Cabin Sum Vầy: Cabin Group 012–013, giường tầng, 14 khách/căn, bốn cửa kính.
-  - Cabin Vô Cực: Forest Lake Bathtub Suite 014–017, hai mặt kính toàn phần, góc nhìn 180°.
-  - Nhà Thông Reo: Eco Camp 018–019, bungalow gỗ thấp, 1–2 khách/căn, phía sau là rừng thông.
-  - Nhà Trên Đồi: Villa Top Hill 020, biệt lập, 15–20 khách, nhìn toàn thung lũng, hồ và núi.
-- Tiện ích: Nhà Hàng Ven Hồ, Tiệm Cà Phê Tầng Mây, Quầy Bar Hiên Gió, Sân Pickleball Đón Nắng, Bể Bơi Bốn Mùa, Thung Lũng Săn Mây.
-- Trải nghiệm được nêu trong kế hoạch: thuyền đạp nước, kayak, bơi, pickleball, hát, săn mây và team building.
+- Cấu trúc toàn khu: 8 dòng lưu trú, 20 căn. Trang chủ chủ đích giới thiệu 7 lựa chọn trong 3 nhóm; Nhà Thông Reo vẫn thuộc danh mục đầy đủ.
 
-## Dữ kiện không được tự suy đoán
+### Thông số lưu trú đã duyệt ngày 22/08/2026
 
-Các trường sau chưa có dữ liệu đủ tin cậy trong nguồn và phải được LAKA duyệt trước khi công bố:
+| Dòng căn | Thông số được duyệt |
+|---|---|
+| Guest House | 35m²; 5 giường vừa; tối đa 10 người; WC khép kín, tủ quần áo, điều hòa, quạt, ấm siêu tốc, máy sấy tóc |
+| Bungalow | 15m², 2 tầng gồm 1 gác xép; 2 giường lớn; 5–7 người; bàn trang điểm, giá treo đồ, WC khép kín, thiết bị cơ bản |
+| Cabin An Trú / Lake Suite | 02 cabin; 25m²; 1 giường lớn; bàn ghế ngoài trời, bàn trang điểm, WC khép kín; gồm 1 bữa sáng |
+| Cabin Khoảng Trời / Forest Lake Suite | 06 cabin; 25m²; mặt kính lớn ngắm toàn cảnh; 1 giường lớn, bàn ghế ngoài trời, WC khép kín; gồm 1 bữa sáng |
+| Cabin Sum Vầy / Cabin Group | 02 cabin; 30m²; 7 giường tầng; tối đa 14 người; 4 ô kính view rừng thông, WC khép kín |
+| Cabin Vô Cực / Forest Lake Bathtub Suite | 04 cabin; 25m²; kính góc 180°; bồn tắm riêng, giường lớn, bàn ghế ngoài trời; gồm 1 bữa sáng |
+| Villa Top Hill | 01 nhà; 35m² gồm 1 phòng ngủ + 1 phòng khách; 5 giường vừa; 15–20 người; sofa, tivi, sân lớn ngoài trời, WC khép kín |
 
-- giá ngày thường/cuối tuần/lễ và phụ thu;
-- diện tích, số phòng ngủ, số giường, số phòng tắm của từng dòng căn;
-- sức chứa Cabin An Trú, Cabin Khoảng Trời và Cabin Vô Cực;
-- tiện nghi chi tiết trong phòng và hạng mục đã bao gồm;
-- giờ nhận/trả căn, đặt cọc, đổi/hủy, trẻ em, vật nuôi và giới hạn tiếng ồn;
-- menu, giá, giờ mở cửa của nhà hàng, cà phê và bar;
-- lịch vận hành, phí và hướng dẫn an toàn cho bể bơi, kayak, thuyền đạp nước, pickleball và hoạt động đoàn;
-- link Google Maps chính thức và tài khoản mạng xã hội chính thức ngoài dữ liệu đã xác minh.
+Nhà Thông Reo / Eco Camp 018–019 có trong danh mục 8 dòng căn nhưng thông số chi tiết vẫn cần duyệt lại trước khi mở bán.
 
-Website phải dùng “đang xác nhận”, “đang hoàn thiện” hoặc chuyển khách sang tư vấn trực tiếp cho các trường này. Ảnh Unsplash phải luôn được gắn nhãn concept cho đến khi có ảnh LAKA.
+### Tiện ích chung đã duyệt
+
+- Miễn phí: Bể bơi Bốn Mùa công nghệ tự nhiên; trà, cà phê, nước suối tại phòng; Wi‑Fi; truyền hình cáp.
+- Hoạt động miễn phí: xe đạp, bi-a, bóng bàn, bi lắc, boardgame, sân team building 100m², sân khấu ngoài trời 100m².
+
+## Không được tự suy đoán
+
+Các trường sau phải do chủ đầu tư hoặc quản lý vận hành xác nhận trước khi công bố:
+
+- giá ngày thường/cuối tuần/lễ, phụ thu và chương trình bán;
+- sức chứa Cabin An Trú, Cabin Khoảng Trời, Cabin Vô Cực và thông số chi tiết Nhà Thông Reo;
+- giờ nhận/trả, đặt cọc, đổi/hủy, trẻ em, vật nuôi và giới hạn tiếng ồn;
+- menu, giá và giờ mở cửa của các điểm ẩm thực;
+- lịch vận hành, phí, giới hạn và hướng dẫn an toàn cho hồ bơi, kayak, thuyền, pickleball và hoạt động đoàn;
+- link Google Maps, tọa độ cổng/bãi xe và tài khoản mạng xã hội chính thức chưa được xác minh;
+- feedback, ảnh khách và mọi quyền sử dụng hình ảnh.
+
+Website phải dùng trạng thái “đang xác nhận”, “đang hoàn thiện” hoặc chuyển khách sang tư vấn trực tiếp cho các trường này. Ảnh Unsplash luôn phải gắn nhãn concept cho đến khi được thay bằng tài nguyên LAKA có quyền sử dụng.

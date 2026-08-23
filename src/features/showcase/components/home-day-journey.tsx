@@ -15,20 +15,20 @@ export function HomeDayJourney({
   const experiences = lakaExperiences.slice(0, 4);
 
   return (
-    <section id="mot-ngay" className="scroll-mt-20 bg-[#0a1a13] px-5 py-24 text-white sm:px-8 sm:py-32">
+    <section id="mot-ngay" className="laka-section-normal scroll-mt-20 bg-[#0a1a13] px-5 text-white sm:px-8">
       <div className="mx-auto w-[min(1480px,100%)]">
         <div className="grid gap-8 lg:grid-cols-[.4fr_1fr] lg:items-end">
           <div>
-            <p className="text-[.62rem] font-bold uppercase tracking-[.22em] text-[#dfc6a5]">
+            <p className="laka-eyebrow text-[#dfc6a5]">
               {en ? "A day at LaKa" : "Một ngày ở LaKa"}
             </p>
-            <p className="mt-5 max-w-sm text-[15px] leading-7 text-white/64 sm:text-base sm:leading-8">
+            <p className="laka-body mt-5 max-w-sm text-white/64">
               {en
                 ? "A day at LaKa moves from lively fun to unhurried moments in nature. Explore together, give it everything and take home memories worth keeping."
                 : "Một ngày ở LaKa là hành trình nối dài từ những cuộc vui rộn ràng đến phút thảnh thơi giữa thiên nhiên. Cùng nhau khám phá, cùng nhau hết mình và gom về những kỷ niệm thật đáng nhớ!"}
             </p>
           </div>
-          <h2 className="max-w-5xl font-serif text-[clamp(2.6rem,5.5vw,5.2rem)] font-medium leading-[.95] tracking-[-.045em]">
+          <h2 className="laka-heading-section max-w-5xl">
             {en ? (
               <>Today is<br /><i className="text-[#dfc6a5]">just for fun!</i></>
             ) : (
@@ -50,7 +50,7 @@ export function HomeDayJourney({
                 key={experience.title.vi}
                 className={`showcase-snap-card group ${index % 2 === 1 ? "lg:mt-20" : ""}`}
               >
-                <div className="relative min-h-[62svh] overflow-hidden bg-[#10251d] lg:min-h-[720px]">
+                <div className="relative min-h-[520px] overflow-hidden bg-[#10251d] sm:min-h-[600px] lg:min-h-[620px]">
                   <Image
                     src={experience.image}
                     alt={`${en ? experience.title.en : experience.title.vi} — ${en ? "concept image" : "ảnh minh họa"}`}
@@ -72,7 +72,7 @@ export function HomeDayJourney({
                     <h3 className="mt-3 font-serif text-2xl font-medium leading-tight sm:text-3xl">
                       {en ? experience.title.en : experience.title.vi}
                     </h3>
-                    <p className="mt-4 text-[15px] leading-7 text-white/68 sm:text-base sm:leading-8">
+                    <p className="laka-body mt-4 text-white/68">
                       {en ? experience.text.en : experience.text.vi}
                     </p>
                   </div>

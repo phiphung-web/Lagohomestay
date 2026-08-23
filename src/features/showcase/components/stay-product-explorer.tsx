@@ -200,7 +200,7 @@ export function StayProductExplorer({
           >
             <X className="h-5 w-5" />
           </button>
-          <section className="relative h-[42svh] min-h-[320px] overflow-hidden bg-[#10251d] lg:h-full">
+          <section className="relative h-[30svh] min-h-[230px] overflow-hidden bg-[#10251d] sm:h-[38svh] sm:min-h-[300px] lg:h-full">
             <Image
               src={gallery[galleryIndex]}
               alt={`${activeStay.name} — ${locale === "en" ? "concept image" : "hình ảnh minh họa"}`}
@@ -242,11 +242,11 @@ export function StayProductExplorer({
           </section>
 
           <section className="relative flex min-h-full min-w-0 flex-col overflow-x-hidden lg:h-full lg:overflow-y-auto">
-            <div className="px-5 pb-6 pt-8 sm:px-9 sm:pt-10 lg:px-11 lg:pr-20">
+            <div className="px-5 pb-5 pt-6 sm:px-9 sm:pb-6 sm:pt-8 lg:px-11 lg:pr-20">
               <p className="text-[.6rem] font-bold uppercase tracking-[.2em] text-[#80613f]">
                 {selectedZone.name} · {activeStay.badge}
               </p>
-              <h2 id="stay-dialog-title" className="mt-4 font-serif text-5xl font-medium leading-[.92] tracking-[-.055em] sm:text-6xl">
+              <h2 id="stay-dialog-title" className="mt-3 font-serif text-4xl font-medium leading-[.95] tracking-[-.045em] sm:mt-4 sm:text-5xl">
                 {activeStay.name}
               </h2>
               <p className="mt-5 max-w-2xl text-sm leading-7 text-[#16311c]/68">{activeStay.subtitle}</p>
@@ -352,7 +352,7 @@ export function StayProductExplorer({
     <section id="bo-suu-tap-can" className="scroll-mt-[92px] bg-[#eae1d2] py-16 text-[#16311c] sm:py-24">
       <div className="mx-auto w-[min(1460px,calc(100%-28px))] sm:w-[min(1460px,calc(100%-48px))]">
         <div className="grid gap-7 border-b border-[#16311c]/14 pb-8 lg:grid-cols-[1fr_.42fr] lg:items-end">
-          <h2 className="max-w-4xl font-serif text-4xl font-medium leading-[1.03] tracking-[-.04em] sm:text-6xl">
+          <h2 className="laka-heading-section max-w-4xl">
             {locale === "en" ? "Choose a landscape. Meet its homes." : "Chọn một hệ cảnh quan. Gặp những căn nhà."}
           </h2>
           <p className="max-w-md text-sm leading-7 text-[#16311c]/62 lg:justify-self-end">
