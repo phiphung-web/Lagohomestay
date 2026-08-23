@@ -21,7 +21,7 @@ export function HomeStaySpotlight({
   if (!heroStay) return null;
 
   return (
-    <section id="luu-tru-noi-bat" className="relative min-h-[92svh] scroll-mt-20 overflow-hidden bg-[#0b1d16] text-white">
+    <section id="luu-tru-noi-bat" className="relative h-[92svh] max-h-[100svh] scroll-mt-20 overflow-hidden bg-[#0b1d16] text-white">
       <Image
         src={heroStay.image}
         alt={`${heroStay.name} — ${en ? "concept image" : "hình ảnh minh họa"}`}
@@ -31,7 +31,7 @@ export function HomeStaySpotlight({
       />
       <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(5,18,14,.93)_0%,rgba(5,18,14,.68)_43%,rgba(5,18,14,.16)_76%),linear-gradient(180deg,rgba(5,18,14,.18),rgba(5,18,14,.72))]" />
 
-      <div className="relative z-10 mx-auto flex min-h-[92svh] w-[min(1460px,calc(100%-40px))] flex-col justify-between py-20 sm:w-[min(1460px,calc(100%-64px))] sm:py-24 lg:py-28">
+      <div className="relative z-10 mx-auto flex h-full w-[min(1460px,calc(100%-40px))] flex-col justify-between py-12 sm:w-[min(1460px,calc(100%-64px))] sm:py-16 lg:py-20">
         <div className="flex flex-wrap items-center justify-between gap-x-6 gap-y-2">
           <p className="text-[.62rem] font-bold uppercase tracking-[.22em] text-[#dfc6a5]">
             {en ? "04 — The homes" : "04 — Những căn nhà"}

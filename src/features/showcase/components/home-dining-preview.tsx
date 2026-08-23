@@ -26,7 +26,7 @@ export function HomeDiningPreview({ basePath, locale = "vi" }: { basePath: strin
         <div className="mt-14 grid gap-5 lg:grid-cols-2">
           {stories.map((story, index) => (
             <article key={story.title.vi} className="group">
-              <div className={`relative overflow-hidden bg-[#d8cdbd] ${index === 0 ? "aspect-[4/3]" : "aspect-[4/3] lg:mt-24"}`}>
+              <div className={`laka-media-frame relative overflow-hidden bg-[#d8cdbd] ${index === 0 ? "aspect-[4/3]" : "aspect-[4/3] lg:mt-24"}`}>
                 <Image src={story.image} alt={`${en ? story.title.en : story.title.vi} — ${en ? "concept image" : "ảnh minh họa"}`} fill sizes="(max-width:1024px) 100vw, 50vw" className="object-cover transition duration-1000 ease-out group-hover:scale-[1.025]" />
                 <span className="absolute bottom-4 left-4 rounded-full bg-[#07150f]/55 px-3 py-1.5 text-[.52rem] font-bold uppercase tracking-[.14em] text-white/78 backdrop-blur">
                   {en ? "Concept image" : "Hình ảnh minh họa"}

@@ -50,7 +50,7 @@ export function HomeDayJourney({
                 key={experience.title.vi}
                 className={`showcase-snap-card group ${index % 2 === 1 ? "lg:mt-20" : ""}`}
               >
-                <div className="relative min-h-[520px] overflow-hidden bg-[#10251d] sm:min-h-[600px] lg:min-h-[620px]">
+                <div className="laka-media-frame relative h-[min(620px,78svh)] overflow-hidden bg-[#10251d]">
                   <Image
                     src={experience.image}
                     alt={`${en ? experience.title.en : experience.title.vi} — ${en ? "concept image" : "ảnh minh họa"}`}

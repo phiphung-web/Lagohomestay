@@ -125,7 +125,7 @@ export function HomeLandscapeCollections({ basePath, locale = "vi" }: { basePath
           {stayGroups.map((group, groupIndex) => (
             <article key={group.title.vi} className="grid gap-8 py-12 lg:grid-cols-[.36fr_1fr] lg:gap-14 lg:py-20">
               <div>
-                <div className="relative aspect-[16/10] overflow-hidden bg-[#10251d]">
+                <div className="laka-media-frame relative aspect-[16/10] overflow-hidden bg-[#10251d]">
                   <Image src={group.image} alt={`${group.title[locale]} — ${en ? "concept image" : "hình ảnh minh họa"}`} fill sizes="(max-width:1024px) 100vw, 36vw" className="object-cover" />
                   <span className="absolute left-4 top-4 rounded-full bg-[#07150f]/62 px-3 py-1.5 text-[.55rem] font-bold uppercase tracking-[.15em] text-white backdrop-blur">
                     0{groupIndex + 1}

@@ -40,7 +40,7 @@ export function HomeBrandStory({ basePath, locale = "vi" }: { basePath: string; 
 
         <div className="mt-14 grid grid-cols-2 gap-3 sm:mt-20 sm:gap-5">
           {storyImages.map((image, index) => (
-            <figure key={image.src} className={`group relative overflow-hidden bg-[#d8cdbd] ${image.className}`}>
+            <figure key={image.src} className={`laka-media-frame group relative overflow-hidden bg-[#d8cdbd] ${image.className}`}>
               <Image
                 src={image.src}
                 alt={en ? `A fragment of life at LAKA — concept image ${index + 1}` : `Một lát cắt cuộc sống tại LAKA — ảnh minh họa ${index + 1}`}

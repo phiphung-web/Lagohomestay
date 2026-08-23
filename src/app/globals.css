@@ -61,6 +61,15 @@ summary::-webkit-details-marker { display: none; }
 .laka-body { font-size: .9375rem; line-height: 1.75rem; }
 .laka-body-muted { color: rgb(22 49 28 / 68%); font-size: .9375rem; line-height: 1.75rem; }
 .laka-eyebrow { font-size: .62rem; font-weight: 700; letter-spacing: .22em; text-transform: uppercase; }
+.laka-media-frame { max-height: 100svh; }
+.showcase-root :is(section, div, figure, button):has(> img[data-nimg="fill"]) { max-height: 100svh; }
+.showcase-root [class*="min-h-[700px]"]:has(> img[data-nimg="fill"]) { min-height: min(700px, 82svh) !important; }
+.showcase-root [class*="min-h-[640px]"]:has(> img[data-nimg="fill"]) { min-height: min(640px, 82svh) !important; }
+.showcase-root [class*="min-h-[620px]"]:has(> img[data-nimg="fill"]) { min-height: min(620px, 82svh) !important; }
+.showcase-root [class*="min-h-[600px]"]:has(> img[data-nimg="fill"]) { min-height: min(600px, 82svh) !important; }
+.showcase-root [class*="min-h-[580px]"]:has(> img[data-nimg="fill"]) { min-height: min(580px, 82svh) !important; }
+.showcase-root [class*="min-h-[520px]"]:has(> img[data-nimg="fill"]) { min-height: min(520px, 82svh) !important; }
+.showcase-root [class*="min-h-[500px]"]:has(> img[data-nimg="fill"]) { min-height: min(500px, 82svh) !important; }
 @media (min-width: 640px) {
   .laka-body, .laka-body-muted { font-size: 1rem; line-height: 2rem; }
 }

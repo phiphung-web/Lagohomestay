@@ -15,14 +15,14 @@ export function HomeLandscapeReveal({ locale = "vi" }: { locale?: ShowcaseLocale
       <p className="hidden max-w-xs text-sm leading-7 text-white/48 lg:block">{locale === "en" ? "Move across each landscape. Let the image answer before the details do." : "Lướt qua từng hệ cảnh quan. Hãy để hình ảnh trả lời trước những thông số."}</p>
     </div>
 
-    <div className="mx-auto flex w-[min(1480px,100%)] flex-col gap-2 lg:h-[72svh] lg:min-h-[620px] lg:flex-row">
+    <div className="mx-auto flex w-[min(1480px,100%)] flex-col gap-2 lg:h-[min(760px,72svh)] lg:flex-row">
       {zones.map((zone, index) => <article
         key={zone.id}
-        className="group relative min-h-[58svh] flex-1 overflow-hidden rounded-[24px] transition-[flex] duration-700 ease-[cubic-bezier(.2,.72,.2,1)] hover:flex-[1.7] lg:min-h-0"
+        className="laka-media-frame group relative h-[min(640px,58svh)] flex-1 overflow-hidden rounded-[24px] transition-[flex] duration-700 ease-[cubic-bezier(.2,.72,.2,1)] hover:flex-[1.7] lg:h-auto"
       >
         <Image src={zone.image} alt={`${zone.name} — ${locale === "en" ? "concept image" : "hình ảnh minh họa"}`} fill sizes="(max-width:1024px) 100vw, 50vw" className="object-cover opacity-72 transition duration-[1200ms] group-hover:scale-[1.035] group-hover:opacity-90" />
         <span className="absolute inset-0 bg-gradient-to-t from-[#06150f]/92 via-[#06150f]/8 to-[#06150f]/28" />
-        <span className="relative flex h-full min-h-[58svh] flex-col justify-between p-5 sm:p-7 lg:min-h-0">
+        <span className="relative flex h-full flex-col justify-between p-5 sm:p-7">
           <span className="flex items-center justify-between gap-5">
             <span className="text-[.58rem] font-bold uppercase tracking-[.18em] text-white/58">0{index + 1} · {zone.eyebrow}</span>
             <span className="h-px w-12 bg-white/45 transition-all duration-500 group-hover:w-20" />
