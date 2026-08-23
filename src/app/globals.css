@@ -17,6 +17,7 @@
   --laka-space-tight: clamp(3.5rem, 7vw, 5.5rem);
   --laka-space-normal: clamp(5rem, 9vw, 8rem);
   --laka-space-breathe: clamp(6.5rem, 12vw, 11rem);
+  --laka-header-offset: 92px;
 }
 
 * { box-sizing: border-box; }
@@ -54,7 +55,7 @@ summary::-webkit-details-marker { display: none; }
 .showcase-root .font-serif { font-family: "Lora", Georgia, serif; font-optical-sizing: auto; }
 .showcase-root p { text-wrap: pretty; }
 .showcase-root h1, .showcase-root h2 { text-wrap: balance; }
-.laka-display-hero { font-family: "Lora", Georgia, serif; font-size: clamp(3.25rem, 8.5vw, 7.5rem); font-weight: 500; line-height: .9; letter-spacing: -.055em; }
+.laka-display-hero { font-family: "Lora", Georgia, serif; font-size: clamp(3.25rem, 8.5vw, 7.5rem); font-weight: 500; line-height: .96; letter-spacing: -.045em; }
 .laka-display-page { font-family: "Lora", Georgia, serif; font-size: clamp(3rem, 7vw, 6.5rem); font-weight: 500; line-height: .92; letter-spacing: -.05em; }
 .laka-heading-section { font-family: "Lora", Georgia, serif; font-size: clamp(2.15rem, 4vw, 4rem); font-weight: 500; line-height: 1; letter-spacing: -.035em; }
 .laka-heading-card { font-family: "Lora", Georgia, serif; font-size: clamp(1.5rem, 2.5vw, 2.25rem); font-weight: 500; line-height: 1.15; letter-spacing: -.025em; }
@@ -62,7 +63,7 @@ summary::-webkit-details-marker { display: none; }
 .laka-body-muted { color: rgb(22 49 28 / 68%); font-size: .9375rem; line-height: 1.75rem; }
 .laka-eyebrow { font-size: .62rem; font-weight: 700; letter-spacing: .22em; text-transform: uppercase; }
 .laka-media-frame { max-height: 100svh; }
-.showcase-root :is(section, div, figure, button):has(> img[data-nimg="fill"]) { max-height: 100svh; }
+.showcase-root :is(section, div, figure, button, article, span):has(> img[data-nimg="fill"]) { max-height: 100svh; }
 .showcase-root [class*="min-h-[700px]"]:has(> img[data-nimg="fill"]) { min-height: min(700px, 82svh) !important; }
 .showcase-root [class*="min-h-[640px]"]:has(> img[data-nimg="fill"]) { min-height: min(640px, 82svh) !important; }
 .showcase-root [class*="min-h-[620px]"]:has(> img[data-nimg="fill"]) { min-height: min(620px, 82svh) !important; }

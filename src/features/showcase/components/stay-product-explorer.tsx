@@ -360,7 +360,7 @@ export function StayProductExplorer({
           </p>
         </div>
 
-        <nav aria-label={locale === "en" ? "Filter homes by landscape" : "Lọc căn theo hệ cảnh quan"} className="sticky top-[92px] z-20 -mx-3 mt-6 overflow-x-auto border-y border-[#16311c]/10 bg-[#eae1d2]/94 px-3 backdrop-blur">
+        <nav aria-label={locale === "en" ? "Filter homes by landscape" : "Lọc căn theo hệ cảnh quan"} className="sticky top-[var(--laka-header-offset)] z-20 -mx-3 mt-6 overflow-x-auto border-y border-[#16311c]/10 bg-[#eae1d2]/94 px-3 backdrop-blur transition-[top] duration-300 motion-reduce:transition-none">
           <div className="grid w-full grid-cols-4">
             {tabs.map((tab) => {
               const selected = activeZoneSlug === tab.slug;

@@ -41,7 +41,13 @@ export function ContactInquiryForm({ locale = "vi" }: { locale?: ShowcaseLocale 
         <label className="text-sm font-bold sm:col-span-2">{en ? "What can we help with?" : "Bạn cần LAKA hỗ trợ gì?"}<select name="topic" className="input mt-2" defaultValue={en ? "Stay advice" : "Tư vấn lưu trú"}><option>{en ? "Stay advice" : "Tư vấn lưu trú"}</option><option>{en ? "Dining and experiences" : "Ẩm thực và trải nghiệm"}</option><option>{en ? "Groups and events" : "Đoàn và sự kiện"}</option><option>{en ? "Other" : "Nội dung khác"}</option></select></label>
         <label className="text-sm font-bold sm:col-span-2">{en ? "Message *" : "Lời nhắn *"}<textarea required name="message" maxLength={1000} className="input mt-2 min-h-36 py-3" placeholder={en ? "Expected dates, group size or anything LAKA should know…" : "Ngày dự kiến, số người hoặc điều LAKA cần biết…"} /></label>
         <label className="flex items-start gap-3 text-sm leading-6 sm:col-span-2"><input required name="consent" type="checkbox" className="mt-1 h-4 w-4 shrink-0" />{en ? "I agree that LAKA may use these details to respond to my request." : "Tôi đồng ý để LAKA sử dụng thông tin này nhằm phản hồi yêu cầu của tôi."}</label>
-        {opened && <p role="status" className="flex items-center gap-2 text-sm font-bold text-emerald-800 sm:col-span-2"><CheckCircle2 className="h-5 w-5" />{en ? "Your email app has been opened. Review and send the message there." : "Ứng dụng email đã được mở. Hãy kiểm tra và gửi thư tại đó."}</p>}
+        {opened && <div role="status" className="space-y-3 border border-[#16311c]/12 bg-white/55 p-4 text-sm sm:col-span-2">
+          <p className="flex items-start gap-2 font-bold text-emerald-800"><CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0" />{en ? "Your email app was requested. If nothing opened, contact LAKA directly:" : "Đã yêu cầu mở ứng dụng email. Nếu không có phản hồi, hãy liên hệ trực tiếp với LAKA:"}</p>
+          <div className="flex flex-wrap gap-x-5 gap-y-2 font-bold">
+            <a href={publicContact.zaloHref} target="_blank" rel="noreferrer" className="focus-ring underline decoration-[#80613f]/45 underline-offset-4">Zalo · {publicContact.phoneDisplay}</a>
+            <a href={publicContact.phoneHref} className="focus-ring underline decoration-[#80613f]/45 underline-offset-4">{en ? "Call" : "Gọi"} · {publicContact.phoneDisplay}</a>
+          </div>
+        </div>}
         <button type="submit" className="focus-ring flex min-h-14 items-center justify-between rounded-full bg-[#16311c] px-6 text-sm font-bold text-white sm:col-span-2">{en ? "Continue to email" : "Tiếp tục gửi qua email"}<ArrowRight className="h-4 w-4" /></button>
       </form>
     </div>

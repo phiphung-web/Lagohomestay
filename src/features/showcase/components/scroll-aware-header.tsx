@@ -32,6 +32,13 @@ export function ScrollAwareHeader({ children, className }: { children: React.Rea
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  useEffect(() => {
+    document.documentElement.style.setProperty("--laka-header-offset", hidden ? "0px" : "92px");
+    return () => {
+      document.documentElement.style.removeProperty("--laka-header-offset");
+    };
+  }, [hidden]);
+
   return <header
     className={`${className} transform-gpu transition-transform duration-300 ease-out motion-reduce:transition-none ${hidden ? "-translate-y-full" : "translate-y-0"}`}
     onFocusCapture={() => setHidden(false)}

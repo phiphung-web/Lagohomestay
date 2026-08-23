@@ -100,7 +100,7 @@ export function TemplateHeader({ config, locale = "vi", overlay = false, storyMo
   return <ScrollAwareHeader className={`sticky top-0 z-50 backdrop-blur-xl ${headerTone}`}>
     <div className="mx-auto grid h-[92px] w-[min(1500px,calc(100%-24px))] grid-cols-[1fr_auto_1fr] items-center gap-3 sm:w-[min(1500px,calc(100%-48px))] xl:gap-7 2xl:gap-10">
       <div className="hidden min-w-0 items-center justify-start xl:flex">
-        <nav aria-label={locale === "en" ? "Primary navigation" : "Điều hướng chính"} className="flex min-w-0 items-center gap-5 text-[.6rem] font-bold uppercase tracking-[.1em] 2xl:gap-7 2xl:text-[.62rem] 2xl:tracking-[.12em]">
+        <nav aria-label={locale === "en" ? "Primary navigation" : "Điều hướng chính"} className="flex min-w-0 items-center gap-5 whitespace-nowrap text-[.6rem] font-bold uppercase tracking-[.1em] 2xl:gap-7 2xl:text-[.62rem] 2xl:tracking-[.12em]">
           {(storyMode ? storyItems.slice(0, 2) : localizedNavItems.slice(0, 4)).map(([label, path]) => <TemplateNavLink key={path} href={storyMode ? `${config.basePath}${path}` : scoped(config.basePath, path)} label={label} mood={config.mood} exact={!path} />)}
         </nav>
       </div>
@@ -110,11 +110,11 @@ export function TemplateHeader({ config, locale = "vi", overlay = false, storyMo
         aria-label={locale === "en" ? "LAKA Homestay — home" : "LAKA Homestay — trang chủ"}
         className="focus-ring col-start-2 flex items-center justify-self-center rounded-md xl:col-start-auto"
       >
-        <BrandLogo variant="homestay" decorative className="w-[122px] sm:w-[148px] xl:w-[156px] 2xl:w-[164px]" />
+        <BrandLogo variant="wordmark" decorative className="w-[118px] sm:w-[132px] xl:w-[140px] 2xl:w-[148px]" />
       </Link>
 
       <div className="col-start-3 flex min-w-0 items-center justify-end gap-2 xl:col-start-auto xl:gap-3">
-        <nav aria-label={locale === "en" ? "Secondary navigation" : "Điều hướng bổ sung"} className="hidden min-w-0 items-center gap-5 text-[.6rem] font-bold uppercase tracking-[.1em] xl:flex 2xl:gap-7 2xl:text-[.62rem] 2xl:tracking-[.12em]">
+        <nav aria-label={locale === "en" ? "Secondary navigation" : "Điều hướng bổ sung"} className="hidden min-w-0 items-center gap-5 whitespace-nowrap text-[.6rem] font-bold uppercase tracking-[.1em] xl:flex 2xl:gap-7 2xl:text-[.62rem] 2xl:tracking-[.12em]">
           {(storyMode ? storyItems.slice(2) : localizedNavItems.slice(4)).map(([label, path]) => <TemplateNavLink key={path} href={storyMode ? `${config.basePath}${path}` : scoped(config.basePath, path)} label={label} mood={config.mood} exact={!path} />)}
           <TemplateNavLink href={contactHref} label={locale === "en" ? "Contact" : "Liên hệ"} mood={config.mood} exact />
         </nav>
