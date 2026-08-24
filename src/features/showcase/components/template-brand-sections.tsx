@@ -58,8 +58,12 @@ const contactChannels: readonly ContactChannel[] = [
     id: "zalo",
     icon: null,
     svg: (className = "h-6 w-6") => (
-      <svg className={`${className} fill-current`} viewBox="0 0 24 24">
-        <path fillRule="evenodd" clipRule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 1.89.52 3.66 1.43 5.18L2 22l4.98-1.39C8.44 21.5 10.18 22 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm-1.8 13.6h-2.8v-1.6l2.3-3.4H7.4V9h4.4v1.6l-2.3 3.4h2.7v1.6zm2.8 0h-1.6V9h1.6v6.6zm3.4 0c-1.3 0-2.3-1-2.3-2.3V9h1.6v4.3c0 .4.3.7.7.7s.7-.3.7-.7V9h1.6v4.3c0 1.3-1 2.3-2.3 2.3z" />
+      <svg className={className} viewBox="0 0 24 24" fill="currentColor">
+        <mask id="zalo-mask-brand-sections">
+          <rect width="24" height="24" fill="white" />
+          <text x="12" y="12.2" textAnchor="middle" dominantBaseline="middle" fill="black" fontSize="5.2" fontWeight="900" fontFamily="system-ui, -apple-system, sans-serif" letterSpacing="-0.2px">zalo</text>
+        </mask>
+        <path mask="url(#zalo-mask-brand-sections)" d="M12 2.5C6.75 2.5 2.5 6.3 2.5 11c0 2.7 1.43 5.1 3.65 6.6L5.3 21.5l4.2-1.4c.8.2 1.65.4 2.5.4 5.25 0 9.5-3.8 9.5-8.5s-4.25-8.5-9.5-8.5z" />
       </svg>
     ),
     label: { vi: "Zalo", en: "Zalo" },

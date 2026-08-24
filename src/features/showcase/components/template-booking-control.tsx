@@ -11,7 +11,7 @@ export function TemplateBookingControl({ locale = "vi" }: { locale?: ShowcaseLoc
     <button
       type="button"
       onClick={() => setBookingOpen(true)}
-      className="rounded-full bg-[#16311c] px-3.5 py-2 text-[.6rem] font-bold uppercase tracking-wider text-white shadow-sm transition hover:bg-[#23482b] sm:px-4 sm:py-2.5 sm:text-xs xl:hidden"
+      className="focus-ring inline-flex h-10 items-center justify-center rounded-lg bg-[#16311c] px-4 text-[.72rem] font-extrabold uppercase tracking-wider text-white shadow-sm transition hover:bg-[#23482b] active:scale-95 xl:hidden"
     >
       {locale === "en" ? "Book now" : "Đặt ngay"}
     </button>
