@@ -1,16 +1,101 @@
+"use client";
+
 import Image from "next/image";
-import { ArrowRight, Instagram, Mail, MapPin, Phone, Sparkles } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { ArrowRight, ChevronLeft, ChevronRight, Instagram, Mail, MapPin, Phone, Sparkles } from "lucide-react";
 import { conceptImages } from "@/features/stays/data/demo-data";
 import type { ShowcaseLocale } from "@/features/showcase/i18n/locale";
 import { publicContact } from "@/shared/lib/public-contact";
 
 type Mood = "editorial" | "cinematic" | "organic";
 
-const contactChannels = [
-  { icon: Phone, label: { vi: "Điện thoại", en: "Phone" }, value: publicContact.phoneDisplay, href: publicContact.phoneHref },
-  { icon: Phone, label: { vi: "Zalo", en: "Zalo" }, value: publicContact.phoneDisplay, href: publicContact.zaloHref },
-  { icon: Mail, label: { vi: "Email", en: "Email" }, value: publicContact.email, href: publicContact.emailHref },
-  { icon: MapPin, label: { vi: "Địa chỉ", en: "Address" }, value: publicContact.address, href: null }
+type ContactChannel = {
+  id: string;
+  icon: typeof Phone | null;
+  svg?: (className?: string) => React.ReactNode;
+  label: { vi: string; en: string };
+  value: string;
+  subText: { vi: string; en: string };
+  href: string;
+};
+
+const contactChannels: readonly ContactChannel[] = [
+  {
+    id: "fb",
+    icon: null,
+    svg: (className = "h-6 w-6") => (
+      <svg className={`${className} fill-current`} viewBox="0 0 24 24">
+        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+      </svg>
+    ),
+    label: { vi: "Facebook", en: "Facebook" },
+    value: "LAKA Homestay",
+    subText: { vi: "Fanpage chính thức", en: "Official Fanpage" },
+    href: "https://facebook.com/lagohomestay"
+  },
+  {
+    id: "mess",
+    icon: null,
+    svg: (className = "h-6 w-6") => (
+      <svg className={`${className} fill-current`} viewBox="0 0 24 24">
+        <path d="M12 0C5.373 0 0 4.974 0 11.111c0 3.498 1.744 6.614 4.469 8.654V24l4.088-2.242c1.09.301 2.246.464 3.443.464 6.627 0 12-4.975 12-11.111C24 4.974 18.627 0 12 0zm1.191 14.963l-3.055-3.26-5.963 3.26 6.559-6.96 3.127 3.26 5.89-3.26-6.558 6.96z"/>
+      </svg>
+    ),
+    label: { vi: "Messenger", en: "Messenger" },
+    value: "m.me/lagohomestay",
+    subText: { vi: "Nhắn tin hỗ trợ", en: "Direct Messenger" },
+    href: "https://m.me/lagohomestay"
+  },
+  {
+    id: "insta",
+    icon: Instagram,
+    label: { vi: "Instagram", en: "Instagram" },
+    value: "@lagohomestay",
+    subText: { vi: "Nhật ký hình ảnh", en: "Visual Journal" },
+    href: "https://instagram.com/lagohomestay"
+  },
+  {
+    id: "zalo",
+    icon: null,
+    svg: (className = "h-6 w-6") => (
+      <svg className={`${className} fill-current`} viewBox="0 0 24 24">
+        <path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.52 3.66 1.43 5.18L2 22l4.98-1.39C8.44 21.5 10.18 22 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm-1.8 13.6h-2.8v-1.6l2.3-3.4H7.4V9h4.4v1.6l-2.3 3.4h2.7v1.6zm2.8 0h-1.6V9h1.6v6.6zm3.4 0c-1.3 0-2.3-1-2.3-2.3V9h1.6v4.3c0 .4.3.7.7.7s.7-.3.7-.7V9h1.6v4.3c0 1.3-1 2.3-2.3 2.3z"/>
+      </svg>
+    ),
+    label: { vi: "Zalo", en: "Zalo" },
+    value: publicContact.phoneDisplay,
+    subText: { vi: "Tư vấn & Đặt phòng", en: "Support & Booking" },
+    href: publicContact.zaloHref
+  },
+  {
+    id: "tiktok",
+    icon: null,
+    svg: (className = "h-6 w-6") => (
+      <svg className={`${className} fill-current`} viewBox="0 0 24 24">
+        <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 012.31-4.64c.29 0 .57.04.84.12V9.34a6.34 6.34 0 00-1-.08 6.33 6.33 0 00-6.33 6.33 6.33 6.33 0 0010.82 4.48V11.8a8.31 8.31 0 005.23 1.83V10.1a4.84 4.84 0 01-2.45-3.41z"/>
+      </svg>
+    ),
+    label: { vi: "TikTok", en: "TikTok" },
+    value: "@lagohomestay",
+    subText: { vi: "Thước phim thung lũng", en: "Valley Stories" },
+    href: "https://tiktok.com/@lagohomestay"
+  },
+  {
+    id: "phone",
+    icon: Phone,
+    label: { vi: "Điện thoại", en: "Hotline" },
+    value: publicContact.phoneDisplay,
+    subText: { vi: "Gọi trực tiếp 24/7", en: "24/7 Support Call" },
+    href: publicContact.phoneHref
+  },
+  {
+    id: "ggmaps",
+    icon: MapPin,
+    label: { vi: "Google Maps", en: "Google Maps" },
+    value: "Dốc Dây Diều, Hà Nội",
+    subText: { vi: "Chỉ đường tới LAKA", en: "Get Directions" },
+    href: "https://maps.google.com/?q=D%E1%BB%91c+D%C3%A2y+Di%E1%BB%81u,+S%C3%B3c+S%C6%A1n,+H%C3%A0+N%E1%BB%99i"
+  }
 ] as const;
 
 const quote = "Một kỳ nghỉ tốt không cần quá nhiều thứ để làm. Chỉ cần đúng người, đúng không gian và đủ thời gian.";
@@ -131,18 +216,151 @@ export function TemplateAboutStory({ mood, locale = "vi" }: { mood: Mood; locale
   );
 }
 
-function ChannelContent({ icon: Icon, label, value }: { icon: typeof Phone; label: string; value: string }) {
-  return <><Icon className="h-6 w-6" /><p className="mt-10 text-[.62rem] font-bold uppercase tracking-[.16em] text-[#16311c]/72">{label}</p><p className="mt-2 text-lg font-bold">{value}</p><ArrowRight aria-hidden="true" className="mt-7 h-5 w-5 opacity-35 transition group-hover:translate-x-1 group-hover:opacity-100" /></>;
-}
-
 export function TemplateContactChannels({ mood, locale = "vi" }: { mood: Mood; locale?: ShowcaseLocale }) {
-  const localizedChannels = contactChannels.map((channel) => ({ ...channel, label: channel.label[locale] }));
-  if (mood === "cinematic") return <section className="reveal-section mx-auto w-[min(1380px,calc(100%-40px))] py-20 sm:py-28"><div className="border-t border-white/12">{localizedChannels.map(({ icon, label, value, href }, index) => { const content = <div className="group grid items-center gap-5 border-b border-white/12 py-7 transition hover:bg-white/[.025] sm:grid-cols-[70px_1fr_auto]"><span className="text-[.6rem] font-bold text-[#c7a882]">0{index + 1}</span><div className="flex items-center gap-5">{(() => { const Icon = icon; return <Icon className="h-6 w-6 text-[#c7a882]" />; })()}<div><p className="text-[.58rem] font-bold uppercase tracking-[.2em] text-white/48">{label}</p><p className="mt-2 font-serif text-3xl font-medium sm:text-4xl">{value}</p></div></div><ArrowRight className="h-5 w-5 text-[#c7a882] transition group-hover:translate-x-1" /></div>; return href ? <a href={href} key={label}>{content}</a> : <div key={label}>{content}</div>; })}</div><div className="mt-10 flex items-center gap-3 text-xs text-white/48"><Instagram className="h-4 w-4 text-[#c7a882]" />{locale === "en" ? "Follow the visual journal at @lagohomestay" : "Theo dõi nhật ký hình ảnh tại @lagohomestay"}</div></section>;
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [activeIndex, setActiveIndex] = useState(0);
 
-  if (mood === "organic") {
-    const colors = ["bg-white", "bg-[#f7cf58]", "bg-[#f18b68]", "bg-[#d9e5cf]"];
-    return <section className="reveal-section mx-auto w-[min(1280px,calc(100%-28px))] py-20 sm:py-28"><div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">{localizedChannels.map(({ icon, label, value, href }, index) => { const Icon = icon; const content = <div className={`group min-h-[300px] rounded-[38px] p-7 shadow-[0_18px_55px_rgba(33,72,61,.08)] transition duration-500 hover:-translate-y-2 ${colors[index]} text-[#16311c]`}><span className="grid h-12 w-12 place-items-center rounded-full bg-[#16311c] text-white"><Icon className="h-5 w-5" /></span><p className="mt-14 text-[.6rem] font-extrabold uppercase tracking-[.14em] opacity-80">{label}</p><p className="mt-3 break-words text-xl font-extrabold">{value}</p><ArrowRight className="mt-8 h-5 w-5 transition group-hover:translate-x-1" /></div>; return href ? <a href={href} key={label}>{content}</a> : <div key={label}>{content}</div>; })}</div></section>;
-  }
+  const localizedChannels = contactChannels.map((channel) => ({
+    ...channel,
+    label: channel.label[locale],
+    subText: channel.subText[locale]
+  }));
 
-  return <section className="reveal-section mx-auto w-[min(1280px,calc(100%-40px))] py-20 sm:py-28"><div className="grid border-y border-[#16311c]/15 md:grid-cols-2 lg:grid-cols-4">{localizedChannels.map(({ icon, label, value, href }, index) => { const content = <div className={`group min-h-[300px] border-b border-[#16311c]/15 p-7 last:border-b-0 md:border-r md:[&:nth-child(2n)]:border-r-0 lg:border-b-0 lg:border-r lg:[&:nth-child(2n)]:border-r lg:last:border-r-0 ${index === 0 ? "rounded-t-[120px] pt-20" : "pt-12"}`}><ChannelContent icon={icon} label={label} value={value} /></div>; return href ? <a href={href} key={label}>{content}</a> : <div key={label}>{content}</div>; })}</div></section>;
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!containerRef.current) return;
+      const rect = containerRef.current.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+      const scrollableHeight = rect.height - windowHeight;
+      if (scrollableHeight <= 0) return;
+      const progress = Math.max(0, Math.min(1, -rect.top / scrollableHeight));
+      const index = Math.min(localizedChannels.length - 1, Math.floor(progress * localizedChannels.length));
+      setActiveIndex(index);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [localizedChannels.length]);
+
+  const currentChannel = localizedChannels[activeIndex] ?? localizedChannels[0];
+
+  return (
+    <section className="reveal-section py-16 sm:py-24">
+      {/* Desktop Layout: 7 artistic balanced columns on horizontal row */}
+      <div className="hidden mx-auto w-[min(1440px,calc(100%-40px))] lg:block">
+        <div className="grid grid-cols-7 border-y border-[#16311c]/15 divide-x divide-[#16311c]/15 bg-[#eae1d2]/40">
+          {localizedChannels.map((item, index) => {
+            const IconComponent = item.icon;
+            return (
+              <a
+                key={item.id}
+                href={item.href}
+                target={item.href.startsWith("http") ? "_blank" : undefined}
+                rel={item.href.startsWith("http") ? "noreferrer" : undefined}
+                className="group flex min-h-[280px] flex-col justify-between p-6 transition duration-300 hover:bg-[#16311c] hover:text-white"
+              >
+                <div>
+                  <div className="flex items-center justify-between">
+                    <span className="text-[.55rem] font-bold text-[#80613f] group-hover:text-[#c7a882]">0{index + 1}</span>
+                    {IconComponent ? (
+                      <IconComponent className="h-5 w-5 text-[#80613f] group-hover:text-[#c7a882]" />
+                    ) : (
+                      item.svg?.("h-5 w-5 text-[#80613f] group-hover:text-[#c7a882]")
+                    )}
+                  </div>
+                  <p className="mt-8 text-[.55rem] font-bold uppercase tracking-[.18em] opacity-75">{item.label}</p>
+                  <p className="mt-1.5 break-words font-sans text-sm font-bold leading-snug">{item.value}</p>
+                </div>
+                <div className="mt-8 flex items-center justify-between border-t border-current/15 pt-3">
+                  <span className="text-[.55rem] opacity-60">{item.subText}</span>
+                  <ArrowRight className="h-3.5 w-3.5 transition group-hover:translate-x-1" />
+                </div>
+              </a>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* Mobile Layout: Sticky Pinned Scroll Deck */}
+      <div ref={containerRef} className="relative h-[320vh] lg:hidden">
+        <div className="sticky top-28 z-20 mx-auto w-[calc(100%-32px)] max-w-md">
+          <div className="template-menu-enter relative overflow-hidden rounded-3xl border border-[#16311c]/15 bg-[#eae1d2] p-7 text-[#16311c] shadow-2xl">
+            {/* Step header indicator */}
+            <div className="flex items-center justify-between border-b border-[#16311c]/12 pb-4">
+              <span className="text-[.58rem] font-bold uppercase tracking-[.2em] text-[#80613f]">
+                {locale === "en" ? "Connection" : "Kênh kết nối"} · 0{activeIndex + 1} / 0{localizedChannels.length}
+              </span>
+              <div className="flex items-center gap-1.5">
+                <button
+                  type="button"
+                  onClick={() => setActiveIndex((prev) => Math.max(0, prev - 1))}
+                  disabled={activeIndex === 0}
+                  aria-label="Kênh trước"
+                  className="grid h-7 w-7 place-items-center rounded-full border border-[#16311c]/20 disabled:opacity-30"
+                >
+                  <ChevronLeft className="h-4 w-4" />
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setActiveIndex((prev) => Math.min(localizedChannels.length - 1, prev + 1))}
+                  disabled={activeIndex === localizedChannels.length - 1}
+                  aria-label="Kênh tiếp theo"
+                  className="grid h-7 w-7 place-items-center rounded-full border border-[#16311c]/20 disabled:opacity-30"
+                >
+                  <ChevronRight className="h-4 w-4" />
+                </button>
+              </div>
+            </div>
+
+            {/* Stationary Content Frame */}
+            <div className="flex min-h-[220px] flex-col justify-between py-6">
+              <div>
+                <div className="flex items-center gap-3">
+                  <span className="grid h-12 w-12 place-items-center rounded-2xl bg-[#16311c] text-white shadow-md">
+                    {currentChannel.icon ? (
+                      <currentChannel.icon className="h-6 w-6" />
+                    ) : (
+                      currentChannel.svg?.("h-6 w-6")
+                    )}
+                  </span>
+                  <div>
+                    <p className="text-[.62rem] font-bold uppercase tracking-[.18em] text-[#80613f]">
+                      {currentChannel.label}
+                    </p>
+                    <p className="text-xs text-[#16311c]/60">{currentChannel.subText}</p>
+                  </div>
+                </div>
+                <strong className="mt-6 block break-words font-serif text-2xl font-semibold text-[#16311c] sm:text-3xl">
+                  {currentChannel.value}
+                </strong>
+              </div>
+
+              <div className="mt-6 flex items-center justify-between border-t border-[#16311c]/12 pt-4">
+                <div className="flex gap-1">
+                  {localizedChannels.map((ch, idx) => (
+                    <button
+                      key={ch.id}
+                      type="button"
+                      onClick={() => setActiveIndex(idx)}
+                      aria-label={`Chuyển tới ${ch.label}`}
+                      className={`h-1.5 rounded-full transition-all ${idx === activeIndex ? "w-6 bg-[#16311c]" : "w-1.5 bg-[#16311c]/25"}`}
+                    />
+                  ))}
+                </div>
+                <a
+                  href={currentChannel.href}
+                  target={currentChannel.href.startsWith("http") ? "_blank" : undefined}
+                  rel={currentChannel.href.startsWith("http") ? "noreferrer" : undefined}
+                  className="focus-ring flex items-center gap-2 rounded-full bg-[#16311c] px-5 py-2.5 text-xs font-bold text-white shadow-md transition hover:bg-[#23482b]"
+                >
+                  {locale === "en" ? "Open" : "Mở kết nối"}
+                  <ArrowRight className="h-4 w-4" />
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
 }
