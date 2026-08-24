@@ -271,7 +271,7 @@ export function TemplateContactChannels({ mood, locale = "vi" }: { mood: Mood; l
                 href={item.href}
                 target={item.href.startsWith("http") ? "_blank" : undefined}
                 rel={item.href.startsWith("http") ? "noreferrer" : undefined}
-                className="group relative flex min-h-[240px] w-[85vw] max-w-[320px] shrink-0 snap-center flex-col justify-between overflow-hidden rounded-3xl border border-[#16311c]/20 bg-[#16311c] p-7 text-white shadow-xl transition active:scale-[0.98]"
+                className="group relative flex min-h-[240px] w-[85vw] max-w-[320px] shrink-0 snap-center flex-col justify-between overflow-hidden rounded-md border border-[#16311c]/20 bg-[#16311c] p-7 text-white shadow-xl transition active:scale-[0.98]"
               >
                 <div className="relative z-10">
                   <span className="text-[.75rem] font-bold uppercase tracking-[.2em] text-[#c7a882]">
@@ -284,7 +284,7 @@ export function TemplateContactChannels({ mood, locale = "vi" }: { mood: Mood; l
                 </div>
                 
                 <div className="relative z-10 mt-12 flex items-end justify-between">
-                  <span className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/10 px-4 py-2 text-xs font-bold transition">
+                  <span className="inline-flex items-center gap-2 rounded-md border border-white/30 bg-white/10 px-4 py-2 text-xs font-bold transition">
                     {locale === "en" ? "Connect" : "Kết nối"}
                     <ArrowRight className="h-3.5 w-3.5" />
                   </span>
