@@ -120,7 +120,7 @@ export function BookingModal({
         role="dialog"
         aria-modal="true"
         aria-label={en ? "Booking inquiry form" : "Form điền thông tin đặt phòng"}
-        className="template-menu-enter relative flex max-h-[90vh] w-full max-w-xl flex-col overflow-hidden rounded-t-3xl bg-[#eae1d2] text-[#16311c] shadow-2xl sm:rounded-3xl"
+        className="template-menu-enter relative flex max-h-[90vh] w-full max-w-xl flex-col overflow-hidden rounded-t-lg bg-[#eae1d2] text-[#16311c] shadow-2xl sm:rounded-lg"
       >
         <header className="flex items-center justify-between border-b border-[#16311c]/12 px-6 py-4">
           <div>
@@ -136,7 +136,7 @@ export function BookingModal({
             type="button"
             onClick={onClose}
             aria-label={en ? "Close" : "Đóng"}
-            className="focus-ring grid h-10 w-10 place-items-center rounded-full bg-white/70 hover:bg-white"
+            className="focus-ring grid h-10 w-10 place-items-center rounded-lg bg-white/70 hover:bg-white"
           >
             <X className="h-5 w-5" />
           </button>

@@ -139,12 +139,18 @@ input[type="checkbox"][aria-invalid="true"] { border-color: #dc2626; box-shadow:
 .template-cinematic .template-panel:hover { transform: translateY(-3px); box-shadow: 0 28px 80px rgba(0,0,0,.25); }
 .template-editorial .template-panel:hover { transform: translateY(-3px); box-shadow: 0 24px 65px rgba(25,48,42,.1); }
 
-/* All images and image containers have a refined 8px border-radius without stroke outline */
+/* All images, media frames, and cards have a refined 8px border-radius */
 img, .showcase-visual-media {
   border-radius: 8px;
 }
 
 :is(figure, .laka-media-frame, [class*="aspect-"]):has(> img) {
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.showcase-snap-card,
+.laka-media-frame {
   border-radius: 8px;
   overflow: hidden;
 }

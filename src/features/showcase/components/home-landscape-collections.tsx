@@ -79,7 +79,7 @@ export function HomeLandscapeCollections({ basePath, locale = "vi" }: { basePath
 
         <div className="showcase-snap-rail mt-10 lg:grid-cols-3 lg:gap-5" aria-label={en ? "LAKA stay groups" : "Ba nhóm lưu trú tại LAKA"}>
           {stayGroups.map((group, groupIndex) => (
-            <article key={group.title.vi} className="showcase-snap-card group flex h-full flex-col border border-[#16311c]/14 bg-[#eadfce]">
+            <article key={group.title.vi} className="showcase-snap-card group flex h-full flex-col overflow-hidden rounded-lg border border-[#16311c]/14 bg-[#eadfce]">
               <div className="laka-media-frame relative aspect-[16/11] overflow-hidden bg-[#10251d]">
                 <Image
                   src={group.image}
@@ -88,10 +88,10 @@ export function HomeLandscapeCollections({ basePath, locale = "vi" }: { basePath
                   sizes="(max-width:1024px) 82vw, 33vw"
                   className="object-cover transition duration-1000 ease-out group-hover:scale-[1.025]"
                 />
-                <span className="absolute left-4 top-4 rounded-full bg-[#07150f]/68 px-3 py-1.5 text-[.55rem] font-bold uppercase tracking-[.15em] text-white backdrop-blur">
+                <span className="absolute left-4 top-4 rounded-md bg-[#07150f]/68 px-3 py-1.5 text-[.55rem] font-bold uppercase tracking-[.15em] text-white backdrop-blur">
                   0{groupIndex + 1}
                 </span>
-                <span className="absolute bottom-4 right-4 rounded-full bg-[#f2ece2]/92 px-3 py-1.5 text-[.54rem] font-bold uppercase tracking-[.13em] text-[#16311c] backdrop-blur">
+                <span className="absolute bottom-4 right-4 rounded-md bg-[#f2ece2]/92 px-3 py-1.5 text-[.54rem] font-bold uppercase tracking-[.13em] text-[#16311c] backdrop-blur">
                   {group.count[locale]}
                 </span>
               </div>
@@ -125,7 +125,7 @@ export function HomeLandscapeCollections({ basePath, locale = "vi" }: { basePath
           </Link>
         </div>
 
-        <aside className="mt-10 grid gap-8 bg-[#10251d] p-7 text-white sm:p-9 lg:grid-cols-[.38fr_1fr] lg:items-start lg:p-10">
+        <aside className="mt-10 grid gap-8 overflow-hidden rounded-lg bg-[#10251d] p-7 text-white sm:p-9 lg:grid-cols-[.38fr_1fr] lg:items-start lg:p-10">
           <div>
             <p className="text-[.62rem] font-bold uppercase tracking-[.22em] text-[#dfc6a5]">{en ? "Across every stay" : "Đi cùng mỗi khoảng nghỉ"}</p>
             <h3 className="mt-4 max-w-sm font-serif text-[1.8rem] font-medium leading-tight sm:text-[2.15rem]">

@@ -189,14 +189,14 @@ export function StayProductExplorer({
           role="dialog"
           aria-modal="true"
           aria-labelledby="stay-dialog-title"
-          className="relative mx-auto h-[100svh] max-w-[1500px] overflow-y-auto bg-[#f4efe7] text-[#16311c] shadow-[0_36px_120px_rgba(0,0,0,.38)] lg:grid lg:h-[calc(100svh-32px)] lg:grid-cols-[1.08fr_.92fr] lg:overflow-hidden lg:rounded-[32px]"
+          className="relative mx-auto h-[100svh] max-w-[1500px] overflow-y-auto bg-[#f4efe7] text-[#16311c] shadow-[0_36px_120px_rgba(0,0,0,.38)] lg:grid lg:h-[calc(100svh-32px)] lg:grid-cols-[1.08fr_.92fr] lg:overflow-hidden lg:rounded-lg"
         >
           <button
             ref={closeButtonRef}
             type="button"
             onClick={closeStay}
             aria-label={locale === "en" ? "Close" : "Đóng"}
-            className="absolute right-4 top-4 z-30 grid h-12 w-12 place-items-center rounded-full bg-[#f4efe7] text-[#16311c] shadow-lg transition hover:rotate-90 lg:right-6 lg:top-6"
+            className="absolute right-4 top-4 z-30 grid h-12 w-12 place-items-center rounded-lg bg-[#f4efe7] text-[#16311c] shadow-lg transition hover:rotate-90 lg:right-6 lg:top-6"
           >
             <X className="h-5 w-5" />
           </button>
@@ -222,7 +222,7 @@ export function StayProductExplorer({
                   type="button"
                   aria-label={locale === "en" ? "Previous image" : "Ảnh trước"}
                   onClick={() => setGalleryIndex((galleryIndex - 1 + gallery.length) % gallery.length)}
-                  className="grid h-11 w-11 place-items-center rounded-full border border-white/28 bg-black/22 backdrop-blur transition hover:bg-white hover:text-[#16311c]"
+                  className="grid h-11 w-11 place-items-center rounded-lg border border-white/28 bg-black/22 backdrop-blur transition hover:bg-white hover:text-[#16311c]"
                 >
                   <ChevronLeft className="h-4 w-4" />
                 </button>
@@ -230,13 +230,13 @@ export function StayProductExplorer({
                   type="button"
                   aria-label={locale === "en" ? "Next image" : "Ảnh tiếp theo"}
                   onClick={() => setGalleryIndex((galleryIndex + 1) % gallery.length)}
-                  className="grid h-11 w-11 place-items-center rounded-full border border-white/28 bg-black/22 backdrop-blur transition hover:bg-white hover:text-[#16311c]"
+                  className="grid h-11 w-11 place-items-center rounded-lg border border-white/28 bg-black/22 backdrop-blur transition hover:bg-white hover:text-[#16311c]"
                 >
                   <ChevronRight className="h-4 w-4" />
                 </button>
               </div>
             </div>
-            <span className="absolute left-5 top-5 rounded-full border border-white/22 bg-black/20 px-3 py-1.5 text-[.58rem] font-bold tracking-[.14em] text-white backdrop-blur sm:left-7 sm:top-7">
+            <span className="absolute left-5 top-5 rounded-md border border-white/22 bg-black/20 px-3 py-1.5 text-[.58rem] font-bold tracking-[.14em] text-white backdrop-blur sm:left-7 sm:top-7">
               {String(galleryIndex + 1).padStart(2, "0")} / {String(gallery.length).padStart(2, "0")}
             </span>
           </section>
@@ -281,14 +281,14 @@ export function StayProductExplorer({
                 <p className="laka-section-lead">{activeStay.longDescription}</p>
                 <div className="mt-8">
                   <p className="text-[.6rem] font-bold uppercase tracking-[.17em] text-[#80613f]">{locale === "en" ? "Best for" : "Phù hợp nhất"}</p>
-                  <div className="mt-4 flex flex-wrap gap-2">{activeStay.idealFor.map((item) => <span key={item} className="rounded-full border border-[#16311c]/14 px-4 py-2 text-xs font-bold">{item}</span>)}</div>
+                  <div className="mt-4 flex flex-wrap gap-2">{activeStay.idealFor.map((item) => <span key={item} className="rounded-lg border border-[#16311c]/14 px-4 py-2 text-xs font-bold">{item}</span>)}</div>
                 </div>
                 <div className="mt-10">
                   <div className="flex items-end justify-between gap-5">
                     <div><p className="text-[.6rem] font-bold uppercase tracking-[.17em] text-[#80613f]">{locale === "en" ? "Physical homes" : "Các căn thực tế"}</p><h3 className="laka-heading-card mt-2">{selectedUnits.length} {locale === "en" ? "positions in this type" : "vị trí thuộc dòng này"}</h3></div>
                   </div>
                   <div className="mt-5 grid gap-3 sm:grid-cols-2">
-                    {selectedUnits.map((unit) => <article key={unit.id} className="border border-[#16311c]/12 bg-white/45 p-4">
+                    {selectedUnits.map((unit) => <article key={unit.id} className="rounded-lg border border-[#16311c]/12 bg-white/45 p-4">
                       <div className="flex items-center justify-between gap-3"><span className="text-[.58rem] font-bold uppercase tracking-[.14em] text-[#80613f]">{unit.code}</span><MapPin className="h-3.5 w-3.5 opacity-35" /></div>
                       <h4 className="laka-heading-card mt-4">{unit.name}</h4>
                       <p className="mt-1 text-xs font-bold text-[#16311c]/52">{unit.position}</p>
@@ -332,10 +332,10 @@ export function StayProductExplorer({
                   <p className="mt-1 text-xs text-[#16311c]/55">{locale === "en" ? "See how a full day unfolds at LAKA." : "Cảm nhận cách một ngày trọn vẹn diễn ra tại LAKA."}</p>
                 </div>
                 <div className="flex flex-wrap gap-2">
-                  <Link href={`${basePath}/trai-nghiem`} className="inline-flex min-h-12 shrink-0 items-center gap-2 rounded-full border border-[#16311c]/16 px-5 text-xs font-bold sm:px-6">
+                  <Link href={`${basePath}/trai-nghiem`} className="inline-flex min-h-12 shrink-0 items-center gap-2 rounded-lg border border-[#16311c]/16 px-5 text-xs font-bold sm:px-6">
                     {locale === "en" ? "A day at LAKA" : "Một ngày tại LAKA"} <ArrowRight className="h-4 w-4" />
                   </Link>
-                  <Link href={`${basePath}/lien-he?stay=${activeStay.slug}#inquiry-form`} className="inline-flex min-h-12 shrink-0 items-center gap-2 rounded-full bg-[#16311c] px-5 text-xs font-bold text-white sm:px-6">
+                  <Link href={`${basePath}/lien-he?stay=${activeStay.slug}#inquiry-form`} className="inline-flex min-h-12 shrink-0 items-center gap-2 rounded-lg bg-[#16311c] px-5 text-xs font-bold text-white sm:px-6">
                     {locale === "en" ? "Ask about this stay" : "Liên hệ về căn này"} <ArrowRight className="h-4 w-4" />
                   </Link>
                 </div>
@@ -403,7 +403,7 @@ export function StayProductExplorer({
               onClick={(event) => openStay(stay.slug, zone.slug, event.currentTarget)}
               className="group text-left"
             >
-              <span className="relative block aspect-[4/5] overflow-hidden bg-[#10251d]">
+              <span className="relative block aspect-[4/5] overflow-hidden rounded-lg bg-[#10251d]">
                 <Image
                   src={stay.image}
                   alt={`${stay.name} — ${locale === "en" ? "concept image" : "hình ảnh minh họa"}`}
@@ -412,7 +412,7 @@ export function StayProductExplorer({
                   className="object-cover transition duration-[900ms] ease-out group-hover:scale-[1.035]"
                 />
                 <span className="absolute inset-0 bg-gradient-to-t from-[#07140f]/66 via-transparent to-transparent opacity-65 transition group-hover:opacity-90" />
-                <span className="absolute bottom-4 right-4 grid h-11 w-11 translate-y-2 place-items-center rounded-full bg-[#eae1d2] text-[#16311c] opacity-0 transition duration-300 group-hover:translate-y-0 group-hover:opacity-100 group-focus-visible:translate-y-0 group-focus-visible:opacity-100">
+                <span className="absolute bottom-4 right-4 grid h-11 w-11 translate-y-2 place-items-center rounded-lg bg-[#eae1d2] text-[#16311c] opacity-0 transition duration-300 group-hover:translate-y-0 group-hover:opacity-100 group-focus-visible:translate-y-0 group-focus-visible:opacity-100">
                   <ArrowRight className="h-4 w-4 -rotate-45" />
                 </span>
                 <span className="absolute left-4 top-4 text-[.55rem] font-bold uppercase tracking-[.16em] text-white/75">
