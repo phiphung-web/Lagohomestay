@@ -61,7 +61,7 @@ export function HomeLandscapeCollections({ basePath, locale = "vi" }: { basePath
   return (
     <section id="luu-tru" className="laka-section-normal scroll-mt-20 border-y border-[#16311c]/12 bg-[#e3d8c9] px-5 sm:px-8">
       <div className="mx-auto w-[min(1380px,100%)]">
-        <header className="grid gap-8 border-b border-[#16311c]/15 pb-10 lg:grid-cols-[.38fr_1fr] lg:items-end lg:pb-12">
+        <header className="grid gap-8 border-b border-[#16311c]/15 pb-10 lg:grid-cols-[.38fr_1fr] lg:items-start lg:pb-12">
           <div>
             <h2 className="laka-home-section-title text-[#16311c]">
               {en ? "Stay at LaKa" : "Lưu trú tại LaKa"}

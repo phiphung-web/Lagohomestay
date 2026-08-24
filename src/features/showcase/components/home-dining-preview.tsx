@@ -11,7 +11,7 @@ export function HomeDiningPreview({ basePath, locale = "vi" }: { basePath: strin
   return (
     <section id="am-thuc" className="laka-section-normal bg-[#f2ece2] px-5 sm:px-8">
       <div className="mx-auto w-[min(1380px,100%)]">
-        <div className="grid gap-8 lg:grid-cols-[.42fr_1fr] lg:items-end">
+        <div className="grid gap-8 lg:grid-cols-[.42fr_1fr] lg:items-start">
           <div>
             <h2 className="laka-home-section-title text-[#16311c]">{en ? "Dining at LaKa" : "Ẩm thực tại LaKa"}</h2>
             <p className="laka-body-muted mt-5 max-w-sm">

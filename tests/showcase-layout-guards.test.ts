@@ -34,15 +34,23 @@ describe("LAKA showcase layout guards", () => {
     expect(form).toContain('role="status"');
   });
 
-  it("keeps the homepage hierarchy clear and hides unapproved feedback placeholders", () => {
+  it("keeps the public-site heading hierarchy clear and hides unapproved feedback placeholders", () => {
     const globals = source("src/app/globals.css");
     const home = source("src/features/showcase/site/main-home.tsx");
+    const site = source("src/features/showcase/site/complete-template-site.tsx");
     const story = source("src/features/showcase/components/home-brand-story.tsx");
     const stays = source("src/features/showcase/components/home-landscape-collections.tsx");
+    const destinations = source("src/features/showcase/components/template-destination-sections.tsx");
     const feedback = source("src/features/showcase/components/home-guest-stories.tsx");
 
-    expect(globals).toContain('.laka-home-section-title { font-family: "Be Vietnam Pro"');
-    expect(globals).toContain('.laka-home-section-lead { font-family: "Lora"');
+    expect(globals).toContain('.laka-heading-section, .laka-home-section-title { font-family: "Be Vietnam Pro"');
+    expect(globals).toContain('.laka-section-lead, .laka-home-section-lead { font-family: "Lora"');
+    expect(globals).toContain("font-size: clamp(1.0625rem, 1.25vw, 1.25rem)");
+    expect(site).toContain('<h2 className="laka-heading-section max-w-3xl">');
+    expect(site).toContain('<p className="laka-section-lead mt-5 max-w-3xl opacity-72">');
+    expect(destinations).toContain('className="laka-heading-card mt-6"');
+    expect(home).toContain('"Chọn" Cabin - "Trọn" Thung Lũng');
+    expect(home).toContain("LaKa - Nhà giữa khoảng xanh");
     expect(story).toContain('h-[min(58svh,440px)]');
     expect(stays).toContain("Ba nhóm không gian");
     expect(stays).toContain('href={basePath + "/luu-tru"}');

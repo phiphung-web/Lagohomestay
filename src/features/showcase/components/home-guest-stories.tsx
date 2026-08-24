@@ -54,7 +54,7 @@ export function HomeGuestStories({ locale = "vi" }: { locale?: ShowcaseLocale })
       aria-labelledby="feedback-heading"
     >
       <div className="mx-auto w-[min(1380px,100%)]">
-        <header className="grid gap-8 border-b border-[#16311c]/14 pb-10 lg:grid-cols-[.38fr_1fr] lg:items-end lg:pb-12">
+        <header className="grid gap-8 border-b border-[#16311c]/14 pb-10 lg:grid-cols-[.38fr_1fr] lg:items-start lg:pb-12">
           <h2 id="feedback-heading" className="laka-home-section-title text-[#16311c]">
             {en ? "Guest impressions" : "Cảm nhận khách nghỉ"}
           </h2>

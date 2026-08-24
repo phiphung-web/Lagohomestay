@@ -17,7 +17,7 @@ export function HomeDayJourney({
   return (
     <section id="mot-ngay" className="laka-section-normal scroll-mt-20 bg-[#0a1a13] px-5 text-white sm:px-8">
       <div className="mx-auto w-[min(1480px,100%)]">
-        <div className="grid gap-8 lg:grid-cols-[.4fr_1fr] lg:items-end">
+        <div className="grid gap-8 lg:grid-cols-[.4fr_1fr] lg:items-start">
           <div>
             <h2 className="laka-home-section-title text-[#dfc6a5]">
               {en ? "A day at LaKa" : "Một ngày ở LaKa"}

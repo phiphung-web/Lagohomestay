@@ -246,7 +246,7 @@ export function StayProductExplorer({
               <p className="text-[.6rem] font-bold uppercase tracking-[.2em] text-[#80613f]">
                 {selectedZone.name} · {activeStay.badge}
               </p>
-              <h2 id="stay-dialog-title" className="mt-3 font-serif text-4xl font-medium leading-[.95] tracking-[-.045em] sm:mt-4 sm:text-5xl">
+              <h2 id="stay-dialog-title" className="laka-heading-section mt-3 sm:mt-4">
                 {activeStay.name}
               </h2>
               <p className="mt-5 max-w-2xl text-sm leading-7 text-[#16311c]/68">{activeStay.subtitle}</p>
@@ -278,19 +278,19 @@ export function StayProductExplorer({
 
             <div className="flex-1 px-5 py-8 sm:px-9 lg:px-11">
               {detailSection === "overview" && <div>
-                <p className="font-serif text-2xl font-medium leading-[1.45] tracking-[-.02em]">{activeStay.longDescription}</p>
+                <p className="laka-section-lead">{activeStay.longDescription}</p>
                 <div className="mt-8">
                   <p className="text-[.6rem] font-bold uppercase tracking-[.17em] text-[#80613f]">{locale === "en" ? "Best for" : "Phù hợp nhất"}</p>
                   <div className="mt-4 flex flex-wrap gap-2">{activeStay.idealFor.map((item) => <span key={item} className="rounded-full border border-[#16311c]/14 px-4 py-2 text-xs font-bold">{item}</span>)}</div>
                 </div>
                 <div className="mt-10">
                   <div className="flex items-end justify-between gap-5">
-                    <div><p className="text-[.6rem] font-bold uppercase tracking-[.17em] text-[#80613f]">{locale === "en" ? "Physical homes" : "Các căn thực tế"}</p><h3 className="mt-2 font-serif text-3xl font-medium">{selectedUnits.length} {locale === "en" ? "positions in this type" : "vị trí thuộc dòng này"}</h3></div>
+                    <div><p className="text-[.6rem] font-bold uppercase tracking-[.17em] text-[#80613f]">{locale === "en" ? "Physical homes" : "Các căn thực tế"}</p><h3 className="laka-heading-card mt-2">{selectedUnits.length} {locale === "en" ? "positions in this type" : "vị trí thuộc dòng này"}</h3></div>
                   </div>
                   <div className="mt-5 grid gap-3 sm:grid-cols-2">
                     {selectedUnits.map((unit) => <article key={unit.id} className="border border-[#16311c]/12 bg-white/45 p-4">
                       <div className="flex items-center justify-between gap-3"><span className="text-[.58rem] font-bold uppercase tracking-[.14em] text-[#80613f]">{unit.code}</span><MapPin className="h-3.5 w-3.5 opacity-35" /></div>
-                      <h4 className="mt-4 font-serif text-xl font-medium">{unit.name}</h4>
+                      <h4 className="laka-heading-card mt-4">{unit.name}</h4>
                       <p className="mt-1 text-xs font-bold text-[#16311c]/52">{unit.position}</p>
                       <p className="mt-3 text-xs leading-5 text-[#16311c]/65">{unit.character}</p>
                     </article>)}
@@ -351,7 +351,7 @@ export function StayProductExplorer({
   return <>
     <section id="bo-suu-tap-can" className="scroll-mt-[92px] bg-[#eae1d2] py-16 text-[#16311c] sm:py-24">
       <div className="mx-auto w-[min(1460px,calc(100%-28px))] sm:w-[min(1460px,calc(100%-48px))]">
-        <div className="grid gap-7 border-b border-[#16311c]/14 pb-8 lg:grid-cols-[1fr_.42fr] lg:items-end">
+        <div className="grid gap-7 border-b border-[#16311c]/14 pb-8 lg:grid-cols-[1fr_.42fr] lg:items-start">
           <h2 className="laka-heading-section max-w-4xl">
             {locale === "en" ? "Choose a landscape. Meet its homes." : "Chọn một hệ cảnh quan. Gặp những căn nhà."}
           </h2>
@@ -433,7 +433,7 @@ export function StayProductExplorer({
           <div className="grid gap-7 lg:grid-cols-[.45fr_1fr]">
             <div>
               <p className="text-[.58rem] font-bold uppercase tracking-[.18em] text-[#80613f]">{locale === "en" ? "Shared stay principles" : "Thông tin chung"}</p>
-              <h2 className="mt-4 font-serif text-4xl font-medium leading-tight">{locale === "en" ? "Clear before you arrive." : "Rõ ràng trước khi đến."}</h2>
+              <h2 className="laka-heading-section mt-4">{locale === "en" ? "Clear before you arrive." : "Rõ ràng trước khi đến."}</h2>
               <p className="mt-4 max-w-sm text-sm leading-7 text-[#16311c]/58">{locale === "en" ? "Home-specific notes remain inside each detail panel." : "Lưu ý riêng của từng căn nằm ngay trong bảng chi tiết tương ứng."}</p>
             </div>
             <div className="divide-y divide-[#16311c]/12 border-y border-[#16311c]/12">

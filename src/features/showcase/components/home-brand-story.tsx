@@ -12,7 +12,7 @@ export function HomeBrandStory({ basePath, locale = "vi" }: { basePath: string; 
   return (
     <section id="gioi-thieu" className="laka-section-normal scroll-mt-20 bg-[#eae1d2] px-5 sm:px-8">
       <div className="mx-auto w-[min(1380px,100%)]">
-        <header className="grid gap-6 border-b border-[#16311c]/15 pb-10 lg:grid-cols-[.38fr_1fr] lg:items-end lg:gap-12 lg:pb-12">
+        <header className="grid gap-6 border-b border-[#16311c]/15 pb-10 lg:grid-cols-[.38fr_1fr] lg:items-start lg:gap-12 lg:pb-12">
           <h2 className="laka-home-section-title text-[#16311c]">
             {en ? "Our mission" : "Sứ mệnh"}
           </h2>

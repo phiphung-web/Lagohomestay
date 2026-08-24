@@ -81,9 +81,9 @@ export function TemplateAboutStory({ mood, locale = "vi" }: { mood: Mood; locale
 
   return (
     <section className="reveal-section py-20 sm:py-28">
-      <div className="mx-auto grid w-[min(1260px,calc(100%-40px))] gap-12 border-b border-[#16311c]/15 pb-20 lg:grid-cols-[.4fr_1fr] lg:items-end">
-        <p className="text-[.62rem] font-bold uppercase tracking-[.2em] text-[#80613f]">{locale === "en" ? "Preface" : "Lời tựa"}</p>
-        <blockquote className="font-serif text-4xl font-medium leading-[1.12] tracking-[-.04em] sm:text-6xl">{localizedQuote}</blockquote>
+      <div className="mx-auto grid w-[min(1260px,calc(100%-40px))] gap-12 border-b border-[#16311c]/15 pb-20 lg:grid-cols-[.4fr_1fr] lg:items-start">
+        <h2 className="laka-heading-section">{locale === "en" ? "Preface" : "Lời tựa"}</h2>
+        <blockquote className="laka-section-lead">{localizedQuote}</blockquote>
       </div>
 
       <div className="mx-auto w-[min(1380px,calc(100%-40px))]">
@@ -95,7 +95,7 @@ export function TemplateAboutStory({ mood, locale = "vi" }: { mood: Mood; locale
             </div>
             <div className={`py-10 lg:px-16 lg:py-12 xl:px-24 ${index % 2 === 1 ? "lg:order-1" : ""}`}>
               <p className="text-[.62rem] font-bold uppercase tracking-[.2em] text-[#80613f]">{chapter.kicker}</p>
-              <h2 className="mt-6 font-serif text-4xl font-medium leading-[1.02] tracking-[-.045em] sm:text-6xl">{chapter.title}</h2>
+              <h2 className="laka-heading-section mt-6">{chapter.title}</h2>
               <div className="mt-8 space-y-5 border-l border-[#80613f]/45 pl-6 text-sm leading-7 text-[#16311c]/68">
                 {chapter.text.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
               </div>
@@ -105,15 +105,15 @@ export function TemplateAboutStory({ mood, locale = "vi" }: { mood: Mood; locale
       </div>
 
       <div className="mx-auto mt-24 w-[min(1260px,calc(100%-40px))] border-y border-[#16311c]/15 py-16 sm:py-20">
-        <div className="grid gap-8 lg:grid-cols-[.42fr_1fr] lg:items-end">
-          <p className="text-[.62rem] font-bold uppercase tracking-[.2em] text-[#80613f]">{locale === "en" ? "04 · Core values" : "04 · Giá trị cốt lõi"}</p>
-          <h2 className="font-serif text-4xl font-medium leading-[1.05] tracking-[-.04em] sm:text-6xl">{locale === "en" ? "Four promises that shape how LAKA grows." : "Bốn lời hứa định hình cách LAKA lớn lên."}</h2>
+        <div className="grid gap-8 lg:grid-cols-[.42fr_1fr] lg:items-start">
+          <h2 className="laka-heading-section">{locale === "en" ? "Core values" : "Giá trị cốt lõi"}</h2>
+          <p className="laka-section-lead">{locale === "en" ? "Four promises that shape how LAKA grows." : "Bốn lời hứa định hình cách LAKA lớn lên."}</p>
         </div>
         <div className="mt-14 grid border-t border-[#16311c]/15 md:grid-cols-2">
           {localizedValues.map(([title, text], index) => (
             <article key={title} className="border-b border-[#16311c]/15 py-9 md:px-8 md:[&:nth-child(odd)]:border-r lg:px-10">
               <span className="text-[.6rem] font-bold text-[#80613f]">0{index + 1}</span>
-              <h3 className="mt-6 font-serif text-3xl font-medium tracking-[-.025em]">{title}</h3>
+              <h3 className="laka-heading-card mt-6">{title}</h3>
               <p className="mt-5 max-w-xl text-sm leading-7 text-[#16311c]/68">{text}</p>
             </article>
           ))}
