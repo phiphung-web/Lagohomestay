@@ -59,7 +59,7 @@ const contactChannels: readonly ContactChannel[] = [
     icon: null,
     svg: (className = "h-6 w-6") => (
       <svg className={`${className} fill-current`} viewBox="0 0 24 24">
-        <path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.52 3.66 1.43 5.18L2 22l4.98-1.39C8.44 21.5 10.18 22 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm-1.8 13.6h-2.8v-1.6l2.3-3.4H7.4V9h4.4v1.6l-2.3 3.4h2.7v1.6zm2.8 0h-1.6V9h1.6v6.6zm3.4 0c-1.3 0-2.3-1-2.3-2.3V9h1.6v4.3c0 .4.3.7.7.7s.7-.3.7-.7V9h1.6v4.3c0 1.3-1 2.3-2.3 2.3z"/>
+        <path d="M21.815 6.741c-1.391-2.617-4.354-4.502-7.85-4.502-5.467 0-9.897 4.103-9.897 9.167 0 2.923 1.542 5.521 3.963 7.215-.221 1.056-1.077 3.328-1.229 3.659-.142.308.196.478.473.321 1.341-.75 4.544-2.632 5.178-3.037.493.078.995.114 1.512.114 5.466 0 9.896-4.104 9.896-9.167 0-1.429-.364-2.775-1.002-3.957l-.022-.042-.022-.071zm-9.366 9.489h-2.147l2.844-4.238h-2.646v-1.745h4.636l-2.825 4.237h2.909v1.746h-.001-.001zm1.261-2.585v2.584h-1.688v-5.983h1.688v3.399zm1.314 2.766a2.636 2.636 0 0 1-2.634-2.636v-1.895h1.688v1.758a.945.945 0 0 0 .945.947.945.945 0 0 0 .947-.947v-1.758h1.688v1.895a2.636 2.636 0 0 1-2.634 2.636zm2.846 0a2.636 2.636 0 0 1-2.635-2.636v-1.895h1.688v1.758a.945.945 0 0 0 .946.947.945.945 0 0 0 .946-.947v-1.758h1.687v1.895a2.636 2.636 0 0 1-2.632 2.636z"/>
       </svg>
     ),
     label: { vi: "Zalo", en: "Zalo" },
@@ -72,7 +72,7 @@ const contactChannels: readonly ContactChannel[] = [
     icon: null,
     svg: (className = "h-6 w-6") => (
       <svg className={`${className} fill-current`} viewBox="0 0 24 24">
-        <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 012.31-4.64c.29 0 .57.04.84.12V9.34a6.34 6.34 0 00-1-.08 6.33 6.33 0 00-6.33 6.33 6.33 6.33 0 0010.82 4.48V11.8a8.31 8.31 0 005.23 1.83V10.1a4.84 4.84 0 01-2.45-3.41z"/>
+        <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/>
       </svg>
     ),
     label: { vi: "TikTok", en: "TikTok" },
@@ -217,32 +217,11 @@ export function TemplateAboutStory({ mood, locale = "vi" }: { mood: Mood; locale
 }
 
 export function TemplateContactChannels({ mood, locale = "vi" }: { mood: Mood; locale?: ShowcaseLocale }) {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const [activeIndex, setActiveIndex] = useState(0);
-
   const localizedChannels = contactChannels.map((channel) => ({
     ...channel,
     label: channel.label[locale],
     subText: channel.subText[locale]
   }));
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (!containerRef.current) return;
-      const rect = containerRef.current.getBoundingClientRect();
-      const windowHeight = window.innerHeight;
-      const scrollableHeight = rect.height - windowHeight;
-      if (scrollableHeight <= 0) return;
-      const progress = Math.max(0, Math.min(1, -rect.top / scrollableHeight));
-      const index = Math.min(localizedChannels.length - 1, Math.floor(progress * localizedChannels.length));
-      setActiveIndex(index);
-    };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [localizedChannels.length]);
-
-  const currentChannel = localizedChannels[activeIndex] ?? localizedChannels[0];
 
   return (
     <section className="reveal-section py-16 sm:py-24">
@@ -281,84 +260,47 @@ export function TemplateContactChannels({ mood, locale = "vi" }: { mood: Mood; l
         </div>
       </div>
 
-      {/* Mobile Layout: Sticky Pinned Scroll Deck */}
-      <div ref={containerRef} className="relative h-[320vh] lg:hidden">
-        <div className="sticky top-28 z-20 mx-auto w-[calc(100%-32px)] max-w-md">
-          <div className="template-menu-enter relative overflow-hidden rounded-3xl border border-[#16311c]/15 bg-[#eae1d2] p-7 text-[#16311c] shadow-2xl">
-            {/* Step header indicator */}
-            <div className="flex items-center justify-between border-b border-[#16311c]/12 pb-4">
-              <span className="text-[.58rem] font-bold uppercase tracking-[.2em] text-[#80613f]">
-                {locale === "en" ? "Connection" : "Kênh kết nối"} · 0{activeIndex + 1} / 0{localizedChannels.length}
-              </span>
-              <div className="flex items-center gap-1.5">
-                <button
-                  type="button"
-                  onClick={() => setActiveIndex((prev) => Math.max(0, prev - 1))}
-                  disabled={activeIndex === 0}
-                  aria-label="Kênh trước"
-                  className="grid h-7 w-7 place-items-center rounded-full border border-[#16311c]/20 disabled:opacity-30"
-                >
-                  <ChevronLeft className="h-4 w-4" />
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setActiveIndex((prev) => Math.min(localizedChannels.length - 1, prev + 1))}
-                  disabled={activeIndex === localizedChannels.length - 1}
-                  aria-label="Kênh tiếp theo"
-                  className="grid h-7 w-7 place-items-center rounded-full border border-[#16311c]/20 disabled:opacity-30"
-                >
-                  <ChevronRight className="h-4 w-4" />
-                </button>
-              </div>
-            </div>
-
-            {/* Stationary Content Frame */}
-            <div className="flex min-h-[220px] flex-col justify-between py-6">
-              <div>
-                <div className="flex items-center gap-3">
-                  <span className="grid h-12 w-12 place-items-center rounded-2xl bg-[#16311c] text-white shadow-md">
-                    {currentChannel.icon ? (
-                      <currentChannel.icon className="h-6 w-6" />
-                    ) : (
-                      currentChannel.svg?.("h-6 w-6")
-                    )}
+      {/* Mobile Layout: Horizontal Scroll Deck */}
+      <div className="lg:hidden">
+        <div className="flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-8 scrollbar-hide">
+          {localizedChannels.map((item, index) => {
+            const IconComponent = item.icon;
+            return (
+              <a
+                key={item.id}
+                href={item.href}
+                target={item.href.startsWith("http") ? "_blank" : undefined}
+                rel={item.href.startsWith("http") ? "noreferrer" : undefined}
+                className="group relative flex min-h-[240px] w-[85vw] max-w-[320px] shrink-0 snap-center flex-col justify-between overflow-hidden rounded-3xl border border-[#16311c]/15 bg-[#eae1d2] p-7 shadow-sm transition hover:bg-[#16311c] hover:text-white"
+              >
+                <div className="relative z-10">
+                  <span className="text-[.6rem] font-bold uppercase tracking-[.2em] text-[#80613f] group-hover:text-[#c7a882]">
+                    0{index + 1} · {item.label}
                   </span>
-                  <div>
-                    <p className="text-[.62rem] font-bold uppercase tracking-[.18em] text-[#80613f]">
-                      {currentChannel.label}
-                    </p>
-                    <p className="text-xs text-[#16311c]/60">{currentChannel.subText}</p>
-                  </div>
+                  <strong className="mt-4 block break-words font-serif text-2xl font-semibold leading-tight sm:text-3xl">
+                    {item.value}
+                  </strong>
+                  <p className="mt-2 text-xs opacity-75">{item.subText}</p>
                 </div>
-                <strong className="mt-6 block break-words font-serif text-2xl font-semibold text-[#16311c] sm:text-3xl">
-                  {currentChannel.value}
-                </strong>
-              </div>
+                
+                <div className="relative z-10 mt-12 flex items-end justify-between">
+                  <span className="inline-flex items-center gap-2 rounded-full border border-current/20 px-4 py-2 text-xs font-bold transition group-hover:border-white/30">
+                    {locale === "en" ? "Connect" : "Kết nối"}
+                    <ArrowRight className="h-3.5 w-3.5" />
+                  </span>
+                </div>
 
-              <div className="mt-6 flex items-center justify-between border-t border-[#16311c]/12 pt-4">
-                <div className="flex gap-1">
-                  {localizedChannels.map((ch, idx) => (
-                    <button
-                      key={ch.id}
-                      type="button"
-                      onClick={() => setActiveIndex(idx)}
-                      aria-label={`Chuyển tới ${ch.label}`}
-                      className={`h-1.5 rounded-full transition-all ${idx === activeIndex ? "w-6 bg-[#16311c]" : "w-1.5 bg-[#16311c]/25"}`}
-                    />
-                  ))}
+                {/* Platform Icon at bottom right */}
+                <div className="absolute -bottom-4 -right-4 z-0 opacity-10 transition group-hover:opacity-20">
+                  {IconComponent ? (
+                    <IconComponent className="h-32 w-32" />
+                  ) : (
+                    item.svg?.("h-32 w-32")
+                  )}
                 </div>
-                <a
-                  href={currentChannel.href}
-                  target={currentChannel.href.startsWith("http") ? "_blank" : undefined}
-                  rel={currentChannel.href.startsWith("http") ? "noreferrer" : undefined}
-                  className="focus-ring flex items-center gap-2 rounded-full bg-[#16311c] px-5 py-2.5 text-xs font-bold text-white shadow-md transition hover:bg-[#23482b]"
-                >
-                  {locale === "en" ? "Open" : "Mở kết nối"}
-                  <ArrowRight className="h-4 w-4" />
-                </a>
-              </div>
-            </div>
-          </div>
+              </a>
+            );
+          })}
         </div>
       </div>
     </section>

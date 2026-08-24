@@ -147,10 +147,10 @@ function SocialContactIcons() {
       <Instagram className="h-4 w-4" />
     </a>
     <a href={publicContact.zaloHref} target="_blank" rel="noreferrer" aria-label="Zalo LAKA" className="focus-ring grid h-10 w-10 place-items-center rounded-full border border-current/20 transition hover:scale-105 hover:border-[#80613f] hover:bg-[#80613f] hover:text-white">
-      <svg className="h-4 w-4 fill-current" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.52 3.66 1.43 5.18L2 22l4.98-1.39C8.44 21.5 10.18 22 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm-1.8 13.6h-2.8v-1.6l2.3-3.4H7.4V9h4.4v1.6l-2.3 3.4h2.7v1.6zm2.8 0h-1.6V9h1.6v6.6zm3.4 0c-1.3 0-2.3-1-2.3-2.3V9h1.6v4.3c0 .4.3.7.7.7s.7-.3.7-.7V9h1.6v4.3c0 1.3-1 2.3-2.3 2.3z"/></svg>
+      <svg className="h-4 w-4 fill-current" viewBox="0 0 24 24"><path d="M21.815 6.741c-1.391-2.617-4.354-4.502-7.85-4.502-5.467 0-9.897 4.103-9.897 9.167 0 2.923 1.542 5.521 3.963 7.215-.221 1.056-1.077 3.328-1.229 3.659-.142.308.196.478.473.321 1.341-.75 4.544-2.632 5.178-3.037.493.078.995.114 1.512.114 5.466 0 9.896-4.104 9.896-9.167 0-1.429-.364-2.775-1.002-3.957l-.022-.042-.022-.071zm-9.366 9.489h-2.147l2.844-4.238h-2.646v-1.745h4.636l-2.825 4.237h2.909v1.746h-.001-.001zm1.261-2.585v2.584h-1.688v-5.983h1.688v3.399zm1.314 2.766a2.636 2.636 0 0 1-2.634-2.636v-1.895h1.688v1.758a.945.945 0 0 0 .945.947.945.945 0 0 0 .947-.947v-1.758h1.688v1.895a2.636 2.636 0 0 1-2.634 2.636zm2.846 0a2.636 2.636 0 0 1-2.635-2.636v-1.895h1.688v1.758a.945.945 0 0 0 .946.947.945.945 0 0 0 .946-.947v-1.758h1.687v1.895a2.636 2.636 0 0 1-2.632 2.636z"/></svg>
     </a>
     <a href="https://tiktok.com/@lagohomestay" target="_blank" rel="noreferrer" aria-label="TikTok LAKA" className="focus-ring grid h-10 w-10 place-items-center rounded-full border border-current/20 transition hover:scale-105 hover:border-[#80613f] hover:bg-[#80613f] hover:text-white">
-      <svg className="h-4 w-4 fill-current" viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 012.31-4.64c.29 0 .57.04.84.12V9.34a6.34 6.34 0 00-1-.08 6.33 6.33 0 00-6.33 6.33 6.33 6.33 0 0010.82 4.48V11.8a8.31 8.31 0 005.23 1.83V10.1a4.84 4.84 0 01-2.45-3.41z"/></svg>
+      <svg className="h-4 w-4 fill-current" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
     </a>
     <a href={publicContact.phoneHref} aria-label="Hotline LAKA" className="focus-ring grid h-10 w-10 place-items-center rounded-full border border-current/20 transition hover:scale-105 hover:border-[#80613f] hover:bg-[#80613f] hover:text-white">
       <Phone className="h-4 w-4" />
@@ -179,19 +179,16 @@ export function TemplateFooter({ config, locale = "vi", storyMode = false, homeM
       </div>
       <div>
         <p className="text-[.65rem] font-bold uppercase tracking-[.16em] opacity-80">{locale === "en" ? "Connect" : "Kết nối"}</p>
-        <div className="mt-5 flex flex-col items-center gap-3.5 text-sm md:items-start">
-          <a href={publicContact.phoneHref} className="flex items-center gap-2.5 font-bold hover:underline"><Phone className="h-4 w-4 shrink-0 text-[#80613f]" />{publicContact.phoneDisplay}</a>
-          <a href={publicContact.zaloHref} target="_blank" rel="noreferrer" className="flex items-center gap-2.5 hover:underline"><MessageCircle className="h-4 w-4 shrink-0 text-[#80613f]" />{locale === "en" ? "Chat on Zalo" : "Trò chuyện qua Zalo"}</a>
-          <a href={publicContact.emailHref} className="flex items-center gap-2.5 hover:underline"><Mail className="h-4 w-4 shrink-0 text-[#80613f]" />{publicContact.email}</a>
-          <span className="flex items-start justify-center gap-2.5 leading-6 opacity-80 md:justify-start"><MapPin className="mt-1 h-4 w-4 shrink-0 text-[#80613f]" />{publicContact.address}</span>
+        <div className="mt-5 flex justify-center md:justify-start">
+          <SocialContactIcons />
         </div>
       </div>
     </div>
     <div className="mx-auto mt-10 flex flex-col items-center gap-5 border-t border-[#16311c]/12 pt-8 text-center">
-      <SocialContactIcons />
       <div className="text-xs leading-6 opacity-75">
         <p>@2026 Lakahomestay</p>
         <p className="mt-0.5">Dốc Dây Diều, Xóm 1, Thanh Hà, Trung Giã, Hà Nội</p>
+        <p className="mt-0.5">{publicContact.email}</p>
         <p className="mt-0.5">{publicContact.phoneDisplay}</p>
       </div>
     </div>
@@ -217,6 +214,7 @@ export function TemplateFooter({ config, locale = "vi", storyMode = false, homeM
       <div className="text-xs leading-6 opacity-75">
         <p>@2026 Lakahomestay</p>
         <p className="mt-0.5">Dốc Dây Diều, Xóm 1, Thanh Hà, Trung Giã, Hà Nội</p>
+        <p className="mt-0.5">{publicContact.email}</p>
         <p className="mt-0.5">{publicContact.phoneDisplay}</p>
       </div>
     </div>
@@ -241,19 +239,16 @@ export function TemplateFooter({ config, locale = "vi", storyMode = false, homeM
       </div>
       <div>
         <p className="text-[.65rem] font-bold uppercase tracking-[.16em] opacity-80">{locale === "en" ? "Connect" : "Kết nối"}</p>
-        <div className="mt-5 flex flex-col items-center gap-3.5 text-sm md:items-start">
-          <a href={publicContact.phoneHref} className="flex items-center gap-2.5 font-bold hover:underline"><Phone className="h-4 w-4 shrink-0" />{publicContact.phoneDisplay}</a>
-          <a href={publicContact.zaloHref} target="_blank" rel="noreferrer" className="flex items-center gap-2.5 hover:underline"><MessageCircle className="h-4 w-4 shrink-0" />{locale === "en" ? "Chat on Zalo" : "Trò chuyện qua Zalo"}</a>
-          <a href={publicContact.emailHref} className="flex items-center gap-2.5 hover:underline"><Mail className="h-4 w-4 shrink-0" />{publicContact.email}</a>
-          <span className="flex items-start justify-center gap-2.5 leading-6 opacity-80 md:justify-start"><MapPin className="mt-1 h-4 w-4 shrink-0" />{publicContact.address}</span>
+        <div className="mt-5 flex justify-center md:justify-start">
+          <SocialContactIcons />
         </div>
       </div>
     </div>
     <div className="mx-auto mt-10 flex flex-col items-center gap-5 border-t border-current/10 pt-8 text-center">
-      <SocialContactIcons />
       <div className="text-xs leading-6 opacity-75">
         <p>@2026 Lakahomestay</p>
         <p className="mt-0.5">Dốc Dây Diều, Xóm 1, Thanh Hà, Trung Giã, Hà Nội</p>
+        <p className="mt-0.5">{publicContact.email}</p>
         <p className="mt-0.5">{publicContact.phoneDisplay}</p>
       </div>
     </div>
