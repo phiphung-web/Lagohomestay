@@ -213,16 +213,16 @@ function PageIntro({ eyebrow, title, text, image, config, locale = "vi" }: { eye
   </section>;
 
   if (organic) return <section className="relative min-h-[100svh] overflow-hidden px-3 py-5 sm:px-5 sm:py-8">
-    <div className="relative mx-auto grid min-h-[calc(100svh-40px)] w-[min(1420px,100%)] overflow-hidden rounded-[38px] border border-[#16311c]/8 bg-[var(--template-surface)] shadow-[0_28px_80px_rgba(33,72,61,.08)] lg:grid-cols-[.78fr_1.22fr]">
+    <div className="relative mx-auto grid min-h-[calc(100svh-40px)] w-[min(1420px,100%)] overflow-hidden rounded-[38px] border border-[#16311c]/8 bg-[var(--template-surface)] shadow-[0_28px_80px_rgba(33,72,61,.08)] sm:min-h-[calc(100svh-64px)] lg:grid-cols-[.78fr_1.22fr]">
       <div className="relative z-10 flex flex-col justify-center px-7 py-16 sm:px-12 lg:px-16"><span className="w-fit rounded-full bg-[#f7cf58] px-4 py-2 text-[.62rem] font-extrabold uppercase tracking-[.14em]">{eyebrow}</span><h1 className="mt-7 max-w-4xl text-5xl font-extrabold leading-[.98] tracking-[-.045em] sm:text-7xl">{title}</h1><p className="mt-6 max-w-2xl text-sm font-medium leading-7 text-[#16311c]/78 sm:text-base">{text}</p></div>
       <div className="relative m-3 min-h-[48svh] overflow-hidden rounded-[32px] lg:min-h-0"><Image src={heroImage} alt={`${title} - ảnh minh họa`} fill priority sizes="(max-width:1024px) 100vw, 58vw" className="showcase-visual-media object-cover transition duration-700 hover:scale-[1.025]" /><span className="absolute bottom-5 right-5 grid h-20 w-20 place-items-center rounded-full bg-[#f18b68] text-center text-[.58rem] font-extrabold uppercase tracking-wider text-[#16311c]">Ảnh<br />minh họa</span></div>
     </div>
   </section>;
 
-  return <section className="relative min-h-[78svh] overflow-hidden border-b border-white/12 bg-[#10251d] text-white lg:min-h-[86svh]">
+  return <section className="relative min-h-[100svh] overflow-hidden border-b border-white/12 bg-[#10251d] text-white">
     <Image src={heroImage} alt={`${title} — ${locale === "en" ? "concept image" : "ảnh minh họa"}`} fill priority sizes="100vw" className="showcase-visual-media object-cover transition duration-[1400ms] hover:scale-[1.015]" />
     <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(5,18,14,.12),rgba(5,18,14,.82))]" />
-    <div className="relative z-10 mx-auto flex min-h-[78svh] w-[min(1480px,calc(100%-40px))] flex-col justify-end pb-12 pt-32 sm:pb-16 lg:min-h-[86svh]">
+    <div className="relative z-10 mx-auto flex min-h-[100svh] w-[min(1480px,calc(100%-40px))] flex-col justify-end pb-12 pt-32 sm:pb-16">
       <p className="laka-eyebrow text-[#dfc6a5]">{eyebrow}</p>
       <h1 className="laka-display-page mt-5 max-w-6xl">{title}</h1>
       <div className="mt-7 grid gap-6 border-t border-white/22 pt-6 sm:grid-cols-[1fr_auto] sm:items-end"><p className="laka-body max-w-2xl text-white/68">{text}</p><span className="w-fit rounded-full border border-white/25 bg-black/12 px-4 py-2 text-[.56rem] font-bold uppercase tracking-[.14em] text-white/70 backdrop-blur">{locale === "en" ? "Concept image" : "Hình ảnh minh họa"}</span></div>
