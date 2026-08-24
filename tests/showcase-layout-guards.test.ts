@@ -41,8 +41,8 @@ describe("LAKA showcase layout guards", () => {
     const stays = source("src/features/showcase/components/home-landscape-collections.tsx");
     const feedback = source("src/features/showcase/components/home-guest-stories.tsx");
 
-    expect(globals).toContain(".laka-home-section-title");
-    expect(globals).toContain(".laka-home-section-lead");
+    expect(globals).toContain('.laka-home-section-title { font-family: "Be Vietnam Pro"');
+    expect(globals).toContain('.laka-home-section-lead { font-family: "Lora"');
     expect(story).toContain('h-[min(58svh,440px)]');
     expect(stays).toContain("Ba nhóm không gian");
     expect(stays).toContain('href={basePath + "/luu-tru"}');
