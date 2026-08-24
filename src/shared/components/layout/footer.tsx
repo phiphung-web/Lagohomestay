@@ -5,24 +5,26 @@ import { publicContact } from "@/shared/lib/public-contact";
 
 export function Footer() {
   return <footer className="bg-lago-ink text-white">
-    <div className="container-lago grid gap-10 py-16 text-left md:grid-cols-2 xl:grid-cols-[1.2fr_1.3fr_.9fr]">
-      <div className="flex flex-col items-start">
+    <div className="container-lago grid gap-10 py-16 text-center md:grid-cols-2 md:text-left xl:grid-cols-[1.2fr_1.3fr_.9fr]">
+      <div className="flex flex-col items-center md:items-start">
         <Logo inverse />
       </div>
-      <div className="text-left">
-        <p className="eyebrow text-white/45">Thông tin</p>
-        <div className="mt-5 grid grid-cols-2 gap-x-6 gap-y-3.5 text-[15px] font-medium text-white/80">
-          <Link href="/di-chuyen">Hướng dẫn di chuyển</Link>
-          <Link href="/dieu-khoan">Điều khoản</Link>
-          <Link href="/faq">FAQ</Link>
-          <Link href="/bao-mat">Bảo mật</Link>
-          <Link href="/chinh-sach-luu-tru">Chính sách lưu trú</Link>
-          <Link href="/lien-he" className="font-bold text-white">Liên hệ</Link>
+      <div className="flex flex-col items-center md:items-start">
+        <div className="w-fit text-left">
+          <p className="eyebrow text-white/45">Thông tin</p>
+          <div className="mt-5 grid grid-cols-2 gap-x-8 gap-y-3.5 text-[15px] font-medium text-white/80">
+            <Link href="/di-chuyen">Hướng dẫn di chuyển</Link>
+            <Link href="/dieu-khoan">Điều khoản</Link>
+            <Link href="/faq">FAQ</Link>
+            <Link href="/bao-mat">Bảo mật</Link>
+            <Link href="/chinh-sach-luu-tru">Chính sách lưu trú</Link>
+            <Link href="/lien-he" className="font-bold text-white">Liên hệ</Link>
+          </div>
         </div>
       </div>
-      <div className="text-left">
+      <div>
         <p className="eyebrow text-white/45">Kết nối</p>
-        <div className="mt-5 flex flex-wrap items-center justify-start gap-3 sm:gap-4" aria-label="Các kênh liên hệ">
+        <div className="mt-5 flex flex-wrap items-center justify-center gap-3 sm:gap-4 md:justify-start" aria-label="Các kênh liên hệ">
           <a href="https://facebook.com/lagohomestay" target="_blank" rel="noreferrer" aria-label="Facebook LAKA" className="focus-ring grid h-12 w-12 place-items-center rounded-md border border-white/30 transition hover:scale-105 hover:border-lago-clay hover:bg-lago-clay hover:text-white">
             <svg className="h-5 w-5 fill-current" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
           </a>
@@ -46,14 +48,12 @@ export function Footer() {
         </div>
       </div>
     </div>
-    <div className="container-lago border-t border-white/20 py-8">
-      <div className="flex flex-col items-center">
-        <div className="w-full text-left sm:w-auto text-sm leading-6 text-white/65">
-          <p>@2026 Lakahomestay</p>
-          <p className="mt-0.5">Dốc Dây Diều, Xóm 1, Thanh Hà, Trung Giã, Hà Nội</p>
-          <p className="mt-0.5">{publicContact.email}</p>
-          <p className="mt-0.5">{publicContact.phoneDisplay}</p>
-        </div>
+    <div className="container-lago border-t border-white/20 py-8 text-center">
+      <div className="text-sm leading-6 text-white/65">
+        <p>@2026 Lakahomestay</p>
+        <p className="mt-0.5">Dốc Dây Diều, Xóm 1, Thanh Hà, Trung Giã, Hà Nội</p>
+        <p className="mt-0.5">{publicContact.email}</p>
+        <p className="mt-0.5">{publicContact.phoneDisplay}</p>
       </div>
     </div>
   </footer>;

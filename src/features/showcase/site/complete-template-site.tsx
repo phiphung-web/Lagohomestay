@@ -136,7 +136,7 @@ export function TemplateHeader({ config, locale = "vi", overlay = false, storyMo
 }
 
 function SocialContactIcons() {
-  return <div className="flex flex-wrap items-center justify-start gap-3 sm:gap-4" aria-label="Các kênh liên hệ">
+  return <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 md:justify-start" aria-label="Các kênh liên hệ">
     <a href="https://facebook.com/lagohomestay" target="_blank" rel="noreferrer" aria-label="Facebook LAKA" className="focus-ring grid h-12 w-12 place-items-center rounded-md border border-current/40 transition hover:scale-105 hover:border-[#80613f] hover:bg-[#80613f] hover:text-white">
       <svg className="h-5 w-5 fill-current" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
     </a>
@@ -162,104 +162,102 @@ function SocialContactIcons() {
 
 export function TemplateFooter({ config, locale = "vi", storyMode = false, homeMode = false }: { config: CompleteTemplateConfig; locale?: ShowcaseLocale; storyMode?: boolean; homeMode?: boolean }) {
   if (homeMode) return <footer className="border-t border-[#16311c]/25 bg-[#eae1d2] pb-28 pt-14 text-[#16311c] sm:pb-32">
-    <div className="mx-auto grid w-[min(1420px,calc(100%-40px))] gap-10 text-left md:grid-cols-2 xl:grid-cols-[1.2fr_1.3fr_.9fr]">
-      <div className="flex flex-col items-start">
+    <div className="mx-auto grid w-[min(1420px,calc(100%-40px))] gap-10 text-center md:grid-cols-2 md:text-left xl:grid-cols-[1.2fr_1.3fr_.9fr]">
+      <div className="flex flex-col items-center md:items-start">
         <Link href={config.basePath} aria-label={locale === "en" ? "LAKA Homestay — home" : "LAKA Homestay — trang chủ"} className="inline-flex">
           <BrandLogo variant="established" decorative className="w-[190px]" />
         </Link>
       </div>
-      <div className="text-left">
-        <p className="text-xs font-bold uppercase tracking-[.16em] opacity-80">{locale === "en" ? "Information" : "Thông tin"}</p>
-        <div className="mt-5 grid grid-cols-2 gap-x-6 gap-y-3.5 text-[15px] font-medium">
-          <Link href={scoped(config.basePath, "di-chuyen")}>{locale === "en" ? "Getting here" : "Hướng dẫn di chuyển"}</Link>
-          <Link href={scoped(config.basePath, "dieu-khoan")}>{locale === "en" ? "Terms" : "Điều khoản"}</Link>
-          <Link href={scoped(config.basePath, "faq")}>{locale === "en" ? "FAQ" : "Câu hỏi thường gặp"}</Link>
-          <Link href={scoped(config.basePath, "bao-mat")}>{locale === "en" ? "Privacy" : "Bảo mật"}</Link>
-          <Link href={scoped(config.basePath, "chinh-sach-luu-tru")}>{locale === "en" ? "Stay policies" : "Chính sách lưu trú"}</Link>
-          <Link href={scoped(config.basePath, "lien-he")} className="font-bold">{locale === "en" ? "Contact" : "Liên hệ"}</Link>
+      <div className="flex flex-col items-center md:items-start">
+        <div className="w-fit text-left">
+          <p className="text-xs font-bold uppercase tracking-[.16em] opacity-80">{locale === "en" ? "Information" : "Thông tin"}</p>
+          <div className="mt-5 grid grid-cols-2 gap-x-8 gap-y-3.5 text-[15px] font-medium">
+            <Link href={scoped(config.basePath, "di-chuyen")}>{locale === "en" ? "Getting here" : "Hướng dẫn di chuyển"}</Link>
+            <Link href={scoped(config.basePath, "dieu-khoan")}>{locale === "en" ? "Terms" : "Điều khoản"}</Link>
+            <Link href={scoped(config.basePath, "faq")}>{locale === "en" ? "FAQ" : "Câu hỏi thường gặp"}</Link>
+            <Link href={scoped(config.basePath, "bao-mat")}>{locale === "en" ? "Privacy" : "Bảo mật"}</Link>
+            <Link href={scoped(config.basePath, "chinh-sach-luu-tru")}>{locale === "en" ? "Stay policies" : "Chính sách lưu trú"}</Link>
+            <Link href={scoped(config.basePath, "lien-he")} className="font-bold">{locale === "en" ? "Contact" : "Liên hệ"}</Link>
+          </div>
         </div>
       </div>
-      <div className="text-left">
+      <div>
         <p className="text-xs font-bold uppercase tracking-[.16em] opacity-80">{locale === "en" ? "Connect" : "Kết nối"}</p>
-        <div className="mt-5 flex justify-start">
+        <div className="mt-5 flex justify-center md:justify-start">
           <SocialContactIcons />
         </div>
       </div>
     </div>
-    <div className="mx-auto mt-10 border-t border-[#16311c]/25 pt-8 w-[min(1420px,calc(100%-40px))]">
-      <div className="flex flex-col items-center">
-        <div className="w-full text-left sm:w-auto text-sm leading-6 opacity-75">
-          <p>@2026 Lakahomestay</p>
-          <p className="mt-0.5">Dốc Dây Diều, Xóm 1, Thanh Hà, Trung Giã, Hà Nội</p>
-          <p className="mt-0.5">{publicContact.email}</p>
-          <p className="mt-0.5">{publicContact.phoneDisplay}</p>
-        </div>
+    <div className="mx-auto mt-10 flex flex-col items-center border-t border-[#16311c]/25 pt-8 text-center">
+      <div className="text-sm leading-6 opacity-75">
+        <p>@2026 Lakahomestay</p>
+        <p className="mt-0.5">Dốc Dây Diều, Xóm 1, Thanh Hà, Trung Giã, Hà Nội</p>
+        <p className="mt-0.5">{publicContact.email}</p>
+        <p className="mt-0.5">{publicContact.phoneDisplay}</p>
       </div>
     </div>
   </footer>;
   if (storyMode) return <footer className="border-t border-[#16311c]/25 bg-[#eae1d2] pb-28 pt-14 text-[#16311c] sm:pb-32">
-    <div className="mx-auto grid w-[min(1420px,calc(100%-40px))] gap-12 text-left md:grid-cols-[1.25fr_.75fr]">
-      <div className="flex flex-col items-start">
+    <div className="mx-auto grid w-[min(1420px,calc(100%-40px))] gap-12 text-center md:grid-cols-[1.25fr_.75fr] md:text-left">
+      <div className="flex flex-col items-center md:items-start">
         <Link href={config.basePath} aria-label={locale === "en" ? "LAKA Homestay — home" : "LAKA Homestay — trang chủ"} className="inline-flex">
           <BrandLogo variant="established" decorative className="w-[190px]" />
         </Link>
       </div>
-      <div className="text-left md:text-right">
-        <p className="text-xs font-bold uppercase tracking-[.18em] text-[#80613f]">{locale === "en" ? "Keep exploring" : "Tiếp tục khám phá"}</p>
-        <div className="mt-5 flex flex-col gap-3 text-[15px] md:items-end">
-          <Link href={scoped(config.basePath, "ve-laka")} className="font-bold">{locale === "en" ? "The LAKA story" : "Câu chuyện LAKA"}</Link>
-          <Link href={scoped(config.basePath, "trai-nghiem")}>{locale === "en" ? "The LAKA rhythm" : "Nhịp sống LAKA"}</Link>
-          <Link href={scoped(config.basePath, "lien-he")} className="font-bold">{locale === "en" ? "Contact" : "Liên hệ"}</Link>
+      <div className="flex flex-col items-center md:items-end">
+        <div className="w-fit text-left md:text-right">
+          <p className="text-xs font-bold uppercase tracking-[.18em] text-[#80613f]">{locale === "en" ? "Keep exploring" : "Tiếp tục khám phá"}</p>
+          <div className="mt-5 flex flex-col gap-3 text-[15px]">
+            <Link href={scoped(config.basePath, "ve-laka")} className="font-bold">{locale === "en" ? "The LAKA story" : "Câu chuyện LAKA"}</Link>
+            <Link href={scoped(config.basePath, "trai-nghiem")}>{locale === "en" ? "The LAKA rhythm" : "Nhịp sống LAKA"}</Link>
+            <Link href={scoped(config.basePath, "lien-he")} className="font-bold">{locale === "en" ? "Contact" : "Liên hệ"}</Link>
+          </div>
         </div>
       </div>
     </div>
-    <div className="mx-auto mt-10 border-t border-[#16311c]/25 pt-8 w-[min(1420px,calc(100%-40px))]">
-      <div className="flex flex-col items-center gap-5">
-        <div className="w-full flex justify-start sm:justify-center">
-          <SocialContactIcons />
-        </div>
-        <div className="w-full text-left sm:w-auto text-sm leading-6 opacity-75">
-          <p>@2026 Lakahomestay</p>
-          <p className="mt-0.5">Dốc Dây Diều, Xóm 1, Thanh Hà, Trung Giã, Hà Nội</p>
-          <p className="mt-0.5">{publicContact.email}</p>
-          <p className="mt-0.5">{publicContact.phoneDisplay}</p>
-        </div>
+    <div className="mx-auto mt-10 flex flex-col items-center gap-5 border-t border-[#16311c]/25 pt-8 text-center">
+      <SocialContactIcons />
+      <div className="text-sm leading-6 opacity-75">
+        <p>@2026 Lakahomestay</p>
+        <p className="mt-0.5">Dốc Dây Diều, Xóm 1, Thanh Hà, Trung Giã, Hà Nội</p>
+        <p className="mt-0.5">{publicContact.email}</p>
+        <p className="mt-0.5">{publicContact.phoneDisplay}</p>
       </div>
     </div>
   </footer>;
   return <footer className={`border-t border-current/25 pb-28 pt-14 sm:pb-32 ${config.mood === "organic" ? "bg-[#e7ded1]" : config.mood === "cinematic" ? "bg-[#0b190f]" : "bg-[#eae1d2]"}`}>
-    <div className="mx-auto grid w-[min(1420px,calc(100%-40px))] gap-10 text-left md:grid-cols-2 xl:grid-cols-[1.2fr_1.3fr_.9fr]">
-      <div className="flex flex-col items-start">
+    <div className="mx-auto grid w-[min(1420px,calc(100%-40px))] gap-10 text-center md:grid-cols-2 md:text-left xl:grid-cols-[1.2fr_1.3fr_.9fr]">
+      <div className="flex flex-col items-center md:items-start">
         <Link href={config.basePath || "/"} aria-label={locale === "en" ? "LAKA Homestay - Home" : "LAKA Homestay - Trang chủ"} className="inline-flex">
           <BrandLogo variant={config.mood === "editorial" ? "established" : "homestay"} decorative className={`${config.mood === "editorial" ? "w-[190px]" : "w-[210px]"} ${config.mood === "cinematic" ? "text-[#eae1d2]" : "text-[#16311c]"}`} />
         </Link>
       </div>
-      <div className="text-left">
-        <p className="text-xs font-bold uppercase tracking-[.16em] opacity-80">{locale === "en" ? "Information" : "Thông tin"}</p>
-        <div className="mt-5 grid grid-cols-2 gap-x-6 gap-y-3.5 text-[15px] font-medium">
-          <Link href={scoped(config.basePath, "di-chuyen")}>{locale === "en" ? "Getting here" : "Hướng dẫn di chuyển"}</Link>
-          <Link href={scoped(config.basePath, "dieu-khoan")}>{locale === "en" ? "Terms" : "Điều khoản"}</Link>
-          <Link href={scoped(config.basePath, "faq")}>FAQ</Link>
-          <Link href={scoped(config.basePath, "bao-mat")}>{locale === "en" ? "Privacy" : "Bảo mật"}</Link>
-          <Link href={scoped(config.basePath, "chinh-sach-luu-tru")}>{locale === "en" ? "Stay policies" : "Chính sách lưu trú"}</Link>
-          <Link href={scoped(config.basePath, "lien-he")} className="font-bold">{locale === "en" ? "Contact" : "Liên hệ"}</Link>
+      <div className="flex flex-col items-center md:items-start">
+        <div className="w-fit text-left">
+          <p className="text-xs font-bold uppercase tracking-[.16em] opacity-80">{locale === "en" ? "Information" : "Thông tin"}</p>
+          <div className="mt-5 grid grid-cols-2 gap-x-8 gap-y-3.5 text-[15px] font-medium">
+            <Link href={scoped(config.basePath, "di-chuyen")}>{locale === "en" ? "Getting here" : "Hướng dẫn di chuyển"}</Link>
+            <Link href={scoped(config.basePath, "dieu-khoan")}>{locale === "en" ? "Terms" : "Điều khoản"}</Link>
+            <Link href={scoped(config.basePath, "faq")}>FAQ</Link>
+            <Link href={scoped(config.basePath, "bao-mat")}>{locale === "en" ? "Privacy" : "Bảo mật"}</Link>
+            <Link href={scoped(config.basePath, "chinh-sach-luu-tru")}>{locale === "en" ? "Stay policies" : "Chính sách lưu trú"}</Link>
+            <Link href={scoped(config.basePath, "lien-he")} className="font-bold">{locale === "en" ? "Contact" : "Liên hệ"}</Link>
+          </div>
         </div>
       </div>
-      <div className="text-left">
+      <div>
         <p className="text-xs font-bold uppercase tracking-[.16em] opacity-80">{locale === "en" ? "Connect" : "Kết nối"}</p>
-        <div className="mt-5 flex justify-start">
+        <div className="mt-5 flex justify-center md:justify-start">
           <SocialContactIcons />
         </div>
       </div>
     </div>
-    <div className="mx-auto mt-10 border-t border-current/25 pt-8 w-[min(1420px,calc(100%-40px))]">
-      <div className="flex flex-col items-center">
-        <div className="w-full text-left sm:w-auto text-sm leading-6 opacity-75">
-          <p>@2026 Lakahomestay</p>
-          <p className="mt-0.5">Dốc Dây Diều, Xóm 1, Thanh Hà, Trung Giã, Hà Nội</p>
-          <p className="mt-0.5">{publicContact.email}</p>
-          <p className="mt-0.5">{publicContact.phoneDisplay}</p>
-        </div>
+    <div className="mx-auto mt-10 flex flex-col items-center gap-5 border-t border-current/25 pt-8 text-center">
+      <div className="text-sm leading-6 opacity-75">
+        <p>@2026 Lakahomestay</p>
+        <p className="mt-0.5">Dốc Dây Diều, Xóm 1, Thanh Hà, Trung Giã, Hà Nội</p>
+        <p className="mt-0.5">{publicContact.email}</p>
+        <p className="mt-0.5">{publicContact.phoneDisplay}</p>
       </div>
     </div>
   </footer>;
