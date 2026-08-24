@@ -12,15 +12,15 @@ export function HomeBrandStory({ basePath, locale = "vi" }: { basePath: string; 
   return (
     <section id="gioi-thieu" className="laka-section-normal scroll-mt-20 bg-[#eae1d2] px-5 sm:px-8">
       <div className="mx-auto w-[min(1380px,100%)]">
-        <header className="grid gap-6 border-b border-[#16311c]/15 pb-10 lg:grid-cols-[.24fr_1fr] lg:gap-12 lg:pb-12">
-          <p className="laka-eyebrow pt-1 text-[#80613f]">
+        <header className="grid gap-6 border-b border-[#16311c]/15 pb-10 lg:grid-cols-[.38fr_1fr] lg:items-end lg:gap-12 lg:pb-12">
+          <h2 className="laka-home-section-title text-[#16311c]">
             {en ? "Our mission" : "Sứ mệnh"}
-          </p>
-          <h2 className="max-w-5xl font-serif text-[clamp(1.95rem,3.6vw,3.75rem)] font-medium leading-[1.04] tracking-[-.035em]">
+          </h2>
+          <p className="laka-home-section-lead max-w-5xl">
             {en
               ? "Preserving untouched beauty through every window, where the truest connections begin."
               : "Lưu giữ vẻ đẹp nguyên sơ qua từng khung kính, nơi khởi nguồn cho những kết nối chân thật nhất."}
-          </h2>
+          </p>
         </header>
 
         <div className="mt-10 grid gap-10 lg:mt-14 lg:grid-cols-[1.15fr_.85fr] lg:items-center lg:gap-16">
@@ -46,9 +46,6 @@ export function HomeBrandStory({ basePath, locale = "vi" }: { basePath: string; 
               {en
                 ? "At LaKa, every cabin is a view that brings you closer to nature. Amid untouched beauty, every shared moment brings us closer."
                 : "Tại LaKa, mỗi cabin là một góc nhìn để bạn chạm gần hơn vào thiên nhiên. Giữa vẻ đẹp nguyên sơ, từng khoảnh khắc đưa ta gần nhau hơn."}
-            </p>
-            <p className="mt-6 text-[.58rem] font-bold uppercase tracking-[.16em] text-[#80613f]">
-              {en ? "Concept imagery · awaiting LAKA's official library" : "Hình ảnh minh họa · chờ bộ ảnh chính thức từ LAKA"}
             </p>
             <Link href={`${basePath}/ve-laka`} className="focus-ring group mt-8 inline-flex min-h-12 items-center gap-3 border-b border-[#16311c]/35 text-xs font-bold uppercase tracking-[.12em]">
               {en ? "Read the full story" : "Đọc trọn câu chuyện"}

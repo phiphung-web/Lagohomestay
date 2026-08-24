@@ -19,22 +19,22 @@ export function HomeDayJourney({
       <div className="mx-auto w-[min(1480px,100%)]">
         <div className="grid gap-8 lg:grid-cols-[.4fr_1fr] lg:items-end">
           <div>
-            <p className="laka-eyebrow text-[#dfc6a5]">
+            <h2 className="laka-home-section-title text-[#dfc6a5]">
               {en ? "A day at LaKa" : "Một ngày ở LaKa"}
-            </p>
+            </h2>
             <p className="laka-body mt-5 max-w-sm text-white/64">
               {en
                 ? "A day at LaKa moves from lively fun to unhurried moments in nature. Explore together, give it everything and take home memories worth keeping."
                 : "Một ngày ở LaKa là hành trình nối dài từ những cuộc vui rộn ràng đến phút thảnh thơi giữa thiên nhiên. Cùng nhau khám phá, cùng nhau hết mình và gom về những kỷ niệm thật đáng nhớ!"}
             </p>
           </div>
-          <h2 className="laka-heading-section max-w-5xl">
+          <p className="laka-home-section-lead max-w-5xl">
             {en ? (
               <>Today is<br /><i className="text-[#dfc6a5]">just for fun!</i></>
             ) : (
               <>Hôm nay chỉ để<br /><i className="text-[#dfc6a5]">vui thôi!</i></>
             )}
-          </h2>
+          </p>
         </div>
 
         <div

@@ -69,15 +69,10 @@ export function MainHome({ config, locale = "vi" }: { config: CompleteTemplateCo
       <HomeDayJourney basePath={config.basePath} locale={locale} />
 
       <section id="ky-uc" className="laka-section-top-normal scroll-mt-20 bg-[#f2ece2] px-5 sm:px-8">
-        <div className="mx-auto grid w-[min(1380px,100%)] gap-8 lg:grid-cols-[1fr_.45fr] lg:items-end">
-          <div>
-            <p className="laka-eyebrow text-[#80613f]">{en ? "Memory gallery" : "Thư viện ký ức"}</p>
-            <h2 className="laka-heading-section mt-5 max-w-5xl">
-              {en ? <>Frames to keep<br /><i>the days worth remembering.</i></> : <>Những khung hình lưu lại<br /><i>một ngày thật đáng nhớ.</i></>}
-            </h2>
-          </div>
-          <p className="laka-body-muted max-w-sm">
-            {en ? "A flexible image grid ready for LAKA's newest memories." : "Khung lưới linh hoạt để LaKa liên tục cập nhật những khoảnh khắc mới nhất."}
+        <div className="mx-auto grid w-[min(1380px,100%)] gap-8 lg:grid-cols-[.38fr_1fr] lg:items-end">
+          <h2 className="laka-home-section-title text-[#16311c]">{en ? "Memory gallery" : "Thư viện ký ức"}</h2>
+          <p className="laka-home-section-lead max-w-5xl">
+            {en ? <>Frames to keep<br /><i>the days worth remembering.</i></> : <>Những khung hình lưu lại<br /><i>một ngày thật đáng nhớ.</i></>}
           </p>
         </div>
         <GalleryLightbox images={memoryImages} mood="editorial" locale={locale} />

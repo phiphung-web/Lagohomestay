@@ -13,14 +13,14 @@ export function HomeDiningPreview({ basePath, locale = "vi" }: { basePath: strin
       <div className="mx-auto w-[min(1380px,100%)]">
         <div className="grid gap-8 lg:grid-cols-[.42fr_1fr] lg:items-end">
           <div>
-            <p className="laka-eyebrow text-[#80613f]">{en ? "Dining at LaKa" : "Ẩm thực tại LaKa"}</p>
+            <h2 className="laka-home-section-title text-[#16311c]">{en ? "Dining at LaKa" : "Ẩm thực tại LaKa"}</h2>
             <p className="laka-body-muted mt-5 max-w-sm">
               {en ? "Every flavour at LaKa is a pause to enjoy and reconnect. In the open valley, stay at the table a little longer." : "Mỗi hương vị tại LaKa đều là một khoảng nghỉ để tận hưởng và kết nối. Giữa thung lũng rộng mở, cứ ngồi lại lâu hơn một chút."}
             </p>
           </div>
-          <h2 className="laka-heading-section max-w-5xl">
+          <p className="laka-home-section-lead max-w-5xl">
             {en ? <>Flavours that keep<br /><i className="text-[#9a7550]">the good times going.</i></> : <>Những hương vị<br /><i className="text-[#9a7550]">nối dài cuộc vui.</i></>}
-          </h2>
+          </p>
         </div>
 
         <div className="mt-14 grid gap-5 lg:grid-cols-2">

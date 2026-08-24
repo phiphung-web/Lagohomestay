@@ -63,18 +63,18 @@ export function HomeLandscapeCollections({ basePath, locale = "vi" }: { basePath
       <div className="mx-auto w-[min(1380px,100%)]">
         <header className="grid gap-8 border-b border-[#16311c]/15 pb-10 lg:grid-cols-[.38fr_1fr] lg:items-end lg:pb-12">
           <div>
-            <p className="laka-eyebrow text-[#80613f]">
+            <h2 className="laka-home-section-title text-[#16311c]">
               {en ? "Stay at LaKa" : "Lưu trú tại LaKa"}
-            </p>
+            </h2>
             <p className="laka-body-muted mt-5 max-w-sm">
               {en
                 ? "Three landscapes offer a quick way to find the rhythm that suits your journey."
                 : "Ba nhóm không gian giúp bạn hình dung nhanh nhịp nghỉ phù hợp cho chuyến đi."}
             </p>
           </div>
-          <h2 className="laka-heading-section max-w-5xl">
+          <p className="laka-home-section-lead max-w-5xl">
             {en ? <>One green retreat,<br /><i>one rhythm of your own.</i></> : <>Một khoảng xanh,<br /><i>một nhịp riêng.</i></>}
-          </h2>
+          </p>
         </header>
 
         <div className="showcase-snap-rail mt-10 lg:grid-cols-3 lg:gap-5" aria-label={en ? "LAKA stay groups" : "Ba nhóm lưu trú tại LAKA"}>

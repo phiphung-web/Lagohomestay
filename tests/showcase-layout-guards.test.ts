@@ -34,17 +34,26 @@ describe("LAKA showcase layout guards", () => {
     expect(form).toContain('role="status"');
   });
 
-  it("keeps the homepage as a concise overview with one feedback slider", () => {
+  it("keeps the homepage hierarchy clear and hides unapproved feedback placeholders", () => {
+    const globals = source("src/app/globals.css");
+    const home = source("src/features/showcase/site/main-home.tsx");
     const story = source("src/features/showcase/components/home-brand-story.tsx");
     const stays = source("src/features/showcase/components/home-landscape-collections.tsx");
     const feedback = source("src/features/showcase/components/home-guest-stories.tsx");
 
+    expect(globals).toContain(".laka-home-section-title");
+    expect(globals).toContain(".laka-home-section-lead");
     expect(story).toContain('h-[min(58svh,440px)]');
     expect(stays).toContain("Ba nhóm không gian");
     expect(stays).toContain('href={basePath + "/luu-tru"}');
     expect(stays).not.toContain("stay.details");
+    expect(home).not.toContain("Khung lưới linh hoạt");
     expect(feedback).toContain('aria-roledescription="carousel"');
     expect(feedback).toContain("laka-feedback-track");
+    expect(feedback).toContain("if (guestStories.length === 0) return null");
+    expect(feedback).not.toContain("Một slider phản hồi tổng hợp");
+    expect(feedback).not.toContain("Đang xem khung phản hồi");
+    expect(feedback).not.toContain("Phản hồi thực tế sẽ xuất hiện");
     expect(feedback).not.toContain("Khách Việt Nam");
     expect(feedback).not.toContain("Khách nước ngoài");
   });
