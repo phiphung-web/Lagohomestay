@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Suspense, useState } from "react";
+import { Suspense } from "react";
 import {
   ArrowRight,
   Check,
@@ -11,7 +11,7 @@ import {
   MessageCircle,
   Phone
 } from "lucide-react";
-import { BookingModal } from "@/features/showcase/components/booking-modal";
+import { TemplateBookingControl } from "@/features/showcase/components/template-booking-control";
 import { TemplateExperienceLayer } from "@/features/showcase/components/template-experience-layer";
 import { TemplateMobileMenu } from "@/features/showcase/components/template-mobile-menu";
 import { TemplateNavLink } from "@/features/showcase/components/template-nav-link";
@@ -86,7 +86,6 @@ function scoped(basePath: string, path = "") {
 }
 
 export function TemplateHeader({ config, locale = "vi", overlay = false, storyMode = false }: { config: CompleteTemplateConfig; locale?: ShowcaseLocale; overlay?: boolean; storyMode?: boolean }) {
-  const [bookingOpen, setBookingOpen] = useState(false);
   const localizedNavItems = locale === "en" ? englishNavItems : navItems;
   const storyItems = locale === "en"
     ? [["Story", "#cau-chuyen"], ["Space", "#khong-gian"], ["Rhythm", "#nhip-song"], ["What remains", "#du-am"]] as const
@@ -129,17 +128,10 @@ export function TemplateHeader({ config, locale = "vi", overlay = false, storyMo
           <div className="hidden xl:block">
             <TemplateLanguageSwitcher locale={locale} compact alwaysVisible />
           </div>
-          <button
-            type="button"
-            onClick={() => setBookingOpen(true)}
-            className="rounded-full bg-[#16311c] px-3.5 py-2 text-[.6rem] font-bold uppercase tracking-wider text-white shadow-sm transition hover:bg-[#23482b] sm:px-4 sm:py-2.5 sm:text-xs xl:hidden"
-          >
-            {locale === "en" ? "Book now" : "Đặt ngay"}
-          </button>
+          <TemplateBookingControl locale={locale} />
         </div>
       </div>
     </ScrollAwareHeader>
-    <BookingModal open={bookingOpen} onClose={() => setBookingOpen(false)} locale={locale} />
   </>;
 }
 
