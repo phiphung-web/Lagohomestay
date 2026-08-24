@@ -49,7 +49,7 @@ export function MainHome({ config, locale = "vi" }: { config: CompleteTemplateCo
             {en ? "Choose a cabin - Hold the whole valley" : '"Chọn" Cabin - "Trọn" Thung Lũng'}
           </p>
           <h1 className="laka-display-hero mt-5 max-w-6xl">
-            {en ? <>LaKa - A home<br /><i className="font-normal text-[#dfc6a5]">in the green</i></> : <>LaKa - Nhà giữa<br /><i className="font-normal text-[#dfc6a5]">khoảng xanh</i></>}
+            {en ? <>LaKa - A home<br /><i className="font-normal text-[#dfc6a5]">in the green</i></> : <>LaKa - Nhà giữa <br /><i className="font-normal text-[#dfc6a5]">khoảng xanh</i></>}
           </h1>
           <div className="mt-8 flex items-end justify-between gap-8 border-t border-white/22 pt-6">
             <p className="text-[.62rem] font-bold uppercase tracking-[.18em] text-white/68">
