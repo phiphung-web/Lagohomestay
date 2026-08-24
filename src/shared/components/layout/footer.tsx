@@ -5,11 +5,9 @@ import { publicContact } from "@/shared/lib/public-contact";
 
 export function Footer() {
   return <footer className="bg-lago-ink text-white">
-    <div className="container-lago grid gap-10 py-16 md:grid-cols-2 xl:grid-cols-[1.2fr_1.3fr_.9fr]">
-      <div>
+    <div className="container-lago grid gap-10 py-16 text-center md:grid-cols-2 md:text-left xl:grid-cols-[1.2fr_1.3fr_.9fr]">
+      <div className="flex flex-col items-center md:items-start">
         <Logo inverse />
-        <p className="mt-6 max-w-sm text-sm leading-7 text-white/65">Một nơi để thời gian chậm lại, thiên nhiên gần hơn và những cuộc trò chuyện dài thêm.</p>
-        <p className="mt-5 text-xs text-white/45">Hình ảnh trên website hiện là ảnh concept minh họa.</p>
       </div>
       <div>
         <p className="eyebrow text-white/45">Thông tin</p>
@@ -24,11 +22,11 @@ export function Footer() {
       </div>
       <div>
         <p className="eyebrow text-white/45">Kết nối</p>
-        <div className="mt-5 flex flex-col gap-3.5 text-sm">
+        <div className="mt-5 flex flex-col items-center gap-3.5 text-sm md:items-start">
           <a href={publicContact.phoneHref} className="flex items-center gap-2.5 font-bold hover:underline"><Phone className="h-4 w-4 shrink-0 text-lago-clay" />{publicContact.phoneDisplay}</a>
           <a href={publicContact.zaloHref} target="_blank" rel="noreferrer" className="flex items-center gap-2.5 hover:underline"><MessageCircle className="h-4 w-4 shrink-0 text-lago-clay" />Trò chuyện qua Zalo</a>
           <a href={publicContact.emailHref} className="flex items-center gap-2.5 hover:underline"><Mail className="h-4 w-4 shrink-0 text-lago-clay" />{publicContact.email}</a>
-          <span className="flex items-start gap-2.5 leading-6 text-white/65"><MapPin className="mt-1 h-4 w-4 shrink-0 text-lago-clay" />{publicContact.address}</span>
+          <span className="flex items-start justify-center gap-2.5 leading-6 text-white/65 md:justify-start"><MapPin className="mt-1 h-4 w-4 shrink-0 text-lago-clay" />{publicContact.address}</span>
         </div>
       </div>
     </div>
@@ -56,6 +54,7 @@ export function Footer() {
       <div className="text-xs leading-6 text-white/65">
         <p>@2026 Lakahomestay</p>
         <p className="mt-0.5">Dốc Dây Diều, Xóm 1, Thanh Hà, Trung Giã, Hà Nội</p>
+        <p className="mt-0.5">{publicContact.phoneDisplay}</p>
       </div>
     </div>
   </footer>;
