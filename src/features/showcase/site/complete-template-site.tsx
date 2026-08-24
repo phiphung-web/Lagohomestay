@@ -137,29 +137,31 @@ export function TemplateHeader({ config, locale = "vi", overlay = false, storyMo
 
 function SocialContactIcons() {
   return <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4" aria-label="Các kênh liên hệ">
-    <a href="https://facebook.com/lagohomestay" target="_blank" rel="noreferrer" aria-label="Facebook LAKA" className="focus-ring grid h-10 w-10 place-items-center rounded-full border border-current/20 transition hover:scale-105 hover:border-[#80613f] hover:bg-[#80613f] hover:text-white">
-      <svg className="h-4 w-4 fill-current" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+    <a href="https://facebook.com/lagohomestay" target="_blank" rel="noreferrer" aria-label="Facebook LAKA" className="focus-ring grid h-12 w-12 place-items-center rounded-full border border-current/40 transition hover:scale-105 hover:border-[#80613f] hover:bg-[#80613f] hover:text-white">
+      <svg className="h-5 w-5 fill-current" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
     </a>
-    <a href="https://m.me/lagohomestay" target="_blank" rel="noreferrer" aria-label="Messenger LAKA" className="focus-ring grid h-10 w-10 place-items-center rounded-full border border-current/20 transition hover:scale-105 hover:border-[#80613f] hover:bg-[#80613f] hover:text-white">
-      <svg className="h-4 w-4 fill-current" viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 4.974 0 11.111c0 3.498 1.744 6.614 4.469 8.654V24l4.088-2.242c1.09.301 2.246.464 3.443.464 6.627 0 12-4.975 12-11.111C24 4.974 18.627 0 12 0zm1.191 14.963l-3.055-3.26-5.963 3.26 6.559-6.96 3.127 3.26 5.89-3.26-6.558 6.96z"/></svg>
+    <a href="https://m.me/lagohomestay" target="_blank" rel="noreferrer" aria-label="Messenger LAKA" className="focus-ring grid h-12 w-12 place-items-center rounded-full border border-current/40 transition hover:scale-105 hover:border-[#80613f] hover:bg-[#80613f] hover:text-white">
+      <svg className="h-5 w-5 fill-current" viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 4.974 0 11.111c0 3.498 1.744 6.614 4.469 8.654V24l4.088-2.242c1.09.301 2.246.464 3.443.464 6.627 0 12-4.975 12-11.111C24 4.974 18.627 0 12 0zm1.191 14.963l-3.055-3.26-5.963 3.26 6.559-6.96 3.127 3.26 5.89-3.26-6.558 6.96z"/></svg>
     </a>
-    <a href="https://instagram.com/lagohomestay" target="_blank" rel="noreferrer" aria-label="Instagram LAKA" className="focus-ring grid h-10 w-10 place-items-center rounded-full border border-current/20 transition hover:scale-105 hover:border-[#80613f] hover:bg-[#80613f] hover:text-white">
-      <Instagram className="h-4 w-4" />
+    <a href="https://instagram.com/lagohomestay" target="_blank" rel="noreferrer" aria-label="Instagram LAKA" className="focus-ring grid h-12 w-12 place-items-center rounded-full border border-current/40 transition hover:scale-105 hover:border-[#80613f] hover:bg-[#80613f] hover:text-white">
+      <Instagram className="h-5 w-5" />
     </a>
-    <a href={publicContact.zaloHref} target="_blank" rel="noreferrer" aria-label="Zalo LAKA" className="focus-ring grid h-10 w-10 place-items-center rounded-full border border-current/20 transition hover:scale-105 hover:border-[#80613f] hover:bg-[#80613f] hover:text-white">
-      <svg className="h-4 w-4 fill-current" viewBox="0 0 24 24"><path d="M21.815 6.741c-1.391-2.617-4.354-4.502-7.85-4.502-5.467 0-9.897 4.103-9.897 9.167 0 2.923 1.542 5.521 3.963 7.215-.221 1.056-1.077 3.328-1.229 3.659-.142.308.196.478.473.321 1.341-.75 4.544-2.632 5.178-3.037.493.078.995.114 1.512.114 5.466 0 9.896-4.104 9.896-9.167 0-1.429-.364-2.775-1.002-3.957l-.022-.042-.022-.071zm-9.366 9.489h-2.147l2.844-4.238h-2.646v-1.745h4.636l-2.825 4.237h2.909v1.746h-.001-.001zm1.261-2.585v2.584h-1.688v-5.983h1.688v3.399zm1.314 2.766a2.636 2.636 0 0 1-2.634-2.636v-1.895h1.688v1.758a.945.945 0 0 0 .945.947.945.945 0 0 0 .947-.947v-1.758h1.688v1.895a2.636 2.636 0 0 1-2.634 2.636zm2.846 0a2.636 2.636 0 0 1-2.635-2.636v-1.895h1.688v1.758a.945.945 0 0 0 .946.947.945.945 0 0 0 .946-.947v-1.758h1.687v1.895a2.636 2.636 0 0 1-2.632 2.636z"/></svg>
+    <a href={publicContact.zaloHref} target="_blank" rel="noreferrer" aria-label="Zalo LAKA" className="focus-ring grid h-12 w-12 place-items-center rounded-full border border-current/40 transition hover:scale-105 hover:border-[#80613f] hover:bg-[#80613f] hover:text-white">
+      <svg className="h-5 w-5 fill-current" viewBox="0 0 24 24">
+        <path fillRule="evenodd" clipRule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 1.89.52 3.66 1.43 5.18L2 22l4.98-1.39C8.44 21.5 10.18 22 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm-1.8 13.6h-2.8v-1.6l2.3-3.4H7.4V9h4.4v1.6l-2.3 3.4h2.7v1.6zm2.8 0h-1.6V9h1.6v6.6zm3.4 0c-1.3 0-2.3-1-2.3-2.3V9h1.6v4.3c0 .4.3.7.7.7s.7-.3.7-.7V9h1.6v4.3c0 1.3-1 2.3-2.3 2.3z" />
+      </svg>
     </a>
-    <a href="https://tiktok.com/@lagohomestay" target="_blank" rel="noreferrer" aria-label="TikTok LAKA" className="focus-ring grid h-10 w-10 place-items-center rounded-full border border-current/20 transition hover:scale-105 hover:border-[#80613f] hover:bg-[#80613f] hover:text-white">
-      <svg className="h-4 w-4 fill-current" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+    <a href="https://tiktok.com/@lagohomestay" target="_blank" rel="noreferrer" aria-label="TikTok LAKA" className="focus-ring grid h-12 w-12 place-items-center rounded-full border border-current/40 transition hover:scale-105 hover:border-[#80613f] hover:bg-[#80613f] hover:text-white">
+      <svg className="h-5 w-5 fill-current" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
     </a>
-    <a href={publicContact.phoneHref} aria-label="Hotline LAKA" className="focus-ring grid h-10 w-10 place-items-center rounded-full border border-current/20 transition hover:scale-105 hover:border-[#80613f] hover:bg-[#80613f] hover:text-white">
-      <Phone className="h-4 w-4" />
+    <a href={publicContact.phoneHref} aria-label="Hotline LAKA" className="focus-ring grid h-12 w-12 place-items-center rounded-full border border-current/40 transition hover:scale-105 hover:border-[#80613f] hover:bg-[#80613f] hover:text-white">
+      <Phone className="h-5 w-5" />
     </a>
   </div>;
 }
 
 export function TemplateFooter({ config, locale = "vi", storyMode = false, homeMode = false }: { config: CompleteTemplateConfig; locale?: ShowcaseLocale; storyMode?: boolean; homeMode?: boolean }) {
-  if (homeMode) return <footer className="border-t border-[#16311c]/12 bg-[#eae1d2] pb-28 pt-14 text-[#16311c] sm:pb-32">
+  if (homeMode) return <footer className="border-t border-[#16311c]/25 bg-[#eae1d2] pb-28 pt-14 text-[#16311c] sm:pb-32">
     <div className="mx-auto grid w-[min(1420px,calc(100%-40px))] gap-10 text-center md:grid-cols-2 md:text-left xl:grid-cols-[1.2fr_1.3fr_.9fr]">
       <div className="flex flex-col items-center md:items-start">
         <Link href={config.basePath} aria-label={locale === "en" ? "LAKA Homestay — home" : "LAKA Homestay — trang chủ"} className="inline-flex">
@@ -167,8 +169,8 @@ export function TemplateFooter({ config, locale = "vi", storyMode = false, homeM
         </Link>
       </div>
       <div>
-        <p className="text-[.65rem] font-bold uppercase tracking-[.16em] opacity-80">{locale === "en" ? "Information" : "Thông tin"}</p>
-        <div className="mt-5 grid grid-cols-2 gap-x-6 gap-y-3.5 text-sm font-medium">
+        <p className="text-xs font-bold uppercase tracking-[.16em] opacity-80">{locale === "en" ? "Information" : "Thông tin"}</p>
+        <div className="mt-5 grid grid-cols-2 gap-x-6 gap-y-3.5 text-[15px] font-medium">
           <Link href={scoped(config.basePath, "di-chuyen")}>{locale === "en" ? "Getting here" : "Hướng dẫn di chuyển"}</Link>
           <Link href={scoped(config.basePath, "dieu-khoan")}>{locale === "en" ? "Terms" : "Điều khoản"}</Link>
           <Link href={scoped(config.basePath, "faq")}>{locale === "en" ? "FAQ" : "Câu hỏi thường gặp"}</Link>
@@ -178,14 +180,14 @@ export function TemplateFooter({ config, locale = "vi", storyMode = false, homeM
         </div>
       </div>
       <div>
-        <p className="text-[.65rem] font-bold uppercase tracking-[.16em] opacity-80">{locale === "en" ? "Connect" : "Kết nối"}</p>
+        <p className="text-xs font-bold uppercase tracking-[.16em] opacity-80">{locale === "en" ? "Connect" : "Kết nối"}</p>
         <div className="mt-5 flex justify-center md:justify-start">
           <SocialContactIcons />
         </div>
       </div>
     </div>
-    <div className="mx-auto mt-10 flex flex-col items-center gap-5 border-t border-[#16311c]/12 pt-8 text-center">
-      <div className="text-xs leading-6 opacity-75">
+    <div className="mx-auto mt-10 flex flex-col items-center gap-5 border-t border-[#16311c]/25 pt-8 text-center">
+      <div className="text-sm leading-6 opacity-75">
         <p>@2026 Lakahomestay</p>
         <p className="mt-0.5">Dốc Dây Diều, Xóm 1, Thanh Hà, Trung Giã, Hà Nội</p>
         <p className="mt-0.5">{publicContact.email}</p>
@@ -193,7 +195,7 @@ export function TemplateFooter({ config, locale = "vi", storyMode = false, homeM
       </div>
     </div>
   </footer>;
-  if (storyMode) return <footer className="border-t border-[#16311c]/12 bg-[#eae1d2] pb-28 pt-14 text-[#16311c] sm:pb-32">
+  if (storyMode) return <footer className="border-t border-[#16311c]/25 bg-[#eae1d2] pb-28 pt-14 text-[#16311c] sm:pb-32">
     <div className="mx-auto grid w-[min(1420px,calc(100%-40px))] gap-12 text-center md:grid-cols-[1.25fr_.75fr] md:text-left">
       <div className="flex flex-col items-center md:items-start">
         <Link href={config.basePath} aria-label={locale === "en" ? "LAKA Homestay — home" : "LAKA Homestay — trang chủ"} className="inline-flex">
@@ -201,17 +203,17 @@ export function TemplateFooter({ config, locale = "vi", storyMode = false, homeM
         </Link>
       </div>
       <div className="md:text-right">
-        <p className="text-[.62rem] font-bold uppercase tracking-[.18em] text-[#80613f]">{locale === "en" ? "Keep exploring" : "Tiếp tục khám phá"}</p>
-        <div className="mt-5 flex flex-col gap-3 text-sm md:items-end">
+        <p className="text-xs font-bold uppercase tracking-[.18em] text-[#80613f]">{locale === "en" ? "Keep exploring" : "Tiếp tục khám phá"}</p>
+        <div className="mt-5 flex flex-col gap-3 text-[15px] md:items-end">
           <Link href={scoped(config.basePath, "ve-laka")} className="font-bold">{locale === "en" ? "The LAKA story" : "Câu chuyện LAKA"}</Link>
           <Link href={scoped(config.basePath, "trai-nghiem")}>{locale === "en" ? "The LAKA rhythm" : "Nhịp sống LAKA"}</Link>
           <Link href={scoped(config.basePath, "lien-he")} className="font-bold">{locale === "en" ? "Contact" : "Liên hệ"}</Link>
         </div>
       </div>
     </div>
-    <div className="mx-auto mt-10 flex flex-col items-center gap-5 border-t border-[#16311c]/12 pt-8 text-center">
+    <div className="mx-auto mt-10 flex flex-col items-center gap-5 border-t border-[#16311c]/25 pt-8 text-center">
       <SocialContactIcons />
-      <div className="text-xs leading-6 opacity-75">
+      <div className="text-sm leading-6 opacity-75">
         <p>@2026 Lakahomestay</p>
         <p className="mt-0.5">Dốc Dây Diều, Xóm 1, Thanh Hà, Trung Giã, Hà Nội</p>
         <p className="mt-0.5">{publicContact.email}</p>
@@ -219,7 +221,7 @@ export function TemplateFooter({ config, locale = "vi", storyMode = false, homeM
       </div>
     </div>
   </footer>;
-  return <footer className={`border-t border-current/12 pb-28 pt-14 sm:pb-32 ${config.mood === "organic" ? "bg-[#e7ded1]" : config.mood === "cinematic" ? "bg-[#0b190f]" : "bg-[#eae1d2]"}`}>
+  return <footer className={`border-t border-current/25 pb-28 pt-14 sm:pb-32 ${config.mood === "organic" ? "bg-[#e7ded1]" : config.mood === "cinematic" ? "bg-[#0b190f]" : "bg-[#eae1d2]"}`}>
     <div className="mx-auto grid w-[min(1420px,calc(100%-40px))] gap-10 text-center md:grid-cols-2 md:text-left xl:grid-cols-[1.2fr_1.3fr_.9fr]">
       <div className="flex flex-col items-center md:items-start">
         <Link href={config.basePath || "/"} aria-label={locale === "en" ? "LAKA Homestay - Home" : "LAKA Homestay - Trang chủ"} className="inline-flex">
@@ -227,8 +229,8 @@ export function TemplateFooter({ config, locale = "vi", storyMode = false, homeM
         </Link>
       </div>
       <div>
-        <p className="text-[.65rem] font-bold uppercase tracking-[.16em] opacity-80">{locale === "en" ? "Information" : "Thông tin"}</p>
-        <div className="mt-5 grid grid-cols-2 gap-x-6 gap-y-3.5 text-sm font-medium">
+        <p className="text-xs font-bold uppercase tracking-[.16em] opacity-80">{locale === "en" ? "Information" : "Thông tin"}</p>
+        <div className="mt-5 grid grid-cols-2 gap-x-6 gap-y-3.5 text-[15px] font-medium">
           <Link href={scoped(config.basePath, "di-chuyen")}>{locale === "en" ? "Getting here" : "Hướng dẫn di chuyển"}</Link>
           <Link href={scoped(config.basePath, "dieu-khoan")}>{locale === "en" ? "Terms" : "Điều khoản"}</Link>
           <Link href={scoped(config.basePath, "faq")}>FAQ</Link>
@@ -238,14 +240,14 @@ export function TemplateFooter({ config, locale = "vi", storyMode = false, homeM
         </div>
       </div>
       <div>
-        <p className="text-[.65rem] font-bold uppercase tracking-[.16em] opacity-80">{locale === "en" ? "Connect" : "Kết nối"}</p>
+        <p className="text-xs font-bold uppercase tracking-[.16em] opacity-80">{locale === "en" ? "Connect" : "Kết nối"}</p>
         <div className="mt-5 flex justify-center md:justify-start">
           <SocialContactIcons />
         </div>
       </div>
     </div>
-    <div className="mx-auto mt-10 flex flex-col items-center gap-5 border-t border-current/10 pt-8 text-center">
-      <div className="text-xs leading-6 opacity-75">
+    <div className="mx-auto mt-10 flex flex-col items-center gap-5 border-t border-current/25 pt-8 text-center">
+      <div className="text-sm leading-6 opacity-75">
         <p>@2026 Lakahomestay</p>
         <p className="mt-0.5">Dốc Dây Diều, Xóm 1, Thanh Hà, Trung Giã, Hà Nội</p>
         <p className="mt-0.5">{publicContact.email}</p>

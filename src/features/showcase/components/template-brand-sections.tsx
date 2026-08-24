@@ -59,7 +59,7 @@ const contactChannels: readonly ContactChannel[] = [
     icon: null,
     svg: (className = "h-6 w-6") => (
       <svg className={`${className} fill-current`} viewBox="0 0 24 24">
-        <path d="M21.815 6.741c-1.391-2.617-4.354-4.502-7.85-4.502-5.467 0-9.897 4.103-9.897 9.167 0 2.923 1.542 5.521 3.963 7.215-.221 1.056-1.077 3.328-1.229 3.659-.142.308.196.478.473.321 1.341-.75 4.544-2.632 5.178-3.037.493.078.995.114 1.512.114 5.466 0 9.896-4.104 9.896-9.167 0-1.429-.364-2.775-1.002-3.957l-.022-.042-.022-.071zm-9.366 9.489h-2.147l2.844-4.238h-2.646v-1.745h4.636l-2.825 4.237h2.909v1.746h-.001-.001zm1.261-2.585v2.584h-1.688v-5.983h1.688v3.399zm1.314 2.766a2.636 2.636 0 0 1-2.634-2.636v-1.895h1.688v1.758a.945.945 0 0 0 .945.947.945.945 0 0 0 .947-.947v-1.758h1.688v1.895a2.636 2.636 0 0 1-2.634 2.636zm2.846 0a2.636 2.636 0 0 1-2.635-2.636v-1.895h1.688v1.758a.945.945 0 0 0 .946.947.945.945 0 0 0 .946-.947v-1.758h1.687v1.895a2.636 2.636 0 0 1-2.632 2.636z"/>
+        <path fillRule="evenodd" clipRule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 1.89.52 3.66 1.43 5.18L2 22l4.98-1.39C8.44 21.5 10.18 22 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm-1.8 13.6h-2.8v-1.6l2.3-3.4H7.4V9h4.4v1.6l-2.3 3.4h2.7v1.6zm2.8 0h-1.6V9h1.6v6.6zm3.4 0c-1.3 0-2.3-1-2.3-2.3V9h1.6v4.3c0 .4.3.7.7.7s.7-.3.7-.7V9h1.6v4.3c0 1.3-1 2.3-2.3 2.3z" />
       </svg>
     ),
     label: { vi: "Zalo", en: "Zalo" },
@@ -271,31 +271,31 @@ export function TemplateContactChannels({ mood, locale = "vi" }: { mood: Mood; l
                 href={item.href}
                 target={item.href.startsWith("http") ? "_blank" : undefined}
                 rel={item.href.startsWith("http") ? "noreferrer" : undefined}
-                className="group relative flex min-h-[240px] w-[85vw] max-w-[320px] shrink-0 snap-center flex-col justify-between overflow-hidden rounded-3xl border border-[#16311c]/15 bg-[#eae1d2] p-7 shadow-sm transition hover:bg-[#16311c] hover:text-white"
+                className="group relative flex min-h-[240px] w-[85vw] max-w-[320px] shrink-0 snap-center flex-col justify-between overflow-hidden rounded-3xl border border-[#16311c]/20 bg-[#16311c] p-7 text-white shadow-xl transition active:scale-[0.98]"
               >
                 <div className="relative z-10">
-                  <span className="text-[.6rem] font-bold uppercase tracking-[.2em] text-[#80613f] group-hover:text-[#c7a882]">
+                  <span className="text-[.75rem] font-bold uppercase tracking-[.2em] text-[#c7a882]">
                     0{index + 1} · {item.label}
                   </span>
-                  <strong className="mt-4 block break-words font-serif text-2xl font-semibold leading-tight sm:text-3xl">
+                  <strong className="mt-4 block break-words font-serif text-3xl font-semibold leading-tight sm:text-4xl">
                     {item.value}
                   </strong>
-                  <p className="mt-2 text-xs opacity-75">{item.subText}</p>
+                  <p className="mt-3 text-[13px] opacity-80">{item.subText}</p>
                 </div>
                 
                 <div className="relative z-10 mt-12 flex items-end justify-between">
-                  <span className="inline-flex items-center gap-2 rounded-full border border-current/20 px-4 py-2 text-xs font-bold transition group-hover:border-white/30">
+                  <span className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/10 px-4 py-2 text-xs font-bold transition">
                     {locale === "en" ? "Connect" : "Kết nối"}
                     <ArrowRight className="h-3.5 w-3.5" />
                   </span>
                 </div>
 
                 {/* Platform Icon at bottom right */}
-                <div className="absolute -bottom-4 -right-4 z-0 opacity-10 transition group-hover:opacity-20">
+                <div className="absolute -bottom-4 -right-4 z-0 opacity-15">
                   {IconComponent ? (
-                    <IconComponent className="h-32 w-32" />
+                    <IconComponent className="h-36 w-36" />
                   ) : (
-                    item.svg?.("h-32 w-32")
+                    item.svg?.("h-36 w-36")
                   )}
                 </div>
               </a>
