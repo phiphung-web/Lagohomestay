@@ -119,11 +119,14 @@ export const stayZones: StayZone[] = [
 ];
 
 const sharedIncluded = [
-  "Bể bơi Bốn Mùa theo điều kiện vận hành",
-  "Trà, cà phê và nước uống theo tiêu chuẩn tại phòng",
-  "Internet và truyền hình cáp",
-  "Hỗ trợ trực tiếp qua điện thoại và Zalo"
+  "Bể bơi Bốn Mùa công nghệ tự nhiên",
+  "Trà, cà phê và nước suối tại phòng",
+  "Wi-Fi và truyền hình cáp",
+  "Xe đạp, bi-a, bóng bàn, bi lắc và boardgame",
+  "Sân team building 100 m² và sân khấu ngoài trời 100 m²"
 ];
+
+const breakfastIncluded = [...sharedIncluded, "Một bữa sáng"];
 
 export const stays: Stay[] = [
   {
@@ -149,13 +152,13 @@ export const stays: Stay[] = [
     unitId: "unit-002",
     slug: "bungalow-ben-ho",
     name: "Bungalow Bên Hồ",
-    subtitle: "Bungalow 002–003 · 6–7 khách/căn",
+    subtitle: "Bungalow 002–003 · 5–7 khách/căn",
     description: "Hai bungalow gỗ sáng màu có gác xép, nằm đối diện hồ lớn và vừa vặn cho nhóm 5–7 người.",
     longDescription: "Bungalow 002 và 003 là hai căn hai tầng với một gác xép, nằm ngay đối diện hồ lớn. Mỗi căn rộng 15 m², có hai giường cỡ lớn và đủ gần thiên nhiên cho một nhóm 5–7 người cùng tận hưởng những ngày thong thả.",
     image: conceptImages.detail1,
     gallery: [conceptImages.detail1, conceptImages.detail2, conceptImages.hero],
     maxGuests: 7, baseGuests: 5, bedrooms: 0, beds: 2, bathrooms: 1, area: 15, basePrice: 0,
-    amenities: ["Một gác xép", "Hai giường cỡ lớn", "Nhà vệ sinh khép kín", "Điều hòa, quạt và ấm siêu tốc", "Máy sấy tóc"],
+    amenities: ["Hai tầng với một gác xép", "Hai giường cỡ lớn", "Bàn trang điểm", "Giá treo đồ", "Nhà vệ sinh khép kín", "Thiết bị cơ bản"],
     highlights: ["5–7 khách/căn", "Có gác xép", "Đối diện hồ lớn"],
     idealFor: ["Gia đình", "Nhóm bạn 6–7 người", "Chuyến đi cuối tuần"],
     included: sharedIncluded,
@@ -173,10 +176,10 @@ export const stays: Stay[] = [
     image: conceptImages.detail2,
     gallery: [conceptImages.detail2, conceptImages.detail3, conceptImages.hero],
     maxGuests: 0, baseGuests: 0, bedrooms: 0, beds: 1, bathrooms: 1, area: 25, basePrice: 0,
-    amenities: ["Một khung kính ngắm cảnh", "Giường ngủ lớn", "Nhà vệ sinh khép kín", "Điều hòa, quạt và ấm siêu tốc", "Bàn ghế ngoài trời"],
+    amenities: ["Một giường lớn", "Bàn ghế ngoài trời", "Bàn trang điểm", "Nhà vệ sinh khép kín"],
     highlights: ["Hai Lake Suite", "Một khung kính", "Yên tĩnh, riêng tư"],
     idealFor: ["Cặp đôi", "Kỳ nghỉ riêng tư", "Người muốn chậm lại"],
-    included: sharedIncluded,
+    included: breakfastIncluded,
     stayNotes: ["Hai căn: 004 và 005", "Sức chứa đang được LAKA xác nhận trực tiếp"],
     mood: "couple", location: "Hướng hồ", badge: "Khung cảnh an trú", accent: "#8b7563", zoneId: "zone-lake"
   },
@@ -191,10 +194,10 @@ export const stays: Stay[] = [
     image: conceptImages.cloud,
     gallery: [conceptImages.cloud, conceptImages.forest, conceptImages.hero],
     maxGuests: 0, baseGuests: 0, bedrooms: 0, beds: 1, bathrooms: 1, area: 25, basePrice: 0,
-    amenities: ["Một mặt kính toàn phần", "Giường ngủ lớn", "Nhà vệ sinh khép kín", "Điều hòa, quạt và ấm siêu tốc", "Bàn ghế ngoài trời"],
+    amenities: ["Mặt kính lớn ngắm toàn cảnh", "Một giường lớn", "Bàn ghế ngoài trời", "Nhà vệ sinh khép kín"],
     highlights: ["Sáu Forest Lake Suite", "Một tường kính", "Khoảng trời riêng"],
     idealFor: ["Cặp đôi", "Người yêu kiến trúc cabin", "Kỳ nghỉ ngắm cảnh"],
-    included: sharedIncluded,
+    included: breakfastIncluded,
     stayNotes: ["Sáu căn: 006–011", "Sức chứa đang được LAKA xác nhận trực tiếp"],
     mood: "couple", location: "Trong thung lũng", badge: "Một khoảng trời riêng", accent: "#73806b", zoneId: "zone-valley"
   },
@@ -209,7 +212,7 @@ export const stays: Stay[] = [
     image: conceptImages.table,
     gallery: [conceptImages.table, conceptImages.detail1, conceptImages.forest],
     maxGuests: 14, baseGuests: 14, bedrooms: 0, beds: 7, bathrooms: 1, area: 30, basePrice: 0,
-    amenities: ["Bảy giường tầng", "Nhà vệ sinh khép kín", "Điều hòa, quạt và ấm siêu tốc", "Không gian cho nhóm đông"],
+    amenities: ["Bảy giường tầng", "Bốn ô kính view rừng thông", "Nhà vệ sinh khép kín", "Không gian cho nhóm đông"],
     highlights: ["14 khách/căn", "Hai Cabin Group", "Bốn khung kính"],
     idealFor: ["Nhóm bạn đông", "Đoàn công ty", "Team building"],
     included: sharedIncluded,
@@ -227,10 +230,10 @@ export const stays: Stay[] = [
     image: conceptImages.hill,
     gallery: [conceptImages.hill, conceptImages.detail2, conceptImages.cloud],
     maxGuests: 0, baseGuests: 0, bedrooms: 0, beds: 1, bathrooms: 1, area: 25, basePrice: 0,
-    amenities: ["Hai mặt kính toàn phần", "Góc nhìn 180°", "Bồn tắm ngâm riêng tư", "Nhà vệ sinh khép kín", "Bàn ghế ngoài trời"],
+    amenities: ["Kính góc 180°", "Bồn tắm ngâm riêng tư", "Một giường lớn", "Bàn ghế ngoài trời", "Nhà vệ sinh khép kín"],
     highlights: ["Bốn Bathtub Suite", "View 180°", "Hai tường kính"],
     idealFor: ["Cặp đôi", "Kỳ nghỉ kỷ niệm", "Người ưu tiên tầm nhìn"],
-    included: sharedIncluded,
+    included: breakfastIncluded,
     stayNotes: ["Bốn căn: 014–017", "Sức chứa đang được LAKA xác nhận trực tiếp"],
     mood: "couple", location: "Rừng & hồ", badge: "Góc nhìn 180°", accent: "#7d8874", zoneId: "zone-valley"
   },
@@ -239,18 +242,18 @@ export const stays: Stay[] = [
     unitId: "unit-018",
     slug: "nha-thong-reo",
     name: "Nhà Thông Reo",
-    subtitle: "Eco Camp 018–019 · 1–2 khách/căn",
-    description: "Hai bungalow gỗ thấp nép trước rừng thông, nhỏ gọn và mộc mạc cho một hoặc hai người.",
-    longDescription: "Nhà Thông Reo gồm Eco Camp 018 và 019. Đây là hai bungalow gỗ thấp cho 1–2 khách, không dùng mảng kính lớn; phía sau căn là rừng thông, tạo một trải nghiệm gần thiên nhiên và nguyên bản hơn.",
+    subtitle: "Eco Camp 018–019 · thông tin đang được xác nhận",
+    description: "Hai Eco Camp nằm gần rừng thông; thông số, sức chứa và tiện nghi chi tiết đang được LAKA xác nhận trước khi công bố.",
+    longDescription: "Nhà Thông Reo gồm Eco Camp 018 và 019. Dòng căn đã có trong danh mục 20 căn của LAKA, nhưng thông số chi tiết chưa được chủ dự án duyệt nên chưa được dùng để tư vấn sức chứa hoặc tiện nghi.",
     image: conceptImages.forest,
     gallery: [conceptImages.forest, conceptImages.detail1, conceptImages.hill],
-    maxGuests: 2, baseGuests: 1, bedrooms: 0, beds: 0, bathrooms: 0, area: 0, basePrice: 0,
-    amenities: ["Bungalow gỗ thấp", "Phía sau là rừng thông", "Thiết kế không dùng mảng kính lớn"],
-    highlights: ["1–2 khách/căn", "Hai Eco Camp", "Nép dưới rừng thông"],
-    idealFor: ["Một người", "Cặp đôi", "Người thích trải nghiệm mộc"],
+    maxGuests: 0, baseGuests: 0, bedrooms: 0, beds: 0, bathrooms: 0, area: 0, basePrice: 0,
+    amenities: ["Hai Eco Camp: 018 và 019", "Gần rừng thông", "Thông số chi tiết đang chờ duyệt"],
+    highlights: ["Hai Eco Camp", "Khu vực rừng thông", "Dữ liệu đang hoàn thiện"],
+    idealFor: ["Khách cần LAKA tư vấn trực tiếp"],
     included: sharedIncluded,
     stayNotes: ["Hai căn: 018 và 019", "Tiện nghi chi tiết đang được LAKA xác nhận trực tiếp"],
-    mood: "retreat", location: "Rừng thông", badge: "Ở gần rừng nhất", accent: "#667b63", zoneId: "zone-hill"
+    mood: "retreat", location: "Rừng thông", badge: "Thông tin đang xác nhận", accent: "#667b63", zoneId: "zone-hill"
   },
   {
     id: "stay-tren-doi",
@@ -262,7 +265,7 @@ export const stays: Stay[] = [
     longDescription: "Villa Top Hill 020 là căn nhà biệt lập trên đỉnh đồi, sức chứa 15–20 khách. Từ đây mở ra toàn cảnh thung lũng, hồ và núi—một điểm ở dành cho đoàn đông nhưng vẫn cần sự riêng biệt.",
     image: conceptImages.hill,
     gallery: [conceptImages.hill, conceptImages.cloud, conceptImages.hero],
-    maxGuests: 20, baseGuests: 15, bedrooms: 0, beds: 0, bathrooms: 0, area: 0, basePrice: 0,
+    maxGuests: 20, baseGuests: 15, bedrooms: 1, beds: 5, bathrooms: 1, area: 35, basePrice: 0,
     amenities: ["Một phòng ngủ và một phòng khách", "Năm giường cỡ vừa", "Nhà vệ sinh khép kín", "Tivi và sofa", "Sân lớn ngoài trời"],
     highlights: ["15–20 khách", "Villa Top Hill", "View toàn thung lũng"],
     idealFor: ["Đoàn công ty", "Gia đình lớn", "Nhóm bạn đông"],

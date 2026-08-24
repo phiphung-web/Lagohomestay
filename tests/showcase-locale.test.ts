@@ -21,11 +21,12 @@ describe("Quiet Living locale routing", () => {
       .toBe("/en/am-thuc");
   });
 
-  it("keeps booking utilities available as secondary direct routes", () => {
-    expect(resolveTemplateRoute(["dat-phong"])).toEqual({ kind: "booking" });
-    expect(resolveTemplateRoute(["tra-cuu"])).toEqual({ kind: "lookup" });
+  it("keeps contact as the only public enquiry destination", () => {
+    expect(resolveTemplateRoute(["lien-he"])).toEqual({ kind: "contact" });
+    expect(resolveTemplateRoute(["dat-phong"])).toBeNull();
+    expect(resolveTemplateRoute(["tra-cuu"])).toBeNull();
     expect(templateStaticPaths().map(({ path }) => path.join("/")))
-      .toEqual(expect.arrayContaining(["dat-phong", "tra-cuu"]));
+      .not.toEqual(expect.arrayContaining(["dat-phong", "tra-cuu", "chinh-sach"]));
   });
 
   it("localizes accommodation content while preserving its identity", () => {

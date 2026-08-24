@@ -26,7 +26,8 @@ describe("LAKA presentation content", () => {
     ]);
     expect(specialMoments).toHaveLength(3);
     expect(guestServices).toHaveLength(4);
-    expect(sharedFacilities).toHaveLength(6);
+    expect(sharedFacilities).toHaveLength(5);
+    expect(sharedFacilities.map((item) => item.title.vi)).not.toContain("Quầy Bar Hiên Gió");
     expect(journeySteps).toHaveLength(4);
     expect(showcaseFaqs).toHaveLength(8);
     expect(englishFaqs).toHaveLength(showcaseFaqs.length);
@@ -36,7 +37,12 @@ describe("LAKA presentation content", () => {
     expect(stays).toHaveLength(8);
     for (const stay of stays) {
       expect(stay.amenities.length).toBeGreaterThanOrEqual(3);
-      expect(stay.idealFor.length).toBeGreaterThanOrEqual(3);
+      if (stay.slug === "nha-thong-reo") {
+        expect(stay.maxGuests).toBe(0);
+        expect(stay.idealFor).toEqual(["Khách cần LAKA tư vấn trực tiếp"]);
+      } else {
+        expect(stay.idealFor.length).toBeGreaterThanOrEqual(3);
+      }
       expect(stay.included.length).toBeGreaterThanOrEqual(2);
       expect(stay.stayNotes.length).toBeGreaterThanOrEqual(2);
       expect(stay.basePrice).toBe(0);

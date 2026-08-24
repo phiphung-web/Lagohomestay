@@ -73,7 +73,7 @@ export const diningStories = [
 
 export const specialMoments = [
   { icon: Heart, title: { vi: "Khoảng riêng cho hai người", en: "A private stay for two" }, text: { vi: "Cabin An Trú, Khoảng Trời và Vô Cực tạo ba cách khác nhau để cặp đôi nhìn ngắm hồ, rừng và mây.", en: "An Tru, Khoang Troi and Vo Cuc offer three distinct ways for couples to see lake, forest and clouds." } },
-  { icon: TentTree, title: { vi: "Gia đình & nhóm bạn", en: "Families and friends" }, text: { vi: "Bungalow Bên Hồ, Nhà Bên Hồ và Cabin Sum Vầy phục vụ các quy mô từ 6 đến 20 khách theo sức chứa đã nêu.", en: "Lakeside Bungalows, Guest House and Sum Vay Cabins cover stated group sizes from 6 to 20 guests." } },
+  { icon: TentTree, title: { vi: "Gia đình & nhóm bạn", en: "Families and friends" }, text: { vi: "Bungalow Bên Hồ, Nhà Bên Hồ, Cabin Sum Vầy và Nhà Trên Đồi phục vụ các quy mô từ 5 đến 20 khách theo sức chứa đã nêu.", en: "Lakeside Bungalows, Guest House, Sum Vay Cabins and Top Hill Villa cover stated group sizes from 5 to 20 guests." } },
   { icon: FlameKindling, title: { vi: "Đoàn công ty & team building", en: "Company groups and team building" }, text: { vi: "Nhà Trên Đồi, Cabin Sum Vầy và hệ hoạt động chung tạo nền cho chuyến đi đoàn; chương trình cần được LAKA xác nhận trước.", en: "Top Hill Villa, Sum Vay Cabins and shared activities support group retreats; programmes require advance confirmation." } }
 ] as const;
 
@@ -94,7 +94,7 @@ export const guestServices = [
     icon: Sparkles,
     title: { vi: "Tư vấn theo quy mô đoàn", en: "Advice for each group size" },
     text: { vi: "Đội ngũ LAKA tiếp nhận ngày đi, số khách và mong muốn để gợi ý đúng dòng căn trước khi báo giá.", en: "LAKA uses dates, guest count and priorities to recommend the right accommodation type before quoting." },
-    meta: { vi: "Qua điện thoại hoặc Zalo", en: "By phone or Zalo" }
+    meta: { vi: "Qua trang Liên hệ, điện thoại hoặc Zalo", en: "Via Contact, phone or Zalo" }
   },
   {
     icon: Footprints,
@@ -107,7 +107,6 @@ export const guestServices = [
 export const sharedFacilities = [
   { icon: UtensilsCrossed, title: { vi: "Nhà Hàng Ven Hồ", en: "Lakeside Restaurant" }, text: { vi: "Không gian nhà hàng bên hồ, nhìn ra mặt nước và dãy núi.", en: "A restaurant by the lake with water and mountain views." }, image: conceptImages.dining },
   { icon: Coffee, title: { vi: "Tiệm Cà Phê Tầng Mây", en: "Tang May Coffee Shop" }, text: { vi: "Tiệm cà phê nhiều tầng đối diện hồ, mở tầm nhìn về núi, mây và rừng thông.", en: "A terraced coffee shop facing the lake, mountains, clouds and pine forest." }, image: conceptImages.breakfast },
-  { icon: Sparkles, title: { vi: "Quầy Bar Hiên Gió", en: "Hien Gio Bar" }, text: { vi: "Quầy bar tròn, mở bốn phía với chỗ ngồi bao quanh.", en: "A circular open-sided bar with seating all around." }, image: conceptImages.detail2 },
   { icon: Sunrise, title: { vi: "Sân Pickleball Đón Nắng", en: "Sunlit Pickleball Court" }, text: { vi: "Không gian vận động và kết nối dành cho cặp đấu, nhóm bạn và hoạt động đoàn.", en: "An active social space for pairs, friends and group programmes." }, image: conceptImages.hill },
   { icon: Waves, title: { vi: "Bể Bơi Bốn Mùa", en: "Four-season Pool" }, text: { vi: "Bể bơi chung trong hệ tiện ích LAKA; giờ và quy định sử dụng đang chờ xác nhận.", en: "A shared pool in LAKA's facility plan; hours and guest rules await confirmation." }, image: conceptImages.experience },
   { icon: TentTree, title: { vi: "Thung Lũng Săn Mây", en: "Cloud-watching Valley" }, text: { vi: "Khoảng check-in nhìn về thung lũng, nơi mây, núi và rừng thông tạo nên phông cảnh đặc trưng.", en: "A valley viewpoint where clouds, mountains and pines form LAKA's defining landscape." }, image: conceptImages.cloud }

@@ -22,10 +22,10 @@ export const guestStories = [
 export const showcaseFaqs = [
   ["LAKA có những loại hình lưu trú nào?", "LAKA có 8 dòng lưu trú và 20 căn thực tế: Nhà Bên Hồ, Bungalow Bên Hồ, Cabin An Trú, Cabin Khoảng Trời, Cabin Sum Vầy, Cabin Vô Cực, Nhà Thông Reo và Nhà Trên Đồi."],
   ["LAKA ở đâu?", "LAKA nằm tại Dốc Dây Diều, Xóm 1, Thanh Hà, Trung Giã, Hà Nội. Trước khi đi, hãy liên hệ đội ngũ để nhận tuyến đường phù hợp nhất."],
-  ["Những căn nào đã có sức chứa được xác nhận?", "Guest House 001 và Villa Top Hill 020 dành cho 15–20 khách; Bungalow 002–003 dành cho 6–7 khách/căn; Cabin Group 012–013 dành cho 14 khách/căn; Eco Camp 018–019 dành cho 1–2 khách/căn. Sức chứa các suite còn lại đang chờ xác nhận."],
+  ["Những căn nào đã có sức chứa được xác nhận?", "Guest House 001 tối đa 10 khách; Bungalow 002–003 dành cho 5–7 khách/căn; Cabin Group 012–013 tối đa 14 khách/căn; Villa Top Hill 020 dành cho 15–20 khách. Sức chứa các suite và thông số chi tiết Eco Camp vẫn chờ xác nhận."],
   ["Hình ảnh trên website đã là ảnh thực tế LAKA chưa?", "Hình ảnh hiện tại được gắn nhãn minh họa concept. Ảnh thi công và ảnh không gian hoàn thiện của chính LAKA sẽ thay thế theo từng giai đoạn."],
   ["Tại LAKA có thể trải nghiệm gì?", "Kế hoạch của LAKA có thuyền đạp nước, kayak, bể bơi bốn mùa, sân pickleball, hát, săn mây và hoạt động team building. Khung giờ vận hành cùng chi phí nếu có vẫn cần được xác nhận."],
-  ["LAKA có dịch vụ ăn uống không?", "LAKA có Nhà Hàng Ven Hồ, Café LAKA và Quầy Bar Hiên Gió. Website đang giới thiệu trước các nhóm món dự kiến; tình trạng phục vụ và thông tin chính thức được xác nhận trực tiếp."],
-  ["Có thể đặt phòng trực tiếp trên website chưa?", "Website hiện tiếp nhận yêu cầu tư vấn. LAKA sẽ xác nhận căn phù hợp, lịch trống, giá và điều kiện đặt cọc trực tiếp qua điện thoại hoặc Zalo trước khi hình thành booking."],
+  ["LAKA có dịch vụ ăn uống không?", "LAKA có Nhà Hàng Ven Hồ và Tiệm Cà Phê Tầng Mây. Website đang giới thiệu trước các nhóm món dự kiến; tình trạng phục vụ và thông tin chính thức được xác nhận trực tiếp."],
+  ["Có thể đặt phòng trực tiếp trên website chưa?", "Website hiện hội tụ mọi yêu cầu tại trang Liên hệ. LAKA sẽ xác nhận căn phù hợp, lịch trống, giá và điều kiện đặt cọc trực tiếp trước khi hình thành booking."],
   ["Thông tin nào vẫn cần LAKA xác nhận?", "Sơ đồ phòng chi tiết, một số tiện nghi trong từng căn, giờ nhận/trả căn, chính sách vật nuôi, đổi hủy và tình trạng phục vụ vẫn được xác nhận trực tiếp trước chuyến đi."]
 ];

@@ -65,7 +65,7 @@ export function StayFinder({ stays }: { stays: Stay[] }) {
           <p className="mt-5 text-xs font-semibold text-lago-sand">Cho {journeyLabel} · {recommended.location}</p>
           <div className="mt-2 flex flex-wrap items-end justify-between gap-4"><h4 className="display text-5xl font-semibold sm:text-6xl">{recommended.name}</h4><p className="text-sm font-bold text-lago-sand">Liên hệ LAKA để được tư vấn</p></div>
           <p className="mt-4 max-w-xl text-sm leading-6 text-white/68">{recommended.description}</p>
-          <div className="mt-6 flex flex-col gap-3 sm:flex-row"><Link href={`/luu-tru/${recommended.slug}`} className="btn-light">Khám phá căn này <ArrowRight className="h-4 w-4" /></Link><Link href={`/dat-phong?stay=${recommended.slug}&guests=${guests}`} className="focus-ring inline-flex min-h-12 items-center justify-center rounded-full border border-white/25 px-5 text-sm font-bold backdrop-blur transition hover:bg-white/10"><Users className="mr-2 h-4 w-4" /> Xem lịch cho {guests} khách</Link></div>
+          <div className="mt-6 flex flex-col gap-3 sm:flex-row"><Link href={`/luu-tru/${recommended.slug}`} className="btn-light">Khám phá căn này <ArrowRight className="h-4 w-4" /></Link><Link href={`/lien-he?stay=${recommended.slug}&guests=${guests}#inquiry-form`} className="focus-ring inline-flex min-h-12 items-center justify-center rounded-full border border-white/25 px-5 text-sm font-bold backdrop-blur transition hover:bg-white/10"><Users className="mr-2 h-4 w-4" /> Liên hệ cho nhóm {guests} khách</Link></div>
         </div>
       </div>
     </div>

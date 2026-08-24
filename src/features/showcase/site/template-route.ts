@@ -15,27 +15,21 @@ export type TemplateRoute =
   | { kind: "directions" }
   | { kind: "terms" }
   | { kind: "privacy" }
-  | { kind: "contact" }
-  | { kind: "booking" }
-  | { kind: "lookup" };
+  | { kind: "contact" };
 
 const singlePages = {
   "luu-tru": "stays",
   "trai-nghiem": "experience",
   "dich-vu": "services",
   "am-thuc": "dining",
-  "ve-lago": "about",
   "ve-laka": "about",
   "thong-tin": "info",
   "faq": "faq",
   "di-chuyen": "directions",
-  "chinh-sach": "policy",
   "chinh-sach-luu-tru": "policy",
   "dieu-khoan": "terms",
   "bao-mat": "privacy",
-  "lien-he": "contact",
-  "dat-phong": "booking",
-  "tra-cuu": "lookup"
+  "lien-he": "contact"
 } as const;
 
 export function resolveTemplateRoute(path: string[] | undefined): TemplateRoute | null {
@@ -62,9 +56,7 @@ const titles: Record<Exclude<TemplateRoute["kind"], "stay">, string> = {
   directions: "Hướng dẫn di chuyển",
   terms: "Điều khoản và điều kiện",
   privacy: "Chính sách bảo mật",
-  contact: "Liên hệ",
-  booking: "Liên hệ đặt chỗ",
-  lookup: "Xem thông tin đặt chỗ"
+  contact: "Liên hệ"
 };
 
 export function getTemplateMetadata(route: TemplateRoute): Metadata {

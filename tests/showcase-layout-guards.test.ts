@@ -33,4 +33,19 @@ describe("LAKA showcase layout guards", () => {
     expect(form).toContain("publicContact.phoneHref");
     expect(form).toContain('role="status"');
   });
+
+  it("keeps the homepage as a concise overview with one feedback slider", () => {
+    const story = source("src/features/showcase/components/home-brand-story.tsx");
+    const stays = source("src/features/showcase/components/home-landscape-collections.tsx");
+    const feedback = source("src/features/showcase/components/home-guest-stories.tsx");
+
+    expect(story).toContain('h-[min(58svh,440px)]');
+    expect(stays).toContain("Ba nhóm không gian");
+    expect(stays).toContain('href={basePath + "/luu-tru"}');
+    expect(stays).not.toContain("stay.details");
+    expect(feedback).toContain('aria-roledescription="carousel"');
+    expect(feedback).toContain("laka-feedback-track");
+    expect(feedback).not.toContain("Khách Việt Nam");
+    expect(feedback).not.toContain("Khách nước ngoài");
+  });
 });

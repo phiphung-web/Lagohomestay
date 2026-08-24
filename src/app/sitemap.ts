@@ -13,13 +13,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/thong-tin", priority: .62 },
     { path: "/faq", priority: .58 },
     { path: "/di-chuyen", priority: .64 },
-    { path: "/chinh-sach", priority: .5 },
     { path: "/chinh-sach-luu-tru", priority: .5 },
     { path: "/dieu-khoan", priority: .32 },
     { path: "/bao-mat", priority: .32 },
-    { path: "/lien-he", priority: .58 },
-    { path: "/dat-phong", priority: .35 },
-    { path: "/tra-cuu", priority: .3 }
+    { path: "/lien-he", priority: .68 }
   ];
   const vietnamese = [
     ...pages,

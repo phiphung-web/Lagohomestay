@@ -319,7 +319,7 @@ export function StayProductExplorer({
                     <p className="pb-5 pr-8 text-sm leading-7 text-[#16311c]/64">{text}</p>
                   </details>)}
                 </div>
-                <Link href={`${basePath}/chinh-sach`} className="mt-6 inline-flex items-center gap-2 text-xs font-bold underline decoration-[#80613f]/45 underline-offset-4">
+                <Link href={`${basePath}/chinh-sach-luu-tru`} className="mt-6 inline-flex items-center gap-2 text-xs font-bold underline decoration-[#80613f]/45 underline-offset-4">
                   {locale === "en" ? "Read all stay policies" : "Xem toàn bộ chính sách lưu trú"} <ArrowRight className="h-3.5 w-3.5" />
                 </Link>
               </div>}
@@ -335,8 +335,8 @@ export function StayProductExplorer({
                   <Link href={`${basePath}/trai-nghiem`} className="inline-flex min-h-12 shrink-0 items-center gap-2 rounded-full border border-[#16311c]/16 px-5 text-xs font-bold sm:px-6">
                     {locale === "en" ? "A day at LAKA" : "Một ngày tại LAKA"} <ArrowRight className="h-4 w-4" />
                   </Link>
-                  <Link href={`${basePath}/dat-phong?stay=${activeStay.slug}`} className="inline-flex min-h-12 shrink-0 items-center gap-2 rounded-full bg-[#16311c] px-5 text-xs font-bold text-white sm:px-6">
-                    {locale === "en" ? "Check this stay" : "Xem lịch căn này"} <ArrowRight className="h-4 w-4" />
+                  <Link href={`${basePath}/lien-he?stay=${activeStay.slug}#inquiry-form`} className="inline-flex min-h-12 shrink-0 items-center gap-2 rounded-full bg-[#16311c] px-5 text-xs font-bold text-white sm:px-6">
+                    {locale === "en" ? "Ask about this stay" : "Liên hệ về căn này"} <ArrowRight className="h-4 w-4" />
                   </Link>
                 </div>
               </div>

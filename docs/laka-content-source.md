@@ -1,12 +1,12 @@
 # Nguồn nội dung website LAKA
 
-Cập nhật: 23/08/2026.
+Cập nhật: 24/08/2026.
 
 ## Nguồn chính
 
 - [Laka HomeStay - Sóc Sơn](https://docs.google.com/spreadsheets/d/1h3mTkwpuzuHB0Eb3g4jLEaTa40iMAmNVJ4MgMntIKvs/edit?gid=1665370073#gid=1665370073): nội dung thương hiệu, mô hình căn, tiện ích và liên hệ.
 - [Bảng đánh giá U Lesa và LAKA](https://docs.google.com/spreadsheets/d/1Pi17n156ODCvM1iJnBUfrcQadSRvzzKTI53THHIbR3k/edit?gid=811688556#gid=811688556): tham chiếu kiến trúc thông tin và danh mục tài nguyên.
-- Nội dung chủ dự án cung cấp trực tiếp ngày 22/08/2026: slogan, sứ mệnh, lưu trú, tiện ích chung, ẩm thực, trải nghiệm, gallery và phân nhóm feedback. Đây là nguồn ưu tiên khi khác bản nháp cũ.
+- Nội dung chủ dự án cung cấp trực tiếp ngày 22/08/2026: slogan, sứ mệnh, lưu trú, tiện ích chung, ẩm thực, trải nghiệm và gallery. Chỉ đạo ngày 24/08/2026: feedback hiển thị trong một slider tổng hợp, không chia khách Việt Nam và khách nước ngoài. Đây là nguồn ưu tiên khi khác bản nháp cũ.
 
 ## Dữ liệu đã được chủ dự án duyệt
 

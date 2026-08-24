@@ -1,6 +1,6 @@
 # Order tài nguyên website LAKA
 
-Cập nhật: 23/08/2026. Mọi ảnh Unsplash trên website hiện chỉ là ảnh concept và phải được thay trước khi mở bán.
+Cập nhật: 24/08/2026. Mọi ảnh Unsplash trên website hiện chỉ là ảnh concept và phải được thay trước khi mở bán.
 
 ## P0 — bắt buộc để website hoạt động
 
@@ -8,13 +8,12 @@ Cập nhật: 23/08/2026. Mọi ảnh Unsplash trên website hiện chỉ là �
 |---|---|---|---|
 | `HOME-HERO-01` | Trang chủ / hero | Toàn cảnh có hồ, cabin và thung lũng; không chèn chữ | 01 ảnh 16:9 + 01 crop 9:16; tối thiểu 2400px |
 | `HOME-HERO-VIDEO` | Trang chủ / hero | Chuyển động chậm, có chiều sâu cảnh quan, không nhạc đóng bản quyền | 8–15 giây; 4K/1080p; 16:9 + 9:16 |
-| `HOME-MISSION-01..03` | Trang chủ / sứ mệnh | Khung kính nhìn ra thiên nhiên, khoảnh khắc kết nối thật | 02 ảnh 3:4 + 01 ảnh 16:10 |
+| `HOME-MISSION-01..03` | Trang chủ / sứ mệnh | Khung kính nhìn ra thiên nhiên, khoảnh khắc kết nối thật | 01 ảnh chủ đạo có crop 4:5 + 02 ảnh phụ 4:3 |
 | `HOME-STAY-GROUP-01..03` | Trang chủ / lưu trú | Đại diện Nhà Bên Hồ, Lake Cabin, Nhà Trên Đồi | 03 ảnh 16:10 |
 | `HOME-DINING-01..02` | Trang chủ / ẩm thực | Nhà Hàng Ven Hồ, Tiệm Cà Phê Tầng Mây | 02 ảnh 4:3 |
 | `HOME-EXPERIENCE-01..04` | Trang chủ / một ngày ở LAKA | Pickleball, kayak, hồ bơi, xe đạp; có người sử dụng thật | 04 ảnh 4:5 |
 | `HOME-GALLERY-01..06` | Trang chủ / thư viện ký ức | Khoảnh khắc khách thật, đa dạng thời điểm và nhóm khách | 02 ảnh 16:9 + 04 ảnh 4:3 |
-| `HOME-FEEDBACK-VI` | Trang chủ / khách Việt Nam | Họ/tên viết tắt, loại chuyến đi, nội dung, ngày ở, đồng ý sử dụng | Tối thiểu 03 phản hồi |
-| `HOME-FEEDBACK-INT` | Trang chủ / khách nước ngoài | Tên viết tắt, quốc gia, nội dung gốc + bản dịch duyệt, ngày ở, đồng ý sử dụng | Tối thiểu 03 phản hồi |
+| `HOME-FEEDBACK-01..06` | Trang chủ / slider feedback tổng hợp | Họ/tên viết tắt, loại căn/chuyến đi, nội dung gốc, bản dịch duyệt nếu cần, ngày ở và đồng ý sử dụng | Tối thiểu 06 phản hồi; không chia theo quốc tịch |
 | `ROUTE-HERO-01..06` | Lưu trú, trải nghiệm, dịch vụ, ẩm thực, về LAKA, đường đến | Ảnh mở trang đúng chủ đề, vùng trống an toàn cho chữ | 06 ảnh 16:9 + crop 4:5 |
 | `STAY-{SLUG}-SET` | 8 trang chi tiết lưu trú | Bộ ảnh chứng minh đúng không gian và tiện nghi | 10 ảnh/dòng căn; xem shot list dưới |
 | `STAY-{SLUG}-PLAN` | Trang chi tiết / mặt bằng | Sơ đồ có kích thước, cửa, giường, WC, ban công/gác xép | 01 SVG/PDF + PNG cho mỗi dòng căn; tổng 08 |

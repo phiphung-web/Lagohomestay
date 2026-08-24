@@ -71,7 +71,7 @@ export const diningMenuVenues: DiningMenuVenue[] = [
   {
     id: "cafe",
     eyebrow: item("Một khoảng nghỉ giữa ngày", "A pause in the day"),
-    title: item("Café LAKA", "LAKA Café"),
+    title: item("Tiệm Cà Phê Tầng Mây", "Tang May Coffee Shop"),
     introduction: item(
       "Danh mục đồ uống đang được xây dựng theo nhiều nhịp: cà phê quen thuộc, cold brew, trà trái cây, matcha, nước ép cùng một số món ăn nhẹ.",
       "The drinks list is taking shape around familiar coffee, cold brew, fruit tea, matcha, fresh juice and a small selection of snacks."
@@ -123,4 +123,3 @@ export const diningMenuVenues: DiningMenuVenue[] = [
     ]
   }
 ];
-

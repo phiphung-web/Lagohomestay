@@ -26,9 +26,7 @@ const englishTitles: Record<Exclude<TemplateRoute["kind"], "stay">, string> = {
   directions: "Getting here",
   terms: "Terms and conditions",
   privacy: "Privacy policy",
-  contact: "Contact",
-  booking: "Plan your stay",
-  lookup: "Find your booking"
+  contact: "Contact"
 };
 
 export const dynamicParams = false;

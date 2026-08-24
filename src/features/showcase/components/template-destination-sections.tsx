@@ -60,7 +60,7 @@ export function TemplateDiningAndOccasions({ locale }: { locale: ShowcaseLocale 
                     <Icon className="h-5 w-5" />
                     <span className="text-[.58rem] font-bold uppercase tracking-[.18em]">{inLocale(item.kicker, locale)}</span>
                   </div>
-                  <h3 className="mt-6 font-serif text-5xl font-medium leading-[.98] tracking-[-.045em] sm:text-6xl">{inLocale(item.title, locale)}</h3>
+                  <h3 className="mt-6 font-serif text-4xl font-medium leading-[1.02] tracking-[-.04em] sm:text-5xl lg:text-6xl">{inLocale(item.title, locale)}</h3>
                   <p className="mt-7 max-w-lg text-base leading-8 text-[#16311c]/65">{inLocale(item.text, locale)}</p>
                   <p className="mt-9 border-y border-[#16311c]/15 py-5 text-xs font-bold uppercase tracking-[.12em] text-[#80613f]">
                     {index < 2

@@ -26,6 +26,36 @@ const nextConfig: NextConfig = {
         permanent: true
       },
       {
+        source: "/chinh-sach",
+        destination: "/chinh-sach-luu-tru",
+        permanent: true
+      },
+      {
+        source: "/en/chinh-sach",
+        destination: "/en/chinh-sach-luu-tru",
+        permanent: true
+      },
+      {
+        source: "/dat-phong",
+        destination: "/lien-he",
+        permanent: true
+      },
+      {
+        source: "/en/dat-phong",
+        destination: "/en/lien-he",
+        permanent: true
+      },
+      {
+        source: "/tra-cuu",
+        destination: "/lien-he",
+        permanent: true
+      },
+      {
+        source: "/en/tra-cuu",
+        destination: "/en/lien-he",
+        permanent: true
+      },
+      {
         source: "/mau/:template(tinh-lang|dien-anh|song-dong)",
         destination: "/",
         permanent: true

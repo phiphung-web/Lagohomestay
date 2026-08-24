@@ -20,13 +20,12 @@ export function Header() {
           {links.map(([href, label]) => <Link className="focus-ring rounded text-sm font-semibold hover:text-lago-clay" key={href} href={href}>{label}</Link>)}
         </nav>
         <div className="hidden items-center gap-3 sm:flex">
-          <Link href="/tra-cuu" className="focus-ring rounded-full px-4 py-2 text-sm font-semibold">Xem đặt chỗ</Link>
           <Link href="/lien-he" className="btn-primary">Liên hệ</Link>
         </div>
         <button onClick={() => setOpen(!open)} className="focus-ring rounded-lg p-2 sm:hidden" aria-label={open ? "Đóng menu" : "Mở menu"}>{open ? <X /> : <Menu />}</button>
       </div>
       {open && <div className="border-t border-lago-ink/10 bg-[#fbfaf6] px-5 py-5 sm:hidden">
-        <nav className="flex flex-col gap-1">{links.map(([href, label]) => <Link onClick={() => setOpen(false)} className="rounded-lg px-3 py-3 font-semibold" key={href} href={href}>{label}</Link>)}<Link href="/tra-cuu" className="rounded-lg px-3 py-3 font-semibold">Xem đặt chỗ</Link><Link href="/lien-he" className="btn-primary mt-3">Liên hệ</Link></nav>
+        <nav className="flex flex-col gap-1">{links.map(([href, label]) => <Link onClick={() => setOpen(false)} className="rounded-lg px-3 py-3 font-semibold" key={href} href={href}>{label}</Link>)}<Link href="/lien-he" className="btn-primary mt-3">Liên hệ</Link></nav>
       </div>}
     </header>
   );

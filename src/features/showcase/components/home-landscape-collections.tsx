@@ -6,97 +6,51 @@ import type { ShowcaseLocale } from "@/features/showcase/i18n/locale";
 
 const stayGroups = [
   {
-    title: { vi: "Nhà Bên Hồ - Khoảng Nghỉ Ven Hồ", en: "Lakeside House - A Pause by the Water" },
+    title: { vi: "Nhà Bên Hồ", en: "Lakeside House" },
+    subtitle: { vi: "Khoảng Nghỉ Ven Hồ", en: "A Pause by the Water" },
+    count: { vi: "02 lựa chọn", en: "02 stay types" },
     image: conceptImages.hero,
     stays: [
-      {
-        title: { vi: "Guest House", en: "Guest House" },
-        details: {
-          vi: "35m2 | 5 giường vừa (max 10 người) | WC khép kín, tủ quần áo, điều hòa, quạt, ấm siêu tốc, máy sấy tóc.",
-          en: "35m2 | 5 medium beds (max 10 guests) | En-suite bathroom, wardrobe, air conditioning, fan, kettle and hair dryer."
-        },
-        href: "nha-ben-ho"
-      },
-      {
-        title: { vi: "Bungalow", en: "Bungalow" },
-        details: {
-          vi: "15m2 (2 tầng - 1 gác xép) | 2 giường lớn (5–7 người) | Bàn trang điểm, giá treo đồ, WC khép kín, thiết bị cơ bản.",
-          en: "15m2 (2 levels - 1 loft) | 2 large beds (5–7 guests) | Vanity, clothes rack, en-suite bathroom and essential equipment."
-        },
-        href: "bungalow-ben-ho"
-      }
+      { vi: "Guest House", en: "Guest House" },
+      { vi: "Bungalow", en: "Bungalow" }
     ]
   },
   {
-    title: { vi: "Lake Cabin - Cabin Bên Hồ", en: "Lake Cabin" },
+    title: { vi: "Lake Cabin", en: "Lake Cabin" },
+    subtitle: { vi: "Cabin Bên Hồ", en: "Cabins by the Lake" },
+    count: { vi: "04 lựa chọn", en: "04 stay types" },
     image: conceptImages.cloud,
     stays: [
-      {
-        title: { vi: "Cabin An Trú (2 Cabin) [Lake Suite]", en: "An Tru Cabin (2 Cabins) [Lake Suite]" },
-        details: {
-          vi: "25m2 | 1 giường lớn | Bàn ghế ngoài trời, bàn trang điểm, WC khép kín.",
-          en: "25m2 | 1 large bed | Outdoor seating, vanity and en-suite bathroom."
-        },
-        breakfast: true,
-        href: "cabin-an-tru"
-      },
-      {
-        title: { vi: "Cabin Khoảng Trời (6 Cabin) [Forest Lake Suite]", en: "Khoang Troi Cabin (6 Cabins) [Forest Lake Suite]" },
-        details: {
-          vi: "25m2 | Mặt kính lớn ngắm toàn cảnh | 1 giường lớn, bàn ghế ngoài trời, WC khép kín.",
-          en: "25m2 | Panoramic glazing | 1 large bed, outdoor seating and en-suite bathroom."
-        },
-        breakfast: true,
-        href: "cabin-khoang-troi"
-      },
-      {
-        title: { vi: "Cabin Sum Vầy (2 Cabin) [Cabin Group]", en: "Sum Vay Cabin (2 Cabins) [Cabin Group]" },
-        details: {
-          vi: "30m2 | 7 giường tầng (max 14 người) | 4 ô kính view rừng thông, WC khép kín.",
-          en: "30m2 | 7 bunk beds (max 14 guests) | 4 windows facing the pine forest and an en-suite bathroom."
-        },
-        href: "cabin-sum-vay"
-      },
-      {
-        title: { vi: "Cabin Vô Cực (4 Cabin) [Forest Lake Bathtub Suite]", en: "Vo Cuc Cabin (4 Cabins) [Forest Lake Bathtub Suite]" },
-        details: {
-          vi: "25m2 | Kính góc 180 độ | Bồn tắm ngâm mình riêng tư, giường lớn, bàn ghế ngoài trời.",
-          en: "25m2 | 180-degree corner glazing | Private soaking tub, large bed and outdoor seating."
-        },
-        breakfast: true,
-        href: "cabin-vo-cuc"
-      }
+      { vi: "Cabin An Trú", en: "An Tru Cabin" },
+      { vi: "Cabin Khoảng Trời", en: "Khoang Troi Cabin" },
+      { vi: "Cabin Sum Vầy", en: "Sum Vay Cabin" },
+      { vi: "Cabin Vô Cực", en: "Vo Cuc Cabin" }
     ]
   },
   {
-    title: { vi: "Nhà Trên Đồi - Tụ Họp Giữa Lưng Đồi", en: "Hill House - Gathering on the Hillside" },
+    title: { vi: "Nhà Trên Đồi", en: "Hill House" },
+    subtitle: { vi: "Tụ Họp Giữa Lưng Đồi", en: "Gathering on the Hillside" },
+    count: { vi: "01 lựa chọn", en: "01 stay type" },
     image: conceptImages.hill,
     stays: [
-      {
-        title: { vi: "Villa Top Hill (1 Nhà)", en: "Villa Top Hill (1 House)" },
-        details: {
-          vi: "35m2 (1 ngủ + 1 khách) | 5 giường vừa (15–20 người) | Sofa, tivi, sân lớn ngoài trời, WC khép kín.",
-          en: "35m2 (1 bedroom + 1 living room) | 5 medium beds (15–20 guests) | Sofa, TV, large outdoor yard and en-suite bathroom."
-        },
-        href: "nha-tren-doi"
-      }
+      { vi: "Villa Top Hill", en: "Villa Top Hill" }
     ]
   }
 ] as const;
 
 const sharedBenefits = [
   {
-    title: { vi: "Miễn phí", en: "Complimentary" },
+    title: { vi: "Tiện nghi trong kỳ nghỉ", en: "In-stay comforts" },
     text: {
-      vi: "Bể bơi Bốn Mùa công nghệ tự nhiên, trà/cà phê/nước suối tại phòng, Wi-Fi, truyền hình cáp.",
-      en: "Natural-technology Four-season Pool, in-room tea, coffee and water, Wi-Fi and cable TV."
+      vi: "Bể bơi Bốn Mùa, trà, cà phê, nước suối tại phòng, Wi-Fi và truyền hình cáp.",
+      en: "Four-season Pool, in-room tea, coffee and water, Wi-Fi and cable TV."
     }
   },
   {
-    title: { vi: "Hoạt động miễn phí", en: "Complimentary activities" },
+    title: { vi: "Khoảng vui dùng chung", en: "Shared activities" },
     text: {
-      vi: "Xe đạp tham quan, bi-a, bóng bàn, bi lắc, boardgame, sân team building (100m2), sân khấu ngoài trời (100m2).",
-      en: "Bicycles, billiards, table tennis, foosball, board games, a 100m2 team-building ground and a 100m2 outdoor stage."
+      vi: "Xe đạp, bi-a, bóng bàn, bi lắc, boardgame, sân team building và sân khấu ngoài trời.",
+      en: "Bicycles, billiards, table tennis, foosball, board games, a team-building ground and an outdoor stage."
     }
   }
 ] as const;
@@ -106,14 +60,16 @@ export function HomeLandscapeCollections({ basePath, locale = "vi" }: { basePath
 
   return (
     <section id="luu-tru" className="laka-section-normal scroll-mt-20 border-y border-[#16311c]/12 bg-[#e3d8c9] px-5 sm:px-8">
-      <div className="mx-auto w-[min(1480px,100%)]">
-        <header className="grid gap-8 border-b border-[#16311c]/15 pb-12 lg:grid-cols-[.35fr_1fr] lg:items-end">
+      <div className="mx-auto w-[min(1380px,100%)]">
+        <header className="grid gap-8 border-b border-[#16311c]/15 pb-10 lg:grid-cols-[.38fr_1fr] lg:items-end lg:pb-12">
           <div>
             <p className="laka-eyebrow text-[#80613f]">
               {en ? "Stay at LaKa" : "Lưu trú tại LaKa"}
             </p>
             <p className="laka-body-muted mt-5 max-w-sm">
-              {en ? "Seven ways to stay, gathered in one place for a clear comparison." : "Bảy lựa chọn lưu trú được gom trong một không gian để bạn dễ dàng tìm đúng nhịp nghỉ."}
+              {en
+                ? "Three landscapes offer a quick way to find the rhythm that suits your journey."
+                : "Ba nhóm không gian giúp bạn hình dung nhanh nhịp nghỉ phù hợp cho chuyến đi."}
             </p>
           </div>
           <h2 className="laka-heading-section max-w-5xl">
@@ -121,49 +77,69 @@ export function HomeLandscapeCollections({ basePath, locale = "vi" }: { basePath
           </h2>
         </header>
 
-        <div className="divide-y divide-[#16311c]/15">
+        <div className="showcase-snap-rail mt-10 lg:grid-cols-3 lg:gap-5" aria-label={en ? "LAKA stay groups" : "Ba nhóm lưu trú tại LAKA"}>
           {stayGroups.map((group, groupIndex) => (
-            <article key={group.title.vi} className="grid gap-8 py-12 lg:grid-cols-[.36fr_1fr] lg:gap-14 lg:py-20">
-              <div>
-                <div className="laka-media-frame relative aspect-[16/10] overflow-hidden bg-[#10251d]">
-                  <Image src={group.image} alt={`${group.title[locale]} — ${en ? "concept image" : "hình ảnh minh họa"}`} fill sizes="(max-width:1024px) 100vw, 36vw" className="object-cover" />
-                  <span className="absolute left-4 top-4 rounded-full bg-[#07150f]/62 px-3 py-1.5 text-[.55rem] font-bold uppercase tracking-[.15em] text-white backdrop-blur">
-                    0{groupIndex + 1}
-                  </span>
-                </div>
-                <h3 className="laka-heading-card mt-6">{group.title[locale]}</h3>
+            <article key={group.title.vi} className="showcase-snap-card group flex h-full flex-col border border-[#16311c]/14 bg-[#eadfce]">
+              <div className="laka-media-frame relative aspect-[16/11] overflow-hidden bg-[#10251d]">
+                <Image
+                  src={group.image}
+                  alt={group.title[locale] + " — " + (en ? "concept image" : "hình ảnh minh họa")}
+                  fill
+                  sizes="(max-width:1024px) 82vw, 33vw"
+                  className="object-cover transition duration-1000 ease-out group-hover:scale-[1.025]"
+                />
+                <span className="absolute left-4 top-4 rounded-full bg-[#07150f]/68 px-3 py-1.5 text-[.55rem] font-bold uppercase tracking-[.15em] text-white backdrop-blur">
+                  0{groupIndex + 1}
+                </span>
+                <span className="absolute bottom-4 right-4 rounded-full bg-[#f2ece2]/92 px-3 py-1.5 text-[.54rem] font-bold uppercase tracking-[.13em] text-[#16311c] backdrop-blur">
+                  {group.count[locale]}
+                </span>
               </div>
 
-              <div className="divide-y divide-[#16311c]/15 border-y border-[#16311c]/15">
-                {group.stays.map((stay, stayIndex) => (
-                  <Link key={stay.title.vi} href={`${basePath}/luu-tru/${stay.href}`} className="focus-ring group grid gap-4 py-7 sm:grid-cols-[52px_1fr_auto] sm:items-start sm:gap-6">
-                    <span className="text-[.62rem] font-bold tracking-[.16em] text-[#80613f]">{String(stayIndex + 1).padStart(2, "0")}</span>
-                    <div>
-                      <h4 className="font-serif text-xl font-medium leading-tight sm:text-2xl">{stay.title[locale]}</h4>
-                      <p className="laka-body-muted mt-3 max-w-3xl">{stay.details[locale]}</p>
-                      {"breakfast" in stay && stay.breakfast ? (
-                        <p className="mt-3 text-xs font-bold uppercase tracking-[.1em] text-[#80613f]">{en ? "Includes 1 breakfast" : "Gồm 1 bữa sáng"}</p>
-                      ) : null}
-                    </div>
-                    <ArrowRight className="mt-1 hidden h-4 w-4 transition group-hover:translate-x-1 sm:block" />
-                  </Link>
-                ))}
+              <div className="flex flex-1 flex-col p-6 sm:p-7">
+                <p className="text-[.58rem] font-bold uppercase tracking-[.16em] text-[#80613f]">{group.subtitle[locale]}</p>
+                <h3 className="laka-heading-card mt-3">{group.title[locale]}</h3>
+                <ul className="mt-7 border-t border-[#16311c]/14 pt-5" aria-label={(en ? "Stay types in " : "Các lựa chọn thuộc ") + group.title[locale]}>
+                  {group.stays.map((stay, stayIndex) => (
+                    <li key={stay.vi} className="flex items-center gap-3 py-1.5 text-sm text-[#16311c]/72">
+                      <span className="h-1 w-1 shrink-0 rounded-full bg-[#80613f]" aria-hidden="true" />
+                      <span>{stay[locale]}</span>
+                      <span className="ml-auto text-[.55rem] font-bold tracking-[.14em] text-[#80613f]">{String(stayIndex + 1).padStart(2, "0")}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
             </article>
           ))}
         </div>
 
-        <aside className="grid gap-8 bg-[#10251d] p-7 text-white sm:p-10 lg:grid-cols-[.35fr_1fr] lg:p-14">
+        <div className="mt-9 flex flex-col items-start justify-between gap-5 border-t border-[#16311c]/15 pt-7 sm:flex-row sm:items-center">
+          <p className="laka-body-muted max-w-2xl">
+            {en
+              ? "Compare every stay type, capacity and confirmed amenity on the full accommodation page."
+              : "Xem đầy đủ từng dòng căn, sức chứa và tiện nghi đã xác nhận tại trang Lưu trú."}
+          </p>
+          <Link href={basePath + "/luu-tru"} className="focus-ring group inline-flex min-h-12 shrink-0 items-center gap-3 border-b border-[#16311c]/35 text-xs font-bold uppercase tracking-[.12em]">
+            {en ? "Explore all stays" : "Khám phá toàn bộ lưu trú"}
+            <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
+          </Link>
+        </div>
+
+        <aside className="mt-10 grid gap-8 bg-[#10251d] p-7 text-white sm:p-9 lg:grid-cols-[.38fr_1fr] lg:items-start lg:p-10">
           <div>
-            <p className="text-[.62rem] font-bold uppercase tracking-[.22em] text-[#dfc6a5]">{en ? "Every stay includes" : "Tiện ích chung · Tất cả các phòng"}</p>
-            <h3 className="mt-5 font-serif text-[2rem] font-medium leading-tight sm:text-[2.5rem]">{en ? "More room to enjoy together." : "Thêm nhiều khoảng vui chung."}</h3>
+            <p className="text-[.62rem] font-bold uppercase tracking-[.22em] text-[#dfc6a5]">{en ? "Across every stay" : "Đi cùng mỗi khoảng nghỉ"}</p>
+            <h3 className="mt-4 max-w-sm font-serif text-[1.8rem] font-medium leading-tight sm:text-[2.15rem]">
+              {en ? "More ways to enjoy the valley together." : "Thêm những khoảng vui bên nhau."}
+            </h3>
           </div>
-          <div className="grid gap-5 md:grid-cols-2">
+          <div className="grid gap-6 md:grid-cols-2">
             {sharedBenefits.map((benefit) => (
-              <section key={benefit.title.vi} className="border border-white/16 p-6">
-                <Check className="h-5 w-5 text-[#dfc6a5]" />
-                <h4 className="mt-5 text-sm font-bold uppercase tracking-[.12em]">{benefit.title[locale]}</h4>
-                <p className="laka-body mt-4 text-white/68">{benefit.text[locale]}</p>
+              <section key={benefit.title.vi} className="border-t border-white/18 pt-5">
+                <div className="flex items-center gap-3">
+                  <Check className="h-4 w-4 shrink-0 text-[#dfc6a5]" />
+                  <h4 className="text-xs font-bold uppercase tracking-[.12em]">{benefit.title[locale]}</h4>
+                </div>
+                <p className="mt-3 text-sm leading-7 text-white/68">{benefit.text[locale]}</p>
               </section>
             ))}
           </div>

@@ -11,7 +11,7 @@ import { languageHref, type ShowcaseLocale } from "@/features/showcase/i18n/loca
 
 type MenuItem = { label: string; href: string; exact?: boolean };
 
-export function TemplateMobileMenu({ name, mood, items, contactHref, lookupHref, locale = "vi", wideHeader = false }: { name: string; mood: TemplateMood; items: MenuItem[]; contactHref: string; lookupHref: string; locale?: ShowcaseLocale; wideHeader?: boolean }) {
+export function TemplateMobileMenu({ name, mood, items, contactHref, locale = "vi", wideHeader = false }: { name: string; mood: TemplateMood; items: MenuItem[]; contactHref: string; locale?: ShowcaseLocale; wideHeader?: boolean }) {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
   const triggerRef = useRef<HTMLButtonElement>(null);
@@ -51,10 +51,7 @@ export function TemplateMobileMenu({ name, mood, items, contactHref, lookupHref,
         <nav aria-label={locale === "en" ? "Mobile navigation" : "Điều hướng mobile"} className="mt-6">{items.map((item, index) => { const active = pathname === item.href || (!item.exact && pathname.startsWith(`${item.href}/`)); return <Link key={item.href} href={item.href} onClick={close} aria-current={active ? "page" : undefined} className={`group flex min-h-16 items-center gap-4 border-b border-current/10 px-1 transition ${active ? "opacity-100" : "opacity-80 hover:opacity-100"}`}><span className={`grid h-9 w-9 place-items-center rounded-full text-[.62rem] font-bold ${active ? cinematic ? "bg-[#c7a882] text-[#0b190f]" : organic ? "bg-[#f18b68] text-[#16311c]" : "bg-[#16311c] text-white" : "border border-current/15"}`}>0{index + 1}</span><span className={`flex-1 ${organic ? "text-lg font-extrabold" : "font-serif text-xl font-medium"}`}>{item.label}</span><ArrowRight aria-hidden="true" className="h-4 w-4 opacity-35 transition group-hover:translate-x-1" /></Link>; })}</nav>
         <div className="mt-7 grid gap-2 border-t border-current/12 pt-5">
           <Link href={contactHref} onClick={close} className={`focus-ring flex min-h-12 items-center justify-between rounded-full px-5 text-sm font-bold ${cinematic ? "bg-[#c7a882] text-[#0b190f]" : "bg-[#16311c] text-white"}`}>
-            {locale === "en" ? "Contact" : "Liên hệ"}<ArrowRight className="h-4 w-4" />
-          </Link>
-          <Link href={lookupHref} onClick={close} className="focus-ring flex min-h-12 items-center justify-between rounded-full border border-current/18 px-5 text-sm font-bold">
-            {locale === "en" ? "Find a booking" : "Tra cứu đặt chỗ"}<ArrowRight className="h-4 w-4" />
+            {locale === "en" ? "Contact LAKA" : "Liên hệ LAKA"}<ArrowRight className="h-4 w-4" />
           </Link>
         </div>
       </section>
