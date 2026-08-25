@@ -36,7 +36,7 @@ export function TemplateExperienceCatalog({ locale }: { locale: ShowcaseLocale }
 export function TemplateDiningAndOccasions({ locale }: { locale: ShowcaseLocale }) {
   return (
     <>
-      <section className="mx-auto w-[min(1380px,calc(100%-40px))] py-20 sm:py-28">
+      <section id="thuc-don" className="scroll-mt-24 mx-auto w-[min(1380px,calc(100%-40px))] py-20 sm:py-28">
         <header className="grid gap-8 border-b border-[#16311c]/15 pb-10 lg:grid-cols-[.42fr_1fr] lg:items-start">
           <div>
             <p className="text-[.62rem] font-bold uppercase tracking-[.2em] text-[#80613f]">{locale === "en" ? "Three ways to gather" : "Ba cách ngồi lại bên nhau"}</p>
@@ -113,7 +113,7 @@ export function TemplateDiningAndOccasions({ locale }: { locale: ShowcaseLocale 
 
 export function TemplateServicesCatalog({ locale }: { locale: ShowcaseLocale }) {
   return <>
-    <section className="bg-[#16311c] py-20 text-[#eae1d2] sm:py-28">
+    <section id="danh-muc-dich-vu" className="scroll-mt-24 bg-[#16311c] py-20 text-[#eae1d2] sm:py-28">
       <div className="mx-auto w-[min(1380px,calc(100%-40px))]">
         <div className="grid gap-8 lg:grid-cols-[.42fr_1fr] lg:items-start">
           <div>
@@ -200,7 +200,7 @@ export function TemplateServicesCatalog({ locale }: { locale: ShowcaseLocale }) 
 }
 
 export function TemplateJourneySection({ locale, contactHref }: { locale: ShowcaseLocale; contactHref: string }) {
-  return <section className="border-t border-[#16311c]/12 bg-[#e3d8c9] py-20 sm:py-28">
+  return <section id="chi-duong" className="scroll-mt-24 border-t border-[#16311c]/12 bg-[#e3d8c9] py-20 sm:py-28">
     <div className="mx-auto w-[min(1180px,calc(100%-40px))]">
       <div className="grid gap-8 lg:grid-cols-[.55fr_1fr] lg:items-start"><div><p className="laka-eyebrow text-[#80613f]">{locale === "en" ? "Imagine the journey" : "Hình dung hành trình"}</p><h2 className="laka-heading-section mt-5">{locale === "en" ? "Know the place before you arrive." : "Hiểu về nơi này trước khi đến."}</h2></div><p className="laka-body-muted max-w-2xl">{locale === "en" ? "A few practical details help you picture a complete day at LAKA without interrupting the feeling of discovery." : "Một vài thông tin thực tế giúp bạn hình dung trọn vẹn một ngày tại LAKA mà không làm mất đi cảm giác khám phá."}</p></div>
       <div className="mt-12 grid border-y border-[#16311c]/15 md:grid-cols-2">

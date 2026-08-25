@@ -17,62 +17,58 @@ export function HomeDayJourney({
   return (
     <section id="mot-ngay" className="laka-section-normal scroll-mt-20 bg-[#0a1a13] px-5 text-white sm:px-8">
       <div className="mx-auto w-[min(1480px,100%)]">
-        <div className="grid gap-8 lg:grid-cols-[.4fr_1fr] lg:items-start">
+        {/* Balanced Header layout */}
+        <header className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-white/14 pb-8 sm:pb-10">
           <div>
             <h2 className="laka-home-section-title text-[#dfc6a5]">
               {en ? "A day at LaKa" : "Một ngày ở LaKa"}
             </h2>
-            <p className="laka-body mt-5 max-w-sm text-white/64">
-              {en
-                ? "A day at LaKa moves from lively fun to unhurried moments in nature. Explore together, give it everything and take home memories worth keeping."
-                : "Một ngày ở LaKa là hành trình nối dài từ những cuộc vui rộn ràng đến phút thảnh thơi giữa thiên nhiên. Cùng nhau khám phá, cùng nhau hết mình và gom về những kỷ niệm thật đáng nhớ!"}
-            </p>
           </div>
-          <p className="laka-home-section-lead max-w-5xl">
+          <p className="font-serif text-2xl sm:text-3xl lg:text-4xl font-medium text-white tracking-tight md:text-right shrink-0">
             {en ? (
-              <>Today is<br /><i className="text-[#dfc6a5]">just for fun!</i></>
+              <>Today is <i className="text-[#dfc6a5]">just for fun!</i></>
             ) : (
-              <>Hôm nay chỉ để<br /><i className="text-[#dfc6a5]">vui thôi!</i></>
+              <>Hôm nay chỉ để <i className="text-[#dfc6a5]">vui thôi!</i></>
             )}
           </p>
-        </div>
+        </header>
 
         <div
           role="group"
           tabIndex={0}
           aria-label={en ? "Experiences, scroll horizontally" : "Trải nghiệm, cuộn ngang"}
-          className="focus-ring showcase-snap-rail mt-14 lg:grid lg:grid-cols-4 lg:gap-4"
+          className="focus-ring showcase-snap-rail mt-10 sm:mt-14 lg:grid lg:grid-cols-4 lg:gap-4"
         >
           {experiences.map((experience, index) => {
             const Icon = experience.icon;
             return (
               <article
                 key={experience.title.vi}
-                className={`showcase-snap-card group ${index % 2 === 1 ? "lg:mt-20" : ""}`}
+                className="showcase-snap-card group"
               >
-                <div className="laka-media-frame relative h-[min(620px,78svh)] overflow-hidden bg-[#10251d]">
+                <div className="laka-media-frame relative h-[min(580px,75svh)] overflow-hidden rounded-xl sm:rounded-2xl bg-[#10251d]">
                   <Image
                     src={experience.image}
                     alt={`${en ? experience.title.en : experience.title.vi} — ${en ? "concept image" : "ảnh minh họa"}`}
                     fill
                     sizes="(max-width:1024px) 82vw, 25vw"
-                    className="object-cover transition duration-1000 ease-out group-hover:scale-[1.025]"
+                    className="object-cover transition duration-1000 ease-out group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#07150f]/88 via-transparent to-[#07150f]/12" />
-                  <div className="absolute inset-x-0 bottom-0 p-6 sm:p-8">
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#07150f]/90 via-[#07150f]/30 to-transparent" />
+                  <div className="absolute inset-x-0 bottom-0 p-6 sm:p-7">
                     <div className="flex items-center justify-between">
                       <span className="text-[11px] font-bold tracking-[.16em] text-white/70">
                         {String(index + 1).padStart(2, "0")}
                       </span>
                       <Icon className="h-5 w-5 text-[#dfc6a5]" />
                     </div>
-                    <p className="mt-5 text-[.58rem] font-bold uppercase tracking-[.16em] text-[#dfc6a5]">
+                    <p className="mt-4 text-[.58rem] font-bold uppercase tracking-[.16em] text-[#dfc6a5]">
                       {en ? experience.meta.en : experience.meta.vi}
                     </p>
-                    <h3 className="mt-3 font-serif text-2xl font-medium leading-tight sm:text-3xl">
+                    <h3 className="mt-2 font-serif text-2xl font-medium leading-tight sm:text-3xl text-white">
                       {en ? experience.title.en : experience.title.vi}
                     </h3>
-                    <p className="laka-body mt-4 text-white/68">
+                    <p className="laka-body mt-3 text-white/70 text-sm">
                       {en ? experience.text.en : experience.text.vi}
                     </p>
                   </div>
@@ -82,7 +78,7 @@ export function HomeDayJourney({
           })}
         </div>
 
-        <div className="mt-14 flex flex-wrap gap-x-8 gap-y-4 border-t border-white/18 pt-8">
+        <div className="mt-12 flex flex-wrap gap-x-8 gap-y-4 border-t border-white/18 pt-8">
           <Link
             href={`${basePath}/trai-nghiem`}
             className="focus-ring group inline-flex min-h-12 items-center gap-3 border-b border-white/32 text-xs font-bold uppercase tracking-[.12em]"

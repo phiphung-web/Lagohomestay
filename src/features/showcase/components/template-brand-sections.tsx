@@ -29,9 +29,9 @@ const contactChannels: readonly ContactChannel[] = [
       </svg>
     ),
     label: { vi: "Facebook", en: "Facebook" },
-    value: "LAKA Homestay",
+    value: publicContact.facebookDisplay,
     subText: { vi: "Fanpage chính thức", en: "Official Fanpage" },
-    href: "https://facebook.com/lagohomestay"
+    href: publicContact.facebookHref
   },
   {
     id: "mess",
@@ -42,17 +42,17 @@ const contactChannels: readonly ContactChannel[] = [
       </svg>
     ),
     label: { vi: "Messenger", en: "Messenger" },
-    value: "m.me/lagohomestay",
+    value: publicContact.messengerDisplay,
     subText: { vi: "Nhắn tin hỗ trợ", en: "Direct Messenger" },
-    href: "https://m.me/lagohomestay"
+    href: publicContact.messengerHref
   },
   {
     id: "insta",
     icon: Instagram,
     label: { vi: "Instagram", en: "Instagram" },
-    value: "@lagohomestay",
+    value: publicContact.instagramDisplay,
     subText: { vi: "Nhật ký hình ảnh", en: "Visual Journal" },
-    href: "https://instagram.com/lagohomestay"
+    href: publicContact.instagramHref
   },
   {
     id: "zalo",
@@ -80,9 +80,9 @@ const contactChannels: readonly ContactChannel[] = [
       </svg>
     ),
     label: { vi: "TikTok", en: "TikTok" },
-    value: "@lagohomestay",
+    value: publicContact.tiktokDisplay,
     subText: { vi: "Thước phim thung lũng", en: "Valley Stories" },
-    href: "https://tiktok.com/@lagohomestay"
+    href: publicContact.tiktokHref
   },
   {
     id: "phone",
@@ -98,7 +98,7 @@ const contactChannels: readonly ContactChannel[] = [
     label: { vi: "Google Maps", en: "Google Maps" },
     value: "Dốc Dây Diều, Hà Nội",
     subText: { vi: "Chỉ đường tới LAKA", en: "Get Directions" },
-    href: "https://maps.google.com/?q=D%E1%BB%91c+D%C3%A2y+Di%E1%BB%81u,+S%C3%B3c+S%C6%A1n,+H%C3%A0+N%E1%BB%99i"
+    href: publicContact.googleMapsHref
   }
 ] as const;
 
@@ -169,7 +169,7 @@ export function TemplateAboutStory({ mood, locale = "vi" }: { mood: Mood; locale
   const journalImages = [conceptImages.hero, conceptImages.hill, conceptImages.breakfast, conceptImages.cloud] as const;
 
   return (
-    <section className="reveal-section py-20 sm:py-28">
+    <section id="cau-chuyen" className="reveal-section scroll-mt-24 py-20 sm:py-28">
       <div className="mx-auto grid w-[min(1260px,calc(100%-40px))] gap-12 border-b border-[#16311c]/15 pb-20 lg:grid-cols-[.4fr_1fr] lg:items-start">
         <h2 className="laka-heading-section">{locale === "en" ? "Preface" : "Lời tựa"}</h2>
         <blockquote className="laka-section-lead">{localizedQuote}</blockquote>

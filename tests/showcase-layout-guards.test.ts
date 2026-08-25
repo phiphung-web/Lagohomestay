@@ -51,8 +51,11 @@ describe("LAKA showcase layout guards", () => {
     expect(destinations).toContain('className="laka-heading-card mt-6"');
     expect(home).toContain('"Chọn" Cabin - "Trọn" Thung Lũng');
     expect(home).toContain("LaKa - Nhà giữa khoảng xanh");
-    expect(story).toContain('h-[min(58svh,440px)]');
-    expect(stays).toContain("Ba nhóm không gian");
+    expect(story).toContain('id="gioi-thieu"');
+    expect(stays).toContain("Nhà Bên Hồ");
+    expect(stays).toContain("Nhà Trên Đồi");
+    expect(stays).toContain("Nhà Giữa Rừng");
+    expect(stays).toContain("Một khoảng xanh, một nhịp riêng");
     expect(stays).toContain('href={basePath + "/luu-tru"}');
     expect(stays).not.toContain("stay.details");
     expect(home).not.toContain("Khung lưới linh hoạt");

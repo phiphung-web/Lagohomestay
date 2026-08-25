@@ -39,16 +39,105 @@ export function GalleryLightbox({ images, mood, locale = "vi" }: { images: strin
 
   const change = (direction: number) => setActive((index) => index === null ? 0 : (index + direction + images.length) % images.length);
 
-  return <>
-    <section className={`gallery-grid gallery-grid-${mood} mx-auto grid grid-flow-dense grid-cols-1 gap-3 py-12 sm:w-[min(1420px,calc(100%-32px))] sm:grid-cols-2 sm:gap-4 sm:py-16 lg:grid-cols-3`}>
-      {images.map((src, index) => <button type="button" onClick={(event) => { returnFocusRef.current = event.currentTarget; setActive(index); }} key={`${src}-${index}`} aria-label={locale === "en" ? `Open concept image ${index + 1}` : `Mở ảnh minh họa ${index + 1}`} className={`group focus-ring relative block w-full overflow-hidden text-left ${index % 5 === 0 ? "aspect-[16/10] lg:col-span-2 lg:aspect-[16/9]" : "aspect-[4/3]"}`}><Image src={src} alt={locale === "en" ? `LAKA Homestay — concept image ${index + 1}` : `LAKA Homestay — ảnh minh họa ${index + 1}`} fill sizes={index % 5 === 0 ? "(max-width:640px) 100vw, (max-width:1024px) 50vw, 66vw" : "(max-width:640px) 100vw, (max-width:1024px) 50vw, 33vw"} className="object-cover transition duration-700 group-hover:scale-[1.035]" /><span className="absolute inset-0 bg-black/0 transition group-hover:bg-black/15" /><span className="absolute right-3 top-3 grid h-10 w-10 translate-y-2 place-items-center rounded-full bg-white text-[#16311c] opacity-0 shadow-xl transition group-hover:translate-y-0 group-hover:opacity-100"><Expand className="h-4 w-4" /></span><span className="absolute bottom-2 left-2 rounded-full bg-black/58 px-2.5 py-1.5 text-[10px] font-bold uppercase tracking-wider text-white backdrop-blur sm:bottom-3 sm:left-3 sm:px-3 sm:text-[11px]">{locale === "en" ? "Concept" : "Minh họa"} · {String(index + 1).padStart(2, "0")}</span></button>)}
-    </section>
-    {active !== null && typeof document !== "undefined" && createPortal(<section ref={dialogRef} role="dialog" aria-modal="true" aria-label={locale === "en" ? `Image ${active + 1} of ${images.length}` : `Ảnh ${active + 1} trên ${images.length}`} onPointerDown={(event) => { dragStartRef.current = event.clientX; }} onPointerUp={(event) => { if (dragStartRef.current === null) return; const distance = event.clientX - dragStartRef.current; if (Math.abs(distance) > 55) change(distance < 0 ? 1 : -1); dragStartRef.current = null; }} className={`gallery-dialog gallery-dialog-${mood} fixed inset-0 z-[110] grid touch-pan-y place-items-center bg-[#020806]/96 p-3 text-white backdrop-blur sm:p-8`}>
-      <div className="relative h-full w-full max-w-[1500px]"><Image key={images[active]} src={images[active]} alt={locale === "en" ? `LAKA Homestay — concept image ${active + 1}` : `LAKA Homestay — ảnh minh họa ${active + 1}`} fill priority sizes="100vw" className="object-contain" />
-        <header className="absolute inset-x-0 top-0 z-10 flex items-center justify-between bg-gradient-to-b from-black/70 to-transparent p-4 sm:p-6"><span className="rounded-full bg-black/35 px-4 py-2 text-xs font-bold backdrop-blur">{String(active + 1).padStart(2, "0")} / {String(images.length).padStart(2, "0")}</span><button ref={closeRef} type="button" onClick={() => setActive(null)} aria-label={locale === "en" ? "Close gallery" : "Đóng thư viện ảnh"} className="focus-ring grid h-12 w-12 place-items-center rounded-full bg-white text-[#16311c] shadow-xl"><X className="h-5 w-5" /></button></header>
-        <button type="button" onClick={() => change(-1)} aria-label={locale === "en" ? "Previous image" : "Ảnh trước"} className="focus-ring absolute left-3 top-1/2 z-10 grid h-12 w-12 -translate-y-1/2 place-items-center rounded-full border border-white/20 bg-black/35 backdrop-blur transition hover:bg-white hover:text-[#16311c] sm:left-6"><ChevronLeft className="h-5 w-5" /></button>
-        <button type="button" onClick={() => change(1)} aria-label={locale === "en" ? "Next image" : "Ảnh tiếp theo"} className="focus-ring absolute right-3 top-1/2 z-10 grid h-12 w-12 -translate-y-1/2 place-items-center rounded-full border border-white/20 bg-black/35 backdrop-blur transition hover:bg-white hover:text-[#16311c] sm:right-6"><ChevronRight className="h-5 w-5" /></button>
-      </div>
-    </section>, document.body)}
-  </>;
+  return (
+    <>
+      <section className="mx-auto grid grid-cols-3 gap-2.5 sm:gap-4 md:gap-5 py-8 sm:py-12 w-full" aria-label={locale === "en" ? "Memory gallery photos" : "Các hình ảnh thư viện ký ức"}>
+        {images.map((src, index) => (
+          <button
+            type="button"
+            onClick={(event) => {
+              returnFocusRef.current = event.currentTarget;
+              setActive(index);
+            }}
+            key={`${src}-${index}`}
+            aria-label={locale === "en" ? `Open concept image ${index + 1}` : `Mở ảnh minh họa ${index + 1}`}
+            className="group focus-ring relative aspect-[3/4] sm:aspect-[4/5] md:aspect-[3/4] w-full overflow-hidden rounded-xl sm:rounded-2xl md:rounded-3xl bg-[#10251d] text-left shadow-sm hover:shadow-xl transition-all duration-300 block"
+          >
+            <Image
+              src={src}
+              alt={locale === "en" ? `LAKA Homestay — concept image ${index + 1}` : `LAKA Homestay — ảnh minh họa ${index + 1}`}
+              fill
+              sizes="(max-width: 640px) 33vw, (max-width: 1024px) 33vw, 33vw"
+              className="object-cover transition duration-700 ease-out group-hover:scale-105"
+            />
+            {/* Subtle Gradient */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />
+
+            {/* Hover Expand Icon */}
+            <span className="absolute top-2 right-2 sm:top-3 sm:right-3 grid h-7 w-7 sm:h-9 sm:w-9 place-items-center rounded-full bg-white/90 text-[#16311c] opacity-0 shadow-lg transition duration-200 group-hover:opacity-100">
+              <Expand className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
+            </span>
+
+            {/* Bottom-left pill badge */}
+            <span className="absolute bottom-2 left-2 sm:bottom-3.5 sm:left-3.5 flex items-center gap-1 sm:gap-1.5 rounded-full bg-black/60 backdrop-blur-md px-2 sm:px-2.5 py-0.5 sm:py-1 text-[10px] sm:text-xs font-bold text-white shadow">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+              {String(index + 1).padStart(2, "0")}
+            </span>
+          </button>
+        ))}
+      </section>
+
+      {active !== null && typeof document !== "undefined" && createPortal(
+        <section
+          ref={dialogRef}
+          role="dialog"
+          aria-modal="true"
+          aria-label={locale === "en" ? `Image ${active + 1} of ${images.length}` : `Ảnh ${active + 1} trên ${images.length}`}
+          onPointerDown={(event) => {
+            dragStartRef.current = event.clientX;
+          }}
+          onPointerUp={(event) => {
+            if (dragStartRef.current === null) return;
+            const distance = event.clientX - dragStartRef.current;
+            if (Math.abs(distance) > 55) change(distance < 0 ? 1 : -1);
+            dragStartRef.current = null;
+          }}
+          className={`gallery-dialog gallery-dialog-${mood} fixed inset-0 z-[110] grid touch-pan-y place-items-center bg-[#020806]/96 p-3 text-white backdrop-blur sm:p-8`}
+        >
+          <div className="relative h-full w-full max-w-[1500px]">
+            <Image
+              key={images[active]}
+              src={images[active]}
+              alt={locale === "en" ? `LAKA Homestay — concept image ${active + 1}` : `LAKA Homestay — ảnh minh họa ${active + 1}`}
+              fill
+              priority
+              sizes="100vw"
+              className="object-contain"
+            />
+            <header className="absolute inset-x-0 top-0 z-10 flex items-center justify-between bg-gradient-to-b from-black/70 to-transparent p-4 sm:p-6">
+              <span className="rounded-full bg-black/35 px-4 py-2 text-xs font-bold backdrop-blur">
+                {String(active + 1).padStart(2, "0")} / {String(images.length).padStart(2, "0")}
+              </span>
+              <button
+                ref={closeRef}
+                type="button"
+                onClick={() => setActive(null)}
+                aria-label={locale === "en" ? "Close gallery" : "Đóng thư viện ảnh"}
+                className="focus-ring grid h-12 w-12 place-items-center rounded-full bg-white text-[#16311c] shadow-xl"
+              >
+                <X className="h-5 w-5" />
+              </button>
+            </header>
+            <button
+              type="button"
+              onClick={() => change(-1)}
+              aria-label={locale === "en" ? "Previous image" : "Ảnh trước"}
+              className="focus-ring absolute left-3 top-1/2 z-10 grid h-12 w-12 -translate-y-1/2 place-items-center rounded-full border border-white/20 bg-black/35 backdrop-blur transition hover:bg-white hover:text-[#16311c] sm:left-6"
+            >
+              <ChevronLeft className="h-5 w-5" />
+            </button>
+            <button
+              type="button"
+              onClick={() => change(1)}
+              aria-label={locale === "en" ? "Next image" : "Ảnh tiếp theo"}
+              className="focus-ring absolute right-3 top-1/2 z-10 grid h-12 w-12 -translate-y-1/2 place-items-center rounded-full border border-white/20 bg-black/35 backdrop-blur transition hover:bg-white hover:text-[#16311c] sm:right-6"
+            >
+              <ChevronRight className="h-5 w-5" />
+            </button>
+          </div>
+        </section>,
+        document.body
+      )}
+    </>
+  );
 }

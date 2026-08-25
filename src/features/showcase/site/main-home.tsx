@@ -15,11 +15,14 @@ import type { ShowcaseLocale } from "@/features/showcase/i18n/locale";
 
 const memoryImages = [
   conceptImages.detail1,
-  conceptImages.breakfast,
   conceptImages.forest,
-  conceptImages.dining,
   conceptImages.hill,
-  conceptImages.detail3
+  conceptImages.hero,
+  conceptImages.cloud,
+  conceptImages.detail2,
+  conceptImages.breakfast,
+  conceptImages.dining,
+  conceptImages.table
 ];
 
 export function MainHome({ config, locale = "vi" }: { config: CompleteTemplateConfig; locale?: ShowcaseLocale }) {
@@ -45,12 +48,12 @@ export function MainHome({ config, locale = "vi" }: { config: CompleteTemplateCo
         <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(5,18,14,.5),transparent_64%)]" />
 
         <div className="relative z-10 mx-auto flex min-h-[100svh] w-[min(1500px,calc(100%-32px))] flex-col justify-end pb-16 pt-36 sm:w-[min(1500px,calc(100%-56px))] sm:pb-20">
+          <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#facc15] sm:text-sm md:text-base mb-3 sm:mb-4 drop-shadow-sm">
+            {en ? "LaKa - A home in the green" : "LaKa - Nhà giữa khoảng xanh"}
+          </p>
           <h1 className="laka-display-hero max-w-6xl">
             {en ? "Choose a cabin - Hold the whole valley" : '"Chọn" Cabin - "Trọn" Thung Lũng'}
           </h1>
-          <p className="laka-section-lead mt-6 max-w-2xl text-white/78">
-            {en ? "LaKa - A home in the green" : "LaKa - Nhà giữa khoảng xanh"}
-          </p>
           <div className="mt-8 flex items-end justify-between gap-8 border-t border-white/22 pt-6">
             <p className="text-[.62rem] font-bold uppercase tracking-[.18em] text-white/68">
               {en ? "Trung Gia · Hanoi" : "Trung Giã · Hà Nội"}
@@ -68,14 +71,22 @@ export function MainHome({ config, locale = "vi" }: { config: CompleteTemplateCo
       <HomeDiningPreview basePath={config.basePath} locale={locale} />
       <HomeDayJourney basePath={config.basePath} locale={locale} />
 
-      <section id="ky-uc" className="laka-section-top-normal scroll-mt-20 bg-[#f2ece2] px-5 sm:px-8">
-        <div className="mx-auto grid w-[min(1380px,100%)] gap-8 lg:grid-cols-[.38fr_1fr] lg:items-start">
-          <h2 className="laka-home-section-title text-[#16311c]">{en ? "Memory gallery" : "Thư viện ký ức"}</h2>
-          <p className="laka-home-section-lead max-w-5xl">
-            {en ? <>Frames to keep<br /><i>the days worth remembering.</i></> : <>Những khung hình lưu lại<br /><i>một ngày thật đáng nhớ.</i></>}
-          </p>
+      <section id="ky-uc" className="laka-section-normal scroll-mt-20 bg-[#f2ece2] px-5 sm:px-8">
+        <div className="mx-auto w-[min(1380px,100%)]">
+          <header className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-[#16311c]/15 pb-8 sm:pb-10">
+            <div>
+              <h2 className="laka-home-section-title text-[#16311c]">{en ? "Memory gallery" : "Thư viện ký ức"}</h2>
+            </div>
+            <p className="font-serif text-2xl sm:text-3xl lg:text-4xl font-medium text-[#16311c] md:text-right shrink-0">
+              {en ? (
+                <>Frames to keep<br className="hidden md:inline" /> <i className="text-[#80613f]">the days worth remembering.</i></>
+              ) : (
+                <>Những khung hình lưu lại<br className="hidden md:inline" /> <i className="text-[#80613f]">một ngày thật đáng nhớ.</i></>
+              )}
+            </p>
+          </header>
+          <GalleryLightbox images={memoryImages} mood="editorial" locale={locale} />
         </div>
-        <GalleryLightbox images={memoryImages} mood="editorial" locale={locale} />
       </section>
 
       <HomeGuestStories locale={locale} />

@@ -174,11 +174,6 @@ span.rounded-full:not([class*="h-1"]):not([class*="h-2"]):not([class*="h-3"]):no
   border-radius: 8px !important;
 }
 
-.gallery-grid-editorial button:nth-child(3n+1) { border-radius: 8px; }
-.gallery-grid-cinematic button { border-radius: 8px; }
-.gallery-grid-organic button:nth-child(3n+1) { border-radius: 8px; }
-.gallery-grid-organic button:nth-child(3n+2) { border-radius: 8px; }
-.gallery-grid-organic button:nth-child(3n) { border-radius: 8px; }
 .template-atmosphere { position: fixed; inset: 0; z-index: 1; pointer-events: none; overflow: hidden; }
 .template-scroll-progress { position: fixed; z-index: 90; top: 0; right: 0; left: 0; height: 2px; transform: scaleX(0); transform-origin: left; will-change: transform; }
 .template-atmosphere-editorial .template-scroll-progress { background: #a36349; }
@@ -196,11 +191,6 @@ span.rounded-full:not([class*="h-1"]):not([class*="h-2"]):not([class*="h-3"]):no
 .laka-section-top-normal { padding-top: var(--laka-space-normal); }
 .laka-below-fold { content-visibility: auto; contain-intrinsic-size: auto 900px; }
 .cinematic-frame { animation: cinematic-frame-enter 1.1s both cubic-bezier(.2,.75,.2,1); }
-.gallery-grid-editorial button:nth-child(3n+1) { border-radius: 140px 140px 0 0; }
-.gallery-grid-cinematic button { border-radius: 2px; }
-.gallery-grid-organic button:nth-child(3n+1) { border-radius: 70px 26px 70px 26px; }
-.gallery-grid-organic button:nth-child(3n+2) { border-radius: 28px 72px 28px 72px; }
-.gallery-grid-organic button:nth-child(3n) { border-radius: 44px; }
 @keyframes hero-enter { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes scroll-cue { 0%,100% { transform: translateY(0); opacity: .55; } 50% { transform: translateY(7px); opacity: 1; } }
 @keyframes marquee { to { transform: translateX(-50%); } }
@@ -252,7 +242,6 @@ span.rounded-full:not([class*="h-1"]):not([class*="h-2"]):not([class*="h-3"]):no
   .calendar-sheet { max-height: calc(100svh - 18px); overflow-y: auto; }
   .template-editorial .template-panel { border-radius: 0 42px 0 0; }
   .template-editorial .template-media { border-radius: 120px 120px 0 0; }
-  .gallery-grid-editorial button:nth-child(3n+1) { border-radius: 80px 80px 0 0; }
 }
 
 @media (prefers-reduced-motion: reduce) {

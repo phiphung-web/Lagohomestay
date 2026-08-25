@@ -17,6 +17,7 @@ import { TemplateMobileMenu } from "@/features/showcase/components/template-mobi
 import { TemplateNavLink } from "@/features/showcase/components/template-nav-link";
 import { TemplateStayHero } from "@/features/showcase/components/template-stay-showcase";
 import { StayBannerHero } from "@/features/showcase/components/stay-banner-hero";
+import { PageBannerHero } from "@/features/showcase/components/page-banner-hero";
 import { StayProductExplorer } from "@/features/showcase/components/stay-product-explorer";
 import { ContactInquiryForm } from "@/features/showcase/components/contact-inquiry-form";
 import { ScrollAwareHeader } from "@/features/showcase/components/scroll-aware-header";
@@ -138,13 +139,13 @@ export function TemplateHeader({ config, locale = "vi", overlay = false, storyMo
 
 function SocialContactIcons() {
   return <div className="flex flex-wrap items-center justify-center gap-2.5 sm:gap-3 md:flex-nowrap md:justify-start" aria-label="Các kênh liên hệ">
-    <a href="https://facebook.com/lagohomestay" target="_blank" rel="noreferrer" aria-label="Facebook LAKA" className="focus-ring grid h-12 w-12 shrink-0 place-items-center rounded-lg border-2 border-[#16311c]/60 bg-white/70 text-[#16311c] shadow-sm transition hover:scale-105 hover:border-[#16311c] hover:bg-[#16311c] hover:text-white">
+    <a href={publicContact.facebookHref} target="_blank" rel="noreferrer" aria-label="Facebook LAKA" className="focus-ring grid h-12 w-12 shrink-0 place-items-center rounded-lg border-2 border-[#16311c]/60 bg-white/70 text-[#16311c] shadow-sm transition hover:scale-105 hover:border-[#16311c] hover:bg-[#16311c] hover:text-white">
       <svg className="h-5 w-5 fill-current" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
     </a>
-    <a href="https://m.me/lagohomestay" target="_blank" rel="noreferrer" aria-label="Messenger LAKA" className="focus-ring grid h-12 w-12 shrink-0 place-items-center rounded-lg border-2 border-[#16311c]/60 bg-white/70 text-[#16311c] shadow-sm transition hover:scale-105 hover:border-[#16311c] hover:bg-[#16311c] hover:text-white">
+    <a href={publicContact.messengerHref} target="_blank" rel="noreferrer" aria-label="Messenger LAKA" className="focus-ring grid h-12 w-12 shrink-0 place-items-center rounded-lg border-2 border-[#16311c]/60 bg-white/70 text-[#16311c] shadow-sm transition hover:scale-105 hover:border-[#16311c] hover:bg-[#16311c] hover:text-white">
       <svg className="h-5 w-5 fill-current" viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 4.974 0 11.111c0 3.498 1.744 6.614 4.469 8.654V24l4.088-2.242c1.09.301 2.246.464 3.443.464 6.627 0 12-4.975 12-11.111C24 4.974 18.627 0 12 0zm1.191 14.963l-3.055-3.26-5.963 3.26 6.559-6.96 3.127 3.26 5.89-3.26-6.558 6.96z"/></svg>
     </a>
-    <a href="https://instagram.com/lagohomestay" target="_blank" rel="noreferrer" aria-label="Instagram LAKA" className="focus-ring grid h-12 w-12 shrink-0 place-items-center rounded-lg border-2 border-[#16311c]/60 bg-white/70 text-[#16311c] shadow-sm transition hover:scale-105 hover:border-[#80613f] hover:bg-[#80613f] hover:text-white">
+    <a href={publicContact.instagramHref} target="_blank" rel="noreferrer" aria-label="Instagram LAKA" className="focus-ring grid h-12 w-12 shrink-0 place-items-center rounded-lg border-2 border-[#16311c]/60 bg-white/70 text-[#16311c] shadow-sm transition hover:scale-105 hover:border-[#80613f] hover:bg-[#80613f] hover:text-white">
       <Instagram className="h-5 w-5" />
     </a>
     <a href={publicContact.zaloHref} target="_blank" rel="noreferrer" aria-label="Zalo LAKA" className="focus-ring grid h-12 w-12 shrink-0 place-items-center rounded-lg border-2 border-[#16311c]/60 bg-white/70 text-[#16311c] shadow-sm transition hover:scale-105 hover:border-[#16311c] hover:bg-[#16311c] hover:text-white">
@@ -156,7 +157,7 @@ function SocialContactIcons() {
         <path mask="url(#zalo-mask-template-footer)" d="M12 2.5C6.75 2.5 2.5 6.3 2.5 11c0 2.7 1.43 5.1 3.65 6.6L5.3 21.5l4.2-1.4c.8.2 1.65.4 2.5.4 5.25 0 9.5-3.8 9.5-8.5s-4.25-8.5-9.5-8.5z" />
       </svg>
     </a>
-    <a href="https://tiktok.com/@lagohomestay" target="_blank" rel="noreferrer" aria-label="TikTok LAKA" className="focus-ring grid h-12 w-12 shrink-0 place-items-center rounded-lg border-2 border-[#16311c]/60 bg-white/70 text-[#16311c] shadow-sm transition hover:scale-105 hover:border-[#16311c] hover:bg-[#16311c] hover:text-white">
+    <a href={publicContact.tiktokHref} target="_blank" rel="noreferrer" aria-label="TikTok LAKA" className="focus-ring grid h-12 w-12 shrink-0 place-items-center rounded-lg border-2 border-[#16311c]/60 bg-white/70 text-[#16311c] shadow-sm transition hover:scale-105 hover:border-[#16311c] hover:bg-[#16311c] hover:text-white">
       <svg className="h-5 w-5 fill-current" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
     </a>
     <a href={publicContact.phoneHref} aria-label="Hotline LAKA" className="focus-ring grid h-12 w-12 shrink-0 place-items-center rounded-lg border-2 border-[#16311c]/60 bg-white/70 text-[#16311c] shadow-sm transition hover:scale-105 hover:border-[#16311c] hover:bg-[#16311c] hover:text-white">
@@ -295,37 +296,6 @@ export function TemplateFooter({ config, locale = "vi", storyMode = false, homeM
   </footer>;
 }
 
-function PageIntro({ eyebrow, title, text, image, config, locale = "vi" }: { eyebrow: string; title: string; text: string; image?: string; config: CompleteTemplateConfig; locale?: ShowcaseLocale }) {
-  const cinematic = config.mood === "cinematic";
-  const organic = config.mood === "organic";
-  const heroImage = image ?? conceptImages.hero;
-  if (cinematic) return <section className="grain relative min-h-[100svh] overflow-hidden border-b border-white/10">
-    <Image src={heroImage} alt={`${title} - ảnh minh họa`} fill priority sizes="100vw" className="showcase-visual-media object-cover opacity-55 transition duration-[1400ms] hover:scale-[1.015]" /><div className="absolute inset-0 bg-gradient-to-r from-[#0b190f] via-[#0b190f]/68 to-[#0b190f]/18" />
-    <div className="relative z-10 mx-auto flex min-h-[100svh] w-[min(1420px,calc(100%-40px))] flex-col justify-center py-24">
-      <p className="text-[.65rem] font-bold uppercase tracking-[.24em] text-[var(--template-accent)]">{eyebrow}</p>
-      <h1 className="mt-6 max-w-5xl font-serif text-5xl font-medium leading-[.92] tracking-[-.05em] sm:text-7xl lg:text-8xl">{title}</h1>
-      <p className="mt-7 max-w-2xl border-l border-[#c7a882]/45 pl-5 text-sm leading-7 text-white/58 sm:text-base">{text}</p>
-    </div>
-  </section>;
-
-  if (organic) return <section className="relative min-h-[100svh] overflow-hidden px-3 py-5 sm:px-5 sm:py-8">
-    <div className="relative mx-auto grid min-h-[calc(100svh-40px)] w-[min(1420px,100%)] overflow-hidden rounded-[38px] border border-[#16311c]/8 bg-[var(--template-surface)] shadow-[0_28px_80px_rgba(33,72,61,.08)] sm:min-h-[calc(100svh-64px)] lg:grid-cols-[.78fr_1.22fr]">
-      <div className="relative z-10 flex flex-col justify-center px-7 py-16 sm:px-12 lg:px-16"><span className="w-fit rounded-full bg-[#f7cf58] px-4 py-2 text-[.62rem] font-extrabold uppercase tracking-[.14em]">{eyebrow}</span><h1 className="mt-7 max-w-4xl text-5xl font-extrabold leading-[.98] tracking-[-.045em] sm:text-7xl">{title}</h1><p className="mt-6 max-w-2xl text-sm font-medium leading-7 text-[#16311c]/78 sm:text-base">{text}</p></div>
-      <div className="relative m-3 min-h-[48svh] overflow-hidden rounded-[32px] lg:min-h-0"><Image src={heroImage} alt={`${title} - ảnh minh họa`} fill priority sizes="(max-width:1024px) 100vw, 58vw" className="showcase-visual-media object-cover transition duration-700 hover:scale-[1.025]" /><span className="absolute bottom-5 right-5 grid h-20 w-20 place-items-center rounded-full bg-[#f18b68] text-center text-[.58rem] font-extrabold uppercase tracking-wider text-[#16311c]">Ảnh<br />minh họa</span></div>
-    </div>
-  </section>;
-
-  return <section className="relative min-h-[100svh] overflow-hidden border-b border-white/12 bg-[#10251d] text-white">
-    <Image src={heroImage} alt={`${title} — ${locale === "en" ? "concept image" : "ảnh minh họa"}`} fill priority sizes="100vw" className="showcase-visual-media object-cover transition duration-[1400ms] hover:scale-[1.015]" />
-    <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(5,18,14,.12),rgba(5,18,14,.82))]" />
-    <div className="relative z-10 mx-auto flex min-h-[100svh] w-[min(1480px,calc(100%-40px))] flex-col justify-end pb-12 pt-32 sm:pb-16">
-      <p className="laka-eyebrow text-[#dfc6a5]">{eyebrow}</p>
-      <h1 className="laka-display-page mt-5 max-w-6xl">{title}</h1>
-      <div className="mt-7 grid gap-6 border-t border-white/22 pt-6 sm:grid-cols-[1fr_auto] sm:items-end"><p className="laka-body max-w-2xl text-white/68">{text}</p><span className="w-fit rounded-full border border-white/25 bg-black/12 px-4 py-2 text-[.56rem] font-bold uppercase tracking-[.14em] text-white/70 backdrop-blur">{locale === "en" ? "Concept image" : "Hình ảnh minh họa"}</span></div>
-    </div>
-  </section>;
-}
-
 function StaysPage({ config, locale }: { config: CompleteTemplateConfig; locale: ShowcaseLocale }) {
   return (
     <>
@@ -391,44 +361,220 @@ function StayPage({ config, slug, locale }: { config: CompleteTemplateConfig; sl
 }
 
 function ExperiencePage({ config, locale }: { config: CompleteTemplateConfig; locale: ShowcaseLocale }) {
-  return <><PageIntro config={config} locale={locale} eyebrow={locale === "en" ? "A day at LAKA" : "Một ngày tại LAKA"} title={locale === "en" ? "A day that needs very little planning." : "Một ngày không cần lên kế hoạch quá nhiều."} text={locale === "en" ? "LAKA prepares the space. Let nature and curiosity guide everything else." : "LAKA chuẩn bị không gian. Phần còn lại, bạn có thể để thiên nhiên và cảm hứng dẫn đường."} image={conceptImages.experience} />
-    <TemplateExperienceStory mood={config.mood} locale={locale} />
-    <TemplateExperienceCatalog locale={locale} /></>;
+  const isEn = locale === "en";
+  return (
+    <>
+      <PageBannerHero
+        bgImage={conceptImages.experience}
+        pill={isEn ? "A Day at LAKA" : "Một Ngày Tại LAKA"}
+        title={isEn ? "LaKa - Experience" : "LaKa - Trải Nghiệm"}
+        subtitle={isEn ? "A day that needs very little planning" : "Một ngày không cần lên kế hoạch"}
+        description={
+          isEn
+            ? "LAKA prepares the space. Let nature and curiosity guide everything else through each calm moment."
+            : "LAKA chuẩn bị không gian. Phần còn lại, bạn có thể để thiên nhiên và cảm hứng dẫn đường qua từng khoảnh khắc bình yên."
+        }
+        cardImage={conceptImages.experience}
+        cardBadge="LAKA · Journey"
+        cardAlt={isEn ? "Experience at LAKA" : "Trải nghiệm tại LAKA"}
+        brandTagTop="Moments &"
+        brandTagBottom="Discovery."
+        dateStamp={isEn ? "Sunrise · Sunset · Campfire" : "Bình Minh · Hoàng Hôn · Lửa Trại"}
+        subTag={isEn ? "Pine hills & Valley walk" : "Đồi Thông & Dạo Thung Lũng"}
+        actionText={isEn ? "Explore daily rhythm" : "Khám phá nhịp sống"}
+        actionHref="#nhip-song"
+        locale={locale}
+      />
+      <TemplateExperienceStory mood={config.mood} locale={locale} />
+      <TemplateExperienceCatalog locale={locale} />
+    </>
+  );
 }
 
 function ServicesPage({ config, locale }: { config: CompleteTemplateConfig; locale: ShowcaseLocale }) {
-  return <><PageIntro config={config} locale={locale} eyebrow={locale === "en" ? "Services and shared spaces" : "Dịch vụ và tiện ích"} title={locale === "en" ? "Everything useful. Nothing intrusive." : "Đủ đầy khi cần. Riêng tư khi muốn."} text={locale === "en" ? "From family essentials to private transfers and shared nature spaces, choose only what makes your stay lighter." : "Từ tiện ích gia đình, xe đưa đón đến không gian thiên nhiên dùng chung — bạn chỉ cần chọn những gì khiến kỳ nghỉ nhẹ nhàng hơn."} image={conceptImages.detail2} />
-    <TemplateServicesCatalog locale={locale} /></>;
+  const isEn = locale === "en";
+  return (
+    <>
+      <PageBannerHero
+        bgImage={conceptImages.detail2}
+        pill={isEn ? "Services & Amenities" : "Dịch Vụ & Tiện Ích"}
+        title={isEn ? "LaKa - Services" : "LaKa - Dịch Vụ"}
+        subtitle={isEn ? "Everything useful, nothing intrusive" : "Đủ đầy khi cần, riêng tư khi muốn"}
+        description={
+          isEn
+            ? "From family essentials and private transfers to shared nature spaces — choose only what makes your stay lighter."
+            : "Từ tiện ích gia đình, xe đưa đón đến không gian thiên nhiên dùng chung — bạn chỉ cần chọn những gì khiến kỳ nghỉ nhẹ nhàng hơn."
+        }
+        cardImage={conceptImages.detail2}
+        cardBadge="LAKA · Services"
+        cardAlt={isEn ? "Services and amenities at LAKA" : "Dịch vụ và tiện ích tại LAKA"}
+        brandTagTop="Comfort &"
+        brandTagBottom="Care."
+        dateStamp={isEn ? "Family Essentials · Transfers · Freedom" : "Tiện Ích Gia Đình · Di Chuyển · Tự Do"}
+        subTag={isEn ? "Thoughtful & Discreet Support" : "Chăm Sóc Chu Đáo & Kín Đáo"}
+        actionText={isEn ? "View services catalog" : "Danh mục dịch vụ"}
+        actionHref="#danh-muc-dich-vu"
+        locale={locale}
+      />
+      <TemplateServicesCatalog locale={locale} />
+    </>
+  );
 }
 
 function DiningPage({ config, locale }: { config: CompleteTemplateConfig; locale: ShowcaseLocale }) {
-  return <><PageIntro config={config} locale={locale} eyebrow={locale === "en" ? "Dining at LAKA" : "Ẩm thực tại LAKA"} title={locale === "en" ? "A table that belongs to the stay." : "Một bàn ăn thuộc về kỳ nghỉ."} text={locale === "en" ? "From grilled dishes and shared hot pots by the lake to coffee, fruit tea and a light afternoon snack — the menu is being shaped around time spent together." : "Từ món nướng, lẩu và bữa cơm quây quần bên hồ đến cà phê, trà trái cây và một món ăn nhẹ giữa chiều — danh mục món được xây dựng quanh thời gian ở bên nhau."} image={conceptImages.dining} />
-    <TemplateDiningAndOccasions locale={locale} /></>;
+  const isEn = locale === "en";
+  return (
+    <>
+      <PageBannerHero
+        bgImage={conceptImages.dining}
+        pill={isEn ? "Dining & Occasions" : "Ẩm Thực & Bàn Tiệc"}
+        title={isEn ? "LaKa - Dining" : "LaKa - Ẩm Thực"}
+        subtitle={isEn ? "A table that belongs to the stay" : "Một bàn ăn thuộc về kỳ nghỉ"}
+        description={
+          isEn
+            ? "From lakeside hot pots and barbecue grills to artisan coffee, fruit teas and afternoon treats — the menu is shaped around shared time."
+            : "Từ món nướng, lẩu và bữa cơm quây quần bên hồ đến cà phê, trà trái cây và một món ăn nhẹ giữa chiều — danh mục món được xây dựng quanh thời gian ở bên nhau."
+        }
+        cardImage={conceptImages.dining}
+        cardBadge="LAKA · Dining"
+        cardAlt={isEn ? "Dining at LAKA" : "Ẩm thực tại LAKA"}
+        brandTagTop="Taste &"
+        brandTagBottom="Culinary."
+        dateStamp={isEn ? "Lakeside Grill · Local Flavors" : "Bếp Nướng Hồ · Hương Vị Bản Địa"}
+        subTag={isEn ? "Slow Dining & Shared Moments" : "Bàn Ăn Chậm & Khoảnh Khắc Sum Vầy"}
+        actionText={isEn ? "View menu preview" : "Xem thực đơn"}
+        actionHref="#thuc-don"
+        locale={locale}
+      />
+      <TemplateDiningAndOccasions locale={locale} />
+    </>
+  );
 }
 
 function AboutPage({ config, locale }: { config: CompleteTemplateConfig; locale: ShowcaseLocale }) {
-  return <><PageIntro config={config} locale={locale} eyebrow={locale === "en" ? "The LAKA philosophy" : "Triết lý của LAKA"} title={locale === "en" ? "Far enough to rest. Close enough to return." : "Một nơi đủ xa để nghỉ, đủ gần để trở về."} text={locale === "en" ? "LAKA began with a wish to create homes where people can give their full attention to nature and to one another." : "LAKA bắt đầu từ mong muốn tạo ra những căn nhà nơi con người có thể dành trọn sự chú ý cho thiên nhiên và cho nhau."} image={conceptImages.forest} />
-    <TemplateAboutStory mood={config.mood} locale={locale} /></>;
+  const isEn = locale === "en";
+  return (
+    <>
+      <PageBannerHero
+        bgImage={conceptImages.forest}
+        pill={isEn ? "The LAKA Philosophy" : "Triết Lý LAKA"}
+        title={isEn ? "LaKa - About Us" : "LaKa - Về Chúng Mình"}
+        subtitle={isEn ? "Far enough to rest, close enough to return" : "Một nơi đủ xa để nghỉ, đủ gần để trở về"}
+        description={
+          isEn
+            ? "LAKA began with a wish to create homes where people can give their full attention to nature and to one another."
+            : "LAKA bắt đầu từ mong muốn tạo ra những căn nhà nơi con người có thể dành trọn sự chú ý cho thiên nhiên và cho nhau."
+        }
+        cardImage={conceptImages.forest}
+        cardBadge="LAKA · Story"
+        cardAlt={isEn ? "Pine forest at LAKA" : "Rừng thông tại LAKA"}
+        brandTagTop="Origin &"
+        brandTagBottom="Essence."
+        dateStamp={isEn ? "Trung Gia · Soc Son · Hanoi" : "Trung Giã · Sóc Sơn · Hà Nội"}
+        subTag={isEn ? "Nature Refuge Since 2026" : "Chốn An Trú Tự Nhiên 2026"}
+        actionText={isEn ? "Read the LAKA story" : "Đọc câu chuyện"}
+        actionHref="#cau-chuyen"
+        locale={locale}
+      />
+      <TemplateAboutStory mood={config.mood} locale={locale} />
+    </>
+  );
 }
 
 function InfoPage({ config, locale }: { config: CompleteTemplateConfig; locale: ShowcaseLocale }) {
-  return <><PageIntro config={config} locale={locale} eyebrow={locale === "en" ? "Understanding LAKA" : "Hiểu thêm về LAKA"} title={locale === "en" ? "Clear information, with space left for discovery." : "Thông tin rõ ràng, vẫn đủ khoảng trống để khám phá."} text={locale === "en" ? "A concise guide to the landscape, homes, experiences and the concept currently taking shape." : "Những câu trả lời ngắn gọn về cảnh quan, các căn nhà, trải nghiệm và concept đang dần thành hình."} image={conceptImages.hill} />
-    <TemplateJourneySection locale={locale} contactHref={scoped(config.basePath, "lien-he")} />
-    <TemplateFaqSection mood={config.mood} policyHref={scoped(config.basePath, "chinh-sach-luu-tru")} locale={locale} /></>;
+  const isEn = locale === "en";
+  return (
+    <>
+      <PageBannerHero
+        bgImage={conceptImages.hill}
+        pill={isEn ? "Understanding LAKA" : "Hiểu Thêm Về LAKA"}
+        title={isEn ? "LaKa - Information" : "LaKa - Thông Tin"}
+        subtitle={isEn ? "Clear information, space for discovery" : "Thông tin rõ ràng, không gian khám phá"}
+        description={
+          isEn
+            ? "A concise guide to the landscape, private homes, experiences and arrival notes to help you prepare before your stay."
+            : "Những câu trả lời ngắn gọn và hướng dẫn chi tiết về cảnh quan, các căn nhà, trải nghiệm và lưu ý chuẩn bị trước chuyến đi."
+        }
+        cardImage={conceptImages.hill}
+        cardBadge="LAKA · Handbook"
+        cardAlt={isEn ? "Valley landscape at LAKA" : "Cảnh sắc thung lũng LAKA"}
+        brandTagTop="Guide &"
+        brandTagBottom="Handbook."
+        dateStamp={isEn ? "Stays · Journey · FAQ" : "Lưu Trú · Hành Trình · FAQ"}
+        subTag={isEn ? "All Essentials Before Arrival" : "Cẩm Nang Đầy Đủ Trước Khi Đến"}
+        actionText={isEn ? "View FAQs" : "Xem câu hỏi"}
+        actionHref="#faq-1"
+        locale={locale}
+      />
+      <TemplateJourneySection locale={locale} contactHref={scoped(config.basePath, "lien-he")} />
+      <TemplateFaqSection mood={config.mood} policyHref={scoped(config.basePath, "chinh-sach-luu-tru")} locale={locale} />
+    </>
+  );
 }
 
 function FaqPage({ config, locale }: { config: CompleteTemplateConfig; locale: ShowcaseLocale }) {
-  return <><PageIntro config={config} locale={locale} eyebrow={locale === "en" ? "Frequently asked questions" : "Câu hỏi thường gặp"} title={locale === "en" ? "The useful details, without the noise." : "Những điều cần biết, không vòng vo."} text={locale === "en" ? "Short, practical answers about stays, families, dining, services and the current LAKA concept." : "Câu trả lời ngắn gọn về lưu trú, gia đình, ẩm thực, dịch vụ và concept LAKA đang hoàn thiện."} image={conceptImages.detail1} />
-    <TemplateFaqIndex locale={locale} />
-    <TemplateFaqSection mood={config.mood} policyHref={scoped(config.basePath, "chinh-sach-luu-tru")} locale={locale} /></>;
+  const isEn = locale === "en";
+  return (
+    <>
+      <PageBannerHero
+        bgImage={conceptImages.detail1}
+        pill={isEn ? "FAQ & Answers" : "Câu Hỏi Thường Gặp"}
+        title={isEn ? "LaKa - FAQ" : "LaKa - Hỏi & Đáp"}
+        subtitle={isEn ? "The useful details, without the noise" : "Những điều cần biết, không vòng vo"}
+        description={
+          isEn
+            ? "Short, practical answers about stays, families, dining, services and the current LAKA concept taking shape."
+            : "Câu trả lời ngắn gọn về lưu trú, gia đình, ẩm thực, dịch vụ và concept LAKA đang hoàn thiện."
+        }
+        cardImage={conceptImages.detail1}
+        cardBadge="LAKA · Q&A"
+        cardAlt={isEn ? "Peaceful corner at LAKA" : "Góc yên bình tại LAKA"}
+        brandTagTop="Answers &"
+        brandTagBottom="Details."
+        dateStamp={isEn ? "Quick Q&A · 24/7 Support" : "Hỏi Đáp Nhanh · Hỗ Trợ 24/7"}
+        subTag={isEn ? "Clear & Transparent Answers" : "Giải Đáp Minh Bạch & Tận Tâm"}
+        actionText={isEn ? "View FAQ list" : "Danh sách câu hỏi"}
+        actionHref="#faq-1"
+        locale={locale}
+      />
+      <TemplateFaqIndex locale={locale} />
+      <TemplateFaqSection mood={config.mood} policyHref={scoped(config.basePath, "chinh-sach-luu-tru")} locale={locale} />
+    </>
+  );
 }
 
 function DirectionsPage({ config, locale }: { config: CompleteTemplateConfig; locale: ShowcaseLocale }) {
-  return <><PageIntro config={config} locale={locale} eyebrow={locale === "en" ? "Getting to LAKA" : "Đường đến LAKA"} title={locale === "en" ? "The journey should feel easy before it begins." : "Hành trình nên nhẹ nhàng từ trước khi khởi hành."} text={locale === "en" ? "A dedicated place for routes, travel times, transfers and arrival notes. Final map details will be updated before opening." : "Một nơi riêng cho cung đường, thời gian di chuyển, phương án đưa đón và lưu ý khi đến. Bản đồ chính thức sẽ được cập nhật trước ngày mở cửa."} image={conceptImages.cloud} />
-    <TemplateJourneySection locale={locale} contactHref={scoped(config.basePath, "lien-he")} /></>;
+  const isEn = locale === "en";
+  return (
+    <>
+      <PageBannerHero
+        bgImage={conceptImages.cloud}
+        pill={isEn ? "Getting to LAKA" : "Đường Đến LAKA"}
+        title={isEn ? "LaKa - Directions" : "LaKa - Di Chuyển"}
+        subtitle={isEn ? "The journey feels easy before it begins" : "Hành trình nhẹ nhàng từ trước khi khởi hành"}
+        description={
+          isEn
+            ? "A dedicated place for routes, travel times, transfers and arrival notes. Map details and direct directions guide your way."
+            : "Một nơi riêng cho cung đường, thời gian di chuyển, phương án đưa đón và lưu ý khi đến. Bản đồ và hỗ trợ đường đi thuận tiện nhất."
+        }
+        cardImage={conceptImages.cloud}
+        cardBadge="LAKA · Route"
+        cardAlt={isEn ? "Clouds over pine hills at LAKA" : "Mây trời và đồi thông tại LAKA"}
+        brandTagTop="Map &"
+        brandTagBottom="Routes."
+        dateStamp={isEn ? "Doc Day Dieu, Trung Gia, Soc Son" : "Dốc Dây Diều, Trung Giã, Sóc Sơn"}
+        subTag={isEn ? "45 Minutes From Central Hanoi" : "45 Phút Từ Trung Tâm Hà Nội"}
+        actionText={isEn ? "View route guide" : "Xem chỉ đường"}
+        actionHref="#chi-duong"
+        locale={locale}
+      />
+      <TemplateJourneySection locale={locale} contactHref={scoped(config.basePath, "lien-he")} />
+    </>
+  );
 }
 
 function PolicyPage({ config, locale }: { config: CompleteTemplateConfig; locale: ShowcaseLocale }) {
+  const isEn = locale === "en";
   const localizedPolicies = locale === "en" ? [
     ["Reservation and confirmation", "Requests made on the website are held for two hours. A reservation is confirmed only after the LAKA team contacts you by phone or Zalo."],
     ["Changes and cancellation", "Date changes, cancellations and deposit refunds are explained clearly during confirmation. Final terms must be approved before bookings open."],
@@ -439,11 +585,36 @@ function PolicyPage({ config, locale }: { config: CompleteTemplateConfig; locale
     ["Your privacy", "Contact information is used only to process your stay, support your experience and meet essential operating obligations."],
     ["Concept content", "Concept images, prices and selected policies do not yet constitute a commercial commitment. The address and twenty-unit structure are sourced from LAKA's project material."]
   ] as const : policies;
-  return <><PageIntro config={config} locale={locale} eyebrow={locale === "en" ? "Stay policies" : "Chính sách lưu trú"} title={locale === "en" ? "Clarity before the journey begins." : "Rõ ràng trước khi bắt đầu chuyến đi."} text={locale === "en" ? "Simple principles that create a transparent and considerate experience for guests and the LAKA team." : "Các nguyên tắc giúp LAKA và khách lưu trú cùng có trải nghiệm minh bạch, nhẹ nhàng."} image={conceptImages.detail3} />
-    <TemplatePolicySection mood={config.mood} policies={localizedPolicies} intro={locale === "en" ? "Small details that help everyone enjoy a calmer stay." : undefined} /></>;
+  return (
+    <>
+      <PageBannerHero
+        bgImage={conceptImages.detail3}
+        pill={isEn ? "Stay Policies" : "Chính Sách Lưu Trú"}
+        title={isEn ? "LaKa - Policies" : "LaKa - Chính Sách"}
+        subtitle={isEn ? "Clarity before the journey begins" : "Rõ ràng trước khi bắt đầu chuyến đi"}
+        description={
+          isEn
+            ? "Simple principles that create a transparent, restful and considerate experience for guests and the LAKA team."
+            : "Các nguyên tắc giúp LAKA và khách lưu trú cùng có trải nghiệm minh bạch, nhẹ nhàng và an tâm trọn vẹn."
+        }
+        cardImage={conceptImages.detail3}
+        cardBadge="LAKA · Policy"
+        cardAlt={isEn ? "Quiet corner at LAKA" : "Khoảng lặng tại LAKA"}
+        brandTagTop="Principles &"
+        brandTagBottom="Care."
+        dateStamp={isEn ? "Reservation · Check-in · Quiet Hours" : "Đặt Căn · Nhận Nhà · Giờ Yên Tĩnh"}
+        subTag={isEn ? "Considerate & Restful Stays" : "Trải Nghiệm Tinh Tế & An Tâm"}
+        actionText={isEn ? "View policies" : "Xem chính sách"}
+        actionHref="#chinh-sach"
+        locale={locale}
+      />
+      <TemplatePolicySection mood={config.mood} policies={localizedPolicies} intro={locale === "en" ? "Small details that help everyone enjoy a calmer stay." : undefined} />
+    </>
+  );
 }
 
 function TermsPage({ config, locale }: { config: CompleteTemplateConfig; locale: ShowcaseLocale }) {
+  const isEn = locale === "en";
   const items = locale === "en" ? [
     ["Scope", "These terms describe the structure proposed for using the LAKA website and requesting a stay. Final legal wording must be reviewed before launch."],
     ["Stay requests", "A website request is not a confirmed reservation until LAKA contacts the guest and confirms the applicable home, dates and terms."],
@@ -457,11 +628,36 @@ function TermsPage({ config, locale }: { config: CompleteTemplateConfig; locale:
     ["Thay đổi và trách nhiệm", "Điều kiện đổi, hủy, không đến và các tình huống bất khả kháng sẽ gắn với điều kiện của yêu cầu đã được xác nhận."],
     ["Trạng thái concept", "Trang hiện minh họa cấu trúc nội dung, chưa phải tư vấn pháp lý hay cam kết thương mại cuối cùng."]
   ] as const;
-  return <><PageIntro config={config} locale={locale} eyebrow={locale === "en" ? "Terms and conditions" : "Điều khoản và điều kiện"} title={locale === "en" ? "A clear agreement begins with plain language." : "Một thỏa thuận rõ ràng bắt đầu bằng ngôn ngữ dễ hiểu."} text={locale === "en" ? "A concise legal-information structure ready for final review before LAKA opens." : "Khung thông tin pháp lý gọn, rõ và sẵn sàng để rà soát chính thức trước ngày LAKA mở cửa."} image={conceptImages.forest} />
-    <TemplatePolicySection mood={config.mood} policies={items} intro={locale === "en" ? "Concept structure — final legal review required before launch." : "Cấu trúc minh họa — cần được pháp lý duyệt trước khi phát hành."} /></>;
+  return (
+    <>
+      <PageBannerHero
+        bgImage={conceptImages.forest}
+        pill={isEn ? "Terms of Service" : "Điều Khoản Sử Dụng"}
+        title={isEn ? "LaKa - Terms" : "LaKa - Điều Khoản"}
+        subtitle={isEn ? "A clear agreement in plain language" : "Thỏa thuận rõ ràng, ngôn ngữ dễ hiểu"}
+        description={
+          isEn
+            ? "A concise, transparent legal structure ready for final review before LAKA welcomes guests."
+            : "Khung thông tin pháp lý gọn, rõ và sẵn sàng để rà soát chính thức trước ngày LAKA mở cửa."
+        }
+        cardImage={conceptImages.forest}
+        cardBadge="LAKA · Terms"
+        cardAlt={isEn ? "Nature at LAKA" : "Thiên nhiên tại LAKA"}
+        brandTagTop="Agreement &"
+        brandTagBottom="Trust."
+        dateStamp={isEn ? "Transparent · Respect · Guarantee" : "Minh Bạch · Tôn Trọng · Bảo Đảm"}
+        subTag={isEn ? "Clear Foundation For Your Stay" : "Nền Tảng Rõ Ràng Cho Kỳ Nghỉ"}
+        actionText={isEn ? "View terms" : "Xem điều khoản"}
+        actionHref="#chinh-sach"
+        locale={locale}
+      />
+      <TemplatePolicySection mood={config.mood} policies={items} intro={locale === "en" ? "Concept structure — final legal review required before launch." : "Cấu trúc minh họa — cần được pháp lý duyệt trước khi phát hành."} />
+    </>
+  );
 }
 
 function PrivacyPage({ config, locale }: { config: CompleteTemplateConfig; locale: ShowcaseLocale }) {
+  const isEn = locale === "en";
   const items = locale === "en" ? [
     ["Information collected", "The proposed flow collects only the contact and stay details needed to respond to a request."],
     ["Purpose", "Information is used to advise guests, process stay requests and provide essential pre-arrival support."],
@@ -475,14 +671,63 @@ function PrivacyPage({ config, locale }: { config: CompleteTemplateConfig; local
     ["Lựa chọn của khách", "Khách có thể yêu cầu xem, chỉnh sửa hoặc xóa dữ liệu qua kênh liên hệ chính thức của LAKA."],
     ["Trạng thái concept", "Trang bảo mật hiện minh họa cấu trúc và cần được rà soát chính thức về bảo vệ dữ liệu trước khi phát hành."]
   ] as const;
-  return <><PageIntro config={config} locale={locale} eyebrow={locale === "en" ? "Privacy" : "Quyền riêng tư"} title={locale === "en" ? "Collect less. Explain clearly. Protect carefully." : "Thu thập vừa đủ. Giải thích rõ ràng. Bảo vệ cẩn trọng."} text={locale === "en" ? "A transparent structure for how LAKA will handle guest information." : "Cấu trúc minh bạch về cách LAKA dự kiến tiếp nhận và xử lý thông tin của khách."} image={conceptImages.detail2} />
-    <TemplatePolicySection mood={config.mood} policies={items} intro={locale === "en" ? "Concept structure — formal privacy review required before launch." : "Cấu trúc minh họa — cần được duyệt chính thức trước khi phát hành."} /></>;
+  return (
+    <>
+      <PageBannerHero
+        bgImage={conceptImages.detail2}
+        pill={isEn ? "Privacy Policy" : "Quyền Riêng Tư"}
+        title={isEn ? "LaKa - Privacy" : "LaKa - Bảo Mật"}
+        subtitle={isEn ? "Collect less, explain clearly, protect carefully" : "Thu thập vừa đủ, giải thích rõ ràng, bảo vệ cẩn trọng"}
+        description={
+          isEn
+            ? "A transparent structure for how LAKA receives and securely handles guest information."
+            : "Cấu trúc minh bạch về cách LAKA dự kiến tiếp nhận và xử lý thông tin của khách hàng một cách an toàn."
+        }
+        cardImage={conceptImages.detail2}
+        cardBadge="LAKA · Privacy"
+        cardAlt={isEn ? "Privacy at LAKA" : "Bảo mật tại LAKA"}
+        brandTagTop="Security &"
+        brandTagBottom="Privacy."
+        dateStamp={isEn ? "Data Protection & Privacy" : "Bảo Vệ Dữ Liệu & Thông Tin Cá Nhân"}
+        subTag={isEn ? "Your Trust Is Our Priority" : "Sự Tin Tưởng Của Bạn Là Ưu Tiên Hàng Đầu"}
+        actionText={isEn ? "View privacy details" : "Xem bảo mật"}
+        actionHref="#chinh-sach"
+        locale={locale}
+      />
+      <TemplatePolicySection mood={config.mood} policies={items} intro={locale === "en" ? "Concept structure — formal privacy review required before launch." : "Cấu trúc minh họa — cần được duyệt chính thức trước khi phát hành."} />
+    </>
+  );
 }
 
 function ContactPage({ config, locale }: { config: CompleteTemplateConfig; locale: ShowcaseLocale }) {
-  return <><PageIntro config={config} locale={locale} eyebrow={locale === "en" ? "Talk to LAKA" : "Trò chuyện cùng LAKA"} title={locale === "en" ? "We are always ready to listen." : "Chúng mình luôn sẵn sàng lắng nghe."} text={locale === "en" ? "Get in touch to learn more about the place, follow its journey or share what you hope to find at LAKA." : "Kết nối để hiểu thêm về nơi này, theo dõi hành trình hoàn thiện hoặc chia sẻ điều bạn mong được tìm thấy tại LAKA."} image={conceptImages.cloud} />
-    <TemplateContactChannels mood={config.mood} locale={locale} />
-    <ContactInquiryForm locale={locale} /></>;
+  const isEn = locale === "en";
+  return (
+    <>
+      <PageBannerHero
+        bgImage={conceptImages.cloud}
+        pill={isEn ? "Talk to LAKA" : "Trò Chuyện Cùng LAKA"}
+        title={isEn ? "LaKa - Contact" : "LaKa - Liên Hệ"}
+        subtitle={isEn ? "We are always ready to listen" : "Chúng mình luôn sẵn sàng lắng nghe"}
+        description={
+          isEn
+            ? "Get in touch to learn more about the place, follow its journey or share what you hope to find at LAKA."
+            : "Kết nối để hiểu thêm về nơi này, theo dõi hành trình hoàn thiện hoặc chia sẻ điều bạn mong được tìm thấy tại LAKA."
+        }
+        cardImage={conceptImages.cloud}
+        cardBadge="LAKA · Contact"
+        cardAlt={isEn ? "Contact LAKA" : "Liên hệ LAKA"}
+        brandTagTop="Connect &"
+        brandTagBottom="Inquiry."
+        dateStamp={isEn ? `Hotline: ${publicContact.phoneDisplay} · Zalo · Messenger` : `Hotline: ${publicContact.phoneDisplay} · Zalo · Messenger`}
+        subTag={isEn ? "Prompt & Thoughtful Response" : "Phản Hồi Nhanh Chóng & Tận Tâm"}
+        actionText={isEn ? "Send a message" : "Gửi lời nhắn"}
+        actionHref="#inquiry-form"
+        locale={locale}
+      />
+      <TemplateContactChannels mood={config.mood} locale={locale} />
+      <ContactInquiryForm locale={locale} />
+    </>
+  );
 }
 
 function TemplateContent({ route, config, locale }: { route: TemplateRoute; config: CompleteTemplateConfig; locale: ShowcaseLocale }) {
