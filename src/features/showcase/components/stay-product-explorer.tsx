@@ -351,14 +351,6 @@ export function StayProductExplorer({
   return <>
     <section id="bo-suu-tap-can" className="scroll-mt-[92px] bg-[#eae1d2] py-16 text-[#16311c] sm:py-24">
       <div className="mx-auto w-[min(1460px,calc(100%-28px))] sm:w-[min(1460px,calc(100%-48px))]">
-        <div className="grid gap-7 border-b border-[#16311c]/14 pb-8 lg:grid-cols-[1fr_.42fr] lg:items-start">
-          <h2 className="laka-heading-section max-w-4xl">
-            {locale === "en" ? "Choose a landscape. Meet its homes." : "Chọn một hệ cảnh quan. Gặp những căn nhà."}
-          </h2>
-          <p className="max-w-md text-sm leading-7 text-[#16311c]/62 lg:justify-self-end">
-            {locale === "en" ? "The card gives you just enough to feel. Open it only when you want the full story." : "Mỗi thẻ chỉ gợi vừa đủ để cảm nhận. Chạm vào khi bạn muốn xem toàn bộ câu chuyện của căn."}
-          </p>
-        </div>
 
         <nav aria-label={locale === "en" ? "Filter homes by landscape" : "Lọc căn theo hệ cảnh quan"} className="sticky top-[var(--laka-header-offset)] z-20 -mx-3 mt-6 overflow-x-auto border-y border-[#16311c]/10 bg-[#eae1d2]/94 px-3 backdrop-blur transition-[top] duration-300 motion-reduce:transition-none">
           <div className="grid w-full grid-cols-4">
