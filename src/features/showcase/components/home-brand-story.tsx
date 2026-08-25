@@ -111,22 +111,6 @@ export function HomeBrandStory({ basePath, locale = "vi" }: { basePath: string; 
           ======================================================== */}
       <div className="hidden lg:block laka-section-normal px-8 lg:px-12">
         <div className="mx-auto w-[min(1380px,100%)]">
-          {/* Header Row */}
-          <header className="flex items-end justify-between gap-8 border-b border-[#16311c]/15 pb-8 mb-12">
-            <div>
-              <h2 className="laka-home-section-title text-[#16311c]">
-                {missionData.title[locale]}
-              </h2>
-            </div>
-            <p className="font-serif text-2xl xl:text-3xl font-medium text-[#16311c] text-right max-w-xl">
-              {en ? (
-                <>Preserving untouched beauty <br /><i className="text-[#80613f]">through every window.</i></>
-              ) : (
-                <>Lưu giữ vẻ đẹp nguyên sơ <br /><i className="text-[#80613f]">qua từng khung kính.</i></>
-              )}
-            </p>
-          </header>
-
           {/* Main 2-Column Creative Editorial Showcase */}
           <div className="grid grid-cols-[1.08fr_.92fr] gap-12 xl:gap-16 items-center">
             {/* Left Column: Layered Photography Frame */}
@@ -159,8 +143,12 @@ export function HomeBrandStory({ basePath, locale = "vi" }: { basePath: string; 
               </div>
             </div>
 
-            {/* Right Column: Mission Content & Pillars */}
+            {/* Right Column: Title, Mission Content & Pillars */}
             <div className="xl:pl-4">
+              <h2 className="laka-home-section-title text-[#16311c] mb-6 xl:mb-8">
+                {missionData.title[locale]}
+              </h2>
+
               <blockquote className="font-serif text-2xl xl:text-3xl font-medium text-[#16311c] leading-relaxed border-l-4 border-[#80613f] pl-6 my-6">
                 “{missionData.content[locale]}”
               </blockquote>
