@@ -1,234 +1,233 @@
-"use client";
-
-import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Coffee, Heart, Mountain, Sparkles, Trees, UtensilsCrossed } from "lucide-react";
+import { ArrowRight, Mountain, Sparkles, UtensilsCrossed } from "lucide-react";
 import { conceptImages } from "@/features/stays/data/demo-data";
 import type { ShowcaseLocale } from "@/features/showcase/i18n/locale";
 
-interface MissionStory {
-  id: string;
-  image: string;
-  imageAlt: Record<ShowcaseLocale, string>;
-  title: Record<ShowcaseLocale, string>;
-  description: Record<ShowcaseLocale, string>;
-  icons: Array<{
-    icon: typeof Mountain;
-    label: Record<ShowcaseLocale, string>;
-  }>;
-}
-
-const missionStories: MissionStory[] = [
-  {
-    id: "untouched-nature",
-    image: conceptImages.detail1,
-    imageAlt: {
-      vi: "Khung kính nhìn ra thiên nhiên tại LAKA — ảnh minh họa",
-      en: "A window looking out to nature at LAKA — concept image"
-    },
-    title: {
-      vi: "LƯU GIỮ VẺ ĐẸP NGUYÊN SƠ",
-      en: "PRESERVING UNTOUCHED BEAUTY"
-    },
-    description: {
-      vi: "Lưu giữ vẻ đẹp nguyên sơ qua từng khung kính, nơi khởi nguồn cho những kết nối chân thật nhất. Tại LaKa, mỗi cabin là một góc nhìn để bạn chạm gần hơn vào thiên nhiên.",
-      en: "Preserving untouched beauty through every window, where the truest connections begin. At LaKa, every cabin is a view that brings you closer to nature."
-    },
-    icons: [
-      {
-        icon: Mountain,
-        label: { vi: "Thiên nhiên", en: "Nature" }
-      },
-      {
-        icon: UtensilsCrossed,
-        label: { vi: "Ẩm thực", en: "Dining" }
-      },
-      {
-        icon: Sparkles,
-        label: { vi: "An yên", en: "Serenity" }
-      }
-    ]
+const missionData = {
+  kicker: { vi: "Sứ mệnh", en: "Our Mission" },
+  title: {
+    vi: "LƯU GIỮ VẺ ĐẸP NGUYÊN SƠ",
+    en: "PRESERVING UNTOUCHED BEAUTY"
   },
-  {
-    id: "true-connection",
-    image: conceptImages.forest,
-    imageAlt: {
-      vi: "Khoảnh khắc bình yên giữa rừng thông — ảnh minh họa",
-      en: "Peaceful moments amidst the pine forest — concept image"
-    },
-    title: {
-      vi: "KHỞI NGUỒN KẾT NỐI CHÂN THẬT",
-      en: "WHERE TRUE CONNECTIONS BEGIN"
-    },
-    description: {
-      vi: "Rời xa nhịp sống hối hả để trở về với sự tĩnh lặng. Cùng người thân sẻ chia những khoảnh khắc ấm áp bên hiên nhà hay bên tách trà chiều ngắm thung lũng.",
-      en: "Step away from the rush to return to quietude. Share warm moments with loved ones on the porch or over afternoon tea overlooking the valley."
-    },
-    icons: [
-      {
-        icon: Trees,
-        label: { vi: "Rừng thông", en: "Pine Forest" }
-      },
-      {
-        icon: Coffee,
-        label: { vi: "Trà chiều", en: "Teatime" }
-      },
-      {
-        icon: Heart,
-        label: { vi: "Gắn kết", en: "Connection" }
-      }
-    ]
+  statement: {
+    vi: "Lưu giữ vẻ đẹp nguyên sơ qua từng khung kính, nơi khởi nguồn cho những kết nối chân thật nhất.",
+    en: "Preserving untouched beauty through every window, where the truest connections begin."
   },
-  {
-    id: "private-haven",
-    image: conceptImages.table,
-    imageAlt: {
-      vi: "Không gian mở chan hòa ánh sáng tại LAKA — ảnh minh họa",
-      en: "Open sunlit space at LAKA — concept image"
+  description: {
+    vi: "Tại LaKa, mỗi cabin là một góc nhìn để bạn chạm gần hơn vào thiên nhiên. Giữa vẻ đẹp nguyên sơ, từng khoảnh khắc đưa ta gần nhau hơn.",
+    en: "At LaKa, every cabin is a view that brings you closer to nature. Amid untouched beauty, every shared moment brings us closer."
+  },
+  pillars: [
+    {
+      icon: Mountain,
+      title: { vi: "Thiên nhiên", en: "Nature" },
+      desc: { vi: "Góc nhìn thung lũng nguyên bản", en: "Pristine valley panorama" }
     },
-    title: {
-      vi: "MỖI CABIN MỘT KHOẢNG TRỜI",
-      en: "EVERY CABIN A WHOLE HORIZON"
+    {
+      icon: UtensilsCrossed,
+      title: { vi: "Ẩm thực", en: "Dining" },
+      desc: { vi: "Hương vị ấm cúng bên nhau", en: "Warm flavours shared together" }
     },
-    description: {
-      vi: "Không gian mở chan hòa ánh sáng và cây cỏ, mang lại trải nghiệm nghỉ dưỡng riêng tư trọn vẹn giữa lòng thung lũng Trung Giã, Sóc Sơn.",
-      en: "Open spaces flooded with light and greenery, offering a truly private retreat in the heart of Trung Gia valley, Soc Son."
-    },
-    icons: [
-      {
-        icon: Mountain,
-        label: { vi: "Thung lũng", en: "Valley" }
-      },
-      {
-        icon: Coffee,
-        label: { vi: "Thảnh thơi", en: "Relaxation" }
-      },
-      {
-        icon: Sparkles,
-        label: { vi: "Riêng tư", en: "Privacy" }
-      }
-    ]
-  }
-];
+    {
+      icon: Sparkles,
+      title: { vi: "An yên", en: "Serenity" },
+      desc: { vi: "Khoảng trời riêng tư tĩnh lặng", en: "Private peaceful haven" }
+    }
+  ]
+} as const;
 
 export function HomeBrandStory({ basePath, locale = "vi" }: { basePath: string; locale?: ShowcaseLocale }) {
   const en = locale === "en";
-  const [activeSlide, setActiveSlide] = useState(0);
-  const current = missionStories[activeSlide];
 
   return (
-    <section id="gioi-thieu" className="scroll-mt-20 bg-[#eae1d2] pb-16 pt-0 relative overflow-hidden">
-      {/* Top Banner with angled diagonal bottom cut */}
-      <div
-        className="relative bg-[#1d5761] pt-14 pb-24 sm:pt-16 sm:pb-32 text-white text-center px-4 overflow-hidden"
-        style={{
-          clipPath: "polygon(0 0, 100% 0, 100% 82%, 0 100%)"
-        }}
-      >
-        {/* Subtle decorative glow */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,#2b7782,transparent_70%)] opacity-60" />
+    <section id="gioi-thieu" className="scroll-mt-20 bg-[#eae1d2] relative overflow-hidden">
+      {/* ========================================================
+          1. MOBILE LAYOUT (Floating Card with Angled Header)
+          ======================================================== */}
+      <div className="block lg:hidden pb-14 pt-0">
+        {/* Top Banner with Angled Bottom Cut in LAKA Deep Forest Green */}
+        <div
+          className="relative bg-[#10251d] pt-12 pb-24 text-white text-center px-4 overflow-hidden"
+          style={{ clipPath: "polygon(0 0, 100% 0, 100% 82%, 0 100%)" }}
+        >
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,#1f4838,transparent_70%)] opacity-50" />
+          <div className="relative z-10 mx-auto max-w-md">
+            <span className="block font-serif italic text-xl text-[#dfc6a5] tracking-wide mb-1">
+              {missionData.kicker[locale]}
+            </span>
+            <h2 className="text-2xl font-extrabold uppercase tracking-[0.2em] text-white">
+              {en ? "LAKA MISSION" : "SỨ MỆNH LAKA"}
+            </h2>
+          </div>
+        </div>
 
-        <div className="relative z-10 mx-auto max-w-2xl">
-          <span className="block font-serif italic text-xl sm:text-2xl text-[#a2ded7] tracking-wide mb-1">
-            {en ? "Our Mission" : "Sứ mệnh"}
-          </span>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold uppercase tracking-[0.22em] text-white">
-            {en ? "LAKA MISSION" : "SỨ MỆNH LAKA"}
-          </h2>
+        {/* Floating Center Card */}
+        <div className="relative z-10 -mt-16 mx-auto w-[min(540px,calc(100%-32px))]">
+          <article className="bg-white rounded-2xl shadow-[0_16px_40px_rgba(16,37,29,0.12)] border border-[#16311c]/10 overflow-hidden">
+            {/* Top Photo */}
+            <div className="relative h-56 w-full overflow-hidden bg-[#e0d6c7]">
+              <Image
+                src={conceptImages.detail1}
+                alt={en ? "A window looking out to nature at LAKA — concept image" : "Khung kính nhìn ra thiên nhiên tại LAKA — ảnh minh họa"}
+                fill
+                sizes="(max-width: 640px) 100vw, 540px"
+                className="object-cover"
+                priority
+              />
+            </div>
+
+            {/* Card Content */}
+            <div className="px-6 py-7 text-center">
+              <h3 className="text-[#16311c] font-bold text-sm tracking-[0.14em] uppercase mb-3">
+                {missionData.title[locale]}
+              </h3>
+              <p className="text-[#2b443c] text-sm leading-relaxed max-w-md mx-auto">
+                {missionData.statement[locale]}
+              </p>
+              <p className="mt-3 text-xs text-[#16311c]/70 leading-relaxed max-w-md mx-auto">
+                {missionData.description[locale]}
+              </p>
+
+              {/* Separator */}
+              <div className="w-full h-px bg-[#16311c]/12 my-6" />
+
+              {/* 3 Minimalist Icons */}
+              <div className="flex items-center justify-center gap-8 text-[#16311c]">
+                {missionData.pillars.map((item, idx) => {
+                  const Icon = item.icon;
+                  return (
+                    <div key={idx} className="flex flex-col items-center gap-1.5">
+                      <span className="p-2 rounded-full text-[#16311c] bg-[#16311c]/5">
+                        <Icon className="h-5 w-5 stroke-[1.6]" />
+                      </span>
+                      <span className="text-[0.6875rem] font-bold text-[#16311c]/80 tracking-wider uppercase">
+                        {item.title[locale]}
+                      </span>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </article>
+
+          {/* Call to Action Button */}
+          <div className="mt-7 flex justify-center">
+            <Link
+              href={`${basePath}/ve-laka`}
+              className="focus-ring inline-flex items-center justify-center border-2 border-[#16311c] text-[#16311c] hover:bg-[#16311c] hover:text-white transition-all px-8 py-3 text-xs font-bold uppercase tracking-[0.2em] rounded-sm shadow-sm"
+            >
+              {en ? "Read the full story" : "Đọc trọn câu chuyện"}
+            </Link>
+          </div>
         </div>
       </div>
 
-      {/* Main Mission Card - Floating Center */}
-      <div className="relative z-10 -mt-16 sm:-mt-20 mx-auto w-[min(580px,calc(100%-32px))]">
-        <article className="bg-white rounded-xl shadow-[0_15px_40px_rgba(29,87,97,0.12)] border border-[#1d5761]/10 overflow-hidden transition-all duration-300">
-          {/* Top Landscape Image */}
-          <div className="relative h-56 sm:h-72 w-full overflow-hidden bg-[#e0d6c7]">
-            <Image
-              src={current.image}
-              alt={current.imageAlt[locale]}
-              fill
-              sizes="(max-width: 640px) 100vw, 580px"
-              className="object-cover transition-transform duration-700 hover:scale-105"
-              priority={activeSlide === 0}
-            />
-          </div>
-
-          {/* Card Content */}
-          <div className="px-6 py-7 sm:px-10 sm:py-9 text-center">
-            <h3 className="text-[#1d5761] font-bold text-sm sm:text-base tracking-[0.14em] uppercase mb-3 sm:mb-4">
-              {current.title[locale]}
-            </h3>
-            <p className="text-[#2b443c] text-sm sm:text-[0.9375rem] leading-relaxed max-w-md mx-auto min-h-[4.5rem]">
-              {current.description[locale]}
+      {/* ========================================================
+          2. DESKTOP LAYOUT (Creative Editorial Luxury Split)
+          ======================================================== */}
+      <div className="hidden lg:block laka-section-normal px-8 lg:px-12">
+        <div className="mx-auto w-[min(1380px,100%)]">
+          {/* Header Row */}
+          <header className="flex items-end justify-between gap-8 border-b border-[#16311c]/15 pb-8 mb-12">
+            <div>
+              <p className="text-xs font-bold uppercase tracking-[0.22em] text-[#80613f] mb-2">
+                {en ? "ABOUT LAKA" : "VỀ CHÚNG TÔI"}
+              </p>
+              <h2 className="laka-home-section-title text-[#16311c]">
+                {en ? "Our Mission" : "Sứ mệnh"}
+              </h2>
+            </div>
+            <p className="font-serif text-2xl xl:text-3xl font-medium text-[#16311c] text-right max-w-xl">
+              {en ? (
+                <>Preserving untouched beauty <br /><i className="text-[#80613f]">through every single window.</i></>
+              ) : (
+                <>Lưu giữ vẻ đẹp nguyên sơ <br /><i className="text-[#80613f]">qua từng khung kính.</i></>
+              )}
             </p>
+          </header>
 
-            {/* Separator Line */}
-            <div className="w-full h-px bg-[#1d5761]/12 my-6 sm:my-7" />
+          {/* Main 2-Column Creative Editorial Showcase */}
+          <div className="grid grid-cols-[1.08fr_.92fr] gap-12 xl:gap-16 items-center">
+            {/* Left Column: Layered Photography Frame */}
+            <div className="relative">
+              {/* Main Photo Frame */}
+              <div className="relative aspect-[16/11] rounded-3xl overflow-hidden shadow-2xl bg-[#10251d] border border-[#16311c]/10 group">
+                <Image
+                  src={conceptImages.detail1}
+                  alt={en ? "A window looking out to nature at LAKA — concept image" : "Khung kính nhìn ra thiên nhiên tại LAKA — ảnh minh họa"}
+                  fill
+                  sizes="50vw"
+                  className="object-cover transition duration-1000 ease-out group-hover:scale-105"
+                  priority
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
+                <span className="absolute left-5 top-5 rounded-full bg-[#10251d]/75 backdrop-blur-md px-3.5 py-1.5 text-[0.65rem] font-bold uppercase tracking-[0.16em] text-white">
+                  {en ? "Pristine Nature" : "Vẻ đẹp nguyên sơ"}
+                </span>
+              </div>
 
-            {/* 3 Line Icons */}
-            <div className="flex items-center justify-center gap-10 sm:gap-14 text-[#1d5761]">
-              {current.icons.map((item, idx) => {
-                const IconComponent = item.icon;
-                return (
-                  <div key={idx} className="flex flex-col items-center gap-1.5 group">
-                    <span className="p-2 rounded-full text-[#1d5761] bg-[#1d5761]/5 group-hover:bg-[#1d5761]/10 transition-colors">
-                      <IconComponent className="h-6 w-6 stroke-[1.5]" />
-                    </span>
-                    <span className="text-[0.6875rem] font-semibold text-[#1d5761]/80 tracking-wider uppercase">
-                      {item.label[locale]}
-                    </span>
-                  </div>
-                );
-              })}
+              {/* Overlapping Floating Inset Card */}
+              <div className="absolute -bottom-6 -right-6 w-44 xl:w-52 aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl border-4 border-[#eae1d2] bg-[#10251d] hidden sm:block">
+                <Image
+                  src={conceptImages.forest}
+                  alt={en ? "Pine forest at LAKA — concept image" : "Rừng thông tại LAKA — ảnh minh họa"}
+                  fill
+                  sizes="200px"
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+                <span className="absolute bottom-2.5 left-2.5 text-[0.6rem] font-bold uppercase tracking-wider text-white/90">
+                  {en ? "Trung Gia · Hanoi" : "Trung Giã · Sóc Sơn"}
+                </span>
+              </div>
+            </div>
+
+            {/* Right Column: Mission Content & Pillars */}
+            <div className="xl:pl-4">
+              <span className="font-serif italic text-2xl xl:text-3xl text-[#80613f] block mb-3">
+                {missionData.kicker[locale]}
+              </span>
+              <h3 className="laka-heading-card text-2xl xl:text-3xl font-extrabold text-[#16311c] leading-tight mb-5">
+                {missionData.statement[locale]}
+              </h3>
+              <p className="laka-body-muted text-base leading-relaxed text-[#16311c]/80 mb-8">
+                {missionData.description[locale]}
+              </p>
+
+              {/* 3 Pillars Grid */}
+              <div className="grid grid-cols-3 gap-4 border-y border-[#16311c]/14 py-6 mb-8">
+                {missionData.pillars.map((pillar, idx) => {
+                  const Icon = pillar.icon;
+                  return (
+                    <div key={idx} className="flex flex-col items-start gap-2">
+                      <span className="p-2.5 rounded-xl bg-[#16311c]/8 text-[#16311c]">
+                        <Icon className="h-5 w-5 stroke-[1.6]" />
+                      </span>
+                      <div>
+                        <h4 className="font-bold text-sm text-[#16311c]">
+                          {pillar.title[locale]}
+                        </h4>
+                        <p className="text-xs text-[#16311c]/65 mt-0.5 leading-snug">
+                          {pillar.desc[locale]}
+                        </p>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+
+              {/* Action Button */}
+              <Link
+                href={`${basePath}/ve-laka`}
+                className="focus-ring group inline-flex min-h-12 items-center gap-3 border-b-2 border-[#16311c] pb-1 text-xs font-bold uppercase tracking-[0.16em] text-[#16311c] hover:text-[#80613f] hover:border-[#80613f] transition-all"
+              >
+                {en ? "Read the full story" : "Đọc trọn câu chuyện"}
+                <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
+              </Link>
             </div>
           </div>
-        </article>
-
-        {/* Carousel Pagination Dots */}
-        <div className="mt-8 flex items-center justify-center gap-2.5" role="tablist" aria-label={en ? "Mission slides" : "Các câu chuyện sứ mệnh"}>
-          {missionStories.map((story, index) => {
-            const isActive = activeSlide === index;
-            return (
-              <button
-                key={story.id}
-                type="button"
-                role="tab"
-                aria-selected={isActive}
-                onClick={() => setActiveSlide(index)}
-                aria-label={`${en ? "View slide" : "Xem slide"} ${index + 1}`}
-                className={`transition-all duration-300 rounded-full focus-ring ${
-                  isActive
-                    ? "w-2.5 h-2.5 bg-[#1d5761] ring-4 ring-[#1d5761]/25 scale-110"
-                    : "w-2 h-2 bg-[#1d5761]/35 hover:bg-[#1d5761]/70"
-                }`}
-              />
-            );
-          })}
         </div>
-
-        {/* Call to Action Button */}
-        <div className="mt-7 flex justify-center">
-          <Link
-            href={`${basePath}/ve-laka`}
-            className="focus-ring inline-flex items-center justify-center border-2 border-[#1d5761] text-[#1d5761] hover:bg-[#1d5761] hover:text-white transition-all px-8 py-3 text-xs font-bold uppercase tracking-[0.2em] rounded-sm shadow-sm"
-          >
-            {en ? "Read the full story" : "Đọc trọn câu chuyện"}
-          </Link>
-        </div>
-      </div>
-
-      {/* Bottom Mountain Line Silhouette Motif */}
-      <div className="mt-12 flex justify-center opacity-25 pointer-events-none" aria-hidden="true">
-        <svg
-          viewBox="0 0 400 60"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          className="w-72 sm:w-96 h-10 stroke-[#1d5761]"
-          strokeWidth="1.2"
-        >
-          <path d="M10 50 L60 20 L110 50 M90 50 L140 10 L190 50 M170 50 L220 25 L270 50 M250 50 L300 15 L350 50 M330 50 L370 28 L390 50" />
-        </svg>
       </div>
     </section>
   );

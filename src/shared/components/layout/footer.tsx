@@ -22,16 +22,16 @@ export function Footer() {
             <Link href="/faq" className="transition hover:text-white hover:underline">FAQ</Link>
             <Link href="/bao-mat" className="transition hover:text-white hover:underline">Bảo mật</Link>
             <Link href="/chinh-sach-luu-tru" className="transition hover:text-white hover:underline">Chính sách lưu trú</Link>
-            <Link href="/lien-he" className="font-bold text-white transition hover:underline">Liên hệ</Link>
+            <Link href="/lien-he" className="transition hover:text-white hover:underline">Liên hệ</Link>
           </div>
           {/* Desktop view */}
-          <div className="mt-5 hidden grid-cols-2 gap-x-8 gap-y-3.5 text-[15px] font-medium text-white/80 md:grid">
-            <Link href="/di-chuyen" className="transition hover:text-white hover:underline">Hướng dẫn di chuyển</Link>
-            <Link href="/dieu-khoan" className="transition hover:text-white hover:underline">Điều khoản</Link>
-            <Link href="/faq" className="transition hover:text-white hover:underline">FAQ</Link>
-            <Link href="/bao-mat" className="transition hover:text-white hover:underline">Bảo mật</Link>
-            <Link href="/chinh-sach-luu-tru" className="transition hover:text-white hover:underline">Chính sách lưu trú</Link>
-            <Link href="/lien-he" className="font-bold text-white transition hover:underline">Liên hệ</Link>
+          <div className="mt-5 hidden grid-cols-2 justify-items-start gap-x-8 gap-y-3.5 text-[15px] font-medium text-white/80 md:grid">
+            <Link href="/di-chuyen" className="w-fit transition hover:text-white hover:underline">Hướng dẫn di chuyển</Link>
+            <Link href="/dieu-khoan" className="w-fit transition hover:text-white hover:underline">Điều khoản</Link>
+            <Link href="/faq" className="w-fit transition hover:text-white hover:underline">FAQ</Link>
+            <Link href="/bao-mat" className="w-fit transition hover:text-white hover:underline">Bảo mật</Link>
+            <Link href="/chinh-sach-luu-tru" className="w-fit transition hover:text-white hover:underline">Chính sách lưu trú</Link>
+            <Link href="/lien-he" className="w-fit transition hover:text-white hover:underline">Liên hệ</Link>
           </div>
         </div>
       </div>

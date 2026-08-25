@@ -67,12 +67,6 @@ export function GalleryLightbox({ images, mood, locale = "vi" }: { images: strin
             <span className="absolute top-2 right-2 sm:top-3 sm:right-3 grid h-7 w-7 sm:h-9 sm:w-9 place-items-center rounded-full bg-white/90 text-[#16311c] opacity-0 shadow-lg transition duration-200 group-hover:opacity-100">
               <Expand className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
             </span>
-
-            {/* Bottom-left pill badge */}
-            <span className="absolute bottom-2 left-2 sm:bottom-3.5 sm:left-3.5 flex items-center gap-1 sm:gap-1.5 rounded-full bg-black/60 backdrop-blur-md px-2 sm:px-2.5 py-0.5 sm:py-1 text-[10px] sm:text-xs font-bold text-white shadow">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-              {String(index + 1).padStart(2, "0")}
-            </span>
           </button>
         ))}
       </section>

@@ -38,19 +38,24 @@ export function HomeLandscapeCollections({ basePath, locale = "vi" }: { basePath
           </p>
         </header>
 
-        {/* 3 Stay Cards with Floating Overlay Badge */}
-        <div className="mt-10 sm:mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7" aria-label={en ? "LAKA stay collections" : "Ba nhóm lưu trú tại LAKA"}>
+        {/* 3 Stay Cards with Horizontal Scroll on Mobile and Grid on Desktop */}
+        <div
+          className="mt-10 sm:mt-14 flex overflow-x-auto gap-4 sm:gap-6 snap-x snap-mandatory scrollbar-none -mx-5 px-5 sm:-mx-8 sm:px-8 lg:mx-0 lg:px-0 lg:grid lg:grid-cols-3 lg:gap-7 pb-4 lg:pb-0"
+          aria-label={en ? "LAKA stay collections" : "Ba nhóm lưu trú tại LAKA"}
+          role="group"
+          tabIndex={0}
+        >
           {stayCollections.map((item) => (
             <Link
               key={item.title.vi}
               href={basePath + "/luu-tru"}
-              className="group relative aspect-[3/4] sm:aspect-[4/5] lg:aspect-[3/4] rounded-2xl sm:rounded-3xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-500 bg-[#10251d] focus-ring block"
+              className="shrink-0 w-[80vw] sm:w-[360px] lg:w-auto snap-start group relative aspect-[3/4] sm:aspect-[4/5] lg:aspect-[3/4] rounded-2xl sm:rounded-3xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-500 bg-[#10251d] focus-ring block"
             >
               <Image
                 src={item.image}
                 alt={item.title[locale] + " — " + (en ? "concept image" : "hình ảnh minh họa")}
                 fill
-                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                sizes="(max-width: 640px) 80vw, (max-width: 1024px) 360px, 33vw"
                 className="object-cover transition duration-700 ease-out group-hover:scale-105"
               />
 

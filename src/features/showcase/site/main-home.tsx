@@ -48,7 +48,7 @@ export function MainHome({ config, locale = "vi" }: { config: CompleteTemplateCo
         <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(5,18,14,.5),transparent_64%)]" />
 
         <div className="relative z-10 mx-auto flex min-h-[100svh] w-[min(1500px,calc(100%-32px))] flex-col justify-end pb-16 pt-36 sm:w-[min(1500px,calc(100%-56px))] sm:pb-20">
-          <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#facc15] sm:text-sm md:text-base mb-3 sm:mb-4 drop-shadow-sm">
+          <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#dfc6a5] sm:text-sm md:text-base mb-3 sm:mb-4 drop-shadow-sm">
             {en ? "LaKa - A home in the green" : "LaKa - Nhà giữa khoảng xanh"}
           </p>
           <h1 className="laka-display-hero max-w-6xl">

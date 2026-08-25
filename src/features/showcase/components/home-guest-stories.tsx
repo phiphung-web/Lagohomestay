@@ -127,24 +127,24 @@ export function HomeGuestStories({ locale = "vi" }: { locale?: ShowcaseLocale })
               )}
             </p>
             {/* Arrows */}
-            <div className="hidden sm:flex items-center gap-2 shrink-0">
+            <div className="hidden sm:flex items-center gap-2.5 shrink-0">
               <button
                 type="button"
                 onClick={() => goToSlide(activeSlide - 1)}
                 disabled={activeSlide === 0}
-                className="focus-ring grid h-10 w-10 sm:h-11 sm:w-11 place-items-center rounded-full border border-[#16311c]/24 transition hover:bg-[#16311c] hover:text-white disabled:opacity-30 disabled:pointer-events-none"
+                className="focus-ring grid h-10 w-10 sm:h-11 sm:w-11 place-items-center rounded-full border-2 border-[#16311c] text-[#16311c] bg-white/40 shadow-sm transition-all hover:bg-[#16311c] hover:text-white disabled:opacity-25 disabled:pointer-events-none"
                 aria-label={en ? "Previous feedback" : "Xem phản hồi trước"}
               >
-                <ArrowLeft className="h-4 w-4" />
+                <ArrowLeft className="h-4 w-4 stroke-[2.2]" />
               </button>
               <button
                 type="button"
                 onClick={() => goToSlide(activeSlide + 1)}
                 disabled={activeSlide === guestStories.length - 1}
-                className="focus-ring grid h-10 w-10 sm:h-11 sm:w-11 place-items-center rounded-full border border-[#16311c]/24 transition hover:bg-[#16311c] hover:text-white disabled:opacity-30 disabled:pointer-events-none"
+                className="focus-ring grid h-10 w-10 sm:h-11 sm:w-11 place-items-center rounded-full border-2 border-[#16311c] text-[#16311c] bg-white/40 shadow-sm transition-all hover:bg-[#16311c] hover:text-white disabled:opacity-25 disabled:pointer-events-none"
                 aria-label={en ? "Next feedback" : "Xem phản hồi tiếp theo"}
               >
-                <ArrowRight className="h-4 w-4" />
+                <ArrowRight className="h-4 w-4 stroke-[2.2]" />
               </button>
             </div>
           </div>
@@ -173,17 +173,16 @@ export function HomeGuestStories({ locale = "vi" }: { locale?: ShowcaseLocale })
           {guestStories.map((story, index) => (
             <article
               key={story.quote.vi}
-              className="laka-feedback-card flex min-h-[300px] sm:min-h-[340px] flex-col justify-between rounded-2xl border border-[#16311c]/12 bg-[#f4ece0] p-7 sm:p-9 shadow-sm hover:shadow-md transition-all"
+              className="laka-feedback-card flex min-h-[290px] sm:min-h-[330px] flex-col justify-between rounded-2xl border border-[#16311c]/12 bg-[#f4ece0] p-7 sm:p-9 shadow-sm hover:shadow-md transition-all"
               role="group"
               aria-roledescription="slide"
               aria-label={`${en ? "Guest feedback" : "Cảm nhận khách nghỉ"} ${index + 1}`}
             >
               <div>
-                <div className="flex items-start justify-between gap-6">
-                  <span className="text-[.6rem] font-bold tracking-[.18em] text-[#80613f]">{String(index + 1).padStart(2, "0")}</span>
-                  <Quote className="h-7 w-7 sm:h-8 sm:w-8 text-[#80613f]/40" aria-hidden="true" />
+                <div className="flex items-start justify-start">
+                  <Quote className="h-7 w-7 sm:h-8 sm:w-8 text-[#80613f]/50" aria-hidden="true" />
                 </div>
-                <p className="mt-7 sm:mt-8 max-w-lg font-serif text-[1.2rem] sm:text-[1.45rem] font-medium leading-[1.45] tracking-[-.015em] text-[#16311c]">
+                <p className="mt-6 sm:mt-7 max-w-lg font-serif text-[1.2rem] sm:text-[1.45rem] font-medium leading-[1.45] tracking-[-.015em] text-[#16311c]">
                   “{story.quote[locale]}”
                 </p>
               </div>
@@ -208,19 +207,19 @@ export function HomeGuestStories({ locale = "vi" }: { locale?: ShowcaseLocale })
               type="button"
               onClick={() => goToSlide(activeSlide - 1)}
               disabled={activeSlide === 0}
-              className="focus-ring grid h-9 w-9 place-items-center rounded-full border border-[#16311c]/24 transition hover:bg-[#16311c] hover:text-white disabled:opacity-30"
+              className="focus-ring grid h-9 w-9 place-items-center rounded-full border-2 border-[#16311c] text-[#16311c] bg-white/40 shadow-sm transition-all hover:bg-[#16311c] hover:text-white disabled:opacity-25"
               aria-label={en ? "Previous feedback" : "Xem phản hồi trước"}
             >
-              <ArrowLeft className="h-3.5 w-3.5" />
+              <ArrowLeft className="h-3.5 w-3.5 stroke-[2.2]" />
             </button>
             <button
               type="button"
               onClick={() => goToSlide(activeSlide + 1)}
               disabled={activeSlide === guestStories.length - 1}
-              className="focus-ring grid h-9 w-9 place-items-center rounded-full border border-[#16311c]/24 transition hover:bg-[#16311c] hover:text-white disabled:opacity-30"
+              className="focus-ring grid h-9 w-9 place-items-center rounded-full border-2 border-[#16311c] text-[#16311c] bg-white/40 shadow-sm transition-all hover:bg-[#16311c] hover:text-white disabled:opacity-25"
               aria-label={en ? "Next feedback" : "Xem phản hồi tiếp theo"}
             >
-              <ArrowRight className="h-3.5 w-3.5" />
+              <ArrowRight className="h-3.5 w-3.5 stroke-[2.2]" />
             </button>
           </div>
 
