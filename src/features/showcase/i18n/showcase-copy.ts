@@ -14,68 +14,108 @@ const breakfastIncluded = [...commonIncluded, "One breakfast"];
 
 const englishStays: Record<string, Partial<Stay>> = {
   "nha-ben-ho": {
-    name: "Lakeside Guest House", subtitle: "Guest House 001 · up to 10 guests", location: "Lakeside", badge: "For groups of up to 10",
-    description: "A shared lakeside home with five medium beds for families or groups who want to stay together with a full view of the water.",
-    longDescription: "Guest House 001 sits beside the large lake, with hills and pine forest in view each morning. Its 35 m² layout and five medium beds accommodate up to ten guests.",
-    amenities: ["Five medium beds", "Private bathroom", "Air conditioning, fan and kettle", "Hair dryer", "Wardrobe"], highlights: ["Up to 10 guests", "Facing the large lake", "Five medium beds"],
-    idealFor: ["Multigenerational families", "Large groups of friends", "Company retreats"], included: commonIncluded,
-    stayNotes: ["Unit 001", "Operating availability is confirmed directly by LAKA"]
+    name: "Guest House",
+    subtitle: "Guest House 001 · up to 10 guests",
+    location: "Lakeside",
+    badge: "1 Unit · Up to 10 guests",
+    description: "A lakeside group house with five medium beds, facing the large lake with pine forest views each morning.",
+    longDescription: "Guest House 001 sits directly beside the lake, designed for friends or multigenerational families to gather and unwind.",
+    amenities: ["Area: 35 m²", "Five medium beds", "Wardrobe", "En-suite bathroom", "Air conditioning, fan, kettle, hair dryer"],
+    highlights: ["35 m² area", "Five medium beds", "Up to 10 guests", "Facing the large lake"],
+    idealFor: ["Large groups of friends", "Multigenerational families", "Company retreats"],
+    included: commonIncluded,
+    stayNotes: ["Unit: Guest House 001", "Max capacity 10 guests"]
   },
-  "bungalow-ben-ho": {
-    name: "Lakeside Bungalow", subtitle: "Bungalows 002–003 · 5–7 guests each", location: "Lakeside", badge: "Loft bungalow",
-    description: "Two light-timber loft bungalows facing the large lake, made for groups of five to seven.",
-    longDescription: "Bungalows 002 and 003 are two-level homes with a loft, directly facing the large lake. Each 15 m² bungalow has two large beds and space for a group of five to seven.",
-    amenities: ["Two levels with one loft", "Two large beds", "Dressing table", "Clothes rack", "Private bathroom", "Essential equipment"], highlights: ["5–7 guests each", "Loft", "Facing the large lake"],
-    idealFor: ["Families", "Groups of 6–7", "Weekend escapes"], included: commonIncluded,
-    stayNotes: ["Two units: 002 and 003", "Operating availability is confirmed directly by LAKA"]
+  "forest-lake-suite": {
+    name: "Forest Lake Suite",
+    subtitle: "Forest Lake Suite 006–011 · 6 units",
+    location: "Lakeside",
+    badge: "6 Units · Breakfast included",
+    description: "A full panoramic glass wall opening directly to forest and lake, like a private frame for the boundless sky.",
+    longDescription: "Six Forest Lake Suites with floor-to-ceiling glass walls, making the room a vast private haven to breathe and rest.",
+    amenities: ["Area: 25 m²", "King-size bed, vanity desk, wardrobe", "En-suite bathroom", "Air conditioning, fan, kettle, hair dryer", "Outdoor seating"],
+    highlights: ["6 Forest Lake Suites", "Panoramic glass view", "Complimentary breakfast"],
+    idealFor: ["Couples", "Peaceful retreats", "Nature lovers"],
+    included: breakfastIncluded,
+    stayNotes: ["Six units: 006 to 011", "Complimentary breakfast included"]
   },
-  "cabin-an-tru": {
-    name: "An Tru Cabin", subtitle: "Lake Suites 004–005 · quiet and private", location: "Facing the lake", badge: "A quiet frame",
-    description: "Two cabins that hold the lake in a single picture window, created for quiet and private time.",
-    longDescription: "An Tru Cabin includes Lake Suites 004 and 005. Each uses one picture window to frame the landscape, prioritising privacy, calm and a genuine sense of refuge.",
-    amenities: ["One large bed", "Outdoor seating", "Dressing table", "Private bathroom"], highlights: ["Two Lake Suites", "One landscape frame", "Quiet and private"],
-    idealFor: ["Couples", "Private escapes", "Guests seeking a slower stay"], included: breakfastIncluded,
-    stayNotes: ["Two units: 004 and 005", "Capacity is confirmed directly by LAKA"]
+  "forest-lake-bathtub-suite": {
+    name: "Forest Lake Bathtub Suite",
+    subtitle: "Infinity Cabin 014–017 · 4 units",
+    location: "Lakeside",
+    badge: "4 Units · Soaking bathtub",
+    description: "An infinity cabin with two full glass walls opening a 180° view across the lake, mountains and skies.",
+    longDescription: "Four Bathtub Suites with 180-degree panoramic glass and a private soaking bathtub with scenic views.",
+    amenities: ["Area: 25 m²", "King bed, vanity desk, wardrobe", "Private soaking bathtub", "En-suite bathroom", "Air conditioning, fan, kettle, hair dryer", "Outdoor seating"],
+    highlights: ["Private soaking bathtub", "180° corner view", "Complimentary breakfast"],
+    idealFor: ["Couples", "Anniversary escapes", "Scenic retreats"],
+    included: breakfastIncluded,
+    stayNotes: ["Four units: 014 to 017", "Includes private soaking bathtub and breakfast"]
   },
-  "cabin-khoang-troi": {
-    name: "Khoang Troi Cabin", subtitle: "Forest Lake Suites 006–011 · six cabins", location: "In the valley", badge: "A sky of your own",
-    description: "A full glass wall opens each cabin to forest, lake and what feels like a private piece of sky.",
-    longDescription: "Khoang Troi Cabin includes six Forest Lake Suites, numbered 006 to 011. A full glass wall creates a bright, open feeling and keeps the sky fully in view.",
-    amenities: ["Large panoramic glazing", "One large bed", "Outdoor seating", "Private bathroom"], highlights: ["Six Forest Lake Suites", "Full glass wall", "A private piece of sky"],
-    idealFor: ["Couples", "Cabin architecture lovers", "View-led escapes"], included: breakfastIncluded,
-    stayNotes: ["Six units: 006–011", "Capacity is confirmed directly by LAKA"]
+  "lake-suite": {
+    name: "Lake Suite",
+    subtitle: "An Tru Cabin 004–005 · 2 units",
+    location: "Lakeside",
+    badge: "2 Units · Breakfast included",
+    description: "A tranquil cabin framing the lush green nature through a picture window, designed for quiet pauses.",
+    longDescription: "Two Lake Suites designed for silence and deep relaxation, bringing the outdoors into your personal sanctuary.",
+    amenities: ["Area: 25 m²", "King bed, vanity desk, wardrobe", "En-suite bathroom", "Air conditioning, fan, kettle, hair dryer", "Outdoor seating"],
+    highlights: ["2 Lake Suites", "Landscape picture window", "Complimentary breakfast"],
+    idealFor: ["Couples", "Private getaways", "Slow living lovers"],
+    included: breakfastIncluded,
+    stayNotes: ["Two units: 004 and 005", "Complimentary breakfast included"]
   },
-  "cabin-sum-vay": {
-    name: "Sum Vay Cabin", subtitle: "Group Cabins 012–013 · 14 guests each", location: "In the valley", badge: "For groups of 14",
-    description: "Two bunk-bed cabins for larger groups, with four picture windows keeping the gathering connected to nature.",
-    longDescription: "Sum Vay Cabin includes Group Cabins 012 and 013, for 14 guests each. Bunk beds support larger groups while four windows keep the shared space open to the landscape.",
-    amenities: ["Seven bunk beds", "Four windows overlooking the pine forest", "Private bathroom", "Shared space for large groups"], highlights: ["14 guests each", "Two group cabins", "Seven bunk beds"],
-    idealFor: ["Large groups of friends", "Company retreats", "Team building"], included: commonIncluded,
-    stayNotes: ["Two units: 012 and 013", "Operating availability is confirmed directly by LAKA"]
+  "bungalow": {
+    name: "Bungalow",
+    subtitle: "Loft Bungalow 002–003 · 2 units (5–7 guests)",
+    location: "Forest",
+    badge: "2 Units · 2 floors with loft",
+    description: "A warm light-wood bungalow with two floors and a cozy loft, suitable for groups of 5–7 guests.",
+    longDescription: "Two loft bungalows facing the lake and surrounded by trees, offering space to bond and rest.",
+    amenities: ["2 floors with 1 cozy loft", "Area: 15 m²", "Two queen beds, vanity desk, clothes rack", "En-suite bathroom", "Air conditioning, fan, kettle, hair dryer"],
+    highlights: ["2 floors with loft", "Two large beds", "For groups of 5–7"],
+    idealFor: ["Families", "Groups of 5–7 friends", "Weekend holidays"],
+    included: commonIncluded,
+    stayNotes: ["Two units: 002 and 003", "Two levels with wooden loft"]
   },
-  "cabin-vo-cuc": {
-    name: "Vo Cuc Cabin", subtitle: "Forest Lake Bathtub Suites 014–017 · four cabins", location: "Forest and lake", badge: "180-degree view",
-    description: "Two full glass walls open a 180-degree view across forest and lake, making the space feel almost infinite.",
-    longDescription: "Vo Cuc Cabin includes four Forest Lake Bathtub Suites, numbered 014 to 017. Two full glass walls create a 180-degree view and an open, almost infinite feeling; LAKA's source material also identifies these as bathtub suites.",
-    amenities: ["180-degree corner glazing", "Private soaking bathtub", "One large bed", "Outdoor seating", "Private bathroom"], highlights: ["Four bathtub suites", "180-degree view", "Two glass walls"],
-    idealFor: ["Couples", "Anniversary stays", "View-first travellers"], included: breakfastIncluded,
-    stayNotes: ["Four units: 014–017", "Capacity is confirmed directly by LAKA"]
+  "cabin-group": {
+    name: "Cabin Group",
+    subtitle: "Group Cabin 012–013 · 2 units (up to 14 guests)",
+    location: "Forest",
+    badge: "2 Units · Up to 14 guests",
+    description: "A communal cabin with 7 bunk beds accommodating up to 14 guests, nestled in the heart of pine trees.",
+    longDescription: "Two spacious group cabins with four large windows keeping you connected to pine forest scenery.",
+    amenities: ["Area: 30 m²", "Seven bunk beds, wardrobe", "En-suite bathroom", "Air conditioning, fan, kettle, hair dryer"],
+    highlights: ["Seven bunk beds", "4 picture windows", "For groups up to 14"],
+    idealFor: ["Big groups of friends", "Company retreats", "Team building"],
+    included: commonIncluded,
+    stayNotes: ["Two units: 012 and 013", "Max capacity 14 guests per cabin"]
   },
-  "nha-thong-reo": {
-    name: "Thong Reo Eco Camp", subtitle: "Eco Camps 018–019 · details being confirmed", location: "Pine forest", badge: "Details being confirmed",
-    description: "Two Eco Camps near the pine forest; capacity, specifications and detailed amenities are being confirmed before publication.",
-    longDescription: "Thong Reo includes Eco Camps 018 and 019 in LAKA's twenty-unit collection. The owner has not yet approved detailed specifications, so the website does not use this type for capacity or amenity advice.",
-    amenities: ["Two Eco Camps: 018 and 019", "Near the pine forest", "Detailed specifications awaiting approval"], highlights: ["Two Eco Camps", "Pine forest area", "Details in progress"],
-    idealFor: ["Guests who need direct advice from LAKA"], included: commonIncluded,
-    stayNotes: ["Two units: 018 and 019", "Detailed amenities are confirmed directly by LAKA"]
+  "lake-suite-giua-rung": {
+    name: "Lake Suite Forest",
+    subtitle: "Pine Forest Cabin 018–019 · 2 units",
+    location: "Forest",
+    badge: "2 Units · Breakfast included",
+    description: "A private retreat framed by tall pine trees, giving you peace, stillness and restorative energy.",
+    longDescription: "Two Lake Suites nestled in the pine forest, designed for restful pauses with nature.",
+    amenities: ["Area: 25 m²", "King bed, vanity desk, wardrobe", "En-suite bathroom", "Air conditioning, fan, kettle, hair dryer", "Outdoor seating"],
+    highlights: ["2 Forest Suites", "Pine forest view", "Complimentary breakfast"],
+    idealFor: ["Couples", "Solo retreats", "Restful getaways"],
+    included: breakfastIncluded,
+    stayNotes: ["Two units: 018 and 019", "Complimentary breakfast included"]
   },
-  "nha-tren-doi": {
-    name: "Top Hill Villa", subtitle: "Villa 020 · 15–20 guests", location: "Hilltop", badge: "LAKA panorama",
-    description: "A secluded hilltop home overlooking the full valley, lake and mountains for a group that wants space of its own.",
-    longDescription: "Top Hill Villa 020 is a secluded hilltop home for 15–20 guests. It looks across the entire valley, lake and mountains—a group stay that still feels separate and private.",
-    amenities: ["One bedroom and one living room", "Five medium beds", "Private bathroom", "Television and sofa", "Large outdoor yard"], highlights: ["15–20 guests", "Top Hill Villa", "Full valley view"],
-    idealFor: ["Company retreats", "Large families", "Large groups of friends"], included: commonIncluded,
-    stayNotes: ["One unit: 020", "Capacity and operating availability are confirmed directly by LAKA"]
+  "villa-top-hill": {
+    name: "Villa Top Hill",
+    subtitle: "Villa Top Hill 020 · 15–20 guests",
+    location: "Hilltop",
+    badge: "1 Unit · 15–20 guests",
+    description: "A secluded hilltop villa with 1 bedroom and 1 living room, overlooking the entire valley for 15–20 guests.",
+    longDescription: "Villa 020 is our exclusive hilltop estate with wide panoramic views, spacious outdoor terrace and ample gathering room.",
+    amenities: ["1 bedroom & 1 living room", "Area: 35 m²", "Five medium beds, wardrobe, TV, sofa", "En-suite bathroom", "Air conditioning, fan, kettle, hair dryer", "Large outdoor yard"],
+    highlights: ["15–20 guests capacity", "1 bedroom + 1 living room", "Panoramic valley view"],
+    idealFor: ["Company teams", "Big family reunions", "Groups of 15–20"],
+    included: commonIncluded,
+    stayNotes: ["One exclusive unit: Villa 020", "Private hilltop position with full view"]
   }
 };
 

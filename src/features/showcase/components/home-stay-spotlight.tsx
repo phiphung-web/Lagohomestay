@@ -13,7 +13,7 @@ export function HomeStaySpotlight({
   locale?: ShowcaseLocale;
 }) {
   const en = locale === "en";
-  const featured = ["cabin-an-tru", "cabin-sum-vay", "nha-tren-doi"]
+  const featured = ["nha-ben-ho", "forest-lake-suite", "villa-top-hill"]
     .map((slug) => stays.find((stay) => stay.slug === slug))
     .filter((stay): stay is (typeof stays)[number] => Boolean(stay))
     .map((stay) => localizeStay(stay, locale));

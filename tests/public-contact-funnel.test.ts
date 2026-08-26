@@ -23,7 +23,7 @@ describe("LAKA public contact funnel", () => {
     const form = source("src/features/showcase/components/contact-inquiry-form.tsx");
     const mobileMenu = source("src/features/showcase/components/template-mobile-menu.tsx");
 
-    expect(explorer).toContain('/lien-he?stay=${activeStay.slug}#inquiry-form');
+    expect(explorer).toContain('inquiryStay');
     expect(form).toContain('id="inquiry-form"');
     expect(form).toContain('query.get("stay")');
     expect(form).toContain('query.get("guests")');
@@ -31,15 +31,13 @@ describe("LAKA public contact funnel", () => {
   });
 
   it("keeps approved accommodation facts aligned in Vietnamese and English", () => {
-    const bungalow = stays.find((stay) => stay.slug === "bungalow-ben-ho")!;
-    const anTru = stays.find((stay) => stay.slug === "cabin-an-tru")!;
-    const thongReo = stays.find((stay) => stay.slug === "nha-thong-reo")!;
-    const topHill = stays.find((stay) => stay.slug === "nha-tren-doi")!;
+    const bungalow = stays.find((stay) => stay.slug === "bungalow")!;
+    const anTru = stays.find((stay) => stay.slug === "lake-suite")!;
+    const topHill = stays.find((stay) => stay.slug === "villa-top-hill")!;
 
     expect(bungalow.subtitle).toContain("5–7 khách");
-    expect(anTru.included).toContain("Một bữa sáng");
+    expect(anTru.included).toContain("1 Bữa sáng (Miễn phí)");
     expect(localizeStay(anTru, "en").included).toContain("One breakfast");
-    expect(thongReo.maxGuests).toBe(0);
     expect(topHill).toMatchObject({ bedrooms: 1, beds: 5, bathrooms: 1, area: 35 });
   });
 

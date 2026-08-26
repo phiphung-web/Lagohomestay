@@ -34,6 +34,20 @@ describe("LAKA showcase layout guards", () => {
     expect(form).toContain('role="status"');
   });
 
+  it("uses one font-independent Zalo icon across public contact surfaces", () => {
+    const icon = source("src/shared/components/ui/zalo-icon.tsx");
+    const brandSections = source("src/features/showcase/components/template-brand-sections.tsx");
+    const sharedFooter = source("src/shared/components/layout/footer.tsx");
+    const templateSite = source("src/features/showcase/site/complete-template-site.tsx");
+
+    expect(icon).toContain("zaloWordmarkPath");
+    expect(icon).toContain("useId()");
+    expect(icon).not.toContain("<text");
+    expect(brandSections).toContain("<ZaloIcon");
+    expect(sharedFooter).toContain("<ZaloIcon");
+    expect(templateSite).toContain("<ZaloIcon");
+  });
+
   it("keeps the public-site heading hierarchy clear and hides unapproved feedback placeholders", () => {
     const globals = source("src/app/globals.css");
     const home = source("src/features/showcase/site/main-home.tsx");

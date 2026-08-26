@@ -30,8 +30,8 @@ describe("Quiet Living locale routing", () => {
   });
 
   it("localizes accommodation content while preserving its identity", () => {
-    const infinityCabin = localizeStay(stays.find((stay) => stay.slug === "cabin-vo-cuc")!, "en");
-    expect(infinityCabin.name).toBe("Vo Cuc Cabin");
-    expect(infinityCabin.slug).toBe("cabin-vo-cuc");
+    const infinityCabin = localizeStay(stays.find((stay) => stay.slug === "forest-lake-bathtub-suite")!, "en");
+    expect(infinityCabin.name).toBe("Forest Lake Bathtub Suite");
+    expect(infinityCabin.slug).toBe("forest-lake-bathtub-suite");
   });
 });

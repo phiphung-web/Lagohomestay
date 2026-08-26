@@ -37,12 +37,7 @@ describe("LAKA presentation content", () => {
     expect(stays).toHaveLength(8);
     for (const stay of stays) {
       expect(stay.amenities.length).toBeGreaterThanOrEqual(3);
-      if (stay.slug === "nha-thong-reo") {
-        expect(stay.maxGuests).toBe(0);
-        expect(stay.idealFor).toEqual(["Khách cần LAKA tư vấn trực tiếp"]);
-      } else {
-        expect(stay.idealFor.length).toBeGreaterThanOrEqual(3);
-      }
+      expect(stay.idealFor.length).toBeGreaterThanOrEqual(3);
       expect(stay.included.length).toBeGreaterThanOrEqual(2);
       expect(stay.stayNotes.length).toBeGreaterThanOrEqual(2);
       expect(stay.basePrice).toBe(0);
@@ -53,7 +48,7 @@ describe("LAKA presentation content", () => {
     expect(stayZones).toHaveLength(3);
     expect(stays).toHaveLength(8);
     expect(stayUnits).toHaveLength(20);
-    expect(getUnitsForStay("stay-khoang-troi")).toHaveLength(6);
+    expect(getUnitsForStay("stay-forest-lake-suite")).toHaveLength(6);
     expect(getUnitsForStay("stay-guest-house")).toHaveLength(1);
     expect(new Set(stayUnits.map((unit) => unit.code)).size).toBe(20);
     expect(stays.every((stay) => stayZones.some((zone) => zone.id === stay.zoneId))).toBe(true);
@@ -63,7 +58,7 @@ describe("LAKA presentation content", () => {
 
   it("uses the latest verified accommodation details without publishing rates", () => {
     const guestHouse = stays.find((stay) => stay.slug === "nha-ben-ho")!;
-    const bungalow = stays.find((stay) => stay.slug === "bungalow-ben-ho")!;
+    const bungalow = stays.find((stay) => stay.slug === "bungalow")!;
 
     expect(guestHouse).toMatchObject({ maxGuests: 10, beds: 5, bathrooms: 1, area: 35, basePrice: 0 });
     expect(bungalow).toMatchObject({ maxGuests: 7, beds: 2, bathrooms: 1, area: 15, basePrice: 0 });

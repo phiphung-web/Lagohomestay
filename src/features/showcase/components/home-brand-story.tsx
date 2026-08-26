@@ -94,14 +94,14 @@ export function HomeBrandStory({ basePath, locale = "vi" }: { basePath: string; 
             </div>
           </article>
 
-          {/* Call to Action Button (Synchronized pill style with arrow) */}
-          <div className="mt-7 flex justify-center">
+          {/* Secondary editorial CTA, shared with the desktop homepage sections */}
+          <div className="mt-7 flex justify-start">
             <Link
               href={`${basePath}/ve-laka`}
-              className="focus-ring group inline-flex items-center justify-center gap-2.5 rounded-full border-2 border-[#16311c] text-[#16311c] hover:bg-[#16311c] hover:text-white transition-all px-7 py-3 text-xs font-bold uppercase tracking-[0.16em] shadow-sm active:scale-95"
+              className="focus-ring group inline-flex min-h-12 items-center gap-3 border-b-2 border-[#16311c] pb-1 text-xs font-bold uppercase tracking-[0.16em] text-[#16311c] transition-all hover:border-[#80613f] hover:text-[#80613f]"
             >
               {en ? "Read the full story" : "Đọc trọn câu chuyện"}
-              <ArrowRight className="h-3.5 w-3.5 transition group-hover:translate-x-1" />
+              <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
             </Link>
           </div>
         </div>

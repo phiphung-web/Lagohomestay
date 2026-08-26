@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import { ArrowRight, ChevronLeft, ChevronRight, Instagram, Mail, MapPin, Phone, Sparkles } from "lucide-react";
 import { conceptImages } from "@/features/stays/data/demo-data";
 import type { ShowcaseLocale } from "@/features/showcase/i18n/locale";
+import { ZaloIcon } from "@/shared/components/ui/zalo-icon";
 import { publicContact } from "@/shared/lib/public-contact";
 
 type Mood = "editorial" | "cinematic" | "organic";
@@ -57,15 +58,7 @@ const contactChannels: readonly ContactChannel[] = [
   {
     id: "zalo",
     icon: null,
-    svg: (className = "h-6 w-6") => (
-      <svg className={className} viewBox="0 0 24 24" fill="currentColor">
-        <mask id="zalo-mask-brand-sections">
-          <rect width="24" height="24" fill="white" />
-          <text x="12" y="12.2" textAnchor="middle" dominantBaseline="middle" fill="black" fontSize="5.2" fontWeight="900" fontFamily="system-ui, -apple-system, sans-serif" letterSpacing="-0.2px">zalo</text>
-        </mask>
-        <path mask="url(#zalo-mask-brand-sections)" d="M12 2.5C6.75 2.5 2.5 6.3 2.5 11c0 2.7 1.43 5.1 3.65 6.6L5.3 21.5l4.2-1.4c.8.2 1.65.4 2.5.4 5.25 0 9.5-3.8 9.5-8.5s-4.25-8.5-9.5-8.5z" />
-      </svg>
-    ),
+    svg: (className = "h-6 w-6") => <ZaloIcon className={className} />,
     label: { vi: "Zalo", en: "Zalo" },
     value: publicContact.phoneDisplay,
     subText: { vi: "Tư vấn & Đặt phòng", en: "Support & Booking" },
