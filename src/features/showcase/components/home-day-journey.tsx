@@ -15,7 +15,7 @@ export function HomeDayJourney({
   const experiences = lakaExperiences.slice(0, 4);
 
   return (
-    <section id="mot-ngay" className="laka-home-gradient-day laka-section-normal scroll-mt-20 px-5 text-white sm:px-8">
+    <section id="mot-ngay" className="laka-section-normal scroll-mt-20 bg-[#0a1a13] px-5 text-white sm:px-8">
       <div className="mx-auto w-[min(1480px,100%)]">
         {/* Balanced Header layout */}
         <header className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-white/14 pb-8 sm:pb-10">

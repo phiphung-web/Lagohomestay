@@ -75,7 +75,7 @@ export function MainHome({ config, locale = "vi" }: { config: CompleteTemplateCo
       <HomeDiningPreview basePath={config.basePath} locale={locale} />
       <HomeDayJourney basePath={config.basePath} locale={locale} />
 
-      <section id="ky-uc" className="laka-home-gradient-gallery laka-section-normal scroll-mt-20 px-5 sm:px-8">
+      <section id="ky-uc" className="laka-section-normal scroll-mt-20 bg-[#f2ece2] px-5 sm:px-8">
         <div className="mx-auto w-[min(1380px,100%)]">
           <header className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-[#16311c]/15 pb-8 sm:pb-10">
             <div>

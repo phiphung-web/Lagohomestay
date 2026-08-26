@@ -107,7 +107,7 @@ export function HomeGuestStories({ locale = "vi" }: { locale?: ShowcaseLocale })
   return (
     <section
       id="feedback"
-      className="laka-home-gradient-feedback laka-section-normal scroll-mt-20 overflow-hidden px-5 text-[#16311c] sm:px-8"
+      className="laka-section-normal scroll-mt-20 overflow-hidden bg-[#e8decb] px-5 text-[#16311c] sm:px-8"
       aria-labelledby="feedback-heading"
     >
       <div className="mx-auto w-[min(1380px,100%)]">
