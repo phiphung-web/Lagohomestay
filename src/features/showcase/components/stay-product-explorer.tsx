@@ -220,32 +220,12 @@ export function StayProductExplorer({
     };
   }, [activeStay, closeStay]);
 
-  // Luxury Story-driven tab categories with thumbnails and sub-labels
+  // Pure luxury minimal tabs (no avatars, no subtext)
   const tabs = [
-    {
-      slug: null,
-      label: locale === "en" ? "All Stays" : "Tất cả",
-      subtitle: locale === "en" ? "Full Collection" : "Toàn bộ 20 căn",
-      image: "https://images.unsplash.com/photo-1449158743715-0a90ebb6d2d8?auto=format&fit=crop&w=300&q=80"
-    },
-    {
-      slug: "nha-ben-ho",
-      label: locale === "en" ? "Lakeside Homes" : "Nhà Bên Hồ",
-      subtitle: locale === "en" ? "Lake & Mountain" : "Ven hồ nước",
-      image: "https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&w=300&q=80"
-    },
-    {
-      slug: "nha-giua-rung",
-      label: locale === "en" ? "Forest Homes" : "Nhà Giữa Rừng",
-      subtitle: locale === "en" ? "Pine Forest" : "Rừng thông xanh",
-      image: "https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?auto=format&fit=crop&w=300&q=80"
-    },
-    {
-      slug: "nha-tren-doi",
-      label: locale === "en" ? "Hilltop Homes" : "Nhà Trên Đồi",
-      subtitle: locale === "en" ? "Panoramic View" : "Đỉnh đồi thung lũng",
-      image: "https://images.unsplash.com/photo-1523217582562-09d0def993a6?auto=format&fit=crop&w=300&q=80"
-    }
+    { slug: null, label: locale === "en" ? "All Stays" : "Tất cả" },
+    { slug: "nha-ben-ho", label: locale === "en" ? "Lakeside Homes" : "Nhà Bên Hồ" },
+    { slug: "nha-giua-rung", label: locale === "en" ? "Forest Homes" : "Nhà Giữa Rừng" },
+    { slug: "nha-tren-doi", label: locale === "en" ? "Hilltop Homes" : "Nhà Trên Đồi" }
   ];
 
   const policies = sharedPolicies[locale];
@@ -687,14 +667,14 @@ export function StayProductExplorer({
       <section id="bo-suu-tap-can" className="scroll-mt-[92px] bg-[#eae1d2] py-10 sm:py-14 text-[#16311c]">
         <div className="mx-auto w-[min(1460px,calc(100%-28px))] sm:w-[min(1460px,calc(100%-48px))]">
           {/* ================================================================= */}
-          {/* 1. LUXURY STORY-DRIVEN TAB NAVIGATION RAIL                       */}
+          {/* 1. REFINED LUXURY MINIMALIST TAB NAVIGATION                      */}
           {/* ================================================================= */}
           <nav
             aria-label={locale === "en" ? "Filter stays by zone" : "Lọc căn theo khu lưu trú"}
-            className="sticky top-[var(--laka-header-offset)] z-30 transition-[top] duration-300 -mx-3 sm:mx-0 px-3 sm:px-0"
+            className="sticky top-[var(--laka-header-offset)] z-30 transition-[top] duration-300 -mx-3 sm:mx-0 px-3 sm:px-0 flex justify-center"
           >
-            <div className="rounded-2xl sm:rounded-full border border-[#16311c]/12 bg-[#eae1d2]/90 p-2 sm:p-2.5 backdrop-blur-xl shadow-[0_12px_36px_rgba(22,49,28,0.08)]">
-              <div className="flex items-center gap-2.5 sm:gap-3 overflow-x-auto scrollbar-none snap-x scroll-smooth sm:grid sm:grid-cols-4">
+            <div className="max-w-full overflow-x-auto scrollbar-none rounded-full border border-[#16311c]/12 bg-[#eae1d2]/90 p-1.5 backdrop-blur-xl shadow-[0_10px_30px_rgba(22,49,28,0.07)]">
+              <div className="flex items-center gap-1.5 sm:gap-2 snap-x scroll-smooth">
                 {tabs.map((tab) => {
                   const selected = activeZoneSlug === tab.slug;
                   return (
@@ -703,42 +683,15 @@ export function StayProductExplorer({
                       type="button"
                       aria-pressed={selected}
                       onClick={() => setQuery({ khu: tab.slug, can: null }, "replace")}
-                      className={`focus-ring group relative flex shrink-0 snap-start items-center gap-3 rounded-full py-2 pl-2 pr-4 sm:pr-5 text-left transition-all duration-300 ${
+                      className={`focus-ring relative flex shrink-0 snap-start items-center justify-center rounded-full px-5 sm:px-8 py-2.5 sm:py-3 text-center transition-all duration-300 ${
                         selected
-                          ? "bg-[#16311c] text-[#eae1d2] shadow-[0_8px_24px_rgba(22,49,28,0.25)] scale-[1.02]"
-                          : "bg-white/55 text-[#16311c] border border-[#16311c]/8 hover:bg-white/85 hover:scale-[1.01]"
+                          ? "bg-[#16311c] text-[#eae1d2] shadow-md font-semibold tracking-wide"
+                          : "text-[#16311c]/70 hover:text-[#16311c] hover:bg-black/5 font-medium"
                       }`}
                     >
-                      {/* Circular Story Ring Avatar */}
-                      <div className={`relative h-10 w-10 sm:h-11 sm:w-11 shrink-0 overflow-hidden rounded-full p-[2px] transition duration-300 ${
-                        selected
-                          ? "ring-2 ring-[#dfc6a5] shadow-[0_0_10px_rgba(223,198,165,0.45)]"
-                          : "ring-1.5 ring-[#16311c]/20 group-hover:ring-[#80613f]"
-                      }`}>
-                        <div className="relative h-full w-full overflow-hidden rounded-full">
-                          <Image
-                            src={tab.image}
-                            alt={tab.label}
-                            fill
-                            sizes="44px"
-                            className="object-cover transition duration-500 group-hover:scale-110"
-                          />
-                        </div>
-                      </div>
-
-                      {/* Story Typography */}
-                      <div className="flex flex-col min-w-0 pr-1">
-                        <span className={`text-xs sm:text-sm font-bold tracking-tight whitespace-nowrap leading-tight ${
-                          selected ? "text-white" : "text-[#16311c]"
-                        }`}>
-                          {tab.label}
-                        </span>
-                        <span className={`text-[.62rem] sm:text-[.68rem] font-serif italic whitespace-nowrap leading-tight mt-0.5 ${
-                          selected ? "text-[#dfc6a5]" : "text-[#80613f]"
-                        }`}>
-                          {tab.subtitle}
-                        </span>
-                      </div>
+                      <span className="text-xs sm:text-sm whitespace-nowrap">
+                        {tab.label}
+                      </span>
                     </button>
                   );
                 })}
