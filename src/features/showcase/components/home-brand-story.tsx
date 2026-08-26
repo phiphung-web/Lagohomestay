@@ -33,7 +33,7 @@ export function HomeBrandStory({ basePath, locale = "vi" }: { basePath: string; 
   const en = locale === "en";
 
   return (
-    <section id="gioi-thieu" className="scroll-mt-20 bg-gradient-to-b from-[#eae1d2] via-[#ebe3d6] to-[#e7ded0] relative overflow-hidden">
+    <section id="gioi-thieu" className="laka-home-gradient-story relative scroll-mt-20 overflow-hidden">
       {/* ========================================================
           1. MOBILE LAYOUT
           ======================================================== */}

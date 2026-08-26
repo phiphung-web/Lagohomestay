@@ -26,7 +26,7 @@ export function HomeLandscapeCollections({ basePath, locale = "vi" }: { basePath
   const en = locale === "en";
 
   return (
-    <section id="luu-tru" className="laka-section-normal scroll-mt-20 bg-gradient-to-b from-[#e7ded0] via-[#dfd4c3] to-[#e8dfd2] px-5 sm:px-8">
+    <section id="luu-tru" className="laka-home-gradient-stays laka-section-normal scroll-mt-20 px-5 sm:px-8">
       <div className="mx-auto w-[min(1380px,100%)]">
         {/* Balanced Header layout matching other sections */}
         <header className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-[#16311c]/15 pb-8 sm:pb-10">

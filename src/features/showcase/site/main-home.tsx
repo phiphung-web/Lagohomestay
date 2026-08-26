@@ -53,7 +53,7 @@ export function MainHome({ config, locale = "vi" }: { config: CompleteTemplateCo
           <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#dfc6a5] sm:text-sm md:text-base mb-3 sm:mb-4 drop-shadow-sm">
             {en ? "LAKA - A home in the green" : "LAKA - Nhà giữa khoảng xanh"}
           </p>
-          <h1 className="laka-display-hero max-w-6xl">
+          <h1 className="laka-display-hero laka-display-hero-home max-w-6xl">
             <span className="block sm:inline">{heroFirstLine}<span className="sm:hidden"> -</span></span>
             <span className="hidden sm:inline"> - </span>
             <span className="block sm:inline">{heroSecondLine}</span>
@@ -75,7 +75,7 @@ export function MainHome({ config, locale = "vi" }: { config: CompleteTemplateCo
       <HomeDiningPreview basePath={config.basePath} locale={locale} />
       <HomeDayJourney basePath={config.basePath} locale={locale} />
 
-      <section id="ky-uc" className="laka-section-normal scroll-mt-20 bg-gradient-to-b from-[#ebe3d6] via-[#f2ece2] to-[#e8decb] px-5 sm:px-8">
+      <section id="ky-uc" className="laka-home-gradient-gallery laka-section-normal scroll-mt-20 px-5 sm:px-8">
         <div className="mx-auto w-[min(1380px,100%)]">
           <header className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-[#16311c]/15 pb-8 sm:pb-10">
             <div>
