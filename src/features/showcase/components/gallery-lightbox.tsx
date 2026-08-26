@@ -41,7 +41,7 @@ export function GalleryLightbox({ images, mood, locale = "vi" }: { images: strin
 
   return (
     <>
-      <section className="mx-auto grid grid-cols-3 gap-2.5 sm:gap-4 md:gap-5 py-8 sm:py-12 w-full" aria-label={locale === "en" ? "Memory gallery photos" : "Các hình ảnh thư viện ký ức"}>
+      <section className="mx-auto grid grid-cols-3 gap-2.5 sm:gap-4 md:gap-5 mt-8 sm:mt-10 mb-2 w-full" aria-label={locale === "en" ? "Memory gallery photos" : "Các hình ảnh thư viện ký ức"}>
         {images.map((src, index) => (
           <button
             type="button"

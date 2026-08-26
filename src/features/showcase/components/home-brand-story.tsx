@@ -33,11 +33,11 @@ export function HomeBrandStory({ basePath, locale = "vi" }: { basePath: string; 
   const en = locale === "en";
 
   return (
-    <section id="gioi-thieu" className="scroll-mt-20 bg-[#eae1d2] relative overflow-hidden">
+    <section id="gioi-thieu" className="scroll-mt-20 bg-gradient-to-b from-[#eae1d2] via-[#ebe3d6] to-[#e7ded0] relative overflow-hidden">
       {/* ========================================================
           1. MOBILE LAYOUT
           ======================================================== */}
-      <div className="block lg:hidden pb-14 pt-0">
+      <div className="block lg:hidden pb-12 pt-0">
         {/* Top Banner with Angled Bottom Cut in LAKA Deep Forest Green */}
         <div
           className="relative bg-[#10251d] pt-12 pb-24 text-white text-center px-4 overflow-hidden"
@@ -94,13 +94,14 @@ export function HomeBrandStory({ basePath, locale = "vi" }: { basePath: string; 
             </div>
           </article>
 
-          {/* Call to Action Button */}
+          {/* Call to Action Button (Synchronized pill style with arrow) */}
           <div className="mt-7 flex justify-center">
             <Link
               href={`${basePath}/ve-laka`}
-              className="focus-ring inline-flex items-center justify-center border-2 border-[#16311c] text-[#16311c] hover:bg-[#16311c] hover:text-white transition-all px-8 py-3 text-xs font-bold uppercase tracking-[0.2em] rounded-sm shadow-sm"
+              className="focus-ring group inline-flex items-center justify-center gap-2.5 rounded-full border-2 border-[#16311c] text-[#16311c] hover:bg-[#16311c] hover:text-white transition-all px-7 py-3 text-xs font-bold uppercase tracking-[0.16em] shadow-sm active:scale-95"
             >
               {en ? "Read the full story" : "Đọc trọn câu chuyện"}
+              <ArrowRight className="h-3.5 w-3.5 transition group-hover:translate-x-1" />
             </Link>
           </div>
         </div>
@@ -115,8 +116,8 @@ export function HomeBrandStory({ basePath, locale = "vi" }: { basePath: string; 
           <div className="grid grid-cols-[1.08fr_.92fr] gap-12 xl:gap-16 items-center">
             {/* Left Column: Layered Photography Frame */}
             <div className="relative">
-              {/* Main Photo Frame */}
-              <div className="relative aspect-[16/11] rounded-3xl overflow-hidden shadow-2xl bg-[#10251d] border border-[#16311c]/10 group">
+              {/* Main Photo Frame with matching border-4 border-[#eae1d2] */}
+              <div className="relative aspect-[16/11] rounded-3xl overflow-hidden shadow-2xl bg-[#10251d] border-4 border-[#eae1d2] group">
                 <Image
                   src={conceptImages.detail1}
                   alt={en ? "A window looking out to nature at LAKA — concept image" : "Khung kính nhìn ra thiên nhiên tại LAKA — ảnh minh họa"}

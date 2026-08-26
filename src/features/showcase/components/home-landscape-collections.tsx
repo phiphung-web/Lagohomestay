@@ -26,15 +26,21 @@ export function HomeLandscapeCollections({ basePath, locale = "vi" }: { basePath
   const en = locale === "en";
 
   return (
-    <section id="luu-tru" className="laka-section-normal scroll-mt-20 border-y border-[#16311c]/12 bg-[#e3d8c9] px-5 sm:px-8">
+    <section id="luu-tru" className="laka-section-normal scroll-mt-20 bg-gradient-to-b from-[#e7ded0] via-[#dfd4c3] to-[#e8dfd2] px-5 sm:px-8">
       <div className="mx-auto w-[min(1380px,100%)]">
-        {/* Centered Header */}
-        <header className="text-center max-w-2xl mx-auto">
-          <h2 className="laka-home-section-title text-[#16311c]">
-            {en ? "Stays" : "Lưu Trú"}
-          </h2>
-          <p className="laka-home-section-lead mt-3 sm:mt-4 text-[#16311c]/80">
-            {en ? "One green retreat, one rhythm of your own" : "Một khoảng xanh, một nhịp riêng"}
+        {/* Balanced Header layout matching other sections */}
+        <header className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-[#16311c]/15 pb-8 sm:pb-10">
+          <div>
+            <h2 className="laka-home-section-title text-[#16311c]">
+              {en ? "Stays" : "Lưu Trú"}
+            </h2>
+          </div>
+          <p className="font-serif text-2xl sm:text-3xl lg:text-4xl font-medium text-[#16311c] md:text-right shrink-0">
+            {en ? (
+              <>A green sanctuary,<br className="hidden md:inline" /> <i className="text-[#80613f]">a rhythm of your own.</i></>
+            ) : (
+              <>Một khoảng xanh,<br className="hidden md:inline" /> <i className="text-[#80613f]">một nhịp riêng.</i></>
+            )}
           </p>
         </header>
 

@@ -9,7 +9,7 @@ export function HomeDiningPreview({ basePath, locale = "vi" }: { basePath: strin
   const stories = diningStories.slice(0, 2);
 
   return (
-    <section id="am-thuc" className="laka-section-normal bg-[#f2ece2] px-5 sm:px-8">
+    <section id="am-thuc" className="laka-section-normal bg-gradient-to-b from-[#e8dfd2] via-[#f0e9dc] to-[#e4dbc9] px-5 sm:px-8">
       <div className="mx-auto w-[min(1380px,100%)]">
         {/* Header with balanced layout on desktop and mobile */}
         <header className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-[#16311c]/15 pb-8 sm:pb-10">

@@ -55,7 +55,8 @@ describe("LAKA showcase layout guards", () => {
     expect(stays).toContain("Nhà Bên Hồ");
     expect(stays).toContain("Nhà Trên Đồi");
     expect(stays).toContain("Nhà Giữa Rừng");
-    expect(stays).toContain("Một khoảng xanh, một nhịp riêng");
+    expect(stays).toContain("Một khoảng xanh");
+    expect(stays).toContain("một nhịp riêng");
     expect(stays).toContain('href={basePath + "/luu-tru"}');
     expect(stays).not.toContain("stay.details");
     expect(home).not.toContain("Khung lưới linh hoạt");
