@@ -41,7 +41,7 @@ export function GalleryLightbox({ images, mood, locale = "vi" }: { images: strin
 
   return (
     <>
-      <section className="mx-auto grid grid-cols-3 gap-2.5 sm:gap-4 md:gap-5 mt-8 sm:mt-10 mb-2 w-full" aria-label={locale === "en" ? "Memory gallery photos" : "Các hình ảnh thư viện ký ức"}>
+      <section className="laka-mobile-rail laka-mobile-rail-grid mx-auto mt-8 w-full gap-4 pb-4 sm:mt-10 md:grid-cols-3 md:gap-5 md:overflow-visible md:pb-0" aria-label={locale === "en" ? "Memory gallery photos" : "Các hình ảnh thư viện ký ức"}>
         {images.map((src, index) => (
           <button
             type="button"
@@ -51,7 +51,7 @@ export function GalleryLightbox({ images, mood, locale = "vi" }: { images: strin
             }}
             key={`${src}-${index}`}
             aria-label={locale === "en" ? `Open concept image ${index + 1}` : `Mở ảnh minh họa ${index + 1}`}
-            className="group focus-ring relative aspect-[3/4] sm:aspect-[4/5] md:aspect-[3/4] w-full overflow-hidden rounded-xl sm:rounded-2xl md:rounded-3xl bg-[#10251d] text-left shadow-sm hover:shadow-xl transition-all duration-300 block"
+            className="laka-mobile-rail-item group focus-ring relative aspect-[4/5] overflow-hidden rounded-xl bg-[#10251d] text-left shadow-sm transition-all duration-300 hover:shadow-xl md:aspect-[4/3]"
           >
             <Image
               src={src}

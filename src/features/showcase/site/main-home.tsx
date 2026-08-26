@@ -27,6 +27,8 @@ const memoryImages = [
 
 export function MainHome({ config, locale = "vi" }: { config: CompleteTemplateConfig; locale?: ShowcaseLocale }) {
   const en = locale === "en";
+  const heroHeadline = en ? "Choose a cabin - Hold the whole valley" : '"Chọn" Cabin - "Trọn" Thung Lũng';
+  const [heroFirstLine, heroSecondLine] = heroHeadline.split(" - ");
 
   return <div className="showcase-root min-h-screen bg-[#eae1d2] text-[#16311c]">
     <TemplateDocumentLocale locale={locale} />
@@ -49,10 +51,12 @@ export function MainHome({ config, locale = "vi" }: { config: CompleteTemplateCo
 
         <div className="relative z-10 mx-auto flex min-h-[100svh] w-[min(1500px,calc(100%-32px))] flex-col justify-end pb-16 pt-36 sm:w-[min(1500px,calc(100%-56px))] sm:pb-20">
           <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#dfc6a5] sm:text-sm md:text-base mb-3 sm:mb-4 drop-shadow-sm">
-            {en ? "LaKa - A home in the green" : "LaKa - Nhà giữa khoảng xanh"}
+            {en ? "LAKA - A home in the green" : "LAKA - Nhà giữa khoảng xanh"}
           </p>
           <h1 className="laka-display-hero max-w-6xl">
-            {en ? "Choose a cabin - Hold the whole valley" : '"Chọn" Cabin - "Trọn" Thung Lũng'}
+            <span className="block sm:inline">{heroFirstLine}<span className="sm:hidden"> -</span></span>
+            <span className="hidden sm:inline"> - </span>
+            <span className="block sm:inline">{heroSecondLine}</span>
           </h1>
           <div className="mt-8 flex items-end justify-between gap-8 border-t border-white/22 pt-6">
             <p className="text-[.62rem] font-bold uppercase tracking-[.18em] text-white/68">

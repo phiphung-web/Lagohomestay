@@ -21,7 +21,7 @@ export function HomeDayJourney({
         <header className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-white/14 pb-8 sm:pb-10">
           <div>
             <h2 className="laka-home-section-title text-[#dfc6a5]">
-              {en ? "A day at LaKa" : "Một ngày ở LaKa"}
+              {en ? "A day at LAKA" : "Một ngày ở LAKA"}
             </h2>
           </div>
           <p className="font-serif text-2xl sm:text-3xl lg:text-4xl font-medium text-white tracking-tight md:text-right shrink-0">

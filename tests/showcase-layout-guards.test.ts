@@ -50,7 +50,7 @@ describe("LAKA showcase layout guards", () => {
     expect(site).toContain('<p className="laka-section-lead mt-5 max-w-3xl opacity-72">');
     expect(destinations).toContain('className="laka-heading-card mt-6"');
     expect(home).toContain('"Chọn" Cabin - "Trọn" Thung Lũng');
-    expect(home).toContain("LaKa - Nhà giữa khoảng xanh");
+    expect(home).toContain("LAKA - Nhà giữa khoảng xanh");
     expect(story).toContain('id="gioi-thieu"');
     expect(stays).toContain("Nhà Bên Hồ");
     expect(stays).toContain("Nhà Trên Đồi");

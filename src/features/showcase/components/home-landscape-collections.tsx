@@ -82,7 +82,7 @@ export function HomeLandscapeCollections({ basePath, locale = "vi" }: { basePath
         </div>
 
         {/* Action Link */}
-        <div className="mt-10 sm:mt-12 text-center">
+        <div className="mt-10 flex justify-start sm:mt-12">
           <Link
             href={basePath + "/luu-tru"}
             className="focus-ring group inline-flex min-h-12 items-center gap-3 border-b border-[#16311c]/35 pb-1 text-xs sm:text-sm font-bold uppercase tracking-[0.14em] text-[#16311c] hover:border-[#16311c] transition-all"

@@ -9,7 +9,7 @@ export function HomeDiningPreview({ basePath, locale = "vi" }: { basePath: strin
   const stories = diningStories.slice(0, 2);
 
   return (
-    <section id="am-thuc" className="laka-section-normal bg-gradient-to-b from-[#e8dfd2] via-[#f0e9dc] to-[#e4dbc9] px-5 sm:px-8">
+    <section id="am-thuc" className="laka-section-normal scroll-mt-20 bg-gradient-to-b from-[#e8dfd2] via-[#f0e9dc] to-[#e4dbc9] px-5 sm:px-8">
       <div className="mx-auto w-[min(1380px,100%)]">
         {/* Header with balanced layout on desktop and mobile */}
         <header className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-[#16311c]/15 pb-8 sm:pb-10">
@@ -17,8 +17,8 @@ export function HomeDiningPreview({ basePath, locale = "vi" }: { basePath: strin
             <h2 className="laka-home-section-title text-[#16311c]">{en ? "Dining" : "Ẩm thực"}</h2>
             <p className="laka-body-muted mt-3 text-sm sm:text-base">
               {en
-                ? "Every flavour at LaKa is a pause to enjoy and reconnect. In the open valley, stay at the table a little longer."
-                : "Mỗi hương vị tại LaKa đều là một khoảng nghỉ để tận hưởng và kết nối. Giữa thung lũng rộng mở, cứ ngồi lại lâu hơn một chút."}
+                ? "Every flavour at LAKA is a pause to enjoy and reconnect. In the open valley, stay at the table a little longer."
+                : "Mỗi hương vị tại LAKA đều là một khoảng nghỉ để tận hưởng và kết nối. Giữa thung lũng rộng mở, cứ ngồi lại lâu hơn một chút."}
             </p>
           </div>
           <p className="font-serif text-2xl sm:text-3xl lg:text-4xl font-medium text-[#16311c] md:text-right shrink-0">
@@ -31,9 +31,9 @@ export function HomeDiningPreview({ basePath, locale = "vi" }: { basePath: strin
         </header>
 
         {/* 2 Dining Space Cards */}
-        <div className="mt-10 sm:mt-12 grid gap-8 sm:gap-10 md:grid-cols-2">
+        <div className="laka-mobile-rail laka-mobile-rail-grid mt-10 gap-5 pb-4 sm:mt-12 md:grid-cols-2 md:gap-10 md:overflow-visible md:pb-0">
           {stories.map((story) => (
-            <article key={story.title.vi} className="group flex flex-col">
+            <article key={story.title.vi} className="laka-mobile-rail-item group flex flex-col">
               <div className="laka-media-frame relative aspect-[16/10] overflow-hidden rounded-xl sm:rounded-2xl bg-[#d8cdbd]">
                 <Image
                   src={story.image}

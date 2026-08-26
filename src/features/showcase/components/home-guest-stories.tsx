@@ -55,8 +55,8 @@ const guestStories: GuestStory[] = [
   },
   {
     quote: {
-      vi: "Khung kính lớn ở phòng ngủ thật sự là điểm nhấn đắt giá. Nằm đọc sách ngắm mây trôi qua thung lũng là trải nghiệm mình nhớ nhất tại LaKa.",
-      en: "The grand window in the bedroom is truly the highlight. Reading a book while watching the clouds drift over the valley is what I remember most about LaKa."
+      vi: "Khung kính lớn ở phòng ngủ thật sự là điểm nhấn đắt giá. Nằm đọc sách ngắm mây trôi qua thung lũng là trải nghiệm mình nhớ nhất tại LAKA.",
+      en: "The grand window in the bedroom is truly the highlight. Reading a book while watching the clouds drift over the valley is what I remember most about LAKA."
     },
     source: {
       vi: "Đức Huy & Bạn bè",
@@ -118,8 +118,8 @@ export function HomeGuestStories({ locale = "vi" }: { locale?: ShowcaseLocale })
               {en ? "Guest impressions" : "Cảm nhận khách nghỉ"}
             </h2>
           </div>
-          <div className="flex items-end justify-between md:justify-end gap-6">
-            <p className="font-serif text-2xl sm:text-3xl lg:text-4xl font-medium text-[#16311c] md:text-right shrink-0">
+          <div className="flex min-w-0 flex-col items-start gap-6 sm:flex-row sm:items-end sm:justify-between md:justify-end">
+            <p className="min-w-0 max-w-full font-serif text-2xl font-medium text-[#16311c] sm:text-3xl md:shrink-0 md:text-right lg:text-4xl">
               {en ? (
                 <>Stories that stay<br className="hidden md:inline" /> <i className="text-[#80613f]">after the journey.</i></>
               ) : (
