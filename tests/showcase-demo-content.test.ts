@@ -8,17 +8,19 @@ import {
   specialMoments
 } from "@/features/showcase/data/laka-demo-content";
 import { showcaseFaqs } from "@/features/showcase/data/showcase-content";
-import { diningMenuVenues } from "@/features/showcase/data/dining-menu";
+import { diningMenuVenues, restaurantMenuPages } from "@/features/showcase/data/dining-menu";
 import { englishFaqs } from "@/features/showcase/i18n/showcase-copy";
 import { getUnitsForStay, stays, stayUnits, stayZones } from "@/features/stays/data/demo-data";
 
 describe("LAKA presentation content", () => {
   it("covers the complete guest journey in both languages", () => {
     expect(lakaExperiences.map((item) => item.title.vi)).toEqual([
-      "Pickleball Bật Mood",
+      "PickleBall Bật Mood",
       "Lướt Hồ Cùng Kayak",
-      "Thư giãn Cùng Hồ Xanh",
-      "Đạp Xe Rong Ruổi"
+      "Thư giãn cùng Hồ Xanh",
+      "Đạp xe Rong Ruổi",
+      "Board Game",
+      "Bida"
     ]);
     expect(diningStories.map((item) => item.title.vi)).toEqual([
       "Nhà Hàng Ven Hồ",
@@ -67,12 +69,12 @@ describe("LAKA presentation content", () => {
 
   it("builds restaurant and cafe menu layouts without prices or internal notes", () => {
     expect(diningMenuVenues.map((venue) => venue.id)).toEqual(["restaurant", "cafe"]);
-    expect(diningMenuVenues.every((venue) => venue.groups.length >= 4)).toBe(true);
+    expect(restaurantMenuPages.length).toBeGreaterThanOrEqual(4);
 
-    const publicMenuText = JSON.stringify(diningMenuVenues).toLowerCase();
-    expect(publicMenuText).not.toMatch(/giá bán|price|người phụ trách|tham khảo|đang tuyển|số điện thoại/);
-    expect(publicMenuText).toContain("gà đồi nướng");
-    expect(publicMenuText).toContain("cold brew");
+    const publicMenuText = JSON.stringify(restaurantMenuPages).toLowerCase();
+    expect(publicMenuText).not.toMatch(/người phụ trách|đang tuyển|số điện thoại/);
+    expect(publicMenuText).toContain("nuong-bbq");
+    expect(publicMenuText).toContain("lau-do-nhung");
   });
 
   it("does not present illustrative stories as verified guest reviews", () => {

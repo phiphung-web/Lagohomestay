@@ -24,8 +24,8 @@ export function StayBannerHero({
       cardImage={DEFAULT_BANNER_IMAGES.cardLeaf}
       cardBadge="LAKA · Greenery"
       cardAlt={isEn ? "Fresh green leaves at LAKA" : "Lá xanh tươi mát tại LAKA"}
-      brandTagTop="Creative"
-      brandTagBottom="Homestory."
+      brandTagTop={isEn ? "Stay" : "Bộ Sưu Tập"}
+      brandTagBottom={isEn ? "Collection." : "Lưu Trú."}
       dateStamp={isEn ? "03, January 2026" : "03, Tháng Một 2026"}
       subTag={isEn ? "Lake · Valley · Pine Forest" : "Ven Hồ · Thung Lũng · Rừng Thông"}
       actionText={isEn ? "Explore 20 homes" : "Khám phá 20 căn"}

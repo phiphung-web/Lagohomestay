@@ -30,6 +30,7 @@ export type PageBannerHeroProps = {
   };
   extraFacts?: React.ReactNode;
   locale?: ShowcaseLocale;
+  compact?: boolean;
 };
 
 export function PageBannerHero({
@@ -41,8 +42,8 @@ export function PageBannerHero({
   cardImage = DEFAULT_BANNER_IMAGES.cardLeaf,
   cardBadge = "LAKA · Nature",
   cardAlt,
-  brandTagTop = "Creative",
-  brandTagBottom = "Homestory.",
+  brandTagTop,
+  brandTagBottom,
   dateStamp,
   subTag,
   archiveSignature,
@@ -50,7 +51,8 @@ export function PageBannerHero({
   actionHref,
   backLink,
   extraFacts,
-  locale = "vi"
+  locale = "vi",
+  compact = false
 }: PageBannerHeroProps) {
   const isEn = locale === "en";
   const defaultDate = isEn ? "03, January 2026" : "03, Tháng Một 2026";
@@ -61,7 +63,7 @@ export function PageBannerHero({
       {/* ========================================================================= */}
       {/* 1. TOP SECTION: Deep Lush Nature Bokeh Backdrop                           */}
       {/* ========================================================================= */}
-      <div className="relative min-h-[500px] sm:min-h-[560px] md:min-h-[620px] lg:min-h-[660px] w-full overflow-hidden bg-[#0a1e12]">
+      <div className={`relative w-full overflow-hidden bg-[#0a1e12] ${compact ? "min-h-[380px] sm:min-h-[440px] md:min-h-[480px] lg:min-h-[500px]" : "min-h-[500px] sm:min-h-[560px] md:min-h-[620px] lg:min-h-[660px]"}`}>
         {/* Background photo with subtle blur & rich emerald grade */}
         <Image
           src={bgImage}
@@ -79,7 +81,7 @@ export function PageBannerHero({
         <div className="grain absolute inset-0 pointer-events-none opacity-25" />
 
         {/* Top Content Area */}
-        <div className="relative z-10 mx-auto flex h-full min-h-[500px] sm:min-h-[560px] md:min-h-[620px] lg:min-h-[660px] w-[min(1280px,calc(100%-32px))] sm:w-[min(1280px,calc(100%-48px))] flex-col justify-end pb-12 sm:pb-16 md:pb-20 pt-28 sm:pt-36">
+        <div className={`relative z-10 mx-auto flex h-full w-[min(1280px,calc(100%-32px))] sm:w-[min(1280px,calc(100%-48px))] flex-col justify-end ${compact ? "min-h-[380px] sm:min-h-[440px] md:min-h-[480px] lg:min-h-[500px] pb-8 sm:pb-12 md:pb-14 pt-24 sm:pt-28" : "min-h-[500px] sm:min-h-[560px] md:min-h-[620px] lg:min-h-[660px] pb-12 sm:pb-16 md:pb-20 pt-28 sm:pt-36"}`}>
           {backLink && (
             <div className="mb-4 sm:mb-6">
               <Link
@@ -132,7 +134,7 @@ export function PageBannerHero({
       {/* ========================================================================= */}
       {/* 2. BOTTOM SECTION: Clean Textured Light Paper Canvas                     */}
       {/* ========================================================================= */}
-      <div className="relative w-full border-b border-[#16311c]/15 bg-[#eae1d2] py-8 sm:py-12 md:py-14 text-[#16311c]">
+      <div className={`relative w-full border-b border-[#16311c]/15 bg-[#eae1d2] text-[#16311c] ${compact ? "py-5 sm:py-7 md:py-8" : "py-8 sm:py-12 md:py-14"}`}>
         {/* Subtle linen/paper dot texture */}
         <div className="absolute inset-0 opacity-15 pointer-events-none bg-[radial-gradient(#16311c_1px,transparent_1px)] [background-size:16px_16px]" />
 
@@ -141,11 +143,13 @@ export function PageBannerHero({
             {/* Left spacing to align with card */}
             <div className="col-span-4 sm:col-span-4 md:col-span-5 lg:col-span-4">
               {/* Bottom left branding tag placed below the card */}
-              <div className="pt-16 sm:pt-24 md:pt-28 text-[.65rem] sm:text-xs font-bold uppercase tracking-[.18em] leading-tight text-[#16311c]/75">
-                {brandTagTop}
-                <br />
-                <span className="text-[#16311c] font-black">{brandTagBottom}</span>
-              </div>
+              {(brandTagTop || brandTagBottom) && (
+                <div className={`${compact ? "pt-8 sm:pt-12 md:pt-14" : "pt-16 sm:pt-24 md:pt-28"} text-[.65rem] sm:text-xs font-bold uppercase tracking-[.18em] leading-tight text-[#16311c]/75`}>
+                  {brandTagTop}
+                  {brandTagTop && brandTagBottom && <br />}
+                  {brandTagBottom && <span className="text-[#16311c] font-black">{brandTagBottom}</span>}
+                </div>
+              )}
             </div>
 
             {/* Right details */}
@@ -165,14 +169,12 @@ export function PageBannerHero({
                   {/* Optional Extra Facts (e.g. For Stays / Units) */}
                   {extraFacts && <div className="mt-2">{extraFacts}</div>}
 
-                  {/* Archive signature */}
-                  <p className="mt-1.5 sm:mt-2 text-xs sm:text-sm text-[#16311c]/70 font-medium">
-                    {archiveSignature || (
-                      <>
-                        Archive by <strong className="font-bold text-[#16311c]">laka</strong>.
-                      </>
-                    )}
-                  </p>
+                  {/* Archive signature (only rendered when explicitly passed) */}
+                  {archiveSignature && (
+                    <p className="mt-1.5 sm:mt-2 text-xs sm:text-sm text-[#16311c]/70 font-medium">
+                      {archiveSignature}
+                    </p>
+                  )}
                 </div>
 
                 {/* Explore Action Button */}
@@ -196,7 +198,7 @@ export function PageBannerHero({
       {/* ========================================================================= */}
       {/* 3. FLOATING OVERLAPPING PHOTO CARD                                        */}
       {/* ========================================================================= */}
-      <div className="pointer-events-none absolute left-1/2 top-[500px] sm:top-[560px] md:top-[620px] lg:top-[660px] z-20 w-[min(1280px,calc(100%-32px))] sm:w-[min(1280px,calc(100%-48px))] -translate-x-1/2 -translate-y-1/2">
+      <div className={`pointer-events-none absolute left-1/2 z-20 w-[min(1280px,calc(100%-32px))] sm:w-[min(1280px,calc(100%-48px))] -translate-x-1/2 -translate-y-1/2 ${compact ? "top-[380px] sm:top-[440px] md:top-[480px] lg:top-[500px]" : "top-[500px] sm:top-[560px] md:top-[620px] lg:top-[660px]"}`}>
         <div className="grid grid-cols-12 gap-3 sm:gap-6">
           <div className="col-span-4 sm:col-span-4 md:col-span-5 lg:col-span-4">
             <div className="pointer-events-auto w-full max-w-[130px] sm:max-w-[185px] md:max-w-[240px] lg:max-w-[290px] xl:max-w-[320px]">

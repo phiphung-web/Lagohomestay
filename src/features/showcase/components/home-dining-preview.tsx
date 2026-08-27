@@ -6,7 +6,7 @@ import type { ShowcaseLocale } from "@/features/showcase/i18n/locale";
 
 export function HomeDiningPreview({ basePath, locale = "vi" }: { basePath: string; locale?: ShowcaseLocale }) {
   const en = locale === "en";
-  const stories = diningStories.slice(0, 2);
+  const stories = diningStories;
 
   return (
     <section id="am-thuc" className="laka-section-normal bg-[#f2ece2] px-5 sm:px-8">
@@ -30,8 +30,8 @@ export function HomeDiningPreview({ basePath, locale = "vi" }: { basePath: strin
           </p>
         </header>
 
-        {/* 2 Dining Space Cards */}
-        <div className="laka-mobile-rail laka-mobile-rail-grid mt-10 gap-5 pb-4 sm:mt-12 md:grid-cols-2 md:gap-10 md:overflow-visible md:pb-0">
+        {/* 3 Dining Space Cards */}
+        <div className="laka-mobile-rail laka-mobile-rail-grid mt-10 gap-5 pb-4 sm:mt-12 md:grid-cols-3 md:gap-6 lg:gap-8 md:overflow-visible md:pb-0">
           {stories.map((story) => (
             <article key={story.title.vi} className="laka-mobile-rail-item group flex flex-col">
               <div className="laka-media-frame relative aspect-[16/10] overflow-hidden rounded-xl sm:rounded-2xl bg-[#d8cdbd]">
@@ -39,7 +39,7 @@ export function HomeDiningPreview({ basePath, locale = "vi" }: { basePath: strin
                   src={story.image}
                   alt={`${en ? story.title.en : story.title.vi} — ${en ? "concept image" : "ảnh minh họa"}`}
                   fill
-                  sizes="(max-width:1024px) 100vw, 50vw"
+                  sizes="(max-width:1024px) 100vw, 33vw"
                   className="object-cover transition duration-1000 ease-out group-hover:scale-105"
                 />
                 <span className="absolute bottom-4 left-4 rounded-full bg-[#07150f]/55 px-3 py-1.5 text-[.52rem] font-bold uppercase tracking-[.14em] text-white/78 backdrop-blur">

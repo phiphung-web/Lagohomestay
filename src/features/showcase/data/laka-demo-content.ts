@@ -1,15 +1,19 @@
 import {
   Bike,
+  CircleDot,
   Coffee,
+  Dices,
   FlameKindling,
   Footprints,
   Heart,
   MapPinned,
   MoonStar,
+  Music,
   ParkingCircle,
   Sparkles,
   Sunrise,
   TentTree,
+  Users,
   UtensilsCrossed,
   Waves
 } from "lucide-react";
@@ -26,7 +30,7 @@ export const demoNotice: LocalizedText = {
 export const lakaExperiences = [
   {
     icon: Sunrise,
-    title: { vi: "Pickleball Bật Mood", en: "Pickleball Mood On" },
+    title: { vi: "PickleBall Bật Mood", en: "PickleBall Mood On" },
     text: { vi: "Bắt đầu cuộc vui bằng một trận đấu đầy năng lượng, tiếng cười và những pha bóng kết nối cả nhóm.", en: "Start the fun with an energetic match, plenty of laughter and rallies that bring everyone together." },
     meta: { vi: "Vận động · kết nối", en: "Active · social" },
     image: conceptImages.hill
@@ -40,41 +44,101 @@ export const lakaExperiences = [
   },
   {
     icon: Waves,
-    title: { vi: "Thư giãn Cùng Hồ Xanh", en: "Unwind by the Blue Pool" },
+    title: { vi: "Thư giãn cùng Hồ Xanh", en: "Unwind by the Blue Pool" },
     text: { vi: "Thả lỏng giữa làn nước xanh, chậm lại dưới khoảng trời rộng và tận hưởng một phút nghỉ thật nhẹ tênh.", en: "Float in blue water, slow down beneath the open sky and enjoy a pause that feels completely effortless." },
     meta: { vi: "Thảnh thơi · hồ xanh", en: "Unhurried · poolside" },
     image: conceptImages.experience
   },
   {
     icon: Bike,
-    title: { vi: "Đạp Xe Rong Ruổi", en: "Roam by Bicycle" },
+    title: { vi: "Đạp xe Rong Ruổi", en: "Roam by Bicycle" },
     text: { vi: "Đạp xe qua những khoảng xanh, thong thả tìm một góc cảnh mới và để hành trình tự dẫn lối.", en: "Ride through green spaces, take your time finding a new view and let the journey choose the way." },
     meta: { vi: "Tự do · rong ruổi", en: "Free · unhurried" },
     image: conceptImages.forest
+  },
+  {
+    icon: Dices,
+    title: { vi: "Board Game", en: "Board Games" },
+    text: { vi: "Cùng nhau nhập cuộc với những ván board game đầy tiếng cười và bất ngờ.", en: "Join the game together for rounds of board games full of laughter and surprises." },
+    meta: { vi: "Gắn kết · tiếng cười", en: "Bonding · fun" },
+    image: conceptImages.detail1
+  },
+  {
+    icon: CircleDot,
+    title: { vi: "Bida", en: "Billiards" },
+    text: { vi: "Cùng thử tài với những đường cơ chuẩn xác, những cú đánh đẹp và chút cạnh tranh đầy hứng khởi.", en: "Test your skill with precise cue shots, great plays and a spark of lively competition." },
+    meta: { vi: "Thư giãn · thử tài", en: "Leisure · skill" },
+    image: conceptImages.detail2
   }
 ] as const;
 
 export const diningStories = [
   {
+    icon: Sunrise,
+    kicker: { vi: "Bên hồ trong veo", en: "By the clear lake" },
+    title: { vi: 'Bữa sáng giữa "Thiên Nhiên"', en: 'Breakfast amidst "Nature"' },
+    text: {
+      vi: "Bên hồ trong veo, một bữa sáng giữa thiên nhiên cũng đủ khiến ngày mới trở nên dịu dàng.",
+      en: "By the crystal-clear lake, a breakfast amidst nature is all it takes to make the new day gentle and serene."
+    },
+    image: conceptImages.breakfast
+  },
+  {
     icon: UtensilsCrossed,
     kicker: { vi: "Bên mặt nước", en: "By the water" },
-    title: { vi: "Nhà Hàng Ven Hồ", en: "Lakeside Restaurant" },
-    text: { vi: "Nép mình bên mặt hồ, mở ra khoảng trời ôm trọn núi đồi và mặt nước. Một nơi để thưởng thức món ngon, nhâm nhi chút chill và để những cuộc chuyện trò cứ thế dài thêm theo chiều hoàng hôn.", en: "Tucked beside the lake, the restaurant opens to a sky embracing mountains and water. A place for good food, an easy drink and conversations that linger into sunset." },
+    title: { vi: 'Nhà Hàng "Ven Hồ"', en: 'Restaurant "By the Lake"' },
+    text: {
+      vi: "Nép mình bên mặt hồ, mở ra khoảng trời ôm trọn núi đồi và mặt nước. Một nơi để thưởng thức món ngon, nhâm nhi chút chill và để những cuộc chuyện trò cứ thế dài thêm theo chiều hoàng hôn.",
+      en: "Tucked beside the lake, opening to a sky embracing mountains and water. A place to enjoy great dishes, sip a chilled drink and let conversations stretch through the golden sunset."
+    },
     image: conceptImages.dining
   },
   {
     icon: Coffee,
-    kicker: { vi: "Núi, mây & thông", en: "Mountain, cloud and pine" },
-    title: { vi: "Tiệm Cà Phê Tầng Mây", en: "Tang May Coffee Shop" },
-    text: { vi: "Nằm đối diện mặt hồ, mở ra từng tầng view ôm trọn mây núi và rừng thông. Một nơi để nhâm nhi cà phê, ngồi thật lâu và thả mình theo những tầng cảnh sắc.", en: "Facing the lake, the coffee shop opens through layered views of clouds, mountains and pine forest. A place to sip coffee, stay awhile and drift into the changing scenery." },
-    image: conceptImages.breakfast
+    kicker: { vi: "Núi, mây & thông", en: "Mountain, cloud & pine" },
+    title: { vi: 'Tiệm Cà Phê "Tầng Mây"', en: 'Coffee Shop "Among the Clouds"' },
+    text: {
+      vi: "Nằm đối diện mặt hồ, mở ra từng tầng view độc bản ôm trọn mây núi và rừng thông. Một nơi để nhâm nhi cà phê, ngồi thật lâu và thả mình theo những tầng cảnh sắc.",
+      en: "Facing the lake, opening into unique layered views embracing clouds, mountains and pine forests. A place to sip coffee, linger long and drift into the serene landscape."
+    },
+    image: conceptImages.cloud
   }
 ] as const;
 
 export const specialMoments = [
-  { icon: Heart, title: { vi: "Khoảng riêng cho hai người", en: "A private stay for two" }, text: { vi: "Cabin An Trú, Khoảng Trời và Vô Cực tạo ba cách khác nhau để cặp đôi nhìn ngắm hồ, rừng và mây.", en: "An Tru, Khoang Troi and Vo Cuc offer three distinct ways for couples to see lake, forest and clouds." } },
-  { icon: TentTree, title: { vi: "Gia đình & nhóm bạn", en: "Families and friends" }, text: { vi: "Bungalow Bên Hồ, Nhà Bên Hồ, Cabin Sum Vầy và Nhà Trên Đồi phục vụ các quy mô từ 5 đến 20 khách theo sức chứa đã nêu.", en: "Lakeside Bungalows, Guest House, Sum Vay Cabins and Top Hill Villa cover stated group sizes from 5 to 20 guests." } },
-  { icon: FlameKindling, title: { vi: "Đoàn công ty & team building", en: "Company groups and team building" }, text: { vi: "Nhà Trên Đồi, Cabin Sum Vầy và hệ hoạt động chung tạo nền cho chuyến đi đoàn; chương trình cần được LAKA xác nhận trước.", en: "Top Hill Villa, Sum Vay Cabins and shared activities support group retreats; programmes require advance confirmation." } }
+  {
+    icon: Users,
+    title: { vi: "Team Building", en: "Team Building" },
+    text: {
+      vi: "Cùng vượt thử thách, bung hết năng lượng, bật lên tiếng cười và tạo nên những kỷ niệm thật đáng nhớ giữa thiên nhiên tại LaKa.",
+      en: "Overcome challenges together, unleash your energy, spark laughter and create unforgettable memories surrounded by nature at LaKa."
+    },
+    cta: { vi: "Tư Vấn", en: "Tư Vấn" },
+    image: conceptImages.experience
+  },
+  {
+    icon: Music,
+    title: {
+      vi: "Tiệc ngoài trời (Thiết kế sân khấu, ca nhạc)",
+      en: "Tiệc ngoài trời (Thiết kế sân khấu, ca nhạc)"
+    },
+    text: {
+      vi: "Không gian được thiết kế chỉn chu với sân khấu, âm nhạc và ánh sáng, tạo nên những khoảnh khắc rực rỡ, cảm xúc và đáng nhớ bên nhau.",
+      en: "A thoughtfully curated outdoor setting with stage, live music and ambient lighting, creating radiant, emotional and memorable moments together."
+    },
+    cta: { vi: "Tư Vấn", en: "Tư Vấn" },
+    image: conceptImages.dining
+  },
+  {
+    icon: FlameKindling,
+    title: { vi: "Lửa trại", en: "Lửa trại" },
+    text: {
+      vi: "Quây quần bên ánh lửa ấm áp, cùng hát ca, sẻ chia và lưu giữ những khoảnh khắc gắn kết khó quên.",
+      en: "Gather around the warm glow of the fire, sing together, share stories and cherish unforgettable bonding moments."
+    },
+    cta: { vi: "Tư Vấn", en: "Tư Vấn" },
+    image: conceptImages.detail1
+  }
 ] as const;
 
 export const guestServices = [

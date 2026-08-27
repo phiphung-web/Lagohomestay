@@ -48,8 +48,8 @@ export function TemplateStayHero({ mood, basePath, stay, locale = "vi" }: { mood
         cardImage={stay.image}
         cardBadge={stay.badge || "LAKA · Cabin"}
         cardAlt={`${stay.name} — ${locale === "en" ? "concept image" : "hình ảnh minh họa"}`}
-        brandTagTop="Private"
-        brandTagBottom="Cabin."
+        brandTagTop={locale === "en" ? "Private" : "Không Gian"}
+        brandTagBottom={locale === "en" ? "Cabin." : "Riêng Tư."}
         dateStamp={`${units.length} ${locale === "en" ? "physical homes" : "căn thực tế"} · ${units.map((unit) => unit.code).join(" / ")}`}
         subTag={stay.location}
         extraFacts={<StayFacts stay={stay} locale={locale} />}

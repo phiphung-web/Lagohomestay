@@ -22,7 +22,7 @@ import { StayProductExplorer } from "@/features/showcase/components/stay-product
 import { ContactInquiryForm } from "@/features/showcase/components/contact-inquiry-form";
 import { ScrollAwareHeader } from "@/features/showcase/components/scroll-aware-header";
 import { TemplateExperienceStory } from "@/features/showcase/components/template-experience-story";
-import { TemplateFaqIndex, TemplateFaqSection, TemplatePolicySection } from "@/features/showcase/components/template-info-sections";
+import { TemplateFaqIndex, TemplateFaqSection, TemplateInfoHighlights, TemplateInfoRelatedLinks, TemplatePolicySection } from "@/features/showcase/components/template-info-sections";
 import { TemplateAboutStory, TemplateContactChannels } from "@/features/showcase/components/template-brand-sections";
 import { TemplateLanguageSwitcher } from "@/features/showcase/components/template-language-switcher";
 import { TemplateDocumentLocale } from "@/features/showcase/components/template-document-locale";
@@ -334,10 +334,12 @@ function StayPage({ config, slug, locale }: { config: CompleteTemplateConfig; sl
           [locale === "en" ? "Best for" : "Phù hợp nhất", stay.idealFor],
           [locale === "en" ? "Included" : "Đã bao gồm", stay.included],
           [locale === "en" ? "Good to know" : "Cần biết", stay.stayNotes]
-        ].map(([title, items], index) => <section key={title as string} className={`py-7 sm:px-6 ${index < 2 ? "border-b border-current/12 sm:border-b-0 sm:border-r" : ""} sm:first:pl-0`}>
-          <h3 className="text-[.62rem] font-bold uppercase tracking-[.16em] text-[var(--template-accent)]">{title as string}</h3>
-          <ul className="mt-5 space-y-3">{(items as string[]).map((item) => <li key={item} className="flex gap-2 text-sm leading-6 opacity-75"><Check className="mt-1 h-3.5 w-3.5 shrink-0 text-[var(--template-accent)]" />{item}</li>)}</ul>
-        </section>)}
+        ].map(([title, items], index) => (
+          <section key={title as string} className={`py-7 sm:px-6 ${index < 2 ? "border-b border-current/12 sm:border-b-0 sm:border-r" : ""} sm:first:pl-0`}>
+            <h3 className="text-[.62rem] font-bold uppercase tracking-[.16em] text-[var(--template-accent)]">{title as string}</h3>
+            <ul className="mt-5 space-y-3">{(items as string[]).map((item) => <li key={item} className="flex gap-2 text-sm leading-6 opacity-75"><Check className="mt-1 h-3.5 w-3.5 shrink-0 text-[var(--template-accent)]" />{item}</li>)}</ul>
+          </section>
+        ))}
       </div>
       <p className="mt-5 text-xs leading-6 opacity-55">{locale === "en" ? "Amenities and inclusions are illustrative and must be approved before launch." : "Tiện nghi và hạng mục bao gồm đang là dữ liệu minh họa, cần được duyệt trước khi mở bán."}</p>
       </div>
@@ -361,27 +363,31 @@ function ExperiencePage({ config, locale }: { config: CompleteTemplateConfig; lo
     <>
       <PageBannerHero
         bgImage={conceptImages.experience}
-        pill={isEn ? "A Day at LAKA" : "Một Ngày Tại LAKA"}
-        title={isEn ? "LaKa - Experience" : "LaKa - Trải Nghiệm"}
-        subtitle={isEn ? "A day that needs very little planning" : "Một ngày không cần lên kế hoạch"}
+        pill={isEn ? "Experiences at LAKA" : "Trải Nghiệm Tại LAKA"}
+        title={isEn ? "LaKa - Experience" : "LaKa - Trải nghiệm"}
+        subtitle={
+          isEn
+            ? "Every moment opens a new experience"
+            : "Để mỗi khoảnh khắc tại LaKa mở ra một trải nghiệm mới."
+        }
         description={
           isEn
-            ? "LAKA prepares the space. Let nature and curiosity guide everything else through each calm moment."
-            : "LAKA chuẩn bị không gian. Phần còn lại, bạn có thể để thiên nhiên và cảm hứng dẫn đường qua từng khoảnh khắc bình yên."
+            ? "From energetic pickleball matches and lake kayaking to calm swims in the blue pool, cycling and lively board games — every moment at LAKA unfolds a new experience."
+            : "Từ những trận pickleball sôi nổi, lướt kayak rẽ sóng mặt hồ đến những phút thả mình trong làn nước xanh, đạp xe rong ruổi hay cùng nhau nhập cuộc ván board game rộn rã — để mỗi khoảnh khắc tại LaKa đều mở ra một trải nghiệm mới."
         }
         cardImage={conceptImages.experience}
-        cardBadge="LAKA · Journey"
+        cardBadge="LAKA · Experience"
         cardAlt={isEn ? "Experience at LAKA" : "Trải nghiệm tại LAKA"}
         brandTagTop="Moments &"
         brandTagBottom="Discovery."
-        dateStamp={isEn ? "Sunrise · Sunset · Campfire" : "Bình Minh · Hoàng Hôn · Lửa Trại"}
-        subTag={isEn ? "Pine hills & Valley walk" : "Đồi Thông & Dạo Thung Lũng"}
-        actionText={isEn ? "Explore daily rhythm" : "Khám phá nhịp sống"}
-        actionHref="#nhip-song"
+        dateStamp={isEn ? "Pickleball · Kayak · Pool · Games" : "Pickleball · Kayak · Hồ Xanh · Trò Chơi"}
+        subTag={isEn ? "Lake · Valley · Active Living" : "Mặt Hồ · Thung Lũng · Trải Nghiệm"}
+        actionText={isEn ? "Explore experiences" : "Khám phá trải nghiệm"}
+        actionHref="#trai-nghiem"
         locale={locale}
       />
-      <TemplateExperienceStory mood={config.mood} locale={locale} />
       <TemplateExperienceCatalog locale={locale} />
+      <TemplateExperienceStory mood={config.mood} locale={locale} />
     </>
   );
 }
@@ -411,7 +417,7 @@ function ServicesPage({ config, locale }: { config: CompleteTemplateConfig; loca
         actionHref="#danh-muc-dich-vu"
         locale={locale}
       />
-      <TemplateServicesCatalog locale={locale} />
+      <TemplateServicesCatalog locale={locale} contactHref={scoped(config.basePath, "lien-he")} />
     </>
   );
 }
@@ -424,11 +430,11 @@ function DiningPage({ config, locale }: { config: CompleteTemplateConfig; locale
         bgImage={conceptImages.dining}
         pill={isEn ? "Dining & Occasions" : "Ẩm Thực & Bàn Tiệc"}
         title={isEn ? "LaKa - Dining" : "LaKa - Ẩm Thực"}
-        subtitle={isEn ? "A table that belongs to the stay" : "Một bàn ăn thuộc về kỳ nghỉ"}
+        subtitle={isEn ? "Flavours that keep the good times going." : "Những hương vị nối dài cuộc vui."}
         description={
           isEn
-            ? "From lakeside hot pots and barbecue grills to artisan coffee, fruit teas and afternoon treats — the menu is shaped around shared time."
-            : "Từ món nướng, lẩu và bữa cơm quây quần bên hồ đến cà phê, trà trái cây và một món ăn nhẹ giữa chiều — danh mục món được xây dựng quanh thời gian ở bên nhau."
+            ? "From lakeside barbecue grills and warm hot pots to cloud-viewing coffee and serene breakfast amidst nature — dining at LAKA is shaped around unforgettable shared time."
+            : "Từ món nướng, lẩu quây quần bên hồ đến cà phê ngắm mây và bữa sáng thanh lành giữa thiên nhiên — ẩm thực tại LAKA nối dài những khoảnh khắc sum vầy."
         }
         cardImage={conceptImages.dining}
         cardBadge="LAKA · Dining"
@@ -437,7 +443,7 @@ function DiningPage({ config, locale }: { config: CompleteTemplateConfig; locale
         brandTagBottom="Culinary."
         dateStamp={isEn ? "Lakeside Grill · Local Flavors" : "Bếp Nướng Hồ · Hương Vị Bản Địa"}
         subTag={isEn ? "Slow Dining & Shared Moments" : "Bàn Ăn Chậm & Khoảnh Khắc Sum Vầy"}
-        actionText={isEn ? "View menu preview" : "Xem thực đơn"}
+        actionText={isEn ? "View restaurant menu" : "Xem thực đơn"}
         actionHref="#thuc-don"
         locale={locale}
       />
@@ -453,8 +459,12 @@ function AboutPage({ config, locale }: { config: CompleteTemplateConfig; locale:
       <PageBannerHero
         bgImage={conceptImages.forest}
         pill={isEn ? "The LAKA Philosophy" : "Triết Lý LAKA"}
-        title={isEn ? "LaKa - About Us" : "LaKa - Về Chúng Mình"}
-        subtitle={isEn ? "Far enough to rest, close enough to return" : "Một nơi đủ xa để nghỉ, đủ gần để trở về"}
+        title={isEn ? '"Choose" Cabin. "Hold" Valley.' : '"Chọn" Cabin. "Trọn" Thung Lũng.'}
+        subtitle={
+          isEn
+            ? "Choose an open space, embrace every moment of connection."
+            : "Chọn một không gian mở, Trọn phút giây gắn kết."
+        }
         description={
           isEn
             ? "LAKA began with a wish to create homes where people can give their full attention to nature and to one another."
@@ -481,6 +491,7 @@ function InfoPage({ config, locale }: { config: CompleteTemplateConfig; locale: 
   return (
     <>
       <PageBannerHero
+        compact
         bgImage={conceptImages.hill}
         pill={isEn ? "Understanding LAKA" : "Hiểu Thêm Về LAKA"}
         title={isEn ? "LaKa - Information" : "LaKa - Thông Tin"}
@@ -501,8 +512,10 @@ function InfoPage({ config, locale }: { config: CompleteTemplateConfig; locale: 
         actionHref="#faq-1"
         locale={locale}
       />
+      <TemplateInfoHighlights locale={locale} />
       <TemplateJourneySection locale={locale} contactHref={scoped(config.basePath, "lien-he")} />
       <TemplateFaqSection mood={config.mood} policyHref={scoped(config.basePath, "chinh-sach-luu-tru")} locale={locale} />
+      <TemplateInfoRelatedLinks basePath={config.basePath} locale={locale} />
     </>
   );
 }

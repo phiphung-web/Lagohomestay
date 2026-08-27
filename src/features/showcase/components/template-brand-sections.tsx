@@ -99,117 +99,282 @@ const quote = "Một kỳ nghỉ tốt không cần quá nhiều thứ để là
 
 const brandValues = {
   vi: [
-    ["Tôn trọng Tự nhiên", "Trân trọng vẻ nguyên sơ của thung lũng, LAKA chọn cách hiện diện thật nhẹ nhàng giữa thiên nhiên. Từ thiết kế, vật liệu đến từng hoạt động, mọi lựa chọn đều được cân nhắc để giảm tác động lên môi trường và gìn giữ cảnh quan nơi đây bền vững theo thời gian."],
-    ["Chữa lành Nguyên bản", "Một chốn an trú giữa thiên nhiên, nơi từng mảng xanh và mỗi khung kính đều mở ra khoảng lặng vừa đủ để những ngổn ngang dần lắng xuống, tâm trí được thảnh thơi và trở về với vẻ tinh khôi vốn có."],
-    ["Kết nối Chân thật", "Kiến tạo những trải nghiệm đa dạng giữa thiên nhiên để thung lũng trở thành nơi kết nối mọi người, gọi về tiếng cười và lưu giữ những kỷ niệm đáng nhớ."],
-    ["Chăm sóc Tận tâm", "Mỗi hành trình đều bắt đầu từ một mong muốn khác nhau. LAKA luôn lắng nghe để chuẩn bị những tiện ích, chương trình và cách đón tiếp vừa vặn, giúp mỗi người đều cảm thấy được thấu hiểu và chăm sóc."]
+    [
+      "Tôn trọng Tự nhiên",
+      "Trân trọng vẻ nguyên sơ của thung lũng, LAKA chọn cách hiện diện thật nhẹ nhàng giữa thiên nhiên. Mọi lựa chọn đều được cân nhắc để giảm tác động lên môi trường và gìn giữ cảnh quan nơi đây bền vững theo thời gian."
+    ],
+    [
+      "Chữa lành Nguyên bản",
+      "Một chốn an trú giữa thiên nhiên. Nơi từng mảng xanh và mỗi khung kính đều mở ra khoảng lặng vừa đủ để những ngổn ngang dần lắng xuống, tâm trí được thảnh thơi và trở về với vẻ tinh khôi vốn có."
+    ],
+    [
+      "Kết nối Chân thật",
+      "Kiến tạo những trải nghiệm đa dạng giữa thiên nhiên, từ chèo kayak, chơi pickleball đến những bữa BBQ quây quần, để thung lũng trở thành nơi kết nối mọi người, gọi về tiếng cười và lưu giữ những kỷ niệm đáng nhớ."
+    ],
+    [
+      "Chăm sóc Tận tâm",
+      "Mỗi hành trình đều bắt đầu từ một mong muốn khác nhau. LAKA luôn lắng nghe để sẵn sàng đón tiếp vừa vặn, giúp mỗi khách hàng đều cảm thấy được thấu hiểu và chăm sóc."
+    ]
   ],
   en: [
-    ["Respect for Nature", "LAKA values the valley's untouched beauty and chooses to exist gently within nature. Every decision, from design and materials to activities, is considered to reduce environmental impact and preserve the landscape over time."],
-    ["Restoration to Self", "A refuge in nature where every patch of green and framed view creates enough stillness for a busy mind to settle, breathe and return to its clearest state."],
-    ["Genuine Connection", "Experiences in nature are created to bring people closer, call laughter back and hold space for memories worth keeping."],
-    ["Attentive Care", "Every journey begins with a different wish. LAKA listens, then prepares the right amenities, programme and welcome so each guest feels understood and cared for."]
+    [
+      "Respect for Nature",
+      "Cherishing the untouched beauty of the valley, LAKA chooses to exist gently within nature. Every choice is carefully considered to minimize environmental impact and preserve this landscape sustainably over time."
+    ],
+    [
+      "Original Healing",
+      "A sanctuary nestled in nature. Where every patch of greenery and each window frame opens up enough quiet space for daily chaos to settle, leaving the mind peaceful and restored to its natural purity."
+    ],
+    [
+      "Genuine Connection",
+      "Creating diverse experiences in nature — from kayaking and pickleball to cozy BBQ gatherings — making the valley a place that connects people, sparks laughter, and preserves cherished memories."
+    ],
+    [
+      "Attentive Care",
+      "Every journey begins with a different wish. LAKA always listens to welcome you with just the right touch, ensuring every guest feels truly understood and cared for."
+    ]
   ]
 } as const;
 
-export function TemplateAboutStory({ mood, locale = "vi" }: { mood: Mood; locale?: ShowcaseLocale }) {
-  if (mood === "cinematic") return <section className="reveal-section mx-auto w-[min(1500px,calc(100%-40px))] py-20 sm:py-28"><div className="grid gap-0 border-y border-white/12 lg:grid-cols-[1.08fr_.92fr]"><div className="relative min-h-[620px] overflow-hidden"><Image src={conceptImages.detail2} alt="Câu chuyện LAKA - ảnh minh họa" fill sizes="(max-width:1024px) 100vw, 58vw" className="object-cover opacity-72 transition duration-1000 hover:scale-[1.02] hover:opacity-100" /><div className="absolute inset-0 bg-gradient-to-t from-black/65 via-transparent to-black/20" /><span className="absolute bottom-5 left-5 bg-black/55 px-3 py-1.5 text-[.58rem] font-bold uppercase tracking-wider text-white backdrop-blur">Frame 01 · minh họa</span></div><div className="flex flex-col justify-center border-t border-white/12 px-7 py-14 lg:border-l lg:border-t-0 lg:px-12"><p className="text-[.62rem] font-bold uppercase tracking-[.24em] text-[#c7a882]">Manifesto · LAKA</p><blockquote className="mt-8 font-serif text-4xl font-medium leading-[1.14] tracking-[-.035em] sm:text-5xl">“{quote}”</blockquote><div className="mt-10 space-y-5 border-t border-white/12 pt-8 text-sm leading-7 text-white/52"><p>Mỗi căn được hình dung như một ngôi nhà thực sự: có bếp để nấu, hiên để ngồi và những khoảng trống vừa đủ để tâm trí được thảnh thơi.</p><p>LAKA ưu tiên sự riêng tư, vật liệu gần gũi và dịch vụ vừa đủ. Đội ngũ xuất hiện khi khách cần, rồi trả lại không gian cho kỳ nghỉ.</p></div></div></div><div className="grid border-b border-white/12 sm:grid-cols-3">{["Nhà nguyên căn", "Thiên nhiên thật gần", "Chăm sóc vừa đủ"].map((item, index) => <div key={item} className="border-b border-white/12 px-6 py-7 last:border-b-0 sm:border-b-0 sm:border-r sm:last:border-r-0"><span className="text-[.58rem] font-bold text-[#c7a882]">0{index + 1}</span><p className="mt-6 font-serif text-xl">{item}</p></div>)}</div></section>;
+type PillarItem = {
+  number: string;
+  title: string;
+  image: string;
+  paragraphs?: readonly string[];
+  intro?: string;
+  bulletPoints?: readonly string[];
+};
 
-  if (mood === "organic") return <section className="reveal-section mx-auto w-[min(1380px,calc(100%-28px))] py-20 sm:py-28"><div className="grid gap-4 lg:grid-cols-12"><div className="relative min-h-[600px] overflow-hidden rounded-[44px] lg:col-span-7"><Image src={conceptImages.detail2} alt="Câu chuyện LAKA - ảnh minh họa" fill sizes="(max-width:1024px) 100vw, 58vw" className="object-cover transition duration-1000 hover:scale-[1.025]" /><span className="absolute left-5 top-5 rounded-full bg-white px-4 py-2 text-[.6rem] font-extrabold uppercase tracking-wider">Câu chuyện bằng hình · minh họa</span></div><div className="flex min-h-[360px] flex-col justify-between rounded-[44px] bg-[#f7cf58] p-8 lg:col-span-5"><Sparkles className="h-8 w-8" /><blockquote className="mt-16 text-3xl font-extrabold leading-[1.16] tracking-[-.035em] sm:text-4xl">“{quote}”</blockquote></div><article className="rounded-[38px] bg-white p-8 shadow-[0_18px_55px_rgba(33,72,61,.07)] lg:col-span-5"><p className="text-[.6rem] font-extrabold uppercase tracking-[.14em] text-[#e66e4c]">Một ngôi nhà thực sự</p><p className="mt-6 text-sm font-medium leading-7 text-[#16311c]/78">Có bếp để nấu, hiên để ngồi và những khoảng trống vừa đủ để mọi người sống cùng nhau mà không thấy chật.</p></article><article className="rounded-[38px] bg-[#16311c] p-8 text-white lg:col-span-7"><p className="text-[.6rem] font-extrabold uppercase tracking-[.14em] text-[#f7cf58]">Dịch vụ vừa đủ tinh tế</p><p className="mt-6 max-w-2xl text-sm font-medium leading-7 text-white/58">Đội ngũ LAKA xuất hiện khi khách cần, rồi trả lại không gian cho cây, gió và những người đang ở cạnh nhau.</p></article></div></section>;
+const brandIdentityPillars: Record<ShowcaseLocale, readonly PillarItem[]> = {
+  vi: [
+    {
+      number: "1",
+      title: "Biểu Tượng Xanh",
+      image: conceptImages.detail2,
+      paragraphs: [
+        "Logo của LaKa được lấy cảm hứng từ: ngọn núi, rừng thông, cabin và khung cửa.",
+        "Đó là khung cảnh thật, là điều chúng ta sẽ nhìn thấy khi thức dậy, kéo nhẹ tấm rèm và mở cánh cửa của bất kỳ căn phòng nào tại LaKa.",
+        "Xa xa là những triền núi nối nhau trong mây, ngay trước mắt là những hàng thông xanh reo trong gió, bên dưới là những cabin mộc mạc phản chiếu trên mặt hồ."
+      ]
+    },
+    {
+      number: "2",
+      title: "Xanh Nguyên Bản",
+      image: conceptImages.forest,
+      intro: "Gam màu của LaKa cũng được gom nhặt từ chính thiên nhiên:",
+      bulletPoints: [
+        "Màu của rừng thông.",
+        "Màu của những dãy núi phủ kín cây.",
+        "Màu của hồ nước tự nhiên",
+        "Màu món quà của tạo hóa."
+      ]
+    },
+    {
+      number: "3",
+      title: "Gắn Kết Xanh",
+      image: conceptImages.table,
+      paragraphs: [
+        "Hơn hết, đó là lời hứa về sự phát triển du lịch bền vững, thuận tự nhiên.",
+        "Là lời hứa về sự gắn kết bền chặt của con người và thiên nhiên.",
+        "Là màu của sự chữa lành, giúp những tâm trí ngổn ngang được quay trở về với trạng thái nguyên bản, tinh khôi và toàn vẹn nhất."
+      ]
+    }
+  ],
+  en: [
+    {
+      number: "1",
+      title: "Green Symbol",
+      image: conceptImages.detail2,
+      paragraphs: [
+        "The LAKA logo is inspired by: mountains, pine forest, cabins, and window frames.",
+        "It is the real scenery we see when waking up, gently drawing back the curtains, and opening the door of any room at LAKA.",
+        "In the distance are mountain ridges connecting in the clouds, right before our eyes are green pine trees swaying in the breeze, and below are rustic cabins reflected on the lake surface."
+      ]
+    },
+    {
+      number: "2",
+      title: "Original Green",
+      image: conceptImages.forest,
+      intro: "LAKA's color palette is gathered directly from nature itself:",
+      bulletPoints: [
+        "The color of pine forests.",
+        "The color of tree-covered mountain ridges.",
+        "The color of natural lake water",
+        "The color of gifts from Mother Nature."
+      ]
+    },
+    {
+      number: "3",
+      title: "Green Connection",
+      image: conceptImages.table,
+      paragraphs: [
+        "Above all, it is a promise of sustainable, nature-aligned tourism development.",
+        "It is a promise of a lasting bond between humanity and nature.",
+        "It is the color of healing, guiding overwhelmed minds back to their most original, pure, and complete state."
+      ]
+    }
+  ]
+};
 
-  const localizedQuote = locale === "en" ? "Choose a cabin. Hold the whole valley." : "“Chọn” Cabin, “Trọn” Thung Lũng";
-  const chapters = locale === "en" ? [
-    {
-      kicker: "01 · The LAKA mark",
-      title: "A symbol drawn from what appears beyond the window.",
-      text: ["The LAKA logo is inspired by mountains, pine forest, cabins and a window frame.", "It is not an abstract symbol. It reflects the landscape guests will meet when they wake, draw the curtain and open the door: mountain ridges in cloud, pine trees moving in the wind and simple cabins reflected on the lake."],
-      image: conceptImages.detail2
-    },
-    {
-      kicker: "02 · The colours of the valley",
-      title: "A palette gathered directly from nature.",
-      text: ["LAKA's colours come from pine forest, tree-covered mountains and the natural lake.", "They carry a promise of sustainable, nature-aligned tourism and a lasting connection between people and the landscape."],
-      image: conceptImages.forest
-    },
-    {
-      kicker: "03 · Mission",
-      title: "Preserve untouched beauty through every frame.",
-      text: ["LAKA seeks to become a place where the truest connections can begin.", "Choose an open space. Hold every moment of connection."],
-      image: conceptImages.table
-    }
-  ] : [
-    {
-      kicker: "01 · Dấu ấn LAKA",
-      title: "Một biểu tượng được nhìn thấy qua khung cửa.",
-      text: ["Logo của LAKA được lấy cảm hứng từ ngọn núi, rừng thông, cabin và khung cửa.", "Đó không chỉ là một biểu tượng được vẽ ra. Đó là khung cảnh bạn sẽ nhìn thấy khi thức dậy và mở cánh cửa: xa xa là những triền núi nối nhau trong mây, trước mắt là hàng thông xanh reo trong gió, bên dưới là những cabin mộc mạc phản chiếu trên mặt hồ."],
-      image: conceptImages.detail2
-    },
-    {
-      kicker: "02 · Màu của thung lũng",
-      title: "Gam màu được gom nhặt từ chính thiên nhiên.",
-      text: ["Là màu của rừng thông, của những dãy núi phủ kín cây và của hồ nước tự nhiên — món quà của tạo hóa.", "Hơn hết, đó là lời hứa về sự phát triển du lịch bền vững, thuận tự nhiên; về sự gắn kết bền chặt của con người và thiên nhiên."],
-      image: conceptImages.forest
-    },
-    {
-      kicker: "03 · Sứ mệnh",
-      title: "Lưu giữ vẻ đẹp nguyên sơ qua từng khung kính.",
-      text: ["Nơi khởi nguồn cho những kết nối chân thật nhất.", "LAKA — Chọn một không gian mở, Trọn phút giây gắn kết."],
-      image: conceptImages.table
-    }
-  ];
+const missionStatement = {
+  vi: {
+    kicker: "Sứ Mệnh",
+    quote: "Lưu giữ vẻ đẹp nguyên sơ qua từng khung kính, nơi khởi nguồn cho những kết nối chân thật nhất",
+    tagline: "LAKA — Chọn một không gian mở, Trọn phút giây gắn kết."
+  },
+  en: {
+    kicker: "Our Mission",
+    quote: "Preserving untouched beauty through every pane of glass — the wellspring of genuine connections",
+    tagline: "LAKA — Choose an open space, embrace every moment of connection."
+  }
+} as const;
+
+export function TemplateAboutStory({ mood = "editorial", locale = "vi" }: { mood?: Mood; locale?: ShowcaseLocale }) {
+  const pillars = brandIdentityPillars[locale];
   const localizedValues = brandValues[locale];
-
-  const journalImages = [conceptImages.hero, conceptImages.hill, conceptImages.breakfast, conceptImages.cloud] as const;
+  const mission = missionStatement[locale];
 
   return (
-    <section id="cau-chuyen" className="reveal-section scroll-mt-24 py-20 sm:py-28">
-      <div className="mx-auto grid w-[min(1260px,calc(100%-40px))] gap-12 border-b border-[#16311c]/15 pb-20 lg:grid-cols-[.4fr_1fr] lg:items-start">
-        <h2 className="laka-heading-section">{locale === "en" ? "Preface" : "Lời tựa"}</h2>
-        <blockquote className="laka-section-lead">{localizedQuote}</blockquote>
-      </div>
-
-      <div className="mx-auto w-[min(1380px,calc(100%-40px))]">
-        {chapters.map((chapter, index) => (
-          <article key={chapter.kicker} className="grid border-b border-[#16311c]/15 py-16 lg:grid-cols-2 lg:items-center lg:py-24">
-            <div className={`group relative min-h-[58svh] overflow-hidden bg-[#d8cdbd] lg:min-h-[700px] ${index % 2 === 1 ? "lg:order-2" : ""}`}>
-              <Image src={chapter.image} alt={`${chapter.title} — ${locale === "en" ? "concept image" : "hình ảnh minh họa"}`} fill sizes="(max-width:1024px) 100vw, 50vw" className="object-cover transition duration-1000 ease-out group-hover:scale-[1.025]" />
-              <span className="absolute bottom-4 left-4 bg-[#16311c]/72 px-3 py-1.5 text-[.52rem] font-bold uppercase tracking-wider text-white backdrop-blur">{locale === "en" ? "Concept image" : "Hình ảnh minh họa"}</span>
-            </div>
-            <div className={`py-10 lg:px-16 lg:py-12 xl:px-24 ${index % 2 === 1 ? "lg:order-1" : ""}`}>
-              <p className="text-[.62rem] font-bold uppercase tracking-[.2em] text-[#80613f]">{chapter.kicker}</p>
-              <h2 className="laka-heading-section mt-6">{chapter.title}</h2>
-              <div className="mt-8 space-y-5 border-l border-[#80613f]/45 pl-6 text-sm leading-7 text-[#16311c]/68">
-                {chapter.text.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
-              </div>
-            </div>
-          </article>
-        ))}
-      </div>
-
-      <div className="mx-auto mt-24 w-[min(1260px,calc(100%-40px))] border-y border-[#16311c]/15 py-16 sm:py-20">
-        <div className="grid gap-8 lg:grid-cols-[.42fr_1fr] lg:items-start">
-          <h2 className="laka-heading-section">{locale === "en" ? "Core values" : "Giá trị cốt lõi"}</h2>
-          <p className="laka-section-lead">{locale === "en" ? "Four promises that shape how LAKA grows." : "Bốn lời hứa định hình cách LAKA lớn lên."}</p>
+    <div id="cau-chuyen" className="scroll-mt-24">
+      {/* ========================================================================= */}
+      {/* 1. SECTION: Dấu ấn LaKa (3-Column Layout: Image -> 1. 2. 3 -> Content)    */}
+      {/* ========================================================================= */}
+      <section className="reveal-section py-16 sm:py-24">
+        {/* Section Header */}
+        <div className="mx-auto w-[min(1380px,calc(100%-40px))] border-b border-[#16311c]/15 pb-8 mb-12 sm:mb-16">
+          <p className="text-[.62rem] font-bold uppercase tracking-[.24em] text-[#80613f]">
+            {locale === "en" ? "Brand Identity · The LAKA Mark" : "Bản Sắc & Biểu Tượng"}
+          </p>
+          <h2 className="laka-heading-section mt-3 text-3xl sm:text-4xl lg:text-5xl">
+            {locale === "en" ? "The LAKA Mark" : "Dấu ấn LaKa"}
+          </h2>
         </div>
-        <div className="mt-14 grid border-t border-[#16311c]/15 md:grid-cols-2">
-          {localizedValues.map(([title, text], index) => (
-            <article key={title} className="border-b border-[#16311c]/15 py-9 md:px-8 md:[&:nth-child(odd)]:border-r lg:px-10">
-              <span className="text-[.6rem] font-bold text-[#80613f]">0{index + 1}</span>
-              <h3 className="laka-heading-card mt-6">{title}</h3>
-              <p className="mt-5 max-w-xl text-sm leading-7 text-[#16311c]/68">{text}</p>
+
+        {/* 3 Columns: Image -> 1. 2. 3 -> Text */}
+        <div className="mx-auto grid w-[min(1380px,calc(100%-40px))] gap-8 sm:gap-10 lg:grid-cols-3">
+          {pillars.map((item) => (
+            <article
+              key={item.number}
+              className="group flex flex-col justify-between border-b border-[#16311c]/15 pb-10 lg:border-b-0 lg:border-r lg:border-[#16311c]/15 lg:pb-0 lg:pr-8 lg:last:border-r-0 lg:last:pr-0"
+            >
+              <div>
+                {/* 1. Image on top */}
+                <div className="relative aspect-[16/11] overflow-hidden rounded-2xl bg-[#d8cdbd] shadow-md transition duration-700 group-hover:shadow-xl">
+                  <Image
+                    src={item.image}
+                    alt={`${item.number}. ${item.title} — ${locale === "en" ? "concept image" : "hình ảnh minh họa"}`}
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 33vw"
+                    className="object-cover transition duration-1000 ease-out group-hover:scale-105"
+                  />
+                  <span className="absolute bottom-3 left-3 rounded-full bg-[#16311c]/75 px-3 py-1 text-[.52rem] font-bold uppercase tracking-wider text-white backdrop-blur-md">
+                    {locale === "en" ? `Pillar 0${item.number}` : `Dấu ấn 0${item.number}`}
+                  </span>
+                </div>
+
+                {/* 2. Number & Title: 1. Biểu Tượng Xanh */}
+                <div className="mt-8 flex items-baseline gap-3">
+                  <span className="font-serif text-2xl sm:text-3xl font-light text-[#80613f]">
+                    0{item.number}.
+                  </span>
+                  <h3 className="text-xl sm:text-2xl font-bold tracking-tight text-[#16311c]">
+                    {item.title}
+                  </h3>
+                </div>
+
+                {/* 3. Text content / Chú thích bên dưới */}
+                <div className="mt-5 space-y-4 text-sm leading-relaxed text-[#16311c]/75">
+                  {item.paragraphs?.map((para, pIdx) => (
+                    <p key={pIdx}>{para}</p>
+                  ))}
+
+                  {item.intro && (
+                    <p className="font-medium text-[#16311c]/90">{item.intro}</p>
+                  )}
+
+                  {item.bulletPoints && (
+                    <ul className="space-y-2.5 pl-1">
+                      {item.bulletPoints.map((bullet, bIdx) => (
+                        <li key={bIdx} className="flex items-center gap-2.5 font-medium text-[#16311c]/85">
+                          <span className="h-1.5 w-1.5 rounded-full bg-[#80613f]" />
+                          <span>{bullet}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+              </div>
             </article>
           ))}
         </div>
-      </div>
+      </section>
 
-      <div className="mx-auto mt-16 grid w-[min(1420px,calc(100%-40px))] grid-cols-2 gap-3 sm:gap-5 lg:grid-cols-4">
-        {journalImages.map((image, index) => (
-          <figure key={image} className={`relative overflow-hidden bg-[#d8cdbd] ${index % 2 === 0 ? "aspect-[3/4]" : "aspect-[3/4] lg:mt-20"}`}>
-            <Image src={image} alt={`${locale === "en" ? "LAKA visual journal" : "Ký sự hình ảnh LAKA"} ${index + 1} — ${locale === "en" ? "concept" : "minh họa"}`} fill sizes="(max-width:640px) 50vw, 25vw" className="object-cover" />
-          </figure>
-        ))}
-      </div>
-    </section>
+      {/* ========================================================================= */}
+      {/* 2. SECTION: Sứ Mệnh (Manifesto / Spotlight Block)                          */}
+      {/* ========================================================================= */}
+      <section id="su-menh" className="reveal-section scroll-mt-24 py-10 sm:py-16">
+        <div className="mx-auto w-[min(1380px,calc(100%-40px))]">
+          <div className="relative overflow-hidden rounded-3xl bg-[#16311c] px-8 py-14 sm:px-14 sm:py-20 text-white shadow-2xl">
+            {/* Subtle decorative glow */}
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,#224b2b,transparent_65%)] opacity-70 pointer-events-none" />
+
+            <div className="relative z-10 mx-auto max-w-4xl text-center">
+              <span className="inline-block rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-[.6rem] font-bold uppercase tracking-[.22em] text-[#c7a882] backdrop-blur-md">
+                {mission.kicker}
+              </span>
+              <blockquote className="mt-8 font-serif text-2xl sm:text-3xl md:text-4xl lg:text-[2.25rem] font-medium leading-[1.35] tracking-[-.02em] text-[#f4efe8]">
+                “{mission.quote}”
+              </blockquote>
+              <div className="mx-auto my-7 h-px w-24 bg-[#c7a882]/40" />
+              <p className="font-sans text-xs sm:text-sm font-bold uppercase tracking-[0.18em] text-[#c7a882]">
+                {mission.tagline}
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ========================================================================= */}
+      {/* 3. SECTION: Giá Trị Cốt Lõi (Core Values Grid)                            */}
+      {/* ========================================================================= */}
+      <section id="gia-tri-cot-loi" className="reveal-section scroll-mt-24 py-16 sm:py-20">
+        <div className="mx-auto w-[min(1380px,calc(100%-40px))] border-t border-[#16311c]/15 pt-16">
+          <div className="grid gap-6 lg:grid-cols-[.38fr_1fr] lg:items-start">
+            <div>
+              <p className="text-[.62rem] font-bold uppercase tracking-[.22em] text-[#80613f]">
+                {locale === "en" ? "Operating Philosophy" : "Triết Lý Hoạt Động"}
+              </p>
+              <h2 className="laka-heading-section mt-3 text-3xl sm:text-4xl">
+                {locale === "en" ? "Core Values" : "Giá Trị Cốt Lõi"}
+              </h2>
+            </div>
+            <p className="laka-section-lead text-[#16311c]/75">
+              {locale === "en"
+                ? "Four promises that guide every step of how LAKA nurtures space and welcomes people."
+                : "Bốn lời hứa định hình cách LAKA hiện diện, giữ gìn thung lũng và đồng hành cùng mỗi kỳ nghỉ."}
+            </p>
+          </div>
+
+          <div className="mt-12 grid border-t border-[#16311c]/15 sm:grid-cols-2 lg:grid-cols-2">
+            {localizedValues.map(([title, text], index) => (
+              <article
+                key={title}
+                className="group border-b border-[#16311c]/15 py-10 sm:px-8 sm:[&:nth-child(odd)]:border-r lg:px-12 transition hover:bg-[#16311c]/[0.02]"
+              >
+                <div className="flex items-center gap-3">
+                  <span className="font-serif text-lg font-bold text-[#80613f]">0{index + 1}</span>
+                  <div className="h-px flex-1 bg-[#16311c]/10" />
+                </div>
+                <h3 className="mt-6 text-xl sm:text-2xl font-bold tracking-tight text-[#16311c]">
+                  {title}
+                </h3>
+                <p className="mt-4 text-sm leading-7 text-[#16311c]/72">{text}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+    </div>
   );
 }
 
