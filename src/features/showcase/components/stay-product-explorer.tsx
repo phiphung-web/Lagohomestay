@@ -667,35 +667,38 @@ export function StayProductExplorer({
       <section id="bo-suu-tap-can" className="scroll-mt-[92px] bg-[#eae1d2] py-10 sm:py-14 text-[#16311c]">
         <div className="mx-auto w-[min(1460px,calc(100%-28px))] sm:w-[min(1460px,calc(100%-48px))]">
           {/* ================================================================= */}
-          {/* 1. REFINED LUXURY MINIMALIST TAB NAVIGATION                      */}
+          {/* 1. MAIN MENU STYLE TAB NAVIGATION (NO BORDER, LUXURY UNDERLINE)   */}
           {/* ================================================================= */}
           <nav
             aria-label={locale === "en" ? "Filter stays by zone" : "Lọc căn theo khu lưu trú"}
-            className="sticky top-[var(--laka-header-offset)] z-30 transition-[top] duration-300 -mx-3 sm:mx-0 px-3 sm:px-0 flex justify-center"
+            className="sticky top-[var(--laka-header-offset)] z-30 transition-[top] duration-300 -mx-3 sm:mx-0 px-3 sm:px-0 border-b border-[#16311c]/12 bg-[#eae1d2]/95 backdrop-blur-md"
           >
-            <div className="max-w-full overflow-x-auto scrollbar-none rounded-full border border-[#16311c]/12 bg-[#eae1d2]/90 p-1.5 backdrop-blur-xl shadow-[0_10px_30px_rgba(22,49,28,0.07)]">
-              <div className="flex items-center gap-1.5 sm:gap-2 snap-x scroll-smooth">
-                {tabs.map((tab) => {
-                  const selected = activeZoneSlug === tab.slug;
-                  return (
-                    <button
-                      key={tab.slug ?? "all"}
-                      type="button"
-                      aria-pressed={selected}
-                      onClick={() => setQuery({ khu: tab.slug, can: null }, "replace")}
-                      className={`focus-ring relative flex shrink-0 snap-start items-center justify-center rounded-full px-5 sm:px-8 py-2.5 sm:py-3 text-center transition-all duration-300 ${
-                        selected
-                          ? "bg-[#16311c] text-[#eae1d2] shadow-md font-semibold tracking-wide"
-                          : "text-[#16311c]/70 hover:text-[#16311c] hover:bg-black/5 font-medium"
+            <div className="mx-auto flex max-w-full items-center justify-start sm:justify-center overflow-x-auto scrollbar-none gap-6 sm:gap-10 py-1">
+              {tabs.map((tab) => {
+                const selected = activeZoneSlug === tab.slug;
+                return (
+                  <button
+                    key={tab.slug ?? "all"}
+                    type="button"
+                    aria-pressed={selected}
+                    onClick={() => setQuery({ khu: tab.slug, can: null }, "replace")}
+                    className={`focus-ring group relative shrink-0 py-3.5 text-xs sm:text-sm font-bold uppercase tracking-[.12em] transition-all duration-200 ${
+                      selected
+                        ? "text-[#16311c] opacity-100"
+                        : "text-[#16311c]/55 hover:text-[#16311c] hover:opacity-100"
+                    }`}
+                  >
+                    <span>{tab.label}</span>
+                    {/* Active Underline matching main menu style */}
+                    <span
+                      aria-hidden="true"
+                      className={`absolute inset-x-0 bottom-0 h-0.5 bg-[#80613f] origin-left transition-transform duration-300 ${
+                        selected ? "scale-x-100 opacity-100" : "scale-x-0 group-hover:scale-x-100 opacity-60"
                       }`}
-                    >
-                      <span className="text-xs sm:text-sm whitespace-nowrap">
-                        {tab.label}
-                      </span>
-                    </button>
-                  );
-                })}
-              </div>
+                    />
+                  </button>
+                );
+              })}
             </div>
           </nav>
 
