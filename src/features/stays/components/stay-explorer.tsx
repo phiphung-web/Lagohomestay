@@ -21,7 +21,7 @@ export function StayExplorer({ stays, compact = false }: { stays: Stay[]; compac
   return <div>
     <div className="flex flex-col gap-5 border-y border-lago-ink/10 py-5 sm:flex-row sm:items-center sm:justify-between">
       <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-[.14em] text-lago-ink/45"><SlidersHorizontal className="h-4 w-4" /> Chọn theo chuyến đi</div>
-      <div className="flex gap-2 overflow-x-auto pb-1 sm:flex-wrap sm:justify-end">{filters.map((item) => <button key={item.value} onClick={() => setFilter(item.value)} className={`focus-ring shrink-0 rounded-full px-4 py-2 text-xs font-bold transition ${filter === item.value ? "bg-lago-ink text-white" : "bg-white text-lago-ink/60 hover:bg-lago-mist"}`}>{item.label}</button>)}</div>
+      <div className="flex gap-2 overflow-x-auto no-scrollbar pb-1 sm:flex-wrap sm:justify-end">{filters.map((item) => <button key={item.value} onClick={() => setFilter(item.value)} className={`focus-ring shrink-0 rounded-full px-4 py-2 text-xs font-bold transition ${filter === item.value ? "bg-lago-ink text-white" : "bg-white text-lago-ink/60 hover:bg-lago-mist"}`}>{item.label}</button>)}</div>
     </div>
 
     <div className={`mt-7 grid gap-5 ${compact ? "md:grid-cols-2" : "md:grid-cols-2 xl:grid-cols-12"}`}>

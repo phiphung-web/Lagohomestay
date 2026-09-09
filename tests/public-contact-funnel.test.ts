@@ -43,6 +43,6 @@ describe("LAKA public contact funnel", () => {
 
   it("uses the approved coffee-shop name", () => {
     const cafe = diningMenuVenues.find((venue) => venue.id === "cafe")!;
-    expect(cafe.title).toEqual({ vi: "Tiệm Cà Phê Tầng Mây", en: "Tang May Coffee Shop" });
+    expect(cafe.title).toEqual({ vi: 'Tiệm Cà Phê "Tầng Mây"', en: 'Coffee Shop "Among the Clouds"' });
   });
 });

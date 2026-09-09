@@ -336,7 +336,7 @@ export function StayProductExplorer({
             </div>
 
             {/* Navigation Tabs in modal */}
-            <nav aria-label={locale === "en" ? "Home details" : "Nội dung chi tiết căn"} className="z-[2] flex shrink-0 overflow-x-auto border-y border-[#16311c]/12 bg-[#eae1d2] px-5 sm:px-9 lg:px-11">
+            <nav aria-label={locale === "en" ? "Home details" : "Nội dung chi tiết căn"} className="z-[2] flex shrink-0 overflow-x-auto no-scrollbar border-y border-[#16311c]/12 bg-[#eae1d2] px-5 sm:px-9 lg:px-11">
               {([
                 ["overview", locale === "en" ? "Overview" : "Tổng quan"],
                 ["amenities", locale === "en" ? "Amenities & Inclusions" : "Tiện nghi & Dịch vụ"],

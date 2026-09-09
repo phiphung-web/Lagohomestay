@@ -48,6 +48,17 @@ summary::-webkit-details-marker { display: none; }
 ::-webkit-scrollbar-track { background: #f1ede5; }
 ::-webkit-scrollbar-thumb { border: 3px solid #f1ede5; border-radius: 999px; background: #8a9b92; }
 ::-webkit-scrollbar-thumb:hover { background: var(--forest); }
+
+.no-scrollbar, .scrollbar-none, .scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar,
+.scrollbar-none::-webkit-scrollbar,
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
 ::selection { color: white; background: var(--forest); }
 
 .display { font-family: "Lora", Georgia, serif; font-optical-sizing: auto; letter-spacing: -.025em; line-height: 1.04; text-wrap: balance; }

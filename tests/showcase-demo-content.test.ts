@@ -23,8 +23,9 @@ describe("LAKA presentation content", () => {
       "Bida"
     ]);
     expect(diningStories.map((item) => item.title.vi)).toEqual([
-      "Nhà Hàng Ven Hồ",
-      "Tiệm Cà Phê Tầng Mây"
+      'Bữa sáng giữa "Thiên Nhiên"',
+      'Nhà Hàng "Ven Hồ"',
+      'Tiệm Cà Phê "Tầng Mây"'
     ]);
     expect(specialMoments).toHaveLength(3);
     expect(guestServices).toHaveLength(4);
@@ -68,7 +69,7 @@ describe("LAKA presentation content", () => {
   });
 
   it("builds restaurant and cafe menu layouts without prices or internal notes", () => {
-    expect(diningMenuVenues.map((venue) => venue.id)).toEqual(["restaurant", "cafe"]);
+    expect(diningMenuVenues.map((venue) => venue.id)).toEqual(["breakfast", "restaurant", "cafe"]);
     expect(restaurantMenuPages.length).toBeGreaterThanOrEqual(4);
 
     const publicMenuText = JSON.stringify(restaurantMenuPages).toLowerCase();
