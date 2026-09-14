@@ -41,7 +41,10 @@ export function GalleryLightbox({ images, mood, locale = "vi" }: { images: strin
 
   return (
     <>
-      <section className="laka-mobile-rail laka-mobile-rail-grid mx-auto mt-8 w-full gap-4 pb-4 sm:mt-10 md:grid-cols-3 md:gap-5 md:overflow-visible md:pb-0" aria-label={locale === "en" ? "Memory gallery photos" : "Các hình ảnh thư viện ký ức"}>
+      <section
+        className="mx-auto mt-6 sm:mt-8 md:mt-10 grid grid-cols-3 gap-2 sm:gap-3.5 md:gap-5 w-full"
+        aria-label={locale === "en" ? "Memory gallery photos" : "Các hình ảnh thư viện ký ức"}
+      >
         {images.map((src, index) => (
           <button
             type="button"
@@ -51,7 +54,7 @@ export function GalleryLightbox({ images, mood, locale = "vi" }: { images: strin
             }}
             key={`${src}-${index}`}
             aria-label={locale === "en" ? `Open concept image ${index + 1}` : `Mở ảnh minh họa ${index + 1}`}
-            className="laka-mobile-rail-item group focus-ring relative aspect-[4/5] overflow-hidden rounded-xl bg-[#10251d] text-left shadow-sm transition-all duration-300 hover:shadow-xl md:aspect-[4/3]"
+            className="group focus-ring relative aspect-square sm:aspect-[4/5] md:aspect-[4/3] w-full overflow-hidden rounded-lg sm:rounded-xl md:rounded-2xl bg-[#10251d] text-left shadow-sm transition-all duration-300 hover:shadow-xl block"
           >
             <Image
               src={src}
@@ -61,11 +64,11 @@ export function GalleryLightbox({ images, mood, locale = "vi" }: { images: strin
               className="object-cover transition duration-700 ease-out group-hover:scale-105"
             />
             {/* Subtle Gradient */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
 
             {/* Hover Expand Icon */}
-            <span className="absolute top-2 right-2 sm:top-3 sm:right-3 grid h-7 w-7 sm:h-9 sm:w-9 place-items-center rounded-full bg-white/90 text-[#16311c] opacity-0 shadow-lg transition duration-200 group-hover:opacity-100">
-              <Expand className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
+            <span className="absolute top-1.5 right-1.5 sm:top-2.5 sm:right-2.5 grid h-6 w-6 sm:h-8 sm:w-8 place-items-center rounded-full bg-white/90 text-[#16311c] opacity-0 shadow-lg transition duration-200 group-hover:opacity-100">
+              <Expand className="h-3 w-3 sm:h-4 sm:w-4" />
             </span>
           </button>
         ))}
