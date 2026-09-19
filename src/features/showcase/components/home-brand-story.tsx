@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Mountain, Sparkles, UtensilsCrossed } from "lucide-react";
-import { conceptImages } from "@/features/stays/data/demo-data";
+import { lakaImages } from "@/features/showcase/data/laka-images";
 import type { ShowcaseLocale } from "@/features/showcase/i18n/locale";
 
 const missionData = {
@@ -57,8 +57,8 @@ export function HomeBrandStory({ basePath, locale = "vi" }: { basePath: string; 
             {/* Top Photo */}
             <div className="relative h-56 w-full overflow-hidden bg-[#e0d6c7]">
               <Image
-                src={conceptImages.detail1}
-                alt={en ? "A window looking out to nature at LAKA — concept image" : "Khung kính nhìn ra thiên nhiên tại LAKA — ảnh minh họa"}
+                src={lakaImages.home.mission}
+                alt={en ? "A quiet detail in a LAKA room" : "Một chi tiết an yên trong phòng nghỉ LAKA"}
                 fill
                 sizes="(max-width: 640px) 100vw, 540px"
                 className="object-cover"
@@ -119,8 +119,8 @@ export function HomeBrandStory({ basePath, locale = "vi" }: { basePath: string; 
               {/* Main Photo Frame with matching border-4 border-[#eae1d2] */}
               <div className="relative aspect-[16/11] rounded-3xl overflow-hidden shadow-2xl bg-[#10251d] border-4 border-[#eae1d2] group">
                 <Image
-                  src={conceptImages.detail1}
-                  alt={en ? "A window looking out to nature at LAKA — concept image" : "Khung kính nhìn ra thiên nhiên tại LAKA — ảnh minh họa"}
+                  src={lakaImages.home.mission}
+                  alt={en ? "A quiet detail in a LAKA room" : "Một chi tiết an yên trong phòng nghỉ LAKA"}
                   fill
                   sizes="50vw"
                   className="object-cover transition duration-1000 ease-out group-hover:scale-105"
@@ -131,8 +131,8 @@ export function HomeBrandStory({ basePath, locale = "vi" }: { basePath: string; 
               {/* Overlapping Floating Inset Card */}
               <div className="absolute -bottom-6 -right-6 w-44 xl:w-52 aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl border-4 border-[#eae1d2] bg-[#10251d]">
                 <Image
-                  src={conceptImages.forest}
-                  alt={en ? "Pine forest at LAKA — concept image" : "Rừng thông tại LAKA — ảnh minh họa"}
+                  src={lakaImages.home.stays.forest}
+                  alt={en ? "A forest cabin at LAKA" : "Căn nhà giữa rừng tại LAKA"}
                   fill
                   sizes="200px"
                   className="object-cover"

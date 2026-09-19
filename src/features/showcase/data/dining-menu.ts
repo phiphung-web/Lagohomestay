@@ -31,7 +31,7 @@ export const diningMenuVenues = [
 ] as const;
 
 // Owner-supplied restaurant menu, in printed order 01–10.
-// Lossless WebP assets retain the original artwork, wording and prices.
+// High-quality WebP assets retain the original artwork, wording and prices.
 export const restaurantMenuPages: readonly RestaurantMenuPage[] = [
   {
     id: "nuong-bbq",

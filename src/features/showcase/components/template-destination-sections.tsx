@@ -12,7 +12,7 @@ import {
 } from "@/features/showcase/data/laka-demo-content";
 import { diningMenuVenues } from "@/features/showcase/data/dining-menu";
 import { RestaurantMenuGallery } from "@/features/showcase/components/restaurant-menu-gallery";
-import { conceptImages } from "@/features/stays/data/demo-data";
+import { isConceptImage } from "@/features/showcase/data/laka-images";
 import type { ShowcaseLocale } from "@/features/showcase/i18n/locale";
 
 export function TemplateExperienceCatalog({ locale }: { locale: ShowcaseLocale }) {
@@ -26,7 +26,20 @@ export function TemplateExperienceCatalog({ locale }: { locale: ShowcaseLocale }
         {lakaExperiences.map((item, index) => {
           const Icon = item.icon;
           return <article key={item.title.vi} className="group overflow-hidden border border-[#16311c]/12 bg-[#eae1d2]">
-            <div className="relative aspect-[16/10] overflow-hidden"><Image src={item.image} alt={`${inLocale(item.title, locale)} — ${locale === "en" ? "concept image" : "hình ảnh minh họa"}`} fill sizes="(max-width:768px) 100vw, 33vw" className="object-cover transition duration-700 group-hover:scale-[1.025]" /><span className="absolute left-3 top-3 bg-[#16311c]/75 px-2.5 py-1 text-[.52rem] font-bold uppercase tracking-wider text-white backdrop-blur">{locale === "en" ? "Concept" : "Minh họa"} · 0{index + 1}</span></div>
+            <div className="relative aspect-[4/5] overflow-hidden">
+              <Image
+                src={item.image}
+                alt={`${inLocale(item.title, locale)}${isConceptImage(item.image) ? ` — ${locale === "en" ? "concept image" : "hình ảnh minh họa"}` : ""}`}
+                fill
+                sizes="(max-width:768px) 100vw, 33vw"
+                className="object-cover transition duration-700 group-hover:scale-[1.025]"
+              />
+              {isConceptImage(item.image) && (
+                <span className="absolute left-3 top-3 bg-[#16311c]/75 px-2.5 py-1 text-[.52rem] font-bold uppercase tracking-wider text-white backdrop-blur">
+                  {locale === "en" ? "Concept" : "Minh họa"} · 0{index + 1}
+                </span>
+              )}
+            </div>
             <div className="p-6"><div className="flex items-center justify-between"><Icon className="h-5 w-5 text-[#80613f]" /><span className="text-[.58rem] font-bold uppercase tracking-[.12em] text-[#16311c]/45">{inLocale(item.meta, locale)}</span></div><h3 className="laka-heading-card mt-6">{inLocale(item.title, locale)}</h3><p className="mt-3 text-sm leading-7 text-[#16311c]/65">{inLocale(item.text, locale)}</p></div>
           </article>;
         })}
@@ -52,7 +65,7 @@ export function TemplateDiningAndOccasions({ locale }: { locale: ShowcaseLocale 
             <div className="relative aspect-[16/10] overflow-hidden bg-[#d8cdbd]">
               <Image
                 src={item.image}
-                alt={`${inLocale(item.title, locale)} — ${en ? "concept image" : "hình ảnh minh họa"}`}
+                alt={`${inLocale(item.title, locale)}${isConceptImage(item.image) ? ` — ${en ? "concept image" : "hình ảnh minh họa"}` : ""}`}
                 fill
                 sizes="(max-width:768px) 85vw, (max-width:1024px) 50vw, 33vw"
                 className="object-cover transition duration-700 ease-out group-hover:scale-105"
@@ -66,9 +79,11 @@ export function TemplateDiningAndOccasions({ locale }: { locale: ShowcaseLocale 
                 <span>{inLocale(item.kicker, locale)}</span>
               </div>
 
-              <span className="absolute top-3.5 right-3.5 rounded-full bg-black/40 px-2.5 py-0.5 text-[.52rem] font-medium text-white/80 backdrop-blur-md">
-                {en ? "Concept" : "Minh họa"} · 0{index + 1}
-              </span>
+              {isConceptImage(item.image) && (
+                <span className="absolute top-3.5 right-3.5 rounded-full bg-black/40 px-2.5 py-0.5 text-[.52rem] font-medium text-white/80 backdrop-blur-md">
+                  {en ? "Concept" : "Minh họa"} · 0{index + 1}
+                </span>
+              )}
 
               {/* Text tiêu đề vào trong ảnh */}
               <div className="absolute inset-x-0 bottom-0 p-5 sm:p-6">
@@ -128,7 +143,7 @@ export function TemplateServicesCatalog({ locale, contactHref = "/lien-he" }: { 
             const Icon = item.icon;
             return <article key={item.title.vi} className={`group ${index === 1 ? "lg:mt-16" : ""}`}>
               <div className="relative aspect-[3/4.8] sm:aspect-[2/3] overflow-hidden rounded-2xl border border-white/10 bg-[#0b1d16] shadow-2xl">
-                <Image src={item.image} alt={`${inLocale(item.title, locale)} — ${locale === "en" ? "concept image" : "hình ảnh minh họa"}`} fill sizes="(max-width:1024px) 100vw, 33vw" className="object-cover opacity-75 transition duration-1000 group-hover:scale-[1.03] group-hover:opacity-90" />
+                <Image src={item.image} alt={inLocale(item.title, locale)} fill sizes="(max-width:1024px) 100vw, 33vw" className="object-cover opacity-75 transition duration-1000 group-hover:scale-[1.03] group-hover:opacity-90" />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#07150f] via-[#07150f]/75 to-transparent" />
                 <div className="absolute inset-x-0 bottom-0 flex flex-col justify-end p-6 sm:p-8">
                   <div className="flex items-center justify-between"><span className="text-[.62rem] font-bold tracking-wider text-[#dfc6a5]">0{index + 1}</span><Icon className="h-5 w-5 text-[#dfc6a5]" /></div>
@@ -163,8 +178,10 @@ export function TemplateServicesCatalog({ locale, contactHref = "/lien-he" }: { 
             const Icon = facility.icon;
             return <article key={facility.title.vi} className="group overflow-hidden bg-[#eae1d2]">
               <div className="relative aspect-[4/3] overflow-hidden">
-                <Image src={facility.image} alt={`${inLocale(facility.title, locale)} — ${locale === "en" ? "concept image" : "hình ảnh minh họa"}`} fill sizes="(max-width:1024px) 100vw, 33vw" className="object-cover transition duration-700 group-hover:scale-[1.025]" />
-                <span className="absolute left-3 top-3 bg-[#16311c]/75 px-2.5 py-1 text-[.52rem] font-bold uppercase tracking-wider text-white backdrop-blur">0{index + 1} · {locale === "en" ? "Concept" : "Minh họa"}</span>
+                <Image src={facility.image} alt={`${inLocale(facility.title, locale)}${isConceptImage(facility.image) ? ` — ${locale === "en" ? "concept image" : "hình ảnh minh họa"}` : ""}`} fill sizes="(max-width:1024px) 100vw, 33vw" className="object-cover transition duration-700 group-hover:scale-[1.025]" />
+                {isConceptImage(facility.image) && (
+                  <span className="absolute left-3 top-3 bg-[#16311c]/75 px-2.5 py-1 text-[.52rem] font-bold uppercase tracking-wider text-white backdrop-blur">0{index + 1} · {locale === "en" ? "Concept" : "Minh họa"}</span>
+                )}
               </div>
               <div className="p-6">
                 <Icon className="h-5 w-5 text-[#80613f]" />

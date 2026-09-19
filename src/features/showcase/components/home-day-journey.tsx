@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { lakaExperiences } from "@/features/showcase/data/laka-demo-content";
+import { lakaImages } from "@/features/showcase/data/laka-images";
 import type { ShowcaseLocale } from "@/features/showcase/i18n/locale";
 
 export function HomeDayJourney({
@@ -13,6 +14,12 @@ export function HomeDayJourney({
 }) {
   const en = locale === "en";
   const experiences = lakaExperiences.slice(0, 4);
+  const homeImages = [
+    lakaImages.home.journey.pickleball,
+    lakaImages.home.journey.kayak,
+    lakaImages.home.journey.pool,
+    lakaImages.home.journey.bicycle
+  ];
 
   return (
     <section id="mot-ngay" className="laka-section-normal scroll-mt-20 bg-[#0a1a13] px-5 text-white sm:px-8">
@@ -48,8 +55,8 @@ export function HomeDayJourney({
               >
                 <div className="laka-media-frame relative h-[min(580px,75svh)] overflow-hidden rounded-xl sm:rounded-2xl bg-[#10251d]">
                   <Image
-                    src={experience.image}
-                    alt={`${en ? experience.title.en : experience.title.vi} — ${en ? "concept image" : "ảnh minh họa"}`}
+                    src={homeImages[index]}
+                    alt={en ? experience.title.en : experience.title.vi}
                     fill
                     sizes="(max-width:1024px) 82vw, 25vw"
                     className="object-cover transition duration-1000 ease-out group-hover:scale-105"

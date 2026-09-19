@@ -35,6 +35,7 @@ import {
 import type { ShowcaseLocale } from "@/features/showcase/i18n/locale";
 import { localizeStay } from "@/features/showcase/i18n/showcase-copy";
 import { conceptImages, getUnitsForStay, stays } from "@/features/stays/data/demo-data";
+import { isConceptImage, lakaImages } from "@/features/showcase/data/laka-images";
 import { SkipLink } from "@/shared/components/ui/skip-link";
 import { BrandLogo } from "@/shared/components/brand/brand-logo";
 import { ZaloIcon } from "@/shared/components/ui/zalo-icon";
@@ -314,7 +315,7 @@ function StayPage({ config, slug, locale }: { config: CompleteTemplateConfig; sl
     return index === 0 ? "aspect-[4/5]" : "aspect-[4/3] sm:mt-12";
   };
   return <><TemplateStayHero mood={config.mood} basePath={config.basePath} stay={stay} locale={locale} />
-    <section id="khong-gian" className={`laka-section-normal mx-auto grid scroll-mt-24 gap-12 lg:grid-cols-[1fr_360px] ${cinematic ? "w-[min(1420px,calc(100%-40px))] lg:grid-cols-[1fr_390px]" : "w-[min(1240px,calc(100%-40px))]"}`}><div><h2 className="laka-heading-section max-w-3xl">{locale === "en" ? "Inside the home" : cinematic ? "Bên trong khung hình" : organic ? "Có gì trong nhà?" : "Không gian của căn"}</h2><p className="laka-section-lead mt-5 max-w-3xl opacity-72">{stay.longDescription}</p><div className={`mt-12 grid gap-4 ${galleryGrid}`}>{stay.gallery.map((image, index) => <div key={image} className={`group relative overflow-hidden ${galleryShape(index)}`}><Image src={image} alt={`${stay.name} - ${locale === "en" ? `space ${index + 1}` : `góc không gian ${index + 1}`}`} fill sizes="(max-width:640px) 100vw, 55vw" className={`object-cover transition duration-700 group-hover:scale-[1.025] ${cinematic ? "opacity-78 group-hover:opacity-100" : ""}`} /><span className={`absolute bottom-3 left-3 px-3 py-1.5 text-[.56rem] font-bold uppercase tracking-wider ${cinematic ? "bg-black/55 text-white backdrop-blur" : "bg-white/88 text-[#16311c]"}`}>{locale === "en" ? "Frame" : "Góc"} {String(index + 1).padStart(2, "0")} · {locale === "en" ? "concept" : "minh họa"}</span></div>)}</div><h3 className="laka-heading-card mt-14">{locale === "en" ? "Featured amenities" : organic ? "Đủ tiện nghi để ở thật vui" : cinematic ? "Những chi tiết trong căn" : "Tiện nghi nổi bật"}</h3><div className={`mt-6 grid gap-3 sm:grid-cols-2 ${organic ? "gap-2" : ""}`}>{stay.amenities.map((item, index) => <span key={item} className={`flex items-center gap-3 py-3 text-sm ${organic ? "rounded-full bg-white px-4 font-bold shadow-sm" : "border-b border-current/10"}`}><span className={`${cinematic ? "text-[.6rem] font-bold text-[var(--template-accent)]" : ""}`}>{cinematic ? String(index + 1).padStart(2, "0") : <Check className="h-4 w-4 text-[var(--template-accent)]" />}</span>{item}</span>)}</div>
+    <section id="khong-gian" className={`laka-section-normal mx-auto grid scroll-mt-24 gap-12 lg:grid-cols-[1fr_360px] ${cinematic ? "w-[min(1420px,calc(100%-40px))] lg:grid-cols-[1fr_390px]" : "w-[min(1240px,calc(100%-40px))]"}`}><div><h2 className="laka-heading-section max-w-3xl">{locale === "en" ? "Inside the home" : cinematic ? "Bên trong khung hình" : organic ? "Có gì trong nhà?" : "Không gian của căn"}</h2><p className="laka-section-lead mt-5 max-w-3xl opacity-72">{stay.longDescription}</p><div className={`mt-12 grid gap-4 ${galleryGrid}`}>{stay.gallery.map((image, index) => <div key={image} className={`group relative overflow-hidden ${galleryShape(index)}`}><Image src={image} alt={`${stay.name} - ${locale === "en" ? `space ${index + 1}` : `góc không gian ${index + 1}`}`} fill sizes="(max-width:640px) 100vw, 55vw" className={`object-cover transition duration-700 group-hover:scale-[1.025] ${cinematic ? "opacity-78 group-hover:opacity-100" : ""}`} /><span className={`absolute bottom-3 left-3 px-3 py-1.5 text-[.56rem] font-bold uppercase tracking-wider ${cinematic ? "bg-black/55 text-white backdrop-blur" : "bg-white/88 text-[#16311c]"}`}>{locale === "en" ? "Frame" : "Góc"} {String(index + 1).padStart(2, "0")}{isConceptImage(image) ? ` · ${locale === "en" ? "concept" : "minh họa"}` : ""}</span></div>)}</div><h3 className="laka-heading-card mt-14">{locale === "en" ? "Featured amenities" : organic ? "Đủ tiện nghi để ở thật vui" : cinematic ? "Những chi tiết trong căn" : "Tiện nghi nổi bật"}</h3><div className={`mt-6 grid gap-3 sm:grid-cols-2 ${organic ? "gap-2" : ""}`}>{stay.amenities.map((item, index) => <span key={item} className={`flex items-center gap-3 py-3 text-sm ${organic ? "rounded-full bg-white px-4 font-bold shadow-sm" : "border-b border-current/10"}`}><span className={`${cinematic ? "text-[.6rem] font-bold text-[var(--template-accent)]" : ""}`}>{cinematic ? String(index + 1).padStart(2, "0") : <Check className="h-4 w-4 text-[var(--template-accent)]" />}</span>{item}</span>)}</div>
       <section className="mt-14 border-t border-current/12 pt-10">
          <div className="grid gap-5 sm:grid-cols-[1fr_.55fr] sm:items-start">
            <div><p className="text-[.62rem] font-bold uppercase tracking-[.16em] text-[var(--template-accent)]">{locale === "en" ? "Physical homes in this type" : "Các căn thực tế thuộc dòng này"}</p><h3 className="laka-heading-card mt-4">{locale === "en" ? `${units.length} homes, each with its own position.` : `${units.length} căn, mỗi căn có một vị trí riêng.`}</h3></div>
@@ -362,7 +363,7 @@ function ExperiencePage({ config, locale }: { config: CompleteTemplateConfig; lo
   return (
     <>
       <PageBannerHero
-        bgImage={conceptImages.experience}
+        bgImage={lakaImages.experiences.banner}
         pill={isEn ? "Experiences at LAKA" : "Trải Nghiệm Tại LAKA"}
         title={isEn ? "LaKa - Experience" : "LaKa - Trải nghiệm"}
         subtitle={
@@ -375,7 +376,7 @@ function ExperiencePage({ config, locale }: { config: CompleteTemplateConfig; lo
             ? "From energetic pickleball matches and lake kayaking to calm swims in the blue pool, cycling and lively board games — every moment at LAKA unfolds a new experience."
             : "Từ những trận pickleball sôi nổi, lướt kayak rẽ sóng mặt hồ đến những phút thả mình trong làn nước xanh, đạp xe rong ruổi hay cùng nhau nhập cuộc ván board game rộn rã — để mỗi khoảnh khắc tại LaKa đều mở ra một trải nghiệm mới."
         }
-        cardImage={conceptImages.experience}
+        cardImage={lakaImages.experiences.bannerCard}
         cardBadge="LAKA · Experience"
         cardAlt={isEn ? "Experience at LAKA" : "Trải nghiệm tại LAKA"}
         brandTagTop="Moments &"
@@ -397,7 +398,7 @@ function ServicesPage({ config, locale }: { config: CompleteTemplateConfig; loca
   return (
     <>
       <PageBannerHero
-        bgImage={conceptImages.detail2}
+        bgImage={lakaImages.services.banner}
         pill={isEn ? "Services & Amenities" : "Dịch Vụ & Tiện Ích"}
         title={isEn ? "LaKa - Services" : "LaKa - Dịch Vụ"}
         subtitle={isEn ? "Everything useful, nothing intrusive" : "Đủ đầy khi cần, riêng tư khi muốn"}
@@ -406,7 +407,7 @@ function ServicesPage({ config, locale }: { config: CompleteTemplateConfig; loca
             ? "From family essentials and private transfers to shared nature spaces — choose only what makes your stay lighter."
             : "Từ tiện ích gia đình, xe đưa đón đến không gian thiên nhiên dùng chung — bạn chỉ cần chọn những gì khiến kỳ nghỉ nhẹ nhàng hơn."
         }
-        cardImage={conceptImages.detail2}
+        cardImage={lakaImages.services.bannerCard}
         cardBadge="LAKA · Services"
         cardAlt={isEn ? "Services and amenities at LAKA" : "Dịch vụ và tiện ích tại LAKA"}
         brandTagTop="Comfort &"
@@ -427,7 +428,7 @@ function DiningPage({ config, locale }: { config: CompleteTemplateConfig; locale
   return (
     <>
       <PageBannerHero
-        bgImage={conceptImages.dining}
+        bgImage={lakaImages.home.dining.restaurant}
         pill={isEn ? "Dining & Occasions" : "Ẩm Thực & Bàn Tiệc"}
         title={isEn ? "LaKa - Dining" : "LaKa - Ẩm Thực"}
         subtitle={isEn ? "Flavours that keep the good times going." : "Những hương vị nối dài cuộc vui."}
@@ -436,7 +437,7 @@ function DiningPage({ config, locale }: { config: CompleteTemplateConfig; locale
             ? "From lakeside barbecue grills and warm hot pots to cloud-viewing coffee and serene breakfast amidst nature — dining at LAKA is shaped around unforgettable shared time."
             : "Từ món nướng, lẩu quây quần bên hồ đến cà phê ngắm mây và bữa sáng thanh lành giữa thiên nhiên — ẩm thực tại LAKA nối dài những khoảnh khắc sum vầy."
         }
-        cardImage={conceptImages.dining}
+        cardImage={lakaImages.home.dining.coffee}
         cardBadge="LAKA · Dining"
         cardAlt={isEn ? "Dining at LAKA" : "Ẩm thực tại LAKA"}
         brandTagTop="Taste &"
@@ -457,7 +458,7 @@ function AboutPage({ config, locale }: { config: CompleteTemplateConfig; locale:
   return (
     <>
       <PageBannerHero
-        bgImage={conceptImages.forest}
+        bgImage={lakaImages.home.hero.desktop}
         pill={isEn ? "The LAKA Philosophy" : "Triết Lý LAKA"}
         title={isEn ? '"Choose" Cabin. "Hold" Valley.' : '"Chọn" Cabin. "Trọn" Thung Lũng.'}
         subtitle={
@@ -470,7 +471,7 @@ function AboutPage({ config, locale }: { config: CompleteTemplateConfig; locale:
             ? "LAKA began with a wish to create homes where people can give their full attention to nature and to one another."
             : "LAKA bắt đầu từ mong muốn tạo ra những căn nhà nơi con người có thể dành trọn sự chú ý cho thiên nhiên và cho nhau."
         }
-        cardImage={conceptImages.forest}
+        cardImage={lakaImages.home.mission}
         cardBadge="LAKA · Story"
         cardAlt={isEn ? "Pine forest at LAKA" : "Rừng thông tại LAKA"}
         brandTagTop="Origin &"

@@ -1,4 +1,5 @@
-import { PageBannerHero, DEFAULT_BANNER_IMAGES } from "@/features/showcase/components/page-banner-hero";
+import { PageBannerHero } from "@/features/showcase/components/page-banner-hero";
+import { lakaImages } from "@/features/showcase/data/laka-images";
 import type { CompleteTemplateConfig } from "@/features/showcase/site/complete-template-site";
 import type { ShowcaseLocale } from "@/features/showcase/i18n/locale";
 
@@ -12,7 +13,7 @@ export function StayBannerHero({
 
   return (
     <PageBannerHero
-      bgImage={DEFAULT_BANNER_IMAGES.bokehBg}
+      bgImage={lakaImages.home.hero.desktop}
       pill={isEn ? "Stay Collection" : "Bộ Sưu Tập Lưu Trú"}
       title={isEn ? "LaKa - Stays" : "LaKa - Lưu Trú"}
       subtitle={isEn ? "Each green corner, its own rhythm" : "Mỗi khoảng xanh 1 nhịp riêng"}
@@ -21,7 +22,7 @@ export function StayBannerHero({
           ? "Eight accommodation styles and twenty private homes between lake, valley and pine hills. Designed for slow days where every shade of green brings calm."
           : "Tám dòng lưu trú và hai mươi căn nhà nép mình giữa hồ nước, thung lũng và đồi thông. Nơi mỗi khoảng xanh là một nhịp thở tự nhiên vỗ về tâm hồn và đưa bạn trở về với sự an yên."
       }
-      cardImage={DEFAULT_BANNER_IMAGES.cardLeaf}
+      cardImage={lakaImages.home.stays.forest}
       cardBadge="LAKA · Greenery"
       cardAlt={isEn ? "Fresh green leaves at LAKA" : "Lá xanh tươi mát tại LAKA"}
       brandTagTop={isEn ? "Stay" : "Bộ Sưu Tập"}

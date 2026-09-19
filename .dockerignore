@@ -1,5 +1,7 @@
 .git
 .github
+.agents
+.codex
 .next
 node_modules
 npm-debug.log*
@@ -12,3 +14,8 @@ playwright-report
 test-results
 *.log
 tsconfig.tsbuildinfo
+public/screenshots
+.tmp
+.codex-tmp
+*.xlsx
+~$*.xlsx

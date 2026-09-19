@@ -53,12 +53,12 @@ export function GalleryLightbox({ images, mood, locale = "vi" }: { images: strin
               setActive(index);
             }}
             key={`${src}-${index}`}
-            aria-label={locale === "en" ? `Open concept image ${index + 1}` : `Mở ảnh minh họa ${index + 1}`}
+            aria-label={locale === "en" ? `Open LAKA photo ${index + 1}` : `Mở ảnh LAKA ${index + 1}`}
             className="group focus-ring relative aspect-square sm:aspect-[4/5] md:aspect-[4/3] w-full overflow-hidden rounded-lg sm:rounded-xl md:rounded-2xl bg-[#10251d] text-left shadow-sm transition-all duration-300 hover:shadow-xl block"
           >
             <Image
               src={src}
-              alt={locale === "en" ? `LAKA Homestay — concept image ${index + 1}` : `LAKA Homestay — ảnh minh họa ${index + 1}`}
+              alt={locale === "en" ? `LAKA Homestay photo ${index + 1}` : `Ảnh LAKA Homestay ${index + 1}`}
               fill
               sizes="(max-width: 640px) 33vw, (max-width: 1024px) 33vw, 33vw"
               className="object-cover transition duration-700 ease-out group-hover:scale-105"
@@ -95,7 +95,7 @@ export function GalleryLightbox({ images, mood, locale = "vi" }: { images: strin
             <Image
               key={images[active]}
               src={images[active]}
-              alt={locale === "en" ? `LAKA Homestay — concept image ${active + 1}` : `LAKA Homestay — ảnh minh họa ${active + 1}`}
+              alt={locale === "en" ? `LAKA Homestay photo ${active + 1}` : `Ảnh LAKA Homestay ${active + 1}`}
               fill
               priority
               sizes="100vw"

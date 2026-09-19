@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { ArrowDown } from "lucide-react";
 import { GalleryLightbox } from "@/features/showcase/components/gallery-lightbox";
 import { HomeBrandStory } from "@/features/showcase/components/home-brand-story";
@@ -8,22 +7,12 @@ import { HomeGuestStories } from "@/features/showcase/components/home-guest-stor
 import { HomeLandscapeCollections } from "@/features/showcase/components/home-landscape-collections";
 import { TemplateExperienceLayer } from "@/features/showcase/components/template-experience-layer";
 import { TemplateDocumentLocale } from "@/features/showcase/components/template-document-locale";
-import { conceptImages } from "@/features/stays/data/demo-data";
+import { lakaImages } from "@/features/showcase/data/laka-images";
 import { TemplateFooter, TemplateHeader, type CompleteTemplateConfig } from "@/features/showcase/site/complete-template-site";
 import { SkipLink } from "@/shared/components/ui/skip-link";
 import type { ShowcaseLocale } from "@/features/showcase/i18n/locale";
 
-const memoryImages = [
-  conceptImages.detail1,
-  conceptImages.forest,
-  conceptImages.hill,
-  conceptImages.hero,
-  conceptImages.cloud,
-  conceptImages.detail2,
-  conceptImages.breakfast,
-  conceptImages.dining,
-  conceptImages.table
-];
+const memoryImages = [...lakaImages.home.gallery];
 
 export function MainHome({ config, locale = "vi" }: { config: CompleteTemplateConfig; locale?: ShowcaseLocale }) {
   const en = locale === "en";
@@ -38,14 +27,16 @@ export function MainHome({ config, locale = "vi" }: { config: CompleteTemplateCo
 
     <main id="noi-dung-chinh" tabIndex={-1}>
       <section className="relative min-h-[100svh] overflow-hidden bg-[#10251d] text-white">
-        <Image
-          src={conceptImages.hero}
-          alt={en ? "A quiet home surrounded by nature — concept image" : "Một ngôi nhà tĩnh lặng giữa thiên nhiên — hình ảnh minh họa"}
-          fill
-          priority
-          sizes="100vw"
-          className="showcase-visual-media object-cover object-[58%_center]"
-        />
+        <picture className="absolute inset-0 block">
+          <source media="(max-width: 639px)" srcSet={lakaImages.home.hero.mobile} />
+          <img
+            src={lakaImages.home.hero.desktop}
+            alt={en ? "LAKA Homestay among the green landscape" : "LAKA Homestay giữa khoảng xanh"}
+            width={2560}
+            height={1440}
+            className="showcase-visual-media h-full w-full object-cover object-center sm:object-[58%_center]"
+          />
+        </picture>
         <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(5,18,14,.24),rgba(5,18,14,.08)_38%,rgba(5,18,14,.8))]" />
         <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(5,18,14,.5),transparent_64%)]" />
 

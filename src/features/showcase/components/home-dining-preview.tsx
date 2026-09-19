@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { diningStories } from "@/features/showcase/data/laka-demo-content";
+import { isConceptImage } from "@/features/showcase/data/laka-images";
 import type { ShowcaseLocale } from "@/features/showcase/i18n/locale";
 
 export function HomeDiningPreview({ basePath, locale = "vi" }: { basePath: string; locale?: ShowcaseLocale }) {
@@ -37,14 +38,16 @@ export function HomeDiningPreview({ basePath, locale = "vi" }: { basePath: strin
               <div className="laka-media-frame relative aspect-[16/10] overflow-hidden rounded-xl sm:rounded-2xl bg-[#d8cdbd]">
                 <Image
                   src={story.image}
-                  alt={`${en ? story.title.en : story.title.vi} — ${en ? "concept image" : "ảnh minh họa"}`}
+                  alt={`${en ? story.title.en : story.title.vi}${isConceptImage(story.image) ? ` — ${en ? "concept image" : "ảnh minh họa"}` : ""}`}
                   fill
                   sizes="(max-width:1024px) 100vw, 33vw"
                   className="object-cover transition duration-1000 ease-out group-hover:scale-105"
                 />
-                <span className="absolute bottom-4 left-4 rounded-full bg-[#07150f]/55 px-3 py-1.5 text-[.52rem] font-bold uppercase tracking-[.14em] text-white/78 backdrop-blur">
-                  {en ? "Concept image" : "Hình ảnh minh họa"}
-                </span>
+                {isConceptImage(story.image) && (
+                  <span className="absolute bottom-4 left-4 rounded-full bg-[#07150f]/55 px-3 py-1.5 text-[.52rem] font-bold uppercase tracking-[.14em] text-white/78 backdrop-blur">
+                    {en ? "Concept image" : "Hình ảnh minh họa"}
+                  </span>
+                )}
               </div>
               <div className="mt-5 border-b border-[#16311c]/16 pb-6">
                 <h3 className="laka-heading-card text-xl sm:text-2xl font-bold text-[#16311c]">

@@ -1,24 +1,24 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { conceptImages } from "@/features/stays/data/demo-data";
+import { lakaImages } from "@/features/showcase/data/laka-images";
 import type { ShowcaseLocale } from "@/features/showcase/i18n/locale";
 
 const stayCollections = [
   {
     title: { vi: "Nhà Bên Hồ", en: "Lakeside House" },
     subtitle: { vi: "Khoảng Nghỉ Ven Hồ", en: "A Pause by the Water" },
-    image: conceptImages.hero
+    image: lakaImages.home.stays.lakeside
   },
   {
     title: { vi: "Nhà Trên Đồi", en: "Hill House" },
     subtitle: { vi: "Tụ Họp Giữa Lưng Đồi", en: "Gathering on the Hillside" },
-    image: conceptImages.hill
+    image: lakaImages.home.stays.hilltop
   },
   {
     title: { vi: "Nhà Giữa Rừng", en: "Forest House" },
     subtitle: { vi: "Ôm trọn bình yên", en: "Embracing Quietude" },
-    image: conceptImages.forest
+    image: lakaImages.home.stays.forest
   }
 ] as const;
 
@@ -59,7 +59,7 @@ export function HomeLandscapeCollections({ basePath, locale = "vi" }: { basePath
             >
               <Image
                 src={item.image}
-                alt={item.title[locale] + " — " + (en ? "concept image" : "hình ảnh minh họa")}
+                alt={item.title[locale]}
                 fill
                 sizes="(max-width: 640px) 80vw, (max-width: 1024px) 360px, 33vw"
                 className="object-cover transition duration-700 ease-out group-hover:scale-105"

@@ -5,6 +5,7 @@ import { getUnitsForStay, getZoneForStay, stays } from "@/features/stays/data/de
 import type { ShowcaseLocale } from "@/features/showcase/i18n/locale";
 import { localizeStayZone } from "@/features/showcase/i18n/showcase-copy";
 import { PageBannerHero, DEFAULT_BANNER_IMAGES } from "@/features/showcase/components/page-banner-hero";
+import { isConceptImage } from "@/features/showcase/data/laka-images";
 
 type Mood = "editorial" | "cinematic" | "organic";
 type Stay = typeof stays[number];
@@ -47,7 +48,7 @@ export function TemplateStayHero({ mood, basePath, stay, locale = "vi" }: { mood
         description={stay.description}
         cardImage={stay.image}
         cardBadge={stay.badge || "LAKA · Cabin"}
-        cardAlt={`${stay.name} — ${locale === "en" ? "concept image" : "hình ảnh minh họa"}`}
+        cardAlt={`${stay.name}${isConceptImage(stay.image) ? ` — ${locale === "en" ? "concept image" : "hình ảnh minh họa"}` : ""}`}
         brandTagTop={locale === "en" ? "Private" : "Không Gian"}
         brandTagBottom={locale === "en" ? "Cabin." : "Riêng Tư."}
         dateStamp={`${units.length} ${locale === "en" ? "physical homes" : "căn thực tế"} · ${units.map((unit) => unit.code).join(" / ")}`}

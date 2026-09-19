@@ -9,4 +9,9 @@ coverage
 *.log
 tsconfig.tsbuildinfo
 public/uploads
+public/screenshots/
+.tmp/
+.codex-tmp/
+~$*.xlsx
+LAKA_Homestay_Asset_Order_List_Latest.xlsx
 .ai-handoff

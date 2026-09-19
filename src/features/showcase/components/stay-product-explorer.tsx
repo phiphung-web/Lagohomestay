@@ -26,6 +26,7 @@ import { getUnitsForStay, stays, stayZones, type Stay } from "@/features/stays/d
 import { localizeStay, localizeStayZone } from "@/features/showcase/i18n/showcase-copy";
 import type { ShowcaseLocale } from "@/features/showcase/i18n/locale";
 import { publicContact } from "@/shared/lib/public-contact";
+import { isConceptImage } from "@/features/showcase/data/laka-images";
 
 type DetailSection = "overview" | "amenities" | "policies";
 
@@ -236,6 +237,7 @@ export function StayProductExplorer({
     ? getUnitsForStay(activeStay.id).map((unit) => localizedUnit(unit, locale))
     : [];
   const gallery = activeStay ? [activeStay.image, ...activeStay.gallery] : [];
+  const activeGalleryIsConcept = gallery[galleryIndex] ? isConceptImage(gallery[galleryIndex]) : false;
 
   // =========================================================================
   // STAY DETAIL MODAL DIALOG
@@ -271,7 +273,7 @@ export function StayProductExplorer({
           <section className="relative h-[32svh] min-h-[250px] overflow-hidden bg-[#10251d] sm:h-[40svh] sm:min-h-[320px] lg:h-full">
             <Image
               src={gallery[galleryIndex]}
-              alt={`${activeStay.name} — ${locale === "en" ? "concept image" : "hình ảnh minh họa"}`}
+              alt={`${activeStay.name}${activeGalleryIsConcept ? ` — ${locale === "en" ? "concept image" : "hình ảnh minh họa"}` : ""}`}
               fill
               priority
               sizes="(max-width:1024px) 100vw, 56vw"
@@ -281,7 +283,7 @@ export function StayProductExplorer({
             <div className="absolute bottom-5 left-5 right-5 flex items-end justify-between gap-4 text-white sm:bottom-7 sm:left-7 sm:right-7">
               <div>
                 <p className="text-[.6rem] font-bold uppercase tracking-[.2em] text-[#dfc6a5]">
-                  {selectedZone.name} · {locale === "en" ? "Concept image" : "Hình ảnh minh họa"}
+                  {selectedZone.name}{activeGalleryIsConcept ? ` · ${locale === "en" ? "Concept image" : "Hình ảnh minh họa"}` : ""}
                 </p>
                 <p className="mt-1.5 font-serif text-2xl sm:text-4xl font-semibold tracking-tight">{activeStay.name}</p>
               </div>
@@ -726,7 +728,7 @@ export function StayProductExplorer({
                   {/* Background Photo with smooth zoom on hover */}
                   <Image
                     src={stay.image}
-                    alt={`${stay.name} — ${locale === "en" ? "concept image" : "hình ảnh minh họa"}`}
+                    alt={`${stay.name}${isConceptImage(stay.image) ? ` — ${locale === "en" ? "concept image" : "hình ảnh minh họa"}` : ""}`}
                     fill
                     sizes="(max-width:640px) 100vw, (max-width:1024px) 50vw, 34vw"
                     className="object-cover transition duration-[900ms] ease-out group-hover:scale-105"
