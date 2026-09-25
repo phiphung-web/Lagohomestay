@@ -1,7 +1,11 @@
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
-import { diningMenuVenues, restaurantMenuPages } from "@/features/showcase/data/dining-menu";
+import {
+  cafeMenuPage,
+  diningMenuVenues,
+  restaurantMenuPages,
+} from "@/features/showcase/data/dining-menu";
 
 const source = (path: string) =>
   readFileSync(join(process.cwd(), path), "utf8").replace(/\s+/g, " ");
@@ -40,14 +44,16 @@ describe("restaurant image menu", () => {
     });
   });
 
-  it("retires provisional lists and keeps restaurant drinks out of the cafe", () => {
-    expect(diningMenuVenues.find((venue) => venue.id === "cafe")?.menuStatus).toBe("pending");
+  it("keeps the restaurant and coffee shop menus separate", () => {
+    expect(diningMenuVenues.find((venue) => venue.id === "cafe")?.menuStatus).toBe("available");
+    expect(cafeMenuPage.src).toBe("/images/dining/cafe/menu-laka-coffee.jpg");
     const sections = source("src/features/showcase/components/destination-sections.tsx");
     expect(sections).not.toContain("venue.groups");
     expect(sections).not.toContain("Danh mục món dự kiến");
     expect(sections).not.toContain("không hiển thị giá");
-    expect(sections).toContain("Thực đơn cà phê sẽ sớm được cập nhật.");
+    expect(sections).toContain('href={venue.id === "cafe" ? "#thuc-don-ca-phe" : "#thuc-don"}');
     expect(sections.match(/<RestaurantMenuGallery /g)).toHaveLength(1);
+    expect(sections.match(/<CafeMenu /g)).toHaveLength(1);
   });
 
   it("links directly to a bounded, single-page menu with a small client boundary", () => {

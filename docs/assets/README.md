@@ -18,6 +18,7 @@ Hai workbook được chuyển từ thư mục gốc vào đây, giữ nguyên n
 - Bộ ảnh LAKA: `public/images/laka/`; đường dẫn theo slot ở `src/features/showcase/data/laka-images.ts`.
 - Danh mục căn và gallery: `src/features/stays/data/stay-catalog.ts`.
 - Thực đơn nhà hàng: `public/images/dining/restaurant/`; thứ tự trang ở `src/features/showcase/data/dining-menu.ts`.
+- Thực đơn LAKA Coffee: `public/images/dining/cafe/menu-laka-coffee.jpg`; trang Ẩm thực liên kết tới ảnh gốc để đọc tên món và giá.
 - Ảnh Unsplash còn dùng cho các vị trí chưa có ảnh địa điểm: đối chiếu `conceptImages` và `isConceptImage`, giữ nhãn minh họa khi sử dụng.
 
 Để thay ảnh, xác định đúng slot trong mã nguồn, đặt ảnh vào `public`, cập nhật đường dẫn nếu đổi tên rồi kiểm tra cả desktop/mobile. Nếu tăng số ảnh gallery hoặc số trang thực đơn, sửa cả mảng dữ liệu; chỉ chép file vào thư mục sẽ không thêm ảnh vào giao diện.

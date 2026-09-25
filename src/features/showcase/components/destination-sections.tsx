@@ -12,6 +12,7 @@ import {
 } from "@/features/showcase/data/laka-content";
 import { diningMenuVenues } from "@/features/showcase/data/dining-menu";
 import { RestaurantMenuGallery } from "@/features/showcase/components/restaurant-menu-gallery";
+import { CafeMenu } from "@/features/showcase/components/cafe-menu";
 import { isConceptImage } from "@/features/showcase/data/laka-images";
 import type { ShowcaseLocale } from "@/features/showcase/i18n/locale";
 
@@ -145,18 +146,20 @@ export function DiningAndOccasions({ locale }: { locale: ShowcaseLocale }) {
                   <div className="mt-5 pt-4 border-t border-[#16311c]/10">
                     {venue?.menuStatus === "available" ? (
                       <a
-                        href="#thuc-don"
+                        href={venue.id === "cafe" ? "#thuc-don-ca-phe" : "#thuc-don"}
                         className="focus-ring inline-flex min-h-11 items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#80613f] hover:text-[#16311c] transition"
                       >
-                        <span>{en ? "Explore the restaurant menu" : "Xem thực đơn nhà hàng"}</span>
+                        <span>
+                          {venue.id === "cafe"
+                            ? en
+                              ? "Explore the coffee menu"
+                              : "Xem thực đơn cà phê"
+                            : en
+                              ? "Explore the restaurant menu"
+                              : "Xem thực đơn nhà hàng"}
+                        </span>
                         <ArrowRight aria-hidden="true" className="h-4 w-4" />
                       </a>
-                    ) : venue?.menuStatus === "pending" ? (
-                      <p className="flex min-h-11 items-center text-xs text-[#16311c]/60 italic">
-                        {en
-                          ? "The coffee shop menu will be updated soon."
-                          : "Thực đơn cà phê sẽ sớm được cập nhật."}
-                      </p>
                     ) : (
                       <p className="flex min-h-11 items-center text-xs font-semibold uppercase tracking-wider text-[#80613f]">
                         {en ? "Included with stay" : "Miễn phí theo phòng lưu trú"}
@@ -170,6 +173,7 @@ export function DiningAndOccasions({ locale }: { locale: ShowcaseLocale }) {
         </div>
       </section>
       <RestaurantMenuGallery locale={locale} />
+      <CafeMenu locale={locale} />
     </div>
   );
 }

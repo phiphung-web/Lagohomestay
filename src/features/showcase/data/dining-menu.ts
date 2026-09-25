@@ -10,8 +10,7 @@ export type RestaurantMenuPage = {
 
 const text = (vi: string, en: string): LocalizedMenuText => ({ vi, en });
 
-// The provisional dish lists are retired. Cafe assets are still pending;
-// restaurant drinks must not be presented as the cafe menu.
+// The restaurant and coffee shop have separate image menus.
 export const diningMenuVenues = [
   {
     id: "breakfast",
@@ -26,9 +25,18 @@ export const diningMenuVenues = [
   {
     id: "cafe",
     title: text('Tiệm Cà Phê "Tầng Mây"', 'Coffee Shop "Among the Clouds"'),
-    menuStatus: "pending",
+    menuStatus: "available",
   },
 ] as const;
+
+// Supplied LAKA Coffee menu; the artwork contains the Vietnamese item names and prices.
+export const cafeMenuPage: RestaurantMenuPage = {
+  id: "laka-coffee",
+  title: text("Thực đơn LAKA Coffee", "LAKA Coffee menu"),
+  src: "/images/dining/cafe/menu-laka-coffee.jpg",
+  width: 1280,
+  height: 960,
+};
 
 // Owner-supplied restaurant menu, in printed order 01–10.
 // High-quality WebP assets retain the original artwork, wording and prices.
