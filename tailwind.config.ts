@@ -16,13 +16,13 @@ export default {
           sand: "#e7ded1",
           cream: "#eae1d2",
           clay: "#c7a882",
-          mist: "#dce7e0"
-        }
+          mist: "#dce7e0",
+        },
       },
       fontFamily: {
         sans: ["Be Vietnam Pro", "system-ui", "sans-serif"],
         serif: ["Lora", "Georgia", "serif"],
-        display: ["Lora", "Georgia", "serif"]
+        display: ["Lora", "Georgia", "serif"],
       },
       // The visual system uses fine alpha steps for editorial hierarchy.
       // Register them once so utilities such as text-white/52,
@@ -54,15 +54,15 @@ export default {
         88: ".88",
         92: ".92",
         94: ".94",
-        96: ".96"
+        96: ".96",
       },
       spacing: {
-        13: "3.25rem"
+        13: "3.25rem",
       },
       boxShadow: {
-        soft: "0 24px 60px rgba(25, 48, 42, .12)"
-      }
-    }
+        soft: "0 24px 60px rgba(25, 48, 42, .12)",
+      },
+    },
   },
-  plugins: []
+  plugins: [],
 } satisfies Config;

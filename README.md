@@ -1,81 +1,91 @@
 # LAKA Homestay
 
-Website đặt phòng tiếng Việt và CRM vận hành cho LAKA Homestay. Giao diện hiện dùng dữ liệu và hình ảnh concept để có thể duyệt trải nghiệm trước khi có nội dung thực tế.
+Website giới thiệu LAKA Homestay bằng tiếng Việt và tiếng Anh, có danh mục lưu trú, hình ảnh, thực đơn và form yêu cầu tư vấn. Luồng công khai hiện chuyển khách sang tư vấn; `/dat-phong` và `/tra-cuu` chuyển hướng tới `/lien-he`.
 
-## Cấu trúc mã nguồn
+Repo cũng giữ API đặt phòng, schema PostgreSQL và giao diện admin để phát triển tiếp. Admin đang dùng dữ liệu mẫu; đổi `DEMO_MODE` không tự biến admin thành hệ thống vận hành. Đọc [hiện trạng bàn giao](docs/handover.md) trước khi triển khai cho khách thật.
 
-Mã ứng dụng nằm hoàn toàn trong `src/` và được chia theo trách nhiệm:
+## Chạy trên máy
 
-```text
-src/
-├── app/          # Next.js routes, layouts và API entrypoints
-├── features/     # Nghiệp vụ độc lập: admin, booking, stays
-├── server/       # Auth, database, security và storage phía server
-├── shared/       # Component và utility dùng chung, không chứa nghiệp vụ
-└── types/        # Khai báo type mở rộng toàn cục
+Môi trường kiểm tra bàn giao dùng Node.js 20.19.0 và npm 10.8.2; Dockerfile hiện dùng Node 20. Dùng `npm ci` để cài đúng phiên bản trong `package-lock.json`. Các lệnh bên dưới chạy tại thư mục gốc của repo.
+
+```sh
+npm ci
 ```
 
-Schema, migration và seed database đặt trong `prisma/`; kiểm thử domain đặt trong `tests/`; cấu hình build và triển khai giữ ở thư mục gốc. Xem [quy ước kiến trúc](docs/architecture.md) trước khi bổ sung feature mới.
+Tạo file môi trường **một lần**. Dùng `.env` để cả Next.js và Prisma CLI đọc được cùng cấu hình.
 
-## Chạy nhanh ở chế độ demo
+PowerShell:
 
-```bash
-npm install
-copy .env.example .env.local
+```powershell
+Copy-Item .env.example .env
+```
+
+macOS / Linux:
+
+```sh
+cp .env.example .env
+```
+
+Giữ `DEMO_MODE="true"`, sau đó chạy:
+
+```sh
 npm run db:generate
 npm run dev
 ```
 
-Giữ `DEMO_MODE="true"` để xem toàn bộ giao diện và thử luồng đặt phòng mà không cần PostgreSQL. CRM tại `/admin` dùng tài khoản mẫu:
+Mở <http://localhost:3000>. Chế độ này không cần PostgreSQL. Nếu máy đã có `.env.local`, Next.js ưu tiên các giá trị trong đó; kiểm tra để tránh lệch với `.env` mà Prisma sử dụng.
 
-- Email: `owner@lago.local`
-- Mật khẩu: `LAKA@2026`
+Admin mẫu ở <http://localhost:3000/admin>: `owner@lago.local` / `LAKA@2026`. Đây là tài khoản thử giao diện. Booking demo lưu trong bộ nhớ tiến trình và mất khi khởi động lại.
 
-## Chạy với PostgreSQL
+## Các lệnh thường dùng
 
-```bash
-docker compose up -d db
-npm run db:migrate:dev -- --name init
-npm run db:seed
+| Lệnh                                            | Công dụng                                                         |
+| ----------------------------------------------- | ----------------------------------------------------------------- |
+| `npm run dev`                                   | Chạy môi trường phát triển; mặc định cổng 3000                    |
+| `npm run dev -- --port 3001`                    | Chạy dev trên cổng khác                                           |
+| `npm run check`                                 | Lần lượt kiểm tra định dạng, kiến trúc, TypeScript, test và build |
+| `npm run typecheck`                             | Kiểm tra TypeScript, không xuất JavaScript                        |
+| `npm test`                                      | Chạy test một lần                                                 |
+| `npm run test:watch`                            | Chạy test khi sửa code                                            |
+| `npm run format`                                | Định dạng code và tài liệu bằng Prettier                          |
+| `npm run format:check`                          | Kiểm tra định dạng, không sửa file                                |
+| `npm run build`                                 | Tạo bản build production trong `.next/`                           |
+| `npm start`                                     | Chạy bản build đã tạo; không thay cho lệnh build                  |
+| `npm run db:generate`                           | Sinh Prisma Client từ schema; không ghi database                  |
+| `npm run db:migrate`                            | Áp dụng migration đã có vào database trong `DATABASE_URL`         |
+| `npm run db:migrate:dev -- --name ten_thay_doi` | Tạo migration khi phát triển schema trên database riêng           |
+| `npm run images:import -- "duong-dan-anh-goc"`  | Chuyển bộ ảnh LAKA theo ánh xạ cố định; xem hướng dẫn ảnh         |
+| `npm run qa:images -- http://localhost:3000`    | Kiểm tra ảnh trên một website đang chạy, cần Chrome               |
+
+`npm run check` không chạy PostgreSQL, gửi webhook hay kiểm tra VPS. Chưa cấu hình ESLint riêng; kiểm tra mã nguồn hiện dùng TypeScript, kiểm tra kiến trúc và test. Seed mẫu là thao tác riêng có điều kiện, xem [hướng dẫn database](docs/deployment.md#thử-nghiệm-với-postgresql).
+
+## Cấu trúc
+
+```text
+src/
+  app/                 Route, layout gốc, metadata và API
+  features/
+    showcase/          Website công khai: trang, component, nội dung, bản dịch
+    stays/             Danh mục loại căn và 20 căn hiển thị trên website
+    booking/           Validation, tính giá, giữ phòng demo, nhãn trạng thái
+    admin/             Giao diện quản trị và dữ liệu mẫu
+  server/              Auth, Prisma và giới hạn tần suất yêu cầu
+  shared/              Thương hiệu, UI nhỏ và tiện ích dùng chung
+  types/               Kiểu mở rộng của session
+prisma/                Schema, migration và seed thử nghiệm
+public/                Logo, ảnh LAKA và ảnh thực đơn
+scripts/               Kiểm tra kiến trúc, nhập ảnh, kiểm tra ảnh
+tests/                 Test nghiệp vụ, nội dung và các ràng buộc giao diện
+deploy/                Mẫu reverse proxy Nginx
+docs/                  Tài liệu kỹ thuật, nội dung và workbook tài nguyên
 ```
 
-Sau đó đổi `DEMO_MODE="false"`. Production nên đặt `SESSION_SECRET` ngẫu nhiên tối thiểu 32 ký tự, cấu hình backup PostgreSQL và thay toàn bộ thông tin liên hệ/ảnh concept.
+## Đọc tiếp
 
-## Kiểm tra
+- [Kiến trúc và vị trí sửa chức năng](docs/architecture.md).
+- [Cấu hình, PostgreSQL và triển khai](docs/deployment.md).
+- [Hiện trạng, giới hạn và việc cần tiếp tục](docs/handover.md).
+- [Hình ảnh và workbook tài nguyên](docs/assets/README.md).
+- [Nguồn nội dung đã duyệt](docs/laka-content-source.md) và [nhận diện thương hiệu](docs/brand-system.md).
 
-```bash
-npm test
-npm run build
-```
-
-Các API chính: `GET /api/availability`, `POST /api/bookings`, `POST /api/bookings/lookup`, `GET /api/health`. Việc tạo booking trên PostgreSQL chạy trong transaction `Serializable` và dùng advisory lock theo đơn vị phòng để chặn tranh chấp đồng thời.
-
-Production cần gọi `POST /api/tasks/expire-holds` mỗi phút với header `Authorization: Bearer $HOLD_EXPIRY_SECRET`. Docker image tự chạy `prisma migrate deploy` trước khi khởi động ứng dụng.
-
-## Đưa website lên VPS
-
-Website chính chạy tại URL gốc, với các tuyến sạch như `/luu-tru`, `/trai-nghiem`, `/am-thuc` và bản tiếng Anh dưới `/en`. Bản demo public chạy cô lập, không cần PostgreSQL và chỉ mở cổng loopback `127.0.0.1:3100`. Cấu hình này không chiếm cổng `80/443` của các website khác trên VPS.
-
-```bash
-cp .env.demo.example .env.demo
-# Điền domain, cổng loopback còn trống và SESSION_SECRET ngẫu nhiên.
-docker compose -p lago-showcase --env-file .env.demo -f docker-compose.demo.yml up -d --build
-```
-
-Trước khi chạy phải kiểm tra cổng và dịch vụ hiện có, tuyệt đối không thay cấu hình web server toàn cục:
-
-```bash
-ss -lntp | grep ':3100' || true
-docker ps --format 'table {{.Names}}\t{{.Ports}}'
-systemctl is-active nginx apache2 httpd 2>/dev/null || true
-```
-
-Sau khi container khỏe, thêm một vhost riêng cho domain LAKA vào Nginx/Apache đang có. File `deploy/nginx-lago.conf.example` chỉ là mẫu; không chép đè `nginx.conf` hay vhost khác. Luôn chạy `nginx -t` hoặc lệnh kiểm tra tương ứng trước khi reload.
-
-Kiểm tra sau triển khai:
-
-```bash
-docker compose -p lago-showcase --env-file .env.demo -f docker-compose.demo.yml ps
-curl -fsS http://127.0.0.1:3100/api/health
-curl -fsS https://your-domain.example/api/health
-```
+Các tên kỹ thuật `lago-homestay`, mã booking `LAGO-*`, tên database và volume `lago_db` được giữ để tương thích dữ liệu, URL và triển khai cũ. Tên hiển thị cho khách là LAKA Homestay.

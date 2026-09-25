@@ -4,8 +4,10 @@ import { ArrowDown, ArrowLeft } from "lucide-react";
 import type { ShowcaseLocale } from "@/features/showcase/i18n/locale";
 
 export const DEFAULT_BANNER_IMAGES = {
-  bokehBg: "https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?auto=format&fit=crop&w=2200&q=86",
-  cardLeaf: "https://images.unsplash.com/photo-1508873696983-2df5293cb32f?auto=format&fit=crop&w=1200&q=86"
+  bokehBg:
+    "https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?auto=format&fit=crop&w=2200&q=86",
+  cardLeaf:
+    "https://images.unsplash.com/photo-1508873696983-2df5293cb32f?auto=format&fit=crop&w=1200&q=86",
 };
 
 export type PageBannerHeroProps = {
@@ -52,7 +54,7 @@ export function PageBannerHero({
   backLink,
   extraFacts,
   locale = "vi",
-  compact = false
+  compact = false,
 }: PageBannerHeroProps) {
   const isEn = locale === "en";
   const defaultDate = isEn ? "03, January 2026" : "03, Tháng Một 2026";
@@ -63,7 +65,9 @@ export function PageBannerHero({
       {/* ========================================================================= */}
       {/* 1. TOP SECTION: Deep Lush Nature Bokeh Backdrop                           */}
       {/* ========================================================================= */}
-      <div className={`relative w-full overflow-hidden bg-[#0a1e12] ${compact ? "min-h-[380px] sm:min-h-[440px] md:min-h-[480px] lg:min-h-[500px]" : "min-h-[500px] sm:min-h-[560px] md:min-h-[620px] lg:min-h-[660px]"}`}>
+      <div
+        className={`relative w-full overflow-hidden bg-[#0a1e12] ${compact ? "min-h-[380px] sm:min-h-[440px] md:min-h-[480px] lg:min-h-[500px]" : "min-h-[500px] sm:min-h-[560px] md:min-h-[620px] lg:min-h-[660px]"}`}
+      >
         {/* Background photo with subtle blur & rich emerald grade */}
         <Image
           src={bgImage}
@@ -81,7 +85,9 @@ export function PageBannerHero({
         <div className="grain absolute inset-0 pointer-events-none opacity-25" />
 
         {/* Top Content Area */}
-        <div className={`relative z-10 mx-auto flex h-full w-[min(1280px,calc(100%-32px))] sm:w-[min(1280px,calc(100%-48px))] flex-col justify-end ${compact ? "min-h-[380px] sm:min-h-[440px] md:min-h-[480px] lg:min-h-[500px] pb-8 sm:pb-12 md:pb-14 pt-24 sm:pt-28" : "min-h-[500px] sm:min-h-[560px] md:min-h-[620px] lg:min-h-[660px] pb-12 sm:pb-16 md:pb-20 pt-28 sm:pt-36"}`}>
+        <div
+          className={`relative z-10 mx-auto flex h-full w-[min(1280px,calc(100%-32px))] sm:w-[min(1280px,calc(100%-48px))] flex-col justify-end ${compact ? "min-h-[380px] sm:min-h-[440px] md:min-h-[480px] lg:min-h-[500px] pb-8 sm:pb-12 md:pb-14 pt-24 sm:pt-28" : "min-h-[500px] sm:min-h-[560px] md:min-h-[620px] lg:min-h-[660px] pb-12 sm:pb-16 md:pb-20 pt-28 sm:pt-36"}`}
+        >
           {backLink && (
             <div className="mb-4 sm:mb-6">
               <Link
@@ -96,7 +102,10 @@ export function PageBannerHero({
 
           <div className="grid grid-cols-12 gap-3 sm:gap-6 items-end">
             {/* Left spacing for overlapping card */}
-            <div className="col-span-4 sm:col-span-4 md:col-span-5 lg:col-span-4" aria-hidden="true" />
+            <div
+              className="col-span-4 sm:col-span-4 md:col-span-5 lg:col-span-4"
+              aria-hidden="true"
+            />
 
             {/* Right text container */}
             <div className="col-span-8 sm:col-span-8 md:col-span-7 lg:col-span-8 flex flex-col justify-end pl-2 sm:pl-4">
@@ -118,7 +127,10 @@ export function PageBannerHero({
               </p>
 
               {/* Decorative Ellipsis `···` */}
-              <div className="my-1.5 sm:my-3 text-white/50 text-base sm:text-xl font-mono select-none tracking-widest" aria-hidden="true">
+              <div
+                className="my-1.5 sm:my-3 text-white/50 text-base sm:text-xl font-mono select-none tracking-widest"
+                aria-hidden="true"
+              >
                 ···
               </div>
 
@@ -134,7 +146,9 @@ export function PageBannerHero({
       {/* ========================================================================= */}
       {/* 2. BOTTOM SECTION: Clean Textured Light Paper Canvas                     */}
       {/* ========================================================================= */}
-      <div className={`relative w-full border-b border-[#16311c]/15 bg-[#eae1d2] text-[#16311c] ${compact ? "py-5 sm:py-7 md:py-8" : "py-8 sm:py-12 md:py-14"}`}>
+      <div
+        className={`relative w-full border-b border-[#16311c]/15 bg-[#eae1d2] text-[#16311c] ${compact ? "py-5 sm:py-7 md:py-8" : "py-8 sm:py-12 md:py-14"}`}
+      >
         {/* Subtle linen/paper dot texture */}
         <div className="absolute inset-0 opacity-15 pointer-events-none bg-[radial-gradient(#16311c_1px,transparent_1px)] [background-size:16px_16px]" />
 
@@ -144,10 +158,14 @@ export function PageBannerHero({
             <div className="col-span-4 sm:col-span-4 md:col-span-5 lg:col-span-4">
               {/* Bottom left branding tag placed below the card */}
               {(brandTagTop || brandTagBottom) && (
-                <div className={`${compact ? "pt-8 sm:pt-12 md:pt-14" : "pt-16 sm:pt-24 md:pt-28"} text-[.65rem] sm:text-xs font-bold uppercase tracking-[.18em] leading-tight text-[#16311c]/75`}>
+                <div
+                  className={`${compact ? "pt-8 sm:pt-12 md:pt-14" : "pt-16 sm:pt-24 md:pt-28"} text-[.65rem] sm:text-xs font-bold uppercase tracking-[.18em] leading-tight text-[#16311c]/75`}
+                >
                   {brandTagTop}
                   {brandTagTop && brandTagBottom && <br />}
-                  {brandTagBottom && <span className="text-[#16311c] font-black">{brandTagBottom}</span>}
+                  {brandTagBottom && (
+                    <span className="text-[#16311c] font-black">{brandTagBottom}</span>
+                  )}
                 </div>
               )}
             </div>
@@ -198,7 +216,9 @@ export function PageBannerHero({
       {/* ========================================================================= */}
       {/* 3. FLOATING OVERLAPPING PHOTO CARD                                        */}
       {/* ========================================================================= */}
-      <div className={`pointer-events-none absolute left-1/2 z-20 w-[min(1280px,calc(100%-32px))] sm:w-[min(1280px,calc(100%-48px))] -translate-x-1/2 -translate-y-1/2 ${compact ? "top-[380px] sm:top-[440px] md:top-[480px] lg:top-[500px]" : "top-[500px] sm:top-[560px] md:top-[620px] lg:top-[660px]"}`}>
+      <div
+        className={`pointer-events-none absolute left-1/2 z-20 w-[min(1280px,calc(100%-32px))] sm:w-[min(1280px,calc(100%-48px))] -translate-x-1/2 -translate-y-1/2 ${compact ? "top-[380px] sm:top-[440px] md:top-[480px] lg:top-[500px]" : "top-[500px] sm:top-[560px] md:top-[620px] lg:top-[660px]"}`}
+      >
         <div className="grid grid-cols-12 gap-3 sm:gap-6">
           <div className="col-span-4 sm:col-span-4 md:col-span-5 lg:col-span-4">
             <div className="pointer-events-auto w-full max-w-[130px] sm:max-w-[185px] md:max-w-[240px] lg:max-w-[290px] xl:max-w-[320px]">

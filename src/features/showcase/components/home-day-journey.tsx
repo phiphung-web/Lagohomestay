@@ -1,13 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { lakaExperiences } from "@/features/showcase/data/laka-demo-content";
+import { lakaExperiences } from "@/features/showcase/data/laka-content";
 import { lakaImages } from "@/features/showcase/data/laka-images";
 import type { ShowcaseLocale } from "@/features/showcase/i18n/locale";
 
 export function HomeDayJourney({
   basePath = "",
-  locale = "vi"
+  locale = "vi",
 }: {
   basePath?: string;
   locale?: ShowcaseLocale;
@@ -18,11 +18,14 @@ export function HomeDayJourney({
     lakaImages.home.journey.pickleball,
     lakaImages.home.journey.kayak,
     lakaImages.home.journey.pool,
-    lakaImages.home.journey.bicycle
+    lakaImages.home.journey.bicycle,
   ];
 
   return (
-    <section id="mot-ngay" className="laka-section-normal scroll-mt-20 bg-[#0a1a13] px-5 text-white sm:px-8">
+    <section
+      id="mot-ngay"
+      className="laka-section-normal scroll-mt-20 bg-[#0a1a13] px-5 text-white sm:px-8"
+    >
       <div className="mx-auto w-[min(1480px,100%)]">
         {/* Balanced Header layout */}
         <header className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-white/14 pb-8 sm:pb-10">
@@ -33,9 +36,13 @@ export function HomeDayJourney({
           </div>
           <p className="font-serif text-2xl sm:text-3xl lg:text-4xl font-medium text-white tracking-tight md:text-right shrink-0">
             {en ? (
-              <>Today is <i className="text-[#dfc6a5]">just for fun!</i></>
+              <>
+                Today is <i className="text-[#dfc6a5]">just for fun!</i>
+              </>
             ) : (
-              <>Hôm nay chỉ để <i className="text-[#dfc6a5]">vui thôi!</i></>
+              <>
+                Hôm nay chỉ để <i className="text-[#dfc6a5]">vui thôi!</i>
+              </>
             )}
           </p>
         </header>
@@ -49,10 +56,7 @@ export function HomeDayJourney({
           {experiences.map((experience, index) => {
             const Icon = experience.icon;
             return (
-              <article
-                key={experience.title.vi}
-                className="showcase-snap-card group"
-              >
+              <article key={experience.title.vi} className="showcase-snap-card group">
                 <div className="laka-media-frame relative h-[min(580px,75svh)] overflow-hidden rounded-xl sm:rounded-2xl bg-[#10251d]">
                   <Image
                     src={homeImages[index]}

@@ -1,19 +1,19 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { stays } from "@/features/stays/data/demo-data";
+import { stays } from "@/features/stays/data/stay-catalog";
 import { localizeStay } from "@/features/showcase/i18n/showcase-copy";
-import { languageHref, resolveLocalizedTemplatePath } from "@/features/showcase/i18n/locale";
+import { languageHref, resolveLocalizedPath } from "@/features/showcase/i18n/locale";
 import { MainSite } from "@/features/showcase/site/main-site";
 import {
-  getTemplateMetadata,
-  resolveTemplateRoute,
-  templateStaticPaths,
-  type TemplateRoute
-} from "@/features/showcase/site/template-route";
+  getPublicMetadata,
+  resolvePublicRoute,
+  publicStaticPaths,
+  type PublicRoute,
+} from "@/features/showcase/site/public-routes";
 
 type Props = { params: Promise<{ path?: string[] }> };
 
-const englishTitles: Record<Exclude<TemplateRoute["kind"], "stay">, string> = {
+const englishTitles: Record<Exclude<PublicRoute["kind"], "stay">, string> = {
   home: "Home",
   stays: "Private homes",
   experience: "Experiences",
@@ -26,13 +26,13 @@ const englishTitles: Record<Exclude<TemplateRoute["kind"], "stay">, string> = {
   directions: "Getting here",
   terms: "Terms and conditions",
   privacy: "Privacy policy",
-  contact: "Contact"
+  contact: "Contact",
 };
 
 export const dynamicParams = false;
 
 export function generateStaticParams() {
-  const vietnamesePaths = templateStaticPaths();
+  const vietnamesePaths = publicStaticPaths();
   const englishPaths = vietnamesePaths.map(({ path }) => ({ path: ["en", ...path] }));
   return [...vietnamesePaths, ...englishPaths];
 }
@@ -43,8 +43,8 @@ function routePath(path: string[] | undefined) {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const rawPath = (await params).path;
-  const localized = resolveLocalizedTemplatePath(rawPath);
-  const route = resolveTemplateRoute(localized.routePath);
+  const localized = resolveLocalizedPath(rawPath);
+  const route = resolvePublicRoute(localized.routePath);
   if (!route) return {};
 
   const currentPath = routePath(rawPath);
@@ -52,21 +52,22 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     canonical: currentPath,
     languages: {
       "vi-VN": languageHref(currentPath, "vi"),
-      "en-US": languageHref(currentPath, "en")
-    }
+      "en-US": languageHref(currentPath, "en"),
+    },
   };
 
   if (localized.locale === "vi") {
     return {
-      ...getTemplateMetadata(route),
+      ...getPublicMetadata(route),
       alternates,
-      openGraph: { locale: "vi_VN", alternateLocale: ["en_US"] }
+      openGraph: { locale: "vi_VN", alternateLocale: ["en_US"] },
     };
   }
 
-  const title = route.kind === "stay"
-    ? localizeStay(stays.find((stay) => stay.slug === route.slug)!, "en").name
-    : englishTitles[route.kind];
+  const title =
+    route.kind === "stay"
+      ? localizeStay(stays.find((stay) => stay.slug === route.slug)!, "en").name
+      : englishTitles[route.kind];
 
   return {
     title,
@@ -74,17 +75,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     alternates,
     openGraph: {
       title: `${title} · LAKA Homestay`,
-      description: "Eight accommodation types and twenty units between lake, valley and pine-covered hills, designed for slower days and meaningful time together.",
+      description:
+        "Eight accommodation types and twenty units between lake, valley and pine-covered hills, designed for slower days and meaningful time together.",
       locale: "en_US",
       alternateLocale: ["vi_VN"],
-      type: "website"
-    }
+      type: "website",
+    },
   };
 }
 
 export default async function PublicPage({ params }: Props) {
-  const localized = resolveLocalizedTemplatePath((await params).path);
-  const route = resolveTemplateRoute(localized.routePath);
+  const localized = resolveLocalizedPath((await params).path);
+  const route = resolvePublicRoute(localized.routePath);
   if (!route) notFound();
   return <MainSite route={route} locale={localized.locale} />;
 }

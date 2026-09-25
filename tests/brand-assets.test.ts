@@ -8,7 +8,7 @@ const brandAssets = [
   "public/brand/laka-homestay.png",
   "public/brand/laka-homestay-est-2026.png",
   "public/brand/laka-icon.png",
-  "src/app/icon.png"
+  "src/app/icon.png",
 ] as const;
 
 describe("LAKA brand system", () => {

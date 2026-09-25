@@ -8,21 +8,27 @@ const stayCollections = [
   {
     title: { vi: "Nhà Bên Hồ", en: "Lakeside House" },
     subtitle: { vi: "Khoảng Nghỉ Ven Hồ", en: "A Pause by the Water" },
-    image: lakaImages.home.stays.lakeside
+    image: lakaImages.home.stays.lakeside,
   },
   {
     title: { vi: "Nhà Trên Đồi", en: "Hill House" },
     subtitle: { vi: "Tụ Họp Giữa Lưng Đồi", en: "Gathering on the Hillside" },
-    image: lakaImages.home.stays.hilltop
+    image: lakaImages.home.stays.hilltop,
   },
   {
     title: { vi: "Nhà Giữa Rừng", en: "Forest House" },
     subtitle: { vi: "Ôm trọn bình yên", en: "Embracing Quietude" },
-    image: lakaImages.home.stays.forest
-  }
+    image: lakaImages.home.stays.forest,
+  },
 ] as const;
 
-export function HomeLandscapeCollections({ basePath, locale = "vi" }: { basePath: string; locale?: ShowcaseLocale }) {
+export function HomeLandscapeCollections({
+  basePath,
+  locale = "vi",
+}: {
+  basePath: string;
+  locale?: ShowcaseLocale;
+}) {
   const en = locale === "en";
 
   return (
@@ -31,15 +37,21 @@ export function HomeLandscapeCollections({ basePath, locale = "vi" }: { basePath
         {/* Balanced Header layout matching other sections */}
         <header className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-[#16311c]/15 pb-8 sm:pb-10">
           <div>
-            <h2 className="laka-home-section-title text-[#16311c]">
-              {en ? "Stays" : "Lưu Trú"}
-            </h2>
+            <h2 className="laka-home-section-title text-[#16311c]">{en ? "Stays" : "Lưu Trú"}</h2>
           </div>
           <p className="font-serif text-2xl sm:text-3xl lg:text-4xl font-medium text-[#16311c] md:text-right shrink-0">
             {en ? (
-              <>A green sanctuary,<br className="hidden md:inline" /> <i className="text-[#80613f]">a rhythm of your own.</i></>
+              <>
+                A green sanctuary,
+                <br className="hidden md:inline" />{" "}
+                <i className="text-[#80613f]">a rhythm of your own.</i>
+              </>
             ) : (
-              <>Một khoảng xanh,<br className="hidden md:inline" /> <i className="text-[#80613f]">một nhịp riêng.</i></>
+              <>
+                Một khoảng xanh,
+                <br className="hidden md:inline" />{" "}
+                <i className="text-[#80613f]">một nhịp riêng.</i>
+              </>
             )}
           </p>
         </header>

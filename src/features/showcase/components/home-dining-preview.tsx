@@ -1,11 +1,17 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { diningStories } from "@/features/showcase/data/laka-demo-content";
+import { diningStories } from "@/features/showcase/data/laka-content";
 import { isConceptImage } from "@/features/showcase/data/laka-images";
 import type { ShowcaseLocale } from "@/features/showcase/i18n/locale";
 
-export function HomeDiningPreview({ basePath, locale = "vi" }: { basePath: string; locale?: ShowcaseLocale }) {
+export function HomeDiningPreview({
+  basePath,
+  locale = "vi",
+}: {
+  basePath: string;
+  locale?: ShowcaseLocale;
+}) {
   const en = locale === "en";
   const stories = diningStories;
 
@@ -24,9 +30,17 @@ export function HomeDiningPreview({ basePath, locale = "vi" }: { basePath: strin
           </div>
           <p className="font-serif text-2xl sm:text-3xl lg:text-4xl font-medium text-[#16311c] md:text-right shrink-0">
             {en ? (
-              <>Flavours that keep<br className="hidden md:inline" /> <i className="text-[#80613f]">the good times going.</i></>
+              <>
+                Flavours that keep
+                <br className="hidden md:inline" />{" "}
+                <i className="text-[#80613f]">the good times going.</i>
+              </>
             ) : (
-              <>Những hương vị<br className="hidden md:inline" /> <i className="text-[#80613f]">nối dài cuộc vui.</i></>
+              <>
+                Những hương vị
+                <br className="hidden md:inline" />{" "}
+                <i className="text-[#80613f]">nối dài cuộc vui.</i>
+              </>
             )}
           </p>
         </header>

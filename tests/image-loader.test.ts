@@ -6,7 +6,7 @@ describe("responsive image loader", () => {
     const result = lagoImageLoader({
       src: "https://images.unsplash.com/photo-example?auto=format&fit=crop&w=1800&q=88",
       width: 640,
-      quality: 76
+      quality: 76,
     });
     const url = new URL(result);
     expect(url.searchParams.get("w")).toBe("640");
@@ -15,7 +15,9 @@ describe("responsive image loader", () => {
   });
 
   it("caps oversized desktop requests and preserves local assets", () => {
-    expect(lagoImageLoader({ src: "https://images.unsplash.com/photo-example", width: 3840 })).toContain("w=2400");
+    expect(
+      lagoImageLoader({ src: "https://images.unsplash.com/photo-example", width: 3840 }),
+    ).toContain("w=2400");
     expect(lagoImageLoader({ src: "/icon.svg", width: 64 })).toBe("/icon.svg");
   });
 });

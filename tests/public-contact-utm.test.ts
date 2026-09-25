@@ -7,7 +7,7 @@ const trackedContactLinks = [
   ["facebook", publicContact.facebookHref],
   ["messenger", publicContact.messengerHref],
   ["instagram", publicContact.instagramHref],
-  ["tiktok", publicContact.tiktokHref]
+  ["tiktok", publicContact.tiktokHref],
 ] as const;
 
 describe("public contact UTM tracking", () => {
@@ -21,11 +21,15 @@ describe("public contact UTM tracking", () => {
 
   it("does not alter phone or email protocols", () => {
     expect(withWebsiteUtm(publicContact.phoneHref, "phone")).toBe("tel:0522376688");
-    expect(withWebsiteUtm(publicContact.emailHref, "email")).toBe("mailto:lakahomestay.com@gmail.com");
+    expect(withWebsiteUtm(publicContact.emailHref, "email")).toBe(
+      "mailto:lakahomestay.com@gmail.com",
+    );
   });
 
   it("preserves existing parameters and hashes", () => {
-    const url = new URL(withWebsiteUtm("https://example.com/contact?ref=homepage#booking", "test_link"));
+    const url = new URL(
+      withWebsiteUtm("https://example.com/contact?ref=homepage#booking", "test_link"),
+    );
 
     expect(url.searchParams.get("ref")).toBe("homepage");
     expect(url.searchParams.get("utm_source")).toBe(websiteUtmSource);

@@ -6,10 +6,14 @@ import sharp from "sharp";
 const sourceRoot = process.argv[2];
 
 if (!sourceRoot) {
-  throw new Error("Usage: node scripts/import-laka-images.mjs <Images Laka folder> [output folder]");
+  throw new Error(
+    "Usage: node scripts/import-laka-images.mjs <Images Laka folder> [output folder]",
+  );
 }
 
-const outputRoot = path.resolve(process.argv[3] ?? path.join(process.cwd(), "public", "images", "laka"));
+const outputRoot = path.resolve(
+  process.argv[3] ?? path.join(process.cwd(), "public", "images", "laka"),
+);
 
 const mappings = [
   ["TrangchuLaka/banner pc.png", "home/hero-desktop.webp"],
@@ -68,23 +72,22 @@ const mappings = [
   ["DichvuLaka/58.png", "services/banner-card.webp"],
   ["DichvuLaka/59.png", "services/team-building.webp"],
   ["DichvuLaka/60.png", "services/outdoor-event.webp"],
-  ["DichvuLaka/61.png", "services/campfire.webp"]
+  ["DichvuLaka/61.png", "services/campfire.webp"],
 ];
 
 // These homepage files are byte-identical to the canonical stay covers below.
 // Keep validating that the delivery contains them, but do not publish copies.
-const duplicateSources = [
-  "TrangchuLaka/nhà giữa rừng.png",
-  "TrangchuLaka/nhà trên đồi.png"
-];
+const duplicateSources = ["TrangchuLaka/nhà giữa rừng.png", "TrangchuLaka/nhà trên đồi.png"];
 
 async function listRelativeFiles(root, current = root) {
   const entries = await readdir(current, { withFileTypes: true });
-  const nested = await Promise.all(entries.map(async (entry) => {
-    const absolute = path.join(current, entry.name);
-    if (entry.isDirectory()) return listRelativeFiles(root, absolute);
-    return path.relative(root, absolute).replaceAll("\\", "/");
-  }));
+  const nested = await Promise.all(
+    entries.map(async (entry) => {
+      const absolute = path.join(current, entry.name);
+      if (entry.isDirectory()) return listRelativeFiles(root, absolute);
+      return path.relative(root, absolute).replaceAll("\\", "/");
+    }),
+  );
   return nested.flat();
 }
 
@@ -112,10 +115,16 @@ for (const [source, destination] of mappings) {
   outputBytes += (await stat(outputPath)).size;
 }
 
-console.log(JSON.stringify({
-  imported: mappings.length,
-  sourceMB: Number((sourceBytes / 1024 / 1024).toFixed(2)),
-  outputMB: Number((outputBytes / 1024 / 1024).toFixed(2)),
-  reductionPercent: Number(((1 - outputBytes / sourceBytes) * 100).toFixed(1)),
-  outputRoot
-}, null, 2));
+console.log(
+  JSON.stringify(
+    {
+      imported: mappings.length,
+      sourceMB: Number((sourceBytes / 1024 / 1024).toFixed(2)),
+      outputMB: Number((outputBytes / 1024 / 1024).toFixed(2)),
+      reductionPercent: Number(((1 - outputBytes / sourceBytes) * 100).toFixed(1)),
+      outputRoot,
+    },
+    null,
+    2,
+  ),
+);

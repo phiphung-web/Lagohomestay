@@ -1,12 +1,12 @@
 import { PageBannerHero } from "@/features/showcase/components/page-banner-hero";
 import { lakaImages } from "@/features/showcase/data/laka-images";
-import type { CompleteTemplateConfig } from "@/features/showcase/site/complete-template-site";
+import type { SiteConfig } from "@/features/showcase/site/site-types";
 import type { ShowcaseLocale } from "@/features/showcase/i18n/locale";
 
 export function StayBannerHero({
-  locale = "vi"
+  locale = "vi",
 }: {
-  config?: CompleteTemplateConfig;
+  config?: SiteConfig;
   locale?: ShowcaseLocale;
 }) {
   const isEn = locale === "en";

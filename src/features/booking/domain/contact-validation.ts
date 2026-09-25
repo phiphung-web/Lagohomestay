@@ -4,11 +4,18 @@ const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 export type ContactField = "fullName" | "phone" | "email" | "consent";
 export type ContactErrors = Partial<Record<ContactField, string>>;
 
-export function validateBookingContact(input: { fullName: string; phone: string; email: string; consent: boolean }): ContactErrors {
+export function validateBookingContact(input: {
+  fullName: string;
+  phone: string;
+  email: string;
+  consent: boolean;
+}): ContactErrors {
   const errors: ContactErrors = {};
   if (input.fullName.trim().length < 2) errors.fullName = "Vui lòng nhập họ tên đầy đủ.";
-  if (!PHONE_PATTERN.test(input.phone.trim())) errors.phone = "Số điện thoại chưa đúng. Ví dụ: 090 123 4567.";
-  if (input.email.trim() && !EMAIL_PATTERN.test(input.email.trim())) errors.email = "Email chưa đúng định dạng.";
+  if (!PHONE_PATTERN.test(input.phone.trim()))
+    errors.phone = "Số điện thoại chưa đúng. Ví dụ: 090 123 4567.";
+  if (input.email.trim() && !EMAIL_PATTERN.test(input.email.trim()))
+    errors.email = "Email chưa đúng định dạng.";
   if (!input.consent) errors.consent = "Bạn cần đồng ý để LAKA xử lý yêu cầu đặt căn.";
   return errors;
 }

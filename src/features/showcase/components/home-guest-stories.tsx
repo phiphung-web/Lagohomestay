@@ -14,59 +14,59 @@ const guestStories: GuestStory[] = [
   {
     quote: {
       vi: "Sáng thức dậy kéo rèm ra là cả một thung lũng xanh mướt trước mắt. Không gian tĩnh lặng, chỉ có tiếng gió và tiếng thông reo, cảm giác mọi âu lo đều tan biến.",
-      en: "Waking up and opening the curtains to a lush green valley right in front of us. Such deep peace, with only the wind and whispering pines."
+      en: "Waking up and opening the curtains to a lush green valley right in front of us. Such deep peace, with only the wind and whispering pines.",
     },
     source: {
       vi: "Minh Anh & Hoàng Nam",
-      en: "Minh Anh & Hoang Nam"
+      en: "Minh Anh & Hoang Nam",
     },
     detail: {
       vi: "Kỳ nghỉ cặp đôi · Cabin Vô Cực",
-      en: "Couple retreat · Vo Cuc Cabin"
-    }
+      en: "Couple retreat · Vo Cuc Cabin",
+    },
   },
   {
     quote: {
       vi: "Cả nhà mình có một cuối tuần trọn vẹn tại Villa Top Hill. Các bé thích mê hồ bơi và bãi cỏ rộng, còn người lớn thì có không gian BBQ ấm cúng bên nhau.",
-      en: "Our whole family had a wonderful weekend at Villa Top Hill. The kids loved the pool and open grounds, while the adults enjoyed an intimate BBQ evening."
+      en: "Our whole family had a wonderful weekend at Villa Top Hill. The kids loved the pool and open grounds, while the adults enjoyed an intimate BBQ evening.",
     },
     source: {
       vi: "Gia đình chị Thanh Hằng",
-      en: "Thanh Hang family"
+      en: "Thanh Hang family",
     },
     detail: {
       vi: "Kỳ nghỉ gia đình · Villa Top Hill",
-      en: "Family getaway · Top Hill Villa"
-    }
+      en: "Family getaway · Top Hill Villa",
+    },
   },
   {
     quote: {
       vi: "Chuyến đi của nhóm bạn tuyệt vời hơn mong đợi. Cabin view hồ siêu chill, trà chiều ngắm hoàng hôn và bữa tối ven hồ được chuẩn bị rất chu đáo.",
-      en: "Our friends' trip was better than expected. Super chill lakeside cabin views, with sunset tea and lakeside dinner prepared with great care."
+      en: "Our friends' trip was better than expected. Super chill lakeside cabin views, with sunset tea and lakeside dinner prepared with great care.",
     },
     source: {
       vi: "Nhóm bạn Ngọc Linh",
-      en: "Ngoc Linh & friends"
+      en: "Ngoc Linh & friends",
     },
     detail: {
       vi: "Chuyến đi bạn bè · Cabin Khoảng Trời",
-      en: "Friends' getaway · Khoang Troi Cabin"
-    }
+      en: "Friends' getaway · Khoang Troi Cabin",
+    },
   },
   {
     quote: {
       vi: "Khung kính lớn ở phòng ngủ thật sự là điểm nhấn đắt giá. Nằm đọc sách ngắm mây trôi qua thung lũng là trải nghiệm mình nhớ nhất tại LAKA.",
-      en: "The grand window in the bedroom is truly the highlight. Reading a book while watching the clouds drift over the valley is what I remember most about LAKA."
+      en: "The grand window in the bedroom is truly the highlight. Reading a book while watching the clouds drift over the valley is what I remember most about LAKA.",
     },
     source: {
       vi: "Đức Huy & Bạn bè",
-      en: "Duc Huy & friends"
+      en: "Duc Huy & friends",
     },
     detail: {
       vi: "Kỳ nghỉ cuối tuần · Cabin An Trú",
-      en: "Weekend pause · An Tru Cabin"
-    }
-  }
+      en: "Weekend pause · An Tru Cabin",
+    },
+  },
 ];
 
 export function HomeGuestStories({ locale = "vi" }: { locale?: ShowcaseLocale }) {
@@ -121,9 +121,17 @@ export function HomeGuestStories({ locale = "vi" }: { locale?: ShowcaseLocale })
           <div className="flex min-w-0 flex-col items-start gap-6 sm:flex-row sm:items-end sm:justify-between md:justify-end">
             <p className="min-w-0 max-w-full font-serif text-2xl font-medium text-[#16311c] sm:text-3xl md:shrink-0 md:text-right lg:text-4xl">
               {en ? (
-                <>Stories that stay<br className="hidden md:inline" /> <i className="text-[#80613f]">after the journey.</i></>
+                <>
+                  Stories that stay
+                  <br className="hidden md:inline" />{" "}
+                  <i className="text-[#80613f]">after the journey.</i>
+                </>
               ) : (
-                <>Những cảm nhận còn lại<br className="hidden md:inline" /> <i className="text-[#80613f]">sau mỗi chuyến đi.</i></>
+                <>
+                  Những cảm nhận còn lại
+                  <br className="hidden md:inline" />{" "}
+                  <i className="text-[#80613f]">sau mỗi chuyến đi.</i>
+                </>
               )}
             </p>
             {/* Arrows */}

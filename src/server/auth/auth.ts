@@ -6,7 +6,7 @@ import { prisma } from "@/server/database/prisma";
 
 const credentialsSchema = z.object({
   email: z.string().email(),
-  password: z.string().min(8)
+  password: z.string().min(8),
 });
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
@@ -21,14 +21,18 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         const result = credentialsSchema.safeParse(raw);
         if (!result.success) return null;
         const { email, password } = result.data;
-        if (process.env.DEMO_MODE !== "false" && email === "owner@lago.local" && password === "LAKA@2026") {
+        if (
+          process.env.DEMO_MODE !== "false" &&
+          email === "owner@lago.local" &&
+          password === "LAKA@2026"
+        ) {
           return { id: "demo-owner", name: "Chủ LAKA", email, role: "OWNER" as const };
         }
         const user = await prisma.user.findUnique({ where: { email: email.toLowerCase() } });
         if (!user?.active || !(await compare(password, user.passwordHash))) return null;
         return { id: user.id, name: user.name, email: user.email, role: user.role };
-      }
-    })
+      },
+    }),
   ],
   callbacks: {
     jwt({ token, user }) {
@@ -41,9 +45,9 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     session({ session, token }) {
       if (session.user) {
         session.user.id = token.sub ?? "";
-        session.user.role = (token.role === "OWNER" ? "OWNER" : "STAFF");
+        session.user.role = token.role === "OWNER" ? "OWNER" : "STAFF";
       }
       return session;
-    }
-  }
+    },
+  },
 });

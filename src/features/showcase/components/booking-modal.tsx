@@ -5,14 +5,14 @@ import { createPortal } from "react-dom";
 import { ArrowRight, CheckCircle2, Loader2, X } from "lucide-react";
 import type { ShowcaseLocale } from "@/features/showcase/i18n/locale";
 import { localizeStay } from "@/features/showcase/i18n/showcase-copy";
-import { stays } from "@/features/stays/data/demo-data";
+import { stays } from "@/features/stays/data/stay-catalog";
 import { publicContact } from "@/shared/lib/public-contact";
 
 export function BookingModal({
   open,
   onClose,
   locale = "vi",
-  defaultStaySlug = ""
+  defaultStaySlug = "",
 }: {
   open: boolean;
   onClose: () => void;
@@ -46,7 +46,7 @@ export function BookingModal({
       if (event.key === "Escape") onClose();
       if (event.key === "Tab") {
         const controls = panelRef.current?.querySelectorAll<HTMLElement>(
-          "a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled])"
+          "a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled])",
         );
         if (!controls?.length) return;
         const first = controls[0];
@@ -91,17 +91,22 @@ export function BookingModal({
           checkIn: data.get("checkIn"),
           checkOut: data.get("checkOut"),
           guests: data.get("guests"),
-          message: data.get("message")
-        })
+          message: data.get("message"),
+        }),
       });
       const result = await res.json();
       if (!res.ok) {
-        setErrorMessage(result.message || (en ? "Failed to send details." : "Gửi thông tin chưa thành công. Vui lòng thử lại."));
+        setErrorMessage(
+          result.message ||
+            (en ? "Failed to send details." : "Gửi thông tin chưa thành công. Vui lòng thử lại."),
+        );
       } else {
         setSubmitted(true);
       }
     } catch {
-      setErrorMessage(en ? "Network error. Please check your connection." : "Lỗi kết nối mạng. Vui lòng thử lại.");
+      setErrorMessage(
+        en ? "Network error. Please check your connection." : "Lỗi kết nối mạng. Vui lòng thử lại.",
+      );
     } finally {
       setSubmitting(false);
     }
@@ -190,7 +195,11 @@ export function BookingModal({
                 onChange={(e) => setStaySlug(e.target.value)}
                 className="input mt-1.5 w-full rounded-xl border border-[#16311c]/15 bg-white px-4 py-2.5 text-sm font-normal focus:outline-none focus:ring-2 focus:ring-[#16311c]"
               >
-                <option value="">{en ? "-- Select accommodation (optional) --" : "-- Chọn căn nghỉ dưỡng (tùy chọn) --"}</option>
+                <option value="">
+                  {en
+                    ? "-- Select accommodation (optional) --"
+                    : "-- Chọn căn nghỉ dưỡng (tùy chọn) --"}
+                </option>
                 {stays.map((stay) => (
                   <option key={stay.slug} value={stay.slug}>
                     {localizeStay(stay, locale).name} ({stay.subtitle})
@@ -236,7 +245,11 @@ export function BookingModal({
                 name="message"
                 maxLength={1000}
                 className="input mt-1.5 min-h-[90px] w-full rounded-xl border border-[#16311c]/15 bg-white px-4 py-2.5 text-sm font-normal focus:outline-none focus:ring-2 focus:ring-[#16311c]"
-                placeholder={en ? "Check-in time, group needs..." : "Thời gian nhận căn, yêu cầu thêm giường hoặc hỗ trợ đặc biệt..."}
+                placeholder={
+                  en
+                    ? "Check-in time, group needs..."
+                    : "Thời gian nhận căn, yêu cầu thêm giường hoặc hỗ trợ đặc biệt..."
+                }
               />
             </label>
 
@@ -247,7 +260,10 @@ export function BookingModal({
             )}
 
             {submitted && (
-              <div role="status" className="space-y-3 rounded-2xl border border-emerald-700/20 bg-emerald-50/90 p-4 text-sm sm:col-span-2">
+              <div
+                role="status"
+                className="space-y-3 rounded-2xl border border-emerald-700/20 bg-emerald-50/90 p-4 text-sm sm:col-span-2"
+              >
                 <p className="flex items-start gap-2 font-bold text-emerald-900">
                   <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-emerald-700" />
                   {en
@@ -303,6 +319,6 @@ export function BookingModal({
         </div>
       </section>
     </div>,
-    document.body
+    document.body,
   );
 }

@@ -18,15 +18,15 @@ Cập nhật: 24/08/2026.
 
 ### Thông số lưu trú đã duyệt ngày 22/08/2026
 
-| Dòng căn | Thông số được duyệt |
-|---|---|
-| Guest House | 35m²; 5 giường vừa; tối đa 10 người; WC khép kín, tủ quần áo, điều hòa, quạt, ấm siêu tốc, máy sấy tóc |
-| Bungalow | 15m², 2 tầng gồm 1 gác xép; 2 giường lớn; 5–7 người; bàn trang điểm, giá treo đồ, WC khép kín, thiết bị cơ bản |
-| Cabin An Trú / Lake Suite | 02 cabin; 25m²; 1 giường lớn; bàn ghế ngoài trời, bàn trang điểm, WC khép kín; gồm 1 bữa sáng |
-| Cabin Khoảng Trời / Forest Lake Suite | 06 cabin; 25m²; mặt kính lớn ngắm toàn cảnh; 1 giường lớn, bàn ghế ngoài trời, WC khép kín; gồm 1 bữa sáng |
-| Cabin Sum Vầy / Cabin Group | 02 cabin; 30m²; 7 giường tầng; tối đa 14 người; 4 ô kính view rừng thông, WC khép kín |
-| Cabin Vô Cực / Forest Lake Bathtub Suite | 04 cabin; 25m²; kính góc 180°; bồn tắm riêng, giường lớn, bàn ghế ngoài trời; gồm 1 bữa sáng |
-| Villa Top Hill | 01 nhà; 35m² gồm 1 phòng ngủ + 1 phòng khách; 5 giường vừa; 15–20 người; sofa, tivi, sân lớn ngoài trời, WC khép kín |
+| Dòng căn                                 | Thông số được duyệt                                                                                                  |
+| ---------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| Guest House                              | 35m²; 5 giường vừa; tối đa 10 người; WC khép kín, tủ quần áo, điều hòa, quạt, ấm siêu tốc, máy sấy tóc               |
+| Bungalow                                 | 15m², 2 tầng gồm 1 gác xép; 2 giường lớn; 5–7 người; bàn trang điểm, giá treo đồ, WC khép kín, thiết bị cơ bản       |
+| Cabin An Trú / Lake Suite                | 02 cabin; 25m²; 1 giường lớn; bàn ghế ngoài trời, bàn trang điểm, WC khép kín; gồm 1 bữa sáng                        |
+| Cabin Khoảng Trời / Forest Lake Suite    | 06 cabin; 25m²; mặt kính lớn ngắm toàn cảnh; 1 giường lớn, bàn ghế ngoài trời, WC khép kín; gồm 1 bữa sáng           |
+| Cabin Sum Vầy / Cabin Group              | 02 cabin; 30m²; 7 giường tầng; tối đa 14 người; 4 ô kính view rừng thông, WC khép kín                                |
+| Cabin Vô Cực / Forest Lake Bathtub Suite | 04 cabin; 25m²; kính góc 180°; bồn tắm riêng, giường lớn, bàn ghế ngoài trời; gồm 1 bữa sáng                         |
+| Villa Top Hill                           | 01 nhà; 35m² gồm 1 phòng ngủ + 1 phòng khách; 5 giường vừa; 15–20 người; sofa, tivi, sân lớn ngoài trời, WC khép kín |
 
 Nhà Thông Reo / Eco Camp 018–019 có trong danh mục 8 dòng căn nhưng thông số chi tiết vẫn cần duyệt lại trước khi mở bán.
 

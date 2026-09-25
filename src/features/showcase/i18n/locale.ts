@@ -1,10 +1,10 @@
 export type ShowcaseLocale = "vi" | "en";
 
-export function localizedTemplateBasePath(basePath: string, locale: ShowcaseLocale) {
+export function localizedBasePath(basePath: string, locale: ShowcaseLocale) {
   return locale === "en" ? `${basePath}/en` : basePath;
 }
 
-export function resolveLocalizedTemplatePath(path: string[] | undefined) {
+export function resolveLocalizedPath(path: string[] | undefined) {
   if (path?.[0] === "en") {
     return { locale: "en" as const, routePath: path.slice(1) };
   }

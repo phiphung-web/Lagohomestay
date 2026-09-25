@@ -3,6 +3,7 @@
 .agents
 .codex
 .next
+.next-*
 node_modules
 npm-debug.log*
 .env
@@ -19,3 +20,6 @@ public/screenshots
 .codex-tmp
 *.xlsx
 ~$*.xlsx
+docs
+tests
+.prettierignore

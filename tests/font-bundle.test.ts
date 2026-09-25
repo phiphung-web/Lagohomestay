@@ -17,7 +17,14 @@ describe("Vietnamese font bundle", () => {
       expect(css).toContain(`be-vietnam-pro-vietnamese-${weight}-normal.woff2`);
       expect(css).toContain(`be-vietnam-pro-latin-${weight}-normal.woff2`);
     }
-    for (const face of ["400-italic", "500-normal", "500-italic", "600-normal", "600-italic", "700-normal"]) {
+    for (const face of [
+      "400-italic",
+      "500-normal",
+      "500-italic",
+      "600-normal",
+      "600-italic",
+      "700-normal",
+    ]) {
       expect(css).toContain(`lora-vietnamese-${face}.woff2`);
       expect(css).toContain(`lora-latin-${face}.woff2`);
     }

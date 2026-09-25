@@ -24,5 +24,5 @@ export const publicContact = {
   instagramHref: withWebsiteUtm("https://www.instagram.com/lakahomestay/", "instagram"),
   instagramDisplay: "@lakahomestay",
   tiktokHref: withWebsiteUtm("https://www.tiktok.com/@laka.homestay", "tiktok"),
-  tiktokDisplay: "@laka.homestay"
+  tiktokDisplay: "@laka.homestay",
 } as const;

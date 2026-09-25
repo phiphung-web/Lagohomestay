@@ -3,10 +3,10 @@ import { join } from "node:path";
 import { describe, expect, it } from "vitest";
 import { diningMenuVenues } from "@/features/showcase/data/dining-menu";
 import { localizeStay } from "@/features/showcase/i18n/showcase-copy";
-import { stays } from "@/features/stays/data/demo-data";
+import { stays } from "@/features/stays/data/stay-catalog";
 
 const root = process.cwd();
-const source = (path: string) => readFileSync(join(root, path), "utf8");
+const source = (path: string) => readFileSync(join(root, path), "utf8").replace(/\s+/g, " ");
 
 describe("LAKA public contact funnel", () => {
   it("redirects legacy booking and lookup pages to contact in both locales", () => {
@@ -21,9 +21,9 @@ describe("LAKA public contact funnel", () => {
   it("sends stay advice to the contextual contact form", () => {
     const explorer = source("src/features/showcase/components/stay-product-explorer.tsx");
     const form = source("src/features/showcase/components/contact-inquiry-form.tsx");
-    const mobileMenu = source("src/features/showcase/components/template-mobile-menu.tsx");
+    const mobileMenu = source("src/features/showcase/components/mobile-menu.tsx");
 
-    expect(explorer).toContain('inquiryStay');
+    expect(explorer).toContain("inquiryStay");
     expect(form).toContain('id="inquiry-form"');
     expect(form).toContain('query.get("stay")');
     expect(form).toContain('query.get("guests")');
@@ -43,6 +43,9 @@ describe("LAKA public contact funnel", () => {
 
   it("uses the approved coffee-shop name", () => {
     const cafe = diningMenuVenues.find((venue) => venue.id === "cafe")!;
-    expect(cafe.title).toEqual({ vi: 'Tiệm Cà Phê "Tầng Mây"', en: 'Coffee Shop "Among the Clouds"' });
+    expect(cafe.title).toEqual({
+      vi: 'Tiệm Cà Phê "Tầng Mây"',
+      en: 'Coffee Shop "Among the Clouds"',
+    });
   });
 });

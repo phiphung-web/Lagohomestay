@@ -3,13 +3,17 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+      args:
+        NEXT_PUBLIC_SITE_URL: https://${LAGO_DOMAIN:?Set LAGO_DOMAIN in .env.demo}
     restart: unless-stopped
     init: true
     environment:
       NODE_ENV: production
       DEMO_MODE: "true"
-      SESSION_SECRET: ${SESSION_SECRET}
+      SESSION_SECRET: ${SESSION_SECRET:?Set SESSION_SECRET in .env.demo}
       NEXT_PUBLIC_SITE_URL: https://${LAGO_DOMAIN}
+      INQUIRY_WEBHOOK_URL: ${INQUIRY_WEBHOOK_URL:-}
+      NOTIFICATION_EMAIL: ${NOTIFICATION_EMAIL:-}
     ports:
       - "127.0.0.1:${LAGO_PORT:-3100}:3000"
     mem_limit: 768m

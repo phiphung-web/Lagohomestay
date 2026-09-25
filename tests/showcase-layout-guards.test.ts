@@ -3,14 +3,14 @@ import { join } from "node:path";
 import { describe, expect, it } from "vitest";
 
 const root = process.cwd();
-const source = (path: string) => readFileSync(join(root, path), "utf8");
+const source = (path: string) => readFileSync(join(root, path), "utf8").replace(/\s+/g, " ");
 
 describe("LAKA showcase layout guards", () => {
   it("keeps fill-image frames within the viewport", () => {
     const globals = source("src/app/globals.css");
 
     expect(globals).toContain(".laka-media-frame { max-height: 100svh; }");
-    expect(globals).toContain(":has(> img[data-nimg=\"fill\"]) { max-height: 100svh; }");
+    expect(globals).toContain(':has(> img[data-nimg="fill"]) { max-height: 100svh; }');
     expect(globals).toContain("button, article, span");
   });
 
@@ -24,7 +24,7 @@ describe("LAKA showcase layout guards", () => {
   });
 
   it("keeps the compact header and resilient contact alternatives", () => {
-    const site = source("src/features/showcase/site/complete-template-site.tsx");
+    const site = source("src/features/showcase/site/site-header.tsx");
     const form = source("src/features/showcase/components/contact-inquiry-form.tsx");
 
     expect(site).toContain('BrandLogo variant="wordmark"');
@@ -36,28 +36,28 @@ describe("LAKA showcase layout guards", () => {
 
   it("uses one font-independent Zalo icon across public contact surfaces", () => {
     const icon = source("src/shared/components/ui/zalo-icon.tsx");
-    const brandSections = source("src/features/showcase/components/template-brand-sections.tsx");
-    const sharedFooter = source("src/shared/components/layout/footer.tsx");
-    const templateSite = source("src/features/showcase/site/complete-template-site.tsx");
+    const brandSections = source("src/features/showcase/components/brand-sections.tsx");
+    const footer = source("src/features/showcase/site/site-footer.tsx");
 
     expect(icon).toContain("zaloWordmarkPath");
     expect(icon).toContain("useId()");
     expect(icon).not.toContain("<text");
     expect(brandSections).toContain("<ZaloIcon");
-    expect(sharedFooter).toContain("<ZaloIcon");
-    expect(templateSite).toContain("<ZaloIcon");
+    expect(footer).toContain("<ZaloIcon");
   });
 
   it("keeps the public-site heading hierarchy clear and hides unapproved feedback placeholders", () => {
     const globals = source("src/app/globals.css");
     const home = source("src/features/showcase/site/main-home.tsx");
-    const site = source("src/features/showcase/site/complete-template-site.tsx");
+    const site = source("src/features/showcase/pages/stay-page.tsx");
     const story = source("src/features/showcase/components/home-brand-story.tsx");
     const stays = source("src/features/showcase/components/home-landscape-collections.tsx");
-    const destinations = source("src/features/showcase/components/template-destination-sections.tsx");
+    const destinations = source("src/features/showcase/components/destination-sections.tsx");
     const feedback = source("src/features/showcase/components/home-guest-stories.tsx");
 
-    expect(globals).toContain('.laka-heading-section, .laka-home-section-title { font-family: "Be Vietnam Pro"');
+    expect(globals).toContain(
+      '.laka-heading-section, .laka-home-section-title { font-family: "Be Vietnam Pro"',
+    );
     expect(globals).toContain('.laka-section-lead, .laka-home-section-lead { font-family: "Lora"');
     expect(globals).toContain("font-size: clamp(1.0625rem, 1.25vw, 1.25rem)");
     expect(site).toContain('<h2 className="laka-heading-section max-w-3xl">');

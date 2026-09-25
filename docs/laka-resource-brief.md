@@ -2,25 +2,27 @@
 
 Cập nhật: 24/08/2026. Mọi ảnh Unsplash trên website hiện chỉ là ảnh concept và phải được thay trước khi mở bán.
 
+Đây là brief lập kế hoạch ban đầu, không phải danh sách ảnh còn thiếu tại thời điểm bàn giao. Xem [hướng dẫn tài nguyên hiện hành](assets/README.md) để đối chiếu bộ ảnh đã tích hợp và hai workbook gốc.
+
 ## P0 — bắt buộc để website hoạt động
 
-| Mã slot | Trang / vị trí | Tài nguyên cần giao | Khung hình / số lượng |
-|---|---|---|---|
-| `HOME-HERO-01` | Trang chủ / hero | Toàn cảnh có hồ, cabin và thung lũng; không chèn chữ | 01 ảnh 16:9 + 01 crop 9:16; tối thiểu 2400px |
-| `HOME-HERO-VIDEO` | Trang chủ / hero | Chuyển động chậm, có chiều sâu cảnh quan, không nhạc đóng bản quyền | 8–15 giây; 4K/1080p; 16:9 + 9:16 |
-| `HOME-MISSION-01..03` | Trang chủ / sứ mệnh | Khung kính nhìn ra thiên nhiên, khoảnh khắc kết nối thật | 01 ảnh chủ đạo có crop 4:5 + 02 ảnh phụ 4:3 |
-| `HOME-STAY-GROUP-01..03` | Trang chủ / lưu trú | Đại diện Nhà Bên Hồ, Lake Cabin, Nhà Trên Đồi | 03 ảnh 16:10 |
-| `HOME-DINING-01..02` | Trang chủ / ẩm thực | Nhà Hàng Ven Hồ, Tiệm Cà Phê Tầng Mây | 02 ảnh 4:3 |
-| `HOME-EXPERIENCE-01..04` | Trang chủ / một ngày ở LAKA | Pickleball, kayak, hồ bơi, xe đạp; có người sử dụng thật | 04 ảnh 4:5 |
-| `HOME-GALLERY-01..06` | Trang chủ / thư viện ký ức | Khoảnh khắc khách thật, đa dạng thời điểm và nhóm khách | 02 ảnh 16:9 + 04 ảnh 4:3 |
-| `HOME-FEEDBACK-01..06` | Trang chủ / slider feedback tổng hợp | Họ/tên viết tắt, loại căn/chuyến đi, nội dung gốc, bản dịch duyệt nếu cần, ngày ở và đồng ý sử dụng | Tối thiểu 06 phản hồi; không chia theo quốc tịch |
-| `ROUTE-HERO-01..06` | Lưu trú, trải nghiệm, dịch vụ, ẩm thực, về LAKA, đường đến | Ảnh mở trang đúng chủ đề, vùng trống an toàn cho chữ | 06 ảnh 16:9 + crop 4:5 |
-| `STAY-{SLUG}-SET` | 8 trang chi tiết lưu trú | Bộ ảnh chứng minh đúng không gian và tiện nghi | 10 ảnh/dòng căn; xem shot list dưới |
-| `STAY-{SLUG}-PLAN` | Trang chi tiết / mặt bằng | Sơ đồ có kích thước, cửa, giường, WC, ban công/gác xép | 01 SVG/PDF + PNG cho mỗi dòng căn; tổng 08 |
-| `SITE-MAP-01` | Lưu trú / đường đến | Sơ đồ toàn khu: mã 001–020, đường đi, bãi xe, tiện ích | 01 SVG/PDF + PNG ngang |
-| `DIRECTION-MAP-01` | Đường đến LAKA | Link Google Maps chính thức, tọa độ cổng, bãi xe | 01 link + 02 tọa độ đã kiểm tra |
-| `DIRECTION-MARKER-01..04` | Đường đến / đoạn cuối | Ảnh mốc rẽ liên tiếp, ghi chiều di chuyển | 04 ảnh ngang 4:3 |
-| `OPERATION-DATA-01` | Toàn website | Bảng duyệt giá, sức chứa, phụ thu, cọc, nhận/trả, hủy, trẻ em, vật nuôi, tiếng ồn | 01 bảng nguồn duy nhất, có người duyệt và ngày hiệu lực |
+| Mã slot                   | Trang / vị trí                                             | Tài nguyên cần giao                                                                                 | Khung hình / số lượng                                   |
+| ------------------------- | ---------------------------------------------------------- | --------------------------------------------------------------------------------------------------- | ------------------------------------------------------- |
+| `HOME-HERO-01`            | Trang chủ / hero                                           | Toàn cảnh có hồ, cabin và thung lũng; không chèn chữ                                                | 01 ảnh 16:9 + 01 crop 9:16; tối thiểu 2400px            |
+| `HOME-HERO-VIDEO`         | Trang chủ / hero                                           | Chuyển động chậm, có chiều sâu cảnh quan, không nhạc đóng bản quyền                                 | 8–15 giây; 4K/1080p; 16:9 + 9:16                        |
+| `HOME-MISSION-01..03`     | Trang chủ / sứ mệnh                                        | Khung kính nhìn ra thiên nhiên, khoảnh khắc kết nối thật                                            | 01 ảnh chủ đạo có crop 4:5 + 02 ảnh phụ 4:3             |
+| `HOME-STAY-GROUP-01..03`  | Trang chủ / lưu trú                                        | Đại diện Nhà Bên Hồ, Lake Cabin, Nhà Trên Đồi                                                       | 03 ảnh 16:10                                            |
+| `HOME-DINING-01..02`      | Trang chủ / ẩm thực                                        | Nhà Hàng Ven Hồ, Tiệm Cà Phê Tầng Mây                                                               | 02 ảnh 4:3                                              |
+| `HOME-EXPERIENCE-01..04`  | Trang chủ / một ngày ở LAKA                                | Pickleball, kayak, hồ bơi, xe đạp; có người sử dụng thật                                            | 04 ảnh 4:5                                              |
+| `HOME-GALLERY-01..06`     | Trang chủ / thư viện ký ức                                 | Khoảnh khắc khách thật, đa dạng thời điểm và nhóm khách                                             | 02 ảnh 16:9 + 04 ảnh 4:3                                |
+| `HOME-FEEDBACK-01..06`    | Trang chủ / slider feedback tổng hợp                       | Họ/tên viết tắt, loại căn/chuyến đi, nội dung gốc, bản dịch duyệt nếu cần, ngày ở và đồng ý sử dụng | Tối thiểu 06 phản hồi; không chia theo quốc tịch        |
+| `ROUTE-HERO-01..06`       | Lưu trú, trải nghiệm, dịch vụ, ẩm thực, về LAKA, đường đến | Ảnh mở trang đúng chủ đề, vùng trống an toàn cho chữ                                                | 06 ảnh 16:9 + crop 4:5                                  |
+| `STAY-{SLUG}-SET`         | 8 trang chi tiết lưu trú                                   | Bộ ảnh chứng minh đúng không gian và tiện nghi                                                      | 10 ảnh/dòng căn; xem shot list dưới                     |
+| `STAY-{SLUG}-PLAN`        | Trang chi tiết / mặt bằng                                  | Sơ đồ có kích thước, cửa, giường, WC, ban công/gác xép                                              | 01 SVG/PDF + PNG cho mỗi dòng căn; tổng 08              |
+| `SITE-MAP-01`             | Lưu trú / đường đến                                        | Sơ đồ toàn khu: mã 001–020, đường đi, bãi xe, tiện ích                                              | 01 SVG/PDF + PNG ngang                                  |
+| `DIRECTION-MAP-01`        | Đường đến LAKA                                             | Link Google Maps chính thức, tọa độ cổng, bãi xe                                                    | 01 link + 02 tọa độ đã kiểm tra                         |
+| `DIRECTION-MARKER-01..04` | Đường đến / đoạn cuối                                      | Ảnh mốc rẽ liên tiếp, ghi chiều di chuyển                                                           | 04 ảnh ngang 4:3                                        |
+| `OPERATION-DATA-01`       | Toàn website                                               | Bảng duyệt giá, sức chứa, phụ thu, cọc, nhận/trả, hủy, trẻ em, vật nuôi, tiếng ồn                   | 01 bảng nguồn duy nhất, có người duyệt và ngày hiệu lực |
 
 ### Shot list cho mỗi dòng lưu trú
 
@@ -40,14 +42,14 @@ Phải nhìn thấy rõ: gác xép 002–003; khung kính 004–005; mặt kính
 
 ## P1 — tăng thuyết phục và chuyển đổi
 
-| Mã slot | Hạng mục | Tài nguyên cần giao |
-|---|---|---|
-| `DINING-VENUE-01..02` | Hai điểm ẩm thực | Mỗi điểm 08 ảnh: ngoại cảnh, không gian, view, món chủ lực, đồ uống, phục vụ, khách dùng, hoàng hôn/đêm; kèm menu, giá, giờ mở cửa đã duyệt |
-| `SERVICE-01..06` | 06 tiện ích chính | Mỗi tiện ích 04 ảnh + 01 clip 6–10 giây; kèm lịch, phí, giới hạn và an toàn |
-| `ABOUT-STORY-01..03` | Về LAKA | 03 ảnh thật: kiến trúc/vật liệu, đội ngũ chăm sóc, cảnh quan được gìn giữ |
-| `DAY-AT-LAKA-VIDEO` | Trang chủ / trải nghiệm | Video một ngày: sáng → hồ → ăn uống → vận động → tối; 30–45 giây, 16:9 + 9:16 |
-| `GUEST-PORTRAIT-01..03` | Trang chủ / truyền thông | Cặp đôi, gia đình/nhóm bạn, đoàn công ty; có giấy đồng ý sử dụng |
-| `FAQ-COPY-01` | FAQ | 8–12 câu trả lời do vận hành duyệt, ngắn và có ngày hiệu lực |
+| Mã slot                 | Hạng mục                 | Tài nguyên cần giao                                                                                                                         |
+| ----------------------- | ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| `DINING-VENUE-01..02`   | Hai điểm ẩm thực         | Mỗi điểm 08 ảnh: ngoại cảnh, không gian, view, món chủ lực, đồ uống, phục vụ, khách dùng, hoàng hôn/đêm; kèm menu, giá, giờ mở cửa đã duyệt |
+| `SERVICE-01..06`        | 06 tiện ích chính        | Mỗi tiện ích 04 ảnh + 01 clip 6–10 giây; kèm lịch, phí, giới hạn và an toàn                                                                 |
+| `ABOUT-STORY-01..03`    | Về LAKA                  | 03 ảnh thật: kiến trúc/vật liệu, đội ngũ chăm sóc, cảnh quan được gìn giữ                                                                   |
+| `DAY-AT-LAKA-VIDEO`     | Trang chủ / trải nghiệm  | Video một ngày: sáng → hồ → ăn uống → vận động → tối; 30–45 giây, 16:9 + 9:16                                                               |
+| `GUEST-PORTRAIT-01..03` | Trang chủ / truyền thông | Cặp đôi, gia đình/nhóm bạn, đoàn công ty; có giấy đồng ý sử dụng                                                                            |
+| `FAQ-COPY-01`           | FAQ                      | 8–12 câu trả lời do vận hành duyệt, ngắn và có ngày hiệu lực                                                                                |
 
 ## P2 — sau khi đón khách
 

@@ -2,7 +2,13 @@
 
 import { useEffect, useRef, useState } from "react";
 
-export function ScrollAwareHeader({ children, className }: { children: React.ReactNode; className: string }) {
+export function ScrollAwareHeader({
+  children,
+  className,
+}: {
+  children: React.ReactNode;
+  className: string;
+}) {
   const [hidden, setHidden] = useState(false);
   const lastScrollY = useRef(0);
   const ticking = useRef(false);
@@ -39,10 +45,12 @@ export function ScrollAwareHeader({ children, className }: { children: React.Rea
     };
   }, [hidden]);
 
-  return <header
-    className={`${className} transform-gpu transition-transform duration-300 ease-out motion-reduce:transition-none ${hidden ? "-translate-y-full" : "translate-y-0"}`}
-    onFocusCapture={() => setHidden(false)}
-  >
-    {children}
-  </header>;
+  return (
+    <header
+      className={`${className} transform-gpu transition-transform duration-300 ease-out motion-reduce:transition-none ${hidden ? "-translate-y-full" : "translate-y-0"}`}
+      onFocusCapture={() => setHidden(false)}
+    >
+      {children}
+    </header>
+  );
 }

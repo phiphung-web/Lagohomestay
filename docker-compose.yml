@@ -5,6 +5,8 @@ services:
       POSTGRES_DB: lago
       POSTGRES_USER: lago
       POSTGRES_PASSWORD: lago
+    ports:
+      - "127.0.0.1:5432:5432"
     volumes:
       - lago_db:/var/lib/postgresql/data
     healthcheck:
@@ -13,14 +15,20 @@ services:
       timeout: 5s
       retries: 10
   web:
-    build: .
+    build:
+      context: .
+      args:
+        NEXT_PUBLIC_SITE_URL: ${NEXT_PUBLIC_SITE_URL:-http://localhost:3000}
     environment:
       DATABASE_URL: postgresql://lago:lago@db:5432/lago?schema=public
-      SESSION_SECRET: change-me-in-production-with-a-long-random-secret
-      NEXT_PUBLIC_SITE_URL: http://localhost:3000
+      SESSION_SECRET: ${SESSION_SECRET:?Set SESSION_SECRET in .env}
+      NEXT_PUBLIC_SITE_URL: ${NEXT_PUBLIC_SITE_URL:-http://localhost:3000}
+      HOLD_EXPIRY_SECRET: ${HOLD_EXPIRY_SECRET:-}
+      INQUIRY_WEBHOOK_URL: ${INQUIRY_WEBHOOK_URL:-}
+      NOTIFICATION_EMAIL: ${NOTIFICATION_EMAIL:-}
       DEMO_MODE: "false"
     ports:
-      - "3000:3000"
+      - "127.0.0.1:3000:3000"
     depends_on:
       db:
         condition: service_healthy

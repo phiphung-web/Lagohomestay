@@ -10,7 +10,7 @@ const nextConfig: NextConfig = {
     loader: "custom",
     loaderFile: "./src/shared/lib/image-loader.ts",
     deviceSizes: [360, 480, 640, 768, 1024, 1280, 1536, 1920],
-    imageSizes: [32, 64, 96, 128, 256, 384]
+    imageSizes: [32, 64, 96, 128, 256, 384],
   },
   poweredByHeader: false,
   async redirects() {
@@ -18,58 +18,58 @@ const nextConfig: NextConfig = {
       {
         source: "/ve-lago",
         destination: "/ve-laka",
-        permanent: true
+        permanent: true,
       },
       {
         source: "/en/ve-lago",
         destination: "/en/ve-laka",
-        permanent: true
+        permanent: true,
       },
       {
         source: "/chinh-sach",
         destination: "/chinh-sach-luu-tru",
-        permanent: true
+        permanent: true,
       },
       {
         source: "/en/chinh-sach",
         destination: "/en/chinh-sach-luu-tru",
-        permanent: true
+        permanent: true,
       },
       {
         source: "/dat-phong",
         destination: "/lien-he",
-        permanent: true
+        permanent: true,
       },
       {
         source: "/en/dat-phong",
         destination: "/en/lien-he",
-        permanent: true
+        permanent: true,
       },
       {
         source: "/tra-cuu",
         destination: "/lien-he",
-        permanent: true
+        permanent: true,
       },
       {
         source: "/en/tra-cuu",
         destination: "/en/lien-he",
-        permanent: true
+        permanent: true,
       },
       {
         source: "/mau/:template(tinh-lang|dien-anh|song-dong)",
         destination: "/",
-        permanent: true
+        permanent: true,
       },
       {
         source: "/mau/:template(tinh-lang|dien-anh|song-dong)/:path*",
         destination: "/:path*",
-        permanent: true
-      }
+        permanent: true,
+      },
     ];
   },
   experimental: {
-    serverActions: { bodySizeLimit: "2mb" }
-  }
+    serverActions: { bodySizeLimit: "2mb" },
+  },
 };
 
 export default nextConfig;

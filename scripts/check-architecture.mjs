@@ -14,7 +14,7 @@ async function walk(directory) {
 
   for (const entry of entries) {
     const absolutePath = path.join(directory, entry.name);
-    if (entry.isDirectory()) files.push(...await walk(absolutePath));
+    if (entry.isDirectory()) files.push(...(await walk(absolutePath)));
     if (entry.isFile() && /\.(ts|tsx)$/.test(entry.name)) files.push(absolutePath);
   }
 
@@ -33,7 +33,10 @@ for (const file of files) {
     violations.push(`${relativePath}: client module imports server infrastructure`);
   }
 
-  if (relativePath.startsWith("shared/") && imports.some((item) => /^@\/(app|features|server)\//.test(item))) {
+  if (
+    relativePath.startsWith("shared/") &&
+    imports.some((item) => /^@\/(app|features|server)\//.test(item))
+  ) {
     violations.push(`${relativePath}: shared code depends on an upper layer`);
   }
 

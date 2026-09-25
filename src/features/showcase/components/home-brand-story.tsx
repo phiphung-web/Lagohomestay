@@ -7,29 +7,35 @@ import type { ShowcaseLocale } from "@/features/showcase/i18n/locale";
 const missionData = {
   title: {
     vi: "Sứ mệnh",
-    en: "Our Mission"
+    en: "Our Mission",
   },
   content: {
     vi: "Lưu giữ vẻ đẹp nguyên sơ qua từng khung kính, nơi khởi nguồn cho những kết nối chân thật nhất.",
-    en: "Preserving untouched beauty through every window, where the truest connections begin."
+    en: "Preserving untouched beauty through every window, where the truest connections begin.",
   },
   pillars: [
     {
       icon: Mountain,
-      title: { vi: "Thiên nhiên", en: "Nature" }
+      title: { vi: "Thiên nhiên", en: "Nature" },
     },
     {
       icon: UtensilsCrossed,
-      title: { vi: "Ẩm thực", en: "Dining" }
+      title: { vi: "Ẩm thực", en: "Dining" },
     },
     {
       icon: Sparkles,
-      title: { vi: "An yên", en: "Serenity" }
-    }
-  ]
+      title: { vi: "An yên", en: "Serenity" },
+    },
+  ],
 } as const;
 
-export function HomeBrandStory({ basePath, locale = "vi" }: { basePath: string; locale?: ShowcaseLocale }) {
+export function HomeBrandStory({
+  basePath,
+  locale = "vi",
+}: {
+  basePath: string;
+  locale?: ShowcaseLocale;
+}) {
   const en = locale === "en";
 
   return (
@@ -58,7 +64,9 @@ export function HomeBrandStory({ basePath, locale = "vi" }: { basePath: string; 
             <div className="relative h-56 w-full overflow-hidden bg-[#e0d6c7]">
               <Image
                 src={lakaImages.home.mission}
-                alt={en ? "A quiet detail in a LAKA room" : "Một chi tiết an yên trong phòng nghỉ LAKA"}
+                alt={
+                  en ? "A quiet detail in a LAKA room" : "Một chi tiết an yên trong phòng nghỉ LAKA"
+                }
                 fill
                 sizes="(max-width: 640px) 100vw, 540px"
                 className="object-cover"
@@ -120,7 +128,11 @@ export function HomeBrandStory({ basePath, locale = "vi" }: { basePath: string; 
               <div className="relative aspect-[16/11] rounded-3xl overflow-hidden shadow-2xl bg-[#10251d] border-4 border-[#eae1d2] group">
                 <Image
                   src={lakaImages.home.mission}
-                  alt={en ? "A quiet detail in a LAKA room" : "Một chi tiết an yên trong phòng nghỉ LAKA"}
+                  alt={
+                    en
+                      ? "A quiet detail in a LAKA room"
+                      : "Một chi tiết an yên trong phòng nghỉ LAKA"
+                  }
                   fill
                   sizes="50vw"
                   className="object-cover transition duration-1000 ease-out group-hover:scale-105"
@@ -163,9 +175,7 @@ export function HomeBrandStory({ basePath, locale = "vi" }: { basePath: string; 
                       <span className="p-2.5 rounded-xl bg-[#16311c]/8 text-[#16311c]">
                         <Icon className="h-5 w-5 stroke-[1.6]" />
                       </span>
-                      <h4 className="font-bold text-sm text-[#16311c]">
-                        {pillar.title[locale]}
-                      </h4>
+                      <h4 className="font-bold text-sm text-[#16311c]">{pillar.title[locale]}</h4>
                     </div>
                   );
                 })}

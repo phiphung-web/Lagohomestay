@@ -8,7 +8,7 @@ export async function POST(request: NextRequest) {
   if (!rateLimit(`inquiry:${forwarded}`, 6, 60_000).allowed) {
     return NextResponse.json(
       { message: "Bạn thao tác hơi nhanh. Vui lòng thử lại sau 1 phút." },
-      { status: 429 }
+      { status: 429 },
     );
   }
 
@@ -33,7 +33,10 @@ export async function POST(request: NextRequest) {
 
   const normalized = normalizePhone(phone);
   if (!normalized || normalized.length < 9) {
-    return NextResponse.json({ message: "Vui lòng nhập số điện thoại / Zalo hợp lệ." }, { status: 400 });
+    return NextResponse.json(
+      { message: "Vui lòng nhập số điện thoại / Zalo hợp lệ." },
+      { status: 400 },
+    );
   }
 
   const inquiryLog = {
@@ -47,18 +50,19 @@ export async function POST(request: NextRequest) {
     checkOut: checkOut || undefined,
     guests: guests || undefined,
     message: message || undefined,
-    targetEmail: process.env.NOTIFICATION_EMAIL || publicContact.email
+    targetEmail: process.env.NOTIFICATION_EMAIL || publicContact.email,
   };
 
   console.log("[INQUIRY_RECEIVED]", inquiryLog);
 
-  // Optional Webhook / Email Notification Dispatch
+  // The receiver owns persistence and email delivery. This route only logs
+  // and forwards the inquiry; NOTIFICATION_EMAIL is metadata for that receiver.
   if (process.env.INQUIRY_WEBHOOK_URL) {
     try {
       await fetch(process.env.INQUIRY_WEBHOOK_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(inquiryLog)
+        body: JSON.stringify(inquiryLog),
       });
     } catch (error) {
       console.error("[INQUIRY_WEBHOOK_FAILED]", error);
@@ -68,8 +72,9 @@ export async function POST(request: NextRequest) {
   return NextResponse.json(
     {
       success: true,
-      message: "Gửi thông tin tới LAKA thành công! Chúng mình sẽ liên hệ lại với bạn trong thời gian sớm nhất."
+      message:
+        "Gửi thông tin tới LAKA thành công! Chúng mình sẽ liên hệ lại với bạn trong thời gian sớm nhất.",
     },
-    { status: 200 }
+    { status: 200 },
   );
 }

@@ -1,0 +1,98 @@
+import { describe, expect, it } from "vitest";
+import {
+  diningStories,
+  guestServices,
+  journeySteps,
+  lakaExperiences,
+  sharedFacilities,
+  specialMoments,
+} from "@/features/showcase/data/laka-content";
+import { showcaseFaqs } from "@/features/showcase/data/showcase-content";
+import { diningMenuVenues, restaurantMenuPages } from "@/features/showcase/data/dining-menu";
+import { englishFaqs } from "@/features/showcase/i18n/showcase-copy";
+import { getUnitsForStay, stays, stayUnits, stayZones } from "@/features/stays/data/stay-catalog";
+
+describe("LAKA presentation content", () => {
+  it("covers the complete guest journey in both languages", () => {
+    expect(lakaExperiences.map((item) => item.title.vi)).toEqual([
+      "PickleBall Bật Mood",
+      "Lướt Hồ Cùng Kayak",
+      "Thư giãn cùng Hồ Xanh",
+      "Đạp xe Rong Ruổi",
+      "Board Game",
+      "Bida",
+    ]);
+    expect(diningStories.map((item) => item.title.vi)).toEqual([
+      'Bữa sáng giữa "Thiên Nhiên"',
+      'Nhà Hàng "Ven Hồ"',
+      'Tiệm Cà Phê "Tầng Mây"',
+    ]);
+    expect(specialMoments).toHaveLength(3);
+    expect(guestServices).toHaveLength(4);
+    expect(sharedFacilities).toHaveLength(5);
+    expect(sharedFacilities.map((item) => item.title.vi)).not.toContain("Quầy Bar Hiên Gió");
+    expect(journeySteps).toHaveLength(4);
+    expect(showcaseFaqs).toHaveLength(8);
+    expect(englishFaqs).toHaveLength(showcaseFaqs.length);
+  });
+
+  it("gives every home enough decision-making detail", () => {
+    expect(stays).toHaveLength(8);
+    for (const stay of stays) {
+      expect(stay.amenities.length).toBeGreaterThanOrEqual(3);
+      expect(stay.idealFor.length).toBeGreaterThanOrEqual(3);
+      expect(stay.included.length).toBeGreaterThanOrEqual(2);
+      expect(stay.stayNotes.length).toBeGreaterThanOrEqual(2);
+      expect(stay.basePrice).toBe(0);
+    }
+  });
+
+  it("models inventory as zone, home type and physical unit", () => {
+    expect(stayZones).toHaveLength(3);
+    expect(stays).toHaveLength(8);
+    expect(stayUnits).toHaveLength(20);
+    expect(getUnitsForStay("stay-forest-lake-suite")).toHaveLength(6);
+    expect(getUnitsForStay("stay-guest-house")).toHaveLength(1);
+    expect(new Set(stayUnits.map((unit) => unit.code)).size).toBe(20);
+    expect(stays.every((stay) => stayZones.some((zone) => zone.id === stay.zoneId))).toBe(true);
+    expect(stayUnits.every((unit) => stays.some((stay) => stay.id === unit.stayId))).toBe(true);
+    expect(stayUnits.every((unit) => unit.position.length > 0 && unit.character.length > 0)).toBe(
+      true,
+    );
+  });
+
+  it("uses the latest verified accommodation details without publishing rates", () => {
+    const guestHouse = stays.find((stay) => stay.slug === "nha-ben-ho")!;
+    const bungalow = stays.find((stay) => stay.slug === "bungalow")!;
+
+    expect(guestHouse).toMatchObject({
+      maxGuests: 10,
+      beds: 5,
+      bathrooms: 1,
+      area: 35,
+      basePrice: 0,
+    });
+    expect(bungalow).toMatchObject({ maxGuests: 7, beds: 2, bathrooms: 1, area: 15, basePrice: 0 });
+    expect(
+      stays
+        .flatMap((stay) => stay.stayNotes)
+        .join(" ")
+        .toLowerCase(),
+    ).not.toContain("giá");
+  });
+
+  it("builds restaurant and cafe menu layouts without prices or internal notes", () => {
+    expect(diningMenuVenues.map((venue) => venue.id)).toEqual(["breakfast", "restaurant", "cafe"]);
+    expect(restaurantMenuPages.length).toBeGreaterThanOrEqual(4);
+
+    const publicMenuText = JSON.stringify(restaurantMenuPages).toLowerCase();
+    expect(publicMenuText).not.toMatch(/người phụ trách|đang tuyển|số điện thoại/);
+    expect(publicMenuText).toContain("nuong-bbq");
+    expect(publicMenuText).toContain("lau-do-nhung");
+  });
+
+  it("does not present illustrative stories as verified guest reviews", () => {
+    const source = showcaseFaqs.flat().join(" ");
+    expect(source).toContain("minh họa");
+  });
+});
