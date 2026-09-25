@@ -10,7 +10,6 @@ services:
     environment:
       NODE_ENV: production
       DEMO_MODE: "true"
-      SESSION_SECRET: ${SESSION_SECRET:?Set SESSION_SECRET in .env.demo}
       NEXT_PUBLIC_SITE_URL: https://${LAGO_DOMAIN}
       INQUIRY_WEBHOOK_URL: ${INQUIRY_WEBHOOK_URL:-}
       NOTIFICATION_EMAIL: ${NOTIFICATION_EMAIL:-}

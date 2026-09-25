@@ -8,7 +8,6 @@ Tất cả lệnh chạy tại thư mục gốc repo, trừ khi có ghi chú kh�
 | --------------------------------- | ---------------------------------------------------------------------------------------------- |
 | `DEMO_MODE`                       | `true`: dùng booking trong bộ nhớ. `false`: dùng PostgreSQL khi có `DATABASE_URL`              |
 | `DATABASE_URL`                    | Kết nối PostgreSQL. Prisma CLI đọc `.env`; Next.js còn đọc `.env.local`                        |
-| `SESSION_SECRET`                  | Khóa ký session. Thay giá trị mẫu bằng chuỗi ngẫu nhiên riêng cho từng môi trường              |
 | `NEXT_PUBLIC_SITE_URL`            | URL gốc cho metadata, sitemap và robots; đặt trước khi build                                   |
 | `HOLD_EXPIRY_SECRET`              | Token cho API hết hạn giữ phòng                                                                |
 | `INQUIRY_WEBHOOK_URL`             | Endpoint nhận JSON yêu cầu tư vấn. Để trống thì route chỉ ghi log                              |
@@ -18,7 +17,7 @@ Tất cả lệnh chạy tại thư mục gốc repo, trừ khi có ghi chú kh�
 | `NEXT_DIST_DIR`                   | Tùy chọn đổi thư mục build khi cần tách một phiên kiểm tra; build/start phải dùng cùng giá trị |
 | `BROWSER_PATH`, `BROWSER_CHANNEL` | Chỉ dành cho script QA ảnh; xem [hướng dẫn ảnh](assets/README.md)                              |
 
-Sinh secret bằng lệnh sau, sau đó tự điền kết quả vào file môi trường tương ứng:
+Sinh token cho `HOLD_EXPIRY_SECRET` bằng lệnh sau, sau đó điền kết quả vào file môi trường tương ứng nếu sử dụng API hết hạn giữ phòng:
 
 ```sh
 node -e "console.log(require('node:crypto').randomBytes(32).toString('hex'))"
@@ -41,11 +40,11 @@ npm exec prisma -- migrate status
 
 PostgreSQL lắng nghe tại `127.0.0.1:5432`, khớp `DATABASE_URL` mẫu cho ứng dụng chạy ngoài Docker. Nếu cổng 5432 đã có dịch vụ, đổi cổng host trong Compose và sửa URL trong `.env` tương ứng. `db:migrate` áp dụng hai migration có sẵn; không tạo thêm migration `init`.
 
-Đặt `DEMO_MODE="false"` trong `.env`, khởi động lại `npm run dev`. Database mới chỉ có schema; cần dữ liệu khởi tạo để dùng các API. Admin không tự chuyển sang hiển thị dữ liệu database.
+Đặt `DEMO_MODE="false"` trong `.env`, khởi động lại `npm run dev`. Database mới chỉ có schema; cần dữ liệu khởi tạo để dùng các API. Website công khai vẫn lấy danh mục từ mã nguồn.
 
 ### Seed mẫu cũ
 
-`prisma/seed.ts` dùng danh mục thử nghiệm cũ, có giá mẫu, ảnh cũ và tài khoản `owner@lago.local`. Nó thay quy tắc giá, cập nhật loại căn và vô hiệu hóa căn ngoài tập mẫu. Chỉ chạy trên database riêng có thể bỏ được; không dùng để nhập danh mục 20 căn hiện tại.
+`prisma/seed.ts` dùng danh mục thử nghiệm cũ, có giá mẫu và ảnh cũ. Nó thay quy tắc giá, cập nhật loại căn và vô hiệu hóa căn ngoài tập mẫu; không tạo tài khoản đăng nhập. Chỉ chạy trên database riêng có thể bỏ được; không dùng để nhập danh mục 20 căn hiện tại.
 
 Script từ chối chạy nếu thiếu `SEED_DEMO_DATA=true` hoặc `NODE_ENV=production`.
 
@@ -84,7 +83,9 @@ Yêu cầu Git, Docker Compose và một reverse proxy đã được quản tr�
 cp .env.demo.example .env.demo
 ```
 
-Điền `LAGO_DOMAIN`, `LAGO_PORT`, `SESSION_SECRET`. Nếu cần nhận tư vấn thật, cấu hình và thử đầu nhận webhook trước. Bản demo vẫn có tài khoản admin mẫu; nó phù hợp cho duyệt website, chưa đủ để vận hành đặt phòng.
+Điền `LAGO_DOMAIN`, `LAGO_PORT`. Nếu cần nhận tư vấn thật, cấu hình và thử đầu nhận webhook trước. Bản demo phù hợp cho duyệt website, chưa đủ để vận hành đặt phòng.
+
+Khi cập nhật từ bản có admin, build lại image rồi khởi động lại container để gỡ các route cũ. `SESSION_SECRET` không còn được sử dụng và có thể bỏ khỏi file môi trường trên máy triển khai. Không cần chạy migration mới cho thay đổi này.
 
 Kiểm tra cổng trước khi khởi động:
 
@@ -110,7 +111,7 @@ Docker truyền URL website vào cả bước build lẫn runtime. Nếu đổi 
 
 ## Khi nối hệ thống đặt phòng thật
 
-Trước khi kích hoạt cần có danh mục căn/giá đã đối soát, tài khoản thật, backup database và kiểm tra các giới hạn ở [bàn giao](handover.md). Không dùng seed cũ làm dữ liệu mở bán.
+Trước khi kích hoạt cần có danh mục căn/giá đã đối soát, quy trình xác nhận booking, backup database và kiểm tra các giới hạn ở [bàn giao](handover.md). Không dùng seed cũ làm dữ liệu mở bán.
 
 API hết hạn giữ phòng cần được scheduler gọi mỗi phút. Ví dụ Linux với biến môi trường `SITE_URL` và `HOLD_EXPIRY_SECRET` đã được cấu hình cho scheduler:
 

@@ -1,5 +1,4 @@
-import { PrismaClient, RuleType, UserRole } from "@prisma/client";
-import { hash } from "bcryptjs";
+import { PrismaClient, RuleType } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
@@ -287,18 +286,6 @@ async function main() {
   await prisma.accommodationType.updateMany({
     where: { propertyId: property.id, id: { notIn: activeTypeIds } },
     data: { active: false, featured: false },
-  });
-
-  await prisma.user.upsert({
-    where: { email: "owner@lago.local" },
-    update: {},
-    create: {
-      propertyId: property.id,
-      name: "Chủ LAKA",
-      email: "owner@lago.local",
-      passwordHash: await hash("LAKA@2026", 12),
-      role: UserRole.OWNER,
-    },
   });
 }
 

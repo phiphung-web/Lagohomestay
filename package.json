@@ -24,17 +24,14 @@
     "@fontsource/be-vietnam-pro": "^5.2.8",
     "@fontsource/lora": "^5.2.8",
     "@prisma/client": "^6.19.1",
-    "bcryptjs": "^3.0.3",
     "date-fns": "^4.1.0",
     "lucide-react": "^0.468.0",
     "next": "^15.5.9",
-    "next-auth": "beta",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "zod": "^3.25.76"
   },
   "devDependencies": {
-    "@types/bcryptjs": "^2.4.6",
     "@types/node": "^22.10.2",
     "@types/react": "^19.0.2",
     "@types/react-dom": "^19.0.2",

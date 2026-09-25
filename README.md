@@ -2,7 +2,7 @@
 
 Website giới thiệu LAKA Homestay bằng tiếng Việt và tiếng Anh, có danh mục lưu trú, hình ảnh, thực đơn và form yêu cầu tư vấn. Luồng công khai hiện chuyển khách sang tư vấn; `/dat-phong` và `/tra-cuu` chuyển hướng tới `/lien-he`.
 
-Repo cũng giữ API đặt phòng, schema PostgreSQL và giao diện admin để phát triển tiếp. Admin đang dùng dữ liệu mẫu; đổi `DEMO_MODE` không tự biến admin thành hệ thống vận hành. Đọc [hiện trạng bàn giao](docs/handover.md) trước khi triển khai cho khách thật.
+Phần admin và đăng nhập đã được gỡ khỏi dự án. Repo giữ API đặt phòng và schema PostgreSQL để phát triển tiếp. Đọc [hiện trạng bàn giao](docs/handover.md) trước khi triển khai cho khách thật.
 
 ## Chạy trên máy
 
@@ -35,7 +35,7 @@ npm run dev
 
 Mở <http://localhost:3000>. Chế độ này không cần PostgreSQL. Nếu máy đã có `.env.local`, Next.js ưu tiên các giá trị trong đó; kiểm tra để tránh lệch với `.env` mà Prisma sử dụng.
 
-Admin mẫu ở <http://localhost:3000/admin>: `owner@lago.local` / `LAKA@2026`. Đây là tài khoản thử giao diện. Booking demo lưu trong bộ nhớ tiến trình và mất khi khởi động lại.
+Booking demo lưu trong bộ nhớ tiến trình và mất khi khởi động lại. Website không có tài khoản đăng nhập hoặc khu vực quản trị.
 
 ## Các lệnh thường dùng
 
@@ -67,11 +67,9 @@ src/
   features/
     showcase/          Website công khai: trang, component, nội dung, bản dịch
     stays/             Danh mục loại căn và 20 căn hiển thị trên website
-    booking/           Validation, tính giá, giữ phòng demo, nhãn trạng thái
-    admin/             Giao diện quản trị và dữ liệu mẫu
-  server/              Auth, Prisma và giới hạn tần suất yêu cầu
+    booking/           Validation, tính giá và giữ phòng demo
+  server/              Prisma và giới hạn tần suất yêu cầu
   shared/              Thương hiệu, UI nhỏ và tiện ích dùng chung
-  types/               Kiểu mở rộng của session
 prisma/                Schema, migration và seed thử nghiệm
 public/                Logo, ảnh LAKA và ảnh thực đơn
 scripts/               Kiểm tra kiến trúc, nhập ảnh, kiểm tra ảnh
